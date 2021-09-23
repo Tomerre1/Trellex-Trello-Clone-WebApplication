@@ -8,6 +8,13 @@ function _BoardHeader(props) {
   const [isTitleEdit, setTitleEdit] = useState(false);
   const [title, setTitle] = useState(board.title);
 
+  const updateTitle =() =>{
+    const newBoard = {...board}
+    newBoard.title = title;
+    console.log('title:',title)
+    props.saveBoard(newBoard)
+  }
+
   if (!board) return <h2>Loading</h2>;
   return (
     <header className={`main-header board-header flex align-center`}>
@@ -17,12 +24,13 @@ function _BoardHeader(props) {
             {title}
           </h2>
         ) : (
-          <form>
+          <form onSubmit={(ev)=>{ev.preventDefault()}}>
             <input
               autoFocus
               className="title"
               onBlur={() => {
                 setTitleEdit(false);
+                updateTitle()
               }}
               value={title}
               style={{ width: `${title.length}ch` }}
@@ -38,9 +46,12 @@ function _BoardHeader(props) {
     </header>
   );
 }
+const mapDispatchToProps= {
+  saveBoard
+}
 function mapStateToProps(state) {
   return {
     user: state.boardModule.board,
   };
 }
-export const BoardHeader = connect(mapStateToProps)(_BoardHeader);
+export const BoardHeader = connect(mapStateToProps,mapDispatchToProps)(_BoardHeader);
