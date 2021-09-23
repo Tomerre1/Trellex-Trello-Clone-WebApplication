@@ -8,36 +8,45 @@ function _BoardHeader(props) {
   const [isTitleEdit, setTitleEdit] = useState(false);
   const [title, setTitle] = useState(board.title);
 
-  const updateTitle =() =>{
-    const newBoard = {...board}
+  const updateTitle = () => {
+    const newBoard = { ...board };
     newBoard.title = title;
-    console.log('title:',title)
-    props.saveBoard(newBoard)
-  }
+    console.log("title:", title);
+    props.saveBoard(newBoard);
+  };
 
   if (!board) return <h2>Loading</h2>;
   return (
     <header className={`main-header board-header flex align-center`}>
       <div className="header-btn-container flex">
         {!isTitleEdit ? (
-          <h2 className="title" onClick={() => setTitleEdit(true)}>
+          <h2
+            className="title"
+            onClick={() => setTitleEdit(true)}
+          >
             {title}
           </h2>
         ) : (
-          <form onSubmit={(ev)=>{ev.preventDefault()}}>
+          <form
+            onSubmit={(ev) => {
+              ev.preventDefault();
+            }}
+          >
             <input
               autoFocus
               className="title"
               onBlur={() => {
                 setTitleEdit(false);
-                updateTitle()
+                updateTitle();
               }}
               value={title}
-              style={{ width: `${title.length}ch` }}
+              style={{ width: `${title.length}ch`, minWidth: "10px" }}
               onChange={(ev) => setTitle(ev.target.value)}
             ></input>
           </form>
         )}
+        <div className="users">userImgs</div>
+        <button className="header-btn">Invite</button>
       </div>
       <div className="header-btn-container flex">
         <button className="header-btn">Dashboard</button>
@@ -46,12 +55,15 @@ function _BoardHeader(props) {
     </header>
   );
 }
-const mapDispatchToProps= {
-  saveBoard
-}
+const mapDispatchToProps = {
+  saveBoard,
+};
 function mapStateToProps(state) {
   return {
     user: state.boardModule.board,
   };
 }
-export const BoardHeader = connect(mapStateToProps,mapDispatchToProps)(_BoardHeader);
+export const BoardHeader = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(_BoardHeader);
