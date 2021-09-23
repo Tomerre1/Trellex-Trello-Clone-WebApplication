@@ -1,5 +1,6 @@
 import React from "react";
 import {TaskPreview} from "./TaskPreview"
+import HomeIcon from '@mui/icons-material/Home';
 
 export function Group(props) {
   const { group } = props;
