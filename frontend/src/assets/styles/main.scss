@@ -1,0 +1,17 @@
+//pages
+@import "../styles/pages/TaskDetails.scss";
+
+//cmps
+@import "../styles/cmps/TaskHeader.scss";
+@import "../styles//cmps/TaskCardCover.scss";
+
+// Setup
+@import "../styles/setup/variables.scss";
+@import "../styles/setup/functions.scss";
+@import "../styles/setup/mixins.scss";
+@import "../styles/setup/typography.scss";
+
+// Basics
+@import "../styles/basics/helpers.scss";
+@import "../styles/basics/layout.scss";
+@import "../styles/basics/base.scss";
