@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { saveBoard } from "../store/board.actions";
 
 function _BoardHeader(props) {
   const { board } = props;
+
   const [isTitleEdit, setTitleEdit] = useState(false);
   const [title, setTitle] = useState(board.title);
 
@@ -13,33 +13,27 @@ function _BoardHeader(props) {
     <header className={`main-header board-header flex align-center`}>
       <div className="header-btn-container flex">
         {!isTitleEdit ? (
-          <h2 className="header-btn" onClick={() => setTitleEdit(true)}>
-            {board.title}{" "}
+          <h2 className="title" onClick={() => setTitleEdit(true)}>
+            {title}
           </h2>
         ) : (
           <form>
             <input
               autoFocus
-              className="header-btn"
+              className="title"
               onBlur={() => {
                 setTitleEdit(false);
               }}
               value={title}
+              style={{ width: `${title.length}ch` }}
               onChange={(ev) => setTitle(ev.target.value)}
             ></input>
           </form>
         )}
-
-        <Link to="/workspace" className="header-btn">
-          boards
-        </Link>
       </div>
       <div className="header-btn-container flex">
-        <button className="header-btn">add</button>
-        <button className="header-btn">notifications</button>
-        <div className="user-profile">
-          <p>BS</p>
-        </div>
+        <button className="header-btn">Dashboard</button>
+        <button className="header-btn">Show Menu</button>
       </div>
     </header>
   );
