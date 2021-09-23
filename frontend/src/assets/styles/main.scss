@@ -15,9 +15,11 @@
 @import "pages/TaskDetails";
 @import "pages/homepage";
 @import "pages/workspace";
+@import "pages/board-app";
 
 // Components
 @import "cmps/app-header";
+@import "cmps/board-header";
 @import "cmps/board-list";
 @import "cmps/board-preview";
 @import "cmps/TaskHeader";
