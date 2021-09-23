@@ -2,7 +2,7 @@
  background-color:$clr1;   
  color:white;
  justify-content: space-between;
- padding:4px;
+ padding:6px;
  transition:background-color 0.1s;
  position:fixed;
  top:0;
@@ -11,7 +11,7 @@
      background-color:rgba(0,0,0,.15);
  }
  .header-btn-container{
-     gap:4px;
+     gap:6px;
      .header-btn {
         background-color:hsla(0,0%,100%,.3);
         padding:2px 4px;

@@ -1,10 +1,11 @@
 import React from 'react'
-import {Group} from './Group'
+import {GroupDetails} from './GroupDetails'
 export function GroupList(props) {
     const {groups} = props
     return (
         <div className="group-list">
-            {groups &&  groups.map((group,idx)=> <Group group={group} key={idx}/>)}
+            {groups &&  groups.map((group,idx)=> <GroupDetails group={group} key={idx}/>)}
+            <GroupDetails isAddNew={true}/>
         </div>
     )
 }

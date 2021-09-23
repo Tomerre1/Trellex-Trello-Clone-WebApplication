@@ -15,7 +15,7 @@ const demoBoards = [
             "imgUrl": "http://some-img"
         },
         "style": {
-            "bgClr": 'red',
+            "bgClr": 'linear-gradient(to right, #2980b9, #2c3e50)',
             "bgImg": ''
         },
         "labels": [
@@ -189,7 +189,7 @@ const demoBoards = [
             "imgUrl": "http://some-img"
         },
         "style": {
-            "bgClr": 'midnightblue',
+            "bgClr": 'linear-gradient(to right, #3494e6, #ec6ead)',
             "bgImg": ''
         },
         "labels": [
@@ -313,7 +313,7 @@ const demoBoards = [
             "imgUrl": "http://some-img"
         },
         "style": {
-            "bgClr": 'teal',
+            "bgClr": 'linear-gradient(to bottom, #000000, #434343)',
             "bgImg": ''
         },
         "labels": [
