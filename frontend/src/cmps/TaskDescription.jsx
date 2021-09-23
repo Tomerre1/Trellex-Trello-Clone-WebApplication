@@ -29,9 +29,9 @@ export class TaskDescription extends Component {
         this.setState({ isEditMode: !this.state.isEditMode })
     }
     onEditMode = () => {
+        this.selectedInput.focus()
         this.setState({ isEditMode: true })
     }
-
 
     render() {
         const { isEditMode, description } = this.state
@@ -40,18 +40,20 @@ export class TaskDescription extends Component {
                 <div className="window-modal-title flex align-center">
                     <SubjectIcon />
                     <h3>Description</h3>
-                    <button
-                        className="task-btns edit-task-description-btn"
-                        onClick={() => this.onToggleEdit()}>
-                        Edit
-                    </button>
+                    {!isEditMode &&
+                        <button
+                            className="task-btns edit-task-description-btn"
+                            onClick={() => this.onEditMode()}>
+                            Edit
+                        </button>}
                 </div>
                 <div className="card-description-edit flex column">
                     <textarea onClick={() => this.onEditMode()}
+                        ref={(input) => { this.selectedInput = input; }}
                         value={description}
                         placeholder="Add a more detailed description..."
                         onChange={this.handleChange}></textarea>
-        
+
                     <div className={`description-controls flex align-center ${isEditMode ? 'show' : 'hidden'}`}>
                         <button className='task-btns save-task-description-btn' onClick={() => this.onSaveDescription()}>Save</button>
                         <button className='task-btns close-task-description-btn' onClick={() => this.onToggleEdit()}><Close /></button>
