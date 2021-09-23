@@ -7,18 +7,24 @@
         .action-btn {
             position: relative;
             margin-bottom: 8px;
+            color: #172b4d;
             .action-btn-content {
+                align-items: center;
+                min-height: 20px;
                 svg {
                     color: rgba(23, 43, 77, 0.8);
                     margin: 0 8px 0 -4px;
-                    width: 16px;
-                    height: 16px;
-                    overflow: hidden;
+                    width: 18px;
+                    height: 18px;
                 }
                 span {
-                    color: #172b4d;
+                    color: inherit;
                     line-height: 17px;
                 }
+            }
+            &:active {
+                background-color: #e4f0f6;
+                color: #0079bf;
             }
         }
 
@@ -35,6 +41,7 @@
             margin-bottom: 16px;
         }
         .add-to-card {
+            margin-bottom: 24px;
         }
     }
 }
