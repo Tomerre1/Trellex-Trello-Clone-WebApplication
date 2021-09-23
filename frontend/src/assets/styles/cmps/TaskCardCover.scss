@@ -1,0 +1,24 @@
+.card-cover {
+    height: 116px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    position: relative;
+    background: rgb(235, 90, 70);
+    > button {
+        cursor: pointer;
+        position: absolute;
+        right: 8px;
+        bottom: 8px;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.08);
+        color: #172b4d;
+        border: none;
+        border-radius: 3px;
+        padding: 6px 12px 6px 6px;
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.16);
+            color: #091e42;
+        }
+    }
+}
+

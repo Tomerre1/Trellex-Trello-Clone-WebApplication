@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // Setup
 @import "setup/variables";
 @import "setup/functions";
@@ -22,3 +23,26 @@
 
 
 
+=======
+//pages
+@import "../styles/pages/TaskDetails.scss";
+@import "pages/homepage";
+
+//cmps
+@import "../styles/cmps/TaskHeader.scss";
+@import "../styles//cmps/TaskCardCover.scss";
+@import "cmps/app-header";
+
+// Setup
+@import "../styles/setup/variables.scss";
+@import "../styles/setup/functions.scss";
+@import "../styles/setup/mixins.scss";
+@import "../styles/setup/typography.scss";
+
+// Basics
+@import "basics/helpers";
+@import "basics/layout";
+@import "basics/base";
+@import "basics/links";
+@import "basics/forms";
+>>>>>>> e5ef018fdd1ac93437672170d3948578c1d07b41
