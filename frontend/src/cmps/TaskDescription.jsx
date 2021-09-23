@@ -13,12 +13,16 @@ export class TaskDescription extends Component {
 
 
     onSaveDescription = () => {
-        console.log('Save Description')
+        const { description } = this.state
+        console.log('Saving Description...', description)
         this.setState({ isEditMode: false })
         // const { description } = this.state
         // this.setState({ isInputSelected: false }, () => {
         //     this.props.onSaveCardDescription(description)
         // })
+    }
+    handleChange = ({ target: { value } }) => {
+        this.setState({ description: value })
     }
 
     onToggleEdit = () => {
@@ -30,27 +34,27 @@ export class TaskDescription extends Component {
 
 
     render() {
-        const { isEditMode } = this.state
+        const { isEditMode, description } = this.state
         return (
             <div className="task-description flex column">
                 <div className="window-modal-title flex align-center">
                     <SubjectIcon />
                     <h3>Description</h3>
                     <button
-                    className="edit-task-description-btn"
+                        className="task-btns edit-task-description-btn"
                         onClick={() => this.onToggleEdit()}>
                         Edit
                     </button>
                 </div>
                 <div className="card-description-edit flex column">
-                <textarea onClick={() => this.onEditMode()}></textarea>
-                    {/* {!isEditMode && <p>Bla bla bla</p>}
-                    {isEditMode &&
-                        <textarea></textarea>
-                    } */}
+                    <textarea onClick={() => this.onEditMode()}
+                        value={description}
+                        placeholder="Add a more detailed description..."
+                        onChange={this.handleChange}></textarea>
+        
                     <div className={`description-controls flex align-center ${isEditMode ? 'show' : 'hidden'}`}>
-                        <button className='save-task-description-btn' onClick={() => this.onSaveDescription()}>Save</button>
-                        <button className='close-task-description-btn' onClick={() => this.onToggleEdit()}><Close /></button>
+                        <button className='task-btns save-task-description-btn' onClick={() => this.onSaveDescription()}>Save</button>
+                        <button className='task-btns close-task-description-btn' onClick={() => this.onToggleEdit()}><Close /></button>
                     </div>
                 </div>
             </div>)
