@@ -7,7 +7,7 @@ export class Popover extends React.Component {
         left: 0
     };
     contentEl = null;
-    
+
     componentDidMount() {
         this.onSetPopoverPos()
     }
@@ -68,7 +68,7 @@ export class Popover extends React.Component {
 
         return (
             <div
-                className={'hiiii'}
+                className="popup"
                 ref={(el) => (this.contentEl = el)}
                 style={this.getContentStyles()}
             >

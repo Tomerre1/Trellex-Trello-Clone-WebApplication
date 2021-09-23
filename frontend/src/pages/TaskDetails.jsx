@@ -4,6 +4,7 @@ import { TaskHeader } from '../cmps/TaskHeader';
 import { TaskCardCover } from '../cmps/TaskCardCover'
 import { TaskDescription } from '../cmps/TaskDescription'
 import { Popover } from '../cmps/Popover'
+import { TaskActionsMenu } from '../cmps/TaskActionsMenu'
 export class TaskDetails extends Component {
   state = { isCover: true, currentTarget: null, isPopover: false }
   contentEl = null;
@@ -23,9 +24,13 @@ export class TaskDetails extends Component {
         <button className={`close-task-details ${isCover ? 'cover' : ''}`}><Close /></button>
         <TaskCardCover />
         <TaskHeader />
+        <div className="task-details-body flex">
+          <TaskActionsMenu />
 
-        <button
-          onClick={(event) => { this.setCurrentTarget(event); this.togglePopover() }}>click</button>
+        </div>
+
+        {/* <button
+          onClick={(event) => { this.setCurrentTarget(event); this.togglePopover() }}>click</button> */}
         <button
           onClick={(event) => { this.setCurrentTarget(event); this.togglePopover() }}>click</button>
         <TaskDescription />
