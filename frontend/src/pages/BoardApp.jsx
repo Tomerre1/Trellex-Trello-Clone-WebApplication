@@ -33,7 +33,7 @@ class _BoardApp extends Component {
         style={{ background: board.style.bgClr }}
       >
         <BoardHeader board={board} />
-        <GroupList/>
+        <GroupList groups={board.groups}/>
       </section>
     );
   }
