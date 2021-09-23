@@ -292,17 +292,6 @@ function save(board) {
     }
 }
 
-function setPopoverPos(pos, elRect, diff = 38) {
-    let { left, top } = pos
-    top += diff
-    const { height, width } = elRect
-    const viewportWidth = window.innerWidth
-    const viewportHeight = window.innerHeight
-    if (left + width > viewportWidth) left = viewportWidth - width - 10
-    if (top + height > viewportHeight) top = viewportHeight - height - 10
-    return { left, top, width }
-}
-
 // function getEmptyBoard() {
 //     return {
 //         vendor: 'Susita-' + (Date.now() % 1000),
