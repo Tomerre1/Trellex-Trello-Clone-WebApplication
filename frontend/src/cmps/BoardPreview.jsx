@@ -4,7 +4,7 @@ export function BoardPreview(props) {
   console.log(board)
   return (
     <article className="board-preview" style={{backgroundColor:board.style.bgClr,backgroundImage:board.style.bgImg}}>
-        <p>{board.title}</p>
+        <p className="board-title">{board.title}</p>
     </article>
   );
 }
