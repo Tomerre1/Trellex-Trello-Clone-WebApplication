@@ -1,18 +1,34 @@
 import React, { Component } from "react";
+import {BoardHeader} from '../cmps/BoardHeader'
 import { connect } from "react-redux";
-import { loadBoard } from "../store/board.actions";
+import { loadBoard , clearBoard } from "../store/board.actions";
 
 class _BoardApp extends Component {
   componentDidMount = async () => {
-    this.props.loadBoard();
+    this.loadBoard();
   };
+  componentWillUnmount = () => {
+    this.props.clearBoard();
+  }
 
+  loadBoard = async () => {
+    const id = this.props.match.params.boardId;
+    if (id) {
+      console.log(id)
+      try {
+        await this.props.loadBoard(id);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  };
   render() {
-    console.log(this.props.board);
+    const {board} = this.props
+    if (!board) return <h2>Loading</h2>
     return (
-      <div>
-        <h1>Board</h1>
-      </div>
+      <section className="board-app flex column" style={{background:board.style.bgClr}}>
+        <BoardHeader board={board}/>
+      </section>
     );
   }
 }
@@ -24,6 +40,7 @@ function mapStateToProps(state) {
 }
 const mapDispatchToProps = {
   loadBoard,
+  clearBoard,
 };
 
 export const BoardApp = connect(mapStateToProps, mapDispatchToProps)(_BoardApp);

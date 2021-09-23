@@ -33,3 +33,12 @@ export const loadBoard =(boardId)=> {
         }
     }
 }
+export const clearBoard =()=> {
+    return  (dispatch) => {
+            dispatch({
+                type: "SET_BOARD",
+                board:null
+            });
+   
+    }
+}
