@@ -33,6 +33,24 @@ export const loadBoard =(boardId)=> {
         }
     }
 }
+
+export const saveBoard =(board)=> {
+    return async (dispatch) => {
+        try{
+            const newBoard = await boardService.save(board)
+            console.log('newBoard:',newBoard)
+            dispatch({
+                type: "SAVE_BOARD",
+                board:newBoard,
+            });
+
+        }
+        catch(err){
+            console.log('cant set board',err)
+        }
+    }
+}
+
 export const clearBoard =()=> {
     return  (dispatch) => {
             dispatch({
