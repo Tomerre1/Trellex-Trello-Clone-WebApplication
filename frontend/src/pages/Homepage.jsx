@@ -14,7 +14,7 @@ export class Homepage extends Component {
               From high rises to the home office, the way your team works is
               unique—accomplish it all with Trellex.
             </p>
-            <Link to="/workspace"><button>Get Started!</button></Link>
+            <button><Link to="/workspace">Get Started!</Link></button>
           </div>
           <div >
               <img src={heroImg} className="hero-img"/>
