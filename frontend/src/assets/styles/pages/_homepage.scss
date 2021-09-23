@@ -21,6 +21,10 @@
             padding:10px 0;
             border-radius:6px;
             letter-spacing:1px;
+            transition: background-color .2s ease-in-out;
+            &:hover{
+                background-color:darken($clr1,10%)
+            }
         }
     }
 }

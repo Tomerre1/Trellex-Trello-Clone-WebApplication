@@ -1,11 +1,34 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { BoardList } from "../cmps/BoardList";
+import { loadBoards } from "../store/board.actions";
 
-export class Workspace extends Component {
+class _Workspace extends Component {
+  componentDidMount = () => {
+    console.log(this.props);
+    this.props.loadBoards();
+  };
+
   render() {
+    const { boards } = this.props;
     return (
-      <div>
-        <h1>Workspace</h1>
-      </div>
+      <section className="workspace-page main-layout flex column">
+        <h1>Your Workspace</h1>
+        <BoardList boards={boards} />
+      </section>
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    boards: state.boardModule.boards,
+  };
+}
+const mapDispatchToProps = {
+  loadBoards,
+};
+export const Workspace = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(_Workspace);
