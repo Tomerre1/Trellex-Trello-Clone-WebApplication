@@ -5,7 +5,6 @@ import { loadBoards } from "../store/board.actions";
 
 class _Workspace extends Component {
   componentDidMount = () => {
-    console.log(this.props);
     this.props.loadBoards();
   };
 

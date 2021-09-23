@@ -4,6 +4,9 @@
  justify-content: space-between;
  padding:4px;
  transition:background-color 0.1s;
+ position:fixed;
+ top:0;
+ width:100%;
  &.on-board { 
      background-color:rgba(0,0,0,.15);
  }

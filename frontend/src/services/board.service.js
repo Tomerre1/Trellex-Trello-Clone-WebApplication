@@ -131,7 +131,7 @@ const demoBoards = [
     },
     {
         "_id": "b102",
-        "title": "Board numero dos",
+        "title": "Board numero dos With A Much Longer Name To See How It Fits",
         "createdAt": 1689983468418,
         "createdBy": {
             "_id": "u101",
@@ -139,7 +139,7 @@ const demoBoards = [
             "imgUrl": "http://some-img"
         },
         "style": {
-            "bgClr": 'red',
+            "bgClr": 'teal',
             "bgImg": ''
         },
         "labels": [
@@ -263,8 +263,7 @@ export const boardService = {
     getById,
     save,
     remove,
-    // getEmptyBoard,
-    // subscribe
+
 
 }
 async function query() {
