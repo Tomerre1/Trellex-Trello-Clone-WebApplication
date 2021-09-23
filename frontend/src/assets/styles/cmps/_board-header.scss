@@ -2,6 +2,7 @@
     top:38px;
     position:relative;
     background-color:transparent;
+    color:white;
     .title { 
         margin:0;
         padding:0;
@@ -19,5 +20,12 @@
         cursor: auto;
 
     }
-
+    .header-btn-container {
+        button.header-btn {
+            background-color:hsla(0,0%,100%,.3);
+            padding:6px 4px;
+            border-radius:3px;
+            color:white;
+        }
+    }
 }
