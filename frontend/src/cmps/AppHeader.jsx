@@ -1,11 +1,10 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+import { Link ,withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 
-export class AppHeader extends Component {
-  render() {
-    console.log(this.props);
+ function _AppHeader (props) {
     return (
-      <header className="main-header flex full align-center">
+      <header className={`main-header flex align-center ${props.location.pathname.includes('board') ? 'on-board' : ''}`}>
         <div className="header-btn-container flex">
           <Link to="/" className="header-btn">
             home
@@ -24,5 +23,10 @@ export class AppHeader extends Component {
         </div>
       </header>
     );
-  }
 }
+function mapStateToProps(state) {
+  return {
+    user: state.userModule.loggedInUser,
+  };
+}
+export const AppHeader = withRouter(connect(mapStateToProps)(_AppHeader));

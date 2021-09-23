@@ -6,7 +6,7 @@ export class Homepage extends Component {
   render() {
     return (
       <section className="homepage">
-        <div className="hero flex home-layout">
+        <div className="hero flex main-layout">
           <div className="hero-content flex column">
             <h1>Trellex helps teams move work forward.</h1>
             <p>

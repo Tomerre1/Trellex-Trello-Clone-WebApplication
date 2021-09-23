@@ -1,3 +1,38 @@
+
+// Setup
+@import "setup/variables";
+@import "setup/functions";
+@import "setup/mixins";
+// @import "setup/typography";
+
+// Basics
+@import "basics/helpers";
+@import "basics/layout";
+@import "basics/base";
+@import "basics/links";
+@import "basics/forms";
+
+
+// Pages
+@import "pages/homepage";
+@import "pages/workspace";
+// Components
+@import "cmps/app-header";
+@import "cmps/board-list";
+@import "cmps/board-preview";
+
+
+
+//pages
+@import "../styles/pages/TaskDetails.scss";
+@import "pages/homepage";
+
+//cmps
+@import "../styles/cmps/TaskHeader.scss";
+@import "../styles//cmps/TaskCardCover.scss";
+@import "cmps/app-header";
+
+
 // Setup
 @import "../styles/setup/variables.scss";
 @import "../styles/setup/functions.scss";
@@ -8,6 +43,12 @@
 
 
 // Basics
+@import "basics/helpers";
+@import "basics/layout";
+@import "basics/base";
+@import "basics/links";
+@import "basics/forms";
+
 @import "../styles/basics/helpers.scss";
 
 @import "../styles/basics/layout.scss";
