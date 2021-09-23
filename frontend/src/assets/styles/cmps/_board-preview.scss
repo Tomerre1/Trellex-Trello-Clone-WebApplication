@@ -2,4 +2,12 @@
         cursor: pointer;
         height: 100%;
         border-radius: 3px;
+        p {
+            color:white;
+            font-weight:bold;
+            margin-top:10px;
+            margin-inline-start: 10px;
+            max-width:30ch;
+        }
+        
 }

@@ -4,7 +4,7 @@ import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
 
 
-const boards = [
+const demoBoards = [
     {
         "_id": "b101",
         "title": "Robot dev proj",
@@ -267,12 +267,14 @@ export const boardService = {
     // subscribe
 
 }
-
-function query() {
-    // return storageService.query(STORAGE_KEY)
-    console.log(boards)
-    return boards
+async function query() {
+    let boards = await storageService.query(STORAGE_KEY)
+    if (boards.length) return boards
+    console.log('no local storage found')
+    localStorage.setItem('board', JSON.stringify(demoBoards))
+    return demoBoards
 }
+
 function getById(boardId) {
     return storageService.get(STORAGE_KEY, boardId)
 }

@@ -4,7 +4,6 @@ import {BoardApp} from './pages/BoardApp'
 import {TaskDetails} from './pages/TaskDetails'
 
 
-// Routes accesible from the main navigation (in AppHeader)
 const routes = [
     {
         path:'/',
