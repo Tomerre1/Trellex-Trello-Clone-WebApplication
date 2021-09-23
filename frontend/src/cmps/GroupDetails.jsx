@@ -1,9 +1,11 @@
 import React from "react";
 import { TaskPreview } from "./TaskPreview";
+import AddIcon from '@mui/icons-material/Add';
+
 
 export function GroupDetails(props) {
   const { group, isAddNew } = props;
-  if (isAddNew) return <article className="group-details add-new"><button>add new +</button></article>;
+  if (isAddNew) return <article className="group-details add-new"><div className="flex align-center"><AddIcon/>Add a new list</div></article>;
   return (
     <article className="group-details flex column">
       <div className="group-header">
