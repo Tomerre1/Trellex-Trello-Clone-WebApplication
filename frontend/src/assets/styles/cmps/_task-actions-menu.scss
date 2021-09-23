@@ -1,0 +1,40 @@
+.task-details-sidebar {
+    .actions-wrapper {
+        padding: 0 16px;
+        margin-bottom: 24px;
+        flex-direction: column;
+
+        .action-btn {
+            position: relative;
+            margin-bottom: 8px;
+            .action-btn-content {
+                svg {
+                    color: rgba(23, 43, 77, 0.8);
+                    margin: 0 8px 0 -4px;
+                    width: 16px;
+                    height: 16px;
+                    overflow: hidden;
+                }
+                span {
+                    color: #172b4d;
+                    line-height: 17px;
+                }
+            }
+        }
+
+        h4 {
+            grid-column: 1/-1;
+            color: #5e6c84;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            font-size: 12px;
+            margin-bottom: 0.5rem;
+        }
+
+        .suggested {
+            margin-bottom: 16px;
+        }
+        .add-to-card {
+        }
+    }
+}

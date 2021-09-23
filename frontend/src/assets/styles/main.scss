@@ -10,6 +10,7 @@
 @import "basics/base";
 @import "basics/links";
 @import "basics/forms";
+@import "basics/buttons";
 
 // Pages
 @import "pages/TaskDetails";
@@ -24,3 +25,5 @@
 @import "cmps/board-preview";
 @import "cmps/TaskHeader";
 @import "cmps/TaskCardCover";
+@import "cmps/TaskDescription";
+@import "cmps/task-actions-menu";
