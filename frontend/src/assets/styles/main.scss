@@ -1,21 +1,19 @@
-//pages
-@import "../styles/pages/TaskDetails.scss";
-@import "pages/homepage";
-
-//cmps
-@import "../styles/cmps/TaskHeader.scss";
-@import "../styles//cmps/TaskCardCover.scss";
-@import "cmps/app-header";
-
 // Setup
 @import "../styles/setup/variables.scss";
 @import "../styles/setup/functions.scss";
 @import "../styles/setup/mixins.scss";
 @import "../styles/setup/typography.scss";
+@import "../styles/basics/forms";
 
 // Basics
-@import "basics/helpers";
-@import "basics/layout";
-@import "basics/base";
-@import "basics/links";
-@import "basics/forms";
+@import "../styles/basics/helpers.scss";
+@import "../styles/basics/layout.scss";
+@import "../styles/basics/base.scss";
+@import "../styles/basics/links";
+//pages
+@import "../styles/pages/TaskDetails.scss";
+@import "pages/homepage";
+//cmps
+@import "../styles/cmps/TaskHeader.scss";
+@import "../styles//cmps/TaskCardCover.scss";
+@import "cmps/app-header";
