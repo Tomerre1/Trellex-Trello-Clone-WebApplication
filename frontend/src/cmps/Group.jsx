@@ -5,8 +5,8 @@ export function Group(props) {
   return (
     <article className="group">   
       <div>
-        <p className="group-title">{group.title}</p>
-    
+        <p className="group-title flex column">{group.title}</p>
+        {group.tasks.map((task,idx) =><p key={idx}>{JSON.stringify(task)}</p>)}
       </div>
     </article>
   );
