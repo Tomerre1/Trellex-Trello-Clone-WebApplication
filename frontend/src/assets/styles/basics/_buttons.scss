@@ -1,0 +1,23 @@
+.secondary-btn {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    border-radius: 3px;
+    cursor: pointer;
+    padding: 6px 12px;
+    border: none;
+    box-shadow: none;
+    background-color: rgba(9, 30, 66, 0.04);
+    transition-property: background-color, border-color, box-shadow;
+    transition-duration: 85ms;
+    transition-timing-function: ease;
+}
+
+.secondary-btn:active {
+    background-color: #e4f0f6;
+    color: #0079bf;
+}
+
+.secondary-btn:hover {
+    background-color: rgba(9, 30, 66, 0.08);
+}
