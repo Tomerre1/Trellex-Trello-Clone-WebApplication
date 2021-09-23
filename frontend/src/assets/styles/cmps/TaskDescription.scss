@@ -1,11 +1,24 @@
 .task-description {
-    margin-bottom: 28px ;
-    
+    margin-bottom: 28px;
+
     .window-modal-title {
+        align-items: center;
+        display: flex;
+        min-height: 32px;
+        margin: 0 0 4px 40px;
+        padding: 8px 0;
+        position: relative;
         svg {
-            margin-inline-end: 17px;
-            max-width: 25px;
-            max-height: 20px;
+            left: -40px;
+            position: absolute;
+            color: #42526e;
+            height: 26px;
+            width: 32px;
+        }
+        h3 {
+            margin: 0;
+            font-size: 16px;
+            font-weight: 600;
         }
     }
 
@@ -60,16 +73,17 @@
         border-radius: 3px;
         color: #172b4d;
         margin-left: 8px;
+        &:hover {
+            background-color: #091e4214;
+        }
     }
     .close-task-description-btn {
         svg {
             width: 32px;
             color: #42526e;
         }
-        &:hover svg{
+        &:hover svg {
             color: #172b4d;
         }
     }
-
-    
 }

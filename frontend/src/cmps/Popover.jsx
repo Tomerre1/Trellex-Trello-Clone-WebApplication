@@ -45,6 +45,7 @@ export class Popover extends React.Component {
 
     getContentStyles = () => {
         const { top, left } = this.state;
+
         return {
             position: "fixed",
             opacity: 1,
@@ -65,15 +66,18 @@ export class Popover extends React.Component {
     };
 
     render() {
-
+        const { togglePopover } = this.props;
         return (
-            <div
-                className="popup"
-                ref={(el) => (this.contentEl = el)}
-                style={this.getContentStyles()}
-            >
-                {this.props.children}
-            </div>
+            <>
+                <div
+                    className="popup"
+                    ref={(el) => (this.contentEl = el)}
+                    style={this.getContentStyles()}
+                >
+                    {this.props.children}
+                </div>
+                <div className="overlay" onClick={togglePopover}></div>
+            </>
         );
     }
 }

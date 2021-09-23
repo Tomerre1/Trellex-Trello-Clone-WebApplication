@@ -26,14 +26,10 @@ export class TaskDetails extends Component {
         <TaskHeader />
         <div className="task-details-body flex">
           <TaskDescription />
-          <TaskActionsMenu />
+          <TaskActionsMenu setCurrentTarget={this.setCurrentTarget} togglePopover={this.togglePopover} />
 
         </div>
 
-        {/* <button
-          onClick={(event) => { this.setCurrentTarget(event); this.togglePopover() }}>click</button> */}
-        <button
-          onClick={(event) => { this.setCurrentTarget(event); this.togglePopover() }}>click</button>
         {isPopover && currentTarget && <Popover togglePopover={this.togglePopover} currentTarget={currentTarget}></Popover>}
       </section >
 
