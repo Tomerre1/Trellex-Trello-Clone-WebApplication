@@ -1,20 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
-export function BoardPreview(props) {
-  const { board } = props;
+export function TaskPreview(props) {
+  const { task } = props;
+
   return (
-    <article className="board-preview">
-        <Link to={`/board/${board._id}`}>
-      <div
-        className="board-content"
-        style={{
-          backgroundColor: board.style.bgClr,
-          backgroundImage: board.style.bgImg,
-        }}
-      ></div>
-      <p className="board-title">{board.title}</p>
-      </Link>
+    <article className="task-preview">
+      <div className="task-cover">cover color/image here</div>
+      {task.labelIds && (
+        <div className="task-labels">label id's{task.labelIds.join(",")}</div>
+      )}
+      <div className="task-title">{task.title}</div>
+      <div className="task-description">{task.description}</div>
     </article>
   );
 }
