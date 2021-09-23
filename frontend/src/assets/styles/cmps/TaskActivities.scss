@@ -1,0 +1,42 @@
+.task-activities {
+    .window-modal-title {
+        align-items: center;
+        display: flex;
+        min-height: 32px;
+        margin: 0 0 4px 40px;
+        padding: 8px 0;
+        position: relative;
+        svg {
+            left: -40px;
+            position: absolute;
+            color: #42526e;
+            height: 26px;
+            width: 32px;
+        }
+       
+    }
+    h3 {
+        margin: 0;
+        font-size: 16px;
+        font-weight: 600;
+    }
+    .activity-toggle-btn {
+        -webkit-appearance: none;
+        border: none;
+        border-radius: 3px;
+        box-sizing: border-box;
+        background-color: #091e420a;
+        box-shadow: none;
+        cursor: pointer;
+        color: #172b4d;
+        display: inline-block;
+        line-height: 20px;
+        padding: 6px 12px;
+        position: relative;
+        text-decoration: none;
+
+        &:hover {
+            background-color: #091e4214;
+        }
+    }
+}

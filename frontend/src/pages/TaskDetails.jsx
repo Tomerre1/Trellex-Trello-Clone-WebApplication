@@ -3,6 +3,7 @@ import { Close } from '@mui/icons-material';
 import { TaskHeader } from '../cmps/TaskHeader';
 import { TaskCardCover } from '../cmps/TaskCardCover'
 import { TaskDescription } from '../cmps/TaskDescription'
+import { TaskActivities } from '../cmps/TaskActivities'
 import { Popover } from '../cmps/Popover'
 import { TaskActionsMenu } from '../cmps/TaskActionsMenu'
 export class TaskDetails extends Component {
@@ -25,9 +26,12 @@ export class TaskDetails extends Component {
         <TaskCardCover />
         <TaskHeader />
         <div className="task-details-body flex">
-          <TaskDescription />
-          <TaskActionsMenu setCurrentTarget={this.setCurrentTarget} togglePopover={this.togglePopover} />
+          <div className="task-details-main flex column">
+            <TaskDescription />
+            <TaskActivities />
+          </div>
 
+          <TaskActionsMenu setCurrentTarget={this.setCurrentTarget} togglePopover={this.togglePopover} />
         </div>
 
         {isPopover && currentTarget && <Popover togglePopover={this.togglePopover} currentTarget={currentTarget}></Popover>}
