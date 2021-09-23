@@ -40,12 +40,11 @@ export class TaskDescription extends Component {
                 <div className="window-modal-title flex align-center">
                     <SubjectIcon />
                     <h3>Description</h3>
-                    {!isEditMode &&
-                        <button
-                            className="task-btns edit-task-description-btn"
-                            onClick={() => this.onEditMode()}>
-                            Edit
-                        </button>}
+                    <button
+                        className={`task-btns edit-task-description-btn ${!isEditMode ? 'full-opacity' : 'none-opacity'}`}
+                        onClick={() => this.onEditMode()}>
+                        Edit
+                    </button>
                 </div>
                 <div className="card-description-edit flex column">
                     <textarea onClick={() => this.onEditMode()}
