@@ -1,0 +1,26 @@
+.main-header {
+ background-color:$clr1;   
+ color:white;
+ justify-content: space-between;
+ padding:4px;
+ .header-btn-container{
+     gap:4px;
+     .header-btn {
+        background-color:hsla(0,0%,100%,.3);
+        padding:2px 4px;
+        border-radius:3px;
+     }
+     .user-profile{
+         border-radius:50%;
+         background-color:rgba(36, 5, 5, 0.37);
+         width:30px;
+         height:30px;
+         display:flex;
+         justify-content: center;
+     }
+ }
+ a {
+     color:white;
+     
+ }
+}
