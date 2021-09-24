@@ -1,6 +1,7 @@
 import React from "react";
 import { TaskPreview } from "./TaskPreview";
 import AddIcon from "@mui/icons-material/Add";
+import { AddNewTask } from "./Group/AddNewTask";
 import MoreHorizOutlinedIcon from "@mui/icons-material/MoreHorizOutlined";
 
 export function GroupDetails(props) {
@@ -23,10 +24,10 @@ export function GroupDetails(props) {
       {group.tasks.map((task, idx) => (
         <TaskPreview task={task} key={idx} />
       ))}
-      <div className="group-footer flex">
+      <div className="group-footer">
         {/* will be an add task component */}
-        <AddIcon />
-        <p>Add new task</p>
+        <AddNewTask />
+
       </div>
     </article>
   );
