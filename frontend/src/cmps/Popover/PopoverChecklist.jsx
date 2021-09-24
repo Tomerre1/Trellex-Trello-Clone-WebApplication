@@ -40,7 +40,7 @@ export class PopoverChecklist extends Component {
                         </form>
                     </div>
                 </Popover >
-            </div>
+            </div >
         )
     }
 }
