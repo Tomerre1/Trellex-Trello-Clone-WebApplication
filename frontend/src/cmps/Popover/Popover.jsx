@@ -1,5 +1,4 @@
 import React from "react";
-
 export class Popover extends React.Component {
     state = {
         visible: false,
@@ -63,7 +62,7 @@ export class Popover extends React.Component {
     };
 
     render() {
-        const { togglePopover } = this.props;
+        const { togglePopover, title, children } = this.props;
         return (
             <>
                 <div
@@ -72,10 +71,10 @@ export class Popover extends React.Component {
                     style={this.getContentStyles()}
                 >
                     <div className="popover-header">
-                        <h3> {this.props.title}</h3>
+                        <h3> {title}</h3>
                     </div>
                     <div className="popover-content">
-                        {this.props.children}
+                        {children}
                     </div>
                 </div>
                 <div className="overlay" onClick={togglePopover}></div>

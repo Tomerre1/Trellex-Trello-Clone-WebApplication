@@ -4,7 +4,6 @@ import { TaskHeader } from '../cmps/TaskHeader';
 import { TaskCardCover } from '../cmps/TaskCardCover'
 import { TaskDescription } from '../cmps/TaskDescription'
 import { TaskActivities } from '../cmps/TaskActivities'
-import { Popover } from '../cmps/Popover'
 import { TaskActionsMenu } from '../cmps/TaskActionsMenu'
 import { PopoverLabels } from "../cmps/Popover/PopoverLabels";
 import { PopoverMembers } from "../cmps/Popover/PopoverMembers";
@@ -13,9 +12,52 @@ import { PopoverDate } from "../cmps/Popover/PopoverDate";
 import { PopoverAttachment } from '../cmps/Popover/PopoverAttachment';
 import { PopoverCover } from '../cmps/Popover/PopoverCover';
 export class TaskDetails extends Component {
-  state = { isCover: true, currentTarget: null, isPopover: false, labels: [1, 2, 3] }
+  state = {
+    isCover: true,
+    currentTarget: null,
+    isPopover: false,
+    labels: [1, 2, 3]
+  }
   contentEl = null;
 
+  // card = {
+  //   id: 'c101',
+  //   title: 'Task 1',
+  //   description: 'Good',
+  //   comments: [],
+  //   checklist: [
+  //     {
+  //       id: "wquJCo",
+  //       title: "22",
+  //       todos: [{
+  //         title: "1",
+  //         id: "5wqZQb",
+  //         isDone: false
+  //       }]
+  //     }
+  //   ],
+  //   members: [{
+  //     _id: "60b910d79cd5fc23e7bf7c8e",
+  //     username: "yoni1234",
+  //     fullname: "Yoni Segev",
+  //     isAdmin: false,
+  //     createdAt: "2021-06-03T17:26:47.000Z",
+  //     imgUrl: "https://res.cloudinary.com/plcrased/image/upload/v1623092498/ldagsw7kikkt6fper6m9.jpg",
+  //     isOnline: false,
+  //   }],
+  //   byMember: "loggedinUser",
+  //   labels: ['IxisOS', 'ac4xEx'],
+  //   createdAt: 1622913131548,
+  //   startDate: 0,
+  //   dueDate: 1624098480000,
+  //   attachments: [],
+  //   style: {
+  //     coverMode: "header",
+  //     bgImgUrl: "",
+  //     bgColor: "#60bd4f"
+  //   },
+  //   isDone: false
+  // }
   componentDidMount() {
     //todo get task details from db and insert them to redux props
   }
@@ -31,7 +73,7 @@ export class TaskDetails extends Component {
 
   render() {
     const { isCover, currentTarget, isPopover, labels, type } = this.state
-    const { TaskDetails } = this.props
+    const { board } = this.props
     const DynamicCmpPopover = (props) => {
       switch (props.type) {
         case 'LABELS':
@@ -64,7 +106,6 @@ export class TaskDetails extends Component {
         </div>
 
         {isPopover && currentTarget && type && <DynamicCmpPopover togglePopover={this.togglePopover} currentTarget={currentTarget} type={type} />}
-        {/* {isPopover && currentTarget && <Popover togglePopover={this.togglePopover} currentTarget={currentTarget} />} */}
       </section >
 
     );
