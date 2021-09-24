@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { BoardHeader } from "../cmps/BoardHeader";
 import { connect } from "react-redux";
-import { loadBoard, clearBoard } from "../store/board.actions"
-import {GroupList} from '../cmps/GroupList';
+import { loadBoard, clearBoard } from "../store/board.actions";
+import { GroupList } from "../cmps/GroupList";
 
 class _BoardApp extends Component {
   componentDidMount = async () => {
@@ -30,10 +30,16 @@ class _BoardApp extends Component {
     return (
       <section
         className="board-app flex column"
-        style={{ background: board.style.bgClr }}
+        style={{
+          background: board.style.bgImg
+            ? `url(${board.style.bgImg})`
+            : board.style.bgClr,
+            backgroundSize:'cover',
+            backgroundAttachment:'fixed'
+        }}
       >
         <BoardHeader board={board} />
-        <GroupList groups={board.groups}/>
+        <GroupList groups={board.groups} />
       </section>
     );
   }

@@ -348,7 +348,7 @@ const demoBoards = [
                         "id": "c102",
                         "title": "Add Samples"
                     }
-                    
+
                 ],
                 "style": {}
             },
@@ -444,7 +444,7 @@ const demoBoards = [
         },
         "style": {
             "bgClr": 'purple',
-            "bgImg": ''
+            "bgImg": 'https://www.incimages.com/uploaded_files/image/1920x1080/getty_509107562_2000133320009280346_351827.jpg'
         },
         "labels": [
             {
