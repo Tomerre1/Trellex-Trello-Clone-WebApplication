@@ -1038,7 +1038,7 @@ export const boardService = {
     getById,
     save,
     remove,
-
+    updateTask
 }
 async function query() {
     let boards = await storageService.query(STORAGE_KEY)
@@ -1058,6 +1058,7 @@ function remove(boardId) {
     // return Promise.reject('Not now!');
     return storageService.remove(STORAGE_KEY, boardId)
 }
+
 function save(board) {
     if (board._id) {
         return storageService.put(STORAGE_KEY, board)
@@ -1066,6 +1067,14 @@ function save(board) {
         return storageService.post(STORAGE_KEY, board)
     }
 }
+
+function updateTask(board, group, task) {
+    const groupIndex = board.groups.indexOf(group)
+    const taskIndex = board.groups[groupIndex].tasks.indexOf(task)
+    board.groups[groupIndex].tasks[taskIndex] = task
+    return { ...board }
+}
+
 
 // function getEmptyBoard() {
 //     return {

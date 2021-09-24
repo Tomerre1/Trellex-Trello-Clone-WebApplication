@@ -13,25 +13,26 @@ import { PopoverChecklist } from '../cmps/Popover/PopoverChecklist'
 import { PopoverDate } from "../cmps/Popover/PopoverDate";
 import { PopoverAttachment } from '../cmps/Popover/PopoverAttachment';
 import { PopoverCover } from '../cmps/Popover/PopoverCover';
-import { boardService } from '../services/board.service'
+import { LoaderSpinner } from '../cmps/LoaderSpinner'
+import { saveBoard } from '../store/board.actions'
 export class _TaskDetails extends Component {
   state = {
     isCover: true,
     currentTarget: null,
     isPopover: false,
-    currTask: null
+    currTask: null,
+
   }
   contentEl = null;
 
-  //http://localhost:3000/board/b101/g101/c103
   async componentDidMount() {
-    const board = await boardService.getById('b101') // no redux yet
-    const labels = board.labels
+    const { board } = this.props
     const { taskId, listId } = this.props.match.params;
-    const currList = board.groups.find(list => list.id === listId)
-    const currTask = currList.tasks.find(task => task.id === taskId)
-    this.setState({ isCover: false, currTask, isPopover: false, currentTarget: null, labels })
+    const currGroup = board.groups.find(list => list.id === listId)
+    const currTask = currGroup.tasks.find(task => task.id === taskId)
+    this.setState({ isCover: false, currTask, currGroup, isPopover: false, currentTarget: null })
   }
+
 
   setCurrentTarget = (event, type) => {
     this.setState(prevState => ({ ...prevState, type, currentTarget: event.target.getBoundingClientRect() }))
@@ -41,15 +42,19 @@ export class _TaskDetails extends Component {
     this.setState(prevState => ({ ...prevState, isPopover: !prevState.isPopover }))
   }
 
+  updateBoard = (board) => {
+    this.props.saveBoard(board)
+  }
+
 
   render() {
-    const { isCover, currentTarget, isPopover, labels, type, currTask } = this.state
-    if (!currTask) return <div>Loading...</div>
+    const { isCover, currentTarget, isPopover, type, currTask, currGroup } = this.state
+    if (!currTask) return <LoaderSpinner />
     const { board } = this.props
     const DynamicCmpPopover = (props) => {
       switch (props.type) {
         case 'LABELS':
-          return <PopoverLabels {...props} labels={labels} labelsId={currTask.labelIds} title='Labels' />
+          return <PopoverLabels {...props} title='Labels' />
         case 'MEMBERS':
           return <PopoverMembers {...props} members={1, 2, 3} title='Members' />
         case 'CHECKLIST':
@@ -77,7 +82,7 @@ export class _TaskDetails extends Component {
           <TaskActionsMenu setCurrentTarget={this.setCurrentTarget} togglePopover={this.togglePopover} />
         </div>
 
-        {isPopover && currentTarget && type && <DynamicCmpPopover togglePopover={this.togglePopover} currentTarget={currentTarget} type={type} />}
+        {isPopover && currentTarget && type && <DynamicCmpPopover togglePopover={this.togglePopover} currentTarget={currentTarget} type={type} updateBoard={this.updateBoard} board={board} group={currGroup} task={currTask} />}
       </section >
 
     );
@@ -89,7 +94,7 @@ function mapStateToProps(state) {
   };
 }
 const mapDispatchToProps = {
-
+  saveBoard
 };
 
-export const TaskDetails = connect(mapStateToProps, null)(_TaskDetails);
+export const TaskDetails = connect(mapStateToProps, mapDispatchToProps)(_TaskDetails);
