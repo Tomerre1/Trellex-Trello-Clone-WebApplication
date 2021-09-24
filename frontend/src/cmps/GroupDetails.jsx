@@ -4,8 +4,9 @@ import AddIcon from "@mui/icons-material/Add";
 import { AddNewTask } from "./Group/AddNewTask";
 import MoreHorizOutlinedIcon from "@mui/icons-material/MoreHorizOutlined";
 
-export function GroupDetails(props) {
-  const { group, isAddNew } = props;
+ export function  GroupDetails(props) {
+  const { group, isAddNew,boardId } = props;
+  console.log(props)
   if (isAddNew)
     return (
       <article className="group-details add-new">
@@ -22,7 +23,7 @@ export function GroupDetails(props) {
         <MoreHorizOutlinedIcon fontSize={"small"} />
       </div>
       {group.tasks.map((task, idx) => (
-        <TaskPreview task={task} key={idx} />
+        <TaskPreview task={task} key={idx} taskUrl={`/board/${boardId}/${group.id}/${task.id}`}/>
       ))}
       <div className="group-footer">
         {/* will be an add task component */}
@@ -32,3 +33,4 @@ export function GroupDetails(props) {
     </article>
   );
 }
+

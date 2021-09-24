@@ -44,7 +44,7 @@ class _BoardApp extends Component {
         }}
       >
         <BoardHeader board={board} />
-        <GroupList groups={board.groups} />
+        <GroupList groups={board.groups} boardId={board._id}/>
         <Link to="/board/b101/g101/c103">IM LINK</Link>
       </section>
     );

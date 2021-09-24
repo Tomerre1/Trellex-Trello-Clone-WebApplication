@@ -6,12 +6,12 @@
     padding: .3125rem;
     gap:5px;
     height:fit-content;
-    cursor: pointer;
 
     &.add-new { 
         background-color:#ebecf036;
         color:rgba(255, 255, 255, 0.747);
         font-size:rem(14px);
+        cursor:pointer;
     }
     .group-header{
         width:100%;
