@@ -18,7 +18,7 @@
     margin-right: 4px;
     max-width: 100%;
     .popover-header {
-        display: flex;
+        display: flex !important;
         -webkit-align-items: center;
         align-items: center;
         text-align: center;
@@ -31,12 +31,36 @@
         padding: 0 32px;
         position: relative;
         text-overflow: ellipsis;
-        h3 {
-            flex-grow: 1;
-            font-size: 14px;
-            font-weight: 400;
+        span {
+            border-bottom: 1px solid #091e4221;
+            box-sizing: border-box;
+            color: #5e6c84;
+            display: block;
+            line-height: 40px;
+            margin: 0 12px;
+            overflow: hidden;
+            padding: 0 32px;
+            position: relative;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            z-index: 1;
+        }
+        button{
+            color: #6b778c;
+            padding: 10px 12px 10px 8px;
+            position: absolute;
+            right: 0;
+            top: 0;
+            z-index: 2;
+        }
+        svg{
+            font-size: 16px;
+            height: 20px;
+            line-height: 20px;
+            width: 20px;
         }
     }
+
     .popover-content {
     }
 }
