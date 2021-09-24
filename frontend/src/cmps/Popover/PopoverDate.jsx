@@ -11,8 +11,7 @@ export class PopoverDate extends Component {
     }
 
     componentDidMount() {
-        const date = this.props.currTask.dueDate ? new Date(this.props.currTask.dueDate).toLocaleString() : new Date().toLocaleString()
-        // const date = this.props.currTask.dueDate ? new Date(this.props.currTask.dueDate) : new Date()
+        const date = this.props.currTask.dueDate ? new Date(this.props.currTask.dueDate) : new Date()
         this.setState(prevState => ({ ...prevState, date }))
     }
 
@@ -29,31 +28,32 @@ export class PopoverDate extends Component {
     }
 
     onRemoveDate = () => {
-        this.saveDueDate(null)
+        this.onSaveDueDate(null)
     }
 
 
     render() {
         const { togglePopover, currentTarget, title } = this.props
         const { date } = this.state
-        console.log('date', date)
         return (
-            <Popover togglePopover={togglePopover} currentTarget={currentTarget} title={title} >
-                <div>
-                    <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                        <DatePicker
-                            autoOk
-                            variant="static"
-                            value={date}
-                            openTo="date"
-                            onChange={this.handleChange} />
-                    </MuiPickersUtilsProvider>
-                </div>
-                <div className="btn-container flex column">
-                    <button className="primary-btn" onClick={() => this.onSaveDueDate(date)} >Save</button>
-                    <button className="secondary-btn" onClick={this.onRemoveDate}>Remove</button>
-                </div>
-            </Popover >
+            <div className="date-picker-container">
+                <Popover togglePopover={togglePopover} currentTarget={currentTarget} title={title} >
+                    <div>
+                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                            <DatePicker
+                                autoOk
+                                variant="static"
+                                value={date}
+                                openTo="date"
+                                onChange={this.handleChange} />
+                        </MuiPickersUtilsProvider>
+                    </div>
+                    <div className="btn-container flex column">
+                        <button className="primary-btn" onClick={() => this.onSaveDueDate(date)} >Save</button>
+                        <button className="secondary-btn" onClick={this.onRemoveDate}>Remove</button>
+                    </div>
+                </Popover >
+            </div>
         )
     }
 }

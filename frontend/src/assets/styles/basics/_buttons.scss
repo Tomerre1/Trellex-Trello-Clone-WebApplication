@@ -21,3 +21,23 @@
 .secondary-btn:hover {
     background-color: rgba(9, 30, 66, 0.08);
 }
+
+.primary-btn {
+    background-color: $clr1;
+    box-shadow: none;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    border-radius: 3px;
+    cursor: pointer;
+    padding: 6px 12px;
+
+    &:hover {
+        background-color: #026aa7;
+    }
+    &:active{
+        background-color: #055a8c;
+    }
+}
