@@ -6,3 +6,37 @@
     height: 100vh;
     z-index: 100;
 }
+
+.popover {
+    background: #fff;
+    border-radius: 3px;
+    box-shadow: 0 8px 16px -4px rgba(9, 30, 66, 25%), 0 0 0 1px rgba(9, 30, 66, 8%);
+    position: fixed;
+    z-index: 70;
+    padding: 0 12px 12px;
+    min-width: 20rem;
+    margin-right: 4px;
+    max-width: 100%;
+    .popover-header {
+        display: flex;
+        -webkit-align-items: center;
+        align-items: center;
+        text-align: center;
+        color: #5e6c84;
+        display: block;
+        line-height: 40px;
+        border-bottom: 1px solid rgba(9, 30, 66, 0.13);
+        margin: 0 0 12px;
+        overflow: hidden;
+        padding: 0 32px;
+        position: relative;
+        text-overflow: ellipsis;
+        h3 {
+            flex-grow: 1;
+            font-size: 14px;
+            font-weight: 400;
+        }
+    }
+    .popover-content {
+    }
+}

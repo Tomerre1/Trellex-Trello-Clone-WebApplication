@@ -4,7 +4,8 @@ export class Popover extends React.Component {
     state = {
         visible: false,
         top: 0,
-        left: 0
+        left: 0,
+        type: null
     };
     contentEl = null;
 
@@ -19,10 +20,6 @@ export class Popover extends React.Component {
         if (!this.contentEl) return
         const elRect = this.contentEl.getBoundingClientRect()
         let { left, top } = this.setPopoverPos(this.props.currentTarget, elRect)
-        // if (displayMode === 'menu-popovers') {
-        //     top = 40;
-        //     left = window.innerWidth - elRect.width;
-        // }
         this.setState({ top, left })
     }
 
@@ -70,11 +67,16 @@ export class Popover extends React.Component {
         return (
             <>
                 <div
-                    className="popup"
+                    className="popover"
                     ref={(el) => (this.contentEl = el)}
                     style={this.getContentStyles()}
                 >
-                    {this.props.children}
+                    <div className="popover-header">
+                        <h3> {this.props.title}</h3>
+                    </div>
+                    <div className="popover-content">
+                        {this.props.children}
+                    </div>
                 </div>
                 <div className="overlay" onClick={togglePopover}></div>
             </>
@@ -82,3 +84,4 @@ export class Popover extends React.Component {
     }
 }
 
+//type from store

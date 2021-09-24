@@ -7,11 +7,13 @@ import thunk from 'redux-thunk'
 
 import { boardReducer } from './board.reducer.js'
 import { userReducer } from './user.reducer.js'
+import { appReducer } from './app.reducer.js'
 
 
 const rootReducer = combineReducers({
     boardModule: boardReducer,
     userModule: userReducer,
+    appModule: appReducer,
     // systemModule: systemReducer,
     // reviewModule: reviewReducer,
 })
