@@ -43,7 +43,10 @@ export class _TaskDetails extends Component {
 
 
   render() {
-    const { isCover, currentTarget, isPopover, type, currTask, labels } = this.state
+    const { isCover, currentTarget, isPopover, labels, type, currTask } = this.state
+    if (!currTask) return <div>Loading...</div>
+    console.log('currTask', currTask)
+    const { board } = this.props
     const DynamicCmpPopover = (props) => {
       switch (props.type) {
         case 'LABELS':
@@ -51,7 +54,7 @@ export class _TaskDetails extends Component {
         case 'MEMBERS':
           return <PopoverMembers {...props} members={1, 2, 3} title='Members' />
         case 'CHECKLIST':
-          return <PopoverChecklist {...props} title='Checklist' />
+          return <PopoverChecklist {...props} checkList={currTask.checklist} title='Checklist' />
         case 'DATE':
           return <PopoverDate {...props} title='Date' />
         case 'ATTACHMENT':

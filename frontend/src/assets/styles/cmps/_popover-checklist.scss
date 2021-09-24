@@ -1,0 +1,26 @@
+.checklist-container {
+    .checklist-form {
+        label {
+            color: #5e6c84;
+            display: block;
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 16px;
+            margin-bottom: 4px;
+            margin-top: 4px;
+        }
+        input {
+            margin: 4px 0 12px;
+            width: 100%;
+        }
+
+        .add-checklist-btn {
+            background-color: #0079bf;
+            border: none;
+            box-shadow: none;
+            color: #fff;
+            padding-left: 24px;
+            padding-right: 24px;
+        }
+    }
+}

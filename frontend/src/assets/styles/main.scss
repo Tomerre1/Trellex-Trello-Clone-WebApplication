@@ -10,10 +10,11 @@
 @import "basics/base";
 @import "basics/links";
 @import "basics/forms";
+@import "basics/inputs";
 @import "basics/buttons";
 
 // Pages
-@import "pages/TaskDetails";
+@import "pages/task-details";
 @import "pages/homepage";
 @import "pages/workspace";
 @import "pages/board-app";
@@ -25,12 +26,13 @@
 @import "cmps/board-preview";
 @import "cmps/group-list";
 @import "cmps/group-details";
-@import "cmps/TaskHeader";
-@import "cmps/TaskCardCover";
-@import "cmps/TaskDescription";
-@import "cmps/TaskActivities";
+@import "cmps/task-header";
+@import "cmps/task-card-cover";
+@import "cmps/task-description";
+@import "cmps/task-activities";
 @import "cmps/task-actions-menu";
 @import "cmps/task-preview";
 @import "cmps/popover";
+@import "cmps/popover-checklist";
 @import "cmps/loader";
 @import "cmps/popover-labels";
