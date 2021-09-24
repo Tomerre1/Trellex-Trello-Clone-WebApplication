@@ -50,6 +50,15 @@ export const saveBoard = (board) => {
         }
     }
 }
+export const addTask = (taskTitle,boardId,groupId) =>{
+    return async(dispatch) => {
+     const board = await boardService.addTask(taskTitle)
+     dispatch({
+        type: "SAVE_BOARD",
+        board: board,
+    });
+    }
+}
 
 export const clearBoard = () => {
     return (dispatch) => {

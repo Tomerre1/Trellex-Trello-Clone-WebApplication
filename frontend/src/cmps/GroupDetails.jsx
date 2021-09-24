@@ -6,7 +6,6 @@ import MoreHorizOutlinedIcon from "@mui/icons-material/MoreHorizOutlined";
 
  export function  GroupDetails(props) {
   const { group, isAddNew,boardId } = props;
-  console.log(props)
   if (isAddNew)
     return (
       <article className="group-details add-new">
@@ -27,7 +26,7 @@ import MoreHorizOutlinedIcon from "@mui/icons-material/MoreHorizOutlined";
       ))}
       <div className="group-footer">
         {/* will be an add task component */}
-        <AddNewTask />
+        <AddNewTask ids={{groupId:group.id,boardId}}/>
 
       </div>
     </article>
