@@ -8,24 +8,21 @@ export class PopoverChecklist extends Component {
         txt: ''
     }
     handlechange = (ev) => {
-        const txt = ev.taget.value
+        const txt = ev.target.value
         this.setState(prevState => ({ ...prevState, txt }))
     }
 
     onAddChecklist = (ev) => {
-        console.log('im hereeee')
         ev.preventDefault()
         const { currTask } = this.props
         if (!currTask.checkList) currTask.checkList = []
         const newList = {
             id: utilService.makeId(),
             title: this.state.txt,
-            todos: ['dasda', 'dasdas', 'dasdas']
+            todos: []
         }
-        currTask.checklists.push(newList)
-        console.log('######################33')
-        // console.log('currTask', currTask)
-        console.log('currTask.checklists', currTask.checklists)
+        currTask.checklist.push(newList)
+        //Save here to DB
         this.props.togglePopover()
     }
 
@@ -36,7 +33,7 @@ export class PopoverChecklist extends Component {
             <div className="checklist-container">
                 <Popover togglePopover={togglePopover} currentTarget={currentTarget} title={title} >
                     <div>
-                        <form className="checklist-form" onSubmit={() => { this.onAddChecklist(event) }}>
+                        <form className="checklist-form" onSubmit={this.onAddChecklist}>
                             <label htmlFor="checklist" className="pop-over-label">Title</label>
                             <input className="checklist-input" id="checklist" type="text" value={txt} onChange={this.handlechange} placeholder="Enter a title..." autoFocus />
                             <button type="submit" className="nch-button add-checklist-btn">Add</button>
