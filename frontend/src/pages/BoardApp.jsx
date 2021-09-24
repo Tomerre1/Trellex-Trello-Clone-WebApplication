@@ -3,6 +3,9 @@ import { BoardHeader } from "../cmps/BoardHeader";
 import { connect } from "react-redux";
 import { loadBoard, clearBoard } from "../store/board.actions";
 import { GroupList } from "../cmps/GroupList";
+import { loadBoards } from "../store/board.actions";
+import { LoaderSpinner } from "../cmps/LoaderSpinner";
+
 
 class _BoardApp extends Component {
   componentDidMount = async () => {
@@ -26,7 +29,7 @@ class _BoardApp extends Component {
 
   render() {
     const { board } = this.props;
-    if (!board) return <h2>Loading</h2>;
+    if (!board) return <LoaderSpinner/>;
     return (
       <section
         className="board-app flex column"
