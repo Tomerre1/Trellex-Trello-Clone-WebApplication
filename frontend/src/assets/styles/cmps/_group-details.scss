@@ -4,14 +4,15 @@
     border-radius:3px;
     background-color:#ebecf0;
     padding: .3125rem;
-    gap:5px;
+    gap:6px;
+    padding:6px;
     height:fit-content;
-    cursor: pointer;
 
     &.add-new { 
         background-color:#ebecf036;
         color:rgba(255, 255, 255, 0.747);
         font-size:rem(14px);
+        cursor:pointer;
     }
     .group-header{
         width:100%;
