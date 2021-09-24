@@ -1,37 +1,41 @@
 .main-header {
- background-color:$clr1;   
- color:white;
- justify-content: space-between;
- padding:6px;
- transition:background-color 0.1s;
- position:fixed;
- top:0;
- width:100%;
- &.on-board { 
-     background-color:rgba(0,0,0,.15);
- }
- .header-btn-container{
-     gap:6px;
-     .header-btn {
-        background-color:hsla(0,0%,100%,.3);
-        padding:2px 4px;
-        border-radius:3px;
-        color:white;
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        text-decoration: none;
-     }
-     .user-profile{
-         border-radius:50%;
-         background-color:rgba(36, 5, 5, 0.37);
-         width:30px;
-         height:30px;
-         display:flex;
-         justify-content: center;
-     }
- }
- a {
-     color:white;  
- }
+  background-color: $clr1;
+  color: white;
+  justify-content: space-between;
+  padding: 6px;
+  transition: background-color 0.1s;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  &.on-board {
+    background-color: rgba(0, 0, 0, 0.15);
+  }
+  .header-btn-container {
+    gap: 6px;
+    .header-btn {
+      background-color: hsla(0, 0%, 100%, 0.3);
+      padding: 2px 4px;
+      border-radius: 3px;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: background-color 0.2s;
+      &:hover {
+        background-color: hsla(0, 0%, 100%, 0.2);
+      }
+    }
+    .user-profile {
+      border-radius: 50%;
+      background-color: rgba(36, 5, 5, 0.37);
+      width: 30px;
+      height: 30px;
+      display: flex;
+      justify-content: center;
+    }
+  }
+  a {
+    color: white;
+  }
 }
