@@ -12,6 +12,7 @@ export class PopoverLabels extends Component {
         })
     }
 
+    
 
     render() {
         const { togglePopover, currentTarget, labels, labelsIds, title, type } = this.props
