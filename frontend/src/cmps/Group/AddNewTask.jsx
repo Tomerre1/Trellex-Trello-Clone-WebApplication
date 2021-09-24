@@ -5,12 +5,12 @@ import { Close } from "@mui/icons-material";
 export function AddNewTask() {
   const [isClicked, setIsClicked] = useState(false);
   const [taskTitle, setTaskTitle] = useState("");
-
   const toggleIsClicked = () => setIsClicked(!isClicked);
+
   return (
-    <div className="grp-add-task" onClick={toggleIsClicked}>
+    <div className="grp-add-task">
       {!isClicked ? (
-        <div className="add-task-inactive flex">
+        <div className="add-task-inactive flex"  onClick={toggleIsClicked}>
           <AddIcon className="add-icon" />
           <p>Add a task</p>
         </div>
