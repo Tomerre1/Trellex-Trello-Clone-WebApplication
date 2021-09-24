@@ -18,12 +18,11 @@
     margin-right: 4px;
     max-width: 100%;
     .popover-header {
-        display: flex !important;
+        display: flex;
         -webkit-align-items: center;
         align-items: center;
         text-align: center;
         color: #5e6c84;
-        display: block;
         line-height: 40px;
         border-bottom: 1px solid rgba(9, 30, 66, 0.13);
         margin: 0 0 12px;
@@ -32,31 +31,25 @@
         position: relative;
         text-overflow: ellipsis;
         span {
-            border-bottom: 1px solid #091e4221;
-            box-sizing: border-box;
             color: #5e6c84;
-            display: block;
             line-height: 40px;
-            margin: 0 12px;
-            overflow: hidden;
+            // margin: 0 30px;
             padding: 0 32px;
-            position: relative;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            z-index: 1;
+            flex-grow: 1;
+
         }
         button{
+            background-color: white;
             color: #6b778c;
             padding: 10px 12px 10px 8px;
             position: absolute;
             right: 0;
             top: 0;
-            z-index: 2;
+            &:hover {
+                color: #172b4d
+            }
         }
         svg{
-            font-size: 16px;
-            height: 20px;
-            line-height: 20px;
             width: 20px;
         }
     }
