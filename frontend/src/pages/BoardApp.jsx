@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { loadBoard, clearBoard } from "../store/board.actions";
 import { GroupList } from "../cmps/GroupList";
 import { LoaderSpinner } from "../cmps/LoaderSpinner";
-import { Link } from "react-router-dom";
 
 class _BoardApp extends Component {
   componentDidMount = async () => {

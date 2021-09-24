@@ -52,7 +52,7 @@ export const saveBoard = (board) => {
 }
 export const addTask = (taskTitle,boardId,groupId) =>{
     return async(dispatch) => {
-     const board = await boardService.addTask(taskTitle)
+     const board = await boardService.addTask(taskTitle, boardId, groupId)
      dispatch({
         type: "SAVE_BOARD",
         board: board,

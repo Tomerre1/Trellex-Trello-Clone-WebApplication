@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import { Close } from "@mui/icons-material";
-import {addTask} from "../../store/board.actions"
-import { boardService } from "../../services/board.service";
+import { addTask } from "../../store/board.actions";
+import { connect } from "react-redux";
 
-export function AddNewTask(props) {
+
+export function _AddNewTask(props) {
   const [isClicked, setIsClicked] = useState(false);
   const [taskTitle, setTaskTitle] = useState("");
   const toggleIsClicked = () => setIsClicked(!isClicked);
 
-  const onAddTask = ()=>{ 
-    boardService.addTask(taskTitle,props.ids.boardId,props.ids.groupId)
-  }
+  const onAddTask = async () => {
+    await props.addTask(taskTitle, props.ids.boardId, props.ids.groupId);
+    setTaskTitle('')
+  };
 
   return (
     <div className="grp-add-task">
@@ -30,7 +32,7 @@ export function AddNewTask(props) {
           />
 
           <div className={`task-btns flex align-center`}>
-            <button className="task-btn save-task-title-btn">Add task</button>
+            <button className="task-btn save-task-title-btn" onClick={onAddTask}>Add task</button>
             <button
               className="task-btn close-task-title-btn"
               onClick={toggleIsClicked}
@@ -43,3 +45,9 @@ export function AddNewTask(props) {
     </div>
   );
 }
+
+const mapDispatchToProps = {
+  addTask,
+};
+
+export const AddNewTask = connect(null, mapDispatchToProps)(_AddNewTask);
