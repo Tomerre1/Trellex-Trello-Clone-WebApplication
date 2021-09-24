@@ -12,10 +12,15 @@ export function _AddNewTask(props) {
   const toggleIsClicked = () => setIsClicked(!isClicked);
 
   const onAddTask = async () => {
-    setBtnText(<Loader type="Grid" color={"white"} height={14} width={14} />);
-    await props.addTask(taskTitle, props.ids.boardId, props.ids.groupId);
-    setTaskTitle("");
-    setBtnText("Add task");
+    try {
+      setBtnText(<Loader type="Grid" color={"white"} height={14} width={14} />);
+      await props.addTask(taskTitle, props.ids.boardId, props.ids.groupId);
+      setTaskTitle("");
+      setBtnText("Add task");
+    } catch (err) {
+      console.log('error when saving task',err)
+      setBtnText("Add task");
+    }
   };
 
   return (
