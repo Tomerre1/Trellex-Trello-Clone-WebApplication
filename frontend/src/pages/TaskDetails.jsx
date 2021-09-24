@@ -12,6 +12,7 @@ import { PopoverChecklist } from '../cmps/Popover/PopoverChecklist'
 import { PopoverDate } from "../cmps/Popover/PopoverDate";
 import { PopoverAttachment } from '../cmps/Popover/PopoverAttachment';
 import { PopoverCover } from '../cmps/Popover/PopoverCover';
+
 export class TaskDetails extends Component {
   state = { isCover: true, currentTarget: null, isPopover: false, labels: [1, 2, 3] }
   contentEl = null;
