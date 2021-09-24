@@ -3,7 +3,6 @@ import { BoardHeader } from "../cmps/BoardHeader";
 import { connect } from "react-redux";
 import { loadBoard, clearBoard } from "../store/board.actions";
 import { GroupList } from "../cmps/GroupList";
-import { loadBoards } from "../store/board.actions";
 import { LoaderSpinner } from "../cmps/LoaderSpinner";
 
 

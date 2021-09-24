@@ -55,7 +55,7 @@ export class _TaskDetails extends Component {
         case 'CHECKLIST':
           return <PopoverChecklist {...props} currTask={currTask} title='Checklist' />
         case 'DATE':
-          return <PopoverDate {...props} title='Date' />
+          return <PopoverDate {...props} currTask={currTask} title='Date' />
         case 'ATTACHMENT':
           return <PopoverAttachment {...props} title='Attach from...' />
         case 'COVER':
