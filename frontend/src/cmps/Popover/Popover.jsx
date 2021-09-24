@@ -73,16 +73,12 @@ export class Popover extends React.Component {
                     style={this.getContentStyles()}
                 >
                     <div className="popover-header">
-<<<<<<< HEAD
-                        <h3> {title}</h3>
-=======
                         {/* <h3> {this.props.title}</h3> */}
                         {/* <h3>{title}</h3> */}
                         <span>{title}</span>
                         <button className="clean-btn" onClick={togglePopover}>
                             <CloseIcon />
                         </button>
->>>>>>> f149b5ca96474c4507ea9f303c4ab39cd5127875
                     </div>
                     <div className="popover-content">
                         {children}
