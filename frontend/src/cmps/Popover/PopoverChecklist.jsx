@@ -20,15 +20,17 @@ export class PopoverChecklist extends Component {
         const { txt } = this.state
         console.log('checkList', checkList)
         return (
+            <div className="checklist-container">
             <Popover togglePopover={togglePopover} currentTarget={currentTarget} title={title} >
                 <div>
-                    <form onSubmit={this.addChecklist}>
+                    <form className="checklist-form" onSubmit={this.addChecklist}>
                         <label htmlFor="checklist" className="pop-over-label">Title</label>
                         <input className="checklist-input" id="checklist" type="text" value={txt} onChange={this.handlechange} placeholder="Enter a title..." autoFocus />
-                        <button className="add-checklist-btn primary-btn wide-btn">Add</button>
+                        <button className="nch-button add-checklist-btn primary-btn wide-btn">Add</button>
                     </form>
                 </div>
             </Popover >
+            </div>
         )
     }
 }
