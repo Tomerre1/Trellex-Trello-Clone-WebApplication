@@ -4,7 +4,7 @@ import { TaskHeader } from '../cmps/TaskHeader';
 import { TaskCardCover } from '../cmps/TaskCardCover'
 import { TaskDescription } from '../cmps/TaskDescription'
 import { TaskActivities } from '../cmps/TaskActivities'
-import { Popover } from '../cmps/Popover'
+import { Popover } from '../cmps/Popover/Popover'
 import { TaskActionsMenu } from '../cmps/TaskActionsMenu'
 import { PopoverLabels } from "../cmps/Popover/PopoverLabels";
 import { PopoverMembers } from "../cmps/Popover/PopoverMembers";
