@@ -23,12 +23,12 @@ export function AddNewTask() {
             className="task-preview"
           />
 
-          <div className={`description-controls flex align-center`}>
-            <button className="task-btns save-task-description-btn">
+          <div className={`task-btns flex align-center`}>
+            <button className="task-btn save-task-title-btn">
               Add task
             </button>
             <button
-              className="task-btns close-task-description-btn"
+              className="task-btn close-task-title-btn"
               onClick={toggleIsClicked}
             >
               <Close />
