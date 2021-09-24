@@ -36,14 +36,14 @@ export class PopoverChecklist extends Component {
             <div className="checklist-container">
                 <Popover togglePopover={togglePopover} currentTarget={currentTarget} title={title} >
                     <div>
-                        <form className="checklist-form" onSubmit={() => { this.onAddChecklist(event) }}>
+                        <form className="checklist-form" onSubmit={this.onAddChecklist}>
                             <label htmlFor="checklist" className="pop-over-label">Title</label>
                             <input className="checklist-input" id="checklist" type="text" value={txt} onChange={this.handlechange} placeholder="Enter a title..." autoFocus />
                             <button type="submit" className="nch-button add-checklist-btn">Add</button>
                         </form>
                     </div>
                 </Popover >
-            </div>
+            </div >
         )
     }
 }
