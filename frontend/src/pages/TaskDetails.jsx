@@ -26,10 +26,11 @@ export class _TaskDetails extends Component {
   //http://localhost:3000/board/b101/g101/c103
   async componentDidMount() {
     const board = await boardService.getById('b101') // no redux yet
+    const labels = board.labels
     const { taskId, listId } = this.props.match.params;
     const currList = board.groups.find(list => list.id === listId)
     const currTask = currList.tasks.find(task => task.id === taskId)
-    this.setState({ isCover: false, currTask, isPopover: false, currentTarget: null })
+    this.setState({ isCover: false, currTask, isPopover: false, currentTarget: null, labels })
   }
 
   setCurrentTarget = (event, type) => {
@@ -42,12 +43,11 @@ export class _TaskDetails extends Component {
 
 
   render() {
-    const { isCover, currentTarget, isPopover, labels, type } = this.state
-    const { board } = this.props
+    const { isCover, currentTarget, isPopover, type, currTask, labels } = this.state
     const DynamicCmpPopover = (props) => {
       switch (props.type) {
         case 'LABELS':
-          return <PopoverLabels {...props} labels={labels} title='Labels' />
+          return <PopoverLabels {...props} labels={labels} labelsId={currTask.labelIds} title='Labels' />
         case 'MEMBERS':
           return <PopoverMembers {...props} members={1, 2, 3} title='Members' />
         case 'CHECKLIST':

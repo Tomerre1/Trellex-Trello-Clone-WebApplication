@@ -71,7 +71,7 @@ const demoBoards = [
                             isOnline: false,
                         }],
                         byMember: "loggedinUser",
-                        labelIds: ['IxisOS', 'ac4xEx'],
+                        labelIds: ['l101'],
                         createdAt: 1622913131548,
                         startDate: 0,
                         dueDate: 1624098480000,

@@ -4,7 +4,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: 100;
+    z-index: 1;
 }
 
 .popover {
@@ -36,9 +36,8 @@
             // margin: 0 30px;
             padding: 0 32px;
             flex-grow: 1;
-
         }
-        button{
+        button {
             background-color: white;
             color: #6b778c;
             padding: 10px 12px 10px 8px;
@@ -46,14 +45,21 @@
             right: 0;
             top: 0;
             &:hover {
-                color: #172b4d
+                color: #172b4d;
             }
         }
-        svg{
+        svg {
             width: 20px;
         }
     }
 
     .popover-content {
+        h4 {
+            color: #5e6c84;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            font-size: 12px;
+            margin-bottom: 0.5rem;
+        }
     }
 }
