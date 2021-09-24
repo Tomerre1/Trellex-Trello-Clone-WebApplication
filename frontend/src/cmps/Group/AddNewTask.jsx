@@ -3,16 +3,19 @@ import AddIcon from "@mui/icons-material/Add";
 import { Close } from "@mui/icons-material";
 import { addTask } from "../../store/board.actions";
 import { connect } from "react-redux";
-
+import Loader from "react-loader-spinner";
 
 export function _AddNewTask(props) {
   const [isClicked, setIsClicked] = useState(false);
   const [taskTitle, setTaskTitle] = useState("");
+  const [btnText, setBtnText] = useState("Add task");
   const toggleIsClicked = () => setIsClicked(!isClicked);
 
   const onAddTask = async () => {
+    setBtnText(<Loader type="Grid" color={"white"} height={14} width={14} />);
     await props.addTask(taskTitle, props.ids.boardId, props.ids.groupId);
-    setTaskTitle('')
+    setTaskTitle("");
+    setBtnText("Add task");
   };
 
   return (
@@ -32,7 +35,12 @@ export function _AddNewTask(props) {
           />
 
           <div className={`task-btns flex align-center`}>
-            <button className="task-btn save-task-title-btn" onClick={onAddTask}>Add task</button>
+            <button
+              className="task-btn save-task-title-btn"
+              onClick={onAddTask}
+            >
+              {btnText}
+            </button>
             <button
               className="task-btn close-task-title-btn"
               onClick={toggleIsClicked}

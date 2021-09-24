@@ -1080,7 +1080,7 @@ function  updateTask(board, group, task) {
 async function addTask(taskTitle, boardId, groupId) {
     const newTask =
     {
-        "id": `t-${utilService.makeId}`,
+        "id": `t-${utilService.makeId()}`,
         "title": taskTitle,
         "description": "",
         "comments": [],

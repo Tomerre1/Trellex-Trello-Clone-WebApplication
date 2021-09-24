@@ -7,12 +7,14 @@ import { LoaderSpinner } from "../cmps/LoaderSpinner";
 
 class _BoardApp extends Component {
   componentDidMount = async () => {
+    this.props.clearBoard(); // added because componentWillUnmount is disabled
     this.loadBoard();
   };
 
   // componentWillUnmount = () => {
-  //   this.props.clearBoard();
+    // this.props.clearBoard();
   // };
+
 
   loadBoard = async () => {
     const id = this.props.match.params.boardId;
