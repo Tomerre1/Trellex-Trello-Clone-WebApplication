@@ -29,7 +29,7 @@ class _BoardApp extends Component {
 
   render() {
     const { board } = this.props;
-    if (!board) return <LoaderSpinner/>;
+    if (!board) return <LoaderSpinner />;
     return (
       <section
         className="board-app flex column"
@@ -37,8 +37,8 @@ class _BoardApp extends Component {
           background: board.style.bgImg
             ? `url(${board.style.bgImg})`
             : board.style.bgClr,
-            backgroundSize:'cover',
-            backgroundAttachment:'fixed'
+          backgroundSize: 'cover',
+          backgroundAttachment: 'fixed'
         }}
       >
         <BoardHeader board={board} />

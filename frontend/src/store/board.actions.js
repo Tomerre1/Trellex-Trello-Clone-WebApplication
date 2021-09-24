@@ -1,8 +1,8 @@
-import {boardService} from '../services/board.service';
+import { boardService } from '../services/board.service';
 
-export const loadBoards =()=> {
+export const loadBoards = () => {
     return async (dispatch) => {
-        try{
+        try {
             const boards = await boardService.query()
             // console.log('loading boards',boards)
             dispatch({
@@ -11,15 +11,15 @@ export const loadBoards =()=> {
             });
 
         }
-        catch(err){
-            console.log('cant set boards',err)
+        catch (err) {
+            console.log('cant set boards', err)
         }
     }
 }
 
-export const loadBoard =(boardId)=> {
+export const loadBoard = (boardId) => {
     return async (dispatch) => {
-        try{
+        try {
             const board = await boardService.getById(boardId)
             // console.log('loading board',board)
             dispatch({
@@ -28,35 +28,35 @@ export const loadBoard =(boardId)=> {
             });
 
         }
-        catch(err){
-            console.log('cant set board',err)
+        catch (err) {
+            console.log('cant set board', err)
         }
     }
 }
 
-export const saveBoard =(board)=> {
+export const saveBoard = (board) => {
     return async (dispatch) => {
-        try{
+        try {
             const newBoard = await boardService.save(board)
-            console.log('newBoard:',newBoard)
+            console.log('newBoard:', newBoard)
             dispatch({
                 type: "SAVE_BOARD",
-                board:newBoard,
+                board: newBoard,
             });
 
         }
-        catch(err){
-            console.log('cant set board',err)
+        catch (err) {
+            console.log('cant set board', err)
         }
     }
 }
 
-export const clearBoard =()=> {
-    return  (dispatch) => {
-            dispatch({
-                type: "SET_BOARD",
-                board:null
-            });
-   
+export const clearBoard = () => {
+    return (dispatch) => {
+        dispatch({
+            type: "SET_BOARD",
+            board: null
+        });
+
     }
 }

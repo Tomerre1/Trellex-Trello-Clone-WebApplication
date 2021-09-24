@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+
 import { Close } from '@mui/icons-material';
 import { TaskHeader } from '../cmps/TaskHeader';
 import { TaskCardCover } from '../cmps/TaskCardCover'
@@ -11,55 +13,23 @@ import { PopoverChecklist } from '../cmps/Popover/PopoverChecklist'
 import { PopoverDate } from "../cmps/Popover/PopoverDate";
 import { PopoverAttachment } from '../cmps/Popover/PopoverAttachment';
 import { PopoverCover } from '../cmps/Popover/PopoverCover';
-export class TaskDetails extends Component {
+import { boardService } from '../services/board.service'
+export class _TaskDetails extends Component {
   state = {
     isCover: true,
     currentTarget: null,
     isPopover: false,
-    labels: [1, 2, 3]
+    currTask: null
   }
   contentEl = null;
 
-  // card = {
-  //   id: 'c101',
-  //   title: 'Task 1',
-  //   description: 'Good',
-  //   comments: [],
-  //   checklist: [
-  //     {
-  //       id: "wquJCo",
-  //       title: "22",
-  //       todos: [{
-  //         title: "1",
-  //         id: "5wqZQb",
-  //         isDone: false
-  //       }]
-  //     }
-  //   ],
-  //   members: [{
-  //     _id: "60b910d79cd5fc23e7bf7c8e",
-  //     username: "yoni1234",
-  //     fullname: "Yoni Segev",
-  //     isAdmin: false,
-  //     createdAt: "2021-06-03T17:26:47.000Z",
-  //     imgUrl: "https://res.cloudinary.com/plcrased/image/upload/v1623092498/ldagsw7kikkt6fper6m9.jpg",
-  //     isOnline: false,
-  //   }],
-  //   byMember: "loggedinUser",
-  //   labels: ['IxisOS', 'ac4xEx'],
-  //   createdAt: 1622913131548,
-  //   startDate: 0,
-  //   dueDate: 1624098480000,
-  //   attachments: [],
-  //   style: {
-  //     coverMode: "header",
-  //     bgImgUrl: "",
-  //     bgColor: "#60bd4f"
-  //   },
-  //   isDone: false
-  // }
-  componentDidMount() {
-    //todo get task details from db and insert them to redux props
+  //http://localhost:3000/board/b101/g101/c103
+  async componentDidMount() {
+    const board = await boardService.getById('b101') // no redux yet
+    const { taskId, listId } = this.props.match.params;
+    const currList = board.groups.find(list => list.id === listId)
+    const currTask = currList.tasks.find(task => task.id === taskId)
+    this.setState({ isCover: false, currTask, isPopover: false, currentTarget: null })
   }
 
   setCurrentTarget = (event, type) => {
@@ -111,3 +81,13 @@ export class TaskDetails extends Component {
     );
   }
 }
+function mapStateToProps(state) {
+  return {
+    board: state.boardModule.board,
+  };
+}
+const mapDispatchToProps = {
+
+};
+
+export const TaskDetails = connect(mapStateToProps, null)(_TaskDetails);
