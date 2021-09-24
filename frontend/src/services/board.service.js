@@ -472,7 +472,27 @@ const demoBoards = [
                     {
                         "id": "c102",
                         "title": "Add Samples"
-                    }
+                    },
+                    {
+                        "id": "c103",
+                        "title": "Replace logo"
+                    },
+                    {
+                        "id": "c105",
+                        "title": "Add Samples"
+                    },
+                    {
+                        "id": "c106",
+                        "title": "Add Samples"
+                    },
+                    {
+                        "id": "c107",
+                        "title": "Add Samples"
+                    },
+                    {
+                        "id": "c108",
+                        "title": "Add Samples"
+                    },
                 ],
                 "style": {}
             },
@@ -536,7 +556,373 @@ const demoBoards = [
                     }
                 ],
                 "style": {}
-            }
+            },
+            {
+                "id": "g103",
+                "title": "Group 2",
+                "tasks": [
+                    {
+                        "id": "c103",
+                        "title": "Do that"
+                    },
+                    {
+                        "id": "c104",
+                        "title": "Help me",
+                        "description": "description",
+                        "comments": [
+                            {
+                                "id": "ZdPnm",
+                                "txt": "also @yaronb please CR this",
+                                "createdAt": 1590999817436.0,
+                                "byMember": {
+                                    "_id": "u101",
+                                    "fullname": "Tal Tarablus",
+                                    "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                                }
+                            }
+                        ],
+                        "checklists": [
+                            {
+                                "id": "YEhmF",
+                                "title": "Checklist",
+                                "todos": [
+                                    {
+                                        "id": "212jX",
+                                        "title": "To Do 1",
+                                        "isDone": false
+                                    }
+                                ]
+                            }
+                        ],
+                        "members": [
+                            {
+                                "_id": "u101",
+                                "username": "Tal",
+                                "fullname": "Tal Tarablus",
+                                "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                            }
+                        ],
+                        "labelIds": ["l101", "l102"],
+                        "createdAt": 1590999730348,
+                        "dueDate": 16156215211,
+                        "byMember": {
+                            "_id": "u101",
+                            "username": "Tal",
+                            "fullname": "Tal Tarablus",
+                            "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                        },
+                        "style": {
+                            "bgColor": "#26de81"
+                        }
+                    }
+                ],
+                "style": {}
+            },
+            {
+                "id": "g104",
+                "title": "Group 2",
+                "tasks": [
+                    {
+                        "id": "c103",
+                        "title": "Do that"
+                    },
+                    {
+                        "id": "c104",
+                        "title": "Help me",
+                        "description": "description",
+                        "comments": [
+                            {
+                                "id": "ZdPnm",
+                                "txt": "also @yaronb please CR this",
+                                "createdAt": 1590999817436.0,
+                                "byMember": {
+                                    "_id": "u101",
+                                    "fullname": "Tal Tarablus",
+                                    "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                                }
+                            }
+                        ],
+                        "checklists": [
+                            {
+                                "id": "YEhmF",
+                                "title": "Checklist",
+                                "todos": [
+                                    {
+                                        "id": "212jX",
+                                        "title": "To Do 1",
+                                        "isDone": false
+                                    }
+                                ]
+                            }
+                        ],
+                        "members": [
+                            {
+                                "_id": "u101",
+                                "username": "Tal",
+                                "fullname": "Tal Tarablus",
+                                "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                            }
+                        ],
+                        "labelIds": ["l101", "l102"],
+                        "createdAt": 1590999730348,
+                        "dueDate": 16156215211,
+                        "byMember": {
+                            "_id": "u101",
+                            "username": "Tal",
+                            "fullname": "Tal Tarablus",
+                            "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                        },
+                        "style": {
+                            "bgColor": "#26de81"
+                        }
+                    }
+                ],
+                "style": {}
+            },
+            {
+                "id": "g105",
+                "title": "Group 2",
+                "tasks": [
+                    {
+                        "id": "c103",
+                        "title": "Do that"
+                    },
+                    {
+                        "id": "c104",
+                        "title": "Help me",
+                        "description": "description",
+                        "comments": [
+                            {
+                                "id": "ZdPnm",
+                                "txt": "also @yaronb please CR this",
+                                "createdAt": 1590999817436.0,
+                                "byMember": {
+                                    "_id": "u101",
+                                    "fullname": "Tal Tarablus",
+                                    "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                                }
+                            }
+                        ],
+                        "checklists": [
+                            {
+                                "id": "YEhmF",
+                                "title": "Checklist",
+                                "todos": [
+                                    {
+                                        "id": "212jX",
+                                        "title": "To Do 1",
+                                        "isDone": false
+                                    }
+                                ]
+                            }
+                        ],
+                        "members": [
+                            {
+                                "_id": "u101",
+                                "username": "Tal",
+                                "fullname": "Tal Tarablus",
+                                "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                            }
+                        ],
+                        "labelIds": ["l101", "l102"],
+                        "createdAt": 1590999730348,
+                        "dueDate": 16156215211,
+                        "byMember": {
+                            "_id": "u101",
+                            "username": "Tal",
+                            "fullname": "Tal Tarablus",
+                            "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                        },
+                        "style": {
+                            "bgColor": "#26de81"
+                        }
+                    }
+                ],
+                "style": {}
+            },
+            {
+                "id": "g106",
+                "title": "Group 2",
+                "tasks": [
+                    {
+                        "id": "c103",
+                        "title": "Do that"
+                    },
+                    {
+                        "id": "c104",
+                        "title": "Help me",
+                        "description": "description",
+                        "comments": [
+                            {
+                                "id": "ZdPnm",
+                                "txt": "also @yaronb please CR this",
+                                "createdAt": 1590999817436.0,
+                                "byMember": {
+                                    "_id": "u101",
+                                    "fullname": "Tal Tarablus",
+                                    "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                                }
+                            }
+                        ],
+                        "checklists": [
+                            {
+                                "id": "YEhmF",
+                                "title": "Checklist",
+                                "todos": [
+                                    {
+                                        "id": "212jX",
+                                        "title": "To Do 1",
+                                        "isDone": false
+                                    }
+                                ]
+                            }
+                        ],
+                        "members": [
+                            {
+                                "_id": "u101",
+                                "username": "Tal",
+                                "fullname": "Tal Tarablus",
+                                "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                            }
+                        ],
+                        "labelIds": ["l101", "l102"],
+                        "createdAt": 1590999730348,
+                        "dueDate": 16156215211,
+                        "byMember": {
+                            "_id": "u101",
+                            "username": "Tal",
+                            "fullname": "Tal Tarablus",
+                            "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                        },
+                        "style": {
+                            "bgColor": "#26de81"
+                        }
+                    }
+                ],
+                "style": {}
+            },
+            {
+                "id": "g107",
+                "title": "Group 2",
+                "tasks": [
+                    {
+                        "id": "c103",
+                        "title": "Do that"
+                    },
+                    {
+                        "id": "c104",
+                        "title": "Help me",
+                        "description": "description",
+                        "comments": [
+                            {
+                                "id": "ZdPnm",
+                                "txt": "also @yaronb please CR this",
+                                "createdAt": 1590999817436.0,
+                                "byMember": {
+                                    "_id": "u101",
+                                    "fullname": "Tal Tarablus",
+                                    "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                                }
+                            }
+                        ],
+                        "checklists": [
+                            {
+                                "id": "YEhmF",
+                                "title": "Checklist",
+                                "todos": [
+                                    {
+                                        "id": "212jX",
+                                        "title": "To Do 1",
+                                        "isDone": false
+                                    }
+                                ]
+                            }
+                        ],
+                        "members": [
+                            {
+                                "_id": "u101",
+                                "username": "Tal",
+                                "fullname": "Tal Tarablus",
+                                "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                            }
+                        ],
+                        "labelIds": ["l101", "l102"],
+                        "createdAt": 1590999730348,
+                        "dueDate": 16156215211,
+                        "byMember": {
+                            "_id": "u101",
+                            "username": "Tal",
+                            "fullname": "Tal Tarablus",
+                            "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                        },
+                        "style": {
+                            "bgColor": "#26de81"
+                        }
+                    }
+                ],
+                "style": {}
+            },
+            {
+                "id": "g108",
+                "title": "Group 2",
+                "tasks": [
+                    {
+                        "id": "c103",
+                        "title": "Do that"
+                    },
+                    {
+                        "id": "c104",
+                        "title": "Help me",
+                        "description": "description",
+                        "comments": [
+                            {
+                                "id": "ZdPnm",
+                                "txt": "also @yaronb please CR this",
+                                "createdAt": 1590999817436.0,
+                                "byMember": {
+                                    "_id": "u101",
+                                    "fullname": "Tal Tarablus",
+                                    "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                                }
+                            }
+                        ],
+                        "checklists": [
+                            {
+                                "id": "YEhmF",
+                                "title": "Checklist",
+                                "todos": [
+                                    {
+                                        "id": "212jX",
+                                        "title": "To Do 1",
+                                        "isDone": false
+                                    }
+                                ]
+                            }
+                        ],
+                        "members": [
+                            {
+                                "_id": "u101",
+                                "username": "Tal",
+                                "fullname": "Tal Tarablus",
+                                "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                            }
+                        ],
+                        "labelIds": ["l101", "l102"],
+                        "createdAt": 1590999730348,
+                        "dueDate": 16156215211,
+                        "byMember": {
+                            "_id": "u101",
+                            "username": "Tal",
+                            "fullname": "Tal Tarablus",
+                            "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                        },
+                        "style": {
+                            "bgColor": "#26de81"
+                        }
+                    }
+                ],
+                "style": {}
+            },
         ],
         "activities": [
             {
