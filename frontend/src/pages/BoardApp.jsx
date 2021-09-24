@@ -1,7 +1,11 @@
 import React, { Component } from "react";
-import {BoardHeader} from '../cmps/BoardHeader'
+import { BoardHeader } from "../cmps/BoardHeader";
 import { connect } from "react-redux";
-import { loadBoard , clearBoard } from "../store/board.actions";
+import { loadBoard, clearBoard } from "../store/board.actions";
+import { GroupList } from "../cmps/GroupList";
+import { loadBoards } from "../store/board.actions";
+import { LoaderSpinner } from "../cmps/LoaderSpinner";
+
 
 class _BoardApp extends Component {
   componentDidMount = async () => {
@@ -9,12 +13,12 @@ class _BoardApp extends Component {
   };
   componentWillUnmount = () => {
     this.props.clearBoard();
-  }
+  };
 
   loadBoard = async () => {
     const id = this.props.match.params.boardId;
     if (id) {
-      console.log(id)
+      console.log(id);
       try {
         await this.props.loadBoard(id);
       } catch (err) {
@@ -22,12 +26,23 @@ class _BoardApp extends Component {
       }
     }
   };
+
   render() {
-    const {board} = this.props
-    if (!board) return <h2>Loading</h2>
+    const { board } = this.props;
+    if (!board) return <LoaderSpinner/>;
     return (
-      <section className="board-app flex column" style={{background:board.style.bgClr}}>
-        <BoardHeader board={board}/>
+      <section
+        className="board-app flex column"
+        style={{
+          background: board.style.bgImg
+            ? `url(${board.style.bgImg})`
+            : board.style.bgClr,
+            backgroundSize:'cover',
+            backgroundAttachment:'fixed'
+        }}
+      >
+        <BoardHeader board={board} />
+        <GroupList groups={board.groups} />
       </section>
     );
   }

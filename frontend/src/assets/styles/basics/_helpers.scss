@@ -25,6 +25,9 @@
     &.align-center {
         align-items: center;
     }
+    &.space-between {
+        justify-content: space-between;
+    }
 }
 
 // Media helpers
@@ -46,4 +49,12 @@
 
 .show {
     display: flex;
+}
+
+//Opacity
+.none-opacity {
+    opacity: 0;
+}
+.full-opacity {
+    opacity: 1;
 }

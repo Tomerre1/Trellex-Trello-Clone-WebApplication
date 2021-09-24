@@ -1,0 +1,29 @@
+.group-details {
+    min-width:rem(272px);
+    overflow:hidden;
+    border-radius:3px;
+    background-color:#ebecf0;
+    padding: .3125rem;
+    gap:5px;
+    height:fit-content;
+    cursor: pointer;
+
+    &.add-new { 
+        background-color:#ebecf036;
+        color:rgba(255, 255, 255, 0.747);
+        font-size:rem(14px);
+    }
+    .group-header{
+        width:100%;
+        p{
+            font-size:1rem;
+            padding-inline-start: 3px;
+            font-weight:500;
+            letter-spacing:rem(-0.5px);
+        }
+    }
+    .group-footer {
+        flex-grow: 1;
+        justify-self: flex-end;
+    }
+}
