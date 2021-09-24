@@ -7,21 +7,31 @@
 }
 
 html {
-    font-family:Segoe UI,Roboto,Noto Sans,Ubuntu,Droid Sans,Helvetica Neue,sans-serif;
+    font-family: Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
     line-height: 1.6;
 }
 
 body {
     margin: 0;
     margin: auto;
+    color: #172b4d;
+    font-family:Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue,
+        sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     margin: 0 0 0.6em;
     line-height: 1;
-    font-weight:400;
-    color:$clr7;
-
+    font-weight: 400;
+    color: $clr7;
 }
 
 img {
@@ -30,14 +40,12 @@ img {
 
 p {
     margin: 0 0 1em;
-    color:$clr7;
+    color: $clr7;
 }
 
 a {
     text-decoration: none;
-    
 }
 a:hover {
     text-decoration: underline;
 }
-

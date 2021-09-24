@@ -20,10 +20,57 @@ const demoBoards = [
         },
         "labels": [
             {
-                "id": "l101",
-                "title": "Done",
-                "color": "#61bd4f"
-            }
+                id: "l101",
+                title: "Done",
+                color: "#61bd4f"
+            },
+            {
+                title: "In Progress",
+                color: "#ff9e1a",
+                id: "l102"
+            },
+            {
+                title: "High priority",
+                color: "#eb5a46",
+                id: "l103"
+            },
+            {
+                title: "Low priority",
+                color: "#b3bac5",
+                id: "l104"
+            },
+            {
+                title: "Design",
+                color: "#c277e0",
+                id: "l105"
+            },
+            {
+                title: "Stuck",
+                color: "#f2d600",
+                id: "l106"
+            },
+            {
+                title: "Important",
+                color: "#eb5a46",
+                id: "l107"
+            },
+            {
+                title: "Commited to repository",
+                color: "#ff78cb",
+                id: "l108"
+            },
+            {
+                title: "Waiting for feedback",
+                color: "#334563",
+                id: "l109"
+            },
+            {
+                title: "has to be discussed",
+                color: "#52e898",
+                id: "l110"
+            },
+
+
         ],
         "members": [
             {
@@ -71,7 +118,7 @@ const demoBoards = [
                             isOnline: false,
                         }],
                         byMember: "loggedinUser",
-                        labelIds: ['l101'],
+                        labelIds: ['l101', 'l102', 'l103', 'l104', 'l105'],
                         createdAt: 1622913131548,
                         startDate: 0,
                         dueDate: 1624098480000,

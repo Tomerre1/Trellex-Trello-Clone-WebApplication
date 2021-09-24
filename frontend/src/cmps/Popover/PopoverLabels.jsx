@@ -4,7 +4,8 @@ import { PopoverLabelPreview } from './PopoverLabelPreview'
 
 export class PopoverLabels extends Component {
     state = {
-        search: ''
+        search: '', 
+        isEdit: false
     }
     handleChange = (e) => {
         this.setState({
@@ -12,10 +13,10 @@ export class PopoverLabels extends Component {
         })
     }
 
-    
+
 
     render() {
-        const { togglePopover, currentTarget, labels, labelsIds, title, type } = this.props
+        const { togglePopover, currentTarget, labels, labelsId, title, type } = this.props
         const { search } = this.state
         return (
             <Popover togglePopover={togglePopover} currentTarget={currentTarget} title={title} >
@@ -28,11 +29,14 @@ export class PopoverLabels extends Component {
                                 <PopoverLabelPreview
                                     key={label.id}
                                     label={label}
+                                    labelsId={labelsId}
                                 />
                             )}
                     </ul>
                     <button className="secondary-btn">Create a new label</button>
                 </div>
+                
+                
             </Popover >
         )
     }

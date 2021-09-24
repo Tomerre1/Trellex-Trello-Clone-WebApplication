@@ -4,15 +4,18 @@ import { connect } from "react-redux";
 import { loadBoard, clearBoard } from "../store/board.actions";
 import { GroupList } from "../cmps/GroupList";
 import { LoaderSpinner } from "../cmps/LoaderSpinner";
+import { Link } from 'react-router-dom'
+
 
 
 class _BoardApp extends Component {
   componentDidMount = async () => {
     this.loadBoard();
   };
-  componentWillUnmount = () => {
-    this.props.clearBoard();
-  };
+
+  // componentWillUnmount = () => {
+  //   this.props.clearBoard();
+  // };
 
   loadBoard = async () => {
     const id = this.props.match.params.boardId;
@@ -42,6 +45,7 @@ class _BoardApp extends Component {
       >
         <BoardHeader board={board} />
         <GroupList groups={board.groups} />
+        <Link to="/board/b101/g101/c103">IM LINK</Link>
       </section>
     );
   }

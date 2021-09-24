@@ -10,4 +10,8 @@
     transition: padding 85ms, margin 85ms, box-shadow 85ms;
     flex-grow: 1;
     justify-content: space-between;
+    &:hover {
+        padding-inline-start: 14px;
+        margin-left: 4px;
+    }
 }

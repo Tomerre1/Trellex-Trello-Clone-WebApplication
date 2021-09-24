@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router'
 
 import routes from './routes'
 import { AppHeader } from './cmps/AppHeader'
+import { TaskDetails } from './pages/TaskDetails'
 // import {UserDetails} from './pages/user-details'
 
 export class RootCmp extends React.Component {
@@ -17,7 +18,7 @@ export class RootCmp extends React.Component {
                         {routes.map(route => <Route key={route.path} exact component={route.component} path={route.path} />)}
                         {/* <Route path="/user/:id" component={UserDetails} /> */}
                     </Switch>
-
+                    {/* <TaskDetails /> */}
                 </main>
             </div>
         )
