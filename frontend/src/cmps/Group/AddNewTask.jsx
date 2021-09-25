@@ -17,6 +17,7 @@ export function _AddNewTask(props) {
       await props.addTask(taskTitle, props.ids.boardId, props.ids.groupId);
       setTaskTitle("");
       setBtnText("Add task");
+      props.scrollToBottom()
     } catch (err) {
       console.log("error when saving task", err);
       setBtnText("Add task");
