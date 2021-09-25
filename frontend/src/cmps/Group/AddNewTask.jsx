@@ -18,7 +18,7 @@ export function _AddNewTask(props) {
       setTaskTitle("");
       setBtnText("Add task");
     } catch (err) {
-      console.log('error when saving task',err)
+      console.log("error when saving task", err);
       setBtnText("Add task");
     }
   };
