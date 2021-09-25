@@ -47,6 +47,7 @@ export class _TaskDetails extends Component {
     this.setState(prevState => ({ ...prevState, type, currentTarget: event.target.getBoundingClientRect() }))
     this.togglePopover()
   };
+  
   togglePopover = () => {
     this.setState(prevState => ({ ...prevState, isPopover: !prevState.isPopover }))
   }
@@ -93,7 +94,7 @@ export class _TaskDetails extends Component {
             togglePopover={this.togglePopover}
             currentTarget={currentTarget}
             type={type}
-            board={board}
+
           />}
       </section >
 

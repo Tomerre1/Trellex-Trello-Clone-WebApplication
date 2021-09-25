@@ -1,7 +1,7 @@
 import React from 'react'
 import { PopoverLabelPreview } from './PopoverLabelPreview'
 
-export function PopoverLabelsListPreview({ labelIds, labels, handleChange, toggleLabelCheck, search, toggleIsEdit }) {
+export function PopoverLabelsListPreview({ labelIds, labels, handleChange, toggleIsCreate, toggleLabelCheck, search, setLabelEdit, toggleIsEditCreate }) {
     return (
         <div className="popover-labels">
             <input type="search" placeholder="Search Labels" onChange={handleChange} value={search} />
@@ -14,11 +14,14 @@ export function PopoverLabelsListPreview({ labelIds, labels, handleChange, toggl
                             label={label}
                             labelsId={labelIds}
                             toggleLabelCheck={toggleLabelCheck}
-                            toggleIsEdit={toggleIsEdit}
+                            toggleIsEditCreate={toggleIsEditCreate}
+                            setLabelEdit={setLabelEdit}
+                            toggleIsCreate={toggleIsCreate}
+
                         />
                     )}
             </ul>
-            <button className="secondary-btn">Create a new label</button>
+            <button className="secondary-btn" onClick={toggleIsEditCreate}>Create a new label</button>
         </div>
     )
 }

@@ -3,7 +3,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import CheckIcon from '@material-ui/icons/Check';
 
 
-export function PopoverLabelPreview({ label, labelsId, toggleLabelCheck, toggleIsEdit }) {
+export function PopoverLabelPreview({ label, labelsId, toggleLabelCheck, toggleIsEditCreate, setLabelEdit }) {
 
     return (
         <li className="flex" key={label.id} onClick={() => { toggleLabelCheck(label.id) }}>
@@ -17,7 +17,7 @@ export function PopoverLabelPreview({ label, labelsId, toggleLabelCheck, toggleI
             </div>
             <div className="flex align-center justify-center">
                 <EditIcon style={{ width: '16px', height: '16px', color: '#42526e' }}
-                    onClick={(event) => { event.stopPropagation(); toggleIsEdit() }} />
+                    onClick={(event) => { event.stopPropagation(); toggleIsEditCreate(); setLabelEdit(label) }} />
             </div>
         </li >
     )
