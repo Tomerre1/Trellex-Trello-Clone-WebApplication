@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { Popover } from './Popover'
 import { utilService } from '../../services/util.service'
+import { saveBoard, saveTaskDetails } from '../../store/board.actions'
+import {  setCurrTaskDetails } from '../../store/app.actions'
 
 
-export class PopoverChecklist extends Component {
+export class _PopoverChecklist extends Component {
     state = {
         txt: ''
     }
@@ -14,8 +17,10 @@ export class PopoverChecklist extends Component {
 
     onAddChecklist = (ev) => {
         ev.preventDefault()
-        const { currTask } = this.props
-        if (!currTask.checkList) currTask.checkList = []
+        const { board, saveTaskDetails } = this.props
+        const { currTask, currGroup } = this.props.currTaskDetails
+
+        if (!currTask.checklist) currTask.checklist = []
         const newList = {
             id: utilService.makeId(),
             title: this.state.txt,
@@ -23,6 +28,8 @@ export class PopoverChecklist extends Component {
         }
         currTask.checklist.push(newList)
         //Save here to DB
+        saveTaskDetails(board, currGroup, currTask)
+        setCurrTaskDetails({ currTask, currGroup })
         this.props.togglePopover()
     }
 
@@ -44,4 +51,17 @@ export class PopoverChecklist extends Component {
         )
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        currTaskDetails: state.appModule.currTaskDetails
+    };
+}
+const mapDispatchToProps = {
+    saveBoard,
+    saveTaskDetails,
+    setCurrTaskDetails
+};
+
+export const PopoverChecklist = connect(mapStateToProps, mapDispatchToProps)(_PopoverChecklist);
 
