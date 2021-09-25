@@ -2,10 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { TaskLabels } from "./TaskPreview/TaskLabels";
 import { TaskDetailsPreview } from "./TaskPreview/TaskDetailsPreview";
+import { TaskDatePreview } from "./TaskPreview/TaskDatePreview";
 import CheckBoxOutlinedIcon from "@mui/icons-material/CheckBoxOutlined";
 import SubjectOutlinedIcon from "@mui/icons-material/SubjectOutlined";
 import ChatBubbleOutlineRoundedIcon from "@mui/icons-material/ChatBubbleOutlineRounded";
-import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
 
 export function TaskPreview(props) {
   const { task, taskUrl, boardLabels } = props;
@@ -31,19 +31,7 @@ export function TaskPreview(props) {
         )}
         <div className="task-title">{title}</div>
         <div className="task-preview-icons flex align-center">
-          {dueDate && (
-            <span
-              className={`due-date ${dueDate < Date.now() ? "overdue" : ""}`}
-            >
-              <AccessTimeOutlinedIcon className="icon" />
-              <p>
-                {new Date(dueDate).toLocaleDateString(undefined, {
-                  month: "short",
-                  day: "numeric",
-                })}
-              </p>
-            </span>
-          )}
+          {dueDate && <TaskDatePreview dueDate={dueDate} isDone={task.isDone}/>}
           {description && (
             <TaskDetailsPreview
               icon={<SubjectOutlinedIcon className="icon" />}

@@ -26,7 +26,7 @@ export const GroupDetails = (props) => {
   return (
     <article className="group-details flex column">
       <div className="group-header flex space-between">
-        <p className="group-title flex column">{group.title}</p>
+        <input className="group-title flex column" value={group.title}/>
         <MoreHorizOutlinedIcon fontSize={"small"} />
       </div>
       <div
