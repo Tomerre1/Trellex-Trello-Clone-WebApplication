@@ -4,16 +4,17 @@ import { connect } from "react-redux";
 import { loadBoard, clearBoard } from "../store/board.actions";
 import { GroupList } from "../cmps/GroupList";
 import { LoaderSpinner } from "../cmps/LoaderSpinner";
-import { Link } from "react-router-dom";
 
 class _BoardApp extends Component {
   componentDidMount = async () => {
+    this.props.clearBoard(); // added because componentWillUnmount is disabled
     this.loadBoard();
   };
 
   // componentWillUnmount = () => {
-  //   this.props.clearBoard();
+    // this.props.clearBoard();
   // };
+
 
   loadBoard = async () => {
     const id = this.props.match.params.boardId;
@@ -41,7 +42,7 @@ class _BoardApp extends Component {
         }}
       >
         <BoardHeader board={board} />
-        <GroupList groups={board.groups} boardId={board._id} />
+        <GroupList groups={board.groups} boardId={board._id} boardLabels={board.labels}/>
       </section>
     );
   }
