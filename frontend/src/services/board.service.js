@@ -83,14 +83,17 @@ const demoBoards = [
             {
                 "id": "g101",
                 "title": "Group 1",
+
                 "tasks": [
                     {
                         "id": "c101",
-                        "title": "Replace logo"
+                        "title": "Replace logo",
+                        "labelIds": []
                     },
                     {
                         "id": "c102",
-                        "title": "Add Samples"
+                        "title": "Add Samples",
+                        "labelIds": []
                     },
                     {
                         id: 'c103',
@@ -139,7 +142,9 @@ const demoBoards = [
                 "tasks": [
                     {
                         "id": "c103",
-                        "title": "Do that"
+                        "title": "Do that",
+                        "labelIds": ["l101", "l102"],
+
                     },
                     {
                         "id": "c104",
@@ -272,7 +277,8 @@ const demoBoards = [
                 },
                 "task": {
                     "id": "c101",
-                    "title": "Replace Logo"
+                    "title": "Replace Logo",
+                    "labelIds": []
                 }
             }
 
@@ -313,11 +319,13 @@ const demoBoards = [
                 "tasks": [
                     {
                         "id": "c101",
-                        "title": "Replace logo"
+                        "title": "Replace logo",
+                        "labelIds": [],
                     },
                     {
                         "id": "c102",
-                        "title": "Add Samples"
+                        "title": "Add Samples",
+                        "labelIds": [],
                     }
                 ],
                 "style": {}
@@ -328,7 +336,8 @@ const demoBoards = [
                 "tasks": [
                     {
                         "id": "c103",
-                        "title": "Do that"
+                        "title": "Do that",
+                        "labelIds": [],
                     },
                     {
                         "id": "c104",

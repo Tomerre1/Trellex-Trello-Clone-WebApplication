@@ -7,7 +7,7 @@ export function PopoverLabelsListPreview({ labelIds, labels, handleChange, toggl
             <input type="search" placeholder="Search Labels" onChange={handleChange} value={search} />
             <h4>LABELS</h4>
             <ul className="clean-list">
-                {labels && labels.filter(label => label.title.toLowerCase().includes(search.toLowerCase()))
+                {labels && labels.length > 0 && labels.filter(label => label.title.toLowerCase().includes(search.toLowerCase()))
                     .map(label =>
                         <PopoverLabelPreview
                             key={label.id}

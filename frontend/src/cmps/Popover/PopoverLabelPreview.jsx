@@ -7,9 +7,9 @@ export function PopoverLabelPreview({ label, labelsId, toggleLabelCheck, toggleI
         <li className="flex" key={label.id} onClick={() => { toggleLabelCheck(label.id) }}>
             <div className="label-popover-preview flex" style={{ backgroundColor: label.color }}>
                 <span>{label.title}</span>
-                {labelsId.includes(label.id) &&
+                {labelsId.length > 0 && labelsId.includes(label.id) &&
                     <span style={{ lineHeight: '1rem' }}>
-                        <CheckIcon key={label.id} style={{ width: '16px', height: '16px' }} />
+                        <CheckIcon style={{ width: '16px', height: '16px' }} />
                     </span>
                 }
             </div>

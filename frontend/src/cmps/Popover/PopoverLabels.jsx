@@ -85,7 +85,7 @@ export class PopoverLabels extends Component {
 
         const { togglePopover, currentTarget, currTask } = this.props
         const { search, label, labels, isEditCreate, } = this.state
-        if (!currTask) return <LoaderSpinner />
+        if (!currTask || !labels) return <LoaderSpinner />
         return (
             <Popover togglePopover={togglePopover} currentTarget={currentTarget} title={this.getTitle()} >
                 {!isEditCreate &&

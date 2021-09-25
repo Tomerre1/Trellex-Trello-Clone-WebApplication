@@ -29,8 +29,8 @@ export class _TaskDetails extends Component {
     const { taskId, listId } = this.props.match.params;
     const currGroup = board.groups.find(list => list.id === listId)
     const currTask = currGroup.tasks.find(task => task.id === taskId)
-    // this.props.setCurrTaskDetails({ currTask, currGroup })
     this.setState({ isCover: false, isPopover: false, currGroup, currTask, currentTarget: null })
+    // this.props.setCurrTaskDetails({ currTask, currGroup })
   }
 
   updateBoard = async (board) => {
@@ -109,7 +109,7 @@ function mapStateToProps(state) {
 }
 const mapDispatchToProps = {
   saveBoard,
-  setCurrTaskDetails,
+  // setCurrTaskDetails,
   saveTaskDetails
 };
 
