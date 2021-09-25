@@ -32,8 +32,8 @@ export class _TaskDetails extends Component {
     const { taskId, listId } = this.props.match.params;
     const currGroup = board.groups.find(list => list.id === listId)
     const currTask = currGroup.tasks.find(task => task.id === taskId)
-    console.log('currTaskcurrTask',currTask)
-    console.log('currGroupcurrGroup',currGroup)
+    console.log('currTaskcurrTask', currTask)
+    console.log('currGroupcurrGroup', currGroup)
     this.props.setCurrTaskDetails({ currTask, currGroup })
     this.setState({ isCover: false, isPopover: false, currentTarget: null })
     // this.setState({ isCover: false, currTask, currGroup, isPopover: false, currentTarget: null })
@@ -55,7 +55,7 @@ export class _TaskDetails extends Component {
   render() {
     const { isCover, currentTarget, isPopover, type } = this.state
     if (!this.props.currTaskDetails) return <LoaderSpinner />
-    const { currTask, currGroup } = this.props.currTaskDetails
+    const { currTask } = this.props.currTaskDetails
     const { board } = this.props
     const DynamicCmpPopover = (props) => {
       switch (props.type) {
@@ -93,6 +93,7 @@ export class _TaskDetails extends Component {
             togglePopover={this.togglePopover}
             currentTarget={currentTarget}
             type={type}
+            board={board}
           />}
       </section >
 

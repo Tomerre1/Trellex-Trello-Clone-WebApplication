@@ -1,8 +1,9 @@
 
 
 export const setCurrTaskDetails = (currTaskDetails) => {
-    console.log('task task task tasktasktask',currTaskDetails)
+
     return (dispatch) => {
+        console.log(`currTaskDetails from dispatch`, currTaskDetails)
         dispatch({
             type: "SET_TASK_DETAILS",
             currTaskDetails

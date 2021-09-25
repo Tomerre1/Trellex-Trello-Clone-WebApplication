@@ -5,7 +5,7 @@ import { boardService } from '../../services/board.service'
 import { LoaderSpinner } from '../LoaderSpinner'
 import { PopoverLabelsListPreview } from './PopoverLabelsListPreview'
 import { saveBoard, saveTaskDetails } from '../../store/board.actions'
-import {  setCurrTaskDetails } from '../../store/app.actions'
+import { setCurrTaskDetails } from '../../store/app.actions'
 export class _PopoverLabels extends Component {
     state = {
         search: '',
@@ -20,13 +20,14 @@ export class _PopoverLabels extends Component {
     }
 
     toggleLabelCheck = (labelId) => {
-        const { saveTaskDetails, board } = this.props
-        const { currTask, currGroup } = this.props.board.currTaskDetails
+        const { board } = this.props
+        const { currTask, currGroup } = this.props.currTaskDetails
         const updatedLabelsId = (currTask.labelIds.includes(labelId)) ?
             currTask.labelIds.filter(currLabelId => currLabelId !== labelId) :
             [...currTask.labelIds, labelId]
         currTask.labelIds = updatedLabelsId
-        saveTaskDetails(board, currGroup, currTask)
+        this.props.setCurrTaskDetails({ currTask, currGroup })
+        this.props.saveTaskDetails(board, currGroup, currTask)
     }
 
     toggleIsEdit = () => {
@@ -35,19 +36,18 @@ export class _PopoverLabels extends Component {
 
 
     render() {
-        const { togglePopover, currentTarget, title, board } = this.props
-        const { currTask } = board.currTaskDetails
+        const { togglePopover, currentTarget, title, board, currTaskDetails } = this.props
         const { search, isEdit, isCreate } = this.state
-        console.log('%c  currTask.labelIds:', 'color: #0e93e0;background: #aaefe5;', currTask.labelIds);
+        console.log('%c  currTaskDetails:', 'color: #0e93e0;background: #aaefe5;', currTaskDetails);
         if (!board) return <LoaderSpinner />
         return (
 
             <Popover togglePopover={togglePopover} currentTarget={currentTarget} title={title} >
                 {!isEdit && !isCreate &&
                     <PopoverLabelsListPreview
-                        labelIds={currTask.labelIds}
-                        search={search}
                         labels={board.labels}
+                        labelIds={currTaskDetails.currTask.labelIds}
+                        search={search}
                         handleChange={this.handleChange}
                         toggleLabelCheck={this.toggleLabelCheck}
                         toggleIsEdit={this.toggleIsEdit}
@@ -62,14 +62,13 @@ export class _PopoverLabels extends Component {
 
 function mapStateToProps(state) {
     return {
-        board: state.boardModule.board,
         currTaskDetails: state.appModule.currTaskDetails
     };
 }
+
 const mapDispatchToProps = {
     saveBoard,
     saveTaskDetails,
     setCurrTaskDetails
 };
-
 export const PopoverLabels = connect(mapStateToProps, mapDispatchToProps)(_PopoverLabels);
