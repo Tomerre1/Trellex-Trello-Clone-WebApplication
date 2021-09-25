@@ -78,16 +78,16 @@ export const toggleExpandLabels = () => {
     }
 }
 
-export const setCurrTaskDetails = (task) => {
-    return (dispatch) => {
+// export const setCurrTaskDetails = (task) => {
+//     return (dispatch) => {
 
-        dispatch({
-            type: "SET_TASK_DETAILS",
-            task
-        });
+//         dispatch({
+//             type: "SET_TASK_DETAILS",
+//             task
+//         });
 
-    }
-}
+//     }
+// }
 export const saveTaskDetails = (board, currGroup, currTask) => {
     return async (dispatch) => {
         try {
