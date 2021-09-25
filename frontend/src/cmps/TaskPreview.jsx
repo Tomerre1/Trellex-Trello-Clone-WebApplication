@@ -13,12 +13,8 @@ export function TaskPreview(props) {
           console.log(labelId)
           const label = boardLabels.find(label=> label.id === labelId);
           
-<<<<<<< HEAD
           // return <div className="label" style={{background:label.color}}>sdfdf</div>
           return <div className="label" >sdfdf</div>
-=======
-          return <div className="label" style={{background:label.color}}>{label.title}</div>
->>>>>>> b91ab6af92326e11f784a3df57d1e5783ff183f5
         })}</div>
       )}
       <div className="task-title">{task.title}</div>
