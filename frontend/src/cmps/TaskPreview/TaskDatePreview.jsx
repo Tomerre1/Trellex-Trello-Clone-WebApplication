@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import {connect} from "react-redux"
+
 import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
 import CheckBoxOutlineBlankOutlinedIcon from "@mui/icons-material/CheckBoxOutlineBlankOutlined";
 import CheckBoxOutlinedIcon from "@mui/icons-material/CheckBoxOutlined";
 
-export const TaskDatePreview = (props) => {
+ const _TaskDatePreview = (props) => {
   const [isMouseOver, setMouseOver] = useState(false);
 
   return (
@@ -33,3 +35,11 @@ export const TaskDatePreview = (props) => {
     </span>
   );
 };
+
+function mapStateToProps({boardModule}) {
+  return {
+    board:boardModule.board
+  }
+
+}
+export const TaskDatePreview = connect(mapStateToProps)(_TaskDatePreview)

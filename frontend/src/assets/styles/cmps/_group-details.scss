@@ -7,9 +7,8 @@
   gap: 6px;
   padding: 6px;
   height: fit-content;
-  max-width:272px ;
+  max-width: 272px;
 
-  
   max-height: 87vh;
 
   &.add-new {
@@ -20,11 +19,29 @@
   }
   .group-header {
     width: 100%;
-    p {
+    input {
       font-size: 1rem;
       padding-inline-start: 3px;
-      font-weight: 500;
+      font-weight: 600;
       letter-spacing: rem(-0.5px);
+      outline: 0;
+      border: 0;
+      box-shadow: none;
+      background-color: transparent;
+      box-shadow: 0 0px 0 #c0c6d0;
+      transition: box-shadow 0.2s background-color .2s;
+      padding: 0;
+      margin-top: 5px;
+
+      &:focus-visible {
+        font-size: 1rem;
+        // padding-inline-start: 3px;
+        letter-spacing: rem(-0.5px);
+        background-color: unset;
+        box-shadow: 0 0 2px #020202;
+        border-radius: 2px;
+        background-color:white;
+      }
     }
   }
   .group-main {
@@ -52,7 +69,6 @@
 
     &::-webkit-scrollbar-thumb:horizontal {
       border-bottom: 8px solid #9d9ea0;
-
     }
     // &::-webkit-scrollbar-corner,
     //     &::-webkit-resizer {background:inherit;

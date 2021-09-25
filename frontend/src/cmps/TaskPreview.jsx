@@ -9,7 +9,7 @@ import ChatBubbleOutlineRoundedIcon from "@mui/icons-material/ChatBubbleOutlineR
 
 export function TaskPreview(props) {
   const { task, taskUrl, boardLabels } = props;
-  const { labelIds, title, dueDate, comments, checklists, description } = task;
+  const { labelIds, title, dueDate, comments, checklists, description,groupId } = task;
 
   const getChecklistData = () => {
     let todos = 0;
@@ -31,7 +31,7 @@ export function TaskPreview(props) {
         )}
         <div className="task-title">{title}</div>
         <div className="task-preview-icons flex align-center">
-          {dueDate && <TaskDatePreview dueDate={dueDate} isDone={task.isDone}/>}
+          {dueDate && <TaskDatePreview dueDate={dueDate} isDone={task.isDone} taskId={task.id} groupId={groupId}/>}
           {description && (
             <TaskDetailsPreview
               icon={<SubjectOutlinedIcon className="icon" />}
