@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Popover } from './Popover'
-import { PopoverLabelPreview } from './PopoverLabelPreview'
 import { boardService } from '../../services/board.service'
-
-export class PopoverLabels extends Component {
+import { LoaderSpinner } from '../LoaderSpinner'
+import { PopoverLabelsListPreview } from './PopoverLabelsListPreview'
+import { saveBoard } from '../../store/board.actions'
+export class _PopoverLabels extends Component {
     state = {
         search: '',
         isEdit: false,
+        isCreate: false
     }
 
     handleChange = (e) => {
@@ -30,33 +32,41 @@ export class PopoverLabels extends Component {
         updateBoard(newBoard)
     }
 
+    toggleIsEdit = () => {
+        this.setState(prevState => ({ ...prevState, isEdit: !this.state.isEdit }))
+    }
 
 
     render() {
-        const { togglePopover, currentTarget, title, type, task, board } = this.props
-        const { search, labelIds } = this.state
-        if (!board) return <div></div>
-        console.log(`task`, task.labelIds)
+        const { togglePopover, currentTarget, title, task, board } = this.props
+        const { search, isEdit, isCreate } = this.state
+        if (!board) return <LoaderSpinner />
         return (
             <Popover togglePopover={togglePopover} currentTarget={currentTarget} title={title} >
-                <div className="popover-labels">
-                    <input type="search" placeholder="Search Labels" onChange={this.handleChange} value={search} />
-                    <h4>{type}</h4>
-                    <ul className="clean-list">
-                        {board.labels.filter(label => label.title.toLowerCase().includes(search.toLowerCase()))
-                            .map(label =>
-                                <PopoverLabelPreview
-                                    key={label.id}
-                                    label={label}
-                                    labelsId={task.labelIds}
-                                    toggleLabelCheck={this.toggleLabelCheck}
-                                />
-                            )}
-                    </ul>
-                    <button className="secondary-btn">Create a new label</button>
-                </div>
+                {!isEdit && !isCreate &&
+                    <PopoverLabelsListPreview
+                        labelIds={task.labelIds}
+                        search={search}
+                        labels={board.labels}
+                        handleChange={this.handleChange}
+                        toggleLabelCheck={this.toggleLabelCheck}
+                        toggleIsEdit={this.toggleIsEdit}
+                    />
+                }
+                {isEdit && <div>hi</div>}
+
             </Popover >
         )
     }
 }
 
+function mapStateToProps(state) {
+    return {
+        board: state.boardModule.board,
+    };
+}
+const mapDispatchToProps = {
+    saveBoard
+};
+
+export const PopoverLabels = connect(mapStateToProps, mapDispatchToProps)(_PopoverLabels);
