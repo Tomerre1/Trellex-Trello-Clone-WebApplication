@@ -1073,6 +1073,7 @@ function updateTask(board, group, task) {
     const groupIndex = board.groups.indexOf(group)
     const taskIndex = board.groups[groupIndex].tasks.indexOf(task)
     board.groups[groupIndex].tasks[taskIndex] = task
+    // delete board.currTaskDetails
     return { ...board }
 }
 

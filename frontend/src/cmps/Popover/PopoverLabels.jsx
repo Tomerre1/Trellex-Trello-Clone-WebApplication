@@ -61,7 +61,8 @@ export class _PopoverLabels extends Component {
 
 function mapStateToProps(state) {
     return {
-        board: state.boardModule.board
+        board: state.boardModule.board,
+        currTaskDetails: state.appModule.currTaskDetails
     };
 }
 const mapDispatchToProps = {
