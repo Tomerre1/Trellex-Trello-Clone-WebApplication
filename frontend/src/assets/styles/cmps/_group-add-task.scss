@@ -1,25 +1,98 @@
 .grp-add-task {
-    display:flex;
-    align-items:center;
-    align-self:flex-end;
-    width:90%;
-    font-size:rem(14px);
-    margin-top:10px;
+  .add-task-inactive {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    align-self: flex-end;
+    width: 100%;
+    font-size: rem(14px);
     background-color: transparent;
-    transition:background-color .2s;
-    padding:3px;
-    border-radius:3px;
+    transition: background-color 0.2s;
+    border-radius: 3px;
     color: #5e6c84;
-    cursor:pointer;
-    .add-icon { 
-        color:inherit;
+    cursor: pointer;
+    .add-icon {
+      color: inherit;
     }
     p {
-    height: fit-content;
-    margin:0;
+      height: fit-content;
+      margin: 0;
+      color: inherit;
     }
     &:hover {
-        color:#172b4d;
-        background-color:#091e4214;
+      color: #172b4d;
+      background-color: #091e4214;
     }
+  }
+  .add-task-active {
+    width: 100%;
+    gap: 5px;
+    textarea {
+      background-color: #fff;
+      border: none;
+      outline: none;
+      resize: none;
+      font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+        Noto Sans, Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
+      padding: 4px;
+      height: 70px;
+      display: inline-block;
+      cursor: text;
+    }
+    .task-btns{
+        justify-content: flex-start;
+        display:flex;
+        gap:0;
+        .task-btn {
+            transition-timing-function: ease;
+            transition-property: background-color, border-color, box-shadow;
+            line-height: 20px;
+            padding: 6px 12px;
+            text-decoration: none;
+            transition-duration: 85ms;
+            font-size: 14px;
+            font-weight: 400;
+            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+              Noto Sans, Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
+            display: inline-flex;
+            cursor: pointer;
+            border: none;
+            box-shadow: none;
+            justify-content: center;
+            align-items:center;
+          }
+      
+          .save-task-title-btn {
+            background-color: #0079bf;
+            color: #fff;
+            align-items: center;
+            border-radius: 3px;
+            width:78.13px;
+            &:hover {
+              background-color: #026aa7;
+            }
+          }
+      
+          .edit-task-title-btn {
+            align-items: center;
+            background-color: #091e420a;
+            border-radius: 3px;
+            color: #172b4d;
+            &:hover {
+              background-color: #091e4214;
+            }
+          }
+          .close-task-title-btn {
+              padding:3px;
+            svg {
+              width: 32px;
+              color: #42526e;
+            }
+            &:hover svg {
+              color: #172b4d;
+            }
+          }
+    }
+    
+  }
 }

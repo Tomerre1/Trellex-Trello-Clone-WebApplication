@@ -11,7 +11,6 @@ function _BoardHeader(props) {
   const updateTitle = () => {
     const newBoard = { ...board };
     newBoard.title = title;
-    console.log("title:", title);
     props.saveBoard(newBoard);
   };
 

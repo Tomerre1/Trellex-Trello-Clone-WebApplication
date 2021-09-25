@@ -1038,7 +1038,8 @@ export const boardService = {
     getById,
     save,
     remove,
-
+    updateTask,
+    addTask,
 }
 async function query() {
     let boards = await storageService.query(STORAGE_KEY)
@@ -1058,6 +1059,7 @@ function remove(boardId) {
     // return Promise.reject('Not now!');
     return storageService.remove(STORAGE_KEY, boardId)
 }
+
 function save(board) {
     if (board._id) {
         return storageService.put(STORAGE_KEY, board)
@@ -1065,6 +1067,41 @@ function save(board) {
         board.owner = userService.getLoggedinUser()
         return storageService.post(STORAGE_KEY, board)
     }
+}
+
+function  updateTask(board, group, task) {
+    const groupIndex = board.groups.indexOf(group)
+    const taskIndex = board.groups[groupIndex].tasks.indexOf(task)
+    board.groups[groupIndex].tasks[taskIndex] = task
+    save(board)
+    return { ...board }
+}
+
+async function addTask(taskTitle, boardId, groupId) {
+    const newTask =
+    {
+        "id": `t-${utilService.makeId()}`,
+        "title": taskTitle,
+        "description": "",
+        "comments": [],
+        "checklists": [],
+        "members": [],
+        "labelIds": [],
+        "createdAt": Date.now(),
+        "dueDate": null,
+        "byMember": {
+            "_id": "u101",
+            "username": "BCD",
+            "fullname": "Barak Sidi",
+            "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+        },
+        "style": {}
+    }
+    const board = await getById(boardId)
+    const idx = board.groups.findIndex((group) => group.id === groupId)
+    board.groups[idx].tasks.push(newTask)
+    save(board)
+    return board
 }
 
 // function getEmptyBoard() {

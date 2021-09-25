@@ -3,11 +3,10 @@ import EditIcon from '@material-ui/icons/Edit';
 import CheckIcon from '@material-ui/icons/Check';
 
 
-export function PopoverLabelPreview({ label, labelsId }) {
-    console.log(`labelsId`, labelsId)
-    if (!label) return <div></div>
+export function PopoverLabelPreview({ label, labelsId, toggleLabelCheck }) {
+
     return (
-        <li className="flex" key={label.id} >
+        <li className="flex" key={label.id} onClick={() => { toggleLabelCheck(label.id) }}>
             <div className="label-popover-preview flex" style={{ backgroundColor: label.color }}>
                 <span>{label.title}</span>
                 {labelsId.includes(label.id) &&
