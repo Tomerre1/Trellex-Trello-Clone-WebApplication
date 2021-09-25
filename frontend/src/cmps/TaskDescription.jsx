@@ -60,7 +60,7 @@ export class TaskDescription extends Component {
                     </textarea>
 
 
-                    <div className={`description-controls flex align-center ${isEditMode ? 'show' : 'hidden'}`}>
+                    <div className={`description-btns flex align-center ${isEditMode ? 'show' : 'hidden'}`}>
                         <button className='task-btns save-task-description-btn' onClick={() => this.onSaveDescription()}>Save</button>
                         <button className='task-btns close-task-description-btn' onClick={() => this.onToggleEdit()}><Close /></button>
                     </div>
