@@ -76,7 +76,6 @@ export class _PopoverDate extends Component {
 
 function mapStateToProps(state) {
     return {
-        board: state.boardModule.board,
         currTaskDetails: state.appModule.currTaskDetails
     };
 }
