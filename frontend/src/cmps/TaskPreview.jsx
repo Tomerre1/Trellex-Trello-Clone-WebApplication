@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import { TaskLabels } from "./TaskPreview/TaskLabels";
 import CheckBoxOutlinedIcon from "@mui/icons-material/CheckBoxOutlined";
 import SubjectOutlinedIcon from "@mui/icons-material/SubjectOutlined";
+import ChatBubbleOutlineRoundedIcon from "@mui/icons-material/ChatBubbleOutlineRounded";
+import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
 
 export function TaskPreview(props) {
   const { task, taskUrl, boardLabels } = props;
-  
+
   const getChecklistData = () => {
     let todos = 0;
     let doneTodos = 0;
@@ -29,12 +31,17 @@ export function TaskPreview(props) {
         <div className="task-title">{task.title}</div>
         <div className="task-description">{task.description}</div>
         <div className="task-preview-icons flex align-center">
-          {task.description && (
-            <SubjectOutlinedIcon className="checkbox-icon" />
+          {task.dueDate && <span className="flex align-center"> {(new Date(task.dueDate)).toDateString()}</span>}
+          {task.description && <SubjectOutlinedIcon className="icon" />}
+          {task.comments && task.comments.length && (
+            <span className="flex align-center">
+              <ChatBubbleOutlineRoundedIcon className="icon" />
+              <p>{task.comments.length}</p>
+            </span>
           )}
           {task.checklists && task.checklists.length && (
             <span className="checklist-preview flex align-center">
-              <CheckBoxOutlinedIcon className="checkbox-icon" />{" "}
+              <CheckBoxOutlinedIcon className="icon" />{" "}
               <p>{getChecklistData()}</p>
             </span>
           )}
