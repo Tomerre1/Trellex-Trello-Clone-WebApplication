@@ -26,12 +26,7 @@ export class _TaskDetails extends Component {
   contentEl = null;
 
   async componentDidMount() {
-<<<<<<< HEAD
-    const board = this.props // no redux yet
-    const labels = board.labels
-=======
     const { board } = this.props
->>>>>>> 2827d888acbb9ae3ae43762b4c857c56cf6e1c50
     const { taskId, listId } = this.props.match.params;
     const currGroup = board.groups.find(list => list.id === listId)
     const currTask = currGroup.tasks.find(task => task.id === taskId)
