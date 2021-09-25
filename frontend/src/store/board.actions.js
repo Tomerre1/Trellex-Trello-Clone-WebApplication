@@ -69,6 +69,15 @@ export const clearBoard = () => {
 
     }
 }
+
+export const toggleExpandLabels = () =>{
+    return (dispatch) => {
+        dispatch({
+            type: "TOGGLE_LABELS",
+        });
+    }
+}
+
 export const setCurrTaskDetails = (task) => {
     return (dispatch) => {
         dispatch({

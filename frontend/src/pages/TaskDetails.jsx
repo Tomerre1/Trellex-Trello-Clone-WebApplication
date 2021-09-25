@@ -35,6 +35,9 @@ export class _TaskDetails extends Component {
     this.setState({ isCover: false, currTask, currGroup, isPopover: false, currentTarget: null })
   }
 
+  componentWillUnmount() {
+    this.props.setCurrTaskDetails(null)
+  }
 
   setCurrentTarget = (event, type) => {
     this.setState(prevState => ({ ...prevState, type, currentTarget: event.target.getBoundingClientRect() }))
@@ -42,10 +45,6 @@ export class _TaskDetails extends Component {
   };
   togglePopover = () => {
     this.setState(prevState => ({ ...prevState, isPopover: !prevState.isPopover }))
-  }
-
-  updateBoard = (board) => {
-    this.props.saveBoard(board)
   }
 
 
@@ -89,10 +88,6 @@ export class _TaskDetails extends Component {
             togglePopover={this.togglePopover}
             currentTarget={currentTarget}
             type={type}
-            updateBoard={this.updateBoard}
-            board={board}
-            group={currGroup}
-            task={currTask}
           />}
       </section >
 

@@ -1,7 +1,8 @@
 const initialState = {
     boards: [],
     board: null,
-    filterBy: {}
+    filterBy: {},
+    areLabelsExpanded: false
 }
 export function boardReducer(state = initialState, action) {
     var newState = state
@@ -27,8 +28,13 @@ export function boardReducer(state = initialState, action) {
             newState = { ...state, boards: [...state.boards, action.board] }
             break
         case 'SET_TASK_DETAILS':
-            newState = { ...state, board: { ...state.board, currTask: action.task } }
+            newState = { ...state, board: { ...state.board, currTaskDetails: action.task } }
             break
+
+        case 'TOGGLE_LABELS':
+            newState = { ...state, areLabelsExpanded: !state.areLabelsExpanded }
+            break
+            
         // case 'UNDO_REMOVE_BOARD':
         //     if (state.lastRemovedBoard) {
         //         newState = { ...state, boards: [...state.boards, state.lastRemovedBoard], lastRemovedBoard: null}
