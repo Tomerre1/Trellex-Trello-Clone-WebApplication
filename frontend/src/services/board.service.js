@@ -335,12 +335,12 @@ const demoBoards = [
                 "title": "Group 2",
                 "tasks": [
                     {
-                        "id": "c103",
+                        "id": "c1014",
                         "title": "Do that",
                         "labelIds": [],
                     },
                     {
-                        "id": "c104",
+                        "id": "c124",
                         "title": "Help me",
                         "description": "description",
                         "comments": [
@@ -450,11 +450,11 @@ const demoBoards = [
                 "title": "Group 1",
                 "tasks": [
                     {
-                        "id": "c101",
+                        "id": "c11241",
                         "title": "Replace logo",
                     },
                     {
-                        "id": "c102",
+                        "id": "c10asdf2",
                         "title": "Add Samples"
                     }
 
@@ -466,7 +466,7 @@ const demoBoards = [
                 "title": "Group 2",
                 "tasks": [
                     {
-                        "id": "c103",
+                        "id": "c10f3",
                         "title": "Do that"
                     },
                     {
@@ -728,7 +728,7 @@ const demoBoards = [
                 "style": {}
             },
             {
-                "id": "g104",
+                "id": "g1034",
                 "title": "Group 2",
                 "tasks": [
                     {
@@ -789,7 +789,7 @@ const demoBoards = [
                 "style": {}
             },
             {
-                "id": "g105",
+                "id": "g134",
                 "title": "Group 2",
                 "tasks": [
                     {
@@ -1124,14 +1124,23 @@ async function addTask(taskTitle, boardId, groupId) {
     return board
 }
 async function addGroup(boardId) {
+    if (!boardId){
+        console.log('no board Id')
+        return
+    }
     const newGroup = {
         "id": `g-${utilService.makeId()}`,
         "title": "New list",
         tasks: [],
-        "style": {}
+        "style": {
+            bgImg:"",
+            bgClr:""
+        }
     }
     try {
+        console.log(boardId)
         const board = await getById(boardId)
+        console.log(board)
         board.groups.push(newGroup)
         return board
     }

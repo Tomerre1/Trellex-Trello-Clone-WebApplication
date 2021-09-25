@@ -12,13 +12,10 @@ const _TaskDatePreview = (props) => {
   console.log(props.groupId);
 
   const toggleIsDone = async (ev) => {
-    console.log(props)
     ev.preventDefault();
     ev.stopPropagation();
     const newBoard = { ...props.board };
-    console.log(newBoard);
     const groupIdx = newBoard.groups.findIndex((group)=>props.groupId === group.id);
-    console.log(groupIdx);
     const taskIdx = newBoard.groups[groupIdx].tasks.findIndex((task)=>props.taskId === task.id);
     newBoard.groups[groupIdx].tasks[taskIdx].isDone = !props.isDone
     try {
