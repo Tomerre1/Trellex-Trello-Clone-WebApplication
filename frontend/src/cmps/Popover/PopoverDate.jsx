@@ -1,17 +1,20 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { Popover } from './Popover'
-import MomentUtils from '@date-io/moment';
 import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
+import DateFnsUtils from '@date-io/date-fns';
+import { saveBoard, saveTaskDetails } from '../../store/board.actions'
+import {  setCurrTaskDetails } from '../../store/app.actions'
 
-import DateFnsUtils from '@date-io/date-fns'; // choose your lib
 
-export class PopoverDate extends Component {
+export class _PopoverDate extends Component {
     state = {
         date: null
     }
 
     componentDidMount() {
-        const date = this.props.currTask.dueDate ? new Date(this.props.currTask.dueDate) : new Date()
+        const { currTask } = this.props.currTaskDetails
+        const date = currTask.dueDate ? new Date(currTask.dueDate) : new Date()
         this.setState(prevState => ({ ...prevState, date }))
     }
 
@@ -20,11 +23,21 @@ export class PopoverDate extends Component {
     }
 
     onSaveDueDate = (date) => {
-        const { currTask, togglePopover } = this.props
+        const { togglePopover , board, saveTaskDetails } = this.props
+        const { currTask, currGroup } = this.props.currTaskDetails
+
         currTask.dueDate = date ? Date.parse(date) : 0;
         //Add activity and add to DB
+        saveTaskDetails(board, currGroup, currTask)
         togglePopover()
     }
+    // onSaveDueDate = (date) => {
+    //     const { currTask, togglePopover } = this.props
+    //     currTask.dueDate = date ? Date.parse(date) : 0;
+    //     //Add activity and add to DB
+    //     // saveTaskDetails(board, currGroup, currTask)
+    //     togglePopover()
+    // }
 
     onRemoveDate = () => {
         this.onSaveDueDate(null)
@@ -34,6 +47,9 @@ export class PopoverDate extends Component {
     render() {
         const { togglePopover, currentTarget, title } = this.props
         const { date } = this.state
+        // const { board, currTaskDetails } = this.props
+        // console.log('########board#####', board)
+        // console.log('#########currTaskDetails#######', currTaskDetails)
         return (
             <div className="date-picker-container">
                 <Popover togglePopover={togglePopover} currentTarget={currentTarget} title={title} >
@@ -56,4 +72,18 @@ export class PopoverDate extends Component {
         )
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        board: state.boardModule.board,
+        currTaskDetails: state.appModule.currTaskDetails
+    };
+}
+const mapDispatchToProps = {
+    saveBoard,
+    saveTaskDetails,
+    setCurrTaskDetails
+};
+
+export const PopoverDate = connect(mapStateToProps, mapDispatchToProps)(_PopoverDate);
 

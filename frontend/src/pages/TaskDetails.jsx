@@ -14,7 +14,8 @@ import { PopoverDate } from "../cmps/Popover/PopoverDate";
 import { PopoverAttachment } from '../cmps/Popover/PopoverAttachment';
 import { PopoverCover } from '../cmps/Popover/PopoverCover';
 import { LoaderSpinner } from '../cmps/LoaderSpinner'
-import { saveBoard, setCurrTaskDetails } from '../store/board.actions'
+import { saveBoard } from '../store/board.actions'
+import { setCurrTaskDetails } from '../store/app.actions'
 
 export class _TaskDetails extends Component {
   state = {

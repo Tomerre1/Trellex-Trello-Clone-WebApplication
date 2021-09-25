@@ -4,7 +4,8 @@ import { Popover } from './Popover'
 import { boardService } from '../../services/board.service'
 import { LoaderSpinner } from '../LoaderSpinner'
 import { PopoverLabelsListPreview } from './PopoverLabelsListPreview'
-import { saveBoard, saveTaskDetails, setCurrTaskDetails } from '../../store/board.actions'
+import { saveBoard, saveTaskDetails } from '../../store/board.actions'
+import {  setCurrTaskDetails } from '../../store/app.actions'
 export class _PopoverLabels extends Component {
     state = {
         search: '',
