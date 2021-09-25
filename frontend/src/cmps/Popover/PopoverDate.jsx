@@ -27,30 +27,18 @@ export class _PopoverDate extends Component {
         const { currTask, currGroup } = this.props.currTaskDetails
 
         currTask.dueDate = date ? Date.parse(date) : 0;
-        //Add activity and add to DB
         saveTaskDetails(board, currGroup, currTask)
         setCurrTaskDetails({ currTask, currGroup })
         togglePopover()
     }
-    // onSaveDueDate = (date) => {
-    //     const { currTask, togglePopover } = this.props
-    //     currTask.dueDate = date ? Date.parse(date) : 0;
-    //     //Add activity and add to DB
-    //     // saveTaskDetails(board, currGroup, currTask)
-    //     togglePopover()
-    // }
 
     onRemoveDate = () => {
         this.onSaveDueDate(null)
     }
 
-
     render() {
         const { togglePopover, currentTarget, title } = this.props
         const { date } = this.state
-        // const { board, currTaskDetails } = this.props
-        // console.log('########board#####', board)
-        // console.log('#########currTaskDetails#######', currTaskDetails)
         return (
             <div className="date-picker-container">
                 <Popover togglePopover={togglePopover} currentTarget={currentTarget} title={title} >
