@@ -5,8 +5,7 @@ import { toggleExpandLabels } from "../../store/board.actions";
 
 function _TaskLabels(props) {
   const { labelIds, boardLabels, areLabelsExpanded, toggleExpandLabels } =
-    props;
-  console.log(props);
+    props
   return (
     <div>
       <div className="task-labels-container flex">
