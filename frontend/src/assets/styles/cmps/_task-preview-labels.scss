@@ -10,9 +10,9 @@
         justify-content: center;
         color:white;
         padding:0 0;
-        transition: height .5s , padding .3s ;
+        transition: height .5s , padding .3s;
         span{
-            transition: opacity .2s ;
+            transition: opacity .05s ;
             opacity:0;
             min-width:40px;
         }
@@ -21,6 +21,8 @@
             padding:0 3px;
             width:auto;
             min-width: 40px;
+            transition: height .5s .5s, padding .3s ;
+
             
             span{
                 align-self: center;
