@@ -77,7 +77,7 @@ export class _TaskDetails extends Component {
         <TaskHeader />
         <div className="task-details-body flex">
           <div className="task-details-main flex column">
-            <TaskDescription />
+            <TaskDescription currTask={this.state.currTask} />
             <TaskActivities />
           </div>
 
