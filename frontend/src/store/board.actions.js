@@ -69,3 +69,12 @@ export const clearBoard = () => {
 
     }
 }
+export const setCurrTaskDetails = (task) => {
+    return (dispatch) => {
+        dispatch({
+            type: "SET_TASK_DETAILS",
+            task
+        });
+
+    }
+}
