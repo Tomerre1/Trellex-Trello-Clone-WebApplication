@@ -1,7 +1,4 @@
-
-
 export const setCurrTaskDetails = (currTaskDetails) => {
-
     return (dispatch) => {
         console.log(`currTaskDetails from dispatch`, currTaskDetails)
         dispatch({

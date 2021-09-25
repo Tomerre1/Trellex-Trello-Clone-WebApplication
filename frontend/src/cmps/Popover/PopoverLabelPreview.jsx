@@ -2,9 +2,7 @@ import React from 'react'
 import EditIcon from '@material-ui/icons/Edit';
 import CheckIcon from '@material-ui/icons/Check';
 
-
 export function PopoverLabelPreview({ label, labelsId, toggleLabelCheck, toggleIsEditCreate, setLabelEdit }) {
-
     return (
         <li className="flex" key={label.id} onClick={() => { toggleLabelCheck(label.id) }}>
             <div className="label-popover-preview flex" style={{ backgroundColor: label.color }}>

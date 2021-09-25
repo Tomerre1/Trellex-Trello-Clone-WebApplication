@@ -13,7 +13,7 @@ export class _PopoverDate extends Component {
     }
 
     componentDidMount() {
-        const { currTask } = this.props.currTaskDetails
+        const { currTask } = this.props
         const date = currTask.dueDate ? new Date(currTask.dueDate) : new Date()
         this.setState(prevState => ({ ...prevState, date }))
     }
@@ -24,7 +24,7 @@ export class _PopoverDate extends Component {
 
     onSaveDueDate = (date) => {
         const { togglePopover , board, saveTaskDetails } = this.props
-        const { currTask, currGroup } = this.props.currTaskDetails
+        const { currTask, currGroup } = this.props
 
         currTask.dueDate = date ? Date.parse(date) : 0;
         saveTaskDetails(board, currGroup, currTask)

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
 import { Close } from '@mui/icons-material';
 import { TaskHeader } from '../cmps/TaskHeader';
 import { TaskCardCover } from '../cmps/TaskCardCover'
@@ -14,7 +13,7 @@ import { PopoverDate } from "../cmps/Popover/PopoverDate";
 import { PopoverAttachment } from '../cmps/Popover/PopoverAttachment';
 import { PopoverCover } from '../cmps/Popover/PopoverCover';
 import { LoaderSpinner } from '../cmps/LoaderSpinner'
-import { saveBoard } from '../store/board.actions'
+import { saveBoard, saveTaskDetails } from '../store/board.actions'
 import { setCurrTaskDetails } from '../store/app.actions'
 
 export class _TaskDetails extends Component {
@@ -25,40 +24,42 @@ export class _TaskDetails extends Component {
   }
   contentEl = null;
 
-  async componentDidMount() {
+  componentDidMount() {
     const { board } = this.props
     const { taskId, listId } = this.props.match.params;
     const currGroup = board.groups.find(list => list.id === listId)
     const currTask = currGroup.tasks.find(task => task.id === taskId)
-    console.log('currTaskcurrTask', currTask)
-    console.log('currGroupcurrGroup', currGroup)
-    this.props.setCurrTaskDetails({ currTask, currGroup })
-    this.setState({ isCover: false, isPopover: false, currentTarget: null })
+    // this.props.setCurrTaskDetails({ currTask, currGroup })
+    this.setState({ isCover: false, isPopover: false, currGroup, currTask, currentTarget: null })
   }
 
-  // componentWillUnmount() {
-  //   this.props.setCurrTaskDetails(null)
-  // }
+  updateBoard = async (board) => {
+    await this.props.saveBoard(board)
+  }
+
+  updateTaskDetails = async (currTask) => {
+    const { currGroup } = this.state
+    const { board, saveTaskDetails } = this.props
+    await saveTaskDetails(board, currGroup, currTask)
+  }
 
   setCurrentTarget = (event, type) => {
     this.setState(prevState => ({ ...prevState, type, currentTarget: event.target.getBoundingClientRect() }))
     this.togglePopover()
   };
-  
+
   togglePopover = () => {
     this.setState(prevState => ({ ...prevState, isPopover: !prevState.isPopover }))
   }
 
-
   render() {
-    const { isCover, currentTarget, isPopover, type } = this.state
-    if (!this.props.currTaskDetails) return <LoaderSpinner />
-    const { currTask } = this.props.currTaskDetails
+    const { isCover, currentTarget, isPopover, type, currTask, currGroup } = this.state
     const { board } = this.props
+    if (!currTask || !board) return <LoaderSpinner />
     const DynamicCmpPopover = (props) => {
       switch (props.type) {
         case 'LABELS':
-          return <PopoverLabels {...props} title='Labels' />
+          return <PopoverLabels {...props} board={board} currGroup={currGroup} title='Labels' />
         case 'MEMBERS':
           return <PopoverMembers {...props} title='Members' />
         case 'CHECKLIST':
@@ -82,17 +83,19 @@ export class _TaskDetails extends Component {
             <TaskDescription currTask={currTask} />
             <TaskActivities />
           </div>
-
           <TaskActionsMenu setCurrentTarget={this.setCurrentTarget} togglePopover={this.togglePopover} />
         </div>
 
-        {isPopover && currentTarget && type &&
+        {isPopover &&
           <DynamicCmpPopover
             togglePopover={this.togglePopover}
             currentTarget={currentTarget}
+            updateBoard={this.updateBoard}
+            updateTaskDetails={this.updateTaskDetails}
             type={type}
-
-          />}
+            currTask={currTask}
+          />
+        }
       </section >
 
     );
@@ -101,12 +104,13 @@ export class _TaskDetails extends Component {
 function mapStateToProps(state) {
   return {
     board: state.boardModule.board,
-    currTaskDetails: state.appModule.currTaskDetails
+    // currTaskDetails: state.appModule.currTaskDetails
   };
 }
 const mapDispatchToProps = {
   saveBoard,
-  setCurrTaskDetails
+  setCurrTaskDetails,
+  saveTaskDetails
 };
 
 export const TaskDetails = connect(mapStateToProps, mapDispatchToProps)(_TaskDetails);
