@@ -37,7 +37,22 @@
     &:hover {
         background-color: #026aa7;
     }
-    &:active{
+    &:active {
         background-color: #055a8c;
+    }
+}
+.danger-btn:hover {
+    background-color: #9c3e2c;
+}
+
+.danger-btn {
+    background-color: #b04632;
+    border: none;
+    color: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+    padding: 6px 12px;
+    &:hover {
+        background-color: #9c3e2c;
     }
 }
