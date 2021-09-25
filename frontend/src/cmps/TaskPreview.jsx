@@ -31,7 +31,16 @@ export function TaskPreview(props) {
         <div className="task-title">{task.title}</div>
         <div className="task-description">{task.description}</div>
         <div className="task-preview-icons flex align-center">
-          {task.dueDate && <span className="flex align-center"> {(new Date(task.dueDate)).toDateString()}</span>}
+          {task.dueDate && (
+            <span className={`due-date ${task.dueDate < Date.now() ?'overdue' : ''}`}>
+              <AccessTimeOutlinedIcon className="icon"/><p>
+              {new Date(task.dueDate).toLocaleDateString(undefined, {
+                month: "short",
+                day: "numeric"
+              })}
+              </p>
+            </span>
+          )}
           {task.description && <SubjectOutlinedIcon className="icon" />}
           {task.comments && task.comments.length && (
             <span className="flex align-center">

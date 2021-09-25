@@ -22,6 +22,27 @@
         color: rgb(107, 119, 140);
         letter-spacing: 0px;
       }
+      &.due-date {
+          display:flex;
+          padding:2px 2px;
+          align-items: center;
+          height:20px;
+          p{
+            font-size:rem(12px)
+          }
+          &.overdue {
+              border-radius:4px;
+              p{
+                  color:white;
+                  margin-right:5px;
+              }
+              background-color:rgb(236, 148, 136);
+              color:white;
+              .icon{
+                  color:inherit;
+              }
+          }
+      }
     }
     .icon {
       padding: 4px;
