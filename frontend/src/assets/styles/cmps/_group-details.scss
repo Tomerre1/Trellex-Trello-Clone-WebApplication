@@ -7,6 +7,7 @@
   gap: 6px;
   padding: 6px;
   height: fit-content;
+  
   max-height: 87vh;
 
   &.add-new {
@@ -27,21 +28,7 @@
   .group-main {
     gap: 6px;
     overflow-y: auto;
-    // padding-right:1%;
-    // &::-webkit-scrollbar {
-    //   width: 8px;
-    // }
 
-    // &::-webkit-scrollbar-track {
-    //   background-color: rgba(0, 0, 0, 0.089);
-    //   border-radius: 25px;
-
-    // }
-
-    // &::-webkit-scrollbar-thumb {
-    //   background-color: #9d9ea0;
-    //   border-radius: 5px;
-    // }
     &::-webkit-scrollbar {
       width: 12px;
       background: inherit;

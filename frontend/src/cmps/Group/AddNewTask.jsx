@@ -9,7 +9,11 @@ export function _AddNewTask(props) {
   const [isClicked, setIsClicked] = useState(false);
   const [taskTitle, setTaskTitle] = useState("");
   const [btnText, setBtnText] = useState("Add task");
-  const toggleIsClicked = () => setIsClicked(!isClicked);
+  const toggleIsClicked = () => {
+    // if(!isClicked)
+    // props.scrollToBottom()
+    setIsClicked(!isClicked)
+  };
 
   const onAddTask = async () => {
     try {
@@ -17,7 +21,7 @@ export function _AddNewTask(props) {
       await props.addTask(taskTitle, props.ids.boardId, props.ids.groupId);
       setTaskTitle("");
       setBtnText("Add task");
-      props.scrollToBottom()
+      props.scrollToBottom();
     } catch (err) {
       console.log("error when saving task", err);
       setBtnText("Add task");

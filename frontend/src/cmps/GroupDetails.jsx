@@ -1,4 +1,4 @@
-import React,{useRef,useEffect} from 'react';
+import React,{useRef} from 'react';
 import { TaskPreview } from "./TaskPreview";
 import AddIcon from "@mui/icons-material/Add";
 import { AddNewTask } from "./Group/AddNewTask";
@@ -43,8 +43,8 @@ export const GroupDetails = (props) => {
         ))}
       </div>
       <div className="group-footer">
-        {/* will be an add task component */}
         <AddNewTask ids={{ groupId: group.id, boardId }} scrollToBottom={scrollToBottom}/>
+        {/* will be an add task component */}
       </div>
     </article>
   );
