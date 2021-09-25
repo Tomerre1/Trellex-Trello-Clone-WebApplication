@@ -22,7 +22,7 @@ class _BoardApp extends Component {
       try {
         await this.props.loadBoard(id);
       } catch (err) {
-        console.log(err);
+        console.log('cant load boards',err);
       }
     }
   };
