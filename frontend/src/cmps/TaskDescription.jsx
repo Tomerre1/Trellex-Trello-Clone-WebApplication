@@ -19,12 +19,7 @@ export class TaskDescription extends Component {
 
     onSaveDescription = () => {
         const { description } = this.state
-        console.log('Saving Description...', description)
         this.setState({ isEditMode: false })
-        // const { description } = this.state
-        // this.setState({ isInputSelected: false }, () => {
-        //     this.props.onSaveCardDescription(description)
-        // })
     }
     handleChange = ({ target: { value } }) => {
         this.setState({ description: value })
@@ -59,7 +54,6 @@ export class TaskDescription extends Component {
                         placeholder="Add a more detailed description..."
                         onChange={this.handleChange}>
                     </textarea>
-
 
                     <div className={`description-btns flex align-center ${isEditMode ? 'show' : 'hidden'}`}>
                         <button className='task-btns save-task-description-btn' onClick={() => this.onSaveDescription()}>Save</button>
