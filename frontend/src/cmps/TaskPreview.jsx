@@ -8,8 +8,8 @@ import SubjectOutlinedIcon from "@mui/icons-material/SubjectOutlined";
 import ChatBubbleOutlineRoundedIcon from "@mui/icons-material/ChatBubbleOutlineRounded";
 
 export function TaskPreview(props) {
-  const { task, taskUrl, boardLabels } = props;
-  const { labelIds, title, dueDate, comments, checklists, description,groupId } = task;
+  const { task, taskUrl, boardLabels,groupId } = props;
+  const { labelIds, title, dueDate, comments, checklists, description  } = task;
 
   const getChecklistData = () => {
     let todos = 0;
@@ -22,6 +22,7 @@ export function TaskPreview(props) {
     });
     return `${doneTodos}/${todos}`;
   };
+  console.log(groupId);
   return (
     <Link to={taskUrl} className="clean-link">
       <article className="task-preview clean-link">
