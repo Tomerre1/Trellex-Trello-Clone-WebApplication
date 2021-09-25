@@ -4,7 +4,7 @@ import { Popover } from './Popover'
 import { boardService } from '../../services/board.service'
 import { LoaderSpinner } from '../LoaderSpinner'
 import { PopoverLabelsListPreview } from './PopoverLabelsListPreview'
-import { saveBoard } from '../../store/board.actions'
+import { saveBoard, saveTaskDetails, setCurrTaskDetails } from '../../store/board.actions'
 export class _PopoverLabels extends Component {
     state = {
         search: '',
@@ -19,17 +19,13 @@ export class _PopoverLabels extends Component {
     }
 
     toggleLabelCheck = (labelId) => {
+        const { saveTaskDetails, board } = this.props
         const { currTask, currGroup } = this.props.board.currTaskDetails
-        let updatedLabelsId;
-
-        if (currTask.labelIds.includes(labelId)) {
-            updatedLabelsId = currTask.labelIds.filter(currLabelId => currLabelId !== labelId)
-        } else {
-            updatedLabelsId = [...currTask.labelIds, labelId]
-        }
+        const updatedLabelsId = (currTask.labelIds.includes(labelId)) ?
+            currTask.labelIds.filter(currLabelId => currLabelId !== labelId) :
+            [...currTask.labelIds, labelId]
         currTask.labelIds = updatedLabelsId
-        const newBoard = boardService.updateTask(this.props.board, currGroup, currTask)
-        saveBoard(newBoard)
+        saveTaskDetails(board, currGroup, currTask)
     }
 
     toggleIsEdit = () => {
@@ -65,11 +61,13 @@ export class _PopoverLabels extends Component {
 
 function mapStateToProps(state) {
     return {
-        board: state.boardModule.board,
+        board: state.boardModule.board
     };
 }
 const mapDispatchToProps = {
-    saveBoard
+    saveBoard,
+    saveTaskDetails,
+    setCurrTaskDetails
 };
 
 export const PopoverLabels = connect(mapStateToProps, mapDispatchToProps)(_PopoverLabels);

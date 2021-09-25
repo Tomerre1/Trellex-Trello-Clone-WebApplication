@@ -50,13 +50,13 @@ export const saveBoard = (board) => {
         }
     }
 }
-export const addTask = (taskTitle,boardId,groupId) =>{
-    return async(dispatch) => {
-     const board = await boardService.addTask(taskTitle, boardId, groupId)
-     dispatch({
-        type: "SAVE_BOARD",
-        board: board,
-    });
+export const addTask = (taskTitle, boardId, groupId) => {
+    return async (dispatch) => {
+        const board = await boardService.addTask(taskTitle, boardId, groupId)
+        dispatch({
+            type: "SAVE_BOARD",
+            board: board,
+        });
     }
 }
 
@@ -70,7 +70,7 @@ export const clearBoard = () => {
     }
 }
 
-export const toggleExpandLabels = () =>{
+export const toggleExpandLabels = () => {
     return (dispatch) => {
         dispatch({
             type: "TOGGLE_LABELS",
@@ -80,6 +80,7 @@ export const toggleExpandLabels = () =>{
 
 export const setCurrTaskDetails = (task) => {
     return (dispatch) => {
+
         dispatch({
             type: "SET_TASK_DETAILS",
             task
@@ -87,3 +88,22 @@ export const setCurrTaskDetails = (task) => {
 
     }
 }
+export const saveTaskDetails = (board, currGroup, currTask) => {
+    return async (dispatch) => {
+        try {
+            const updatedBoard = boardService.updateTask(board, currGroup, currTask)
+            const newBoard = await boardService.save(updatedBoard)
+            console.log('newBoard:', newBoard)
+            dispatch({
+                type: "SAVE_BOARD",
+                board: newBoard,
+            })
+
+
+        }
+        catch (err) {
+            console.log('cant update task details', err)
+        }
+    }
+}
+

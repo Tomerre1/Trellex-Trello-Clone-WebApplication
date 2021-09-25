@@ -17,7 +17,7 @@ export function PopoverLabelPreview({ label, labelsId, toggleLabelCheck, toggleI
             </div>
             <div className="flex align-center justify-center">
                 <EditIcon style={{ width: '16px', height: '16px', color: '#42526e' }}
-                    onClick={toggleIsEdit} />
+                    onClick={(event) => { event.stopPropagation(); toggleIsEdit() }} />
             </div>
         </li >
     )

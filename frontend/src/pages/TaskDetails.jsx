@@ -57,7 +57,7 @@ export class _TaskDetails extends Component {
         case 'LABELS':
           return <PopoverLabels {...props} title='Labels' />
         case 'MEMBERS':
-          return <PopoverMembers {...props} members={1, 2, 3} title='Members' />
+          return <PopoverMembers {...props} title='Members' />
         case 'CHECKLIST':
           return <PopoverChecklist {...props} currTask={currTask} title='Checklist' />
         case 'DATE':
