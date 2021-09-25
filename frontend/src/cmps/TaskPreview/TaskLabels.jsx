@@ -1,10 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import {toggleExpandLabels} from '../../store/board.actions'
+import { toggleExpandLabels } from "../../store/board.actions";
 
 function _TaskLabels(props) {
-  const { labelIds, boardLabels, areLabelsExpanded ,toggleExpandLabels } = props;
+  const { labelIds, boardLabels, areLabelsExpanded, toggleExpandLabels } =
+    props;
   console.log(props);
   return (
     <div>
@@ -12,21 +13,24 @@ function _TaskLabels(props) {
         {labelIds &&
           labelIds.map((labelId, idx) => {
             const label = boardLabels.find((label) => label.id === labelId);
-            return (
-              <div
-                className={`label flex justify-center ${areLabelsExpanded ? 'expanded' :''}`}
-                style={{ background: label.color }}
-                key={idx}
-                onClick={(ev) => {
-                    console.log('was i clicked')
-                    ev.preventDefault()
-                    ev.stopPropagation()
-                    toggleExpandLabels()
-                }}
-              >
-               <span>{label.title}</span>
-              </div>
-            );
+            if (label)
+              return (
+                <div
+                  className={`label flex justify-center ${
+                    areLabelsExpanded ? "expanded" : ""
+                  }`}
+                  style={{ background: label.color }}
+                  key={idx}
+                  onClick={(ev) => {
+                    console.log("was i clicked");
+                    ev.preventDefault();
+                    ev.stopPropagation();
+                    toggleExpandLabels();
+                  }}
+                >
+                  <span>{label.title}</span>
+                </div>
+              );
           })}
       </div>
     </div>
@@ -38,7 +42,10 @@ function mapStateToProps(state) {
   };
 }
 
-  const mapDispatchToProps = {
-    toggleExpandLabels,
-  };
-export const TaskLabels = connect(mapStateToProps,mapDispatchToProps)(_TaskLabels);
+const mapDispatchToProps = {
+  toggleExpandLabels,
+};
+export const TaskLabels = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(_TaskLabels);
