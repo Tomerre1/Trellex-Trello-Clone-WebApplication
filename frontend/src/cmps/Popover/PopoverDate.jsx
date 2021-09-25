@@ -29,6 +29,7 @@ export class _PopoverDate extends Component {
         currTask.dueDate = date ? Date.parse(date) : 0;
         //Add activity and add to DB
         saveTaskDetails(board, currGroup, currTask)
+        setCurrTaskDetails({ currTask, currGroup })
         togglePopover()
     }
     // onSaveDueDate = (date) => {

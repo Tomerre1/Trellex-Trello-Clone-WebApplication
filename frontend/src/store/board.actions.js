@@ -91,7 +91,6 @@ export const toggleExpandLabels = () => {
 export const saveTaskDetails = (board, currGroup, currTask) => {
     return async (dispatch) => {
         try {
-            console.log('im hereeeeeeeee')
             const updatedBoard = boardService.updateTask(board, currGroup, currTask)
             const newBoard = await boardService.save(updatedBoard)
             console.log('newBoard:', newBoard)

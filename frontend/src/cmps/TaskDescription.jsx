@@ -12,6 +12,7 @@ export class TaskDescription extends Component {
     }
 
     componentDidMount() {
+        console.log('this.props.currTaskthis.props.currTask',this.props.currTask)
         const description = this.props.currTask.description ? this.props.currTask.description : ''
         this.setState(prevState => ({ ...prevState, description }))
     }
