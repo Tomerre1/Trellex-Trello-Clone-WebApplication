@@ -19,17 +19,17 @@ export class _PopoverLabels extends Component {
     }
 
     toggleLabelCheck = (labelId) => {
-        const { board, group, task, updateBoard } = this.props
+        const { currTask, currGroup } = this.props.board.currTaskDetails
         let updatedLabelsId;
 
-        if (task.labelIds.includes(labelId)) {
-            updatedLabelsId = task.labelIds.filter(id => id !== labelId)
+        if (currTask.labelIds.includes(labelId)) {
+            updatedLabelsId = currTask.labelIds.filter(currLabelId => currLabelId !== labelId)
         } else {
-            updatedLabelsId = [...task.labelIds, labelId]
+            updatedLabelsId = [...currTask.labelIds, labelId]
         }
-        task.labelIds = updatedLabelsId
-        const newBoard = boardService.updateTask(board, group, task)
-        updateBoard(newBoard)
+        currTask.labelIds = updatedLabelsId
+        const newBoard = boardService.updateTask(this.props.board, currGroup, currTask)
+        saveBoard(newBoard)
     }
 
     toggleIsEdit = () => {
@@ -38,14 +38,17 @@ export class _PopoverLabels extends Component {
 
 
     render() {
-        const { togglePopover, currentTarget, title, task, board } = this.props
+        const { togglePopover, currentTarget, title, board } = this.props
+        const { currTask } = board.currTaskDetails
         const { search, isEdit, isCreate } = this.state
+        console.log('%c  currTask.labelIds:', 'color: #0e93e0;background: #aaefe5;', currTask.labelIds);
         if (!board) return <LoaderSpinner />
         return (
+
             <Popover togglePopover={togglePopover} currentTarget={currentTarget} title={title} >
                 {!isEdit && !isCreate &&
                     <PopoverLabelsListPreview
-                        labelIds={task.labelIds}
+                        labelIds={currTask.labelIds}
                         search={search}
                         labels={board.labels}
                         handleChange={this.handleChange}

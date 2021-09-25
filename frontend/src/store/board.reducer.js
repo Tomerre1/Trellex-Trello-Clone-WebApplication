@@ -27,7 +27,7 @@ export function boardReducer(state = initialState, action) {
             newState = { ...state, boards: [...state.boards, action.board] }
             break
         case 'SET_TASK_DETAILS':
-            newState = { ...state, board: { ...state.board, currTask: action.task } }
+            newState = { ...state, board: { ...state.board, currTaskDetails: action.task } }
             break
         // case 'UNDO_REMOVE_BOARD':
         //     if (state.lastRemovedBoard) {
