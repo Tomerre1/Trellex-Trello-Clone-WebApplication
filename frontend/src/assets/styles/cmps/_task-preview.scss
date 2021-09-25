@@ -24,8 +24,12 @@
       }
       &.due-date {
           display:flex;
-          padding:0 4px;
+          padding:2px 2px;
           align-items: center;
+          height:20px;
+          p{
+            font-size:rem(12px)
+          }
           &.overdue {
               border-radius:4px;
               p{
