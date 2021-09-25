@@ -1,0 +1,31 @@
+.task-labels-container { 
+    flex-wrap: wrap;
+    gap:4px;
+    .label { 
+        width:40px;
+        height:8px;
+        font-size: 12px;
+        max-width: 40px;
+        min-width: 40px;
+        border-radius: 4px;
+        transition: width .2s , height .5s;
+        align-content: center;
+        justify-content: center;
+        color:white;
+
+        &.expanded {
+            max-width:unset;
+            min-width: unset;
+            width:fit-content;
+            height:16px;
+            padding:0 3px;
+            span{
+                align-self: center;
+            }
+
+        }
+&:hover{
+    filter:brightness(.8)
+}
+    }
+}
