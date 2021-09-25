@@ -21,19 +21,15 @@
         font-weight: 600;
     }
     .activity-toggle-btn {
-        -webkit-appearance: none;
         border: none;
         border-radius: 3px;
-        box-sizing: border-box;
         background-color: #091e420a;
-        box-shadow: none;
         cursor: pointer;
         color: #172b4d;
         display: inline-block;
         line-height: 20px;
         padding: 6px 12px;
         position: relative;
-        text-decoration: none;
 
         &:hover {
             background-color: #091e4214;

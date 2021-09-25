@@ -25,7 +25,7 @@ export class _TaskDetails extends Component {
 
   //http://localhost:3000/board/b101/g101/c103
   async componentDidMount() {
-    const board = await boardService.getById('b101') // no redux yet
+    const board = this.props // no redux yet
     const labels = board.labels
     const { taskId, listId } = this.props.match.params;
     const currList = board.groups.find(list => list.id === listId)
