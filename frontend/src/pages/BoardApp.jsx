@@ -42,7 +42,7 @@ class _BoardApp extends Component {
         }}
       >
         <BoardHeader board={board} />
-        <GroupList groups={board.groups} boardId={board._id} />
+        <GroupList groups={board.groups} boardId={board._id} boardLabels={board.labels}/>
       </section>
     );
   }

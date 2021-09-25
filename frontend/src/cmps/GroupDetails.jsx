@@ -5,7 +5,7 @@ import { AddNewTask } from "./Group/AddNewTask";
 import MoreHorizOutlinedIcon from "@mui/icons-material/MoreHorizOutlined";
 
 export const GroupDetails = (props) => {
-  const { group, isAddNew, boardId } = props;
+  const { group, isAddNew, boardId,boardLabels } = props;
   const elRef = useRef()
 
   const scrollToBottom = ()=>{
@@ -39,6 +39,7 @@ export const GroupDetails = (props) => {
             task={task}
             key={idx}
             taskUrl={`/board/${boardId}/${group.id}/${task.id}`}
+            boardLabels={boardLabels}
           />
         ))}
       </div>
