@@ -14,7 +14,8 @@ import { PopoverDate } from "../cmps/Popover/PopoverDate";
 import { PopoverAttachment } from '../cmps/Popover/PopoverAttachment';
 import { PopoverCover } from '../cmps/Popover/PopoverCover';
 import { LoaderSpinner } from '../cmps/LoaderSpinner'
-import { saveBoard } from '../store/board.actions'
+import { saveBoard, setCurrTaskDetails } from '../store/board.actions'
+
 export class _TaskDetails extends Component {
   state = {
     isCover: true,
@@ -30,6 +31,7 @@ export class _TaskDetails extends Component {
     const { taskId, listId } = this.props.match.params;
     const currGroup = board.groups.find(list => list.id === listId)
     const currTask = currGroup.tasks.find(task => task.id === taskId)
+    this.props.setCurrTaskDetails({ currTask, currGroup })
     this.setState({ isCover: false, currTask, currGroup, isPopover: false, currentTarget: null })
   }
 
@@ -82,7 +84,16 @@ export class _TaskDetails extends Component {
           <TaskActionsMenu setCurrentTarget={this.setCurrentTarget} togglePopover={this.togglePopover} />
         </div>
 
-        {isPopover && currentTarget && type && <DynamicCmpPopover togglePopover={this.togglePopover} currentTarget={currentTarget} type={type} updateBoard={this.updateBoard} board={board} group={currGroup} task={currTask} />}
+        {isPopover && currentTarget && type &&
+          <DynamicCmpPopover
+            togglePopover={this.togglePopover}
+            currentTarget={currentTarget}
+            type={type}
+            updateBoard={this.updateBoard}
+            board={board}
+            group={currGroup}
+            task={currTask}
+          />}
       </section >
 
     );
@@ -94,7 +105,8 @@ function mapStateToProps(state) {
   };
 }
 const mapDispatchToProps = {
-  saveBoard
+  saveBoard,
+  setCurrTaskDetails
 };
 
 export const TaskDetails = connect(mapStateToProps, mapDispatchToProps)(_TaskDetails);
