@@ -1089,7 +1089,13 @@ function save(board) {
     if (board._id) {
         return storageService.put(STORAGE_KEY, board)
     } else {
-        board.owner = userService.getLoggedinUser()
+    const board = { 
+            "_id": utilService.makeId,
+            "style": {
+                "bgClr": 'linear-gradient(to right, #2980b9, #2c3e50)',
+                "bgImg": ''
+            }
+    }
         return storageService.post(STORAGE_KEY, board)
     }
 }
@@ -1124,17 +1130,14 @@ async function addTask(taskTitle, boardId, groupId) {
     return board
 }
 async function addGroup(boardId) {
-    if (!boardId){
-        console.log('no board Id')
-        return
-    }
+    if (!boardId) return
     const newGroup = {
         "id": `g-${utilService.makeId()}`,
         "title": "New list",
         tasks: [],
         "style": {
-            bgImg:"",
-            bgClr:""
+            bgImg: "",
+            bgClr: ""
         }
     }
     try {
