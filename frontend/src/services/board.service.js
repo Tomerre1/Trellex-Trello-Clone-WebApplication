@@ -165,8 +165,23 @@ const demoBoards = [
                                     {
                                         "id": "212jX",
                                         "title": "To Do 1",
+                                        "isDone": true
+                                    },
+                                    {
+                                        "id": "123jX",
+                                        "title": "To Do 2",
                                         "isDone": false
-                                    }
+                                    },
+                                    {
+                                        "id": "212234",
+                                        "title": "To Do 3",
+                                        "isDone": true
+                                    },
+                                    {
+                                        "id": "212dfjX",
+                                        "title": "To Do 4",
+                                        "isDone": false
+                                    },
                                 ]
                             }
                         ],
@@ -1083,12 +1098,7 @@ async function addTask(taskTitle, boardId, groupId) {
         "id": `t-${utilService.makeId()}`,
         "title": taskTitle,
         "description": "",
-        "comments": [],
-        "checklists": [],
-        "members": [],
-        "labelIds": [],
         "createdAt": Date.now(),
-        "dueDate": null,
         "byMember": {
             "_id": "u101",
             "username": "BCD",
