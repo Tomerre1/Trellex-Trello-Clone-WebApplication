@@ -14,7 +14,7 @@ function _TaskLabels(props) {
             const label = boardLabels.find((label) => label.id === labelId);
             return (
               <div
-                className={`label flex ${areLabelsExpanded ? 'expanded' :''}`}
+                className={`label flex justify-center ${areLabelsExpanded ? 'expanded' :''}`}
                 style={{ background: label.color }}
                 key={idx}
                 onClick={(ev) => {
@@ -24,7 +24,7 @@ function _TaskLabels(props) {
                     toggleExpandLabels()
                 }}
               >
-                {areLabelsExpanded && <span>{label.title}</span>}
+               <span>{label.title}</span>
               </div>
             );
           })}

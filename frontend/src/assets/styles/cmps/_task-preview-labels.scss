@@ -2,25 +2,31 @@
     flex-wrap: wrap;
     gap:4px;
     .label { 
-        width:40px;
         height:8px;
         font-size: 12px;
-        max-width: 40px;
-        min-width: 40px;
         border-radius: 4px;
-        transition: width .2s , height .5s;
+        width:40px;
         align-content: center;
         justify-content: center;
         color:white;
-
+        padding:0 0;
+        transition: height .5s , padding .3s ;
+        span{
+            transition: opacity .2s ;
+            opacity:0;
+            min-width:40px;
+        }
         &.expanded {
-            max-width:unset;
-            min-width: unset;
-            width:fit-content;
             height:16px;
             padding:0 3px;
+            width:auto;
+            min-width: 40px;
+            
             span{
                 align-self: center;
+                opacity:1;
+                transition: opacity .2s .5s;
+
             }
 
         }
