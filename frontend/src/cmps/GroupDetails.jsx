@@ -8,7 +8,6 @@ import MoreHorizOutlinedIcon from "@mui/icons-material/MoreHorizOutlined";
 export const GroupDetails = (props) => {
   const { group, isAddNew, boardId, boardLabels } = props;
   const elRef = useRef();
-
   const scrollToBottom = () => {
     console.log(elRef);
     elRef.current?.scrollTo({
