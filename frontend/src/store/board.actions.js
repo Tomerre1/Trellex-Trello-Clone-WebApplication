@@ -52,11 +52,31 @@ export const saveBoard = (board) => {
 }
 export const addTask = (taskTitle, boardId, groupId) => {
     return async (dispatch) => {
-        const board = await boardService.addTask(taskTitle, boardId, groupId)
-        dispatch({
-            type: "SAVE_BOARD",
-            board: board,
-        });
+        try {
+            const board = await boardService.addTask(taskTitle, boardId, groupId)
+            dispatch({
+                type: "SAVE_BOARD",
+                board: board,
+            });
+
+        }
+        catch (err) {
+            console.log('cant add task', err)
+        }
+    }
+}
+export const addGroup = (boardId) => {
+    return async (dispatch) => {
+        try {
+            const board = await boardService.addTask(boardId)
+            dispatch({
+                type: "SAVE_BOARD",
+                board: board,
+            });
+
+        } catch (err) {
+            console.log('cant add group',err)
+        }
     }
 }
 

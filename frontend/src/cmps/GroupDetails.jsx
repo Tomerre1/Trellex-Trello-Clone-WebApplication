@@ -1,4 +1,6 @@
 import React, { useRef } from "react";
+import { connect } from "react-redux";
+import {addGroup} from '../store/board.actions';
 import { TaskPreview } from "./TaskPreview";
 import AddIcon from "@mui/icons-material/Add";
 import { AddNewTask } from "./Group/AddNewTask";

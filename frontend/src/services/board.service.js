@@ -1064,6 +1064,7 @@ export const boardService = {
     remove,
     updateTask,
     addTask,
+    addGroup
 }
 async function query() {
     let boards = await storageService.query(STORAGE_KEY)
@@ -1114,7 +1115,7 @@ async function addTask(taskTitle, boardId, groupId) {
             "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
         },
         "style": {},
-        "labelIds":[]
+        "labelIds": []
     }
     const board = await getById(boardId)
     const idx = board.groups.findIndex((group) => group.id === groupId)
@@ -1122,7 +1123,22 @@ async function addTask(taskTitle, boardId, groupId) {
     save(board)
     return board
 }
-
+async function addGroup(boardId) {
+    const newGroup = {
+        "id": `g-${utilService.makeId()}`,
+        "title": "New list",
+        tasks: [],
+        "style": {}
+    }
+    try {
+        const board = await getById(boardId)
+        board.groups.push(newGroup)
+        return board
+    }
+    catch (err) {
+        console.log('couldnt add group', err)
+    }
+}
 // function getEmptyBoard() {
 //     return {
 //         vendor: 'Susita-' + (Date.now() % 1000),
