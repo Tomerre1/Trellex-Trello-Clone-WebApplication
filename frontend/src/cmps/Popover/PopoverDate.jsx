@@ -3,11 +3,10 @@ import { connect } from 'react-redux'
 import { Popover } from './Popover'
 import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
-import { saveBoard, saveTaskDetails } from '../../store/board.actions'
-import {  setCurrTaskDetails } from '../../store/app.actions'
 
 
-export class _PopoverDate extends Component {
+
+export class PopoverDate extends Component {
     state = {
         date: null
     }
@@ -23,12 +22,10 @@ export class _PopoverDate extends Component {
     }
 
     onSaveDueDate = (date) => {
-        const { togglePopover , board, saveTaskDetails } = this.props
-        const { currTask, currGroup } = this.props
-
+        const { togglePopover , updateTaskDetails } = this.props
+        const { currTask } = this.props
         currTask.dueDate = date ? Date.parse(date) : 0;
-        saveTaskDetails(board, currGroup, currTask)
-        setCurrTaskDetails({ currTask, currGroup })
+        updateTaskDetails(currTask)
         togglePopover()
     }
 
@@ -61,17 +58,4 @@ export class _PopoverDate extends Component {
         )
     }
 }
-
-function mapStateToProps(state) {
-    return {
-        currTaskDetails: state.appModule.currTaskDetails
-    };
-}
-const mapDispatchToProps = {
-    saveBoard,
-    saveTaskDetails,
-    setCurrTaskDetails
-};
-
-export const PopoverDate = connect(mapStateToProps, mapDispatchToProps)(_PopoverDate);
 
