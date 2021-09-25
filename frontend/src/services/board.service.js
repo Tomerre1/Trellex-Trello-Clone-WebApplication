@@ -128,7 +128,7 @@ const demoBoards = [
                             bgImgUrl: "",
                             bgColor: "#60bd4f"
                         },
-                        isDone: false
+                        isDone: true
                     }
                 ],
                 "style": {}

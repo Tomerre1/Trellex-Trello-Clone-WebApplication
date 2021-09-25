@@ -1,18 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { TaskLabels } from "./TaskPreview/TaskLabels";
+import { TaskDetailsPreview } from "./TaskPreview/TaskDetailsPreview";
+import { TaskDatePreview } from "./TaskPreview/TaskDatePreview";
 import CheckBoxOutlinedIcon from "@mui/icons-material/CheckBoxOutlined";
 import SubjectOutlinedIcon from "@mui/icons-material/SubjectOutlined";
 import ChatBubbleOutlineRoundedIcon from "@mui/icons-material/ChatBubbleOutlineRounded";
-import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
 
 export function TaskPreview(props) {
   const { task, taskUrl, boardLabels } = props;
+  const { labelIds, title, dueDate, comments, checklists, description,groupId } = task;
 
   const getChecklistData = () => {
     let todos = 0;
     let doneTodos = 0;
-    task.checklists.forEach((checklist) => {
+    checklists.forEach((checklist) => {
       todos += checklist.todos.length;
       checklist.todos.forEach((todo) => {
         if (todo.isDone) doneTodos += 1;
@@ -20,32 +22,33 @@ export function TaskPreview(props) {
     });
     return `${doneTodos}/${todos}`;
   };
-
   return (
     <Link to={taskUrl} className="clean-link">
       <article className="task-preview clean-link">
         <div className="task-cover">cover color/image here</div>
-        {task.labelIds && (
-          <TaskLabels labelIds={task.labelIds} boardLabels={boardLabels} />
+        {labelIds && (
+          <TaskLabels labelIds={labelIds} boardLabels={boardLabels} />
         )}
-        <div className="task-title">{task.title}</div>
-        <div className="task-description">{task.description}</div>
+        <div className="task-title">{title}</div>
         <div className="task-preview-icons flex align-center">
-          {task.dueDate && <span className="flex align-center"> {(new Date(task.dueDate)).toDateString()}</span>}
-          {task.description && <SubjectOutlinedIcon className="icon" />}
-          {task.comments && task.comments.length && (
-            <span className="flex align-center">
-              <ChatBubbleOutlineRoundedIcon className="icon" />
-              <p>{task.comments.length}</p>
-            </span>
+          {dueDate && <TaskDatePreview dueDate={dueDate} isDone={task.isDone} taskId={task.id} groupId={groupId}/>}
+          {description && (
+            <TaskDetailsPreview
+              icon={<SubjectOutlinedIcon className="icon" />}
+            />
           )}
-          {task.checklists && task.checklists.length && (
-            <span className="checklist-preview flex align-center">
-              <CheckBoxOutlinedIcon className="icon" />{" "}
-              <p>{getChecklistData()}</p>
-            </span>
+          {comments && comments.length > 0 && (
+            <TaskDetailsPreview
+              icon={<ChatBubbleOutlineRoundedIcon className="icon" />}
+              txt={comments.length}
+            />
           )}
-          {/* {console.log(task)} */}
+          {checklists && checklists.length > 0 && (
+            <TaskDetailsPreview
+              icon={<CheckBoxOutlinedIcon className="icon" />}
+              txt={getChecklistData()}
+            />
+          )}
         </div>
       </article>
     </Link>

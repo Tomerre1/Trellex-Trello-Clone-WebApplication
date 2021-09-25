@@ -22,8 +22,6 @@ export class _TaskDetails extends Component {
     isCover: true,
     currentTarget: null,
     isPopover: false,
-    // currTask: null,
-
   }
   contentEl = null;
 
@@ -36,7 +34,6 @@ export class _TaskDetails extends Component {
     console.log('currGroupcurrGroup', currGroup)
     this.props.setCurrTaskDetails({ currTask, currGroup })
     this.setState({ isCover: false, isPopover: false, currentTarget: null })
-    // this.setState({ isCover: false, currTask, currGroup, isPopover: false, currentTarget: null })
   }
 
   // componentWillUnmount() {
