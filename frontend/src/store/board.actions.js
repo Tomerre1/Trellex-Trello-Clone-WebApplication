@@ -45,7 +45,7 @@ export const saveBoard = (board) => {
 
         }
         catch (err) {
-            console.log('cant set board', err)
+            console.log('cant save board', err)
             // throw Error(err)
         }
     }
@@ -63,7 +63,7 @@ export const addBoard = (title = "new board") => {
 
         }
         catch (err) {
-            console.log('cant set board', err)
+            console.log('cant add board', err)
         }
     }
 }
@@ -94,6 +94,21 @@ export const addGroup = (boardId) => {
 
         } catch (err) {
             console.log('cant add group', err)
+        }
+    }
+}
+export const removeGroup = (boardId,groupId) => {
+    console.log(groupId,boardId)
+    return async (dispatch) => {
+        try {
+            const board = await boardService.removeGroup(boardId,groupId)
+            dispatch({
+                type: "SAVE_BOARD",
+                board: board,
+            });
+
+        } catch (err) {
+            console.log('cant remove group', err)
         }
     }
 }

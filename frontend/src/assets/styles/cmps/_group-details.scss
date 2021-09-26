@@ -10,7 +10,42 @@
   max-width: 272px;
 
   max-height: 87vh;
+  .group-menu {
+    width: 200px;
+    height: 100px;
+    background: #ebecf0;
+    border-radius: 3px;
+    box-shadow: 0 0 2px #020202;
+    z-index: 1;
+    text-align: center;
+    padding:8px;
+  }
+  .dots {
+    padding: 2px;
+    cursor: pointer;
+    color:#626263b9;
+    width:auto;
+    border-radius: 3px;
+    transition:background-color .2s,  color .1s;
+    &:hover {
+      color:black;
+      background:#a9a9aa42;
 
+    }
+  }
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background-color: #0202022c;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.2s ease-out;
+    pointer-events: none;
+    &.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
   &.add-new {
     background-color: #ebecf036;
     color: rgba(255, 255, 255, 0.747);
@@ -26,10 +61,10 @@
   }
   .group-header {
     width: 100%;
-    padding: .3125rem;
+    padding: 0.3125rem;
 
     input.group-title {
-      display:flex;
+      display: flex;
       align-items: center;
       font-size: rem(14px);
       margin: 0;
@@ -39,9 +74,9 @@
       outline: 0;
       border: 0;
       height: 25px;
+      flex-grow:0.8;
       box-shadow: none;
       background-color: transparent;
-      
       line-height: 20px;
       box-shadow: 0 0px 0 #c0c6d0;
       transition: box-shadow 0.2s background-color 0.2s;

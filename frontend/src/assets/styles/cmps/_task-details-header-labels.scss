@@ -1,5 +1,7 @@
 .task-details-header-labels {
     .labels-container {
+        display:flex;
+        flex-wrap: wrap;
         .label {
             cursor: pointer;
             color: #fff;

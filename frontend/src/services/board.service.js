@@ -1074,7 +1074,8 @@ export const boardService = {
     remove,
     updateTask,
     addTask,
-    addGroup
+    addGroup,
+    removeGroup
 }
 async function query() {
     let boards = await storageService.query(STORAGE_KEY)
@@ -1163,11 +1164,27 @@ async function addGroup(boardId) {
     try {
         const board = await getById(boardId)
         board.groups.push(newGroup)
+        save(board)
+
         return board
     }
     catch (err) {
         console.log('couldnt add group', err)
     }
+}
+
+async function removeGroup(boardId,groupId) {
+    try{
+        const board = await getById(boardId)
+        board.groups = board.groups.filter(group => group.id !== groupId)
+        save(board)
+        return board
+    }
+
+    catch (err){
+        console.log(err)
+    }
+
 }
 // function getEmptyBoard() {
 //     return {
