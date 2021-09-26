@@ -1153,9 +1153,7 @@ async function addGroup(boardId) {
         }
     }
     try {
-        console.log(boardId)
         const board = await getById(boardId)
-        console.log(board)
         board.groups.push(newGroup)
         return board
     }
