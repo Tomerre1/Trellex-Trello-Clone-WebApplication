@@ -38,7 +38,6 @@ export const saveBoard = (board) => {
     return async (dispatch) => {
         try {
             const newBoard = await boardService.save(board)
-            console.log('newBoard:', newBoard)
             dispatch({
                 type: "SAVE_BOARD",
                 board: newBoard,
@@ -56,7 +55,6 @@ export const addBoard = (title = "new board") => {
         const board = { title }
         try {
             const newBoard = await boardService.save(board)
-            console.log('newBoard:', newBoard)
             dispatch({
                 type: "ADD_BOARD",
                 board: newBoard,
@@ -68,6 +66,7 @@ export const addBoard = (title = "new board") => {
         }
     }
 }
+
 export const addTask = (taskTitle, boardId, groupId) => {
     return async (dispatch) => {
         try {

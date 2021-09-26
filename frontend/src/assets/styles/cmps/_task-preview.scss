@@ -1,110 +1,147 @@
 .task-preview-container {
+  box-shadow: 0 1px 0 #c0c6d0;
+  transition: background-color 0.2s;
+  .edit-icon {
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    height: 28px;
+    width: 28px;
+    pointer-events: hover;
+    padding: 15px;
+    background: #ffffff56;
+    border-radius: 3px;
+    transition: opacity 0.2s;
+    color: rgb(94, 94, 94);
+    pointer-events: visible;
+  }
 
-  &.full-cover {
-    height:49px ;
-    border-radius:3px;
-    .task-preview{
-      background:unset;
-      box-shadow:unset;
-      justify-content:flex-end;
-      height:100%;
-      padding:8px;
+  &:hover {
+    filter: brightness(0.97);
+    background: initial;
+    pointer-events: auto;
+
+    .edit-icon {
+      opacity: 1;
+      cursor: pointer;
+      filter: brightness(1);
+      transition: color 0.2s, filter 0.2s, opacity 0.2s;
+      a {
+        color: rgb(87, 86, 86);
+      }
+      .icon {
+        height: 16px;
+        width: 16px;
+      }
       &:hover {
-        filter:brightness(.8);  
-       }
-      p{
-        margin:0;
-        font-weight:500;
+        filter: brightness(0.97);
+        a {
+          color: rgb(48, 47, 47);
+        }
+      }
+    }
+  }
+  &.full-cover {
+    height: 49px;
+    border-radius: 3px;
+
+    .task-preview {
+      background: unset;
+      box-shadow: unset;
+      justify-content: flex-end;
+      height: 100%;
+      padding: 8px;
+      p {
+        margin: 0;
+        font-weight: 500;
       }
     }
   }
   &:last-of-type {
-    margin-bottom:1px;
+    margin-bottom: 1px;
   }
-  .task-cover{
-    height:32px;
-    width:100%;
+  .task-cover {
+    height: 32px;
+    width: 100%;
     border-radius: 3px 3px 0 0;
-
   }
   .task-preview {
-    display:flex;
+    display: flex;
     flex-direction: column;
     align-content: center !important;
-    min-height:32px;
-    box-shadow: 0 1px 0 #c0c6d0;
-  a {
-    text-decoration: none;
-    display:flex;
-    p {
-      margin:0 ;
+    min-height: 32px;
+    a {
+      text-decoration: none;
+      display: flex;
     }
-  }
-  background: #fff;
-  padding: 5px;
-  border-radius: 3px;
-  font-size: rem(14px);
-  transition: background-color 0.1s;
-  
-  cursor: pointer;
-  &:hover {
-    background: #f4f5f7;
-  }
-  .task-title { 
-  }
-  .task-preview-icons {
-    span {
+    p {
+      margin: 0;
+      margin-bottom:5px;
+
+    }
+    background: #fff;
+    padding: 5px;
+    border-radius: 3px;
+    font-size: rem(14px);
+    transition: background-color 0.1s;
+
+    cursor: pointer;
+
+    .task-preview-icons {
+      span {
         align-items: center;
         justify-content: center;
 
-      p {
-        margin: 0;
-        padding: 0;
-        color: rgb(107, 119, 140);
-        letter-spacing: 0px;
-        font-size: rem(12px);
-      }
-      &.due-date {
-          display:flex;
+        p {
+          margin: 0;
+          padding: 0;
+          color: rgb(107, 119, 140);
+          letter-spacing: 0px;
+          font-size: rem(12px);
+        }
+        &.due-date {
+          display: flex;
           align-items: center;
-          height:20px;
-          p{
-            font-size:rem(12px)
+          height: 20px;
+          p {
+            font-size: rem(12px);
           }
           &.overdue {
-            padding:2px 2px;
-              border-radius:4px;
-              p{
-                  color:white;
-                  margin-right:5px;
-              }
-              background:rgb(236, 148, 136);
-              color:white;
-              .icon{
-                  color:inherit;
-              }
+            padding: 2px 2px;
+            border-radius: 4px;
+            p {
+              color: white;
+              margin-right: 5px;
+            }
+            background: rgb(236, 148, 136);
+            color: white;
+            .icon {
+              color: inherit;
+            }
           }
           &.done {
-            padding:2px 2px;
-              border-radius:4px;
-              p{
-                  color:white;
-                  margin-right:5px;
-              }
-              background:rgb(97, 189, 79);
-              color:white;
-              .icon{
-                  color:inherit;
-              }
+            padding: 2px 2px;
+            border-radius: 4px;
+            p {
+              color: white;
+              margin-right: 5px;
+            }
+            background: rgb(97, 189, 79);
+            color: white;
+            .icon {
+              color: inherit;
+            }
           }
-      }
-      .icon {
-        padding: 4px;
-        color: rgb(107, 119, 140);
+        }
+        .icon {
+          padding: 4px;
+          color: rgb(107, 119, 140);
+        }
       }
     }
   }
-
-}
-
 }

@@ -9,7 +9,7 @@ function _AddNewGroup(props) {
   return (
     <article className="group-details add-new" onClick={() => {props.addGroup(boardId)}}>
       <div className="flex align-center">
-        <AddIcon />
+        <AddIcon className="icon"/>
         Add a list
       </div>
     </article>
