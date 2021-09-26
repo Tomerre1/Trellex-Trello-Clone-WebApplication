@@ -19,13 +19,13 @@ export function boardReducer(state = initialState, action) {
             boards = state.boards.map(board => (board._id === action.board._id) ? action.board : board)
             newState = { ...state, boards, board: { ...action.board } }
             break
+        case 'ADD_BOARD':
+            newState = { ...state, boards: [...state.boards, action.board] }
+            break
         case 'REMOVE_BOARD':
             const lastRemovedBoard = state.boards.find(board => board._id === action.boardId)
             boards = state.boards.filter(board => board._id !== action.boardId)
             newState = { ...state, boards, lastRemovedBoard }
-            break
-        case 'ADD_BOARD':
-            newState = { ...state, boards: [...state.boards, action.board] }
             break
         case 'SET_TASK_DETAILS':
             newState = { ...state, board: { ...state.board, currTaskDetails: { ...action.task } } }

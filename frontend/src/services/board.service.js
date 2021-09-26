@@ -139,7 +139,7 @@ const demoBoards = [
                         style: {
                             coverMode: "header",
                             bgImgUrl: "",
-                            bgColor: "#60bd4f"
+                            bgColor: "#61bd4f"
                         },
                         isDone: true
                     }
@@ -1153,9 +1153,7 @@ async function addGroup(boardId) {
         }
     }
     try {
-        console.log(boardId)
         const board = await getById(boardId)
-        console.log(board)
         board.groups.push(newGroup)
         return board
     }

@@ -50,6 +50,24 @@ export const saveBoard = (board) => {
         }
     }
 }
+
+export const addBoard = (title = "new board") => {
+    return async (dispatch) => {
+        const board = { title }
+        try {
+            const newBoard = await boardService.save(board)
+            console.log('newBoard:', newBoard)
+            dispatch({
+                type: "ADD_BOARD",
+                board: newBoard,
+            });
+
+        }
+        catch (err) {
+            console.log('cant set board', err)
+        }
+    }
+}
 export const addTask = (taskTitle, boardId, groupId) => {
     return async (dispatch) => {
         try {
@@ -75,7 +93,7 @@ export const addGroup = (boardId) => {
             });
 
         } catch (err) {
-            console.log('cant add group',err)
+            console.log('cant add group', err)
         }
     }
 }
