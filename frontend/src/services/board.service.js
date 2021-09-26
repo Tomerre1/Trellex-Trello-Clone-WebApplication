@@ -112,7 +112,7 @@ const demoBoards = [
                                 {
                                     title: "Todo 2",
                                     id: "5wqZQb",
-                                    isDone: true
+                                    isDone: false
                                 },
                                 {
                                     title: "Todo 3",
@@ -139,7 +139,7 @@ const demoBoards = [
                         style: {
                             coverMode: "header",
                             bgImgUrl: "",
-                            bgColor: "#61bd4f"
+                            bgColor: "#60bd4f"
                         },
                         isDone: true
                     }
@@ -1101,10 +1101,18 @@ function save(board) {
     } else {
         const board = {
             "_id": utilService.makeId,
+            "title":board.title,
+            "createdAt":Date.now(),
+            "createdBy":'TEMP USER', // logged in user
+            "groups":[],
+            "tasks":[],
+            "labels":[],
+            "activities":[],
+            "members":[],
             "style": {
                 "bgClr": 'linear-gradient(to right, #2980b9, #2c3e50)',
                 "bgImg": ''
-            }
+            },
         }
         return storageService.post(STORAGE_KEY, board)
     }
