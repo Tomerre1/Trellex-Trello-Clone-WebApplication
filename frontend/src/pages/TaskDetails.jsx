@@ -82,7 +82,7 @@ export class _TaskDetails extends Component {
         <div className="task-details-body flex">
           <div className="task-details-main flex column">
             <TaskDescription currTask={currTask} />
-            <TaskChecklist currTask={currTask} />
+            <TaskChecklist currTask={currTask} updateTaskDetails={this.updateTaskDetails}/>
             <TaskActivities />
           </div>
           <TaskActionsMenu setCurrentTarget={this.setCurrentTarget} togglePopover={this.togglePopover} />

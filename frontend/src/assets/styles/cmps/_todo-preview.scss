@@ -15,12 +15,15 @@
         float: left;
         padding-bottom: 9px;
         width: 100%;
-
+      
         svg{
             color: #dfe1e6;
             cursor: pointer;
+         
         }
-
+        .todo-check{
+            color: #0079bf;
+        }
         textarea {
             align-self: center;
             cursor: pointer;

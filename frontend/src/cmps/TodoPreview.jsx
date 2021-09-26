@@ -3,6 +3,8 @@ import { Close } from '@mui/icons-material';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
 
+import CheckBoxIcon from '@mui/icons-material/CheckBox';
+
 export class TodoPreview extends Component {
 
     state = {
@@ -29,18 +31,26 @@ export class TodoPreview extends Component {
         this.setState({ isEditMode: false })
     }
 
+    onToggleTodoIsDone = () => {
+        const { todo } = this.state
+        todo.isDone = !todo.isDone
+        this.setState(prevState => ({ ...prevState, todo }))
+        this.props.onSaveTodo(todo)
+    }
+
     render() {
         const { todo, isEditMode } = this.state
         if (!todo) return <div>Loading...</div>
         const { title, isDone } = todo
 
+        console.log('todo is done', todo.isDone)
+
         return (
 
             <div className="todo-preview-container flex column">
                 <div className="todo-preview flex align-center">
-                    {/* {todo.isDone && <CheckBoxOutlineBlankIcon />} */}
-                    {/* {todo.isDone && <CheckBoxOutlinedIcon />} */}
-                    <CheckBoxOutlineBlankIcon />
+                    {todo.isDone && <CheckBoxIcon onClick={this.onToggleTodoIsDone} className="todo-check" />}
+                    {!todo.isDone && <CheckBoxOutlineBlankIcon onClick={this.onToggleTodoIsDone} />}
                     {isEditMode &&
                         <textarea onClick={this.onEditMode}
                             ref={(input) => { this.selectedInput = input; }}

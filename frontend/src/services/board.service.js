@@ -112,7 +112,7 @@ const demoBoards = [
                                 {
                                     title: "Todo 2",
                                     id: "5wqZQb",
-                                    isDone: false
+                                    isDone: true
                                 },
                                 {
                                     title: "Todo 3",
