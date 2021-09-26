@@ -21,11 +21,14 @@
     padding:8px;
   }
   .dots {
-    padding: 2px;
+    padding: 10px;
     cursor: pointer;
     color:#626263b9;
     width:auto;
     border-radius: 3px;
+    height:32px;
+    width:32px;
+    position:relative;
     transition:background-color .2s,  color .1s;
     &:hover {
       color:black;
@@ -61,20 +64,22 @@
   }
   .group-header {
     width: 100%;
-    padding: 0.3125rem;
+    padding: 0.125rem;
+    padding-top:0;
+    margin-top:0;
 
     input.group-title {
       display: flex;
       align-items: center;
       font-size: rem(14px);
       margin: 0;
-      padding-inline-start: 0px;
+      padding-inline-start: 2px;
       font-weight: 500;
       letter-spacing: rem(-0.5px);
       outline: 0;
       border: 0;
       height: 25px;
-      flex-grow:0.8;
+      flex-grow:0.9;
       box-shadow: none;
       background-color: transparent;
       line-height: 20px;
