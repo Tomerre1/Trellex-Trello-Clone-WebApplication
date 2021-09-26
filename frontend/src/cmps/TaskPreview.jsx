@@ -22,11 +22,12 @@ export function TaskPreview(props) {
     });
     return `${doneTodos}/${todos}`;
   };
-  console.log(groupId);
+  console.log(task);
   return (
+      <article className="task-preview-container">
     <Link to={taskUrl} className="clean-link">
-      <article className="task-preview clean-link">
-        <div className="task-cover">cover color/image here</div>
+       { task.style?.bgColor && <div className="task-cover" style={{background: task.style.bgColor }}></div>}
+        <div className="task-preview clean-link">
         {labelIds && (
           <TaskLabels labelIds={labelIds} boardLabels={boardLabels} />
         )}
@@ -51,7 +52,8 @@ export function TaskPreview(props) {
             />
           )}
         </div>
-      </article>
+        </div>
     </Link>
+      </article>
   );
 }

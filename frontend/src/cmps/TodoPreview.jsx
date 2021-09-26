@@ -38,6 +38,11 @@ export class TodoPreview extends Component {
         this.props.onSaveTodo(todo)
     }
 
+    //FOR NOW
+    onToggleEditMode = () => {
+        this.setState(prevState => ({ ...prevState, isEditMode:!this.state.isEditMode }))
+    }
+
     render() {
         const { todo, isEditMode } = this.state
         if (!todo) return <div>Loading...</div>
@@ -59,11 +64,11 @@ export class TodoPreview extends Component {
                             onChange={this.handleChange}>
                         </textarea>
                     }
-                    {!isEditMode && <span onClick={this.onEditMode}>{title}</span>}
+                    {!isEditMode && <div className="checklist-txt-and-btn"><span className={`${todo.isDone ? 'done' : ''}`} onClick={this.onEditMode}>{title}</span></div>}
                 </div>
                 <div className={`checklist-btns flex align-center ${isEditMode ? 'show' : 'hidden'}`}>
-                    <button className="primary-btn">Save</button>
-                    <Close />
+                    <button onClick={this.onToggleEditMode} className="primary-btn">Save</button>
+                    <Close onClick={this.onToggleEditMode} className="close-btn"/>
                 </div >
             </div >
         )
