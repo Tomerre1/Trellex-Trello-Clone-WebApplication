@@ -25,8 +25,9 @@ export function TaskPreview(props) {
   console.log(task);
   return (
     <Link to={taskUrl} className="clean-link">
-      <article className="task-preview clean-link">
-        <div className="task-cover" style={{background:task.style?.bgColor ? task.style.bgColor : ''}}>cover color ?</div>
+      <article className="task-preview-container">
+        <div className="task-cover" style={{background:task.style?.bgColor ? task.style.bgColor : ''}}></div>
+        <div className="task-preview clean-link">
         {labelIds && (
           <TaskLabels labelIds={labelIds} boardLabels={boardLabels} />
         )}
@@ -50,6 +51,7 @@ export function TaskPreview(props) {
               txt={getChecklistData()}
             />
           )}
+        </div>
         </div>
       </article>
     </Link>

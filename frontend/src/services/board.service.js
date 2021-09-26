@@ -1099,7 +1099,7 @@ function save(board) {
     if (board._id) {
         return storageService.put(STORAGE_KEY, board)
     } else {
-        const board = {
+        const newBoard = {
             "_id": utilService.makeId,
             "title":board.title,
             "createdAt":Date.now(),
@@ -1114,7 +1114,7 @@ function save(board) {
                 "bgImg": ''
             },
         }
-        return storageService.post(STORAGE_KEY, board)
+        return storageService.post(STORAGE_KEY, newBoard)
     }
 }
 
