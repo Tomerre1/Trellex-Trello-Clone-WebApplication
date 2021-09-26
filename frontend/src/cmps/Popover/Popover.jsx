@@ -6,7 +6,7 @@ export class Popover extends React.Component {
         visible: false,
         top: 0,
         left: 0,
-        type: null
+        type: null,
     };
     contentEl = null;
 
@@ -31,6 +31,7 @@ export class Popover extends React.Component {
         top = pos.top + pos.height
         return { left, top, width }
     }
+
 
 
     getBottomPosition = (elRect, targetRect) => {

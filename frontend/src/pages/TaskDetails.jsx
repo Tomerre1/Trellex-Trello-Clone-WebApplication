@@ -13,6 +13,7 @@ import { PopoverChecklist } from '../cmps/Popover/PopoverChecklist'
 import { PopoverDate } from "../cmps/Popover/PopoverDate";
 import { PopoverAttachment } from '../cmps/Popover/PopoverAttachment';
 import { PopoverCover } from '../cmps/Popover/PopoverCover';
+import { TaskHeaderDetails } from '../cmps/TaskHeaderDetails'
 import { LoaderSpinner } from '../cmps/LoaderSpinner'
 import { saveBoard, saveTaskDetails } from '../store/board.actions'
 import { setCurrTaskDetails } from '../store/app.actions'
@@ -22,7 +23,10 @@ export class _TaskDetails extends Component {
     isCover: true,
     currentTarget: null,
     isPopover: false,
-    bgColorCover: null
+    bgColorCover: null,
+    selectedMembers: null,
+    selectedLabels: null,
+    selectedDate: null,
   }
   contentEl = null;
 
@@ -31,7 +35,7 @@ export class _TaskDetails extends Component {
     const { taskId, listId } = this.props.match.params;
     const currGroup = board.groups.find(list => list.id === listId)
     const currTask = currGroup.tasks.find(task => task.id === taskId)
-    this.setState({ isCover: false, isPopover: false, currGroup, currTask, currentTarget: null })
+    this.setState(prevState => ({ ...prevState, isCover: false, isPopover: false, currGroup, currTask, currentTarget: null }))
     // this.props.setCurrTaskDetails({ currTask, currGroup })
   }
 
@@ -63,7 +67,7 @@ export class _TaskDetails extends Component {
   }
 
   render() {
-    const { isCover, currentTarget, isPopover, type, currTask, currGroup, bgColorCover } = this.state
+    const { isCover, currentTarget, isPopover, type, selectedLabels, selectedDate, selectedMembers, currTask, currGroup, bgColorCover } = this.state
     const { board } = this.props
     if (!currTask || !board) return <LoaderSpinner />
     const DynamicCmpPopover = (props) => {
@@ -90,6 +94,7 @@ export class _TaskDetails extends Component {
         <TaskHeader />
         <div className="task-details-body flex">
           <div className="task-details-main flex column">
+            {(selectedLabels || selectedMembers || selectedDate) && <TaskHeaderDetails selectedLabels={selectedLabels} selectedMembers={selectedMembers} selectedDate={selectedDate} />}
             <TaskDescription currTask={currTask} />
             <TaskChecklist currTask={currTask} updateTaskDetails={this.updateTaskDetails} />
             <TaskActivities />
