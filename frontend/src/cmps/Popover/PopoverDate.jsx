@@ -22,8 +22,7 @@ export class PopoverDate extends Component {
     }
 
     onSaveDueDate = (date) => {
-        const { togglePopover , updateTaskDetails } = this.props
-        const { currTask } = this.props
+        const { togglePopover , updateTaskDetails ,currTask} = this.props
         currTask.dueDate = date ? Date.parse(date) : 0;
         updateTaskDetails(currTask)
         togglePopover()

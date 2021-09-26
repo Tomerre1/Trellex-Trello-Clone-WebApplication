@@ -31,8 +31,7 @@ export class PopoverLabels extends Component {
     }
 
     toggleLabelCheck = async (labelId) => {
-        const { updateTaskDetails } = this.props
-        const { currTask } = this.props
+        const { updateTaskDetails, currTask } = this.props
         const updatedLabelsId = (currTask.labelIds.includes(labelId)) ?
             currTask.labelIds.filter(currLabelId => currLabelId !== labelId) :
             [...currTask.labelIds, labelId]
