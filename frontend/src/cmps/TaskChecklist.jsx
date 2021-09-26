@@ -13,7 +13,7 @@ export class TaskChecklist extends Component {
     render() {
         const { currTask } = this.props
         return (
-            <div className="card-checklists" >
+            <div className="task-checklists" >
                 {currTask.checklist.map(checklist => {
                     return <TaskChecklistPreview
                         key={checklist.id}

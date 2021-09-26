@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { TodoList } from './TodoList'
 
 import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
 
@@ -12,7 +13,7 @@ export class TaskChecklistPreview extends Component {
 
     render() {
         const { checklist } = this.props
-        console.log('checklist', checklist)
+        console.log('checklist#####', checklist)
         return (
             <div className="task-activities flex column">
                 <div className="window-modal-title flex space-between">
@@ -20,6 +21,10 @@ export class TaskChecklistPreview extends Component {
                         <CheckBoxOutlinedIcon />
                         <h3>{checklist.title}</h3>
                     </div>
+                    <TodoList
+                        todos={checklist.todos}
+                    />
+
                 </div>
             </div>
         )
