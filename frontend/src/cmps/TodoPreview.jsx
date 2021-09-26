@@ -59,7 +59,7 @@ export class TodoPreview extends Component {
                             onChange={this.handleChange}>
                         </textarea>
                     }
-                    {!isEditMode && <span onClick={this.onEditMode}>{title}</span>}
+                    {!isEditMode && <div className="checklist-txt-and-btn"><span onClick={this.onEditMode}>{title}</span></div>}
                 </div>
                 <div className={`checklist-btns flex align-center ${isEditMode ? 'show' : 'hidden'}`}>
                     <button className="primary-btn">Save</button>
