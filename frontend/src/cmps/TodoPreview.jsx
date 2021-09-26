@@ -1,5 +1,9 @@
 import React, { Component } from "react";
 import { Close } from '@mui/icons-material';
+import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
+import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
+
+import CheckBoxIcon from '@mui/icons-material/CheckBox';
 
 export class TodoPreview extends Component {
 
@@ -7,24 +11,19 @@ export class TodoPreview extends Component {
         todo: null,
         isEditMode: false
     }
+    selectedInput = null;
 
     componentDidMount() {
         const { todo } = this.props
         this.setState(prevState => ({ ...prevState, todo }))
     }
 
-    // handleChange = (ev) => {
-    //     console.log(ev.target.value)
-    //     console.log(this.state.todo)
-    //     this.setState({ ...this.state.todo, title: ev.target.value })
-    // }
-
     handleChange = ({ target: { value } }) => {
-        this.setState(prevState => ({ ...prevState, todo: {...this.state.todo , title: value} }))
+        this.setState(prevState => ({ ...prevState, todo: { ...this.state.todo, title: value } }))
     }
 
     onEditMode = () => {
-        this.selectedInput.focus()
+        if (this.selectedInput) this.selectedInput.focus()
         this.setState({ isEditMode: true })
     }
 
@@ -32,21 +31,35 @@ export class TodoPreview extends Component {
         this.setState({ isEditMode: false })
     }
 
+    onToggleTodoIsDone = () => {
+        const { todo } = this.state
+        todo.isDone = !todo.isDone
+        this.setState(prevState => ({ ...prevState, todo }))
+        this.props.onSaveTodo(todo)
+    }
+
     render() {
         const { todo, isEditMode } = this.state
         if (!todo) return <div>Loading...</div>
         const { title, isDone } = todo
 
+        console.log('todo is done', todo.isDone)
+
         return (
 
             <div className="todo-preview-container flex column">
                 <div className="todo-preview flex align-center">
-                    <textarea onClick={this.onEditMode}
-                        ref={(input) => { this.selectedInput = input; }}
-                        onBlur={this.onSaveTodo}
-                        value={title}
-                        onChange={this.handleChange}>
-                    </textarea>
+                    {todo.isDone && <CheckBoxIcon onClick={this.onToggleTodoIsDone} className="todo-check" />}
+                    {!todo.isDone && <CheckBoxOutlineBlankIcon onClick={this.onToggleTodoIsDone} />}
+                    {isEditMode &&
+                        <textarea onClick={this.onEditMode}
+                            ref={(input) => { this.selectedInput = input; }}
+                            onBlur={this.onSaveTodo}
+                            value={title}
+                            onChange={this.handleChange}>
+                        </textarea>
+                    }
+                    {!isEditMode && <span onClick={this.onEditMode}>{title}</span>}
                 </div>
                 <div className={`checklist-btns flex align-center ${isEditMode ? 'show' : 'hidden'}`}>
                     <button className="primary-btn">Save</button>

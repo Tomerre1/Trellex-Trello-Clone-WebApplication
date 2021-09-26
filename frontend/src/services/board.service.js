@@ -105,8 +105,18 @@ const demoBoards = [
                                 id: "wquJCo",
                                 title: "22",
                                 todos: [{
-                                    title: "1",
+                                    title: "Todo 1",
+                                    id: "5eqZQb",
+                                    isDone: false
+                                },
+                                {
+                                    title: "Todo 2",
                                     id: "5wqZQb",
+                                    isDone: true
+                                },
+                                {
+                                    title: "Todo 3",
+                                    id: "5wqpQb",
                                     isDone: false
                                 }]
                             }

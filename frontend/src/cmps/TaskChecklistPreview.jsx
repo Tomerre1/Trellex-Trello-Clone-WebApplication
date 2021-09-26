@@ -9,7 +9,10 @@ export class TaskChecklistPreview extends Component {
     state = {
     }
 
-
+    onSaveTodo = (todo) => {
+        const { currTask , updateTaskDetails} = this.props
+        updateTaskDetails(currTask)
+    }
 
     render() {
         const { checklist } = this.props
@@ -21,11 +24,11 @@ export class TaskChecklistPreview extends Component {
                         <CheckBoxOutlinedIcon />
                         <h3>{checklist.title}</h3>
                     </div>
-                    <TodoList
-                        todos={checklist.todos}
-                    />
-
                 </div>
+                <TodoList
+                        todos={checklist.todos}
+                        onSaveTodo={this.onSaveTodo}
+                    />
             </div>
         )
     }
