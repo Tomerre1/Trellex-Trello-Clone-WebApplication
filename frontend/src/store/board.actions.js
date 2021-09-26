@@ -46,6 +46,7 @@ export const saveBoard = (board) => {
         }
         catch (err) {
             console.log('cant set board', err)
+            // throw Error(err)
         }
     }
 }

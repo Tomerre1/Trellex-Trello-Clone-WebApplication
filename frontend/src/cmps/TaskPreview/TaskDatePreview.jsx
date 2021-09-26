@@ -24,7 +24,7 @@ const _TaskDatePreview = (props) => {
     }
     catch(err){
       console.log('cant change task status',err)
-          setIsDone(!isDone)
+      setIsDone(!isDone)
 
     }
   };

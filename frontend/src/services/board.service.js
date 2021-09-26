@@ -1097,12 +1097,7 @@ function remove(boardId) {
 
 async function save(board) {
     if (board._id) {
-        try{
-            return await storageService.put(STORAGE_KEY, board)
-        }
-        catch(err) {
-            console.log('%c%s', 'color: #e50000', err);  
-        }
+        return storageService.put(STORAGE_KEY, board)
     } else {
         const newBoard = {
             "_id": utilService.makeId,
