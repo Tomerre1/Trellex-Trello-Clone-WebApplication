@@ -26,7 +26,7 @@ export function TaskPreview(props) {
   return (
     <Link to={taskUrl} className="clean-link">
       <article className="task-preview-container">
-        <div className="task-cover" style={{background:task.style?.bgColor ? task.style.bgColor : ''}}></div>
+       { task.style?.bgColor && <div className="task-cover" style={{background: task.style.bgColor }}></div>}
         <div className="task-preview clean-link">
         {labelIds && (
           <TaskLabels labelIds={labelIds} boardLabels={boardLabels} />
