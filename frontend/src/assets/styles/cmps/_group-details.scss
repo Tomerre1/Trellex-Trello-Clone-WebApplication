@@ -16,35 +16,44 @@
     color: rgba(255, 255, 255, 0.747);
     font-size: rem(14px);
     cursor: pointer;
-    transition: background-color .2s;
-    &:hover{
+    transition: background-color 0.2s;
+    &:hover {
       background-color: #ebecf05d;
     }
   }
   .group-header {
     width: 100%;
     input {
-      font-size: 1rem;
+      display:flex;
+      align-items: center;
+      font-size: rem(14px);
+      margin: 0;
       padding-inline-start: 3px;
       font-weight: 600;
       letter-spacing: rem(-0.5px);
       outline: 0;
       border: 0;
+      height: 25px;
       box-shadow: none;
       background-color: transparent;
+    
+      line-height: 20px;
       box-shadow: 0 0px 0 #c0c6d0;
-      transition: box-shadow 0.2s background-color .2s;
-      padding: 0;
+      transition: box-shadow 0.2s background-color 0.2s;
+      font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+        Noto Sans, Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
+      font-size: 14px;
       margin-top: 5px;
+      color: #172b4d;
 
       &:focus-visible {
-        font-size: 1rem;
+        font-size: rem(14px);
         // padding-inline-start: 3px;
         letter-spacing: rem(-0.5px);
         background-color: unset;
         box-shadow: 0 0 2px #020202;
         border-radius: 2px;
-        background-color:white;
+        background-color: white;
       }
     }
   }

@@ -33,7 +33,7 @@ export function _AddNewTask(props) {
       {!isClicked ? (
         <div className="add-task-inactive flex" onClick={toggleIsClicked}>
           <AddIcon className="add-icon" />
-          <p>Add a task</p>
+          <p>Add another task</p>
         </div>
       ) : (
         <div className="add-task-active flex column">
