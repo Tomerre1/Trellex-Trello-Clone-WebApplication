@@ -335,12 +335,12 @@ const demoBoards = [
                 "title": "Group 2",
                 "tasks": [
                     {
-                        "id": "c103",
+                        "id": "c1014",
                         "title": "Do that",
                         "labelIds": [],
                     },
                     {
-                        "id": "c104",
+                        "id": "c124",
                         "title": "Help me",
                         "description": "description",
                         "comments": [
@@ -450,11 +450,11 @@ const demoBoards = [
                 "title": "Group 1",
                 "tasks": [
                     {
-                        "id": "c101",
+                        "id": "c11241",
                         "title": "Replace logo",
                     },
                     {
-                        "id": "c102",
+                        "id": "c10asdf2",
                         "title": "Add Samples"
                     }
 
@@ -466,7 +466,7 @@ const demoBoards = [
                 "title": "Group 2",
                 "tasks": [
                     {
-                        "id": "c103",
+                        "id": "c10f3",
                         "title": "Do that"
                     },
                     {
@@ -728,7 +728,7 @@ const demoBoards = [
                 "style": {}
             },
             {
-                "id": "g104",
+                "id": "g1034",
                 "title": "Group 2",
                 "tasks": [
                     {
@@ -789,7 +789,7 @@ const demoBoards = [
                 "style": {}
             },
             {
-                "id": "g105",
+                "id": "g134",
                 "title": "Group 2",
                 "tasks": [
                     {
@@ -1064,6 +1064,7 @@ export const boardService = {
     remove,
     updateTask,
     addTask,
+    addGroup
 }
 async function query() {
     let boards = await storageService.query(STORAGE_KEY)
@@ -1088,7 +1089,13 @@ function save(board) {
     if (board._id) {
         return storageService.put(STORAGE_KEY, board)
     } else {
-        board.owner = userService.getLoggedinUser()
+        const board = {
+            "_id": utilService.makeId,
+            "style": {
+                "bgClr": 'linear-gradient(to right, #2980b9, #2c3e50)',
+                "bgImg": ''
+            }
+        }
         return storageService.post(STORAGE_KEY, board)
     }
 }
@@ -1101,6 +1108,8 @@ function updateTask(board, group, task) {
 }
 
 async function addTask(taskTitle, boardId, groupId) {
+    if (!taskTitle)
+        return
     const newTask =
     {
         "id": `t-${utilService.makeId()}`,
@@ -1113,7 +1122,8 @@ async function addTask(taskTitle, boardId, groupId) {
             "fullname": "Barak Sidi",
             "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
         },
-        "style": {}
+        "style": {},
+        "labelIds": []
     }
     const board = await getById(boardId)
     const idx = board.groups.findIndex((group) => group.id === groupId)
@@ -1121,7 +1131,28 @@ async function addTask(taskTitle, boardId, groupId) {
     save(board)
     return board
 }
-
+async function addGroup(boardId) {
+    if (!boardId) return
+    const newGroup = {
+        "id": `g-${utilService.makeId()}`,
+        "title": "New list",
+        tasks: [],
+        "style": {
+            bgImg: "",
+            bgClr: ""
+        }
+    }
+    try {
+        console.log(boardId)
+        const board = await getById(boardId)
+        console.log(board)
+        board.groups.push(newGroup)
+        return board
+    }
+    catch (err) {
+        console.log('couldnt add group', err)
+    }
+}
 // function getEmptyBoard() {
 //     return {
 //         vendor: 'Susita-' + (Date.now() % 1000),

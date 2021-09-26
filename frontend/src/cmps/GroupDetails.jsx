@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
+import { AddNewGroup } from './Group/AddNewGroup'
 import { TaskPreview } from "./TaskPreview";
-import AddIcon from "@mui/icons-material/Add";
 import { AddNewTask } from "./Group/AddNewTask";
 import { HeaderTitle } from "./Group/HeaderTitle";
 import MoreHorizOutlinedIcon from "@mui/icons-material/MoreHorizOutlined";
@@ -15,15 +15,9 @@ export const GroupDetails = (props) => {
       behavior: "smooth",
     });
   };
-
   if (isAddNew)
     return (
-      <article className="group-details add-new">
-        <div className="flex align-center">
-          <AddIcon />
-          Add a list
-        </div>
-      </article>
+     <AddNewGroup/>
     );
 
   return (
