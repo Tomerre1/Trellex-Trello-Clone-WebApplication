@@ -5,9 +5,10 @@ import { Popover } from './Popover'
 export class PopoverCover extends React.Component {
 
     state = {
-        isHeaderSelected: false,
+        isHeaderSelected: null,
         isFullSelected: false,
-        selectedColor: null
+        selectedColor: false,
+
     }
 
 
@@ -18,20 +19,21 @@ export class PopoverCover extends React.Component {
                 this.setState(prevState => ({
                     ...prevState,
                     isHeaderSelected: true,
-                    selectedColor: currTask.style.bgColor
+                    selectedColor: currTask.style?.bgColor || 'rgba(94, 108, 132, 0.3)',
+
                 }))
                 break;
             case 'full':
                 this.setState(prevState => ({
                     ...prevState,
                     isFullSelected: true,
-                    selectedColor: currTask.style.bgColor
+                    selectedColor: currTask.style?.bgColor || 'rgba(94, 108, 132, 0.3)',
                 }))
                 break;
             default:
                 this.setState(prevState => ({
                     ...prevState,
-                    selectedColor: 'rgba(94, 108, 132, 0.3)'
+                    selectedColor: 'rgba(94, 108, 132, 0.3)',
                 }
                 ))
                 break;
@@ -39,7 +41,7 @@ export class PopoverCover extends React.Component {
     }
 
     setHeaderSelected = () => {
-        const { updateTaskDetails, currTask } = this.props
+        const { updateTaskDetails, currTask, setIsCover } = this.props
 
         this.setState(prevState => ({
             ...prevState,
@@ -47,39 +49,60 @@ export class PopoverCover extends React.Component {
             isFullSelected: false,
         }))
         currTask.style.coverMode = 'header'
+        setIsCover(true)
         updateTaskDetails(currTask)
 
     }
 
     setFullSelected = () => {
-        const { updateTaskDetails, currTask } = this.props
+        const { updateTaskDetails, currTask, setIsCover } = this.props
         this.setState(prevState => ({
             ...prevState,
             isFullSelected: true,
             isHeaderSelected: false,
+
         }))
         currTask.style.coverMode = 'full'
+        setIsCover(true)
         updateTaskDetails(currTask)
     }
 
     removeCover = () => {
-        const { updateTaskDetails, currTask } = this.props
+        const { updateTaskDetails, currTask, setBgColorCover, setIsCover } = this.props
         this.setState(prevState => ({
             ...prevState,
             isFullSelected: false,
             isHeaderSelected: false,
         }))
-        delete currTask.style.coverMode
+        currTask.style.coverMode = null
+        currTask.style.bgColor = null
+        setBgColorCover(null)
+        setIsCover(false)
         updateTaskDetails(currTask)
     }
 
     handleChange = (event) => {
-        const { updateTaskDetails, currTask } = this.props
+        const { updateTaskDetails, currTask, setBgColorCover, setIsCover } = this.props
+        const { isFullSelected, isHeaderSelected } = this.state
         const { value } = event.target
-        this.setState({
-            selectedColor: value
-        })
+        if (!isFullSelected && !isHeaderSelected) {
+            this.setState(prevState => ({
+                ...prevState,
+                isHeaderSelected: true,
+                selectedColor: value
+            }))
+            currTask.style.coverMode = 'header'
+            setIsCover(true)
+        }
+        else {
+            this.setState(prevState => ({
+                ...prevState,
+                selectedColor: value
+            }))
+        }
+
         currTask.style.bgColor = value
+        setBgColorCover(value)
         updateTaskDetails(currTask)
     }
 
@@ -91,10 +114,8 @@ export class PopoverCover extends React.Component {
 
 
     render() {
-        console.log(this.state.isFullSelected, this.state.isHeaderSelected)
-        console.log('%c  this.state.isFullSelected, this.state.isHeaderSelected:', 'color: #0e93e0;background: #aaefe5;', this.state.isFullSelected, this.state.isHeaderSelected);
         const { isHeaderSelected, isFullSelected, selectedColor } = this.state
-        console.log(`this.props`, this.props)
+        if (!selectedColor) return <div></div>
         const { togglePopover, currentTarget, title } = this.props
         return (
             <Popover togglePopover={togglePopover} currentTarget={currentTarget} title={title} >
@@ -107,7 +128,7 @@ export class PopoverCover extends React.Component {
                         <div onClick={() => this.setFullSelected()} className={`full-cover-preview ${isFullSelected ? 'selected' : ''}`} style={{ backgroundColor: selectedColor }}></div>
                     </div>
                     <div className="flex">
-                        <button className="secondary-btn full">Remove Cover</button>
+                        <button className="secondary-btn full" onClick={this.removeCover}>Remove Cover</button>
                     </div>
                     <h4>COLOR</h4>
                     <ColorPalette handleChange={this.handleChange} selectedColor={selectedColor} />

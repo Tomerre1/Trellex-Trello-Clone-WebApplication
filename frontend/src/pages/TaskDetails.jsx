@@ -22,6 +22,7 @@ export class _TaskDetails extends Component {
     isCover: true,
     currentTarget: null,
     isPopover: false,
+    bgColorCover: null
   }
   contentEl = null;
 
@@ -53,8 +54,16 @@ export class _TaskDetails extends Component {
     this.setState(prevState => ({ ...prevState, isPopover: !prevState.isPopover }))
   }
 
+  setBgColorCover = (bgColor) => {
+    this.setState(prevState => ({ ...prevState, bgColorCover: bgColor }))
+  }
+
+  setIsCover = (isCover) => {
+    this.setState(prevState => ({ ...prevState, isCover }))
+  }
+
   render() {
-    const { isCover, currentTarget, isPopover, type, currTask, currGroup } = this.state
+    const { isCover, currentTarget, isPopover, type, currTask, currGroup, bgColorCover } = this.state
     const { board } = this.props
     if (!currTask || !board) return <LoaderSpinner />
     const DynamicCmpPopover = (props) => {
@@ -70,19 +79,19 @@ export class _TaskDetails extends Component {
         case 'ATTACHMENT':
           return <PopoverAttachment {...props} title='Attach from...' />
         case 'COVER':
-          return <PopoverCover {...props} title='Cover' />
+          return <PopoverCover {...props} setBgColorCover={this.setBgColorCover} setIsCover={this.setIsCover} title='Cover' />
       }
     }
 
     return (
       <section className="task-details flex column">
         <button className={`close-task-details ${isCover ? 'cover' : ''}`}><Close /></button>
-        <TaskCardCover bgColor={currTask.style.bgColor} />
+        {isCover && <TaskCardCover bgColor={bgColorCover} />}
         <TaskHeader />
         <div className="task-details-body flex">
           <div className="task-details-main flex column">
             <TaskDescription currTask={currTask} />
-            <TaskChecklist currTask={currTask} updateTaskDetails={this.updateTaskDetails}/>
+            <TaskChecklist currTask={currTask} updateTaskDetails={this.updateTaskDetails} />
             <TaskActivities />
           </div>
           <TaskActionsMenu setCurrentTarget={this.setCurrentTarget} togglePopover={this.togglePopover} />
