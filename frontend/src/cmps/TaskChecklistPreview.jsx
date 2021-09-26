@@ -21,11 +21,10 @@ export class TaskChecklistPreview extends Component {
                         <CheckBoxOutlinedIcon />
                         <h3>{checklist.title}</h3>
                     </div>
-                    <TodoList
+                </div>
+                <TodoList
                         todos={checklist.todos}
                     />
-
-                </div>
             </div>
         )
     }

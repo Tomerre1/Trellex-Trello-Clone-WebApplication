@@ -9,24 +9,19 @@ export class TodoPreview extends Component {
         todo: null,
         isEditMode: false
     }
+    selectedInput = null;
 
     componentDidMount() {
         const { todo } = this.props
         this.setState(prevState => ({ ...prevState, todo }))
     }
 
-    // handleChange = (ev) => {
-    //     console.log(ev.target.value)
-    //     console.log(this.state.todo)
-    //     this.setState({ ...this.state.todo, title: ev.target.value })
-    // }
-
     handleChange = ({ target: { value } }) => {
         this.setState(prevState => ({ ...prevState, todo: { ...this.state.todo, title: value } }))
     }
 
     onEditMode = () => {
-        this.selectedInput.focus()
+        if (this.selectedInput) this.selectedInput.focus()
         this.setState({ isEditMode: true })
     }
 
@@ -46,12 +41,15 @@ export class TodoPreview extends Component {
                     {/* {todo.isDone && <CheckBoxOutlineBlankIcon />} */}
                     {/* {todo.isDone && <CheckBoxOutlinedIcon />} */}
                     <CheckBoxOutlineBlankIcon />
-                    <textarea onClick={this.onEditMode}
-                        ref={(input) => { this.selectedInput = input; }}
-                        onBlur={this.onSaveTodo}
-                        value={title}
-                        onChange={this.handleChange}>
-                    </textarea>
+                    {isEditMode &&
+                        <textarea onClick={this.onEditMode}
+                            ref={(input) => { this.selectedInput = input; }}
+                            onBlur={this.onSaveTodo}
+                            value={title}
+                            onChange={this.handleChange}>
+                        </textarea>
+                    }
+                    {!isEditMode && <span onClick={this.onEditMode}>{title}</span>}
                 </div>
                 <div className={`checklist-btns flex align-center ${isEditMode ? 'show' : 'hidden'}`}>
                     <button className="primary-btn">Save</button>
