@@ -1,0 +1,35 @@
+.cover-popover {
+    width: 18rem;
+    .cover-options {
+        margin-bottom: 0.8rem;
+        .header-cover-preview,
+        .full-cover-preview {
+            margin: 0;
+            height: 64px;
+            width: 100%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: 50%;
+            box-shadow: none;
+            cursor: pointer;
+            border-radius: 3px;
+            position: relative;
+            width: 134px;
+            border: 1px solid rgba(9, 30, 66, 0.08);
+            &.selected {
+                box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #0079bf;
+            }
+            &:active {
+                box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #0079bf;
+                filter: none;
+            }
+            &:hover {
+                filter: saturate(85%) brightness(85%);
+            }
+            .header-section {
+                height: 2rem;
+                border-radius: 3px;
+            }
+        }
+    }
+}

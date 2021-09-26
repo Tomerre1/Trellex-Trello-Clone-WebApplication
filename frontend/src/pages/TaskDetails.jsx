@@ -77,12 +77,12 @@ export class _TaskDetails extends Component {
     return (
       <section className="task-details flex column">
         <button className={`close-task-details ${isCover ? 'cover' : ''}`}><Close /></button>
-        <TaskCardCover />
+        <TaskCardCover bgColor={currTask.style.bgColor} />
         <TaskHeader />
         <div className="task-details-body flex">
           <div className="task-details-main flex column">
             <TaskDescription currTask={currTask} />
-            <TaskChecklist currTask={currTask} />
+            <TaskChecklist currTask={currTask} updateTaskDetails={this.updateTaskDetails}/>
             <TaskActivities />
           </div>
           <TaskActionsMenu setCurrentTarget={this.setCurrentTarget} togglePopover={this.togglePopover} />
