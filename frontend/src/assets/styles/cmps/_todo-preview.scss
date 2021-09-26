@@ -1,5 +1,12 @@
 .todo-preview-container {
     .todo-preview {
+        width: 100%;
+        min-height: 36px;
+        transform-origin: left bottom;
+        transition-property: transform, opacity, height, padding, margin;
+        transition-duration: 0.14s;
+        transition-timing-function: ease-in;
+        
         textarea {
             align-self: center;
             cursor: pointer;

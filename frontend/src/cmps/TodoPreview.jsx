@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Close } from '@mui/icons-material';
+import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
+import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
 
 export class TodoPreview extends Component {
 
@@ -20,7 +22,7 @@ export class TodoPreview extends Component {
     // }
 
     handleChange = ({ target: { value } }) => {
-        this.setState(prevState => ({ ...prevState, todo: {...this.state.todo , title: value} }))
+        this.setState(prevState => ({ ...prevState, todo: { ...this.state.todo, title: value } }))
     }
 
     onEditMode = () => {
@@ -41,6 +43,9 @@ export class TodoPreview extends Component {
 
             <div className="todo-preview-container flex column">
                 <div className="todo-preview flex align-center">
+                    {/* {todo.isDone && <CheckBoxOutlineBlankIcon />} */}
+                    {/* {todo.isDone && <CheckBoxOutlinedIcon />} */}
+                    <CheckBoxOutlineBlankIcon />
                     <textarea onClick={this.onEditMode}
                         ref={(input) => { this.selectedInput = input; }}
                         onBlur={this.onSaveTodo}
