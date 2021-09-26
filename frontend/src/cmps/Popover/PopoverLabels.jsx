@@ -31,14 +31,14 @@ export class PopoverLabels extends Component {
     }
 
     toggleLabelCheck = async (labelId) => {
-        const { updateTaskDetails, currTask } = this.props
+        const { updateTaskDetails, setSelectedLabels, currTask } = this.props
         const updatedLabelsId = (currTask.labelIds.includes(labelId)) ?
             currTask.labelIds.filter(currLabelId => currLabelId !== labelId) :
             [...currTask.labelIds, labelId]
         currTask.labelIds = updatedLabelsId
         this.setState(prevState => ({ ...prevState, labelIds: updatedLabelsId }))
+        setSelectedLabels(updatedLabelsId)
         updateTaskDetails(currTask)
-
     }
 
     setLabelEdit = (label) => {
@@ -79,6 +79,8 @@ export class PopoverLabels extends Component {
         else if (isCreate) return 'Create a label'
         else return title
     }
+
+
 
     render() {
 

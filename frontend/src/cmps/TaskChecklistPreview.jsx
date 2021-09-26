@@ -16,7 +16,6 @@ export class TaskChecklistPreview extends Component {
 
     render() {
         const { checklist } = this.props
-        console.log('checklist#####', checklist)
         return (
             <div className="task-activities flex column">
                 <div className="window-modal-title flex space-between">

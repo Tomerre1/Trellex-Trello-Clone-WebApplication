@@ -17,8 +17,6 @@ export function ColorPalette({ handleChange, selectedColor, isGradient, isColor,
 
     ]
 
-    console.log(`selectedColor`, selectedColor)
-
     return <div className="color-palette">
         {colors.map(colorCode => {
             return <label key={colorCode} className="flex align-center justify-center" style={{ background: colorCode }} name="label-color" htmlFor={`color-${colorCode}`}>

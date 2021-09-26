@@ -1,0 +1,13 @@
+.task-details-header {
+    flex-wrap: wrap;
+    margin-inline-start: 40px;
+    margin-bottom: 20px;
+    align-items: flex-start;
+    .task-details-header-title {
+        color: #5e6c84;
+        font-size: 12px;
+        font-weight: 500;
+        margin: 0 8px 4px 0;
+        text-transform: uppercase;
+    }
+}

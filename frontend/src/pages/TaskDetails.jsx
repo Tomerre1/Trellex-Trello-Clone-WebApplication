@@ -16,7 +16,6 @@ import { PopoverCover } from '../cmps/Popover/PopoverCover';
 import { TaskHeaderDetails } from '../cmps/TaskHeaderDetails'
 import { LoaderSpinner } from '../cmps/LoaderSpinner'
 import { saveBoard, saveTaskDetails } from '../store/board.actions'
-import { setCurrTaskDetails } from '../store/app.actions'
 
 export class _TaskDetails extends Component {
   state = {
@@ -25,18 +24,27 @@ export class _TaskDetails extends Component {
     isPopover: false,
     bgColorCover: null,
     selectedMembers: null,
-    selectedLabels: null,
+    selectedLabels: [],
     selectedDate: null,
   }
   contentEl = null;
+
+
 
   componentDidMount() {
     const { board } = this.props
     const { taskId, listId } = this.props.match.params;
     const currGroup = board.groups.find(list => list.id === listId)
     const currTask = currGroup.tasks.find(task => task.id === taskId)
-    this.setState(prevState => ({ ...prevState, isCover: false, isPopover: false, currGroup, currTask, currentTarget: null }))
-    // this.props.setCurrTaskDetails({ currTask, currGroup })
+    this.setState(prevState => ({
+      ...prevState,
+      isCover: false,
+      isPopover: false,
+      currGroup,
+      currTask,
+      currentTarget: null,
+      selectedLabels: board.labels.filter(label => currTask.labelIds.includes(label.id))
+    }))
   }
 
   updateBoard = async (board) => {
@@ -66,6 +74,16 @@ export class _TaskDetails extends Component {
     this.setState(prevState => ({ ...prevState, isCover }))
   }
 
+  setSelectedLabels = (selectedLabelIds) => {
+    const { board } = this.props
+    let labelsSelectedDeep = JSON.parse(JSON.stringify(board.labels.filter(label => selectedLabelIds.includes(label.id))));
+    this.setState(prevState => ({
+      ...prevState,
+      selectedLabels: labelsSelectedDeep,
+    }))
+  }
+
+
   render() {
     const { isCover, currentTarget, isPopover, type, selectedLabels, selectedDate, selectedMembers, currTask, currGroup, bgColorCover } = this.state
     const { board } = this.props
@@ -73,7 +91,7 @@ export class _TaskDetails extends Component {
     const DynamicCmpPopover = (props) => {
       switch (props.type) {
         case 'LABELS':
-          return <PopoverLabels {...props} board={board} currGroup={currGroup} title='Labels' />
+          return <PopoverLabels {...props} board={board} currGroup={currGroup} setSelectedLabels={this.setSelectedLabels} title='Labels' />
         case 'MEMBERS':
           return <PopoverMembers {...props} title='Members' />
         case 'CHECKLIST':
@@ -87,6 +105,7 @@ export class _TaskDetails extends Component {
       }
     }
 
+    console.log('%c  selectedLabels:', 'color: #01210;background: #aaefe5;', selectedLabels);
     return (
       <section className="task-details flex column">
         <button className={`close-task-details ${isCover ? 'cover' : ''}`}><Close /></button>
@@ -94,7 +113,14 @@ export class _TaskDetails extends Component {
         <TaskHeader />
         <div className="task-details-body flex">
           <div className="task-details-main flex column">
-            {(selectedLabels || selectedMembers || selectedDate) && <TaskHeaderDetails selectedLabels={selectedLabels} selectedMembers={selectedMembers} selectedDate={selectedDate} />}
+            {(selectedLabels || selectedMembers || selectedDate) &&
+              <TaskHeaderDetails
+                selectedLabels={selectedLabels}
+
+              // selectedMembers={selectedMembers}
+              // selectedDate={selectedDate}
+              />
+            }
             <TaskDescription currTask={currTask} />
             <TaskChecklist currTask={currTask} updateTaskDetails={this.updateTaskDetails} />
             <TaskActivities />
@@ -120,12 +146,10 @@ export class _TaskDetails extends Component {
 function mapStateToProps(state) {
   return {
     board: state.boardModule.board,
-    // currTaskDetails: state.appModule.currTaskDetails
   };
 }
 const mapDispatchToProps = {
   saveBoard,
-  // setCurrTaskDetails,
   saveTaskDetails
 };
 
