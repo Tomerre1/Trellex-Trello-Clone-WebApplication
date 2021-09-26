@@ -77,7 +77,7 @@ export class _TaskDetails extends Component {
     return (
       <section className="task-details flex column">
         <button className={`close-task-details ${isCover ? 'cover' : ''}`}><Close /></button>
-        <TaskCardCover />
+        <TaskCardCover bgColor={currTask.style.bgColor} />
         <TaskHeader />
         <div className="task-details-body flex">
           <div className="task-details-main flex column">

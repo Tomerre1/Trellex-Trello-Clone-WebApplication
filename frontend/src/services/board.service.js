@@ -129,7 +129,7 @@ const demoBoards = [
                         style: {
                             coverMode: "header",
                             bgImgUrl: "",
-                            bgColor: "#60bd4f"
+                            bgColor: "#61bd4f"
                         },
                         isDone: true
                     }
