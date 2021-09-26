@@ -6,7 +6,7 @@ import { saveBoard, saveTaskDetails } from '../../store/board.actions'
 import {  setCurrTaskDetails } from '../../store/app.actions'
 
 
-export class _PopoverChecklist extends Component {
+export class PopoverChecklist extends Component {
     state = {
         txt: ''
     }
@@ -17,8 +17,7 @@ export class _PopoverChecklist extends Component {
 
     onAddChecklist = (ev) => {
         ev.preventDefault()
-        const { board, saveTaskDetails } = this.props
-        const { currTask, currGroup } = this.props.currTaskDetails
+        const { togglePopover , updateTaskDetails ,currTask} = this.props
 
         if (!currTask.checklist) currTask.checklist = []
         const newList = {
@@ -27,10 +26,8 @@ export class _PopoverChecklist extends Component {
             todos: []
         }
         currTask.checklist.push(newList)
-        //Save here to DB
-        saveTaskDetails(board, currGroup, currTask)
-        setCurrTaskDetails({ currTask, currGroup })
-        this.props.togglePopover()
+        updateTaskDetails(currTask)
+        togglePopover()
     }
 
     render() {
@@ -51,17 +48,3 @@ export class _PopoverChecklist extends Component {
         )
     }
 }
-
-function mapStateToProps(state) {
-    return {
-        currTaskDetails: state.appModule.currTaskDetails
-    };
-}
-const mapDispatchToProps = {
-    saveBoard,
-    saveTaskDetails,
-    setCurrTaskDetails
-};
-
-export const PopoverChecklist = connect(mapStateToProps, mapDispatchToProps)(_PopoverChecklist);
-
