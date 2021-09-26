@@ -24,8 +24,8 @@ export function TaskPreview(props) {
   };
   console.log(task);
   return (
-    <Link to={taskUrl} className="clean-link">
       <article className="task-preview-container">
+    <Link to={taskUrl} className="clean-link">
        { task.style?.bgColor && <div className="task-cover" style={{background: task.style.bgColor }}></div>}
         <div className="task-preview clean-link">
         {labelIds && (
@@ -53,7 +53,7 @@ export function TaskPreview(props) {
           )}
         </div>
         </div>
-      </article>
     </Link>
+      </article>
   );
 }
