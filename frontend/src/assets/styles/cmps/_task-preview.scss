@@ -1,9 +1,43 @@
 .task-preview-container {
   box-shadow: 0 1px 0 #c0c6d0;
+  transition:background-color 0.2s;
+  .edit-icon {
+    opacity: 0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:absolute;
+    top:2px;
+    right:2px;
+    height:28px;
+    width:28px;
+    pointer-events: hover;
+    padding:15px;
+    background: #ffffff56;
+    border-radius:3px;
+    transition:opacity .2s;
+    color:rgb(94, 94, 94);
+  }
 
   &:hover {
     filter:brightness(.97);  
     background: initial;
+    pointer-events: auto;
+
+    .edit-icon {
+      opacity: 1;
+      cursor: pointer;
+      filter:brightness(1);
+      transition:color .2s, filter .2s, opacity .2s;
+      .icon {
+        height:16px ;
+        width:16px;
+      }
+      &:hover {
+        filter:brightness(.97);  
+        color:rgb(48, 47, 47);
+      }
+    }
    }
   &.full-cover {
     height:49px ;
@@ -50,8 +84,6 @@
   
   cursor: pointer;
 
-  .task-title { 
-  }
   .task-preview-icons {
     span {
         align-items: center;

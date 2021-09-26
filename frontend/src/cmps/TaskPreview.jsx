@@ -6,6 +6,7 @@ import { TaskDatePreview } from "./TaskPreview/TaskDatePreview";
 import CheckBoxOutlinedIcon from "@mui/icons-material/CheckBoxOutlined";
 import SubjectOutlinedIcon from "@mui/icons-material/SubjectOutlined";
 import ChatBubbleOutlineRoundedIcon from "@mui/icons-material/ChatBubbleOutlineRounded";
+import ModeEditOutlinedIcon from '@mui/icons-material/ModeEditOutlined';
 
 export function TaskPreview(props) {
   const { task, taskUrl, boardLabels, groupId } = props;
@@ -24,15 +25,21 @@ export function TaskPreview(props) {
   };
 
   if (task.style && task.style?.coverMode === "full")
-    return <article className="task-preview-container full-cover" style={{ background: task.style.bgColor }}>
-           <Link to={taskUrl} className="clean-link">
-
-      <div className="task-preview">
-      <p>{task.title}</p>
-      </div>
-      </Link>
-
-    </article>;
+    return (
+      <article
+        className="task-preview-container full-cover"
+        style={{ background: task.style.bgColor }}
+      >
+        <Link to={taskUrl} className="clean-link">
+          <div className="task-preview">
+            <p>{task.title}</p>
+          </div>
+        </Link>
+        <div className="edit-icon">
+        <ModeEditOutlinedIcon className="icon"/>
+        </div>
+      </article>
+    );
   return (
     <article className="task-preview-container">
       <Link to={taskUrl} className="clean-link">
@@ -74,6 +81,9 @@ export function TaskPreview(props) {
               />
             )}
           </div>
+        </div>
+        <div className="edit-icon">
+        <ModeEditOutlinedIcon className="icon"/>
         </div>
       </Link>
     </article>
