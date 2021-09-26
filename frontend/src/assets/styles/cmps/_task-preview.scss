@@ -17,6 +17,8 @@
     border-radius:3px;
     transition:opacity .2s;
     color:rgb(94, 94, 94);
+    pointer-events: visible;
+
   }
 
   &:hover {

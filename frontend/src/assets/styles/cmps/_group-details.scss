@@ -23,12 +23,14 @@
   }
   .group-header {
     width: 100%;
-    input {
+    padding: .3125rem;
+
+    input.group-title {
       display:flex;
       align-items: center;
       font-size: rem(14px);
       margin: 0;
-      padding-inline-start: 3px;
+      padding-inline-start: 0px;
       font-weight: 500;
       letter-spacing: rem(-0.5px);
       outline: 0;
@@ -43,7 +45,6 @@
       font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
         Noto Sans, Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
       font-size: 14px;
-      margin-top: 5px;
       color: #172b4d;
 
       &:focus-visible {

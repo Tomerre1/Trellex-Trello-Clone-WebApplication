@@ -36,7 +36,9 @@ export function TaskPreview(props) {
           </div>
         </Link>
         <div className="edit-icon">
+          <Link to={taskUrl}>
         <ModeEditOutlinedIcon className="icon"/>
+        </Link>
         </div>
       </article>
     );
