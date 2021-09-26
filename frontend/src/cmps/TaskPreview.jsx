@@ -55,7 +55,7 @@ export function TaskPreview(props) {
           {labelIds && (
             <TaskLabels labelIds={labelIds} boardLabels={boardLabels} />
           )}
-          <div className="task-title">{title}</div>
+          <div className="task-title"><p>{title}</p></div>
           <div className="task-preview-icons flex align-center">
             {dueDate && (
               <TaskDatePreview
