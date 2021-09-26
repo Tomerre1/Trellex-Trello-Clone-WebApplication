@@ -9,11 +9,12 @@ import CheckBoxOutlinedIcon from "@mui/icons-material/CheckBoxOutlined";
 const _TaskDatePreview = (props) => {
 
   const [isMouseOver, setMouseOver] = useState(false);
-  console.log(props.groupId);
+  const [isDone, setIsDone] = useState(props.isDone);
 
   const toggleIsDone = async (ev) => {
     ev.preventDefault();
     ev.stopPropagation();
+    setIsDone(!isDone)
     const newBoard = { ...props.board };
     const groupIdx = newBoard.groups.findIndex((group)=>props.groupId === group.id);
     const taskIdx = newBoard.groups[groupIdx].tasks.findIndex((task)=>props.taskId === task.id);
@@ -23,19 +24,21 @@ const _TaskDatePreview = (props) => {
     }
     catch(err){
       console.log('cant change task status',err)
+          setIsDone(!isDone)
+
     }
   };
 
   return (
     <span
       className={`due-date ${
-        !props.isDone && props.dueDate < Date.now() ? "overdue" : ""
-      }${props.isDone ? "done" : ""}`}
+        !isDone && props.dueDate < Date.now() ? "overdue" : ""
+      }${isDone ? "done" : ""}`}
       onMouseEnter={() => setMouseOver(true)}
       onMouseLeave={() => setMouseOver(false)}
       onClick={toggleIsDone}
     >
-      {!props.isDone && (
+      {!isDone && (
         <>
           {!isMouseOver ? (
             <AccessTimeOutlinedIcon className="icon" />
@@ -44,7 +47,7 @@ const _TaskDatePreview = (props) => {
           )}
         </>
       )}
-      {props.isDone && (
+      {isDone && (
         <>
           {!isMouseOver ? (
             <CheckBoxOutlinedIcon className="icon" />
