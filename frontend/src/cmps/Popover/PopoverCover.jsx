@@ -14,7 +14,8 @@ export class PopoverCover extends React.Component {
 
     componentDidMount() {
         const { currTask } = this.props
-        switch (currTask.style.coverMode) {
+        const coverMode = currTask.style?.coverMode || ''
+        switch (coverMode) {
             case 'header':
                 this.setState(prevState => ({
                     ...prevState,
