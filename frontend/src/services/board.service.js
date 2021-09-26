@@ -1089,13 +1089,13 @@ function save(board) {
     if (board._id) {
         return storageService.put(STORAGE_KEY, board)
     } else {
-    const board = { 
+        const board = {
             "_id": utilService.makeId,
             "style": {
                 "bgClr": 'linear-gradient(to right, #2980b9, #2c3e50)',
                 "bgImg": ''
             }
-    }
+        }
         return storageService.post(STORAGE_KEY, board)
     }
 }
@@ -1108,6 +1108,8 @@ function updateTask(board, group, task) {
 }
 
 async function addTask(taskTitle, boardId, groupId) {
+    if (!taskTitle)
+        return
     const newTask =
     {
         "id": `t-${utilService.makeId()}`,

@@ -10,13 +10,13 @@ export function _AddNewTask(props) {
   const [taskTitle, setTaskTitle] = useState("");
   const [btnText, setBtnText] = useState("Add task");
   const toggleIsClicked = () => {
-    // if(!isClicked)
-    // props.scrollToBottom()
+    props.scrollToBottom()
     setIsClicked(!isClicked)
   };
 
   const onAddTask = async () => {
     try {
+      if(!taskTitle) return
       setBtnText(<Loader type="Grid" color={"white"} height={14} width={14} />);
       await props.addTask(taskTitle, props.ids.boardId, props.ids.groupId);
       setTaskTitle("");
