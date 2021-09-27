@@ -20,7 +20,6 @@ export class TodoPreview extends Component {
     }
 
     handleChange = ({ target: { value } }) => {
-        console.log('#######handleChange######')
         this.setState(prevState => ({ ...prevState, todo: { ...this.state.todo, title: value } }))
     }
 
@@ -29,25 +28,29 @@ export class TodoPreview extends Component {
         if (this.selectedInput) this.selectedInput.focus()
         this.setState({ isEditMode: true })
     }
+    
+    onToggleEditMode = () => {
+        this.setState(prevState => ({ ...prevState, isEditMode: !this.state.isEditMode }))
+    }
 
     onSaveTodo = () => {
         console.log('##########onSaveTodo##########')
-        this.setState({ isEditMode: false })
+        const { todo } = this.state
+        this.props.onSaveTodo(todo)
+        this.onToggleEditMode()
     }
 
     onToggleTodoIsDone = () => {
+        console.log('#####onToggleTodoIsDone####')
         const { todo } = this.state
         todo.isDone = !todo.isDone
         this.setState(prevState => ({ ...prevState, todo }))
         this.props.onSaveTodo(todo)
     }
 
-    //FOR NOW
-    onToggleEditMode = () => {
-        this.setState(prevState => ({ ...prevState, isEditMode: !this.state.isEditMode }))
-    }
 
     onUndoChange = () => {
+        console.log('#####onUndoChange####')
         const { todo } = this.props
         const { todoTitle } = this.state
         todo.title = todoTitle
@@ -69,7 +72,7 @@ export class TodoPreview extends Component {
                     {isEditMode &&
                         <textarea onClick={this.onEditMode}
                             ref={(input) => { this.selectedInput = input; }}
-                            onBlur={this.onUndoChange}
+                            // onBlur={this.onUndoChange}
                             value={title}
                             onChange={this.handleChange}>
                         </textarea>
@@ -77,7 +80,7 @@ export class TodoPreview extends Component {
                     {!isEditMode && <div className="checklist-txt-and-btn"><span className={`${todo.isDone ? 'done' : ''}`} onClick={this.onEditMode}>{title}</span></div>}
                 </div>
                 <div className={`checklist-btns flex align-center ${isEditMode ? 'show' : 'hidden'}`}>
-                    <button onClick={this.onToggleEditMode} className="nch-btn primary-btn">Save</button>
+                    <button onClick={this.onSaveTodo} className="nch-btn primary-btn">Save</button>
                     {/* <button onClick={this.onUndoChange} className="close-btn"><Close/></button> */}
                     <Close onClick={this.onUndoChange} className="close-btn" />
                 </div >
