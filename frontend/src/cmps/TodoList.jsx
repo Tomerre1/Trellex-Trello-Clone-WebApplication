@@ -1,5 +1,5 @@
 import { TodoPreview } from './TodoPreview'
-export function TodoList({ todos, onSaveTodo }) {
+export function TodoList({ todos, onSaveTodo, onRemoveTodo }) {
 
     console.log('todos',todos)
 
@@ -10,6 +10,7 @@ export function TodoList({ todos, onSaveTodo }) {
                     key={todo.id}
                     todo={todo}
                     onSaveTodo={onSaveTodo}
+                    onRemoveTodo={onRemoveTodo}
                 />
             })}
         </div>
