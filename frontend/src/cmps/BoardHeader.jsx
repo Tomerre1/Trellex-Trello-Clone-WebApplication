@@ -1,6 +1,7 @@
 import React, { useState,useRef,useEffect } from "react";
 import { connect } from "react-redux";
 import { saveBoard } from "../store/board.actions";
+import { MemberList} from "./MemberList"
 
 function _BoardHeader(props) {
   const { board } = props;
@@ -11,6 +12,7 @@ function _BoardHeader(props) {
   const [width, setWidth] = useState(0);
   const spanRef = useRef();
 
+  
   useEffect(() => {
     if(!spanRef) return
     setWidth(spanRef.current?.offsetWidth);
@@ -20,9 +22,14 @@ function _BoardHeader(props) {
     setContent(evt.target.value);
   };
 
+  const handleText = (ev) => {
+    setTitle(ev.target.value)
+    changeHandler(ev)
+  }
   const updateTitle = () => {
     const newBoard = { ...board };
-    newBoard.title = title;
+    newBoard.title = title.trim();
+    setTitle(title.trim())
     props.saveBoard(newBoard);
   };
 
@@ -40,7 +47,7 @@ function _BoardHeader(props) {
               ev.preventDefault();
             }}
           >
-            <span id="hide" ref={spanRef}>{title}</span>
+            <span ref={spanRef}>{title}</span>
             <input
               autoFocus
               className={`title ${!title?.length && 'height-adjust'}`}
@@ -51,33 +58,15 @@ function _BoardHeader(props) {
               value={title}
               // style={{ width: `${title.length * 13}px`, minWidth: "10px" }}
               onChange={(ev) => {
-                setTitle(ev.target.value)
-                changeHandler(ev)
-              
+                handleText(ev)
+          
               }}
               style={{width:width +10 ,minWidth:'40px'}}
             ></input>
             {console.log(width)}
           </form>
         )}
-        {/* <div className="members">
-          {board?.members &&
-            board.members.map((member, idx) => (
-              <article key={idx} className="member-wrapper">
-                {member?.imgUrl ? (
-                  <img
-                    src={member.imgUrl}
-                    className="member-img"
-                    alt={"member-img"}
-                  />
-                ) : (
-                  <div className="member-img" style={{ background: "#df3409" }}>
-                    <p className="member-letter">{member.fullname[0]}</p>
-                  </div>
-                )}
-              </article>
-            ))}
-        </div> */}
+       {board?.members && <MemberList members={board.members}/>}
         <button className="header-btn">Invite</button>
       </div>
       <div className="header-btn-container flex">
