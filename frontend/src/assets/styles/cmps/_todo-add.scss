@@ -33,6 +33,47 @@
             box-shadow: inset 0 0 0 2px #0079bf;
             color: #172b4d;
         }
+        .task-btns {
+            transition-timing-function: ease;
+            transition-property: background-color, border-color, box-shadow;
+            line-height: 20px;
+            padding: 6px 12px;
+            text-decoration: none;
+            transition-duration: 85ms;
+            font-size: 14px;
+            font-weight: 400;
+            justify-content: center;
+            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue,
+                sans-serif;
+            display: inline-flex;
+            cursor: pointer;
+            border: none;
+            box-shadow: none;
+        }
+        .todo-btns {
+            margin-left: 30px;
+            .todo-save-btn {
+                margin-inline-end: 4px;
+            }
+        }
     
+        .todo-save-btn {
+            background-color: #0079bf;
+            color: #fff;
+            align-items: center;
+            border-radius: 3px;
+            &:hover {
+                background-color: #026aa7;
+            }
+        }
+        .todo-close-btn {
+            svg {
+                width: 32px;
+                color: #42526e;
+            }
+            &:hover svg {
+                color: #172b4d;
+            }
+        }
     }
 }

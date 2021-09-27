@@ -56,8 +56,8 @@
         font-size: 14px;
         font-weight: 400;
         justify-content: center;
-        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans,
-            Helvetica Neue, sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue,
+            sans-serif;
         display: inline-flex;
         cursor: pointer;
         border: none;
@@ -79,6 +79,15 @@
             background-color: #026aa7;
         }
     }
+    .close-task-description-btn {
+        svg {
+            width: 32px;
+            color: #42526e;
+        }
+        &:hover svg {
+            color: #172b4d;
+        }
+    }
 
     .edit-task-description-btn {
         align-items: center;
@@ -88,15 +97,6 @@
         margin-left: 8px;
         &:hover {
             background-color: #091e4214;
-        }
-    }
-    .close-task-description-btn {
-        svg {
-            width: 32px;
-            color: #42526e;
-        }
-        &:hover svg {
-            color: #172b4d;
         }
     }
 }

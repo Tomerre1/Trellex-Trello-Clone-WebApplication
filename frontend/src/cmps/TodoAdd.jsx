@@ -44,9 +44,9 @@ export class TodoAdd extends Component {
                             onChange={this.handleChange}>
                         </textarea>
 
-                        <div className={`description-btns flex align-center ${isEditMode ? 'show' : 'hidden'}`}>
-                            <button className='task-btns save-task-description-btn' onClick={() => this.onTodoAdd()}>Add</button>
-                            <button className='task-btns close-task-description-btn' onClick={() => this.onToggleEditMode()}><Close /></button>
+                        <div className={`todo-btns flex align-center ${isEditMode ? 'show' : 'hidden'}`}>
+                            <button className='task-btns todo-save-btn' onClick={() => this.onTodoAdd()}>Add</button>
+                            <button className='task-btns todo-close-btn' onClick={() => this.onToggleEditMode()}><Close /></button>
                         </div>
                     </div>
 
