@@ -19,10 +19,7 @@ function _BoardHeader(props) {
     <header className={`main-header board-header flex align-center`}>
       <div className="header-btn-container flex">
         {!isTitleEdit ? (
-          <h2
-            className="title"
-            onClick={() => setTitleEdit(true)}
-          >
+          <h2 className="title" onClick={() => setTitleEdit(true)}>
             {title}
           </h2>
         ) : (
@@ -44,7 +41,16 @@ function _BoardHeader(props) {
             ></input>
           </form>
         )}
-        <div className="users">userImgs</div>
+        <div className="members">
+        {board?.members &&
+          
+          board.members.map((member, idx) => (
+            <article key={idx} className="member-wrapper">
+              <img src={member.imgUrl} className="member-img"alt={'member-img'} />
+              <p className="member-letter">{member.fullname[0]}</p>
+            </article>
+          ))}
+          </div>
         <button className="header-btn">Invite</button>
       </div>
       <div className="header-btn-container flex">
