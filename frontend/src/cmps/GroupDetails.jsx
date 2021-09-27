@@ -49,7 +49,10 @@ const _GroupDetails = (props) => {
         {isMenuShown && (
           <>
             <div className="group-menu" style={menuPos}>
-              <button onClick={()=>props.removeGroup(boardId,group.id)}>delete list</button>
+              <button onClick={()=>{
+                props.removeGroup(boardId,group.id)
+                toggleMenuShown(!isMenuShown);
+                }}>delete list</button>
             </div>
           </>
         )}
