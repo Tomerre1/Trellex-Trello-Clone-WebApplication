@@ -18,13 +18,13 @@ function _BoardHeader(props) {
     setWidth(spanRef.current?.offsetWidth);
   }, [title]);
 
-  const changeHandler = evt => {
-    setContent(evt.target.value);
-  };
+  // const changeHandler = evt => {
+  //   setContent(evt.target.value);
+  // };
 
   const handleText = (ev) => {
     setTitle(ev.target.value)
-    changeHandler(ev)
+    // changeHandler(ev)
   }
   const updateTitle = () => {
     const newBoard = { ...board };
