@@ -15,7 +15,7 @@ export class PopoverMembers extends Component {
         this.setState(prevState => ({
             ...prevState,
             members,
-            selectedMembersIds: currTask.members.map(member => member._id)
+            selectedMembersIds: currTask.members?.map(member => member._id) || []
         }))
     }
 
@@ -29,7 +29,10 @@ export class PopoverMembers extends Component {
 
     toggleMemberCheck = async (member) => {
         const { updateTaskDetails, setSelectedMembers, currTask } = this.props
-        const selectedMembersIds = currTask.members.map(member => member._id)
+        currTask.members = currTask?.members || []
+        const selectedMembersIds = currTask.members.map(member => member._id) || []
+        console.log('%c  selectedMembersIds:', 'color: #0e93e0;background: #aaefe5;', selectedMembersIds);
+
         const updatedMembers = (selectedMembersIds.includes(member._id)) ?
             currTask.members.filter(currMember => currMember._id !== member._id) :
             [...currTask.members, member]

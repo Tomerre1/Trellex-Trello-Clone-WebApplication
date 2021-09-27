@@ -47,7 +47,7 @@ export class PopoverCover extends React.Component {
     }
 
     setHeaderSelected = () => {
-        const { updateTaskDetails, currTask, setIsCover } = this.props
+        const { updateTaskDetails, currTask } = this.props
 
         this.setState(prevState => ({
             ...prevState,
@@ -55,13 +55,13 @@ export class PopoverCover extends React.Component {
             isFullSelected: false,
         }))
         currTask.style.coverMode = 'header'
-        setIsCover(true)
+
         updateTaskDetails(currTask)
 
     }
 
     setFullSelected = () => {
-        const { updateTaskDetails, currTask, setIsCover } = this.props
+        const { updateTaskDetails, currTask } = this.props
         this.setState(prevState => ({
             ...prevState,
             isFullSelected: true,
@@ -69,12 +69,12 @@ export class PopoverCover extends React.Component {
 
         }))
         currTask.style.coverMode = 'full'
-        setIsCover(true)
+
         updateTaskDetails(currTask)
     }
 
     removeCover = () => {
-        const { updateTaskDetails, currTask, setBgColorCover, setIsCover } = this.props
+        const { updateTaskDetails, currTask, setBgColorCover } = this.props
         this.setState(prevState => ({
             ...prevState,
             isFullSelected: false,
@@ -83,7 +83,7 @@ export class PopoverCover extends React.Component {
         currTask.style.coverMode = null
         currTask.style.bgColor = null
         setBgColorCover(null)
-        setIsCover(false)
+
         updateTaskDetails(currTask)
     }
 
@@ -98,7 +98,6 @@ export class PopoverCover extends React.Component {
                 selectedColor: value
             }))
             currTask.style.coverMode = 'header'
-            setIsCover(true)
         }
         else {
             this.setState(prevState => ({
@@ -111,13 +110,6 @@ export class PopoverCover extends React.Component {
         setBgColorCover(value)
         updateTaskDetails(currTask)
     }
-
-
-    // bgColor: "#60bd4f"
-    // bgImgUrl: ""
-    // coverMode: "header"
-
-
 
     render() {
         const { isHeaderSelected, isFullSelected, selectedColor } = this.state

@@ -3,7 +3,8 @@
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
     position: relative;
-    background: rgb(235, 90, 70);
+    // background-color: rgba(0, 0, 0, 0.08);
+    // color: #3d3b3b;
     > button {
         cursor: pointer;
         position: absolute;
@@ -21,4 +22,3 @@
         }
     }
 }
-
