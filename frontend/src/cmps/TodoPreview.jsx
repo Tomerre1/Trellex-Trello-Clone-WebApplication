@@ -9,25 +9,29 @@ export class TodoPreview extends Component {
 
     state = {
         todo: null,
+        todoTitle: '',
         isEditMode: false
     }
     selectedInput = null;
 
     componentDidMount() {
         const { todo } = this.props
-        this.setState(prevState => ({ ...prevState, todo }))
+        this.setState(prevState => ({ ...prevState, todo, todoTitle: todo.title }))
     }
 
     handleChange = ({ target: { value } }) => {
+        console.log('#######handleChange######')
         this.setState(prevState => ({ ...prevState, todo: { ...this.state.todo, title: value } }))
     }
 
     onEditMode = () => {
+        console.log('##########onEditMode########')
         if (this.selectedInput) this.selectedInput.focus()
         this.setState({ isEditMode: true })
     }
 
     onSaveTodo = () => {
+        console.log('##########onSaveTodo##########')
         this.setState({ isEditMode: false })
     }
 
@@ -40,15 +44,21 @@ export class TodoPreview extends Component {
 
     //FOR NOW
     onToggleEditMode = () => {
-        this.setState(prevState => ({ ...prevState, isEditMode:!this.state.isEditMode }))
+        this.setState(prevState => ({ ...prevState, isEditMode: !this.state.isEditMode }))
+    }
+
+    onUndoChange = () => {
+        const { todo } = this.props
+        const { todoTitle } = this.state
+        todo.title = todoTitle
+        this.setState(prevState => ({ ...prevState, todo }))
+        this.onToggleEditMode()
     }
 
     render() {
         const { todo, isEditMode } = this.state
         if (!todo) return <div>Loading...</div>
         const { title, isDone } = todo
-
-        console.log('todo is done', todo.isDone)
 
         return (
 
@@ -59,7 +69,7 @@ export class TodoPreview extends Component {
                     {isEditMode &&
                         <textarea onClick={this.onEditMode}
                             ref={(input) => { this.selectedInput = input; }}
-                            onBlur={this.onSaveTodo}
+                            onBlur={this.onUndoChange}
                             value={title}
                             onChange={this.handleChange}>
                         </textarea>
@@ -68,7 +78,8 @@ export class TodoPreview extends Component {
                 </div>
                 <div className={`checklist-btns flex align-center ${isEditMode ? 'show' : 'hidden'}`}>
                     <button onClick={this.onToggleEditMode} className="nch-btn primary-btn">Save</button>
-                    <Close onClick={this.onToggleEditMode} className="close-btn"/>
+                    {/* <button onClick={this.onUndoChange} className="close-btn"><Close/></button> */}
+                    <Close onClick={this.onUndoChange} className="close-btn" />
                 </div >
             </div >
         )
