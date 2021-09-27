@@ -25,9 +25,10 @@ export class PopoverLabels extends Component {
     }
 
     handleChange = (e) => {
-        this.setState({
+        this.setState(prevState => ({
+            ...prevState,
             search: e.target.value
-        })
+        }))
     }
 
     toggleLabelCheck = async (labelId) => {
