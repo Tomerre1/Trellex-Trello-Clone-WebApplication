@@ -110,7 +110,7 @@ const demoBoards = [
                         title: 'Task 1',
                         description: 'Good',
                         comments: [],
-                        checklist: [
+                        checklists: [
                             {
                                 id: "wquJCo",
                                 title: "22",
@@ -129,7 +129,27 @@ const demoBoards = [
                                     id: "5wqpQb",
                                     isDone: false
                                 }]
+                            },
+                            {
+                                id: "wPuJCA",
+                                title: "22",
+                                todos: [{
+                                    title: "Todo 11",
+                                    id: "5eLLQb",
+                                    isDone: false
+                                },
+                                {
+                                    title: "Todo 22",
+                                    id: "5PAZQb",
+                                    isDone: true
+                                },
+                                {
+                                    title: "Todo 33",
+                                    id: "5wlaQb",
+                                    isDone: false
+                                }]
                             }
+
                         ],
                         members: [{
                             _id: "60b910d79cd5fc23e7bf7c8e",
