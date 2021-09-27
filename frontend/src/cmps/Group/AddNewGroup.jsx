@@ -41,14 +41,14 @@ function _AddNewGroup(props) {
         toggleIsClicked()
       }}
     >
-      <div className="flex  align-center">
+      <div className="flex align-center">
         <AddIcon className="icon" />
         Add a list
       </div>
     </article> 
     :
       <form onSubmit={(ev) => {ev.preventDefault()}}>
-    <div className="add-group-active group-details flex column">
+    <div className="add-group-active group-details flex column scale-up-ver-top"  >
     <input
       value={title}
       placeholder="Enter list title..."
