@@ -1,0 +1,12 @@
+.todo-add-container {
+    .todo-add-btn {
+        align-items: center;
+        background-color: #091e420a;
+        border-radius: 3px;
+        color: #172b4d;
+        margin-left: 8px;
+        &:hover {
+            background-color: #091e4214;
+        }
+    }
+}
