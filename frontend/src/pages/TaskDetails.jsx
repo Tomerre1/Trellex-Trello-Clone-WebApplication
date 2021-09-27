@@ -93,7 +93,7 @@ export class _TaskDetails extends Component {
         case 'LABELS':
           return <PopoverLabels {...props} board={board} currGroup={currGroup} setSelectedLabels={this.setSelectedLabels} title='Labels' />
         case 'MEMBERS':
-          return <PopoverMembers {...props} title='Members' />
+          return <PopoverMembers {...props} title='Members' members={board.members} />
         case 'CHECKLIST':
           return <PopoverChecklist {...props} title='Checklist' />
         case 'DATE':
@@ -104,8 +104,7 @@ export class _TaskDetails extends Component {
           return <PopoverCover {...props} setBgColorCover={this.setBgColorCover} setIsCover={this.setIsCover} title='Cover' />
       }
     }
-
-    console.log('%c  selectedLabels:', 'color: #01210;background: #aaefe5;', selectedLabels);
+    
     return (
       <section className="task-details flex column">
         <button className={`close-task-details ${isCover ? 'cover' : ''}`}><Close /></button>

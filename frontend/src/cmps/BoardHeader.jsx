@@ -1,17 +1,34 @@
-import React, { useState } from "react";
+import React, { useState,useRef,useEffect } from "react";
 import { connect } from "react-redux";
 import { saveBoard } from "../store/board.actions";
-import { MemberList } from '../cmps/MemberList'
 
 function _BoardHeader(props) {
   const { board } = props;
 
   const [isTitleEdit, setTitleEdit] = useState(false);
   const [title, setTitle] = useState(board.title);
+  const [content, setContent] = useState('');
+  const [width, setWidth] = useState(0);
+  const spanRef = useRef();
 
+  
+  useEffect(() => {
+    if(!spanRef) return
+    setWidth(spanRef.current?.offsetWidth);
+  }, [title]);
+
+  const changeHandler = evt => {
+    setContent(evt.target.value);
+  };
+
+  const handleText = (ev) => {
+    setTitle(ev.target.value)
+    changeHandler(ev)
+  }
   const updateTitle = () => {
     const newBoard = { ...board };
-    newBoard.title = title;
+    newBoard.title = title.trim();
+    setTitle(title.trim())
     props.saveBoard(newBoard);
   };
 
@@ -29,20 +46,25 @@ function _BoardHeader(props) {
               ev.preventDefault();
             }}
           >
+            <span ref={spanRef}>{title}</span>
             <input
               autoFocus
-              className="title"
+              className={`title ${!title?.length && 'height-adjust'}`}
               onBlur={() => {
                 setTitleEdit(false);
                 updateTitle();
               }}
               value={title}
-              style={{ width: `${title.length}ch`, minWidth: "10px" }}
-              onChange={(ev) => setTitle(ev.target.value)}
+              // style={{ width: `${title.length * 13}px`, minWidth: "10px" }}
+              onChange={(ev) => {
+                handleText(ev)
+          
+              }}
+              style={{width:width +10 ,minWidth:'40px'}}
             ></input>
+            {console.log(width)}
           </form>
         )}
-        <MemberList members={board.members}/>
         {/* <div className="members">
           {board?.members &&
             board.members.map((member, idx) => (
