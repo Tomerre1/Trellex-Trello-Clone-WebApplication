@@ -38,7 +38,8 @@ export class _TaskDetails extends Component {
     const currTask = currGroup.tasks.find(task => task.id === taskId)
     this.setState(prevState => ({
       ...prevState,
-      isCover: false,
+      isCover: currTask.style.bgColor ? true : false,
+      bgColorCover: currTask.style.bgColor ? currTask.style.bgColor : null,
       isPopover: false,
       currGroup,
       currTask,
@@ -122,7 +123,7 @@ export class _TaskDetails extends Component {
             {(selectedLabels || selectedMembers || selectedDate) &&
               <TaskHeaderDetails
                 selectedLabels={selectedLabels}
-                selectedMembers={selectedMembers}
+                selectedMembers={currTask.members}
               // selectedDate={selectedDate}
               />
             }

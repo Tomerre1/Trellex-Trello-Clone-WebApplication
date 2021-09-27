@@ -40,8 +40,8 @@ export class PopoverMembers extends Component {
     }
 
     render() {
-        const { togglePopover, currentTarget, title, currTask, members } = this.props
-        const { search, selectedMembersIds } = this.state
+        const { togglePopover, currentTarget, title } = this.props
+        const { search, selectedMembersIds, members } = this.state
         return (
             <Popover togglePopover={togglePopover} currentTarget={currentTarget} title={title} >
                 <div className="members-popover">
@@ -49,7 +49,7 @@ export class PopoverMembers extends Component {
                     <h4>BOARD MEMBERS</h4>
 
                     <ul className="clean-list">
-                        {members &&
+                        {members.length > 0 &&
                             members.filter(member => member.fullname.toLowerCase().includes(search.toLowerCase()))
                                 .map(member => <PopoverMemberPreview toggleMemberCheck={this.toggleMemberCheck} member={member} selectedMembersIds={selectedMembersIds} members={members} />)
                         }

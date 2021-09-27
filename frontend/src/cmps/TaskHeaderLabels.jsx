@@ -2,6 +2,7 @@ import React from 'react'
 import AddIcon from '@mui/icons-material/Add';
 
 export function TaskHeaderLabels({ selectedLabels }) {
+    if (selectedLabels.length === 0) return <></>
     return (
         <div className="task-details-header-labels item-container flex column">
             <h3 className="task-details-header-title">Labels</h3>

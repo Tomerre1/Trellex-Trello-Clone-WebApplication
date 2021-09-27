@@ -24,13 +24,12 @@
     background: initial;
     pointer-events: auto;
 
-
     .edit-icon {
       opacity: 1;
       cursor: pointer;
       filter: brightness(1);
       transition: color 0.2s, filter 0.2s, opacity 0.2s;
-      
+
       a {
         color: rgb(87, 86, 86);
       }
@@ -80,7 +79,7 @@
       display: flex;
     }
     p {
-      margin: 0;
+      // margin: 0;
       // margin-bottom:5px;
     }
 
@@ -96,7 +95,7 @@
       span {
         align-items: center;
         justify-content: center;
-        margin-top:5px;
+        margin-top: 5px;
         p {
           margin: 0;
           padding: 0;
@@ -142,8 +141,8 @@
           padding: 4px;
           color: rgb(107, 119, 140);
           &.msg {
-            position:relative;
-            top:1px;
+            position: relative;
+            top: 1px;
           }
         }
       }

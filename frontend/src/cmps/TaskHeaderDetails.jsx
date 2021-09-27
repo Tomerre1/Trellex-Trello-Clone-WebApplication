@@ -5,12 +5,12 @@ import { TaskHeaderMembers } from './TaskHeaderMembers'
 export class TaskHeaderDetails extends Component {
     state = {
         selectedMembers: null,
-        selectedLabels: [],
+        selectedLabels: null,
         selectedDate: null,
     }
 
     componentDidMount() {
-        const { selectedLabels, selectedMembers, selectedDate } = this.props
+        const { selectedLabels, selectedMembers } = this.props
         this.setState(prevState => ({ ...prevState, selectedLabels, selectedMembers }))
     }
 
@@ -32,8 +32,8 @@ export class TaskHeaderDetails extends Component {
 
         return (
             <div className="task-details-header flex">
+                {selectedMembers && <TaskHeaderMembers members={selectedMembers} />}
                 {selectedLabels && <TaskHeaderLabels selectedLabels={selectedLabels} />}
-                {selectedMembers && <TaskHeaderMembers selectedMembers={selectedMembers} />}
             </div>
         )
     }

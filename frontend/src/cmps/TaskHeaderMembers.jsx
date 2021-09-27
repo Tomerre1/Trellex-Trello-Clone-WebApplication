@@ -1,10 +1,16 @@
 import React from 'react'
-import AddIcon from '@mui/icons-material/Add';
 import { MemberList } from './MemberList'
 
-export function TaskHeaderMembers({ selectedMembers }) {
+export function TaskHeaderMembers({ members }) {
+    if (members.length === 0) return <></>
     return (
-        <MemberList selectedMembers={selectedMembers} />
+
+        <div className="task-details-header-members flex column">
+            <h4 className="task-details-header-title"> Members</h4>
+            <div className="container flex wrap">
+                <MemberList members={members} isInDetails={true} />
+            </div>
+        </div>
         // <div className="task-details-header-labels item-container flex column">
         //     <h3 className="task-details-header-title">Labels</h3>
         //     <div className="labels-container flex wrap">

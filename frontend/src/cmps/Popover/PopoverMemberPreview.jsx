@@ -12,7 +12,7 @@ export function PopoverMemberPreview({ member, members, selectedMembersIds, togg
             }
             {!member.imgUrl &&
                 <div className="profile-picture" style={{ background: "#dfe1e6", marginInlineEnd: '8px' }}>
-                    <p className="profile-picture letter" style={{ color: 'inherit' }}>{member.fullname[0]}</p>
+                    <p className="profile-picture letter" >{member.fullname[0]}</p>
                 </div>
             }
 
