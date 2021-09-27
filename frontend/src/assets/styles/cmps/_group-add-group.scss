@@ -1,98 +1,72 @@
- .add-group-wrapper .add-new{ 
+ .add-group-wrapper {
+
+  .group-btns{
+    justify-content: flex-start;
+    display:flex;
+    gap:0;
+    margin:0;
+    .group-btn {
+        transition-timing-function: ease;
+        transition-property: background-color, border-color, box-shadow;
+        line-height: 20px;
+        padding: 6px 12px;
+        text-decoration: none;
+        transition-duration: 85ms;
+        font-size: 14px;
+        font-weight: 400;
+        margin:0;
+        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+          Noto Sans, Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
+        display: inline-flex;
+        cursor: pointer;
+        border: none;
+        box-shadow: none;
+        justify-content: center;
+        align-items:center;
+      }
+  
+      .save-group-title-btn {
+        background-color: #0079bf;
+        color: #fff;
+        align-items: center;
+        border-radius: 3px;
+        width:78.13px;
+        &:hover {
+          background-color: #026aa7;
+        }
+      }
+  
+      .edit-group-title-btn {
+        align-items: center;
+        background-color: #091e420a;
+        border-radius: 3px;
+        color: #172b4d;
+        &:hover {
+          background-color: #091e4214;
+        }
+      }
+      .close-group-title-btn {
+          padding:3px;
+        svg {
+          width: 32px;
+          color: #42526e;
+        }
+        &:hover svg {
+          color: #172b4d;
+        }
+      }
+}
+
+  .add-new{ 
   background-color: #ebecf036;
   color: rgba(255, 255, 255, 0.747);
   font-size: rem(14px);
   cursor: pointer;
   transition: background-color 0.2s;
   height:fit-content;
-
-  &:hover {
-    background-color: #ebecf05d;
+  form {
+    width:100% !important;
   }
-  .icon {
-    padding: 2px;
-  }
-  .add-new  {
-
-  }
-  .add-group-active {
-    width: 100%;
-    gap: 5px;
-    margin:0%;
-    padding:4px;
-
-    input {
-      background-color: #fff;
-      border: none;
-      outline: none;
-      resize: none;
-      font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-      Noto Sans, Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
-      padding: 8px 12px;
-      height:36px;
-      display: inline-block;
-      cursor: text;
-      line-height: 20px;
-      box-shadow: inset 0 0 0 2px #0079bf;
-      margin:0;
-
-    }
-    .group-btns{
-        justify-content: flex-start;
-        display:flex;
-        gap:0;
-        margin:0;
-        .group-btn {
-            transition-timing-function: ease;
-            transition-property: background-color, border-color, box-shadow;
-            line-height: 20px;
-            padding: 6px 12px;
-            text-decoration: none;
-            transition-duration: 85ms;
-            font-size: 14px;
-            font-weight: 400;
-            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-              Noto Sans, Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
-            display: inline-flex;
-            cursor: pointer;
-            border: none;
-            box-shadow: none;
-            justify-content: center;
-            align-items:center;
-          }
-      
-          .save-group-title-btn {
-            background-color: #0079bf;
-            color: #fff;
-            align-items: center;
-            border-radius: 3px;
-            width:78.13px;
-            &:hover {
-              background-color: #026aa7;
-            }
-          }
-      
-          .edit-group-title-btn {
-            align-items: center;
-            background-color: #091e420a;
-            border-radius: 3px;
-            color: #172b4d;
-            &:hover {
-              background-color: #091e4214;
-            }
-          }
-          .close-group-title-btn {
-              padding:3px;
-            svg {
-              width: 32px;
-              color: #42526e;
-            }
-            &:hover svg {
-              color: #172b4d;
-            }
-          }
-    }
-    
-  }
+}
  }
 
