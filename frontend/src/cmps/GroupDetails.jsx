@@ -14,8 +14,6 @@ const _GroupDetails = (props) => {
   const [menuPos, setMenuPos] = useState({});
 
   const toggleMenu = (ev) => {
-    console.log(group.id)
-    console.dir(ev);
     setMenuPos({
       position: "absolute",
       top: `${ev.pageY - 100}px`,
