@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Close } from '@mui/icons-material';
+import { utilService } from '../services/util.service'
 
 export class TodoAdd extends Component {
     state = {
@@ -8,20 +9,28 @@ export class TodoAdd extends Component {
             title: ''
         }
     }
+    selectedInput=null
 
     handleChange = (ev) => {
         const { value } = ev.target
         this.setState(prevState => ({ ...prevState, todo: { title: value } }))
     }
-    //TODO=> {title: "Todo 1", id: "5eqZQb", isDone: false}
     onToggleEditMode = () => {
         const { isEditMode } = this.state
         this.setState(prevState => ({ ...prevState, isEditMode: !isEditMode }))
     }
 
     onTodoAdd = () => {
-        const {todo} = this.state
-        console.log('Todo add...',todo)
+        const { todo } = this.state
+        todo.id = utilService.makeId()
+        todo.isDone = false
+        this.setState(prevState => ({ ...prevState, todo }),this.props.onAddTodo(todo))    
+        this.clearState()
+    }
+
+    clearState = () => {
+        this.selectedInput.focus()
+        this.setState(prevState => ({ ...prevState, todo: { title: '' } }))
     }
 
     render() {
@@ -36,7 +45,7 @@ export class TodoAdd extends Component {
                 {isEditMode &&
                     <div className="todo-edit flex column">
                         <textarea onClick={this.onEditMode}
-                            // ref={(input) => { this.selectedInput = input; }}
+                            ref={(input) => { this.selectedInput = input; }}
                             // onBlur={this.onToggleEditMode}
                             autoFocus
                             value={todo.title}
@@ -51,7 +60,7 @@ export class TodoAdd extends Component {
                     </div>
 
                 }
-                
+
             </div>
         )
     }

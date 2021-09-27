@@ -45,8 +45,11 @@ export class TaskChecklistPreview extends Component {
         updateTaskDetails(currTask)
     }
 
-    onAddTodo = () => {
-        console.log('Add todo')
+    onAddTodo = (todo) => {
+        const { currTask, updateTaskDetails, checklist } = this.props
+        const checklistIdx = currTask.checklists.indexOf(checklist)
+        currTask.checklists[checklistIdx].todos.push(todo)
+        updateTaskDetails(currTask)
     }
 
     // onDeleteChecklist = (checklist) => {
