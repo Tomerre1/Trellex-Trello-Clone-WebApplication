@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import { Popover } from './Popover'
 import { utilService } from '../../services/util.service'
-import { saveBoard, saveTaskDetails } from '../../store/board.actions'
-import {  setCurrTaskDetails } from '../../store/app.actions'
 
 
 export class PopoverChecklist extends Component {
