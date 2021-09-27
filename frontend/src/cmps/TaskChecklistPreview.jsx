@@ -22,25 +22,25 @@ export class TaskChecklistPreview extends Component {
 
     onSaveTodo = (todo) => {
         const { currTask, updateTaskDetails, checklist } = this.props
-        const checklistIdx = currTask.checklist.indexOf(checklist)
+        const checklistIdx = currTask.checklists.indexOf(checklist)
 
-        const todoIdx = currTask.checklist[checklistIdx].todos.findIndex((currTodo) => {
+        const todoIdx = currTask.checklists[checklistIdx].todos.findIndex((currTodo) => {
             return currTodo.id === todo.id
         })
 
-        currTask.checklist[checklistIdx].todos[todoIdx] = todo
+        currTask.checklists[checklistIdx].todos[todoIdx] = todo
         updateTaskDetails(currTask)
     }
 
     onRemoveTodo = (todo) => {
         const { currTask, updateTaskDetails, checklist } = this.props
-        const checklistIdx = currTask.checklist.indexOf(checklist)
+        const checklistIdx = currTask.checklists.indexOf(checklist)
 
-        const todoIdx = currTask.checklist[checklistIdx].todos.findIndex((currTodo) => {
+        const todoIdx = currTask.checklists[checklistIdx].todos.findIndex((currTodo) => {
             return currTodo.id === todo.id
         })
 
-        currTask.checklist[checklistIdx].todos.splice(todoIdx, 1)
+        currTask.checklists[checklistIdx].todos.splice(todoIdx, 1)
         updateTaskDetails(currTask)
     }
 

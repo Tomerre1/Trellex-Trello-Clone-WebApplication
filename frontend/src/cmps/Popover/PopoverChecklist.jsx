@@ -16,13 +16,13 @@ export class PopoverChecklist extends Component {
         ev.preventDefault()
         const { togglePopover , updateTaskDetails ,currTask} = this.props
 
-        if (!currTask.checklist) currTask.checklist = []
+        if (!currTask.checklists) currTask.checklists = []
         const newList = {
             id: utilService.makeId(),
             title: this.state.txt,
             todos: []
         }
-        currTask.checklist.push(newList)
+        currTask.checklists.push(newList)
         updateTaskDetails(currTask)
         togglePopover()
     }
