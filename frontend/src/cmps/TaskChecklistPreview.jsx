@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { TodoList } from './TodoList'
 import { CheckDeleteChecklistPopover } from './CheckDeleteChecklistPopover'
+import { TodoAdd } from './TodoAdd'
 import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
 
 export class TaskChecklistPreview extends Component {
@@ -44,6 +45,10 @@ export class TaskChecklistPreview extends Component {
         updateTaskDetails(currTask)
     }
 
+    onAddTodo = () => {
+        console.log('Add todo')
+    }
+
     // onDeleteChecklist = (checklist) => {
     //     console.log('checklist', checklist)
 
@@ -80,6 +85,7 @@ export class TaskChecklistPreview extends Component {
                         currTask={currTask}
                     />
                 }
+                <TodoAdd onAddTodo={this.onAddTodo} />
             </div>
         )
     }
