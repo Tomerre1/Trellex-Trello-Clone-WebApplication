@@ -67,7 +67,7 @@ export class TodoPreview extends Component {
                     {!isEditMode && <div className="checklist-txt-and-btn"><span className={`${todo.isDone ? 'done' : ''}`} onClick={this.onEditMode}>{title}</span></div>}
                 </div>
                 <div className={`checklist-btns flex align-center ${isEditMode ? 'show' : 'hidden'}`}>
-                    <button onClick={this.onToggleEditMode} className="primary-btn">Save</button>
+                    <button onClick={this.onToggleEditMode} className="nch-btn primary-btn">Save</button>
                     <Close onClick={this.onToggleEditMode} className="close-btn"/>
                 </div >
             </div >
