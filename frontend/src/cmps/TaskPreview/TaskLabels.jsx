@@ -7,7 +7,6 @@ function _TaskLabels(props) {
   const { labelIds, boardLabels, areLabelsExpanded, toggleExpandLabels } =
     props
   return (
-    <div>
       <div className="task-labels-container flex">
         {labelIds &&
           labelIds.map((labelId, idx) => {
@@ -32,7 +31,6 @@ function _TaskLabels(props) {
               );
           })}
       </div>
-    </div>
   );
 }
 function mapStateToProps(state) {
