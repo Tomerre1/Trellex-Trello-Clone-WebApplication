@@ -73,7 +73,7 @@ export function TaskPreview(props) {
             )}
             {comments && comments.length > 0 && (
               <TaskDetailsPreview
-                icon={<ChatBubbleOutlineRoundedIcon className="icon" />}
+                icon={<ChatBubbleOutlineRoundedIcon className="icon msg" />}
                 txt={comments.length}
               />
             )}

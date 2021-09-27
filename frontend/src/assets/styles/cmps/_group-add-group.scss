@@ -1,72 +1,87 @@
- .add-group-wrapper {
-
-  .group-btns{
+.add-group-wrapper {
+  .group-btns {
     justify-content: flex-start;
-    display:flex;
-    gap:0;
-    margin:0;
+    display: flex;
+    gap: 0;
+    margin: 0;
     .group-btn {
-        transition-timing-function: ease;
-        transition-property: background-color, border-color, box-shadow;
-        line-height: 20px;
-        padding: 6px 12px;
-        text-decoration: none;
-        transition-duration: 85ms;
-        font-size: 14px;
-        font-weight: 400;
-        margin:0;
-        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-          Noto Sans, Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
-        display: inline-flex;
-        cursor: pointer;
-        border: none;
-        box-shadow: none;
-        justify-content: center;
-        align-items:center;
-      }
-  
-      .save-group-title-btn {
-        background-color: #0079bf;
-        color: #fff;
-        align-items: center;
-        border-radius: 3px;
-        width:78.13px;
-        &:hover {
-          background-color: #026aa7;
-        }
-      }
-  
-      .edit-group-title-btn {
-        align-items: center;
-        background-color: #091e420a;
-        border-radius: 3px;
-        color: #172b4d;
-        &:hover {
-          background-color: #091e4214;
-        }
-      }
-      .close-group-title-btn {
-          padding:3px;
-        svg {
-          width: 32px;
-          color: #42526e;
-        }
-        &:hover svg {
-          color: #172b4d;
-        }
-      }
-}
+      transition-timing-function: ease;
+      transition-property: background-color, border-color, box-shadow;
+      line-height: 20px;
+      padding: 6px 12px;
+      text-decoration: none;
+      transition-duration: 85ms;
+      font-size: 14px;
+      font-weight: 400;
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+        Noto Sans, Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
+      display: inline-flex;
+      cursor: pointer;
+      border: none;
+      box-shadow: none;
+      justify-content: center;
+      align-items: center;
+    }
 
-  .add-new{ 
-  background-color: #ebecf036;
-  color: rgba(255, 255, 255, 0.747);
-  font-size: rem(14px);
-  cursor: pointer;
-  transition: background-color 0.2s;
-  height:fit-content;
-  form {
-    width:100% !important;
+    .save-group-title-btn {
+      background-color: #0079bf;
+      color: #fff;
+      align-items: center;
+      border-radius: 3px;
+      width: 78.13px;
+      &:hover {
+        background-color: #026aa7;
+      }
+    }
+
+    .edit-group-title-btn {
+      align-items: center;
+      background-color: #091e420a;
+      border-radius: 3px;
+      color: #172b4d;
+      &:hover {
+        background-color: #091e4214;
+      }
+    }
+    .close-group-title-btn {
+      padding: 3px;
+      svg {
+        width: 32px;
+        color: #42526e;
+      }
+      &:hover svg {
+        color: #172b4d;
+      }
+    }
+  }
+
+  .add-new {
+    background-color: #ebecf036;
+    color: rgba(255, 255, 255, 0.747);
+    font-size: rem(14px);
+    cursor: pointer;
+    transition: background-color 0.2s;
+    height: fit-content;
+    &:hover {
+      background-color: #ebecf05e;
+    }
+    form {
+      width: 100% !important;
+    }
   }
 }
- }
 
+.scale-up-ver-top {
+  animation: scale-up-ver-top 0.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+@keyframes scale-up-ver-top {
+  0% {
+    transform: scaleY(0.4);
+    transform-origin: 100% 0;
+  }
+  100% {
+    transform: scaleY(1);
+    transform-origin: 100% 0;
+  }
+}
