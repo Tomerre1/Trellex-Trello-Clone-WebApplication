@@ -17,7 +17,7 @@ export function MemberList(props) {
             ) :
               (
                 <div className="member-img" style={{ background: 'rgb(223, 225, 230)', color: 'inherit' }}>
-                  <p className="member-letter">{member?.fullname?.[0] || ''}</p>
+                  <p className={`member-letter ${isInPreview ? 'preview' : ''}`}>{member?.fullname?.[0] || ''}</p>
                 </div>
               )}
           </article>

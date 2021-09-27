@@ -27,6 +27,9 @@
         position: relative;
         top: 25%;
         font-weight: 600;
+        &.preview {
+            margin: 0 0 1em;
+        }
     }
     .secondary-btn {
         display: flex;
