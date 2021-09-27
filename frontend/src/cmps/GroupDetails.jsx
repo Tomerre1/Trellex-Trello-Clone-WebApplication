@@ -6,6 +6,7 @@ import { AddNewTask } from "./Group/AddNewTask";
 import { HeaderTitle } from "./Group/HeaderTitle";
 import { removeGroup } from "../store/board.actions";
 import MoreHorizOutlinedIcon from "@mui/icons-material/MoreHorizOutlined";
+import { GroupActions } from "./Group/GroupActions";
 
 const _GroupDetails = (props) => {
   const { group, isAddNew, boardId, boardLabels } = props;
@@ -45,14 +46,13 @@ const _GroupDetails = (props) => {
           onClick={toggleMenu}
         />
         {isMenuShown && (
-          <>
-            <div className="group-menu" style={menuPos}>
-              <button onClick={()=>{
-                props.removeGroup(boardId,group.id)
-                toggleMenuShown(!isMenuShown);
-                }}>delete list</button>
-            </div>
-          </>
+          <GroupActions
+            menuPos={menuPos}
+            removeGroup={props.removeGroup}
+            toggleMenuShown={toggleMenuShown}
+            boardId={boardId}
+            groupId={group.id}
+          />
         )}
       </div>
       <div className={`group-main flex column `} ref={elRef}>
