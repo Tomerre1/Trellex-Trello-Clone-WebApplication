@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { BoardHeader } from "../cmps/BoardHeader";
 import { connect } from "react-redux";
 import { loadBoard, clearBoard } from "../store/board.actions";
+import { loadUsers } from "../store/user.actions";
 import { GroupList } from "../cmps/GroupList";
 import { LoaderSpinner } from "../cmps/LoaderSpinner";
 
@@ -9,6 +10,7 @@ class _BoardApp extends Component {
   componentDidMount = async () => {
     this.props.clearBoard(); // added because componentWillUnmount is disabled
     this.loadBoard();
+    this.props.loadUsers()
   };
 
   // componentWillUnmount = () => {
@@ -56,6 +58,7 @@ function mapStateToProps(state) {
 const mapDispatchToProps = {
   loadBoard,
   clearBoard,
+  loadUsers
 };
 
 export const BoardApp = connect(mapStateToProps, mapDispatchToProps)(_BoardApp);

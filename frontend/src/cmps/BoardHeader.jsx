@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { saveBoard } from "../store/board.actions";
+import { MemberList } from '../cmps/MemberList'
 
 function _BoardHeader(props) {
   const { board } = props;
@@ -19,10 +20,7 @@ function _BoardHeader(props) {
     <header className={`main-header board-header flex align-center`}>
       <div className="header-btn-container flex">
         {!isTitleEdit ? (
-          <h2
-            className="title"
-            onClick={() => setTitleEdit(true)}
-          >
+          <h2 className="title" onClick={() => setTitleEdit(true)}>
             {title}
           </h2>
         ) : (
@@ -44,7 +42,25 @@ function _BoardHeader(props) {
             ></input>
           </form>
         )}
-        <div className="users">userImgs</div>
+        <MemberList members={board.members}/>
+        {/* <div className="members">
+          {board?.members &&
+            board.members.map((member, idx) => (
+              <article key={idx} className="member-wrapper">
+                {member?.imgUrl ? (
+                  <img
+                    src={member.imgUrl}
+                    className="member-img"
+                    alt={"member-img"}
+                  />
+                ) : (
+                  <div className="member-img" style={{ background: "#df3409" }}>
+                    <p className="member-letter">{member.fullname[0]}</p>
+                  </div>
+                )}
+              </article>
+            ))}
+        </div> */}
         <button className="header-btn">Invite</button>
       </div>
       <div className="header-btn-container flex">

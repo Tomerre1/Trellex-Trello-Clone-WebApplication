@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { TaskLabels } from "./TaskPreview/TaskLabels";
 import { TaskDetailsPreview } from "./TaskPreview/TaskDetailsPreview";
 import { TaskDatePreview } from "./TaskPreview/TaskDatePreview";
+import { MemberList } from '../cmps/MemberList'
 import CheckBoxOutlinedIcon from "@mui/icons-material/CheckBoxOutlined";
 import SubjectOutlinedIcon from "@mui/icons-material/SubjectOutlined";
 import ChatBubbleOutlineRoundedIcon from "@mui/icons-material/ChatBubbleOutlineRounded";
@@ -82,7 +83,9 @@ export function TaskPreview(props) {
                 txt={getChecklistData()}
               />
             )}
+            
           </div>
+          {task?.members && <MemberList members={task.members} isInPreview={true}/>}
         </div>
         <div className="edit-icon">
         <ModeEditOutlinedIcon className="icon"/>
