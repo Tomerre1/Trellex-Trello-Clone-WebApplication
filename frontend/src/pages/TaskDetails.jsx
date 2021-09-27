@@ -19,7 +19,6 @@ import { saveBoard, saveTaskDetails } from '../store/board.actions'
 
 export class _TaskDetails extends Component {
   state = {
-    isCover: true,
     currentTarget: null,
     isPopover: false,
     bgColorCover: null,
@@ -29,8 +28,6 @@ export class _TaskDetails extends Component {
   }
   contentEl = null;
 
-
-
   componentDidMount() {
     const { board } = this.props
     const { taskId, listId } = this.props.match.params;
@@ -38,8 +35,7 @@ export class _TaskDetails extends Component {
     const currTask = currGroup.tasks.find(task => task.id === taskId)
     this.setState(prevState => ({
       ...prevState,
-      isCover: currTask.style.bgColor ? true : false,
-      bgColorCover: currTask.style.bgColor ? currTask.style.bgColor : null,
+      bgColorCover: currTask.style?.bgColor || null,
       isPopover: false,
       currGroup,
       currTask,
@@ -71,10 +67,6 @@ export class _TaskDetails extends Component {
     this.setState(prevState => ({ ...prevState, bgColorCover: bgColor }))
   }
 
-  setIsCover = (isCover) => {
-    this.setState(prevState => ({ ...prevState, isCover }))
-  }
-
   setSelectedLabels = (selectedLabelIds) => {
     const { board } = this.props
     let labelsSelectedDeep = board.labels.filter(label => selectedLabelIds.includes(label.id));
@@ -93,7 +85,7 @@ export class _TaskDetails extends Component {
 
 
   render() {
-    const { isCover, currentTarget, isPopover, type, selectedLabels, selectedDate, selectedMembers, currTask, currGroup, bgColorCover } = this.state
+    const { currentTarget, isPopover, type, selectedLabels, selectedDate, selectedMembers, currTask, currGroup, bgColorCover } = this.state
     const { board } = this.props
     if (!currTask || !board) return <LoaderSpinner />
     const DynamicCmpPopover = (props) => {
@@ -115,8 +107,9 @@ export class _TaskDetails extends Component {
 
     return (
       <section className="task-details flex column">
-        <button className={`close-task-details ${isCover ? 'cover' : ''}`}><Close /></button>
-        {isCover && <TaskCardCover bgColor={bgColorCover} />}
+        <button className={`close-task-details ${bgColorCover ? 'cover' : ''}`}><Close /></button>
+        {bgColorCover && <TaskCardCover bgColor={bgColorCover} />}
+
         <TaskHeader />
         <div className="task-details-body flex">
           <div className="task-details-main flex column">
