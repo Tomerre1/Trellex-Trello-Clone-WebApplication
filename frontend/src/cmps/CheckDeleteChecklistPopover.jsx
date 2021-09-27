@@ -21,9 +21,9 @@ export class CheckDeleteChecklistPopover extends Component {
         return (
             <div className="no-back-container">
                 <Popover togglePopover={togglePopover} currentTarget={currentTarget} title={title} >
-                    <div>
+                    <div className="no-back">
                         <p>Deleting a checklist is permanent and there<br></br>is no way to get it back.</p>
-                        <button onClick={() => { this.removeChecklist(checklist) }}>Delete checklist</button>
+                        <button className="delete-checklist-btn danger-btn" onClick={() => { this.removeChecklist(checklist) }}>Delete checklist</button>
                     </div>
                 </Popover >
             </div >
