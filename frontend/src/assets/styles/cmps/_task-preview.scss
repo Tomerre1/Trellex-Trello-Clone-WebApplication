@@ -82,11 +82,8 @@
     p {
       margin: 0;
       // margin-bottom:5px;
+    }
 
-    }
-    .task-title p {
-      margin-bottom:4px;
-    }
     background: #fff;
     padding: 5px;
     border-radius: 3px;
@@ -99,7 +96,7 @@
       span {
         align-items: center;
         justify-content: center;
-
+        margin-top:5px;
         p {
           margin: 0;
           padding: 0;
@@ -144,6 +141,10 @@
         .icon {
           padding: 4px;
           color: rgb(107, 119, 140);
+          &.msg {
+            position:relative;
+            top:1px;
+          }
         }
       }
     }
