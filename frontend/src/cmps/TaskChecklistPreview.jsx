@@ -32,6 +32,18 @@ export class TaskChecklistPreview extends Component {
         updateTaskDetails(currTask)
     }
 
+    onRemoveTodo = (todo) => {
+        const { currTask, updateTaskDetails, checklist } = this.props
+        const checklistIdx = currTask.checklist.indexOf(checklist)
+
+        const todoIdx = currTask.checklist[checklistIdx].todos.findIndex((currTodo) => {
+            return currTodo.id === todo.id
+        })
+
+        currTask.checklist[checklistIdx].todos.splice(todoIdx, 1)
+        updateTaskDetails(currTask)
+    }
+
     // onDeleteChecklist = (checklist) => {
     //     console.log('checklist', checklist)
 
@@ -55,6 +67,7 @@ export class TaskChecklistPreview extends Component {
                 <TodoList
                     todos={checklist.todos}
                     onSaveTodo={this.onSaveTodo}
+                    onRemoveTodo={this.onRemoveTodo}
                 />
                 {isPopover &&
                     <CheckDeleteChecklistPopover
