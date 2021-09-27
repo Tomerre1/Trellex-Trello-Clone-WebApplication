@@ -18,24 +18,40 @@ export class TodoAdd extends Component {
         const { isEditMode } = this.state
         this.setState(prevState => ({ ...prevState, isEditMode: !isEditMode }))
     }
+
+    onTodoAdd = () => {
+        const {todo} = this.state
+        console.log('Todo add...',todo)
+    }
+
     render() {
         const { isEditMode, todo } = this.state
         return (
             <div className="todo-add-container">
-                {isEditMode &&
-                    <textarea onClick={this.onEditMode}
-                        // ref={(input) => { this.selectedInput = input; }}
-                        // onBlur={this.onSaveDescription}
-                        value={todo.title}
-                        placeholder="Add an item"
-                        onChange={this.handleChange}>
-                    </textarea>
-                }
                 <button
-                    className={`task-btns nch-btn todo-add-btn ${!isEditMode ? 'full-opacity' : 'none-opacity'}`}
+                    className={`task-btns nch-btn todo-add-btn ${isEditMode ? 'hidden' : 'show'}`}
                     onClick={() => this.onToggleEditMode()}>
                     Add an item
                 </button>
+                {isEditMode &&
+                    <div className="todo-edit flex column">
+                        <textarea onClick={this.onEditMode}
+                            // ref={(input) => { this.selectedInput = input; }}
+                            // onBlur={this.onToggleEditMode}
+                            autoFocus
+                            value={todo.title}
+                            placeholder="Add an item"
+                            onChange={this.handleChange}>
+                        </textarea>
+
+                        <div className={`description-btns flex align-center ${isEditMode ? 'show' : 'hidden'}`}>
+                            <button className='task-btns save-task-description-btn' onClick={() => this.onTodoAdd()}>Add</button>
+                            <button className='task-btns close-task-description-btn' onClick={() => this.onToggleEditMode()}><Close /></button>
+                        </div>
+                    </div>
+
+                }
+                
             </div>
         )
     }
