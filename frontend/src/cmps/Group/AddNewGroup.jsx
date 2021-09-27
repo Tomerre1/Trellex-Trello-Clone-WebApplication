@@ -22,12 +22,11 @@ function _AddNewGroup(props) {
       setBtnText(<Loader type="Grid" color={"white"} height={14} width={14} />)
       await props.addGroup(boardId, title)
       setBtnText('Add list')
-      setTitle()
+      setTitle('')
       toggleIsClicked()
       
     } catch(err) {
         setBtnText('Add list')
-        console.log('%c%s', 'color: #733d00', err);
     }
   }
 // if(isClicked) {
