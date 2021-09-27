@@ -22,7 +22,7 @@ function _AddNewGroup(props) {
       setBtnText(<Loader type="Grid" color={"white"} height={14} width={14} />)
       await props.addGroup(boardId, title)
       setBtnText('Add list')
-      setTitle('')
+      setTitle()
       toggleIsClicked()
       
     } catch(err) {
@@ -41,13 +41,14 @@ function _AddNewGroup(props) {
         toggleIsClicked()
       }}
     >
-      <div className="flex  align-center">
+      <div className="flex align-center">
         <AddIcon className="icon" />
         Add a list
       </div>
     </article> 
     :
-    <div className="add-group-active group-details flex column">
+      <form onSubmit={(ev) => {ev.preventDefault()}}>
+    <div className="add-group-active group-details flex column scale-up-ver-top"  >
     <input
       value={title}
       placeholder="Enter list title..."
@@ -67,11 +68,12 @@ function _AddNewGroup(props) {
       <button
         className="group-btn close-group-title-btn"
         onClick={toggleIsClicked}
-      >
+        >
         <Close />
       </button>
     </div>
   </div>
+        </form>
     }
     </div>
   );

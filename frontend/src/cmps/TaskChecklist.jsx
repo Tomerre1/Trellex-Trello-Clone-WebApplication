@@ -9,10 +9,10 @@ export class TaskChecklist extends Component {
 
     render() {
         const { currTask , updateTaskDetails } = this.props
-        if (!currTask.checklist) return <React.Fragment></React.Fragment>
+        if (!currTask.checklists) return <React.Fragment></React.Fragment>
         return (
             <div className="task-checklists" >
-                {currTask.checklist.map(checklist => {
+                {currTask.checklists.map(checklist => {
                     return <TaskChecklistPreview
                         key={checklist.id}
                         checklist={checklist}

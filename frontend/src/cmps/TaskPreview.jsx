@@ -53,7 +53,7 @@ export function TaskPreview(props) {
           ></div>
         )}
         <div className="task-preview clean-link">
-          {labelIds && (
+          {labelIds?.length > 0 && (
             <TaskLabels labelIds={labelIds} boardLabels={boardLabels} />
           )}
           <div className="task-title"><p>{title}</p></div>
@@ -73,7 +73,7 @@ export function TaskPreview(props) {
             )}
             {comments && comments.length > 0 && (
               <TaskDetailsPreview
-                icon={<ChatBubbleOutlineRoundedIcon className="icon" />}
+                icon={<ChatBubbleOutlineRoundedIcon className="icon msg" />}
                 txt={comments.length}
               />
             )}

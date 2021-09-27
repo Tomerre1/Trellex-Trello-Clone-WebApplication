@@ -9,8 +9,8 @@ export class CheckDeleteChecklistPopover extends Component {
 
     removeChecklist = (checklist) => {
         const { togglePopover , updateTaskDetails ,currTask} = this.props
-        const checklistIdx = currTask.checklist.indexOf(checklist)
-        currTask.checklist.splice(checklistIdx,1)
+        const checklistIdx = currTask.checklists.indexOf(checklist)
+        currTask.checklists.splice(checklistIdx,1)
         updateTaskDetails(currTask)
         togglePopover()
     }

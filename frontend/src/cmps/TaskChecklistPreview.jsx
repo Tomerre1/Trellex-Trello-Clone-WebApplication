@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { TodoList } from './TodoList'
-import {CheckDeleteChecklistPopover} from './CheckDeleteChecklistPopover'
+import { CheckDeleteChecklistPopover } from './CheckDeleteChecklistPopover'
+import { TodoAdd } from './TodoAdd'
 import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
 
 export class TaskChecklistPreview extends Component {
@@ -13,16 +14,39 @@ export class TaskChecklistPreview extends Component {
 
     togglePopover = () => {
         this.setState(prevState => ({ ...prevState, isPopover: !prevState.isPopover }))
-      }
+    }
 
-      setCurrentTarget = (event) => {
+    setCurrentTarget = (event) => {
         this.setState(prevState => ({ ...prevState, currentTarget: event.target.getBoundingClientRect() }))
         this.togglePopover()
-      };
+    };
 
     onSaveTodo = (todo) => {
-        const { currTask, updateTaskDetails } = this.props
+        const { currTask, updateTaskDetails, checklist } = this.props
+        const checklistIdx = currTask.checklists.indexOf(checklist)
+
+        const todoIdx = currTask.checklists[checklistIdx].todos.findIndex((currTodo) => {
+            return currTodo.id === todo.id
+        })
+
+        currTask.checklists[checklistIdx].todos[todoIdx] = todo
         updateTaskDetails(currTask)
+    }
+
+    onRemoveTodo = (todo) => {
+        const { currTask, updateTaskDetails, checklist } = this.props
+        const checklistIdx = currTask.checklists.indexOf(checklist)
+
+        const todoIdx = currTask.checklists[checklistIdx].todos.findIndex((currTodo) => {
+            return currTodo.id === todo.id
+        })
+
+        currTask.checklists[checklistIdx].todos.splice(todoIdx, 1)
+        updateTaskDetails(currTask)
+    }
+
+    onAddTodo = () => {
+        console.log('Add todo')
     }
 
     // onDeleteChecklist = (checklist) => {
@@ -33,7 +57,7 @@ export class TaskChecklistPreview extends Component {
     render() {
         const { checklist, currTask, updateTaskDetails } = this.props
         const { isPopover, currentTarget } = this.state
-        
+
         return (
             <div className="task-activities flex column">
                 <div className="window-modal-title flex space-between">
@@ -48,6 +72,7 @@ export class TaskChecklistPreview extends Component {
                 <TodoList
                     todos={checklist.todos}
                     onSaveTodo={this.onSaveTodo}
+                    onRemoveTodo={this.onRemoveTodo}
                 />
                 {isPopover &&
                     <CheckDeleteChecklistPopover
@@ -60,6 +85,7 @@ export class TaskChecklistPreview extends Component {
                         currTask={currTask}
                     />
                 }
+                <TodoAdd onAddTodo={this.onAddTodo} />
             </div>
         )
     }

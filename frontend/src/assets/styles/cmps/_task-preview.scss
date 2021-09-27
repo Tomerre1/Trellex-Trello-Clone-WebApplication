@@ -15,7 +15,6 @@
     padding: 14px;
     background: #ffffff56;
     border-radius: 3px;
-    transition: opacity 0.2s;
     color: rgb(94, 94, 94);
     pointer-events: visible;
   }
@@ -25,11 +24,13 @@
     background: initial;
     pointer-events: auto;
 
+
     .edit-icon {
       opacity: 1;
       cursor: pointer;
       filter: brightness(1);
       transition: color 0.2s, filter 0.2s, opacity 0.2s;
+      
       a {
         color: rgb(87, 86, 86);
       }
@@ -81,8 +82,8 @@
     p {
       margin: 0;
       // margin-bottom:5px;
-
     }
+
     background: #fff;
     padding: 5px;
     border-radius: 3px;
@@ -95,7 +96,7 @@
       span {
         align-items: center;
         justify-content: center;
-
+        margin-top:5px;
         p {
           margin: 0;
           padding: 0;
@@ -140,6 +141,10 @@
         .icon {
           padding: 4px;
           color: rgb(107, 119, 140);
+          &.msg {
+            position:relative;
+            top:1px;
+          }
         }
       }
     }

@@ -103,6 +103,14 @@
                 color: #5e6c84;
                 text-decoration: line-through;
             }
+            .todo-remove-icon{
+                color: unset;
+                opacity: .25;
+                transition: all 0.5s ease;
+                &:hover {
+                    opacity: 1;
+                }
+            }
         }
     }
 }
