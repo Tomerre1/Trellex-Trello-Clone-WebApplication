@@ -1,4 +1,5 @@
  .add-group-wrapper {
+
   .group-btns{
     justify-content: flex-start;
     display:flex;
@@ -55,6 +56,7 @@
         }
       }
 }
+
   .add-new{ 
   background-color: #ebecf036;
   color: rgba(255, 255, 255, 0.747);
@@ -62,6 +64,9 @@
   cursor: pointer;
   transition: background-color 0.2s;
   height:fit-content;
+  form {
+    width:100% !important;
+  }
 }
  }
 
