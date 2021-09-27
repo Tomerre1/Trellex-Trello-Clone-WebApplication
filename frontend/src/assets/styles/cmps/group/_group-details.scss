@@ -10,31 +10,7 @@
   max-width: 272px;
 
   max-height: 87vh;
-  .group-menu {
-    width: 200px;
-    height: 100px;
-    background: #ebecf0;
-    border-radius: 3px;
-    box-shadow: 0 0 2px #020202;
-    z-index: 1;
-    text-align: center;
-    padding:8px;
-  }
-  
-  .overlay {
-    position: fixed;
-    inset: 0;
-    background-color: #0202022c;
-    z-index: 0;
-    opacity: 0;
-    transition: opacity 0.2s ease-out;
-    pointer-events: none;
-    &.show {
-      opacity: 1;
-      pointer-events: auto;
-    }
-  }
- 
+
   .group-header {
     width: 100%;
     padding-left: 0.125rem;
@@ -53,6 +29,19 @@
         color:black;
         background:#a9a9aa42;
   
+      }
+    }
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background-color: #0202022c;
+      z-index: 5;
+      opacity: 0;
+      transition: opacity 0.2s ease-out;
+      pointer-events: none;
+      &.show {
+        opacity: 1;
+        pointer-events: auto;
       }
     }
     input.group-title {

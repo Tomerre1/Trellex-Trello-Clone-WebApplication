@@ -1,0 +1,14 @@
+.group-menu {
+  width: 200px;
+  height: 100px;
+  background-color: #fff;
+  border: 1px solid lightgray;
+  border-radius: 3px;
+  box-shadow: 0 0 2px #020202;
+  z-index: 15;
+  padding: 0 12px 12px;
+  text-align: center;
+  padding: 8px;
+  box-shadow: 0 8px 16px -4px rgba(9, 30, 66, 0.25),
+    0 0 0 1px rgba(9, 30, 66, 0.08);
+}

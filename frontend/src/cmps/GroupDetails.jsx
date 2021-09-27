@@ -14,12 +14,17 @@ const _GroupDetails = (props) => {
   const [isMenuShown, toggleMenuShown] = useState(false);
   const [menuPos, setMenuPos] = useState({});
 
+
   const toggleMenu = (ev) => {
+    let posX = (window.innerWidth - ev.pageX > 200 ) ? ev.pageX : ev.pageX -200;
+
     setMenuPos({
-      position: "absolute",
-      top: `${ev.pageY - 100}px`,
-      left: `${ev.pageX + 25}px`,
+      position: "fixed",
+      top: `${ev.pageY }px`,
+      left: `${posX}px`,
     });
+    console.dir(document)
+    console.log(ev)
     toggleMenuShown(!isMenuShown);
   };
 
@@ -41,10 +46,7 @@ const _GroupDetails = (props) => {
           onClick={toggleMenu}
           className="dots"
         />
-        <div
-          className={`overlay ${isMenuShown ? "show" : ""}`}
-          onClick={toggleMenu}
-        />
+
         {isMenuShown && (
           <GroupActions
             menuPos={menuPos}
@@ -54,8 +56,12 @@ const _GroupDetails = (props) => {
             groupId={group.id}
           />
         )}
+                <div
+          className={`overlay ${isMenuShown ? "show" : ""}`}
+          onClick={toggleMenu}
+        />
       </div>
-      <div className={`group-main flex column `} ref={elRef}>
+      <div className={`group-main flex column `}>
         {group.tasks.map((task, idx) => (
           <TaskPreview
             task={task}

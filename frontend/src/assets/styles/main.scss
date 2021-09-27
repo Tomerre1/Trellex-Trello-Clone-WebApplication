@@ -21,32 +21,40 @@
 
 // Components
 @import "cmps/app-header";
-@import "cmps/board-header";
-@import "cmps/board-list";
-@import "cmps/board-preview";
-@import "cmps/group-list";
-@import "cmps/group-details";
-@import "cmps/group-add-task";
-@import "cmps/group-add-group";
+
+@import "cmps/board/board-header";
+@import "cmps/board/board-list";
+@import "cmps/board/board-preview";
+
+@import "cmps/group/group-list";
+@import "cmps/group/group-details";
+@import "cmps/group/group-add-task";
+@import "cmps/group/group-add-group";
+@import "cmps/group/group-menu";
+
 @import "cmps/task-header";
 @import "cmps/task-card-cover";
 @import "cmps/task-description";
 @import "cmps/task-activities";
 @import "cmps/task-actions-menu";
-@import "cmps/task-preview";
-@import "cmps/task-preview-labels";
-@import "cmps/task-preview-members";
-@import "cmps/popover";
-@import "cmps/popover-checklist";
-@import "cmps/loader";
-@import "cmps/popover-labels";
-@import "cmps/popover-label-preview";
-@import "cmps/color-palette";
-@import "cmps/todo-preview";
-@import "cmps/popover-cover";
 @import "cmps/task-details-header";
 @import "cmps/task-details-header-labels";
-@import "cmps/check-delete-checklist-popover";
+
+@import "cmps/task-preview/task-preview";
+@import "cmps/task-preview/task-preview-labels";
+@import "cmps/task-preview/task-preview-members";
+
+@import "cmps/popover";
+@import "cmps/popover-checklist";
+@import "cmps/popover-labels";
+@import "cmps/popover-label-preview";
 @import "cmps/popover-members";
 @import "cmps/popover-member-preview";
+@import "cmps/popover-cover";
+@import "cmps/check-delete-checklist-popover";
+
+@import "cmps/loader";
+@import "cmps/color-palette";
+
+@import "cmps/todo-preview";
 @import "cmps/todo-add";
