@@ -42,15 +42,25 @@ function _BoardHeader(props) {
           </form>
         )}
         <div className="members">
-        {board?.members &&
-          
-          board.members.map((member, idx) => (
-            <article key={idx} className="member-wrapper">
-              <img src={member.imgUrl} className="member-img"alt={'member-img'} />
-              <p className="member-letter">{member.fullname[0]}</p>
-            </article>
-          ))}
-          </div>
+          {board?.members &&
+            board.members.map((member, idx) => (
+              <article key={idx} className="member-wrapper">
+                {member?.imgUrl ? (
+                  <img
+                    src={member.imgUrl}
+                    className="member-img"
+                    alt={"member-img"}
+                  />
+                ) : (
+                  <div
+                    className="member-img"
+                    style={{ background: "#df3409" }}
+                  ></div>
+                )}
+                <p className="member-letter">{member.fullname[0]}</p>
+              </article>
+            ))}
+        </div>
         <button className="header-btn">Invite</button>
       </div>
       <div className="header-btn-container flex">

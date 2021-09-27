@@ -86,7 +86,7 @@ const demoBoards = [
                 {
                 "_id": 'u103',
                 "fullname": 'Matan',
-                "imgUrl": 'https://media-exp1.licdn.com/dms/image/C4E03AQFlupY8tXNbnA/profile-displayphoto-shrink_400_400/0/1622442415599?e=1638403200&v=beta&t=DBTF6x9nzwz1G04DZ8hBSG14UyM6BUDX6LM30JL84jg'
+                "imgUrl": ''
             },
         ],
         "groups": [
