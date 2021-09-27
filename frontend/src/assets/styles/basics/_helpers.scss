@@ -114,3 +114,11 @@ body .nch-button {
     transition-property: background-color, border-color, box-shadow;
     transition-timing-function: ease;
 }
+
+button, input, select, textarea {
+    color: #172b4d;
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Noto Sans,Ubuntu,Droid Sans,Helvetica Neue,sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+}
