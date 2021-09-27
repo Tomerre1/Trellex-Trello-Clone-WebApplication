@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Close } from '@mui/icons-material';
+import { utilService } from '../services/util.service'
 
 export class TodoAdd extends Component {
     state = {
@@ -21,7 +22,9 @@ export class TodoAdd extends Component {
 
     onTodoAdd = () => {
         const {todo} = this.state
-        console.log('Todo add...',todo)
+        todo.id = utilService.makeId()
+        todo.isDone = false
+        this.setState(prevState => ({ ...prevState, todo }),this.props.onAddTodo(todo))
     }
 
     render() {

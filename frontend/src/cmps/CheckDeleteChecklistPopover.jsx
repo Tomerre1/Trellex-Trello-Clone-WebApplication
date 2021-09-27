@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Popover } from './Popover/Popover'
-import { utilService } from '../services/util.service'
 
 
 export class CheckDeleteChecklistPopover extends Component {
