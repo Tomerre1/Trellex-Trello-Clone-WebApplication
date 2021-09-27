@@ -42,7 +42,7 @@ function _BoardHeader(props) {
             ></input>
           </form>
         )}
-        <MemberList members={board.members}/>
+        <MemberList members={board.members} />
         {/* <div className="members">
           {board?.members &&
             board.members.map((member, idx) => (
