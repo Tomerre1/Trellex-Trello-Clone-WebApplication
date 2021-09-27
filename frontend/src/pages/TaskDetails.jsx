@@ -76,10 +76,17 @@ export class _TaskDetails extends Component {
 
   setSelectedLabels = (selectedLabelIds) => {
     const { board } = this.props
-    let labelsSelectedDeep = JSON.parse(JSON.stringify(board.labels.filter(label => selectedLabelIds.includes(label.id))));
+    let labelsSelectedDeep = board.labels.filter(label => selectedLabelIds.includes(label.id));
     this.setState(prevState => ({
       ...prevState,
       selectedLabels: labelsSelectedDeep,
+    }))
+  }
+
+  setSelectedMembers = (selectedMembers) => {
+    this.setState(prevState => ({
+      ...prevState,
+      selectedMembers: selectedMembers,
     }))
   }
 
@@ -93,7 +100,7 @@ export class _TaskDetails extends Component {
         case 'LABELS':
           return <PopoverLabels {...props} board={board} currGroup={currGroup} setSelectedLabels={this.setSelectedLabels} title='Labels' />
         case 'MEMBERS':
-          return <PopoverMembers {...props} title='Members' members={board.members} />
+          return <PopoverMembers {...props} title='Members' setSelectedMembers={this.setSelectedMembers} members={board.members} />
         case 'CHECKLIST':
           return <PopoverChecklist {...props} title='Checklist' />
         case 'DATE':
@@ -104,7 +111,7 @@ export class _TaskDetails extends Component {
           return <PopoverCover {...props} setBgColorCover={this.setBgColorCover} setIsCover={this.setIsCover} title='Cover' />
       }
     }
-    
+
     return (
       <section className="task-details flex column">
         <button className={`close-task-details ${isCover ? 'cover' : ''}`}><Close /></button>
@@ -115,8 +122,7 @@ export class _TaskDetails extends Component {
             {(selectedLabels || selectedMembers || selectedDate) &&
               <TaskHeaderDetails
                 selectedLabels={selectedLabels}
-
-              // selectedMembers={selectedMembers}
+                selectedMembers={selectedMembers}
               // selectedDate={selectedDate}
               />
             }

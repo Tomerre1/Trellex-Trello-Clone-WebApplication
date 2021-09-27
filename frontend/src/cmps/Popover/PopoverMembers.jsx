@@ -6,7 +6,8 @@ export class PopoverMembers extends Component {
     state = {
         search: '',
         members: [],
-        selectedMembers: []
+        selectedMembers: [],
+        selectedMembersIds: []
     }
 
     componentDidMount() {
@@ -14,7 +15,7 @@ export class PopoverMembers extends Component {
         this.setState(prevState => ({
             ...prevState,
             members,
-            selectedMembers: currTask.members
+            selectedMembersIds: currTask.members.map(member => member._id)
         }))
     }
 
@@ -24,27 +25,23 @@ export class PopoverMembers extends Component {
             search: e.target.value
         }))
     }
-    setSelectedMembers = (selectedMembers) => {
-        this.setState(prevState => ({
-            ...prevState,
-            selectedMembers
-        }))
-    }
+
 
     toggleMemberCheck = async (member) => {
-        const { updateTaskDetails, setSelectedLabels, currTask } = this.props
-        const updatedMembers = (currTask.members.includes(member)) ?
+        const { updateTaskDetails, setSelectedMembers, currTask } = this.props
+        const selectedMembersIds = currTask.members.map(member => member._id)
+        const updatedMembers = (selectedMembersIds.includes(member._id)) ?
             currTask.members.filter(currMember => currMember._id !== member._id) :
             [...currTask.members, member]
         currTask.members = updatedMembers
-        this.setState(prevState => ({ ...prevState, selectedMembers: updatedMembers }))
-        this.setSelectedMembers(updatedMembers)
+        this.setState(prevState => ({ ...prevState, selectedMembers: updatedMembers, selectedMembersIds }))
+        setSelectedMembers(updatedMembers)
         updateTaskDetails(currTask)
     }
 
     render() {
-        const { togglePopover, currentTarget, title, members, currTask } = this.props
-        const { search, selectedMembers } = this.state
+        const { togglePopover, currentTarget, title, currTask, members } = this.props
+        const { search, selectedMembersIds } = this.state
         return (
             <Popover togglePopover={togglePopover} currentTarget={currentTarget} title={title} >
                 <div className="members-popover">
@@ -54,7 +51,7 @@ export class PopoverMembers extends Component {
                     <ul className="clean-list">
                         {members &&
                             members.filter(member => member.fullname.toLowerCase().includes(search.toLowerCase()))
-                                .map(member => <PopoverMemberPreview toggleMemberCheck={this.toggleMemberCheck} selectedMembers={selectedMembers} member={member} />)
+                                .map(member => <PopoverMemberPreview toggleMemberCheck={this.toggleMemberCheck} member={member} selectedMembersIds={selectedMembersIds} members={members} />)
                         }
                     </ul>
                 </div>

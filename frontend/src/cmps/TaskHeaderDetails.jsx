@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { TaskHeaderLabels } from './TaskHeaderLabels'
+import { TaskHeaderMembers } from './TaskHeaderMembers'
 
 export class TaskHeaderDetails extends Component {
     state = {
@@ -10,7 +11,7 @@ export class TaskHeaderDetails extends Component {
 
     componentDidMount() {
         const { selectedLabels, selectedMembers, selectedDate } = this.props
-        this.setState(prevState => ({ ...prevState, selectedLabels }))
+        this.setState(prevState => ({ ...prevState, selectedLabels, selectedMembers }))
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -18,9 +19,9 @@ export class TaskHeaderDetails extends Component {
         if (prevProps.selectedLabels !== selectedLabels) {
             this.setState(prevState => ({ ...prevState, selectedLabels }))
         }
-        // if (prevProps.selectedMembers !== selectedMembers) {
-        //     this.setState(prevState => ({ ...prevState, selectedMembers }))
-        // }
+        if (prevProps.selectedMembers !== selectedMembers) {
+            this.setState(prevState => ({ ...prevState, selectedMembers }))
+        }
         // if (prevProps.selectedDate !== selectedDate) {
         //     this.setState(prevState => ({ ...prevState, selectedDate }))
         // }
@@ -32,6 +33,7 @@ export class TaskHeaderDetails extends Component {
         return (
             <div className="task-details-header flex">
                 {selectedLabels && <TaskHeaderLabels selectedLabels={selectedLabels} />}
+                {selectedMembers && <TaskHeaderMembers selectedMembers={selectedMembers} />}
             </div>
         )
     }
