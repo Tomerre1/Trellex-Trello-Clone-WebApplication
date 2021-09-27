@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { saveBoard } from "../store/board.actions";
+import { MemberList } from '../cmps/MemberList'
 
 function _BoardHeader(props) {
   const { board } = props;
@@ -41,7 +42,8 @@ function _BoardHeader(props) {
             ></input>
           </form>
         )}
-        <div className="members">
+        <MemberList members={board.members}/>
+        {/* <div className="members">
           {board?.members &&
             board.members.map((member, idx) => (
               <article key={idx} className="member-wrapper">
@@ -52,15 +54,13 @@ function _BoardHeader(props) {
                     alt={"member-img"}
                   />
                 ) : (
-                  <div
-                    className="member-img"
-                    style={{ background: "#df3409" }}
-                  ></div>
+                  <div className="member-img" style={{ background: "#df3409" }}>
+                    <p className="member-letter">{member.fullname[0]}</p>
+                  </div>
                 )}
-                <p className="member-letter">{member.fullname[0]}</p>
               </article>
             ))}
-        </div>
+        </div> */}
         <button className="header-btn">Invite</button>
       </div>
       <div className="header-btn-container flex">
