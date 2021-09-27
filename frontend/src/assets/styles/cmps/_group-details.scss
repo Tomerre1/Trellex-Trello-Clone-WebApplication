@@ -75,7 +75,7 @@
       margin: 0;
       padding-inline-start: 2px;
       font-weight: 500;
-      letter-spacing: rem(-0.5px);
+      // letter-spacing: rem(-0.2px);
       outline: 0;
       border: 0;
       height: 25px;
@@ -93,7 +93,6 @@
       &:focus-visible {
         font-size: rem(14px);
         // padding-inline-start: 3px;
-        letter-spacing: rem(-0.5px);
         background-color: unset;
         box-shadow: 0 0 2px #020202;
         border-radius: 2px;

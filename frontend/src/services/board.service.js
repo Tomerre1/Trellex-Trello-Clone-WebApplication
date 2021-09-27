@@ -1150,11 +1150,11 @@ async function addTask(taskTitle, boardId, groupId) {
     save(board)
     return board
 }
-async function addGroup(boardId) {
+async function addGroup(boardId,title = "Untitled group") {
     if (!boardId) return
     const newGroup = {
         "id": `g-${utilService.makeId()}`,
-        "title": "New list",
+        "title": title,
         tasks: [],
         "style": {
             bgImg: "",

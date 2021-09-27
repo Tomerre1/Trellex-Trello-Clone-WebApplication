@@ -83,10 +83,10 @@ export const addTask = (taskTitle, boardId, groupId) => {
         }
     }
 }
-export const addGroup = (boardId) => {
+export const addGroup = (boardId,title) => {
     return async (dispatch) => {
         try {
-            const board = await boardService.addGroup(boardId)
+            const board = await boardService.addGroup(boardId,title)
             dispatch({
                 type: "SAVE_BOARD",
                 board: board,
