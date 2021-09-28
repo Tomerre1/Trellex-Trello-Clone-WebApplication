@@ -6,14 +6,25 @@ import CheckBoxIcon from '@mui/icons-material/CheckBox';
 
 export class TaskHeaderDate extends Component {
     state = {
-        formatedDate: ''
+        formatedDate: '',
+        dueDate: null
     }
     componentDidMount = () => {
-        const { selectedDate } = this.props
+        const { selectedDate, currTask } = this.props
+        const dueDate = selectedDate
         const formatedDate = this.dueDateFormat(selectedDate)
-        this.setState(prevState => ({ ...prevState, formatedDate }))
-
+        this.setState(prevState => ({ ...prevState, formatedDate, dueDate }))
     }
+
+    componentDidUpdate(prevProps) {
+        const {selectedDate} = this.props
+        if (this.state.dueDate !== selectedDate) {
+            const dueDate = selectedDate
+            const formatedDate = this.dueDateFormat(selectedDate)
+            this.setState(prevState => ({ ...prevState, dueDate,formatedDate }))
+        }
+    }
+
     onToggleTaskDone = () => {
         this.props.toggleTaskDone()
     }
@@ -23,7 +34,7 @@ export class TaskHeaderDate extends Component {
         const currYear = new Date().getFullYear()
         const dueYear = new Date(dueDate).getFullYear()
         let strDate = ''
-        strDate += `${new Date(dueDate).toLocaleString('en-GB', { month: 'numeric' })} `
+        strDate += `${new Date(dueDate).toLocaleString('en-GB', { day: 'numeric' })} `
         strDate += `${new Date(dueDate).toLocaleString('en-GB', { month: 'short' })} at `
         if (dueYear !== currYear) {
             strDate += `${dueYear} `
@@ -35,7 +46,7 @@ export class TaskHeaderDate extends Component {
     render() {
         const { selectedDate, setCurrentTarget, currTask } = this.props
         const { formatedDate } = this.state
-        console.log('formatedDate', formatedDate)
+        console.log('selectedDate', selectedDate)
         if (selectedDate.length === 0) return <></>
 
 
