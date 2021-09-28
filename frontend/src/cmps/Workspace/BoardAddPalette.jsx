@@ -3,7 +3,7 @@ import CheckIcon from "@material-ui/icons/Check";
 
 export function BoardAddPalette({ setBgClr, setBgImg, bgClr, bgImg }) {
 
-    const [selected,setSelected] = useState()
+    const [selected,setSelected] = useState("linear-gradient(to bottom, #000000, #434343")
     
     
     const clrs = [
@@ -21,7 +21,7 @@ export function BoardAddPalette({ setBgClr, setBgImg, bgClr, bgImg }) {
     "https://c.pxhere.com/photos/4f/ee/candy_toppings_sweet_colorful_sugar-883692.jpg!d",
     "http://www.pngmagic.com/product_images/creative-banner-design-background-images.jpg",
     "https://cdn.wallpapersafari.com/22/29/fdqrYk.jpg",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKtfDLOqMaWnw3sAiVX_25g1l7_2Fpidi-sQ&usqp=CAU"
+    "https://img2.goodfon.com/wallpaper/nbig/2/73/texture-lines-colours-cveta.jpg"
     
 ];
 
