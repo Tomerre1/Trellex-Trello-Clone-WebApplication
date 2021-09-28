@@ -37,7 +37,6 @@ function _AppHeader(props) {
           <p>BS</p>
         </div> */}
       </div>
-      {console.log('why no user', props.user)}
     </header>
   );
 }

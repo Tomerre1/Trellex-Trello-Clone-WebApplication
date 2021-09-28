@@ -104,9 +104,10 @@
           font-size: rem(12px);
         }
         &.checklist.done {
-          margin-inline-start: 3px;
+          margin-inline-start: 6px;
           background: rgb(97, 189, 79);
-          padding-right:4px;
+          padding-right:6px;
+          padding-left:1px;
           border-radius:3px;
           height: 20px;
 
