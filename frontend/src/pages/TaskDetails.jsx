@@ -134,7 +134,7 @@ export class _TaskDetails extends Component {
                 // selectedDate={selectedDate}
                 />
               }
-              <TaskDescription currTask={currTask} />
+              <TaskDescription currTask={currTask} updateTaskDetails={this.updateTaskDetails} />
               <TaskChecklist currTask={currTask} updateTaskDetails={this.updateTaskDetails} />
               <TaskActivities />
             </div>
