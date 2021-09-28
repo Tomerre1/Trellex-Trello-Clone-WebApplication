@@ -1,6 +1,10 @@
+import {useState} from 'react'
 import CheckIcon from "@material-ui/icons/Check";
 
 export function BoardAddPalette({ setBgClr, setBgImg, bgClr, bgImg }) {
+
+    const [selected,setSelected] = useState()
+
   const clrs = [
     "linear-gradient(to bottom, #000000, #434343)",
     "linear-gradient(to right, #2980b9, #2c3e50)",
@@ -12,7 +16,12 @@ export function BoardAddPalette({ setBgClr, setBgImg, bgClr, bgImg }) {
 
   const imgs = [
     "https://www.incimages.com/uploaded_files/image/1920x1080/getty_509107562_2000133320009280346_351827.jpg",
- 
+    "http://all4desktop.com/data_images/original/4238112-background.jpg",
+    "https://c.pxhere.com/photos/4f/ee/candy_toppings_sweet_colorful_sugar-883692.jpg!d",
+    "http://www.pngmagic.com/product_images/creative-banner-design-background-images.jpg",
+    "https://cdn.wallpapersafari.com/22/29/fdqrYk.jpg",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKtfDLOqMaWnw3sAiVX_25g1l7_2Fpidi-sQ&usqp=CAU"
+
   ];
   return (
     <div className="palettes">
@@ -21,8 +30,8 @@ export function BoardAddPalette({ setBgClr, setBgImg, bgClr, bgImg }) {
           return (
             <label
               key={color}
-              className="flex align-center justify-center"
-              style={{ background: color }}
+              className="flex align-center justify-center palette-icon"
+              style={{ background: color , border: selected === color ? '2px solid white' : ''}}
               name="label-color"
               htmlFor={`color-${color}`}
             >
@@ -31,40 +40,43 @@ export function BoardAddPalette({ setBgClr, setBgImg, bgClr, bgImg }) {
                 name="color"
                 id={`color-${color}`}
                 value={color}
-                onClick={(ev) => setBgClr(ev.target.value)}
+                onClick={(ev) =>{ 
+                    setBgClr(ev.target.value)
+                    setBgImg('')
+                    setSelected(ev.target.value)
+
+                }}
               />
-              {bgImg && (
-                <CheckIcon
-                  key={color}
-                  style={{ width: "16px", height: "16px", color: "white" }}
-                />
-              )}
+           
             </label>
           );
         })}
         <div className="imgs">
-          {imgs.map((color) => {
+          {imgs.map((imgUrl) => {
             return (
               <label
-                key={color}
-                className="flex align-center justify-center"
-                style={{ background: `url(${color})`,backgroundSize:'cover' }}
+                key={imgUrl}
+                className="flex align-center justify-center palette-icon"
+                style={{
+                  background: `url(${imgUrl})`,
+                  backgroundSize: "cover",
+                  border: selected === imgUrl ? '2px solid white' : ''
+                }}
                 name="label-color"
-                htmlFor={`color-${color}`}
+                htmlFor={`color-${imgUrl}`}
               >
                 <input
                   type="radio"
                   name="color"
-                  id={`color-${color}`}
-                  value={color}
-                  onClick={(ev) => setBgClr(ev.target.value)}
+                  id={`color-${imgUrl}`}
+                  value={imgUrl}
+                  onClick={(ev) =>{ 
+                      setBgImg(ev.target.value)
+                      setSelected(ev.target.value)
+                
+                }}
                 />
-                {bgClr && (
-                  <CheckIcon
-                    key={color}
-                    style={{ width: "16px", height: "16px", color: "white" }}
-                  />
-                )}
+          
               </label>
             );
           })}

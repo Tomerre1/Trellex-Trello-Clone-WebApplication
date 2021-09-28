@@ -13,7 +13,7 @@ export function BoardPreviewAdd(props) {
   return (
     <article className="board-preview-add">
       <div
-        className="board-content"
+        className="board-content flex column"
         style={{
           background: bgImg ? `url(${bgImg})` : bgClr,
           backgroundSize: "cover",
@@ -29,22 +29,27 @@ export function BoardPreviewAdd(props) {
           </div>
         ) : (
           <div className="add-active">
-              <button onClick={() => toggleEditMode(!isEditMode)}>x</button>
-            <div className="left">
+              <button className="closer" onClick={() => toggleEditMode(!isEditMode)}></button>
+            <div className="title-box flex">
               <input
                 className="board-title"
                 value={title}
                 onChange={(ev) => setTitle(ev.target.value)}
                 placeholder="New board title"
               />
-              <button onClick={() => props.onAdd(title, bgClr, bgImg)}>
+              <button onClick={() => {
+                if(!title) return
+                props.onAdd(title, bgClr, bgImg)
+                setBgClr("linear-gradient(to bottom, #000000, #434343)")
+                setBgImg('')
+                }}>
                 add
               </button>
-              <div className="right">
-                <BoardAddPalette bgClr={bgClr} setBgClr={setBgClr} setBgImg={setBgImg} />
+              </div>
+              <div className="color-box">
+                <BoardAddPalette bgClr={bgClr} setBgClr={setBgClr}setBgImg={setBgImg} />
               </div>
             </div>
-          </div>
         )}
       </div>
     </article>
