@@ -83,6 +83,13 @@ export class _TaskDetails extends Component {
     }))
   }
 
+  setTaksDetailsTitle = (title) => {
+    const { currTask } = this.state
+    currTask.title = title
+    this.updateTaskDetails({ ...currTask, title })
+  }
+
+
 
   render() {
     const { currentTarget, isPopover, type, selectedLabels, selectedDate, selectedMembers, currTask, currGroup, bgColorCover } = this.state
@@ -110,7 +117,7 @@ export class _TaskDetails extends Component {
         <button className={`close-task-details ${bgColorCover ? 'cover' : ''}`}><Close /></button>
         {bgColorCover && <TaskCardCover bgColor={bgColorCover} />}
 
-        <TaskHeader title={currTask.title} />
+        <TaskHeader taskTitle={currTask.title} setTaksDetailsTitle={this.setTaksDetailsTitle} />
         <div className="task-details-body flex">
           <div className="task-details-main flex column">
             {(selectedLabels || selectedMembers || selectedDate) &&
