@@ -30,13 +30,12 @@ export class ProgressBar extends Component {
 
         return (
             <div className="checklist-progress" >
-                <span className="checklist-progress-percentage js-checklist-progress-percent">{completed}%</span>
+                <span className="checklist-progress-percentage js-checklist-progress-percent">{parseFloat(completed).toFixed(1)}%</span>
                 <div className="checklist-progress-bar">
                     <div className="checklist-progress-bar-current js-checklist-progress-bar" style={style}>
 
                     </div>
                 </div>
-                {/* <span className="checklist-completed-text hide quiet js-completed-message">Everything in this checklist is complete!</span> */}
             </div>
         )
     }
