@@ -110,7 +110,7 @@ export class _TaskDetails extends Component {
         <button className={`close-task-details ${bgColorCover ? 'cover' : ''}`}><Close /></button>
         {bgColorCover && <TaskCardCover bgColor={bgColorCover} />}
 
-        <TaskHeader />
+        <TaskHeader title={currTask.title} />
         <div className="task-details-body flex">
           <div className="task-details-main flex column">
             {(selectedLabels || selectedMembers || selectedDate) &&
