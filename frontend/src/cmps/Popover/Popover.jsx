@@ -26,8 +26,8 @@ export class Popover extends React.Component {
 
     setPopoverPos(pos, elRect) {
         const { width } = elRect
-        let posX = (window.innerWidth - pos.pageX > 200) ? pos.pageX : pos.pageX - 200;
-        let posY = (window.innerHeight - pos.pageY > 200) ? pos.pageY + 10 : pos.pageY - 200;
+        let posX = (window.innerWidth - pos.pageX > 200) ? pos.pageX - 40 : pos.pageX - 200;
+        let posY = (window.innerHeight - pos.pageY > 200) ? pos.pageY + 20 : pos.pageY - 200;
         if (posX + width > window.innerWidth) {
             posX = window.innerWidth - width - 20;
         }
