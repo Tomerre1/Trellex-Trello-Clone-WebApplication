@@ -25,26 +25,21 @@ export class Popover extends React.Component {
     }
 
     setPopoverPos(pos, elRect) {
-        let { left, top } = pos
         const { width } = elRect
-        left = pos.left + pos.width / 2 - elRect.width / 2
-        top = pos.top + pos.height
-        return { left, top, width }
+        let posX = (window.innerWidth - pos.pageX > 200) ? pos.pageX + 10 : pos.pageX - 200;
+        let posY = (window.innerHeight - pos.pageY > 200) ? pos.pageY + 10 : pos.pageY - 200;
+        if (posX + width > window.innerWidth) {
+            posX = window.innerWidth - width - 20;
+        }
+        if (posY + elRect.height > window.innerHeight) {
+            posY = window.innerHeight - elRect.height - 20;
+        }
+        return { left: posX, top: posY }
     }
-
-
-
-    getBottomPosition = (elRect, targetRect) => {
-        return {
-            left: ((targetRect.left + targetRect.width) / 2) - (elRect.width / 2),
-            top: targetRect.top + targetRect.height
-        };
-    };
 
 
     getContentStyles = () => {
         const { top, left } = this.state;
-
         return {
             position: "fixed",
             opacity: 1,
@@ -54,13 +49,12 @@ export class Popover extends React.Component {
             backgroundColor: "#fff",
             border: "1px solid lightgray",
             padding: "15px",
-            zIndex: 99,
+            zIndex: 200,
             padding: "0 12px 12px",
             borderRadius: "3px",
             marginRight: "4px",
             maxWidth: "100%",
             boxShadow: "0 8px 16px -4px rgba(9, 30, 66, 0.25), 0 0 0 1px rgba(9, 30, 66, 0.08)",
-
         };
     };
 
