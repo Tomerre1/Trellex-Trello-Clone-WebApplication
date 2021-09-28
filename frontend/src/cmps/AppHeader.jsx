@@ -1,4 +1,4 @@
-import React , { Component } from "react";
+import React  from "react";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
@@ -37,7 +37,6 @@ function _AppHeader(props) {
           <p>BS</p>
         </div> */}
       </div>
-      {console.log('why no user', props.user)}
     </header>
   );
 }

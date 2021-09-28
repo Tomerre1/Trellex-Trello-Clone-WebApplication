@@ -11,7 +11,6 @@ class _Workspace extends Component {
 
   addBoard = async () =>{
     const newBoard = await this.props.addBoard()
-    console.log(this.props.boards)
   }
 
   render() {

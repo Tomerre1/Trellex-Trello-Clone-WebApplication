@@ -14,6 +14,7 @@ function _AddNewGroup(props) {
   const [title, setTitle] = useState('');
   const [btnText, setBtnText] = useState("Add list");
   const toggleIsClicked = () => {
+    if(isClicked) setTitle('')
     setIsClicked(!isClicked)
   };
 

@@ -1,9 +1,16 @@
 .add-group-wrapper {
+  .add-group-active { 
+    justify-content:center;
+    input {
+      margin:0;
+    }
+  }
   .group-btns {
     justify-content: flex-start;
     display: flex;
     gap: 0;
     margin: 0;
+    position:relative;
     .group-btn {
       transition-timing-function: ease;
       transition-property: background-color, border-color, box-shadow;

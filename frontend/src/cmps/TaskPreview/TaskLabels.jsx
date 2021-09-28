@@ -20,7 +20,6 @@ function _TaskLabels(props) {
                   style={{ background: label.color }}
                   key={idx}
                   onClick={(ev) => {
-                    console.log("was i clicked");
                     ev.preventDefault();
                     ev.stopPropagation();
                     toggleExpandLabels();

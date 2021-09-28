@@ -22,13 +22,10 @@ const _GroupDetails = (props) => {
       top: `${ev.pageY }px`,
       left: `${posX}px`,
     });
-    console.dir(document)
-    console.log(ev)
     toggleMenuShown(!isMenuShown);
   };
 
   const scrollToBottom = () => {
-    console.log(elRef,'why not working ? :(');
     elRef.current.scrollTo({
       top: elRef.current.scrollHeight,
       behavior: "smooth",

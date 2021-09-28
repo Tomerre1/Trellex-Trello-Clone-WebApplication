@@ -25,7 +25,7 @@ function _BoardHeader(props) {
     const newBoard = { ...board };
     newBoard.title = title.trim();
     setTitle(title.trim())
-    props.saveBoard(newBoard);
+    props.saveBoard(newBoard)
   };
 
   if (!board) return <h2>Loading</h2>;
@@ -58,7 +58,6 @@ function _BoardHeader(props) {
               }}
               style={{width:width +10 ,minWidth:'40px'}}
             ></input>
-            {console.log(width)}
           </form>
         )}
        {board?.members && <MemberList members={board.members}/>}
