@@ -3,6 +3,7 @@ import { TodoList } from './TodoList'
 import { CheckDeleteChecklistPopover } from './CheckDeleteChecklistPopover'
 import { TodoAdd } from './TodoAdd'
 import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
+import { ProgressBar } from './ProgressBar'
 
 export class TaskChecklistPreview extends Component {
 
@@ -52,6 +53,20 @@ export class TaskChecklistPreview extends Component {
         updateTaskDetails(currTask)
     }
 
+    doneTodosCalc = () => {
+        const { checklist } = this.props
+        const { todos } = checklist
+        if(!todos.length) return 0
+
+        let isDoneTodos = 0
+        todos.map(todo => {
+            if (todo.isDone) isDoneTodos++
+        })
+
+        return isDoneTodos/checklist.todos.length
+    }
+
+
     // onDeleteChecklist = (checklist) => {
     //     console.log('checklist', checklist)
 
@@ -60,6 +75,8 @@ export class TaskChecklistPreview extends Component {
     render() {
         const { checklist, currTask, updateTaskDetails } = this.props
         const { isPopover, currentTarget } = this.state
+
+        console.log('doneTodosCalc',this.doneTodosCalc()) 
 
         return (
             <div className="task-activities flex column">
@@ -72,6 +89,7 @@ export class TaskChecklistPreview extends Component {
                         Delete
                     </button>
                 </div>
+                <ProgressBar doneTodosCalc={this.doneTodosCalc} />
                 <TodoList
                     todos={checklist.todos}
                     onSaveTodo={this.onSaveTodo}
