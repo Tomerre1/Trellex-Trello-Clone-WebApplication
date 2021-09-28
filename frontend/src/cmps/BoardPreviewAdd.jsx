@@ -15,18 +15,25 @@ export function BoardPreviewAdd(props) {
         style={{
           background: bgImg ? `url(${bgImg})` : bgClr,
           backgroundSize: "cover",
-          backgroundPosition:'center'
+          backgroundPosition: "center",
         }}
       >
-        <p>Add a board</p>
-        <>
-          <input
-            className="board-title"
-            value={title}
-            onChange={(ev) => setTitle(ev.target.value)}
-          />
-          <button onClick={() => props.onAdd(title, bgClr, bgImg)}>add</button>
-        </>
+        {!isEditMode ? (
+          <div className="add-inactive">
+            <p>Add a board</p>
+          </div>
+        ) : (
+          <>
+            <input
+              className="board-title"
+              value={title}
+              onChange={(ev) => setTitle(ev.target.value)}
+            />
+            <button onClick={() => props.onAdd(title, bgClr, bgImg)}>
+              add
+            </button>
+          </>
+        )}
       </div>
     </article>
   );
