@@ -9,7 +9,8 @@ class _Workspace extends Component {
     this.props.loadBoards();
   };
 
-  addBoard = async (title = 'untitled board',bgClr ='black',bgImg="") =>{
+  addBoard = async (title ,bgClr ='black',bgImg="") =>{
+    if ( !title ) return
     const newBoard = await this.props.addBoard(title,bgClr,bgImg)
   }
 

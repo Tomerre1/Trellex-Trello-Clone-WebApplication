@@ -13,7 +13,7 @@ export function BoardPreview(props) {
             background: board.style.bgImg
               ? `url(${board.style.bgImg})`
               : board.style.bgClr,
-              backgroundSize:'cover'
+              backgroundSize:'cover',
           }}
         ></div>
         <p className="board-title">{board.title}</p>
