@@ -37,4 +37,17 @@
             border-radius:3px;
         }
     }
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background-color: #0202022c;
+      z-index: 5;
+      opacity: 0;
+      transition: opacity 0.2s ease-out;
+      pointer-events: none;
+      &.show {
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
 }

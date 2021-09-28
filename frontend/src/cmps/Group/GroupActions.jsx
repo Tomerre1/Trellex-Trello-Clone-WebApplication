@@ -12,7 +12,6 @@ export function GroupActions(props) {
       >
         Delete list
       </button>
-      <div className="overlay"></div>
     </div>
   );
 }
