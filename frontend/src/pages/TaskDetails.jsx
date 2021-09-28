@@ -102,6 +102,10 @@ export class _TaskDetails extends Component {
     this.updateTaskDetails({ ...currTask, title })
   }
 
+  toggleTaskDone = () => {
+    const { currTask } = this.state
+    currTask.isDone = !currTask.isDone
+}
 
 
   render() {
@@ -140,6 +144,8 @@ export class _TaskDetails extends Component {
                   selectedLabels={selectedLabels}
                   selectedMembers={currTask.members}
                   selectedDate={currTask.dueDate}
+                  toggleTaskDone={this.toggleTaskDone}
+                  currTask={currTask}
                 />
               }
               <TaskDescription currTask={currTask} updateTaskDetails={this.updateTaskDetails} />
