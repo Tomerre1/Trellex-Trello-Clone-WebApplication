@@ -18,6 +18,9 @@ export class TaskDescription extends Component {
 
     onSaveDescription = () => {
         const { description } = this.state
+        const { currTask, updateTaskDetails } = this.props
+        currTask.description = description
+        updateTaskDetails(currTask)
         this.setState({ isEditMode: false })
     }
     handleChange = ({ target: { value } }) => {
