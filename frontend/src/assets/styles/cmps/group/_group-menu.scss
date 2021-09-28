@@ -1,6 +1,6 @@
 .group-menu {
   width: 200px;
-  height: 100px;
+//   height: 100px;
   display:flex;
   flex-direction: column;
   justify-content: center;
@@ -18,14 +18,14 @@
     h3{
         width:90%;
         border-bottom:1px solid #5e6c8477;;
-        padding-bottom:15px;
+        padding-bottom:10px;
         font-size:14px;
         color:#5e6c84;
         margin:0;
     }
     button {
         width:90%;
-        margin-top:15px;
+        margin-top:10px;
         padding:5px 10px;
         display:flex;
         align-items: center;
