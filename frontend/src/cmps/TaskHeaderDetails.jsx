@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { TaskHeaderLabels } from './TaskHeaderLabels'
 import { TaskHeaderMembers } from './TaskHeaderMembers'
+import { TaskHeaderDate } from './TaskHeaderDate'
 
 export class TaskHeaderDetails extends Component {
     state = {
@@ -10,8 +11,8 @@ export class TaskHeaderDetails extends Component {
     }
 
     componentDidMount() {
-        const { selectedLabels, selectedMembers } = this.props
-        this.setState(prevState => ({ ...prevState, selectedLabels, selectedMembers }))
+        const { selectedLabels, selectedMembers, selectedDate } = this.props
+        this.setState(prevState => ({ ...prevState, selectedLabels, selectedMembers, selectedDate }))
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -22,19 +23,21 @@ export class TaskHeaderDetails extends Component {
         if (prevProps.selectedMembers !== selectedMembers) {
             this.setState(prevState => ({ ...prevState, selectedMembers }))
         }
-        // if (prevProps.selectedDate !== selectedDate) {
-        //     this.setState(prevState => ({ ...prevState, selectedDate }))
-        // }
+        if (prevProps.selectedDate !== selectedDate) {
+            this.setState(prevState => ({ ...prevState, selectedDate }))
+        }
     }
 
     render() {
-        const { selectedLabels, selectedMembers, selectedDate, } = this.state
+        const { selectedLabels, selectedMembers, selectedDate } = this.state
         const { setCurrentTarget } = this.props
+        console.log('selectedDate',selectedDate)
 
         return (
             <div className="task-details-header flex">
                 {selectedMembers && <TaskHeaderMembers members={selectedMembers} setCurrentTarget={setCurrentTarget} />}
                 {selectedLabels && <TaskHeaderLabels selectedLabels={selectedLabels} setCurrentTarget={setCurrentTarget} />}
+                {selectedDate && <TaskHeaderDate selectedDate={selectedDate} setCurrentTarget={setCurrentTarget} />}
             </div>
         )
     }
