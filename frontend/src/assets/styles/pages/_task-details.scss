@@ -9,6 +9,7 @@
     right: 0;
     left: 0;
     margin: 0 auto;
+    z-index: 100;
     .task-details-body {
         .task-details-main {
             width: 552px;
@@ -52,5 +53,19 @@
     }
     .items-container {
         margin: 0 8px 8px 0;
+    }
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background-color: #0202022c;
+    z-index: 50;
+    opacity: 0;
+    transition: opacity 0.2s ease-out;
+    pointer-events: none;
+    &.show {
+        opacity: 1;
+        pointer-events: auto;
     }
 }
