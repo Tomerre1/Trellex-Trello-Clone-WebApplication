@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { saveBoard } from "../../store/board.actions";
 
@@ -8,9 +8,7 @@ const _HeaderTitle = (props) => {
   useEffect(() => {
     setTitle(props.group.title)
  }, [props.group.title]);
- //...
 
-  
   const saveTitle = async () => {
     const newBoard = { ...props.board };
     const grpIdx = newBoard.groups.findIndex((grp) => group.id === grp.id);
