@@ -67,7 +67,7 @@ export function TaskPreview(props) {
           onClick={toggleMenu}
         ></div>
         {isMenuShown && (
-          <TaskActions toggleMenuShown={toggleMenu} menuPos={menuPos} groupId={groupId} boardId={boardId} task={task} />
+          <TaskActions toggleMenu={toggleMenuShown} menuPos={menuPos} groupId={groupId} boardId={boardId} task={task} />
         )}
       <article className="task-preview-container">
         <Link to={taskUrl} className="clean-link">
