@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { BoardAddPalette } from "../Workspace/BoardAddPalette";
 
 export function BoardPreviewAdd(props) {
-  const { board } = props;
   const [bgClr, setBgClr] = useState(
     "linear-gradient(to bottom, #000000, #434343)"
   );
@@ -34,6 +33,7 @@ export function BoardPreviewAdd(props) {
               onClick={() => toggleEditMode(!isEditMode)}
             ></button>
             <div className="title-box flex">
+              <form>
               <input
                 className="board-title"
                 value={title}
@@ -41,16 +41,19 @@ export function BoardPreviewAdd(props) {
                 placeholder="New board title"
               />
               <button
-                onClick={() => {
+                onClick={(ev) => {
+                  ev.preventDefault()
                   if (!title) return;
                   props.onAdd(title, bgClr, bgImg);
                   setBgClr("linear-gradient(to bottom, #000000, #434343)");
                   setBgImg("");
                   setTitle("")
+                  toggleEditMode()
                 }}
               >
                 add
               </button>
+              </form>
             </div>
             <div className="color-box">
               <BoardAddPalette
