@@ -54,6 +54,11 @@ export class _TaskDetails extends Component {
     await saveTaskDetails(board, currGroup, currTask)
   }
 
+  toggleOverlay = () => {
+
+    this.props.history.goBack()
+  }
+
   setCurrentTarget = (event, type) => {
     this.setState(prevState => ({ ...prevState, type, currentTarget: event.target.getBoundingClientRect() }))
     this.togglePopover()
@@ -92,7 +97,7 @@ export class _TaskDetails extends Component {
 
 
   render() {
-    const { currentTarget, isPopover, type, selectedLabels, selectedDate, selectedMembers, currTask, currGroup, bgColorCover } = this.state
+    const { currentTarget, isPopover, type, selectedLabels, selectedDate, selectedMembers, currTask, currGroup, bgColorCover, isOverlay } = this.state
     const { board } = this.props
     if (!currTask || !board) return <LoaderSpinner />
     const DynamicCmpPopover = (props) => {
@@ -113,39 +118,41 @@ export class _TaskDetails extends Component {
     }
 
     return (
-      <section className="task-details flex column">
-        <button onClick={this.props.history.goBack} className={`close-task-details ${bgColorCover ? 'cover' : ''}`}><Close /></button>
-        {bgColorCover && <TaskCardCover bgColor={bgColorCover} />}
+      <>
+        <section className="task-details flex column">
+          <button onClick={this.props.history.goBack} className={`close-task-details ${bgColorCover ? 'cover' : ''}`}><Close /></button>
+          {bgColorCover && <TaskCardCover bgColor={bgColorCover} />}
 
-        <TaskHeader taskTitle={currTask.title} setTaksDetailsTitle={this.setTaksDetailsTitle} />
-        <div className="task-details-body flex">
-          <div className="task-details-main flex column">
-            {(selectedLabels || selectedMembers || selectedDate) &&
-              <TaskHeaderDetails
-                selectedLabels={selectedLabels}
-                selectedMembers={currTask.members}
-              // selectedDate={selectedDate}
-              />
-            }
-            <TaskDescription currTask={currTask} />
-            <TaskChecklist currTask={currTask} updateTaskDetails={this.updateTaskDetails} />
-            <TaskActivities />
+          <TaskHeader taskTitle={currTask.title} setTaksDetailsTitle={this.setTaksDetailsTitle} />
+          <div className="task-details-body flex">
+            <div className="task-details-main flex column">
+              {(selectedLabels || selectedMembers || selectedDate) &&
+                <TaskHeaderDetails
+                  selectedLabels={selectedLabels}
+                  selectedMembers={currTask.members}
+                // selectedDate={selectedDate}
+                />
+              }
+              <TaskDescription currTask={currTask} />
+              <TaskChecklist currTask={currTask} updateTaskDetails={this.updateTaskDetails} />
+              <TaskActivities />
+            </div>
+            <TaskActionsMenu setCurrentTarget={this.setCurrentTarget} togglePopover={this.togglePopover} />
           </div>
-          <TaskActionsMenu setCurrentTarget={this.setCurrentTarget} togglePopover={this.togglePopover} />
-        </div>
 
-        {isPopover &&
-          <DynamicCmpPopover
-            togglePopover={this.togglePopover}
-            currentTarget={currentTarget}
-            updateBoard={this.updateBoard}
-            updateTaskDetails={this.updateTaskDetails}
-            type={type}
-            currTask={currTask}
-          />
-        }
-      </section >
-
+          {isPopover &&
+            <DynamicCmpPopover
+              togglePopover={this.togglePopover}
+              currentTarget={currentTarget}
+              updateBoard={this.updateBoard}
+              updateTaskDetails={this.updateTaskDetails}
+              type={type}
+              currTask={currTask}
+            />
+          }
+        </section >
+        <div className='overlay show' onClick={this.props.history.goBack} ></div>
+      </>
     );
   }
 }
