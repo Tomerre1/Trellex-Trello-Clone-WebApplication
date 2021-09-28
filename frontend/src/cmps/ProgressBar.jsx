@@ -16,6 +16,15 @@ export class ProgressBar extends Component {
         const backgroundColor = (completed === 100) ? '#61bd4f' : '#5ba4cf'
         this.setState(prevState => ({ ...prevState, completed, style: { width: `${completed}%`, backgroundColor } }))
     }
+
+    componentDidUpdate(prevProps) {
+        if (this.state.completed !== this.props.doneTodosCalc()) {
+            const completed = this.props.doneTodosCalc()
+            const backgroundColor = (completed === 100) ? '#61bd4f' : '#5ba4cf'
+            this.setState(prevState => ({ ...prevState, completed, style: { width: `${completed}%`, backgroundColor } }))
+        }
+    }
+
     render() {
         const { style, completed } = this.state
 

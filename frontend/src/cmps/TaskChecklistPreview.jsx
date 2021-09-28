@@ -10,9 +10,9 @@ export class TaskChecklistPreview extends Component {
 
     state = {
         isPopover: false,
-        currentTarget: null,
+        currentTarget: null
     }
-
+    
     togglePopover = () => {
         this.setState(prevState => ({ ...prevState, isPopover: !prevState.isPopover }))
     }
@@ -56,27 +56,20 @@ export class TaskChecklistPreview extends Component {
     doneTodosCalc = () => {
         const { checklist } = this.props
         const { todos } = checklist
-        if(!todos.length) return 0
+        if (!todos.length) return 0
 
         let isDoneTodos = 0
-        todos.map(todo => {
+        todos.forEach(todo => {
             if (todo.isDone) isDoneTodos++
         })
-
-        return (isDoneTodos/checklist.todos.length)*100
+        return (isDoneTodos / checklist.todos.length) * 100
     }
-
-
-    // onDeleteChecklist = (checklist) => {
-    //     console.log('checklist', checklist)
-
-    // }
 
     render() {
         const { checklist, currTask, updateTaskDetails } = this.props
         const { isPopover, currentTarget } = this.state
 
-        console.log('doneTodosCalc',this.doneTodosCalc()) 
+
 
         return (
             <div className="task-activities flex column">
@@ -89,7 +82,7 @@ export class TaskChecklistPreview extends Component {
                         Delete
                     </button>
                 </div>
-                <ProgressBar doneTodosCalc={this.doneTodosCalc} />
+                <ProgressBar doneTodosCalc={this.doneTodosCalc}/>
                 <TodoList
                     todos={checklist.todos}
                     onSaveTodo={this.onSaveTodo}
