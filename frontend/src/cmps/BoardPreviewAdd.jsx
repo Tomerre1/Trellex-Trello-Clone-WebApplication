@@ -9,7 +9,7 @@ export function BoardPreviewAdd(props) {
   const [title, setTitle] = useState("untitled");
   const [isEditMode, toggleEditMode] = useState(false);
   return (
-    <article className="board-preview">
+    <article className="board-preview-add">
       <div
         className="board-content"
         style={{
@@ -19,7 +19,10 @@ export function BoardPreviewAdd(props) {
         }}
       >
         {!isEditMode ? (
-          <div className="add-inactive">
+          <div
+            className="add-inactive"
+            onClick={() => toggleEditMode(!isEditMode)}
+          >
             <p>Add a board</p>
           </div>
         ) : (
@@ -32,6 +35,7 @@ export function BoardPreviewAdd(props) {
             <button onClick={() => props.onAdd(title, bgClr, bgImg)}>
               add
             </button>
+            <button onClick={() => toggleEditMode(!isEditMode)}>x</button>
           </>
         )}
       </div>

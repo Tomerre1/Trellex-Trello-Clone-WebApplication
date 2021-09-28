@@ -1,22 +1,26 @@
-.board-preview {
-  position: relative;
+.board-preview-add {
+  
   .board-content {
     cursor: pointer;
     height: 100%;
+    width:100%;
     border-radius: 3px;
     transition: filter 0.2s;
     filter: brightness(1);
+    display:flex;
+    align-items: center;
+    justify-items: center;
+
     &:hover {
       filter: brightness(.8);
     }
-  }
-  p {
-    position: absolute;
-    color: white;
-    font-weight: bold;
-    margin-top: 10px;
-    margin-inline-start: 10px;
-    max-width: 30ch;
-    top:0;
+    p {
+      color: white;
+      font-weight: bold;
+      width:auto;
+      margin:0;
+      padding:100px
+      
+    }
   }
 }
