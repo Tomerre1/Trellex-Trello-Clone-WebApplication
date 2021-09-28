@@ -18,7 +18,7 @@ export class TaskChecklistPreview extends Component {
     }
 
     setCurrentTarget = (event) => {
-        this.setState(prevState => ({ ...prevState, currentTarget: event.target.getBoundingClientRect() }))
+        this.setState(prevState => ({ ...prevState, currentTarget: event }))
         this.togglePopover()
     };
 
@@ -56,14 +56,14 @@ export class TaskChecklistPreview extends Component {
     doneTodosCalc = () => {
         const { checklist } = this.props
         const { todos } = checklist
-        if(!todos.length) return 0
+        if (!todos.length) return 0
 
         let isDoneTodos = 0
         todos.map(todo => {
             if (todo.isDone) isDoneTodos++
         })
 
-        return (isDoneTodos/checklist.todos.length)*100
+        return (isDoneTodos / checklist.todos.length) * 100
     }
 
 
@@ -76,7 +76,7 @@ export class TaskChecklistPreview extends Component {
         const { checklist, currTask, updateTaskDetails } = this.props
         const { isPopover, currentTarget } = this.state
 
-        console.log('doneTodosCalc',this.doneTodosCalc()) 
+        console.log('doneTodosCalc', this.doneTodosCalc())
 
         return (
             <div className="task-activities flex column">
