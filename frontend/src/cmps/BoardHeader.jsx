@@ -8,12 +8,13 @@ function _BoardHeader(props) {
 
   const [isTitleEdit, setTitleEdit] = useState(false);
   const [title, setTitle] = useState(board.title);
-  const [width, setWidth] = useState(0);
-  const spanRef = useRef();
+  const [width, setWidth] = useState('100px');
+  const spanRef = useRef(200);
 
   
   useEffect(() => {
     if(!spanRef) return
+    if(typeof spanRef.current?.offsetWidth === 'number')
     setWidth(spanRef.current?.offsetWidth);
   }, [title]);
 
