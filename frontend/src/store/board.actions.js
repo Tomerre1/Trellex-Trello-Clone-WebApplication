@@ -51,9 +51,9 @@ export const saveBoard = (board) => {
     }
 }
 
-export const addBoard = (title = "new board") => {
+export const addBoard = (title = "new board",bgClr = "black", bgImg) => {
     return async (dispatch) => {
-        const board = { title }
+        const board = { title,style:{bgClr,bgImg} }
         try {
             const newBoard = await boardService.save(board)
             dispatch({
