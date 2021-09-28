@@ -56,11 +56,11 @@ export const addBoard = (title = "new board",bgClr = "black", bgImg) => {
         const board = { title,style:{bgClr,bgImg} }
         try {
             const newBoard = await boardService.save(board)
-            dispatch({
+             dispatch({
                 type: "ADD_BOARD",
                 board: newBoard,
             });
-
+            return newBoard
         }
         catch (err) {
             console.log('cant add board', err)

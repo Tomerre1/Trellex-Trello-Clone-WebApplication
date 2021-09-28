@@ -7,6 +7,7 @@
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 15;
   &.on-board {
     background-color: rgba(0, 0, 0, 0.15);
   }
@@ -47,5 +48,26 @@
   }
   a {
     color: white;
+  }
+  .board-preview-add { 
+    z-index:20;
+    width:280px;
+    position:fixed;
+    top:50px;
+    right:50px;
+  }
+  .overlay {
+    position: fixed;
+    inset:0;
+    height:100vh;
+    background-color: #0202022c;
+    z-index: 5;
+    opacity: 0;
+    transition: opacity 0.2s ease-out;
+    pointer-events: none;
+    &.show {
+        opacity: 1;
+        pointer-events: auto;
+    }
   }
 }
