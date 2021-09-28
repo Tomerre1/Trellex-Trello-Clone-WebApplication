@@ -12,7 +12,7 @@
         width: 32px;
     }
     .checklist-progress-bar {
-        background: #091e4214;
+        background-color: #091e4214;
         border-radius: 4px;
         clear: both;
         height: 8px;
@@ -20,10 +20,7 @@
         overflow: hidden;
         position: relative;
         .checklist-progress-bar-current {
-            //DYNAMIC
-            width: 60%;
-            //DYNAMIC
-            background: #5ba4cf;
+            // background-color: #5ba4cf;
             bottom: 0;
             left: 0;
             position: absolute;
