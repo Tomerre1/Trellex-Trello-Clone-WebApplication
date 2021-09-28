@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Link } from "react-router-dom";
 import { TaskLabels } from "./TaskPreview/TaskLabels";
 import { TaskDetailsPreview } from "./TaskPreview/TaskDetailsPreview";
@@ -9,13 +9,17 @@ import SubjectOutlinedIcon from "@mui/icons-material/SubjectOutlined";
 import ChatBubbleOutlineRoundedIcon from "@mui/icons-material/ChatBubbleOutlineRounded";
 import ModeEditOutlinedIcon from '@mui/icons-material/ModeEditOutlined';
 
+
 export function TaskPreview(props) {
   const { task, taskUrl, boardLabels, groupId } = props;
   const { labelIds, title, dueDate, comments, checklists, description } = task;
-
+ 
+  let todos;
+  let doneTodos;
+  
   const getChecklistData = () => {
-    let todos = 0;
-    let doneTodos = 0;
+     todos = 0;
+     doneTodos = 0;
     checklists.forEach((checklist) => {
       todos += checklist.todos.length;
       checklist.todos.forEach((todo) => {
@@ -81,6 +85,7 @@ export function TaskPreview(props) {
               <TaskDetailsPreview
                 icon={<CheckBoxOutlinedIcon className="icon" />}
                 txt={getChecklistData()}
+                isDone={todos === doneTodos ? true : false}
               />
             )}
             
