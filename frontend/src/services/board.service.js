@@ -1141,8 +1141,8 @@ async function save(board) {
             "activities":[],
             "members":[],
             "style": {
-                "bgClr": 'linear-gradient(to right, #2980b9, #2c3e50)',
-                "bgImg": ''
+                "bgClr": board.style.bgClr,
+                "bgImg": board.style.bgImg
             },
         }
         return storageService.post(STORAGE_KEY, newBoard)

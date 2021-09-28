@@ -9,8 +9,8 @@ class _Workspace extends Component {
     this.props.loadBoards();
   };
 
-  addBoard = async () =>{
-    const newBoard = await this.props.addBoard()
+  addBoard = async (title = 'untitled board',bg ='black') =>{
+    const newBoard = await this.props.addBoard(title,bg)
   }
 
   render() {
@@ -18,7 +18,7 @@ class _Workspace extends Component {
     return (
       <section className="workspace-page main-layout flex column">
         <h1>Your Workspace</h1>
-        {boards.length ? <BoardList boards={boards} /> : <LoaderSpinner />}
+        {boards.length ? <BoardList boards={boards} onAdd={this.addBoard}/> : <LoaderSpinner />}
         <button onClick={this.addBoard}>add board</button>
       </section>
     );
