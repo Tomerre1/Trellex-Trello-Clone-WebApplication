@@ -121,13 +121,14 @@ export class _TaskDetails extends Component {
       <>
         <section className="task-details flex column">
           <button onClick={this.props.history.goBack} className={`close-task-details ${bgColorCover ? 'cover' : ''}`}><Close /></button>
-          {bgColorCover && <TaskCardCover bgColor={bgColorCover} />}
+          {bgColorCover && <TaskCardCover bgColor={bgColorCover} setCurrentTarget={this.setCurrentTarget} />}
 
           <TaskHeader taskTitle={currTask.title} setTaksDetailsTitle={this.setTaksDetailsTitle} />
           <div className="task-details-body flex">
             <div className="task-details-main flex column">
               {(selectedLabels || selectedMembers || selectedDate) &&
                 <TaskHeaderDetails
+                  setCurrentTarget={this.setCurrentTarget}
                   selectedLabels={selectedLabels}
                   selectedMembers={currTask.members}
                 // selectedDate={selectedDate}
