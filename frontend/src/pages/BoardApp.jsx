@@ -8,6 +8,7 @@ import { LoaderSpinner } from "../cmps/LoaderSpinner";
 
 class _BoardApp extends Component {
   componentDidMount = async () => {
+    this.props.clearBoard();
     this.loadBoard();
     this.props.loadUsers()
   };
@@ -19,16 +20,19 @@ class _BoardApp extends Component {
 
   loadBoard = async () => {
     const id = this.props.match.params.boardId;
+    
     if (id) {
       try {
         await this.props.loadBoard(id);
       } catch (err) {
-        console.log('cant load boards',err);
+        console.log('cant load board',err);
       }
     }
   };
 
   render() {
+    console.log(this.props)
+
     const { board } = this.props;
     if (!board) return <LoaderSpinner />;
     return (

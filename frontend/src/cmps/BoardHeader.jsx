@@ -1,32 +1,30 @@
-import React, { useState,useRef,useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { connect } from "react-redux";
 import { saveBoard } from "../store/board.actions";
-import { MemberList} from "./MemberList"
+import { MemberList } from "./MemberList";
 
 function _BoardHeader(props) {
   const { board } = props;
 
   const [isTitleEdit, setTitleEdit] = useState(false);
   const [title, setTitle] = useState(board.title);
-  const [width, setWidth] = useState('100px');
-  const spanRef = useRef(200);
+  const [width, setWidth] = useState(board.title.length * 9.5);
+  const spanRef = useRef();
 
-  
   useEffect(() => {
-    if(!spanRef) return
-    if(typeof spanRef.current?.offsetWidth === 'number')
-    setWidth(spanRef.current?.offsetWidth);
+    if (!spanRef) return;
+    if (typeof spanRef.current?.offsetWidth === "number")
+      setWidth(spanRef.current?.offsetWidth);
   }, [title]);
 
-
   const handleText = (ev) => {
-    setTitle(ev.target.value)
-  }
+    setTitle(ev.target.value);
+  };
   const updateTitle = () => {
     const newBoard = { ...board };
     newBoard.title = title.trim();
-    setTitle(title.trim())
-    props.saveBoard(newBoard)
+    setTitle(title.trim());
+    props.saveBoard(newBoard);
   };
 
   if (!board) return <h2>Loading</h2>;
@@ -46,7 +44,7 @@ function _BoardHeader(props) {
             <span ref={spanRef}>{title}</span>
             <input
               autoFocus
-              className={`title ${!title?.length && 'height-adjust'}`}
+              className={`title ${!title?.length && "height-adjust"}`}
               onBlur={() => {
                 setTitleEdit(false);
                 updateTitle();
@@ -54,14 +52,16 @@ function _BoardHeader(props) {
               value={title}
               // style={{ width: `${title.length * 13}px`, minWidth: "10px" }}
               onChange={(ev) => {
-                handleText(ev)
-          
+                handleText(ev);
               }}
-              style={{width:width +10 ,minWidth:'40px'}}
+              style={{
+                width: width + 10,
+                minWidth: "40px",
+              }}
             ></input>
           </form>
         )}
-       {board?.members && <MemberList members={board.members}/>}
+        {board?.members && <MemberList members={board.members} />}
         <button className="header-btn">Invite</button>
       </div>
       <div className="header-btn-container flex">
