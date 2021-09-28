@@ -88,6 +88,14 @@ export class _TaskDetails extends Component {
     }))
   }
 
+  setSelectedDate = (selectedDate) => {
+    console.log('selectedDate from setSelectedDate',selectedDate)
+    this.setState(prevState => ({
+      ...prevState,
+      selectedDate: selectedDate,
+    }))
+  }
+
   setTaksDetailsTitle = (title) => {
     const { currTask } = this.state
     currTask.title = title
@@ -109,7 +117,7 @@ export class _TaskDetails extends Component {
         case 'CHECKLIST':
           return <PopoverChecklist {...props} title='Checklist' />
         case 'DATE':
-          return <PopoverDate {...props} title='Date' />
+          return <PopoverDate {...props} title='Date' setSelectedDate={this.setSelectedDate}/>
         case 'ATTACHMENT':
           return <PopoverAttachment {...props} title='Attach from...' />
         case 'COVER':
@@ -131,7 +139,7 @@ export class _TaskDetails extends Component {
                   setCurrentTarget={this.setCurrentTarget}
                   selectedLabels={selectedLabels}
                   selectedMembers={currTask.members}
-                // selectedDate={selectedDate}
+                  selectedDate={currTask.dueDate}
                 />
               }
               <TaskDescription currTask={currTask} updateTaskDetails={this.updateTaskDetails} />

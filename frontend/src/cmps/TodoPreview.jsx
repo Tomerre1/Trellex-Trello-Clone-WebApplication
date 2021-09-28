@@ -24,7 +24,6 @@ export class TodoPreview extends Component {
     }
 
     onEditMode = () => {
-        console.log('##########onEditMode########')
         if (this.selectedInput) this.selectedInput.focus()
         this.setState({ isEditMode: true })
     }
@@ -34,14 +33,12 @@ export class TodoPreview extends Component {
     }
 
     onSaveTodo = () => {
-        console.log('##########onSaveTodo##########')
         const { todo } = this.state
         this.props.onSaveTodo(todo)
         this.onToggleEditMode()
     }
 
     onToggleTodoIsDone = () => {
-        console.log('#####onToggleTodoIsDone####')
         const { todo } = this.state
         todo.isDone = !todo.isDone
         this.setState(prevState => ({ ...prevState, todo }))
@@ -51,7 +48,6 @@ export class TodoPreview extends Component {
     onRemoveTodo = () => {
         const { todo } = this.state
         this.props.onRemoveTodo(todo)
-        console.log('Removing...')
     }
 
 
