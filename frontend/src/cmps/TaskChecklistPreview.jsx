@@ -63,7 +63,7 @@ export class TaskChecklistPreview extends Component {
             if (todo.isDone) isDoneTodos++
         })
 
-        return isDoneTodos/checklist.todos.length
+        return (isDoneTodos/checklist.todos.length)*100
     }
 
 
