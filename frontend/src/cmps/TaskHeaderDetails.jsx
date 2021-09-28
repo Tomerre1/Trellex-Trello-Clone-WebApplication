@@ -29,11 +29,12 @@ export class TaskHeaderDetails extends Component {
 
     render() {
         const { selectedLabels, selectedMembers, selectedDate, } = this.state
+        const { setCurrentTarget } = this.props
 
         return (
             <div className="task-details-header flex">
-                {selectedMembers && <TaskHeaderMembers members={selectedMembers} />}
-                {selectedLabels && <TaskHeaderLabels selectedLabels={selectedLabels} />}
+                {selectedMembers && <TaskHeaderMembers members={selectedMembers} setCurrentTarget={setCurrentTarget} />}
+                {selectedLabels && <TaskHeaderLabels selectedLabels={selectedLabels} setCurrentTarget={setCurrentTarget} />}
             </div>
         )
     }

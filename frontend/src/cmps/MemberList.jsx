@@ -2,7 +2,7 @@ import React from 'react'
 import AddIcon from '@mui/icons-material/Add';
 
 export function MemberList(props) {
-  const { members, isInPreview, isInDetails } = props
+  const { members, isInPreview, isInDetails, setCurrentTarget } = props
   return (
     <div className={`members ${isInPreview ? 'preview' : ''}`}>
       {members &&
@@ -22,7 +22,7 @@ export function MemberList(props) {
               )}
           </article>
         ))}
-      {isInDetails && <button className="secondary-btn"><AddIcon /></button>}
+      {isInDetails && <button className="secondary-btn" onClick={(event) => { setCurrentTarget(event, 'MEMBERS') }}><AddIcon /></button>}
     </div>
   )
 }
