@@ -8,7 +8,7 @@ export function BoardPreviewAdd(props) {
   );
   const [bgImg, setBgImg] = useState("");
   const [title, setTitle] = useState("");
-  const [isEditMode, toggleEditMode] = useState(true);
+  const [isEditMode, toggleEditMode] = useState(false);
   // const [bgClrs, setBgClrs] = useState([]);
   return (
     <article className="board-preview-add">
@@ -29,7 +29,10 @@ export function BoardPreviewAdd(props) {
           </div>
         ) : (
           <div className="add-active">
-              <button className="closer" onClick={() => toggleEditMode(!isEditMode)}></button>
+            <button
+              className="closer"
+              onClick={() => toggleEditMode(!isEditMode)}
+            ></button>
             <div className="title-box flex">
               <input
                 className="board-title"
@@ -37,19 +40,26 @@ export function BoardPreviewAdd(props) {
                 onChange={(ev) => setTitle(ev.target.value)}
                 placeholder="New board title"
               />
-              <button onClick={() => {
-                if(!title) return
-                props.onAdd(title, bgClr, bgImg)
-                setBgClr("linear-gradient(to bottom, #000000, #434343)")
-                setBgImg('')
-                }}>
+              <button
+                onClick={() => {
+                  if (!title) return;
+                  props.onAdd(title, bgClr, bgImg);
+                  setBgClr("linear-gradient(to bottom, #000000, #434343)");
+                  setBgImg("");
+                  setTitle("")
+                }}
+              >
                 add
               </button>
-              </div>
-              <div className="color-box">
-                <BoardAddPalette bgClr={bgClr} setBgClr={setBgClr}setBgImg={setBgImg} />
-              </div>
             </div>
+            <div className="color-box">
+              <BoardAddPalette
+                bgClr={bgClr}
+                setBgClr={setBgClr}
+                setBgImg={setBgImg}
+              />
+            </div>
+          </div>
         )}
       </div>
     </article>
