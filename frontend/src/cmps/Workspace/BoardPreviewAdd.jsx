@@ -50,7 +50,7 @@ export function BoardPreviewAdd(props) {
                   toggleEditMode()
                 }}
               >
-                add
+                Create
               </button>
               </form>
             </div>
