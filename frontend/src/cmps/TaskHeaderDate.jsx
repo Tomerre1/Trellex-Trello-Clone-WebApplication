@@ -43,7 +43,7 @@ export class TaskHeaderDate extends Component {
         if (dueYear !== currYear) {
             strDate += `${dueYear} `
         }
-        strDate += `${new Date(dueDate).toLocaleString('en-GB', { hour: 'numeric', minute: 'numeric', hour12: true })}`
+        strDate += `${new Date(dueDate).toLocaleString('en-GB', { hour: 'numeric', minute: 'numeric', hour12: true }).toLocaleUpperCase()}`
         return strDate
     }
 
