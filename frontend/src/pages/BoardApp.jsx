@@ -8,14 +8,13 @@ import { LoaderSpinner } from "../cmps/LoaderSpinner";
 
 class _BoardApp extends Component {
   componentDidMount = async () => {
-    this.props.clearBoard(); // added because componentWillUnmount is disabled
     this.loadBoard();
     this.props.loadUsers()
   };
 
-  // componentWillUnmount = () => {
-    // this.props.clearBoard();
-  // };
+  componentWillUnmount = () => {
+    this.props.clearBoard();
+  };
 
 
   loadBoard = async () => {
@@ -44,7 +43,7 @@ class _BoardApp extends Component {
         }}
       >
         <BoardHeader board={board} />
-        <GroupList groups={board.groups} boardId={board._id} boardLabels={board.labels}/>
+        <GroupList groups={[...board.groups]} boardId={board._id} boardLabels={[...board.labels]}/>
       </section>
     );
   }

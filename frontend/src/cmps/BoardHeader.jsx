@@ -8,7 +8,6 @@ function _BoardHeader(props) {
 
   const [isTitleEdit, setTitleEdit] = useState(false);
   const [title, setTitle] = useState(board.title);
-  const [content, setContent] = useState('');
   const [width, setWidth] = useState(0);
   const spanRef = useRef();
 
@@ -18,13 +17,9 @@ function _BoardHeader(props) {
     setWidth(spanRef.current?.offsetWidth);
   }, [title]);
 
-  // const changeHandler = evt => {
-  //   setContent(evt.target.value);
-  // };
 
   const handleText = (ev) => {
     setTitle(ev.target.value)
-    // changeHandler(ev)
   }
   const updateTitle = () => {
     const newBoard = { ...board };

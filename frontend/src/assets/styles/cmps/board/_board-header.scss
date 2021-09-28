@@ -3,9 +3,10 @@
    {
     margin: 0;   
     span { 
-       visibility: hidden;
+       opacity:1;
        font-size:rem(18px)    ;
        font-weight: bold;
+       white-space:pre;
    }}
     top:46px;
     height:42px;
@@ -36,7 +37,6 @@
     }
     input.title { 
         min-width:30px;
-
         margin:0;
         font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Noto Sans,Ubuntu,Droid Sans,Helvetica Neue,sans-serif !important;
         font-size:rem(18px);
@@ -45,7 +45,6 @@
         border-radius:3px;
         position:relative;
         top:-10px;
-        // margin-block-start: 0.67em;
         // margin-block-end: 0.67em;
         // margin-inline-start: 0px;
         // margin-inline-end: 0px;
