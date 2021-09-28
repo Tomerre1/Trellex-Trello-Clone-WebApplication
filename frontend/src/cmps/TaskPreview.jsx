@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { TaskLabels } from "./TaskPreview/TaskLabels";
 import { TaskDetailsPreview } from "./TaskPreview/TaskDetailsPreview";
@@ -75,17 +75,17 @@ export function TaskPreview(props) {
                 icon={<SubjectOutlinedIcon className="icon" />}
               />
             )}
-            {comments && comments.length > 0 && (
+            {comments?.length > 0 && (
               <TaskDetailsPreview
                 icon={<ChatBubbleOutlineRoundedIcon className="icon msg" />}
                 txt={comments.length}
               />
             )}
-            {checklists && checklists.length > 0 && (
+            {checklists?.length > 0 && (todos !== 0) && (
               <TaskDetailsPreview
                 icon={<CheckBoxOutlinedIcon className="icon" />}
                 txt={getChecklistData()}
-                isDone={todos === doneTodos ? true : false}
+                isDone={(todos === doneTodos && todos !== 0)? true : false}
               />
             )}
             
