@@ -78,12 +78,12 @@ const demoBoards = [
                 "fullname": 'BCD',
                 "imgUrl": 'https://media-exp1.licdn.com/dms/image/C5603AQG9slGN5Fgxug/profile-displayphoto-shrink_100_100/0/1516840011642?e=1638403200&v=beta&t=wl9AzbWc9FwsXJ0xGECA_7T4xynvi067vuYs5ABVhfo'
             },
-                {
+            {
                 "_id": 'u102',
                 "fullname": 'Tomer',
                 "imgUrl": 'https://media-exp1.licdn.com/dms/image/C4E03AQFlupY8tXNbnA/profile-displayphoto-shrink_400_400/0/1622442415599?e=1638403200&v=beta&t=DBTF6x9nzwz1G04DZ8hBSG14UyM6BUDX6LM30JL84jg'
             },
-                {
+            {
                 "_id": 'u103',
                 "fullname": 'Matan',
                 "imgUrl": ''
@@ -1104,6 +1104,7 @@ export const boardService = {
     remove,
     updateTask,
     addTask,
+    removeTask,
     addGroup,
     removeGroup
 }
@@ -1132,14 +1133,14 @@ async function save(board) {
     } else {
         const newBoard = {
             "_id": utilService.makeId,
-            "title":board.title,
-            "createdAt":Date.now(),
-            "createdBy":'TEMP USER', // logged in user
-            "groups":[],
-            "tasks":[],
-            "labels":[],
-            "activities":[],
-            "members":[],
+            "title": board.title,
+            "createdAt": Date.now(),
+            "createdBy": 'TEMP USER', // logged in user
+            "groups": [],
+            "tasks": [],
+            "labels": [],
+            "activities": [],
+            "members": [],
             "style": {
                 "bgClr": board.style.bgClr,
                 "bgImg": board.style.bgImg
@@ -1180,7 +1181,22 @@ async function addTask(taskTitle, boardId, groupId) {
     save(board)
     return board
 }
-async function addGroup(boardId,title = "Untitled group") {
+async function removeTask(boardId, groupId, taskId) {
+    try {
+        const board = await getById(boardId)
+        const groupIdx = board.groups.findIndex(group => groupId === group.id)
+        board.groups[groupIdx].tasks = board.groups[groupIdx].tasks.filter(task => taskId !== task.id)
+        save(board)
+        return board
+    }
+
+    catch (err) {
+        console.log(err)
+    }
+
+}
+
+async function addGroup(boardId, title = "Untitled group") {
     if (!boardId) return
     const newGroup = {
         "id": `g-${utilService.makeId()}`,
@@ -1203,15 +1219,15 @@ async function addGroup(boardId,title = "Untitled group") {
     }
 }
 
-async function removeGroup(boardId,groupId) {
-    try{
+async function removeGroup(boardId, groupId) {
+    try {
         const board = await getById(boardId)
         board.groups = board.groups.filter(group => group.id !== groupId)
         save(board)
         return board
     }
 
-    catch (err){
+    catch (err) {
         console.log(err)
     }
 
