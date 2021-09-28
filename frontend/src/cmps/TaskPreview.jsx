@@ -70,7 +70,7 @@ export function TaskPreview(props) {
                 groupId={groupId}
               />
             )}
-            {description && (
+            {description?.length && (
               <TaskDetailsPreview
                 icon={<SubjectOutlinedIcon className="icon" />}
               />
