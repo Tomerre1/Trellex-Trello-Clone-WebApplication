@@ -74,6 +74,8 @@ const _GroupDetails = (props) => {
           scrollToBottom={scrollToBottom}
         />
       </div>
+      <div className="overlay"></div>
+
     </article>
   );
 };

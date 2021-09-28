@@ -55,14 +55,16 @@
           height: 100%;
           &:focus {
             outline: 2px solid $clr1;
+            color:$clr7;
           }
         }
         button {
           background-color: $clr1;
           color: white;
           border-radius: 3px;
+          transition: background-color .2s;
           &:hover {
-
+            background-color: darken($clr1,5%);
           }
         }
       }
@@ -111,3 +113,5 @@
     }
   }
 }
+.fade-in{animation:fade-in 0.2s cubic-bezier(.39,.575,.565,1.000) both}@keyframes puff-in-center{0%{transform:scale(2);filter:blur(4px);opacity:0}100%{transform:scale(1);filter:blur(0);opacity:1}}
+@keyframes fade-in{0%{opacity:0}100%{opacity:1}}

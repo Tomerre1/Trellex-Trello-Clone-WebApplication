@@ -26,7 +26,7 @@ export function BoardPreviewAdd(props) {
             <p>Add a board</p>
           </div>
         ) : (
-          <div className="add-active">
+          <div className="add-active fade-in">
             <button
               className="closer"
               onClick={() => toggleEditMode(!isEditMode)}
