@@ -6,75 +6,75 @@ import AddIcon from "@mui/icons-material/Add";
 import Loader from "react-loader-spinner";
 import { Close } from "@mui/icons-material";
 
-
-
 function _AddNewGroup(props) {
   const boardId = props.match.params.boardId;
   const [isClicked, setIsClicked] = useState(false);
-  const [title, setTitle] = useState('');
+  const [title, setTitle] = useState("");
   const [btnText, setBtnText] = useState("Add list");
   const toggleIsClicked = () => {
-    if(isClicked) setTitle('')
-    setIsClicked(!isClicked)
+    if (isClicked) setTitle("");
+    setIsClicked(!isClicked);
   };
 
   const addGroup = async () => {
-    try{
-      setBtnText(<Loader type="Grid" color={"white"} height={14} width={14} />)
-      await props.addGroup(boardId, title)
-      setBtnText('Add list')
-      setTitle('')
-      toggleIsClicked()
-      
-    } catch(err) {
-        setBtnText('Add list')
+    try {
+      setBtnText(<Loader type="Grid" color={"white"} height={14} width={14} />);
+      await props.addGroup(boardId, title);
+      setBtnText("Add list");
+      setTitle("");
+      toggleIsClicked();
+    } catch (err) {
+      setBtnText("Add list");
     }
-  }
-// if(isClicked) {
+  };
+  // if(isClicked) {
   return (
     <div className="add-group-wrapper">
-    { !isClicked 
-    ? 
-    <article
-      className="group-details add-new"
-      onClick={() => {
-        toggleIsClicked()
-      }}
-    >
-      <div className="flex align-center">
-        <AddIcon className="icon" />
-        Add a list
-      </div>
-    </article> 
-    :
-      <form onSubmit={(ev) => {ev.preventDefault()}}>
-    <div className="add-group-active group-details flex column scale-up-ver-top"  >
-    <input
-      value={title}
-      placeholder="Enter list title..."
-      onChange={(ev) => setTitle(ev.target.value)}
-      className="group-preview"
-      autoFocus
-      // onBlur={toggleIsClicked}
-    />
-
-    <div className={`group-btns flex align-center`}>
-      <button
-        onClick={addGroup}
-        className="group-btn save-group-title-btn"
-      >
-        {btnText}
-      </button>
-      <button
-        className="group-btn close-group-title-btn"
-        onClick={toggleIsClicked}
+      {!isClicked ? (
+        <article
+          className="group-details add-new"
+          onClick={() => {
+            toggleIsClicked();
+          }}
         >
-        <Close />
-      </button>
-    </div>
-  </div>
+          <div className="flex align-center">
+            <AddIcon className="icon" />
+            Add a list
+          </div>
+        </article>
+      ) : (
+        <form
+          onSubmit={(ev) => {
+            ev.preventDefault();
+          }}
+        >
+          <div className="add-group-active group-details flex column scale-up-ver-top">
+            <input
+              value={title}
+              placeholder="Enter list title..."
+              onChange={(ev) => setTitle(ev.target.value)}
+              className="group-preview"
+              autoFocus
+              // onBlur={toggleIsClicked}
+            />
+
+            <div className={`group-btns flex align-center`}>
+              <button
+                onClick={addGroup}
+                className="group-btn save-group-title-btn"
+              >
+                {btnText}
+              </button>
+              <button
+                className="group-btn close-group-title-btn"
+                onClick={toggleIsClicked}
+              >
+                <Close />
+              </button>
+            </div>
+          </div>
         </form>
-    }
+      )}
     </div>
   );
 }
