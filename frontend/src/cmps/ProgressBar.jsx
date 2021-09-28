@@ -3,17 +3,23 @@ import { Component } from "react";
 
 export class ProgressBar extends Component {
 
-    state = {}
+    state = {
+        completed : 0
+    }
+
+    componentDidMount = () => {
+        const completed = this.props.doneTodosCalc()
+        this.setState(prevState => ({ ...prevState, completed }))
+    }
 
     render() {
-        // return <div>Progress Bar....</div>
-
-const width = '40%'
+        const { completed } = this.state
+        const width = `${completed}%`
         return (
             <div className="checklist-progress">
-                <span className="checklist-progress-percentage js-checklist-progress-percent">40%</span>
+                <span className="checklist-progress-percentage js-checklist-progress-percent">{completed}%</span>
                 <div className="checklist-progress-bar">
-                    <div className="checklist-progress-bar-current js-checklist-progress-bar" style={{ width}}>
+                    <div className="checklist-progress-bar-current js-checklist-progress-bar" style={{ width }}>
 
                     </div>
                 </div>
