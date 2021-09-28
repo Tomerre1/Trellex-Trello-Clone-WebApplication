@@ -10,7 +10,6 @@ export function _AddNewTask(props) {
   const [taskTitle, setTaskTitle] = useState("");
   const [btnText, setBtnText] = useState("Add task");
   const toggleIsClicked = () => {
-    props.scrollToBottom()
     setIsClicked(!isClicked)
   };
 
@@ -42,6 +41,7 @@ export function _AddNewTask(props) {
             placeholder="Enter a title for this task..."
             onChange={(ev) => setTaskTitle(ev.target.value)}
             className="task-preview"
+            onClick={props.scrollToBottom}
           />
 
           <div className={`task-btns flex align-center`}>

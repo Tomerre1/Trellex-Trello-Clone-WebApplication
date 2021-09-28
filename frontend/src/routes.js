@@ -6,14 +6,10 @@ import {TaskDetails} from './pages/TaskDetails'
 
 const routes = [
     {
-        path:'/',
-        component: Homepage,
-        label: 'Home 🏠',
-    },
-    {
         path:'/workspace',
         component: Workspace,
-        label: 'Workspace'
+        label: 'Workspace',
+        isExact:true
     },
     {
         path:'/board/:boardId',
@@ -24,8 +20,15 @@ const routes = [
         path:'/board/:boardId/:listId/:taskId',
         component: TaskDetails,
         label: 'Task Details'
-    }
-   
+    },
+    {
+        path:'/',
+        component: Homepage,
+        label: 'Home 🏠',
+        isExact:true
+
+    },
+    
 ]
 
 export default routes;
