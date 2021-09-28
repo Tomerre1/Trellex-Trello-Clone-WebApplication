@@ -1,0 +1,21 @@
+.task-details-header-date {
+    .date-container {
+        display: flex;
+        flex-wrap: wrap;
+        .secondary-btn {
+            display: flex;
+            border-radius: 3px;
+            border: none;
+            justify-content: center;
+            align-items: center;
+            width: 32px;
+            padding: 0;
+            height: 32px;
+            svg {
+                path {
+                    color: #172b4d;
+                }
+            }
+        }
+    }
+}

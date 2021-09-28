@@ -4,18 +4,19 @@ import AddIcon from '@mui/icons-material/Add';
 export function TaskHeaderDate({ selectedDate, setCurrentTarget }) {
     if (selectedDate.length === 0) return <></>
     return (
-        <div className="task-details-header-labels item-container flex column">
-            {/* <h3 className="task-details-header-title">Labels</h3>
-            <div className="labels-container flex wrap">
-                {selectedLabels.map(label => {
+        <div className="task-details-header-date item-container flex column">
+            <h3 className="task-details-header-title">DUE DATE</h3>
+            <div className="date-container flex wrap">
+                <span 
+                onClick={(event) => { setCurrentTarget(event, 'DATE'); }}>Oct 2 at 5:41 PM</span>
+                {/* {selectedLabels.map(label => {
                     return <span
                         onClick={(event) => { setCurrentTarget(event, 'LABELS'); }}
                         key={label.id} className="label" style={{ backgroundColor: label.color }}>
                         {label.title}
                     </span>
-                })}
-                <button className="secondary-btn" onClick={(event) => { setCurrentTarget(event, 'LABELS'); }}><AddIcon /></button>
-            </div> */}
+                })} */}
+            </div>
         </div>
     )
 }
