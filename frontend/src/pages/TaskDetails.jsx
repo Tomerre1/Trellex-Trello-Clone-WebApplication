@@ -114,7 +114,7 @@ export class _TaskDetails extends Component {
 
     return (
       <section className="task-details flex column">
-        <button className={`close-task-details ${bgColorCover ? 'cover' : ''}`}><Close /></button>
+        <button onClick={this.props.history.goBack} className={`close-task-details ${bgColorCover ? 'cover' : ''}`}><Close /></button>
         {bgColorCover && <TaskCardCover bgColor={bgColorCover} />}
 
         <TaskHeader taskTitle={currTask.title} setTaksDetailsTitle={this.setTaksDetailsTitle} />
