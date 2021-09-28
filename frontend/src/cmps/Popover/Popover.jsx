@@ -61,25 +61,22 @@ export class Popover extends React.Component {
     render() {
         const { togglePopover, title, children } = this.props;
         return (
-            <>
-                <div
-                    className="popover"
-                    ref={(el) => (this.contentEl = el)}
-                    style={this.getContentStyles()}
-                >
-                    <div className="popover-header">
-                        {/* <h3>{title}</h3> */}
-                        <span>{title}</span>
-                        <button className="clean-btn" onClick={togglePopover}>
-                            <CloseIcon />
-                        </button>
-                    </div>
-                    <div className="popover-content">
-                        {children}
-                    </div>
+            <div
+                className="popover"
+                ref={(el) => (this.contentEl = el)}
+                style={this.getContentStyles()}
+            >
+                <div className="popover-header">
+                    {/* <h3>{title}</h3> */}
+                    <span>{title}</span>
+                    <button className="clean-btn" onClick={togglePopover}>
+                        <CloseIcon />
+                    </button>
                 </div>
-                <div className="overlay" onClick={togglePopover}></div>
-            </>
+                <div className="popover-content">
+                    {children}
+                </div>
+            </div>
         );
     }
 }
