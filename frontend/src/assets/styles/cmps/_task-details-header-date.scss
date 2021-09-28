@@ -1,7 +1,27 @@
 .task-details-header-date {
     .date-container {
-        .date-btn{
+        .date-btn {
             margin-inline-start: 4px;
+        }
+        .due-msg {
+            font-size: 12px;
+            line-height: 16px;
+            padding: 0 4px;
+            text-transform: uppercase;
+            border-radius: 2px;
+            margin: auto 0 auto 8px;
+        }
+        .overdue {
+            color: #ffffff;
+            background-color: #ec9488;
+        }
+        .done {
+            color: #ffffff;
+            background-color: #61bd4f;
+        }
+        .due-soon {
+            color: #172b4d;
+            background-color: #f2d600;
         }
     }
 }

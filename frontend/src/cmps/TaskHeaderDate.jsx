@@ -47,9 +47,32 @@ export class TaskHeaderDate extends Component {
         return strDate
     }
 
+    getDueStatus = () => {
+        const now = Date.now()
+        const { currTask } = this.props
+        let dueStatus = '';
+        if (currTask.isDone) dueStatus = 'done';
+        else if (now > currTask.dueDate) dueStatus = 'overdue';
+        else {
+            const timeDiff = currTask.dueDate - now;
+            if (timeDiff < 86400000) dueStatus = 'due-soon'
+        }
+        return dueStatus
+    }
+
+    get dueMsg() {
+        switch (this.getDueStatus()) {
+            case 'done': return 'COMPLETE';
+            case 'due-soon': return 'DUE SOON';
+            case 'overdue': return 'OVERDUE';
+            default: return ''
+        }
+    }
+
     render() {
         const { selectedDate, setCurrentTarget, currTask } = this.props
         const { formatedDate, isTaskDone } = this.state
+        const dueStatus = this.getDueStatus();
 
         if (selectedDate.length === 0) return <></>
 
@@ -64,6 +87,7 @@ export class TaskHeaderDate extends Component {
                             className="date-context"
                             onClick={(event) => { setCurrentTarget(event, 'DATE'); }}>{formatedDate}</span>
                         <span className="drop-down-icon"><ArrowDropDownIcon /></span>
+                        <span className={`due-msg ${dueStatus}`}>{this.dueMsg}</span>
                     </button>
                 </div>
             </div>
