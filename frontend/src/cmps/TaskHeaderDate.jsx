@@ -56,10 +56,10 @@ export class TaskHeaderDate extends Component {
         return (
             <div className="task-details-header-date item-container flex column">
                 <h3 className="task-details-header-title">DUE DATE</h3>
-                <div className="date-container flex wrap">
-                    {isTaskDone && <CheckBoxIcon onClick={this.onToggleTaskDone} className="todo-check" />}
-                    {!isTaskDone && <CheckBoxOutlineBlankIcon onClick={this.onToggleTaskDone} />}
-                    <button>
+                <div className="date-container flex wrap align-center">
+                    {isTaskDone && <CheckBoxIcon onClick={this.onToggleTaskDone} className="todo-check pointer" />}
+                    {!isTaskDone && <CheckBoxOutlineBlankIcon onClick={this.onToggleTaskDone} className="pointer"/>}
+                    <button className="secondary-btn date-btn flex align-center">
                         <span
                             className="date-context"
                             onClick={(event) => { setCurrentTarget(event, 'DATE'); }}>{formatedDate}</span>
