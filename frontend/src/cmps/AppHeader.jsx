@@ -20,7 +20,7 @@ function _AppHeader(props) {
           <HomeOutlinedIcon />
         </Link>
         <Link to="/workspace" className="header-btn boards">
-          <DashboardIcon />
+          <DashboardIcon className="icon"/>
           Boards
         </Link>
       </div>

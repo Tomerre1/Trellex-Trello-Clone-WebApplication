@@ -25,9 +25,12 @@
       text-decoration: none;
       transition: background-color 0.2s;
       &.boards {
-        // padding:0 7px;
+
         width:80px;
         font-weight:600;
+        .icon { 
+          margin-inline-end: 3px;
+        }
       }
       &:hover {
         background-color: hsla(0, 0%, 100%, 0.2);
