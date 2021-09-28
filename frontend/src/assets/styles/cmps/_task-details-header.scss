@@ -1,8 +1,9 @@
 .task-details-header {
-    display:flex;
+    display: flex;
     margin-inline-start: 40px;
     margin-bottom: 20px;
     align-items: flex-start;
+    gap: 20px;
     .task-details-header-title {
         color: #5e6c84;
         font-size: 12px;
