@@ -30,14 +30,13 @@ export class TaskHeaderDetails extends Component {
 
     render() {
         const { selectedLabels, selectedMembers, selectedDate } = this.state
-        const { setCurrentTarget } = this.props
-        console.log('selectedDate',selectedDate)
+        const { setCurrentTarget, toggleTaskDone } = this.props
 
         return (
             <div className="task-details-header flex">
                 {selectedMembers && <TaskHeaderMembers members={selectedMembers} setCurrentTarget={setCurrentTarget} />}
                 {selectedLabels && <TaskHeaderLabels selectedLabels={selectedLabels} setCurrentTarget={setCurrentTarget} />}
-                {selectedDate && <TaskHeaderDate selectedDate={selectedDate} setCurrentTarget={setCurrentTarget} />}
+                {selectedDate && <TaskHeaderDate selectedDate={selectedDate} setCurrentTarget={setCurrentTarget} toggleTaskDone={toggleTaskDone} currTask={this.props.currTask} />}
             </div>
         )
     }

@@ -22,7 +22,7 @@ export class PopoverDate extends Component {
 
     onSaveDueDate = (date) => {
         const { togglePopover , updateTaskDetails ,currTask , setSelectedDate} = this.props
-        currTask.dueDate = date ? Date.parse(date) : 0;
+        currTask.dueDate = date ? Date.parse(date) : null;
         updateTaskDetails(currTask)
         setSelectedDate(currTask.dueDate)
         togglePopover()
