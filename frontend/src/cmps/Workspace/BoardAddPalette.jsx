@@ -1,28 +1,30 @@
-import {useState} from 'react'
+import {useState,useEffect} from 'react'
 import CheckIcon from "@material-ui/icons/Check";
 
 export function BoardAddPalette({ setBgClr, setBgImg, bgClr, bgImg }) {
 
     const [selected,setSelected] = useState()
+    
+    
+    const clrs = [
+        "linear-gradient(to bottom, #000000, #434343)",
+        "linear-gradient(to right, #2980b9, #2c3e50)",
+        "linear-gradient(to right, #3494e6, #ec6ead)",
+        "linear-gradient(to left, #2f7336, #aa3a38)",
+        "linear-gradient(to top, #0052d4, #4364f7, #6fb1fc)",
+        "linear-gradient(to bottom, #e52d27, #b31217)",
+    ];
 
-  const clrs = [
-    "linear-gradient(to bottom, #000000, #434343)",
-    "linear-gradient(to right, #2980b9, #2c3e50)",
-    "linear-gradient(to right, #3494e6, #ec6ead)",
-    "linear-gradient(to left, #2f7336, #aa3a38)",
-    "linear-gradient(to top, #0052d4, #4364f7, #6fb1fc)",
-    "linear-gradient(to bottom, #e52d27, #b31217)",
-  ];
-
-  const imgs = [
+    const imgs = [
     "https://www.incimages.com/uploaded_files/image/1920x1080/getty_509107562_2000133320009280346_351827.jpg",
     "http://all4desktop.com/data_images/original/4238112-background.jpg",
     "https://c.pxhere.com/photos/4f/ee/candy_toppings_sweet_colorful_sugar-883692.jpg!d",
     "http://www.pngmagic.com/product_images/creative-banner-design-background-images.jpg",
     "https://cdn.wallpapersafari.com/22/29/fdqrYk.jpg",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKtfDLOqMaWnw3sAiVX_25g1l7_2Fpidi-sQ&usqp=CAU"
+    
+];
 
-  ];
   return (
     <div className="palettes">
       <div className="clrs">

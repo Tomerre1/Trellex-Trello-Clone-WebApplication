@@ -14,9 +14,8 @@ export function BoardPreviewAdd(props) {
       <div
         className="board-content flex column"
         style={{
-          background: bgImg ? `url(${bgImg})` : bgClr,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
+          background: `${bgImg ? `url(${bgImg})` : bgClr} center` ,
+
         }}
       >
         {!isEditMode ? (
