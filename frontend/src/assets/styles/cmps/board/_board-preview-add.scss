@@ -1,0 +1,26 @@
+.board-preview-add {
+  
+  .board-content {
+    cursor: pointer;
+    height: 100%;
+    width:100%;
+    border-radius: 3px;
+    transition: filter 0.2s;
+    filter: brightness(1);
+    display:flex;
+    align-items: center;
+    justify-items: center;
+
+    &:hover {
+      filter: brightness(.8);
+    }
+    p {
+      color: white;
+      font-weight: bold;
+      width:auto;
+      margin:0;
+      padding:100px
+      
+    }
+  }
+}
