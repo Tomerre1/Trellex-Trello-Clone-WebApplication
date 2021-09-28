@@ -35,6 +35,7 @@
     
     textarea {
       background-color: #fff;
+      box-shadow: 0 1px 0 #c0c6d0;
       border: none;
       outline: none;
       resize: none;
@@ -44,6 +45,9 @@
       height: 70px;
       display: inline-block;
       cursor: text;
+      width:248px;
+      border-radius: 3px;
+
     }
     .task-btns{
         justify-content: flex-start;
