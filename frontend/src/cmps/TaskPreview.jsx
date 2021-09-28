@@ -11,7 +11,7 @@ import ChatBubbleOutlineRoundedIcon from "@mui/icons-material/ChatBubbleOutlineR
 import ModeEditOutlinedIcon from "@mui/icons-material/ModeEditOutlined";
 
 export function TaskPreview(props) {
-  const { task, taskUrl, boardLabels, groupId } = props;
+  const { task, taskUrl, boardLabels, groupId,boardId } = props;
   const { labelIds, title, dueDate, comments, checklists, description } = task;
 
   const [isMenuShown, toggleMenuShown] = useState(false);
@@ -67,7 +67,7 @@ export function TaskPreview(props) {
           onClick={toggleMenu}
         ></div>
         {isMenuShown && (
-          <TaskActions toggleMenuShown={toggleMenu} menuPos={menuPos} />
+          <TaskActions toggleMenuShown={toggleMenu} menuPos={menuPos} groupId={groupId} boardId={boardId} task={task} />
         )}
       <article className="task-preview-container">
         <Link to={taskUrl} className="clean-link">
