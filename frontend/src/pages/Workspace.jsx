@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { BoardList } from "../cmps/BoardList";
+import { BoardList } from "../cmps/Workspace/BoardList";
 import { LoaderSpinner } from "../cmps/LoaderSpinner";
 import { loadBoards,addBoard } from "../store/board.actions";
 
