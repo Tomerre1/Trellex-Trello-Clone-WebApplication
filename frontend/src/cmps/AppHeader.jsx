@@ -1,4 +1,4 @@
-import React from "react";
+import React , { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
@@ -6,6 +6,7 @@ import AddIcon from "@mui/icons-material/Add";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import { MemberList} from '../cmps/MemberList'
+
 
 function _AppHeader(props) {
   return (
@@ -36,13 +37,14 @@ function _AppHeader(props) {
           <p>BS</p>
         </div> */}
       </div>
+      {console.log('why no user', props.user)}
     </header>
   );
 }
 
 function mapStateToProps(state) {
   return {
-    user: state.userModule.loggedInUser,
+    user: state.userModule.loggedinUser,
   };
 }
 export const AppHeader = withRouter(connect(mapStateToProps)(_AppHeader));
