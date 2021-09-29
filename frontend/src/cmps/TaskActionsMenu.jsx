@@ -11,19 +11,19 @@ import ScheduleIcon from '@mui/icons-material/Schedule';
 import ArchiveIcon from '@mui/icons-material/Archive';
 export class TaskActionsMenu extends Component {
     render() {
-        const { setCurrentTarget } = this.props
+        const { setCurrentTarget, joinTask, loggedinUserIsJoin } = this.props
         return (
             <aside className="task-details-sidebar flex column full">
                 <div className="actions-wrapper flex">
-                    <div className="suggested flex column">
+                    {!loggedinUserIsJoin && <div className="suggested flex column">
                         <h4>SUGGESTED</h4>
                         <button className="secondary-btn action-btn" >
-                            <div className="action-btn-content flex align-center" onClick={(event) => { }}>
+                            <div className="action-btn-content flex align-center" onClick={joinTask}>
                                 <PersonOutlineIcon />
                                 <span>Join</span>
                             </div>
                         </button>
-                    </div>
+                    </div>}
                     <div className="add-to-card flex column">
                         <h4>ADD TO CARD</h4>
 
