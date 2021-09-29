@@ -1,25 +1,25 @@
-.add-comment{
+.add-comment {
     position: relative;
     align-items: center;
     flex-wrap: wrap;
     &.preview {
         gap: 2px;
         justify-content: flex-end;
-        margin-top:5px;
-        margin-bottom:2px;
+        margin-top: 5px;
+        margin-bottom: 2px;
     }
     .member-wrapper {
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
+        align-self: self-start;
     }
     .member-img {
-        height: 32px;
-        width: 32px;
+        height: 35px;
+        width: 35px;
         object-fit: cover;
         border-radius: 50%;
-        border: 0.01rem solid rgba(255, 255, 255, 0.329);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -33,9 +33,21 @@
         }
     }
 
-    .user-add-comment{
-        textarea{
-            background: #fff
+    .comment-frame {
+        margin-inline-start: 6px;
+        flex: 1;
+        textarea {
+            background: #fff;
+            height: 37px;
+            transition-duration: 0.2s;
+            transition-property: all;
+            transition-timing-function: ease-in;
         }
+        // textarea:focus {
+        //     height: 56px;
+        //      transition-duration: 0.2s;
+        //     transition-property: all;
+        //     transition-timing-function: ease-in;
+        // }
     }
 }
