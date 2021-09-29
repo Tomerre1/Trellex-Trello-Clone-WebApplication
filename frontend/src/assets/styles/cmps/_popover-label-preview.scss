@@ -9,6 +9,9 @@
     position: relative;
     flex-grow: 1;
     justify-content: space-between;
+    span {
+        text-transform: capitalize;
+    }
     &:hover {
         padding-inline-start: 14px;
         margin-left: 4px;
