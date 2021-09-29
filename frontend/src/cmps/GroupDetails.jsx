@@ -65,6 +65,7 @@ const _GroupDetails = (props) => {
             taskUrl={`/board/${boardId}/${group.id}/${task.id}`}
             boardLabels={boardLabels}
             groupId={group.id}
+            boardId={boardId}
           />
         ))}
       </div>
@@ -74,6 +75,8 @@ const _GroupDetails = (props) => {
           scrollToBottom={scrollToBottom}
         />
       </div>
+      <div className="overlay"></div>
+
     </article>
   );
 };

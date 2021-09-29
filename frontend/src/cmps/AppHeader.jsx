@@ -1,14 +1,21 @@
-import React  from "react";
+import React, { useState } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
+import { MemberList } from "../cmps/MemberList";
+import { BoardPreviewAdd } from "./Workspace/BoardPreviewAdd";
+import { addBoard } from '../store/board.actions'
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import AddIcon from "@mui/icons-material/Add";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
-import { MemberList} from '../cmps/MemberList'
-
 
 function _AppHeader(props) {
+  const [isCreateShown, setCreateShown] = useState(false);
+  const onAddBoard = async(title,bgClr,bgImg) => {
+    const board = await props.addBoard(title,bgClr,bgImg)
+    setCreateShown(false)
+    props.history.push(`/board/${board._id}`)
+}
   return (
     <header
       className={`main-header flex align-center ${
@@ -20,23 +27,29 @@ function _AppHeader(props) {
           <HomeOutlinedIcon />
         </Link>
         <Link to="/workspace" className="header-btn boards">
-          <DashboardIcon className="icon"/>
+          <DashboardIcon className="icon" />
           Boards
         </Link>
       </div>
       <div>Trellex Logo</div>
       <div className="header-btn-container flex">
-        <button className="header-btn">
+        <button
+          className="header-btn"
+          onClick={() => setCreateShown(!isCreateShown)}
+        >
           <AddIcon />
         </button>
+
         <button className="header-btn">
           <NotificationsNoneIcon />
         </button>
-        <MemberList members={[props.user]}/>
-        {/* <div className="user-profile">
-          <p>BS</p>
-        </div> */}
+        <MemberList members={[props.user]} />
       </div>
+        <div
+          className={`overlay ${isCreateShown ? "show" : ""}`}
+          onClick={()=>setCreateShown(false)}
+          ></div>
+          {isCreateShown && <BoardPreviewAdd boardMode="true" setCreateShown={setCreateShown} onAdd={onAddBoard}/>}
     </header>
   );
 }
@@ -44,6 +57,11 @@ function _AppHeader(props) {
 function mapStateToProps(state) {
   return {
     user: state.userModule.loggedinUser,
+    boards:state.boardModule.boards
   };
 }
-export const AppHeader = withRouter(connect(mapStateToProps)(_AppHeader));
+const mapDispatchToProps = {
+  addBoard 
+}
+
+export const AppHeader = withRouter(connect(mapStateToProps,mapDispatchToProps)(_AppHeader));

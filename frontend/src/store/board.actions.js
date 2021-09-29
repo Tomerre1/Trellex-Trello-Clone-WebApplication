@@ -56,18 +56,32 @@ export const addBoard = (title = "new board",bgClr = "black", bgImg) => {
         const board = { title,style:{bgClr,bgImg} }
         try {
             const newBoard = await boardService.save(board)
-            dispatch({
+             dispatch({
                 type: "ADD_BOARD",
                 board: newBoard,
             });
-
+            return newBoard
         }
         catch (err) {
             console.log('cant add board', err)
         }
     }
 }
+export const removeBoard = (boardId) => {
+    return async (dispatch) => {
+        try {
+            const board = await boardService.remove(boardId)
+            dispatch({
+                type: "REMOVE_BOARD",
+                boardId: boardId,
+            });
 
+        }
+        catch (err) {
+            console.log('cant remove board', err)
+        }
+    }
+}
 export const addTask = (taskTitle, boardId, groupId) => {
     return async (dispatch) => {
         try {
@@ -83,6 +97,22 @@ export const addTask = (taskTitle, boardId, groupId) => {
         }
     }
 }
+export const removeTask = (boardId,groupId,taskId) => {
+    return async (dispatch) => {
+        try {
+            const board = await boardService.removeTask(boardId,groupId,taskId)
+            dispatch({
+                type: "SAVE_BOARD",
+                board: board,
+            });
+
+        }
+        catch (err) {
+            console.log('cant remove task', err)
+        }
+    }
+}
+
 export const addGroup = (boardId,title) => {
     return async (dispatch) => {
         try {
@@ -97,6 +127,7 @@ export const addGroup = (boardId,title) => {
         }
     }
 }
+
 export const removeGroup = (boardId,groupId) => {
     console.log(groupId,boardId)
     return async (dispatch) => {

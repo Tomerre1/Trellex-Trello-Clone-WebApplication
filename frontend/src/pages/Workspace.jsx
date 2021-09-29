@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { BoardList } from "../cmps/Workspace/BoardList";
 import { LoaderSpinner } from "../cmps/LoaderSpinner";
-import { loadBoards,addBoard } from "../store/board.actions";
+import { loadBoards,addBoard,removeBoard } from "../store/board.actions";
 
 class _Workspace extends Component {
   componentDidMount = () => {
@@ -11,7 +11,12 @@ class _Workspace extends Component {
 
   addBoard = async (title ,bgClr ='black',bgImg="") =>{
     if ( !title ) return
-    const newBoard = await this.props.addBoard(title,bgClr,bgImg)
+    try{
+      this.props.addBoard(title,bgClr,bgImg)
+    } 
+    catch(err){
+      console.log('problem adding board',err)
+    }
   }
 
   render() {
@@ -19,7 +24,7 @@ class _Workspace extends Component {
     return (
       <section className="workspace-page main-layout flex column">
         <h1>Your Workspace</h1>
-        {boards.length ? <BoardList boards={boards} onAdd={this.addBoard}/> : <LoaderSpinner />}
+        {boards.length ? <BoardList boards={boards} onAdd={this.addBoard} onRemove={this.props.removeBoard}/> : <LoaderSpinner />}
       </section>
     );
   }
@@ -32,7 +37,8 @@ function mapStateToProps(state) {
 }
 const mapDispatchToProps = {
   loadBoards,
-  addBoard
+  addBoard,
+  removeBoard,
 };
 export const Workspace = connect(
   mapStateToProps,

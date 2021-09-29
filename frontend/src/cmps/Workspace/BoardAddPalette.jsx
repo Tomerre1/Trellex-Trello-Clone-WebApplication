@@ -1,5 +1,4 @@
-import {useState,useEffect} from 'react'
-import CheckIcon from "@material-ui/icons/Check";
+import {useState} from 'react'
 
 export function BoardAddPalette({ setBgClr, setBgImg, bgClr, bgImg }) {
 

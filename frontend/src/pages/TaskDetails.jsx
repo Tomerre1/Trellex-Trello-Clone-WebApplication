@@ -89,7 +89,6 @@ export class _TaskDetails extends Component {
   }
 
   setSelectedDate = (selectedDate) => {
-    console.log('selectedDate from setSelectedDate',selectedDate)
     this.setState(prevState => ({
       ...prevState,
       selectedDate: selectedDate,

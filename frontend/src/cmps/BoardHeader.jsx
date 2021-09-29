@@ -76,7 +76,7 @@ const mapDispatchToProps = {
 };
 function mapStateToProps(state) {
   return {
-    user: state.boardModule.board,
+    user: {...state.boardModule.board},
   };
 }
 export const BoardHeader = connect(

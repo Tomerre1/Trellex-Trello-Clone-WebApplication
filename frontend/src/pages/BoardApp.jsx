@@ -8,30 +8,36 @@ import { LoaderSpinner } from "../cmps/LoaderSpinner";
 
 class _BoardApp extends Component {
   componentDidMount = async () => {
-    this.props.clearBoard();
     this.loadBoard();
-    this.props.loadUsers()
+    this.props.loadUsers();
   };
 
   componentWillUnmount = () => {
     this.props.clearBoard();
   };
 
+  componentDidUpdate = () => {
+    if (this.props.match.params?.boardId !== this.props.board?._id) {
+      this.props.clearBoard();
 
+      this.loadBoard();
+      this.props.loadUsers();
+    }
+  };
   loadBoard = async () => {
     const id = this.props.match.params.boardId;
-    
+
     if (id) {
       try {
         await this.props.loadBoard(id);
       } catch (err) {
-        console.log('cant load board',err);
+        console.log("cant load board", err);
       }
     }
   };
 
   render() {
-    console.log(this.props)
+    console.log(this.props);
 
     const { board } = this.props;
     if (!board) return <LoaderSpinner />;
@@ -42,12 +48,14 @@ class _BoardApp extends Component {
           background: board.style.bgImg
             ? `url(${board.style.bgImg})`
             : board.style.bgClr,
-          backgroundSize: "cover",
-          backgroundAttachment: "fixed",
         }}
       >
-        <BoardHeader board={board} />
-        <GroupList groups={[...board.groups]} boardId={board._id} boardLabels={[...board.labels]}/>
+        <BoardHeader board={{ ...board }} />
+        <GroupList
+          groups={[...board.groups]}
+          boardId={board._id}
+          boardLabels={[...board.labels]}
+        />
       </section>
     );
   }
@@ -61,7 +69,7 @@ function mapStateToProps(state) {
 const mapDispatchToProps = {
   loadBoard,
   clearBoard,
-  loadUsers
+  loadUsers,
 };
 
 export const BoardApp = connect(mapStateToProps, mapDispatchToProps)(_BoardApp);
