@@ -146,7 +146,7 @@ export class _TaskDetails extends Component {
         case 'COVER':
           return <PopoverCover {...props} setBgColorCover={this.setBgColorCover} setIsCover={this.setIsCover} title='Cover' />
         case 'MOVE':
-          return <PopoverMove {...props} boards={boards} title='Move to' />
+          return <PopoverMove {...props} boards={boards} board={board} currGroup={currGroup} title='Move to' />
         case 'COPY':
           return <PopoverCover {...props} setBgColorCover={this.setBgColorCover} title='Copy' />
       }
