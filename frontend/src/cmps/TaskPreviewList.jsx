@@ -6,7 +6,10 @@ export function TaskPreviewList(props) {
   const { groupId, boardId, boardLabels, tasks } = props;
 
   return (
-      tasks?.map((task, idx) => (
+    <Droppable droppableId={groupId}>
+      {(provided)=>(
+      <div {...provided.droppableProps} ref={provided.innerRef}>
+      {tasks?.map((task, idx) => (
         <TaskPreview
           task={task}
           key={task.id}
@@ -17,7 +20,10 @@ export function TaskPreviewList(props) {
           groupId={groupId}
           boardId={boardId}
         />
-      ))
-   
+      ))}
+      {provided.placeholder}
+    </div>
+      )}
+    </Droppable>
   );
-  }
+}
