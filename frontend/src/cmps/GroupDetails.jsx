@@ -1,13 +1,13 @@
 import React, { useRef, useState } from "react";
 import { connect } from "react-redux";
 import { AddNewGroup } from "./Group/AddNewGroup";
-import { TaskPreview } from "./TaskPreview";
 import { TaskPreviewList } from "./TaskPreviewList";
 import { AddNewTask } from "./Group/AddNewTask";
 import { HeaderTitle } from "./Group/HeaderTitle";
 import { removeGroup } from "../store/board.actions";
 import MoreHorizOutlinedIcon from "@mui/icons-material/MoreHorizOutlined";
 import { GroupActions } from "./Group/GroupActions";
+import { DragDropContext} from "react-beautiful-dnd"
 
 const _GroupDetails = (props) => {
   const { group, isAddNew, boardId, boardLabels } = props;
@@ -31,9 +31,18 @@ const _GroupDetails = (props) => {
       behavior: "smooth",
     });
   };
+
+  const onDragEnd =()=>{
+    //later
+    console.log('dragend')
+  }
+
   if (isAddNew) return <AddNewGroup />;
 
   return (
+    <DragDropContext
+      onDragEnd={onDragEnd}
+    >
     <article className="group-details flex column">
       <div className="group-header flex space-between align-center">
         <HeaderTitle group={group} />
@@ -73,6 +82,7 @@ const _GroupDetails = (props) => {
       </div>
       <div className="overlay"></div>
     </article>
+    </DragDropContext>
   );
 };
 

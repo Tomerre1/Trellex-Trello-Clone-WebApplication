@@ -8,7 +8,6 @@
   padding: 6px;
   height: fit-content;
   max-width: 272px;
-
   max-height: 87vh;
 
   .group-header {
@@ -66,8 +65,9 @@
     }
   }
   .group-main {
-    gap: 6px;
     overflow-y: auto;
+    overflow-x: hidden;
+
 
     &::-webkit-scrollbar {
       width: 12px;
