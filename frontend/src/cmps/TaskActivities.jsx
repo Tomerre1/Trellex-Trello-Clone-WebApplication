@@ -9,7 +9,7 @@ export class TaskActivities extends Component {
 
 
     state = {
-        isShowComments : false
+        isShowComments: false
     }
 
     onToggleComments = () => {
@@ -19,8 +19,10 @@ export class TaskActivities extends Component {
 
     render() {
         const { isShowComments } = this.state
-        const { currTask , loggedinUser} = this.props
-        console.log('currTask.comments',currTask.comments)
+        const { currTask, loggedinUser, activities } = this.props
+        console.log('currTask', currTask)
+        console.log('currTask.comments', currTask.comments)
+        console.log('activities', activities)
         return (
             <div className="task-activities flex column">
                 <div className="window-modal-title flex space-between">
@@ -32,8 +34,9 @@ export class TaskActivities extends Component {
                         {isShowComments ? 'Show details' : 'Hide details'}
                     </button>
                 </div>
-                <AddComment currTask={currTask} loggedinUser={loggedinUser}/>
-                {currTask.comments && currTask.comments.length && <ActivitiesList comments={currTask.comments}/> }
+                <AddComment currTask={currTask} loggedinUser={loggedinUser} />
+                {(currTask.comments && currTask.comments.length) || (activities && activities.length) &&
+                    <ActivitiesList comments={currTask.comments} activities={activities} />}
                 {/* {!!this.cardActivities.length && <ActivitiesList activities={this.cardActivities} isGeneral={false} />} */}
             </div>
         )
