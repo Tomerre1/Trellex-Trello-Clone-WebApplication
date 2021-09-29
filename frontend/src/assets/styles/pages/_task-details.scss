@@ -13,6 +13,7 @@
     .task-details-body {
         .task-details-main {
             width: 552px;
+            margin: 16px 0 0 16px;
         }
     }
 
@@ -29,9 +30,13 @@
         right: 4px;
         z-index: 10;
         transition: background-color 85ms, color 85ms;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         .card-cover {
             background-color: rgba(0, 0, 0, 0.08);
             color: #3d3b3b;
+            
         }
         &.cover {
             background-color: rgba(0, 0, 0, 0.08);
