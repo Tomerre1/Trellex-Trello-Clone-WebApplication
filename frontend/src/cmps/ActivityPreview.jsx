@@ -32,6 +32,7 @@ export class ActivityPreview extends Component {
             if (Math.floor(interval) === 1) return "an minute ago";
             return Math.floor(interval) + " minutes ago";
         }
+        if (Math.floor(seconds) === 0) return "a few seconds ago";
         return Math.floor(seconds) + " seconds ago";
     }
 

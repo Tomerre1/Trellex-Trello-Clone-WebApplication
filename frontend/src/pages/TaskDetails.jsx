@@ -177,7 +177,7 @@ export class _TaskDetails extends Component {
               }
               <TaskDescription currTask={currTask} updateTaskDetails={this.updateTaskDetails} />
               <TaskChecklist currTask={currTask} updateTaskDetails={this.updateTaskDetails} />
-              <TaskActivities currTask={currTask} loggedinUser={loggedinUser} activities={board.activities} />
+              <TaskActivities currTask={currTask} loggedinUser={loggedinUser} activities={board.activities} updateTaskDetails={this.updateTaskDetails}/>
             </div>
             <TaskActionsMenu loggedinUserIsJoin={loggedinUserIsJoin} joinTask={this.joinTask} setCurrentTarget={this.setCurrentTarget} />
           </div>

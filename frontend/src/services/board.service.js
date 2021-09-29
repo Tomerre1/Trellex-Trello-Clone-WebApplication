@@ -86,7 +86,7 @@ const demoBoards = [
             {
                 "_id": 'u103',
                 "fullname": 'Matan',
-                "imgUrl": ''
+                "imgUrl": 'https://media-exp1.licdn.com/dms/image/C4D03AQEEFClr3HeA9w/profile-displayphoto-shrink_800_800/0/1575055172966?e=1638403200&v=beta&t=-EaNro-ekUtvBc9ndCkF37SAe2YT6CaaOGe09riqZew'
             },
         ],
         "groups": [
@@ -204,7 +204,7 @@ const demoBoards = [
                                 "byMember": {
                                     "_id": 'u103',
                                     "fullname": 'Matan',
-                                    "imgUrl": 'https://media-exp1.licdn.com/dms/image/C4E03AQFlupY8tXNbnA/profile-displayphoto-shrink_400_400/0/1622442415599?e=1638403200&v=beta&t=DBTF6x9nzwz1G04DZ8hBSG14UyM6BUDX6LM30JL84jg'
+                                    "imgUrl": 'https://media-exp1.licdn.com/dms/image/C4D03AQEEFClr3HeA9w/profile-displayphoto-shrink_800_800/0/1575055172966?e=1638403200&v=beta&t=-EaNro-ekUtvBc9ndCkF37SAe2YT6CaaOGe09riqZew'
                                 },
                             },
                             {
@@ -251,7 +251,7 @@ const demoBoards = [
                             {
                                 "_id": 'u103',
                                 "fullname": 'Matan',
-                                "imgUrl": ''
+                                "imgUrl": 'https://media-exp1.licdn.com/dms/image/C4D03AQEEFClr3HeA9w/profile-displayphoto-shrink_800_800/0/1575055172966?e=1638403200&v=beta&t=-EaNro-ekUtvBc9ndCkF37SAe2YT6CaaOGe09riqZew'
                             },
                         ],
                         "labelIds": ["l101", "l102"],
@@ -310,7 +310,7 @@ const demoBoards = [
                             {
                                 "_id": 'u103',
                                 "fullname": 'Matan',
-                                "imgUrl": ''
+                                "imgUrl": 'https://media-exp1.licdn.com/dms/image/C4D03AQEEFClr3HeA9w/profile-displayphoto-shrink_800_800/0/1575055172966?e=1638403200&v=beta&t=-EaNro-ekUtvBc9ndCkF37SAe2YT6CaaOGe09riqZew'
                             },
                         ],
                         "labelIds": ["l101", "l102"],
@@ -338,7 +338,7 @@ const demoBoards = [
                 "byMember": {
                     "_id": 'u103',
                     "fullname": 'Matan',
-                    "imgUrl": ''
+                    "imgUrl": 'https://media-exp1.licdn.com/dms/image/C4D03AQEEFClr3HeA9w/profile-displayphoto-shrink_800_800/0/1575055172966?e=1638403200&v=beta&t=-EaNro-ekUtvBc9ndCkF37SAe2YT6CaaOGe09riqZew'
                 },
                 "task": {
                     "id": "c13023",
@@ -354,7 +354,7 @@ const demoBoards = [
                 "byMember": {
                     "_id": 'u103',
                     "fullname": 'Matan',
-                    "imgUrl": ''
+                    "imgUrl": 'https://media-exp1.licdn.com/dms/image/C4D03AQEEFClr3HeA9w/profile-displayphoto-shrink_800_800/0/1575055172966?e=1638403200&v=beta&t=-EaNro-ekUtvBc9ndCkF37SAe2YT6CaaOGe09riqZew'
                 },
                 "task": {
                     "id": "c104fa",
@@ -447,7 +447,7 @@ const demoBoards = [
             {
                 "_id": 'u103',
                 "fullname": 'Matan',
-                "imgUrl": ''
+                "imgUrl": 'https://media-exp1.licdn.com/dms/image/C4D03AQEEFClr3HeA9w/profile-displayphoto-shrink_800_800/0/1575055172966?e=1638403200&v=beta&t=-EaNro-ekUtvBc9ndCkF37SAe2YT6CaaOGe09riqZew'
             },
         ],
         "groups": [
@@ -565,7 +565,7 @@ const demoBoards = [
                                 "byMember": {
                                     "_id": 'u103',
                                     "fullname": 'Matan',
-                                    "imgUrl": ''
+                                    "imgUrl": 'https://media-exp1.licdn.com/dms/image/C4D03AQEEFClr3HeA9w/profile-displayphoto-shrink_800_800/0/1575055172966?e=1638403200&v=beta&t=-EaNro-ekUtvBc9ndCkF37SAe2YT6CaaOGe09riqZew'
                                 },
                             }
                         ],
@@ -601,7 +601,7 @@ const demoBoards = [
                             {
                                 "_id": 'u103',
                                 "fullname": 'Matan',
-                                "imgUrl": ''
+                                "imgUrl": 'https://media-exp1.licdn.com/dms/image/C4D03AQEEFClr3HeA9w/profile-displayphoto-shrink_800_800/0/1575055172966?e=1638403200&v=beta&t=-EaNro-ekUtvBc9ndCkF37SAe2YT6CaaOGe09riqZew'
                             },
                         ],
                         "labelIds": ["l101", "l102"],
@@ -660,7 +660,7 @@ const demoBoards = [
                             {
                                 "_id": 'u103',
                                 "fullname": 'Matan',
-                                "imgUrl": ''
+                                "imgUrl": 'https://media-exp1.licdn.com/dms/image/C4D03AQEEFClr3HeA9w/profile-displayphoto-shrink_800_800/0/1575055172966?e=1638403200&v=beta&t=-EaNro-ekUtvBc9ndCkF37SAe2YT6CaaOGe09riqZew'
                             },
                         ],
                         "labelIds": ["l101", "l102"],
@@ -796,7 +796,7 @@ const demoBoards = [
             {
                 "_id": 'u103',
                 "fullname": 'Matan',
-                "imgUrl": ''
+                "imgUrl": 'https://media-exp1.licdn.com/dms/image/C4D03AQEEFClr3HeA9w/profile-displayphoto-shrink_800_800/0/1575055172966?e=1638403200&v=beta&t=-EaNro-ekUtvBc9ndCkF37SAe2YT6CaaOGe09riqZew'
             },
         ],
         "groups": [
@@ -914,7 +914,7 @@ const demoBoards = [
                                 "byMember": {
                                     "_id": 'u103',
                                     "fullname": 'Matan',
-                                    "imgUrl": ''
+                                    "imgUrl": 'https://media-exp1.licdn.com/dms/image/C4D03AQEEFClr3HeA9w/profile-displayphoto-shrink_800_800/0/1575055172966?e=1638403200&v=beta&t=-EaNro-ekUtvBc9ndCkF37SAe2YT6CaaOGe09riqZew'
                                 },
                             }
                         ],
@@ -950,7 +950,7 @@ const demoBoards = [
                             {
                                 "_id": 'u103',
                                 "fullname": 'Matan',
-                                "imgUrl": ''
+                                "imgUrl": 'https://media-exp1.licdn.com/dms/image/C4D03AQEEFClr3HeA9w/profile-displayphoto-shrink_800_800/0/1575055172966?e=1638403200&v=beta&t=-EaNro-ekUtvBc9ndCkF37SAe2YT6CaaOGe09riqZew'
                             },
                         ],
                         "labelIds": ["l101", "l102"],
@@ -1009,7 +1009,7 @@ const demoBoards = [
                             {
                                 "_id": 'u103',
                                 "fullname": 'Matan',
-                                "imgUrl": ''
+                                "imgUrl": 'https://media-exp1.licdn.com/dms/image/C4D03AQEEFClr3HeA9w/profile-displayphoto-shrink_800_800/0/1575055172966?e=1638403200&v=beta&t=-EaNro-ekUtvBc9ndCkF37SAe2YT6CaaOGe09riqZew'
                             },
                         ],
                         "labelIds": ["l101", "l102"],
