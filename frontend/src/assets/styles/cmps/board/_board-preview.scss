@@ -7,7 +7,7 @@
     transition: filter 0.2s;
     filter: brightness(1);
     &:hover {
-      filter: brightness(.8);
+      filter: brightness(0.8);
     }
   }
   p {
@@ -17,6 +17,34 @@
     margin-top: 10px;
     margin-inline-start: 10px;
     max-width: 30ch;
-    top:0;
+    top: 0;
+  }
+  .hover-actions {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: rgb(255, 255, 255);
+    gap:5px;
+
+    .action-icon {
+      height: 25px;
+      width: 25px;
+      background-color:rgba(255, 255, 255, 0.185);
+      padding:2px;
+      border-radius: 3px;
+      cursor:pointer;
+      transition: background-color .2s;
+      &:hover{
+        background-color:rgba(107, 104, 104, 0.185);
+
+      }
+    }
+  }
+  &:hover .hover-actions {
+    opacity: 1;
+    pointer-events: auto;
   }
 }

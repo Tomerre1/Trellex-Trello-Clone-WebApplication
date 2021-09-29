@@ -17,10 +17,10 @@ class _BoardApp extends Component {
   };
 
   componentDidUpdate = () => {
-    if(this.props.match.params?.boardId !== this.props.board?._id) {
+    if (this.props.match.params?.boardId !== this.props.board?._id) {
       this.props.clearBoard();
 
-      this.loadBoard()
+      this.loadBoard();
       this.props.loadUsers();
     }
   };
@@ -48,11 +48,9 @@ class _BoardApp extends Component {
           background: board.style.bgImg
             ? `url(${board.style.bgImg})`
             : board.style.bgClr,
-          backgroundSize: "cover",
-          backgroundAttachment: "fixed",
         }}
       >
-        <BoardHeader board={{...board}} />
+        <BoardHeader board={{ ...board }} />
         <GroupList
           groups={[...board.groups]}
           boardId={board._id}

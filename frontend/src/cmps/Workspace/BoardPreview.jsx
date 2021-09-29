@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import StarBorderIcon from '@mui/icons-material/StarBorder';
 
 export function BoardPreview(props) {
   const { board } = props;
@@ -18,6 +20,10 @@ export function BoardPreview(props) {
         ></div>
         <p className="board-title">{board.title}</p>
       </Link>
+      <div className="hover-actions flex">
+          <DeleteOutlineIcon className="action-icon"/>
+          <StarBorderIcon className="action-icon"/>
+      </div>
     </article>
   );
 }

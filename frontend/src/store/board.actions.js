@@ -67,7 +67,21 @@ export const addBoard = (title = "new board",bgClr = "black", bgImg) => {
         }
     }
 }
+export const removeBoard = (boardId) => {
+    return async (dispatch) => {
+        try {
+            const board = await boardService.removeBoard(boardId)
+            dispatch({
+                type: "SAVE_BOARD",
+                board: board,
+            });
 
+        }
+        catch (err) {
+            console.log('cant remove board', err)
+        }
+    }
+}
 export const addTask = (taskTitle, boardId, groupId) => {
     return async (dispatch) => {
         try {
@@ -84,8 +98,6 @@ export const addTask = (taskTitle, boardId, groupId) => {
     }
 }
 export const removeTask = (boardId,groupId,taskId) => {
-    // console.log(boardId,groupId,taskId)
-
     return async (dispatch) => {
         try {
             const board = await boardService.removeTask(boardId,groupId,taskId)
@@ -100,6 +112,7 @@ export const removeTask = (boardId,groupId,taskId) => {
         }
     }
 }
+
 export const addGroup = (boardId,title) => {
     return async (dispatch) => {
         try {
@@ -114,6 +127,7 @@ export const addGroup = (boardId,title) => {
         }
     }
 }
+
 export const removeGroup = (boardId,groupId) => {
     console.log(groupId,boardId)
     return async (dispatch) => {

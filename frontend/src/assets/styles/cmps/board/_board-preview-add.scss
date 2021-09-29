@@ -35,10 +35,12 @@
         align-items: center;
         text-align: center;
         color:black;
+        border-radius:3px;
         &::after {
           content:'x';
           position:relative;
           left:-1px;
+          top:-1px;
         }
       }
       form{
@@ -113,6 +115,71 @@
     }
   }
 }
+.main-header .board-preview-add {
+  z-index:20;
+  width:320px;
+  position:fixed;
+  top:50px;
+  right:50px;
+  .board-content .add-active{
+    padding:10px;
+      .title-box {
+        & > input {
+          height: 100%;
+          width:230px;
+          &:focus {
+            outline: 2px solid $clr1;
+            color:$clr7;
+          }
+        }
+      }
+      .color-box {
+     
+        .palettes {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+         
+          .clrs,
+          .imgs {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+            align-items: flex-end;
+            justify-content: center;
+            
+            label.palette-icon {
+              display: flex;
+              height:45px;
+              width:45px;
+              cursor: pointer;
+
+              border-radius: 3px;
+              input {
+                opacity: 0;
+                cursor: pointer;
+              }
+              .icon-check {
+                color: white;
+                position: relative;
+                left: -55%;
+
+              }
+            }
+          }
+        }
+      }
+    }
+    p {
+      color: white;
+      font-weight: bold;
+      width: auto;
+      margin: 0;
+    }
+  }
+
+
+
 
 .fade-in{animation:fade-in 0.2s cubic-bezier(.39,.575,.565,1.000) both}@keyframes puff-in-center{0%{transform:scale(2);filter:blur(4px);opacity:0}100%{transform:scale(1);filter:blur(0);opacity:1}}
 @keyframes fade-in{0%{opacity:0}100%{opacity:1}}
