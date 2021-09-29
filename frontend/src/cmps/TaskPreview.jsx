@@ -69,16 +69,18 @@ export function TaskPreview(props) {
       </Draggable>
     );
   return (
+    <>
+      <div
+        className={`overlay ${isMenuShown ? "show" : ""}`}
+        onClick={toggleMenu}
+        draggable={false}
+      ></div>
     <Draggable draggableId={task.id} index={index}>
       {(provided) => (
         <div
         ref={provided.innerRef}
         {...provided.draggableProps}
         {...provided.dragHandleProps}>
-          <div
-            className={`overlay ${isMenuShown ? "show" : ""}`}
-            onClick={toggleMenu}
-          ></div>
           {isMenuShown && (
             <TaskActions
               toggleMenu={toggleMenuShown}
@@ -152,5 +154,6 @@ export function TaskPreview(props) {
         </div>
       )}
     </Draggable>
+    </>
   );
 }
