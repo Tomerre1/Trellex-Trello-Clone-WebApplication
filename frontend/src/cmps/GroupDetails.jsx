@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import { connect } from "react-redux";
 import { AddNewGroup } from "./Group/AddNewGroup";
 import { TaskPreview } from "./TaskPreview";
+import { TaskPreviewList } from "./TaskPreviewList";
 import { AddNewTask } from "./Group/AddNewTask";
 import { HeaderTitle } from "./Group/HeaderTitle";
 import { removeGroup } from "../store/board.actions";
@@ -14,12 +15,11 @@ const _GroupDetails = (props) => {
   const [isMenuShown, toggleMenuShown] = useState(false);
   const [menuPos, setMenuPos] = useState({});
 
-
   const toggleMenu = (ev) => {
-    let posX = (window.innerWidth - ev.pageX > 200 ) ? ev.pageX : ev.pageX -200;
+    let posX = window.innerWidth - ev.pageX > 200 ? ev.pageX : ev.pageX - 200;
     setMenuPos({
       position: "fixed",
-      top: `${ev.pageY }px`,
+      top: `${ev.pageY}px`,
       left: `${posX}px`,
     });
     toggleMenuShown(!isMenuShown);
@@ -34,8 +34,8 @@ const _GroupDetails = (props) => {
   if (isAddNew) return <AddNewGroup />;
 
   return (
-    <article className="group-details flex column" > 
-      <div className="group-header flex space-between align-center" >
+    <article className="group-details flex column">
+      <div className="group-header flex space-between align-center">
         <HeaderTitle group={group} />
         <MoreHorizOutlinedIcon
           fontSize={"small"}
@@ -52,22 +52,18 @@ const _GroupDetails = (props) => {
             groupId={group.id}
           />
         )}
-                <div
+        <div
           className={`overlay ${isMenuShown ? "show" : ""}`}
           onClick={toggleMenu}
         />
       </div>
       <div className={`group-main flex column `} ref={elRef}>
-        {group.tasks.map((task, idx) => (
-          <TaskPreview
-            task={task}
-            key={idx}
-            taskUrl={`/board/${boardId}/${group.id}/${task.id}`}
-            boardLabels={boardLabels}
-            groupId={group.id}
-            boardId={boardId}
-          />
-        ))}
+        <TaskPreviewList
+          tasks={group.tasks}
+          boardId={boardId}
+          groupId={group.id}
+          boardLabels={boardLabels}
+        />
       </div>
       <div className="group-footer">
         <AddNewTask
@@ -76,7 +72,6 @@ const _GroupDetails = (props) => {
         />
       </div>
       <div className="overlay"></div>
-
     </article>
   );
 };

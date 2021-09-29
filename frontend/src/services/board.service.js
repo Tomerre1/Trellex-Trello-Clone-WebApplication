@@ -114,7 +114,7 @@ const demoBoards = [
                         "labelIds": []
                     },
                     {
-                        id: 'c103',
+                        id: 'c1023',
                         title: 'Task 1',
                         description: 'Good',
                         comments: [],
@@ -186,13 +186,13 @@ const demoBoards = [
                 "title": "On going",
                 "tasks": [
                     {
-                        "id": "c103",
+                        "id": "c1203",
                         "title": "Do that",
                         "labelIds": ["l101", "l102"],
 
                     },
                     {
-                        "id": "c103",
+                        "id": "c1023",
                         "title": "Help me",
                         "description": "description",
                         "comments": [
@@ -445,7 +445,7 @@ const demoBoards = [
                         "labelIds": []
                     },
                     {
-                        id: 'c103',
+                        id: 'c1013',
                         title: 'Task 1',
                         description: 'Good',
                         comments: [],
@@ -517,13 +517,13 @@ const demoBoards = [
                 "title": "On going",
                 "tasks": [
                     {
-                        "id": "c103",
+                        "id": "c1023",
                         "title": "Do that",
                         "labelIds": ["l101", "l102"],
 
                     },
                     {
-                        "id": "c103",
+                        "id": "c1303",
                         "title": "Help me",
                         "description": "description",
                         "comments": [
@@ -775,7 +775,7 @@ const demoBoards = [
                         "labelIds": []
                     },
                     {
-                        id: 'c103',
+                        id: 'c23103',
                         title: 'Task 1',
                         description: 'Good',
                         comments: [],
@@ -847,13 +847,13 @@ const demoBoards = [
                 "title": "On going",
                 "tasks": [
                     {
-                        "id": "c103",
+                        "id": "c34103",
                         "title": "Do that",
                         "labelIds": ["l101", "l102"],
 
                     },
                     {
-                        "id": "c103",
+                        "id": "c10123",
                         "title": "Help me",
                         "description": "description",
                         "comments": [
