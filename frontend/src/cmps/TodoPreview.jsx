@@ -71,6 +71,7 @@ export class TodoPreview extends Component {
                     {!todo.isDone && <CheckBoxOutlineBlankIcon onClick={this.onToggleTodoIsDone} />}
                     {isEditMode &&
                         <textarea onClick={this.onEditMode}
+                            className="default-textarea"
                             ref={(input) => { this.selectedInput = input; }}
                             // onBlur={this.onUndoChange}
                             value={title}
@@ -79,7 +80,7 @@ export class TodoPreview extends Component {
                     }
                     {!isEditMode && <div className="checklist-txt-and-btn">
                         <span className={`${todo.isDone ? 'done' : ''}`} onClick={this.onEditMode}>{title}</span>
-                        <DeleteIcon onClick={this.onRemoveTodo} className="todo-remove-icon"/>
+                        <DeleteIcon onClick={this.onRemoveTodo} className="todo-remove-icon" />
                     </div>}
                 </div>
                 <div className={`checklist-btns flex align-center ${isEditMode ? 'show' : 'hidden'}`}>

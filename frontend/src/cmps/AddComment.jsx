@@ -3,13 +3,30 @@ import React, { Component } from 'react';
 
 export class AddComment extends Component {
     state = {
-
+        txt: '',
+        //CHANGE AFTER TO FALSE
+        isEditMode: true
     }
 
+    handleChange = (ev) => {
+        const { value } = ev.target
+        this.setState(prevState => ({ ...prevState, txt: value }))
+    }
+
+    onEditMode = () => {
+        if (this.selectedInput) this.selectedInput.focus()
+        this.setState({ isEditMode: true })
+    }
+
+    onAddComment = () => {
+        console.log('Add comment here..')
+    }
 
     render() {
         console.log('loggedinUser', this.props.loggedinUser)
         const { loggedinUser } = this.props
+        const { isEditMode, txt } = this.state
+
         return (
             <div className="add-comment flex">
                 <article className="member-wrapper">
@@ -27,7 +44,27 @@ export class AddComment extends Component {
                         )}
                 </article>
 
-                <div>Comment add</div>
+                <div className="user-add-comment">
+
+                    <textarea onClick={this.onEditMode}
+                        className="default-textarea"
+                        ref={(input) => { this.selectedInput = input; }}
+                        // onBlur={this.onUndoChange}
+                        value={txt}
+                        onChange={this.handleChange}
+                        placeholder="Write a comment">
+                           
+                    </textarea>
+
+                    {isEditMode && <button
+                        className="primary-btn"
+                        onClick={this.onAddComment}>
+                        Save
+                    </button>}
+
+
+
+                </div>
 
             </div>
         )
