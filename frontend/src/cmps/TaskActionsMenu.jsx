@@ -66,19 +66,19 @@ export class TaskActionsMenu extends Component {
                     </div>
                     <div className="actions flex column">
                         <h4>ACTIONS</h4>
-                        <button className="secondary-btn action-btn" onClick={(event) => { setCurrentTarget(event) }}>
+                        <button className="secondary-btn action-btn" onClick={(event) => { setCurrentTarget(event,'MOVE') }}>
                             <div className="action-btn-content flex align-center" >
                                 <ArrowForwardIcon />
                                 <span>Move</span>
                             </div>
                         </button>
-                        <button className="secondary-btn action-btn" onClick={(event) => { setCurrentTarget(event) }}>
+                        <button className="secondary-btn action-btn" onClick={(event) => { setCurrentTarget(event,'COPY') }}>
                             <div className="action-btn-content flex align-center" >
                                 <CopyIcon />
                                 <span>Copy</span>
                             </div>
                         </button>
-                        <button className="secondary-btn action-btn" onClick={(event) => { setCurrentTarget(event) }}>
+                        <button className="secondary-btn action-btn" onClick={(event) => { setCurrentTarget(event,'ARCHIVE') }}>
                             <div className="action-btn-content flex align-center" >
                                 <ArchiveIcon />
                                 <span>Archive</span>

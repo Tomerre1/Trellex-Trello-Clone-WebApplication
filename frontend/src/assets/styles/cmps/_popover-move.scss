@@ -1,0 +1,34 @@
+.popover-move-content {
+    width: 20rem;
+    box-sizing: border-box;
+    .move-section {
+        margin-bottom: 16px;
+        color: #172b4d;
+        font-size: 14px;
+
+        .choose-board {
+            box-sizing: border-box;
+            margin-bottom: 8px;
+            width: 100%;
+        }
+
+        .choose-list {
+            box-sizing: border-box;
+            margin-inline-end: 8px;
+        }
+
+        .choose-position {
+            box-sizing: border-box;
+            width: 80px;
+        }
+
+        .MuiFilledInput-root {
+            background-color: rgba(9, 30, 66, 0.04);
+            transition: 0.3s;
+        }
+        .MuiFilledInput-input {
+            box-sizing: border-box;
+            height: 50px;
+        }
+    }
+}
