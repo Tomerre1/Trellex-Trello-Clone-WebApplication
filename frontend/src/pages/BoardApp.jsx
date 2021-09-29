@@ -38,7 +38,7 @@ class _BoardApp extends Component {
   };
 
    onDragEnd =(result)=>{
-    const {destination, source, draggableId} = result;
+    const {destination, source, draggableId,type} = result;
     if (!destination) return
     this.props.handleDrag(
       {...this.props.board},
@@ -46,7 +46,8 @@ class _BoardApp extends Component {
       destination.droppableId,
       source.index,
       destination.index,
-      draggableId
+      draggableId,
+      type
       );
 
     

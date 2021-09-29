@@ -68,40 +68,47 @@ export const addBoard = (title = "new board", bgClr = "black", bgImg) => {
     }
 }
 
-export const handleDrag =  (
+export const handleDrag = (
     board,
     droppableIdStart,
     droppableIdEnd,
     droppableIndexStart,
     droppableIndexEnd,
-    draggableId) => {
-        return async (dispatch) => {
-            const tempBoard = JSON.parse(JSON.stringify(board))
-            // same group drag
-            if(droppableIdStart === droppableIdEnd) {
+    draggableId,
+    type
+) => {
+    return async (dispatch) => {
+        const tempBoard = JSON.parse(JSON.stringify(board))
+        //drag group
+        if (type === 'group') {
+            const group = tempBoard.groups.splice(droppableIndexStart, 1)
+            tempBoard.groups.splice(droppableIndexEnd, 0, ...group)
+        } else {
+            if (droppableIdStart === droppableIdEnd) {
                 const group = tempBoard.groups.find(group => group.id === droppableIdStart)
-                const task = group.tasks.splice(droppableIndexStart,1)
-                group.tasks.splice(droppableIndexEnd,0,...task)
+                const task = group.tasks.splice(droppableIndexStart, 1)
+                group.tasks.splice(droppableIndexEnd, 0, ...task)
             }
             // different group target
-            if(droppableIdStart !== droppableIdEnd) {
+            if (droppableIdStart !== droppableIdEnd) {
                 console.log('wtf')
                 // source group
                 const groupStart = tempBoard.groups.find(group => group.id === droppableIdStart)
-                const task = groupStart.tasks.splice(droppableIndexStart,1)
+                const task = groupStart.tasks.splice(droppableIndexStart, 1)
                 // target group
                 const groupEnd = tempBoard.groups.find(group => group.id === droppableIdEnd)
-                groupEnd.tasks.splice(droppableIndexEnd,0,...task)
+                groupEnd.tasks.splice(droppableIndexEnd, 0, ...task)
             }
-            boardService.save(tempBoard)
-            dispatch({
-               type: "SAVE_BOARD",
-               board:tempBoard 
-           });
-                
-            
-           return 
         }
+        // same group drag
+        boardService.save(tempBoard)
+        dispatch({
+            type: "SAVE_BOARD",
+            board: tempBoard
+        });
+
+        return
+    }
 
 }
 
