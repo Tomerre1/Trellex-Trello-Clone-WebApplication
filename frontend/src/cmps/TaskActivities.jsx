@@ -30,7 +30,7 @@ export class TaskActivities extends Component {
             })
         }
         if (!CommAndAct.length) return null
-        CommAndAct.sort((a, b) => (a.createdAt > b.createdAt) ? 1 : ((b.createdAt > a.createdAt) ? -1 : 0))
+        CommAndAct.sort((a, b) => (a.createdAt < b.createdAt) ? 1 : ((b.createdAt < a.createdAt) ? -1 : 0))
         return CommAndAct
     }
 
