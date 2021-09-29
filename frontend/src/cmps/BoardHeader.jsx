@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { connect } from "react-redux";
 import { saveBoard } from "../store/board.actions";
 import { MemberList } from "./MemberList";
+import MoreHorizOutlinedIcon from "@mui/icons-material/MoreHorizOutlined";
 
 function _BoardHeader(props) {
   const { board } = props;
@@ -65,8 +66,8 @@ function _BoardHeader(props) {
         <button className="header-btn">Invite</button>
       </div>
       <div className="header-btn-container flex">
-        <button className="header-btn">Dashboard</button>
-        <button className="header-btn">Show Menu</button>
+        <button className="header-btn"> Dashboard</button>
+        <button className="header-btn"><MoreHorizOutlinedIcon className="icon"/> Show Menu</button>
       </div>
     </header>
   );
