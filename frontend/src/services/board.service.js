@@ -200,6 +200,7 @@ const demoBoards = [
                                 "id": "ZdPnm",
                                 "txt": "also @yaronb please CR this",
                                 "createdAt": 1590999817436.0,
+                                "type": "comment",
                                 "byMember": {
                                     "_id": 'u103',
                                     "fullname": 'Matan',
@@ -210,6 +211,7 @@ const demoBoards = [
                                 "id": "ZdPnl",
                                 "txt": "Hey All",
                                 "createdAt": 15909998174,
+                                "type": "comment",
                                 "byMember": {
                                     "_id": 'u102',
                                     "fullname": 'Tomer',
@@ -273,6 +275,7 @@ const demoBoards = [
                                 "id": "ZdPnm",
                                 "txt": "also @yaronb please CR this",
                                 "createdAt": 1590999817436.0,
+                                "type": "comment",
                                 "byMember": {
                                     "_id": "u101",
                                     "fullname": "Tal Tarablus",
@@ -330,6 +333,7 @@ const demoBoards = [
             {
                 "id": "a101",
                 "txt": "Changed Color",
+                "type": "changed-color",
                 "createdAt": 154514,
                 "byMember": {
                     "_id": 'u103',
@@ -345,6 +349,7 @@ const demoBoards = [
             {
                 "id": "a102",
                 "txt": "Changed Color",
+                "type": "changed-color",
                 "createdAt": 1545321314,
                 "byMember": {
                     "_id": 'u103',
@@ -556,6 +561,7 @@ const demoBoards = [
                                 "id": "ZdPnm",
                                 "txt": "also @yaronb please CR this",
                                 "createdAt": 1590999817436.0,
+                                "type": "comment",
                                 "byMember": {
                                     "_id": 'u103',
                                     "fullname": 'Matan',
@@ -619,6 +625,7 @@ const demoBoards = [
                                 "id": "ZdPnm",
                                 "txt": "also @yaronb please CR this",
                                 "createdAt": 1590999817436.0,
+                                "type": "comment",
                                 "byMember": {
                                     "_id": "u101",
                                     "fullname": "Tal Tarablus",
@@ -676,6 +683,7 @@ const demoBoards = [
             {
                 "id": "a101",
                 "txt": "Changed Color",
+                "type": "changed-color",
                 "createdAt": 154514,
                 "byMember": {
                     "_id": "u101",
@@ -691,6 +699,7 @@ const demoBoards = [
             {
                 "id": "a101",
                 "txt": "Changed Color2",
+                "type": "changed-color",
                 "createdAt": 1789983468418,
                 "byMember": {
                     "_id": "u101",
@@ -901,6 +910,7 @@ const demoBoards = [
                                 "id": "ZdPncm",
                                 "txt": "also @yaronb please CR this",
                                 "createdAt": 1590999817436.0,
+                                "type": "comment",
                                 "byMember": {
                                     "_id": 'u103',
                                     "fullname": 'Matan',
@@ -964,6 +974,7 @@ const demoBoards = [
                                 "id": "ZdPdnm",
                                 "txt": "also @yaronb please CR this",
                                 "createdAt": 1590999817436.0,
+                                "type": "comment",
                                 "byMember": {
                                     "_id": "u101",
                                     "fullname": "Tal Tarablus",
@@ -1021,6 +1032,7 @@ const demoBoards = [
             {
                 "id": "a101",
                 "txt": "Changed Color",
+                "type": "changed-color",
                 "createdAt": 154514,
                 "byMember": {
                     "_id": "u101",

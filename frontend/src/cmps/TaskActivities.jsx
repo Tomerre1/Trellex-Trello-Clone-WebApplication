@@ -16,13 +16,33 @@ export class TaskActivities extends Component {
         this.setState({ isShowComments: !this.state.isShowComments })
     }
 
+    getTaskCommentsAndActivitiesSorted = () => {
+        const { currTask, activities } = this.props
+        let CommAndAct = []
+
+        if (currTask.comments && currTask.comments.length) {
+            CommAndAct.push(...currTask.comments)
+        }
+
+        if (activities && activities.length) {
+            activities.forEach((activity) => {
+                if (activity.task.id === currTask.id) CommAndAct.push(activity)
+            })
+        }
+        if (!CommAndAct.length) return null
+        CommAndAct.sort((a, b) => (a.createdAt > b.createdAt) ? 1 : ((b.createdAt > a.createdAt) ? -1 : 0))
+        return CommAndAct
+    }
+
 
     render() {
         const { isShowComments } = this.state
         const { currTask, loggedinUser, activities } = this.props
-        console.log('currTask', currTask)
-        console.log('currTask.comments', currTask.comments)
-        console.log('activities', activities)
+        // console.log('currTask', currTask)
+        // console.log('currTask.comments', currTask.comments)
+        // console.log('activities', activities)
+        const CommAndAct = this.getTaskCommentsAndActivitiesSorted()
+
         return (
             <div className="task-activities flex column">
                 <div className="window-modal-title flex space-between">
@@ -35,8 +55,7 @@ export class TaskActivities extends Component {
                     </button>
                 </div>
                 <AddComment currTask={currTask} loggedinUser={loggedinUser} />
-                {(currTask.comments && currTask.comments.length) || (activities && activities.length) &&
-                    <ActivitiesList comments={currTask.comments} activities={activities} />}
+                {CommAndAct && CommAndAct.length && <ActivitiesList CommAndAct={CommAndAct} />}
                 {/* {!!this.cardActivities.length && <ActivitiesList activities={this.cardActivities} isGeneral={false} />} */}
             </div>
         )

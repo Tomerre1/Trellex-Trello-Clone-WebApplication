@@ -1,9 +1,8 @@
 import { ActivityPreview } from './ActivityPreview'
 
-export function ActivitiesList({ comments, activities }) {
+export function ActivitiesList({ CommAndAct }) {
 
-    console.log('comments', comments)
-    console.log('activities', activities)
+    console.log('CommAndAct', CommAndAct)
     return (
         <div className="activities-list">
             Activity list
