@@ -64,7 +64,6 @@ export class _TaskDetails extends Component {
   }
 
   toggleOverlay = () => {
-
     this.props.history.goBack()
   }
 
@@ -163,7 +162,7 @@ export class _TaskDetails extends Component {
           <button onClick={this.props.history.goBack} className={`close-task-details ${bgColorCover ? 'cover' : ''}`}><Close /></button>
           {bgColorCover && <TaskCardCover bgColor={bgColorCover} setCurrentTarget={this.setCurrentTarget} />}
 
-          <TaskHeader taskTitle={currTask.title} setTaksDetailsTitle={this.setTaksDetailsTitle} />
+          <TaskHeader taskTitle={currTask.title} setTaksDetailsTitle={this.setTaksDetailsTitle} taskList={currGroup.title} />
           <div className="task-details-body flex">
             <div className="task-details-main flex column">
               {(selectedLabels || selectedMembers || selectedDate) &&
