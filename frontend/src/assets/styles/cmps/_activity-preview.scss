@@ -1,0 +1,35 @@
+.activity-preview {
+    position: relative;
+    align-items: center;
+    flex-wrap: wrap;
+    &.preview {
+        gap: 2px;
+        justify-content: flex-end;
+        margin-top: 5px;
+        margin-bottom: 2px;
+    }
+    .member-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        align-self: self-start;
+    }
+    .member-img {
+        height: 35px;
+        width: 35px;
+        object-fit: cover;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .member-letter {
+        position: relative;
+        top: 25%;
+        font-weight: 600;
+        &.preview {
+            margin: 0 0 1em;
+        }
+    }
+}
