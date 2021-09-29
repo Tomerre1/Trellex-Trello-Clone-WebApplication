@@ -53,9 +53,6 @@ export class TaskActivities extends Component {
     render() {
         const { isShowActivities } = this.state
         const { currTask, loggedinUser, activities } = this.props
-        console.log('currTask', currTask)
-        // console.log('currTask.comments', currTask.comments)
-        // console.log('activities', activities)
         const CommAndAct = this.getTaskCommentsAndActivitiesSorted()
 
         return (
@@ -66,12 +63,11 @@ export class TaskActivities extends Component {
                         <h3>Activity</h3>
                     </div>
                     <button className="activity-toggle-btn" onClick={this.onToggleComments}>
-                        {isShowActivities ? 'Show details' : 'Hide details'}
+                        {isShowActivities ? 'Hide details' : 'Show details'}
                     </button>
                 </div>
                 <AddComment currTask={currTask} loggedinUser={loggedinUser} addComment={this.addComment} />
                 {CommAndAct && CommAndAct.length && <ActivitiesList CommAndAct={CommAndAct} isShowActivities={isShowActivities} />}
-                {/* {!!this.cardActivities.length && <ActivitiesList activities={this.cardActivities} isGeneral={false} />} */}
             </div>
         )
     }

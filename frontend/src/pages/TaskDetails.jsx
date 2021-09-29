@@ -15,7 +15,7 @@ import { PopoverAttachment } from '../cmps/Popover/PopoverAttachment';
 import { PopoverCover } from '../cmps/Popover/PopoverCover';
 import { TaskHeaderDetails } from '../cmps/TaskHeaderDetails'
 import { LoaderSpinner } from '../cmps/LoaderSpinner'
-import { PopoverMove } from '../cmps/Popover/PopoverMove'
+import { PopoverMoveCopy } from '../cmps/Popover/PopoverMoveCopy'
 import { saveBoard, saveTaskDetails } from '../store/board.actions'
 
 export class _TaskDetails extends Component {
@@ -150,9 +150,9 @@ export class _TaskDetails extends Component {
         case 'COVER':
           return <PopoverCover {...props} setBgColorCover={this.setBgColorCover} setIsCover={this.setIsCover} title='Cover' />
         case 'MOVE':
-          return <PopoverMove {...props} updateBoards={this.updateBoards} boards={boards} board={board} currGroup={currGroup} title='Move to' />
+          return <PopoverMoveCopy {...props} isCopy={false} updateBoards={this.updateBoards} boards={boards} board={board} currGroup={currGroup} title='Move to' />
         case 'COPY':
-          return <PopoverCover {...props} setBgColorCover={this.setBgColorCover} title='Copy' />
+          return <PopoverMoveCopy {...props} isCopy={true} updateBoards={this.updateBoards} boards={boards} board={board} currGroup={currGroup} title='Copy' />
       }
     }
 
@@ -173,6 +173,7 @@ export class _TaskDetails extends Component {
                   selectedDate={currTask.dueDate}
                   toggleTaskDone={this.toggleTaskDone}
                   currTask={currTask}
+                  updateTaskDetails={this.updateTaskDetails}
                 />
               }
               <TaskDescription currTask={currTask} updateTaskDetails={this.updateTaskDetails} />

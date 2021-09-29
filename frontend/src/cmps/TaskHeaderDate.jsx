@@ -29,9 +29,12 @@ export class TaskHeaderDate extends Component {
     }
 
     onToggleTaskDone = () => {
+        const { updateTaskDetails, currTask } = this.props
         const isTaskDone = !this.state.isTaskDone
         this.setState(prevState => ({ ...prevState, isTaskDone }))
         this.props.toggleTaskDone()
+        // currTask.isDone = !currTask.isDone
+        // updateTaskDetails(currTask)
     }
 
     dueDateFormat = (dueDate) => {
@@ -73,7 +76,7 @@ export class TaskHeaderDate extends Component {
         const { selectedDate, setCurrentTarget, currTask } = this.props
         const { formatedDate, isTaskDone } = this.state
         const dueStatus = this.getDueStatus();
-
+        console.log('currTask', currTask)
         if (selectedDate.length === 0) return <></>
 
         return (
@@ -81,7 +84,7 @@ export class TaskHeaderDate extends Component {
                 <h3 className="task-details-header-title">DUE DATE</h3>
                 <div className="date-container flex wrap align-center">
                     {isTaskDone && <CheckBoxIcon onClick={this.onToggleTaskDone} className="todo-check pointer" />}
-                    {!isTaskDone && <CheckBoxOutlineBlankIcon onClick={this.onToggleTaskDone} className="pointer"/>}
+                    {!isTaskDone && <CheckBoxOutlineBlankIcon onClick={this.onToggleTaskDone} className="pointer" />}
                     <button className="secondary-btn date-btn flex align-center">
                         <span
                             className="date-context"
