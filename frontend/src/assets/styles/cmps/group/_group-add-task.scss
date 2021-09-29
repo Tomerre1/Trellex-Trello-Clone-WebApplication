@@ -30,10 +30,9 @@
   .add-task-active {
     width: 100%;
     gap: 5px;
-    margin:0%;
+    margin:0;
     padding:0;
 
-    
     textarea {
       background-color: #fff;
       box-shadow: 0 1px 0 #c0c6d0;
@@ -48,8 +47,8 @@
       cursor: text;
       // width:248px;
       border-radius: 3px;
-      
-
+      position:relative;
+      top:-5px;
     }
     .task-btns{
         justify-content: flex-start;
