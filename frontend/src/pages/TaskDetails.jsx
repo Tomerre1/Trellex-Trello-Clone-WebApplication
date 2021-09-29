@@ -52,6 +52,11 @@ export class _TaskDetails extends Component {
     await this.props.saveBoard(board)
   }
 
+  updateBoards = async (boards) => {
+    await this.props.saveBoards(boards)
+
+  }
+
   updateTaskDetails = async (currTask) => {
     const { currGroup } = this.state
     const { board, saveTaskDetails } = this.props
@@ -146,7 +151,7 @@ export class _TaskDetails extends Component {
         case 'COVER':
           return <PopoverCover {...props} setBgColorCover={this.setBgColorCover} setIsCover={this.setIsCover} title='Cover' />
         case 'MOVE':
-          return <PopoverMove {...props} boards={boards} board={board} currGroup={currGroup} title='Move to' />
+          return <PopoverMove {...props} updateBoards={this.updateBoards} boards={boards} board={board} currGroup={currGroup} title='Move to' />
         case 'COPY':
           return <PopoverCover {...props} setBgColorCover={this.setBgColorCover} title='Copy' />
       }
@@ -203,7 +208,7 @@ function mapStateToProps(state) {
 }
 const mapDispatchToProps = {
   saveBoard,
-  saveTaskDetails
+  saveTaskDetails,
 };
 
 export const TaskDetails = connect(mapStateToProps, mapDispatchToProps)(_TaskDetails);
