@@ -42,6 +42,7 @@
 @import "cmps/task-details-header-labels";
 @import "cmps/task-details-header-date";
 @import "cmps/progress-bar";
+@import "cmps/add-comment";
 
 @import "cmps/task-preview/task-preview";
 @import "cmps/task-preview/task-preview-labels";
@@ -56,10 +57,9 @@
 @import "cmps/popover-member-preview";
 @import "cmps/popover-cover";
 @import "cmps/check-delete-checklist-popover";
-
+@import "cmps/popover-move";
 @import "cmps/loader";
 @import "cmps/color-palette";
 
 @import "cmps/todo-preview";
 @import "cmps/todo-add";
-

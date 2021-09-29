@@ -15,6 +15,7 @@ import { PopoverAttachment } from '../cmps/Popover/PopoverAttachment';
 import { PopoverCover } from '../cmps/Popover/PopoverCover';
 import { TaskHeaderDetails } from '../cmps/TaskHeaderDetails'
 import { LoaderSpinner } from '../cmps/LoaderSpinner'
+import { PopoverMove } from '../cmps/Popover/PopoverMove'
 import { saveBoard, saveTaskDetails } from '../store/board.actions'
 
 export class _TaskDetails extends Component {
@@ -128,7 +129,7 @@ export class _TaskDetails extends Component {
 
   render() {
     const { currentTarget, isPopover, type, selectedLabels, selectedDate, selectedMembers, currTask, currGroup, bgColorCover, loggedinUserIsJoin } = this.state
-    const { board } = this.props
+    const { board, loggedinUser, boards } = this.props
     if (!currTask || !board) return <LoaderSpinner />
     const DynamicCmpPopover = (props) => {
       switch (props.type) {
@@ -144,6 +145,10 @@ export class _TaskDetails extends Component {
           return <PopoverAttachment {...props} title='Attach from...' />
         case 'COVER':
           return <PopoverCover {...props} setBgColorCover={this.setBgColorCover} setIsCover={this.setIsCover} title='Cover' />
+        case 'MOVE':
+          return <PopoverMove {...props} boards={boards} title='Move to' />
+        case 'COPY':
+          return <PopoverCover {...props} setBgColorCover={this.setBgColorCover} title='Copy' />
       }
     }
 
@@ -168,7 +173,7 @@ export class _TaskDetails extends Component {
               }
               <TaskDescription currTask={currTask} updateTaskDetails={this.updateTaskDetails} />
               <TaskChecklist currTask={currTask} updateTaskDetails={this.updateTaskDetails} />
-              <TaskActivities />
+              <TaskActivities currTask={currTask} loggedinUser={loggedinUser} />
             </div>
             <TaskActionsMenu loggedinUserIsJoin={loggedinUserIsJoin} joinTask={this.joinTask} setCurrentTarget={this.setCurrentTarget} />
           </div>
@@ -192,6 +197,7 @@ export class _TaskDetails extends Component {
 function mapStateToProps(state) {
   return {
     board: state.boardModule.board,
+    boards: state.boardModule.boards,
     loggedinUser: state.userModule.loggedinUser,
   };
 }

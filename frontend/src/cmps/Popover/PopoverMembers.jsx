@@ -9,8 +9,8 @@ export class PopoverMembers extends Component {
         selectedMembers: [],
         selectedMembersIds: []
     }
-
-    componentDidMount() {
+            
+        componentDidMount() {
         const { members, currTask } = this.props
         this.setState(prevState => ({
             ...prevState,
