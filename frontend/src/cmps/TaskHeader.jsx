@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import VideoLabel from '@mui/icons-material/VideoLabel';
 
-export function TaskHeader({ taskTitle, setTaksDetailsTitle }) {
+export function TaskHeader({ taskTitle, setTaksDetailsTitle, taskList }) {
     const [title, setTitle] = useState(taskTitle);
 
     const handleSubmit = (ev) => {
@@ -27,7 +27,7 @@ export function TaskHeader({ taskTitle, setTaksDetailsTitle }) {
                         value={title}>
                     </textarea>
                 </div>
-                <p className="list-name">in list <span style={{ textDecoration: 'underline', fontWeight: 600 }}>Backend</span></p>
+                <p className="list-name">in list <span style={{ textDecoration: 'underline', fontWeight: 600 }}>{taskList}</span></p>
             </div>
         </header >
     )
