@@ -1,4 +1,4 @@
-.activity-preview {
+.activity-preview-container {
     min-height: 32px;
     // padding: 8px 0;
     margin-bottom: 16px;
@@ -33,6 +33,29 @@
         font-weight: 600;
         &.preview {
             margin: 0 0 1em;
+        }
+    }
+    .activity-preview {
+        margin-left: 8px;
+        min-height: 32px;
+        // padding: 8px 0;
+        position: relative;
+        .activity-by-user {
+            word-wrap: break-word;
+            .member-name {
+                font-weight: 700;
+            }
+        }
+        .activity-content{
+            margin-left: 4px;
+        }
+        .activity-created-at-container {
+            font-size: 12px;
+            margin: 0;
+            min-width: 110px;
+            .activity-created-at {
+                color: #5e6c84;
+            }
         }
     }
 

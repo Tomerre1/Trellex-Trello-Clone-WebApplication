@@ -9,11 +9,11 @@ export class TaskActivities extends Component {
 
 
     state = {
-        isShowComments: false
+        isShowActivities: false
     }
 
     onToggleComments = () => {
-        this.setState({ isShowComments: !this.state.isShowComments })
+        this.setState({ isShowActivities: !this.state.isShowActivities })
     }
 
     getTaskCommentsAndActivitiesSorted = () => {
@@ -36,7 +36,7 @@ export class TaskActivities extends Component {
 
 
     render() {
-        const { isShowComments } = this.state
+        const { isShowActivities } = this.state
         const { currTask, loggedinUser, activities } = this.props
         // console.log('currTask', currTask)
         // console.log('currTask.comments', currTask.comments)
@@ -51,11 +51,11 @@ export class TaskActivities extends Component {
                         <h3>Activity</h3>
                     </div>
                     <button className="activity-toggle-btn" onClick={this.onToggleComments}>
-                        {isShowComments ? 'Show details' : 'Hide details'}
+                        {isShowActivities ? 'Show details' : 'Hide details'}
                     </button>
                 </div>
                 <AddComment currTask={currTask} loggedinUser={loggedinUser} />
-                {CommAndAct && CommAndAct.length && <ActivitiesList CommAndAct={CommAndAct} />}
+                {CommAndAct && CommAndAct.length && <ActivitiesList CommAndAct={CommAndAct} isShowActivities={isShowActivities} />}
                 {/* {!!this.cardActivities.length && <ActivitiesList activities={this.cardActivities} isGeneral={false} />} */}
             </div>
         )
