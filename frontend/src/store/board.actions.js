@@ -93,6 +93,7 @@ export const handleDrag =  (
                 const groupEnd = tempBoard.groups.find(group => group.id === droppableIdEnd)
                 groupEnd.tasks.splice(droppableIndexEnd,0,...task)
             }
+            boardService.save(board)
             dispatch({
                type: "SAVE_BOARD",
                board:tempBoard 
