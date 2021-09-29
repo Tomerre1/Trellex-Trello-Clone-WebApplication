@@ -80,9 +80,6 @@ export class ActivityPreview extends Component {
                         </div>
                     </div>
                 }
-
-
-
             </div>
         )
     }

@@ -173,6 +173,7 @@ export class _TaskDetails extends Component {
                   selectedDate={currTask.dueDate}
                   toggleTaskDone={this.toggleTaskDone}
                   currTask={currTask}
+                  updateTaskDetails={this.updateTaskDetails}
                 />
               }
               <TaskDescription currTask={currTask} updateTaskDetails={this.updateTaskDetails} />
