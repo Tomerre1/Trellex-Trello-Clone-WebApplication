@@ -4,8 +4,7 @@ import React, { Component } from 'react';
 export class AddComment extends Component {
     state = {
         txt: '',
-        //CHANGE AFTER TO FALSE
-        isEditMode: true
+        isEditMode: false
     }
 
     handleChange = (ev) => {
@@ -44,7 +43,7 @@ export class AddComment extends Component {
                         )}
                 </article>
 
-                <div className="user-add-comment">
+                <div className="comment-frame">
 
                     <textarea onClick={this.onEditMode}
                         className="default-textarea"
@@ -52,7 +51,9 @@ export class AddComment extends Component {
                         // onBlur={this.onUndoChange}
                         value={txt}
                         onChange={this.handleChange}
+
                         placeholder="Write a comment">
+           
                            
                     </textarea>
 
