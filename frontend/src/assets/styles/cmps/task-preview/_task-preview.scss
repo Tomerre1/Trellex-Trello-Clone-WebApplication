@@ -63,9 +63,9 @@
       }
     }
   }
-  &:last-of-type {
-    margin-bottom: 1px;
-  }
+  // &:last-of-type {
+  //   margin-bottom: 1px;
+  // }
   .task-cover {
     height: 32px;
     width: 100%;
@@ -73,7 +73,7 @@
     
   }
   .task-preview {
-    margin-bottom:8px;
+    margin-bottom:7px;
 
     display: flex;
     flex-direction: column;
@@ -95,7 +95,9 @@
     transition: background-color 0.1s;
 
     cursor: pointer;
-
+    &:last-of-type{
+      margin-bottom:0;
+    }
     .task-preview-icons {
       span {
         align-items: center;
