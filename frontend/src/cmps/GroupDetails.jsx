@@ -53,7 +53,7 @@ const _GroupDetails = (props) => {
 
 
         <div >
-          <Draggable draggableId={group.id} index={index} type={"ass"}>
+          <Draggable draggableId={group.id} index={index}>
             {(provided) => (
               <article 
               ref={provided.innerRef}
