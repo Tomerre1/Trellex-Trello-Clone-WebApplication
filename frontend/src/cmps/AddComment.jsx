@@ -17,6 +17,10 @@ export class AddComment extends Component {
         this.setState({ isEditMode: true })
     }
 
+    onToggleEditMode = () => {
+        this.setState({ isEditMode: !this.state.isEditMode })
+    }
+
     onAddComment = () => {
         console.log('Add comment here..')
     }
@@ -48,7 +52,7 @@ export class AddComment extends Component {
                     <textarea onClick={this.onEditMode}
                         className="default-textarea"
                         ref={(input) => { this.selectedInput = input; }}
-                        // onBlur={this.onUndoChange}
+                        onBlur={this.onToggleEditMode}
                         value={txt}
                         onChange={this.handleChange}
 
