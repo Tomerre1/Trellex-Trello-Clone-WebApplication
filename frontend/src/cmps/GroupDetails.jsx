@@ -7,7 +7,7 @@ import { HeaderTitle } from "./Group/HeaderTitle";
 import { removeGroup } from "../store/board.actions";
 import MoreHorizOutlinedIcon from "@mui/icons-material/MoreHorizOutlined";
 import { GroupActions } from "./Group/GroupActions";
-import { Draggable } from "react-beautiful-dnd"
+import { Droppable } from "react-beautiful-dnd";
 
 const _GroupDetails = (props) => {
   const { group, isAddNew, boardId, boardLabels } = props;
@@ -32,50 +32,63 @@ const _GroupDetails = (props) => {
     });
   };
 
-
   if (isAddNew) return <AddNewGroup />;
 
   return (
-    
-    <article className="group-details flex column">
-      <div className="group-header flex space-between align-center">
-        <HeaderTitle group={group} />
-        <MoreHorizOutlinedIcon
-          fontSize={"small"}
-          onClick={toggleMenu}
-          className="dots"
-        />
+    // }
+    // <Droppable droppableId={groupId}>
+    // {(provided)=>(
+    // <div {...provided.droppableProps} ref={provided.innerRef}>
+    // {provided.placeholder}
+    //     </div>
+    //       )}
+    //     </Droppable>
+    <Droppable droppableId={group.id}>
+      {(provided) => (
+        <div {...provided.droppableProps} ref={provided.innerRef}>
+          <article className="group-details flex column">
+            <div className="group-header flex space-between align-center">
+              <HeaderTitle group={group} />
+              <MoreHorizOutlinedIcon
+                fontSize={"small"}
+                onClick={toggleMenu}
+                className="dots"
+              />
 
-        {isMenuShown && (
-          <GroupActions
-            menuPos={menuPos}
-            removeGroup={props.removeGroup}
-            toggleMenuShown={toggleMenuShown}
-            boardId={boardId}
-            groupId={group.id}
-          />
-        )}
-        <div
-          className={`overlay ${isMenuShown ? "show" : ""}`}
-          onClick={toggleMenu}
-        />
-      </div>
-      <div className={`group-main flex column `} ref={elRef}>
-        <TaskPreviewList
-          tasks={group.tasks}
-          boardId={boardId}
-          groupId={group.id}
-          boardLabels={boardLabels}
-        />
-      </div>
-      <div className="group-footer">
-        <AddNewTask
-          ids={{ groupId: group.id, boardId }}
-          scrollToBottom={scrollToBottom}
-        />
-      </div>
-      <div className="overlay"></div>
-    </article>
+              {isMenuShown && (
+                <GroupActions
+                  menuPos={menuPos}
+                  removeGroup={props.removeGroup}
+                  toggleMenuShown={toggleMenuShown}
+                  boardId={boardId}
+                  groupId={group.id}
+                />
+              )}
+              <div
+                className={`overlay ${isMenuShown ? "show" : ""}`}
+                onClick={toggleMenu}
+              />
+            </div>
+            <div className={`group-main flex column `} ref={elRef}>
+              <TaskPreviewList
+                tasks={group.tasks}
+                boardId={boardId}
+                groupId={group.id}
+                boardLabels={boardLabels}
+              />
+            </div>
+            <div className="group-footer">
+              <AddNewTask
+                ids={{ groupId: group.id, boardId }}
+                scrollToBottom={scrollToBottom}
+              />
+            </div>
+            <div className="overlay"></div>
+          </article>
+          {provided.placeholder}
+        </div>
+      )}
+    </Droppable>
   );
 };
 
