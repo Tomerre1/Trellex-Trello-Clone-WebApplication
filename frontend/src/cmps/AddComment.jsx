@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-
 export class AddComment extends Component {
     state = {
         txt: '',
@@ -22,7 +21,10 @@ export class AddComment extends Component {
     }
 
     onAddComment = () => {
-        console.log('Add comment here..')
+        const { txt } = this.state
+        const { loggedinUser } = this.props
+        this.props.addComment(txt, loggedinUser)
+        this.setState(prevState => ({ ...prevState, txt: '', isEditMode: false }))
     }
 
     render() {
@@ -47,17 +49,13 @@ export class AddComment extends Component {
                 </article>
 
                 <div className="comment-frame">
-
                     <textarea onClick={this.onEditMode}
                         className="default-textarea"
                         ref={(input) => { this.selectedInput = input; }}
-                        onBlur={this.onToggleEditMode}
+                        // onBlur={this.onToggleEditMode}
                         value={txt}
                         onChange={this.handleChange}
-
                         placeholder="Write a comment">
-           
-                           
                     </textarea>
 
                     {isEditMode && <button
@@ -66,10 +64,7 @@ export class AddComment extends Component {
                         Save
                     </button>}
 
-
-
                 </div>
-
             </div>
         )
     }

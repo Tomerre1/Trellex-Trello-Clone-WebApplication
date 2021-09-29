@@ -4,6 +4,7 @@ import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import { AddComment } from './AddComment'
 import { ActivitiesList } from './ActivitiesList'
 
+import { utilService } from '../services/util.service'
 
 export class TaskActivities extends Component {
 
@@ -34,11 +35,25 @@ export class TaskActivities extends Component {
         return CommAndAct
     }
 
+    addComment = (txt, byMember) => {
+        const { currTask } = this.props
+        if (!currTask.comments) currTask.comments = []
+        const comment = {
+            id: utilService.makeId(),
+            txt,
+            createdAt: Date.now(),
+            type: 'comment',
+            byMember
+        }
+        currTask.comments.push(comment)
+        this.props.updateTaskDetails(currTask)
+    }
+
 
     render() {
         const { isShowActivities } = this.state
         const { currTask, loggedinUser, activities } = this.props
-        // console.log('currTask', currTask)
+        console.log('currTask', currTask)
         // console.log('currTask.comments', currTask.comments)
         // console.log('activities', activities)
         const CommAndAct = this.getTaskCommentsAndActivitiesSorted()
@@ -54,7 +69,7 @@ export class TaskActivities extends Component {
                         {isShowActivities ? 'Show details' : 'Hide details'}
                     </button>
                 </div>
-                <AddComment currTask={currTask} loggedinUser={loggedinUser} />
+                <AddComment currTask={currTask} loggedinUser={loggedinUser} addComment={this.addComment} />
                 {CommAndAct && CommAndAct.length && <ActivitiesList CommAndAct={CommAndAct} isShowActivities={isShowActivities} />}
                 {/* {!!this.cardActivities.length && <ActivitiesList activities={this.cardActivities} isGeneral={false} />} */}
             </div>

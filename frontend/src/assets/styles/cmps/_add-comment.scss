@@ -44,11 +44,11 @@
             transition-property: all;
             transition-timing-function: ease-in;
         }
-        // textarea:focus {
-        //     height: 56px;
-        //      transition-duration: 0.2s;
-        //     transition-property: all;
-        //     transition-timing-function: ease-in;
-        // }
+        textarea:focus {
+            height: 56px;
+             transition-duration: 0.2s;
+            transition-property: all;
+            transition-timing-function: ease-in;
+        }
     }
 }

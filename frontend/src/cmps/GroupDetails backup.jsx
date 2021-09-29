@@ -51,9 +51,10 @@ const _GroupDetails = (props) => {
     //     {...provided.draggableProps}
     //     {...provided.dragHandleProps}></div>
 
-
-        <div >
-          <Draggable draggableId={group.id} index={index} type={"ass"}>
+    <Droppable droppableId={'all-groups'} direction='horizontal' type="group">
+      {(provided) => (
+        <div {...provided.droppableProps} ref={provided.innerRef}>
+          <Draggable draggableId={group.id} index={index}>
             {(provided) => (
               <article 
               ref={provided.innerRef}
@@ -100,8 +101,10 @@ const _GroupDetails = (props) => {
               </article>
             )}
           </Draggable>
+          {provided.placeholder}
         </div>
-      
+      )}
+    </Droppable>
   );
 };
 

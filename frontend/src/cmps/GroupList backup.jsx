@@ -8,17 +8,8 @@ export function GroupList(props) {
   const { groups, boardId, boardLabels } = props;
 
   return (
-        // <Droppable droppableId={groupId}>
-    // {(provided)=>(
-    // <div {...provided.droppableProps} ref={provided.innerRef}>
-    // {provided.placeholder}
-    //     </div>
-    //       )}
-    //     </Droppable>
-
-    <Droppable droppableId={'all-groups'}  type={'group'} direction={'horizontal'}>
-      {(provided)=>(
-    <div className="group-list" {...provided.droppableProps} ref={provided.innerRef}>
+    
+    <div className="group-list">
       {groups &&
         groups.map((group, idx) => (
           <GroupDetails
@@ -31,10 +22,7 @@ export function GroupList(props) {
         ))
         }
       <GroupDetails isAddNew={true} />
-      {provided.placeholder}
-    </div>
 
-      )}
-    </Droppable>
+    </div>
   );
 }
