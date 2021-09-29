@@ -1119,12 +1119,13 @@ async function query() {
 function getById(boardId) {
     return storageService.get(STORAGE_KEY, boardId)
 }
-function remove(boardId) {
-    // return new Promise((resolve, reject) => {
-    //     setTimeout(reject, 2000)
-    // })
-    // return Promise.reject('Not now!');
-    return storageService.remove(STORAGE_KEY, boardId)
+
+async function remove(boardId) {
+    try {
+        return storageService.remove(STORAGE_KEY, boardId)
+    } catch (err) {
+        console.log('couldnt remove board',err)
+    }
 }
 
 async function save(board) {
@@ -1181,6 +1182,7 @@ async function addTask(taskTitle, boardId, groupId) {
     save(board)
     return board
 }
+
 async function removeTask(boardId, groupId, taskId) {
     try {
         const board = await getById(boardId)

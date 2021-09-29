@@ -70,10 +70,10 @@ export const addBoard = (title = "new board",bgClr = "black", bgImg) => {
 export const removeBoard = (boardId) => {
     return async (dispatch) => {
         try {
-            const board = await boardService.removeBoard(boardId)
+            const board = await boardService.remove(boardId)
             dispatch({
-                type: "SAVE_BOARD",
-                board: board,
+                type: "REMOVE_BOARD",
+                boardId: boardId,
             });
 
         }

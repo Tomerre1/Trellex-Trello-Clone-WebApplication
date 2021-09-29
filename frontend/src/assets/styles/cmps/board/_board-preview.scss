@@ -30,8 +30,8 @@
     gap:5px;
 
     .action-icon {
-      height: 25px;
-      width: 25px;
+      height: 27px;
+      width: 27px;
       background-color:rgba(255, 255, 255, 0.185);
       padding:2px;
       border-radius: 3px;
@@ -39,7 +39,6 @@
       transition: background-color .2s;
       &:hover{
         background-color:rgba(107, 104, 104, 0.185);
-
       }
     }
   }
