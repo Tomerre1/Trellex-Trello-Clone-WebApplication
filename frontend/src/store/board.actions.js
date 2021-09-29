@@ -51,12 +51,12 @@ export const saveBoard = (board) => {
     }
 }
 
-export const addBoard = (title = "new board",bgClr = "black", bgImg) => {
+export const addBoard = (title = "new board", bgClr = "black", bgImg) => {
     return async (dispatch) => {
-        const board = { title,style:{bgClr,bgImg} }
+        const board = { title, style: { bgClr, bgImg } }
         try {
             const newBoard = await boardService.save(board)
-             dispatch({
+            dispatch({
                 type: "ADD_BOARD",
                 board: newBoard,
             });
@@ -67,6 +67,30 @@ export const addBoard = (title = "new board",bgClr = "black", bgImg) => {
         }
     }
 }
+
+export const handleDrag =  (
+    board,
+    droppableIdStart,
+    droppableIdEnd,
+    droppableIndexStart,
+    doppableIndexEnd,
+    draggableId) => {
+        const sortedBoard = board;
+        return async (dispatch) => {
+            // same group drag
+            if(droppableIdStart === droppableIdEnd) {
+                const group = board.groups.find(group => group.id === droppableIdStart)
+                console.log(group)
+            }
+        //     dispatch({
+        //        type: "HANDLE_DRAG",
+        //     //    board: 
+        //    });
+           return 
+        }
+
+}
+
 export const removeBoard = (boardId) => {
     return async (dispatch) => {
         try {
@@ -97,10 +121,10 @@ export const addTask = (taskTitle, boardId, groupId) => {
         }
     }
 }
-export const removeTask = (boardId,groupId,taskId) => {
+export const removeTask = (boardId, groupId, taskId) => {
     return async (dispatch) => {
         try {
-            const board = await boardService.removeTask(boardId,groupId,taskId)
+            const board = await boardService.removeTask(boardId, groupId, taskId)
             dispatch({
                 type: "SAVE_BOARD",
                 board: board,
@@ -113,10 +137,10 @@ export const removeTask = (boardId,groupId,taskId) => {
     }
 }
 
-export const addGroup = (boardId,title) => {
+export const addGroup = (boardId, title) => {
     return async (dispatch) => {
         try {
-            const board = await boardService.addGroup(boardId,title)
+            const board = await boardService.addGroup(boardId, title)
             dispatch({
                 type: "SAVE_BOARD",
                 board: board,
@@ -128,11 +152,11 @@ export const addGroup = (boardId,title) => {
     }
 }
 
-export const removeGroup = (boardId,groupId) => {
-    console.log(groupId,boardId)
+export const removeGroup = (boardId, groupId) => {
+    console.log(groupId, boardId)
     return async (dispatch) => {
         try {
-            const board = await boardService.removeGroup(boardId,groupId)
+            const board = await boardService.removeGroup(boardId, groupId)
             dispatch({
                 type: "SAVE_BOARD",
                 board: board,
