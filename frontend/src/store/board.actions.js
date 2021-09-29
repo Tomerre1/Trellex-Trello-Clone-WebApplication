@@ -73,19 +73,32 @@ export const handleDrag =  (
     droppableIdStart,
     droppableIdEnd,
     droppableIndexStart,
-    doppableIndexEnd,
+    droppableIndexEnd,
     draggableId) => {
-        const sortedBoard = board;
         return async (dispatch) => {
+            const tempBoard = JSON.parse(JSON.stringify(board))
             // same group drag
             if(droppableIdStart === droppableIdEnd) {
-                const group = board.groups.find(group => group.id === droppableIdStart)
-                console.log(group)
+                const group = tempBoard.groups.find(group => group.id === droppableIdStart)
+                const task = group.tasks.splice(droppableIndexStart,1)
+                group.tasks.splice(droppableIndexEnd,0,...task)
             }
-        //     dispatch({
-        //        type: "HANDLE_DRAG",
-        //     //    board: 
-        //    });
+            // different group target
+            if(droppableIdStart !== droppableIdEnd) {
+                console.log('wtf')
+                // source group
+                const groupStart = tempBoard.groups.find(group => group.id === droppableIdStart)
+                const task = groupStart.tasks.splice(droppableIndexStart,1)
+                // target group
+                const groupEnd = tempBoard.groups.find(group => group.id === droppableIdEnd)
+                groupEnd.tasks.splice(droppableIndexEnd,0,...task)
+            }
+            dispatch({
+               type: "SAVE_BOARD",
+               board:tempBoard 
+           });
+                
+            
            return 
         }
 
