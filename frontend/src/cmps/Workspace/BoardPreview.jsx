@@ -14,8 +14,7 @@ export function BoardPreview(props) {
           style={{
             background: board.style.bgImg
               ? `url(${board.style.bgImg})`
-              : board.style.bgClr,
-              backgroundSize:'cover',
+              : board.style.bgClr
           }}
         ></div>
         <p className="board-title">{board.title}</p>
