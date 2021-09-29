@@ -192,7 +192,7 @@ const demoBoards = [
 
                     },
                     {
-                        "id": "c1023",
+                        "id": "c13023",
                         "title": "Help me",
                         "description": "description",
                         "comments": [
@@ -255,7 +255,7 @@ const demoBoards = [
                         }
                     },
                     {
-                        "id": "c104",
+                        "id": "c104fa",
                         "title": "Help me",
                         "description": "description",
                         "comments": [
@@ -785,12 +785,12 @@ const demoBoards = [
                                 title: "Things to do",
                                 todos: [{
                                     title: "Todo 1",
-                                    id: "5eqZQb",
+                                    id: "5czZQb",
                                     isDone: false
                                 },
                                 {
                                     title: "Todo 2",
-                                    id: "5wqZQb",
+                                    id: "5wdZQb",
                                     isDone: true
                                 },
                                 {
@@ -847,18 +847,18 @@ const demoBoards = [
                 "title": "On going",
                 "tasks": [
                     {
-                        "id": "c34103",
+                        "id": "c341a03",
                         "title": "Do that",
                         "labelIds": ["l101", "l102"],
 
                     },
                     {
-                        "id": "c10123",
+                        "id": "c1012f3",
                         "title": "Help me",
                         "description": "description",
                         "comments": [
                             {
-                                "id": "ZdPnm",
+                                "id": "ZdPncm",
                                 "txt": "also @yaronb please CR this",
                                 "createdAt": 1590999817436.0,
                                 "byMember": {
@@ -870,11 +870,11 @@ const demoBoards = [
                         ],
                         "checklists": [
                             {
-                                "id": "YEhmF",
+                                "id": "YEhmaF",
                                 "title": "Checklist",
                                 "todos": [
                                     {
-                                        "id": "212jX",
+                                        "id": "21v2jX",
                                         "title": "To Do 1",
                                         "isDone": true
                                     },
@@ -916,12 +916,12 @@ const demoBoards = [
                         }
                     },
                     {
-                        "id": "c104",
+                        "id": "c104d",
                         "title": "Help me",
                         "description": "description",
                         "comments": [
                             {
-                                "id": "ZdPnm",
+                                "id": "ZdPdnm",
                                 "txt": "also @yaronb please CR this",
                                 "createdAt": 1590999817436.0,
                                 "byMember": {

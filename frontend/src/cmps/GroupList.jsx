@@ -16,6 +16,7 @@ export function GroupList(props) {
             group={group}
             boardId={boardId}
             key={idx}
+            index={idx}
             boardLabels={boardLabels}
           />
         ))
