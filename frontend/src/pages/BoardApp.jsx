@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BoardHeader } from "../cmps/BoardHeader";
 import { connect } from "react-redux";
-import { loadBoard, clearBoard } from "../store/board.actions";
+import { loadBoard, clearBoard,handleDrag } from "../store/board.actions";
 import { loadUsers } from "../store/user.actions";
 import { GroupList } from "../cmps/GroupList";
 import { LoaderSpinner } from "../cmps/LoaderSpinner";
@@ -37,8 +37,19 @@ class _BoardApp extends Component {
     }
   };
 
-   onDragEnd =()=>{
-    //later
+   onDragEnd =(result)=>{
+    const {destination, source, draggableId} = result;
+    if (!destination) return
+    this.props.handleDrag(
+      {...this.props.board},
+      source.droppableId,
+      destination.droppableId,
+      source.index,
+      destination.index,
+      draggableId
+      );
+
+    
     console.log('dragend')
   }
   render() {
@@ -79,6 +90,7 @@ const mapDispatchToProps = {
   loadBoard,
   clearBoard,
   loadUsers,
+  handleDrag
 };
 
 export const BoardApp = connect(mapStateToProps, mapDispatchToProps)(_BoardApp);
