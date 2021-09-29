@@ -47,12 +47,12 @@ export function TaskPreview(props) {
       <Draggable draggableId={task.id} index={index}>
         {(provided) => (
           <article
-            className="task-preview-container full-cover"
-            style={{ background: task.style.bgColor }}
+          
             ref={provided.innerRef}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
-          >
+          ><div   className="task-preview-container full-cover" style={{ background: task.style.bgColor,marginBottom:'7px' }}>
+
             <Link to={taskUrl} className="clean-link">
               <div className="task-preview">
                 <p>{task.title}</p>
@@ -62,6 +62,7 @@ export function TaskPreview(props) {
               <Link to={taskUrl}>
                 <ModeEditOutlinedIcon className="icon" />
               </Link>
+            </div>
             </div>
           </article>
         )}

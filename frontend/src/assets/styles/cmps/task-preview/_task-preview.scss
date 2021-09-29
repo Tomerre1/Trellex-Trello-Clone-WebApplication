@@ -1,6 +1,7 @@
 .task-preview-container {
   box-shadow: 0 1px 0 #c0c6d0;
   transition: background-color 0.2s;
+
   .edit-icon {
     opacity: 0;
     display: flex;
@@ -55,6 +56,7 @@
       justify-content: flex-end;
       height: 100%;
       padding: 8px;
+
       p {
         margin: 0;
         font-weight: 500;
@@ -68,9 +70,10 @@
     height: 32px;
     width: 100%;
     border-radius: 3px 3px 0 0;
+    
   }
   .task-preview {
-    margin-bottom:5px;
+    margin-bottom:8px;
 
     display: flex;
     flex-direction: column;
