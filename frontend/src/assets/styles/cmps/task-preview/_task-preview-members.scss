@@ -1,51 +1,60 @@
 .members {
-    display: flex;
-    position: relative;
-    align-items: center;
-    flex-wrap: wrap;
-    &.preview {
-        gap: 2px;
-        justify-content: flex-end;
-        margin-top:5px;
-        margin-bottom:2px;
+  display: flex;
+  position: relative;
+  align-items: center;
+  flex-wrap: wrap;
+
+  .member-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      margin-left:-2px;
     }
-    .member-wrapper {
+    &.preview {
+      gap: 1px;
+      justify-content: flex-end;
+      margin-top: 5px;
+      margin-bottom: 2px;
+      .member-wrapper {
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
+        margin-left:0px;
+      }
     }
-    .member-img {
-        height: 32px;
-        width: 32px;
-        object-fit: cover;
-        border-radius: 50%;
-        border: 0.01rem solid rgba(255, 255, 255, 0.329);
-        display: flex;
-        align-items: center;
-        justify-content: center;
+  .member-img {
+    height: 32px;
+    width: 32px;
+    object-fit: cover;
+    border-radius: 50%;
+    // border: 0.01rem solid rgba(255, 255, 255, 0.329);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .member-letter {
+    position: relative;
+    top: 25%;
+    font-weight: 600;
+    &.preview {
+      margin: 0 0 1em;
     }
-    .member-letter {
-        position: relative;
-        top: 25%;
-        font-weight: 600;
-        &.preview {
-            margin: 0 0 1em;
-        }
+  }
+  .secondary-btn {
+    display: flex;
+    border-radius: 50%;
+    border: none;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    padding: 0;
+    height: 32px;
+    svg {
+      path {
+        color: #172b4d;
+      }
     }
-    .secondary-btn {
-        display: flex;
-        border-radius: 50%;
-        border: none;
-        justify-content: center;
-        align-items: center;
-        width: 32px;
-        padding: 0;
-        height: 32px;
-        svg {
-            path {
-                color: #172b4d;
-            }
-        }
-    }
+  }
 }
