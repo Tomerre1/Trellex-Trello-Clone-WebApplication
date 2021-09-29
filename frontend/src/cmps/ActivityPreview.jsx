@@ -36,11 +36,12 @@ export class ActivityPreview extends Component {
     }
 
     render() {
-        const { activity } = this.props
+        const { activity, isShowActivities} = this.props
         const { byMember } = activity
         console.log('activity', activity)
+        if(!isShowActivities && activity.type !== 'comment') return <></>
         return (
-            <div className="activity-preview flex">
+            <div className="activity-preview-container flex">
                 <article className="member-wrapper">
                     {byMember?.imgUrl ? (
                         <img
@@ -68,16 +69,15 @@ export class ActivityPreview extends Component {
                     </div>
                 }
                 {activity.type !== 'comment' &&
-                <div></div>
-                    // <div className="comment-preview">
-                    //     <div className="comment-by-user">
-                    //         <span className="member-name">{byMember.fullname}</span>
-                    //         <span className="comment-created-at">{this.timeSince(activity.createdAt)}</span>
-                    //     </div>
-                    //     <div className="comment-content">
-                    //         <p className="comment-txt">{activity.txt}</p>
-                    //     </div>
-                    // </div>
+                    <div className="activity-preview">
+                        <div className="activity-by-user">
+                            <span className="member-name">{byMember.fullname}</span>
+                            <span className="activity-content">marked the due date complete</span>
+                        </div>
+                        <div className="activity-created-at-container">
+                            <span className="activity-created-at">{this.timeSince(activity.createdAt)}</span>
+                        </div>
+                    </div>
                 }
 
 
