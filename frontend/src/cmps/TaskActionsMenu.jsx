@@ -17,8 +17,8 @@ export class TaskActionsMenu extends Component {
                 <div className="actions-wrapper flex">
                     <div className="suggested flex column">
                         <h4>SUGGESTED</h4>
-                        <button className="secondary-btn action-btn" onClick={(event) => { }}>
-                            <div className="action-btn-content flex align-center">
+                        <button className="secondary-btn action-btn" >
+                            <div className="action-btn-content flex align-center" onClick={(event) => { }}>
                                 <PersonOutlineIcon />
                                 <span>Join</span>
                             </div>
@@ -27,38 +27,38 @@ export class TaskActionsMenu extends Component {
                     <div className="add-to-card flex column">
                         <h4>ADD TO CARD</h4>
 
-                        <button className="secondary-btn action-btn" onClick={(event) => { setCurrentTarget(event, 'MEMBERS') }}>
-                            <div className=" action-btn-content flex align-center">
+                        <button className="secondary-btn action-btn" >
+                            <div className=" action-btn-content flex align-center" onClick={(event) => { setCurrentTarget(event, 'MEMBERS') }}>
                                 <PersonAddAltIcon />
                                 <span>Members</span>
                             </div>
                         </button>
-                        <button className="secondary-btn action-btn" onClick={(event) => { setCurrentTarget(event, 'LABELS'); }}>
-                            <div className="action-btn-content flex align-center">
+                        <button className="secondary-btn action-btn" >
+                            <div className="action-btn-content flex align-center" onClick={(event) => { setCurrentTarget(event, 'LABELS'); }}>
                                 <LabelIcon />
                                 <span>Labels</span>
                             </div>
                         </button>
-                        <button className="secondary-btn action-btn" onClick={(event) => { setCurrentTarget(event, 'CHECKLIST') }}>
-                            <div className="action-btn-content flex align-center">
+                        <button className="secondary-btn action-btn" >
+                            <div className="action-btn-content flex align-center" onClick={(event) => { setCurrentTarget(event, 'CHECKLIST') }}>
                                 <CheckboxIcon />
                                 <span>Checklist</span>
                             </div>
                         </button>
-                        <button className="secondary-btn action-btn" onClick={(event) => { setCurrentTarget(event, 'DATE') }}>
-                            <div className=" action-btn-content flex align-center">
+                        <button className="secondary-btn action-btn" >
+                            <div className=" action-btn-content flex align-center" onClick={(event) => { setCurrentTarget(event, 'DATE') }}>
                                 <ScheduleIcon />
                                 <span>Date</span>
                             </div>
                         </button>
-                        <button className="secondary-btn action-btn" onClick={(event) => { setCurrentTarget(event, 'ATTACHMENT') }}>
-                            <div className="action-btn-content flex align-center">
+                        <button className="secondary-btn action-btn" >
+                            <div className="action-btn-content flex align-center" onClick={(event) => { setCurrentTarget(event, 'ATTACHMENT') }}>
                                 <AttachFileIcon />
                                 <span>Attachment</span>
                             </div>
                         </button>
-                        <button className="secondary-btn action-btn" onClick={(event) => { setCurrentTarget(event, 'COVER') }}>
-                            <div className=" action-btn-content flex align-center">
+                        <button className="secondary-btn action-btn" >
+                            <div className=" action-btn-content flex align-center" onClick={(event) => { setCurrentTarget(event, 'COVER') }}>
                                 <CoverIcon />
                                 <span>Cover</span>
                             </div>
@@ -66,20 +66,20 @@ export class TaskActionsMenu extends Component {
                     </div>
                     <div className="actions flex column">
                         <h4>ACTIONS</h4>
-                        <button className="secondary-btn action-btn" onClick={(event) => { setCurrentTarget(event) }}>
-                            <div className="action-btn-content flex align-center">
+                        <button className="secondary-btn action-btn" >
+                            <div className="action-btn-content flex align-center" onClick={(event) => { setCurrentTarget(event) }}>
                                 <ArrowForwardIcon />
                                 <span>Move</span>
                             </div>
                         </button>
-                        <button className="secondary-btn action-btn" onClick={(event) => { setCurrentTarget(event) }}>
-                            <div className="action-btn-content flex align-center">
+                        <button className="secondary-btn action-btn" >
+                            <div className="action-btn-content flex align-center" onClick={(event) => { setCurrentTarget(event) }}>
                                 <CopyIcon />
                                 <span>Copy</span>
                             </div>
                         </button>
-                        <button className="secondary-btn action-btn" onClick={(event) => { setCurrentTarget(event) }}>
-                            <div className="action-btn-content flex align-center">
+                        <button className="secondary-btn action-btn" >
+                            <div className="action-btn-content flex align-center" onClick={(event) => { setCurrentTarget(event) }}>
                                 <ArchiveIcon />
                                 <span>Archive</span>
                             </div>

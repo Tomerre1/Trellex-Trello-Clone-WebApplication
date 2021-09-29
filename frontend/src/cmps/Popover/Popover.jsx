@@ -6,7 +6,6 @@ export class Popover extends React.Component {
         visible: false,
         top: 0,
         left: 0,
-        type: null,
     };
     contentEl = null;
 
@@ -24,16 +23,13 @@ export class Popover extends React.Component {
         this.setState({ top, left })
     }
 
+
     setPopoverPos(pos, elRect) {
-        const { width } = elRect
-        let posX = (window.innerWidth - pos.pageX > 200) ? pos.pageX - 40 : pos.pageX - 200;
+        const { width, height } = elRect
+        let posX = (window.innerWidth - pos.pageX > 200) ? pos.pageX - 200 : pos.pageX - 200;
         let posY = (window.innerHeight - pos.pageY > 200) ? pos.pageY + 20 : pos.pageY - 200;
-        if (posX + width > window.innerWidth) {
-            posX = window.innerWidth - width - 20;
-        }
-        if (posY + elRect.height > window.innerHeight) {
-            posY = window.innerHeight - elRect.height - 20;
-        }
+        posX = (posX + width > window.innerWidth) ? window.innerWidth - width - 20 : posX;
+        posY = (posY + height > window.innerHeight) ? window.innerHeight - height - 20 : posY;
         return { left: posX, top: posY }
     }
 
