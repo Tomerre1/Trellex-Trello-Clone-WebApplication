@@ -203,7 +203,17 @@ const demoBoards = [
                                 "byMember": {
                                     "_id": 'u103',
                                     "fullname": 'Matan',
-                                    "imgUrl": ''
+                                    "imgUrl": 'https://media-exp1.licdn.com/dms/image/C4E03AQFlupY8tXNbnA/profile-displayphoto-shrink_400_400/0/1622442415599?e=1638403200&v=beta&t=DBTF6x9nzwz1G04DZ8hBSG14UyM6BUDX6LM30JL84jg'
+                                },
+                            },
+                            {
+                                "id": "ZdPnl",
+                                "txt": "Hey All",
+                                "createdAt": 15909998174,
+                                "byMember": {
+                                    "_id": 'u102',
+                                    "fullname": 'Tomer',
+                                    "imgUrl": 'https://media-exp1.licdn.com/dms/image/C4E03AQFlupY8tXNbnA/profile-displayphoto-shrink_400_400/0/1622442415599?e=1638403200&v=beta&t=DBTF6x9nzwz1G04DZ8hBSG14UyM6BUDX6LM30JL84jg'
                                 },
                             }
                         ],
@@ -322,13 +332,28 @@ const demoBoards = [
                 "txt": "Changed Color",
                 "createdAt": 154514,
                 "byMember": {
-                    "_id": "u101",
-                    "fullname": "Abi Abambi",
-                    "imgUrl": "http://some-img"
+                    "_id": 'u103',
+                    "fullname": 'Matan',
+                    "imgUrl": ''
                 },
                 "task": {
-                    "id": "c101",
+                    "id": "c13023",
                     "title": "Replace Logo",
+                    "labelIds": []
+                }
+            },
+            {
+                "id": "a102",
+                "txt": "Changed Color",
+                "createdAt": 1545321314,
+                "byMember": {
+                    "_id": 'u103',
+                    "fullname": 'Matan',
+                    "imgUrl": ''
+                },
+                "task": {
+                    "id": "c104fa",
+                    "title": "Replace Logo22",
                     "labelIds": []
                 }
             }
@@ -658,8 +683,23 @@ const demoBoards = [
                     "imgUrl": "http://some-img"
                 },
                 "task": {
-                    "id": "c101",
+                    "id": "c1023",
                     "title": "Replace Logo",
+                    "labelIds": []
+                }
+            },
+            {
+                "id": "a101",
+                "txt": "Changed Color2",
+                "createdAt": 1789983468418,
+                "byMember": {
+                    "_id": "u101",
+                    "fullname": "Abi Abambi",
+                    "imgUrl": "http://some-img"
+                },
+                "task": {
+                    "id": "c1023",
+                    "title": "Replace Logo2",
                     "labelIds": []
                 }
             }

@@ -26,7 +26,6 @@ export class AddComment extends Component {
     }
 
     render() {
-        console.log('loggedinUser', this.props.loggedinUser)
         const { loggedinUser } = this.props
         const { isEditMode, txt } = this.state
 
