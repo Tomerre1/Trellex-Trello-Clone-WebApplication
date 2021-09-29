@@ -51,7 +51,6 @@ export class TodoPreview extends Component {
 
 
     onUndoChange = () => {
-        console.log('#####onUndoChange####')
         const { todo } = this.props
         const { todoTitle } = this.state
         todo.title = todoTitle

@@ -128,7 +128,7 @@ export class _TaskDetails extends Component {
 
   render() {
     const { currentTarget, isPopover, type, selectedLabels, selectedDate, selectedMembers, currTask, currGroup, bgColorCover, loggedinUserIsJoin } = this.state
-    const { board } = this.props
+    const { board, loggedinUser } = this.props
     if (!currTask || !board) return <LoaderSpinner />
     const DynamicCmpPopover = (props) => {
       switch (props.type) {
@@ -168,7 +168,7 @@ export class _TaskDetails extends Component {
               }
               <TaskDescription currTask={currTask} updateTaskDetails={this.updateTaskDetails} />
               <TaskChecklist currTask={currTask} updateTaskDetails={this.updateTaskDetails} />
-              <TaskActivities />
+              <TaskActivities currTask={currTask} loggedinUser={loggedinUser} />
             </div>
             <TaskActionsMenu loggedinUserIsJoin={loggedinUserIsJoin} joinTask={this.joinTask} setCurrentTarget={this.setCurrentTarget} />
           </div>
