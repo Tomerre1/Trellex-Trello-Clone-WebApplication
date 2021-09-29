@@ -5,6 +5,7 @@ import { loadBoard, clearBoard } from "../store/board.actions";
 import { loadUsers } from "../store/user.actions";
 import { GroupList } from "../cmps/GroupList";
 import { LoaderSpinner } from "../cmps/LoaderSpinner";
+import { DragDropContext} from "react-beautiful-dnd"
 
 class _BoardApp extends Component {
   componentDidMount = async () => {
@@ -36,12 +37,19 @@ class _BoardApp extends Component {
     }
   };
 
+   onDragEnd =()=>{
+    //later
+    console.log('dragend')
+  }
   render() {
     console.log(this.props);
 
     const { board } = this.props;
     if (!board) return <LoaderSpinner />;
     return (
+      <DragDropContext
+      onDragEnd={this.onDragEnd}
+    >
       <section
         className="board-app flex column"
         style={{
@@ -57,6 +65,7 @@ class _BoardApp extends Component {
           boardLabels={[...board.labels]}
         />
       </section>
+      </DragDropContext>
     );
   }
 }

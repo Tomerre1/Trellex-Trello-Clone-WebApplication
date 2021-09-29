@@ -32,17 +32,18 @@ const _GroupDetails = (props) => {
     });
   };
 
-  const onDragEnd =()=>{
+  const onDragEnd =(result)=>{
     //later
+    const {destination,source,draggableId} = result
     console.log('dragend')
   }
 
   if (isAddNew) return <AddNewGroup />;
 
   return (
-    <DragDropContext
-      onDragEnd={onDragEnd}
-    >
+    // <DragDropContext
+    //   onDragEnd={onDragEnd}
+    // >
     <article className="group-details flex column">
       <div className="group-header flex space-between align-center">
         <HeaderTitle group={group} />
@@ -82,7 +83,7 @@ const _GroupDetails = (props) => {
       </div>
       <div className="overlay"></div>
     </article>
-    </DragDropContext>
+    // </DragDropContext>
   );
 };
 

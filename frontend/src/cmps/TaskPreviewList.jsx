@@ -8,7 +8,7 @@ export function TaskPreviewList(props) {
   return (
     <Droppable droppableId={groupId}>
       {(provided)=>(
-      <div {...provided.droppableProps} ref={provided.innerRef} className="group-main">
+      <div {...provided.droppableProps} ref={provided.innerRef}>
       {tasks?.map((task, idx) => (
         <TaskPreview
           task={task}
