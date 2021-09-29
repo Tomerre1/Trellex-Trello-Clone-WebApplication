@@ -25,11 +25,12 @@ export class _TaskDetails extends Component {
     selectedMembers: null,
     selectedLabels: [],
     selectedDate: null,
+    loggedinUserIsJoin: null
   }
   contentEl = null;
 
   componentDidMount() {
-    const { board } = this.props
+    const { board, loggedinUser } = this.props
     const { taskId, listId } = this.props.match.params;
     const currGroup = board.groups.find(list => list.id === listId)
     const currTask = currGroup.tasks.find(task => task.id === taskId)
@@ -40,7 +41,9 @@ export class _TaskDetails extends Component {
       currGroup,
       currTask,
       currentTarget: null,
-      selectedLabels: board.labels.filter(label => currTask.labelIds.includes(label.id))
+      selectedMembers: currTask.members,
+      selectedLabels: board.labels.filter(label => currTask.labelIds.includes(label.id)),
+      loggedinUserIsJoin: currTask.members?.find(member => member._id === loggedinUser._id) ? true : false || false
     }))
   }
 
@@ -74,17 +77,20 @@ export class _TaskDetails extends Component {
 
   setSelectedLabels = (selectedLabelIds) => {
     const { board } = this.props
-    let labelsSelectedDeep = board.labels.filter(label => selectedLabelIds.includes(label.id));
+    const labelsSelected = board.labels.filter(label => selectedLabelIds.includes(label.id));
     this.setState(prevState => ({
       ...prevState,
-      selectedLabels: labelsSelectedDeep,
+      selectedLabels: labelsSelected,
     }))
   }
 
   setSelectedMembers = (selectedMembers) => {
+    const { loggedinUser } = this.props
     this.setState(prevState => ({
       ...prevState,
       selectedMembers: selectedMembers,
+      loggedinUserIsJoin: selectedMembers.find(member => member._id === loggedinUser._id) ? true : false
+
     }))
   }
 
@@ -104,11 +110,24 @@ export class _TaskDetails extends Component {
   toggleTaskDone = () => {
     const { currTask } = this.state
     currTask.isDone = !currTask.isDone
-}
+  }
+
+  joinTask = () => {
+    let { currTask, selectedMembers } = this.state
+    selectedMembers = selectedMembers || []
+    const selectedMembersIds = selectedMembers.map(member => member._id) || []
+    const { loggedinUser } = this.props
+    if (!selectedMembersIds.includes(loggedinUser._id)) {
+      selectedMembers.push(loggedinUser)
+    }
+    currTask.members = selectedMembers
+    this.setSelectedMembers(selectedMembers)
+    this.updateTaskDetails(currTask)
+  }
 
 
   render() {
-    const { currentTarget, isPopover, type, selectedLabels, selectedDate, selectedMembers, currTask, currGroup, bgColorCover, isOverlay } = this.state
+    const { currentTarget, isPopover, type, selectedLabels, selectedDate, selectedMembers, currTask, currGroup, bgColorCover, loggedinUserIsJoin } = this.state
     const { board } = this.props
     if (!currTask || !board) return <LoaderSpinner />
     const DynamicCmpPopover = (props) => {
@@ -120,7 +139,7 @@ export class _TaskDetails extends Component {
         case 'CHECKLIST':
           return <PopoverChecklist {...props} title='Checklist' />
         case 'DATE':
-          return <PopoverDate {...props} title='Date' setSelectedDate={this.setSelectedDate}/>
+          return <PopoverDate {...props} title='Date' setSelectedDate={this.setSelectedDate} />
         case 'ATTACHMENT':
           return <PopoverAttachment {...props} title='Attach from...' />
         case 'COVER':
@@ -151,7 +170,7 @@ export class _TaskDetails extends Component {
               <TaskChecklist currTask={currTask} updateTaskDetails={this.updateTaskDetails} />
               <TaskActivities />
             </div>
-            <TaskActionsMenu setCurrentTarget={this.setCurrentTarget} togglePopover={this.togglePopover} />
+            <TaskActionsMenu loggedinUserIsJoin={loggedinUserIsJoin} joinTask={this.joinTask} setCurrentTarget={this.setCurrentTarget} />
           </div>
 
           {isPopover &&
@@ -173,6 +192,7 @@ export class _TaskDetails extends Component {
 function mapStateToProps(state) {
   return {
     board: state.boardModule.board,
+    loggedinUser: state.userModule.loggedinUser,
   };
 }
 const mapDispatchToProps = {
