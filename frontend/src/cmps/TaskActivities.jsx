@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
+import { AddComment } from './AddComment'
 
 
 export class TaskActivities extends Component {
@@ -17,6 +18,7 @@ export class TaskActivities extends Component {
 
     render() {
         const { isShowComments } = this.state
+        const { currTask , loggedinUser} = this.props
         return (
             <div className="task-activities flex column">
                 <div className="window-modal-title flex space-between">
@@ -28,8 +30,8 @@ export class TaskActivities extends Component {
                         {isShowComments ? 'Show details' : 'Hide details'}
                     </button>
                 </div>
-                {/* <CommentAdd card={card} />
-                {!!this.cardActivities.length && <ActivitiesList activities={this.cardActivities} isGeneral={false} />} */}
+                <AddComment currTask={currTask} loggedinUser={loggedinUser}/>
+                {/* {!!this.cardActivities.length && <ActivitiesList activities={this.cardActivities} isGeneral={false} />} */}
             </div>
         )
     }
