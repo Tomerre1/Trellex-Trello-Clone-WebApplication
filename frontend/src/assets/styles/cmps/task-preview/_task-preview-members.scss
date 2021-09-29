@@ -5,25 +5,25 @@
   flex-wrap: wrap;
 
   .member-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-left: -2px;
+  }
+  &.preview {
+    gap: 1px;
+    justify-content: flex-end;
+    margin-top: 5px;
+    margin-bottom: 2px;
+    .member-wrapper {
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      margin-left:-2px;
+      margin-left: 0px;
     }
-    &.preview {
-      gap: 1px;
-      justify-content: flex-end;
-      margin-top: 5px;
-      margin-bottom: 2px;
-      .member-wrapper {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        margin-left:0px;
-      }
-    }
+  }
   .member-img {
     height: 32px;
     width: 32px;
@@ -38,8 +38,10 @@
     position: relative;
     top: 25%;
     font-weight: 600;
+    margin: 0 0 1.25em;
+
     &.preview {
-      margin: 0 0 1em;
+      margin: 0 0 1.25em;
     }
   }
   .secondary-btn {
