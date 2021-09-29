@@ -67,6 +67,18 @@ export class ActivityPreview extends Component {
                         </div>
                     </div>
                 }
+                {activity.type !== 'comment' &&
+                <div></div>
+                    // <div className="comment-preview">
+                    //     <div className="comment-by-user">
+                    //         <span className="member-name">{byMember.fullname}</span>
+                    //         <span className="comment-created-at">{this.timeSince(activity.createdAt)}</span>
+                    //     </div>
+                    //     <div className="comment-content">
+                    //         <p className="comment-txt">{activity.txt}</p>
+                    //     </div>
+                    // </div>
+                }
 
 
 

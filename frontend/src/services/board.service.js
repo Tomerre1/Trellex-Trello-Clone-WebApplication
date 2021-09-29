@@ -209,7 +209,7 @@ const demoBoards = [
                             },
                             {
                                 "id": "ZdPnl",
-                                "txt": "Hey All",
+                                "txt": "Hey all, how’s it going?",
                                 "createdAt": 1632937841235,
                                 "type": "comment",
                                 "byMember": {
