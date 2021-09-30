@@ -15,7 +15,7 @@ export class PopoverChecklist extends Component {
 
     onAddChecklist = (ev) => {
         ev.preventDefault()
-        const { togglePopover, updateTaskDetails, currTask, board, updateBoard, loggedinUser } = this.props
+        const { togglePopover, updateTaskDetails, currTask, board, updateBoard } = this.props
 
         if (!currTask.checklists) currTask.checklists = []
         const newList = {
@@ -28,7 +28,7 @@ export class PopoverChecklist extends Component {
         togglePopover()
 
        //For Activity
-       board.activities.push(boardService.createActivity('add-checklist',loggedinUser, currTask ))
+       board.activities.push(boardService.createActivity('add-checklist', currTask ))
        updateBoard(board)
     }
 

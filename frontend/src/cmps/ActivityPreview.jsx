@@ -41,10 +41,8 @@ export class ActivityPreview extends Component {
         switch (activity.type) {
             case 'due-date-complete':
                 return 'marked the due date complete'
-                break;
             case 'add-checklist':
                 return `added Checklist to ${currTask.title}`
-                break;
             default:
                 break;
         }

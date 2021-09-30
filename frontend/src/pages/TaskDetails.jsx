@@ -214,7 +214,6 @@ export class _TaskDetails extends Component {
               title="Checklist"
               board={board}
               updateBoard={this.updateBoard}
-              loggedinUser={loggedinUser}
             />
           );
         case "DATE":
