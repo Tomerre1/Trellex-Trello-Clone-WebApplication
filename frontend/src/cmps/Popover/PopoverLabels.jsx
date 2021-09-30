@@ -47,7 +47,7 @@ export class PopoverLabels extends Component {
     }
 
     submitLabel = async (label) => {
-        const { board, updateBoard } = this.props
+        const { board, updateBoard, setSelectedLabels, updateTaskDetails, currTask } = this.props
         let labels;
         if (label.id) {
             labels = board.labels.map(currLabel => (currLabel.id === label.id) ? label : currLabel)
@@ -57,15 +57,19 @@ export class PopoverLabels extends Component {
         }
         this.setState(prevState => ({ ...prevState, labels: labels }))
         this.toggleIsEditCreate()
-        updateBoard({ ...board, labels })
+        board.labels = labels
+        updateBoard(board)
+        setSelectedLabels(currTask.labelIds)
     }
 
     removeLabel = async (label) => {
-        const { board, updateBoard } = this.props
+        const { board, updateBoard, currTask, setSelectedLabels } = this.props
         const labels = board.labels.filter(currLabel => currLabel.id !== label.id)
         this.setState(prevState => ({ ...prevState, labels: labels }))
         this.toggleIsEditCreate()
-        updateBoard({ ...board, labels })
+        board.labels = labels
+        updateBoard(board)
+        setSelectedLabels(currTask.labelIds)
     }
 
 
@@ -84,7 +88,6 @@ export class PopoverLabels extends Component {
 
 
     render() {
-
         const { togglePopover, currentTarget, currTask } = this.props
         const { search, label, labels, isEditCreate, } = this.state
         if (!currTask || !labels) return <LoaderSpinner />

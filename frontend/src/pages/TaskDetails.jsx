@@ -18,7 +18,6 @@ import { LoaderSpinner } from "../cmps/LoaderSpinner";
 import { PopoverMoveCopy } from "../cmps/Popover/PopoverMoveCopy";
 import { saveBoard, saveTaskDetails } from "../store/board.actions";
 import { boardService } from '../services/board.service'
-import { height } from "@mui/system";
 
 export class _TaskDetails extends Component {
   state = {
@@ -134,7 +133,6 @@ export class _TaskDetails extends Component {
   toggleTaskDone = () => {
     const { currTask } = this.state;
     currTask.isDone = !currTask.isDone;
-    // console.log('currTask.isDone from toggle',currTask.isDone)
     this.updateTaskDetails(currTask);
   };
 
@@ -171,11 +169,11 @@ export class _TaskDetails extends Component {
     this.updateTaskDetails(currTask);
   }
 
-  addActivity = (activityType) => {
+  addActivity = (activityType, txt = null) => {
     const { board } = this.props;
     const { currTask } = this.state;
 
-    board.activities.push(boardService.createActivity(activityType, currTask))
+    board.activities.push(boardService.createActivity(activityType, currTask, txt))
     this.updateBoard(board)
   }
 

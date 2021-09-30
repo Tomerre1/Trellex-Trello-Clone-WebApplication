@@ -43,6 +43,8 @@ export class ActivityPreview extends Component {
                 return 'marked the due date complete'
             case 'add-checklist':
                 return `added Checklist to ${currTask.title}`
+            case 'add-member':
+                return `added ${activity.txt} to ${currTask.title}`
             default:
                 break;
         }
