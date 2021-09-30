@@ -12,7 +12,7 @@ import ChatBubbleOutlineRoundedIcon from "@mui/icons-material/ChatBubbleOutlineR
 import ModeEditOutlinedIcon from "@mui/icons-material/ModeEditOutlined";
 
 export function TaskPreview(props) {
-  const { task, taskUrl, boardLabels, groupId, boardId, index, ghost } = props;
+  const { task, taskUrl, boardLabels, groupId, boardId, index } = props;
   const { labelIds, title, dueDate, comments, checklists, description } = task;
 
   const [isMenuShown, toggleMenuShown] = useState(false);

@@ -19,6 +19,7 @@ export function TaskPreviewList(props) {
               boardLabels={boardLabels}
               groupId={groupId}
               boardId={boardId}
+              className={`${idx === filteredTasks.length -1 ? 'last': ''}`}
             />
           ))}
           {provided.placeholder}

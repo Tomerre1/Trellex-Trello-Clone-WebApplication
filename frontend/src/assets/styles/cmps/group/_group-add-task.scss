@@ -29,7 +29,7 @@
   }
   .add-task-active {
     width: 100%;
-    gap: 5px;
+    gap: 6px;
     margin-top:4px;
     padding:0;
 
@@ -47,13 +47,12 @@
       cursor: text;
       // width:248px;
       border-radius: 3px;
-      position:relative;
-      top:-5px;
     }
     .task-btns{
         justify-content: flex-start;
         display:flex;
         gap:0;
+        margin-bottom:6px;
         .task-btn {
             transition-timing-function: ease;
             transition-property: background-color, border-color, box-shadow;

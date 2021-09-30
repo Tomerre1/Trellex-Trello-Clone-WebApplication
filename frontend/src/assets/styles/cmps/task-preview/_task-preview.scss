@@ -1,11 +1,8 @@
 .task-preview-container {
   box-shadow: 0 1px 0 #c0c6d0;
   transition: background-color 0.2s;
-      margin-top:0;
-  
-  &:last-of-type{
-    margin-bottom:0px;
-  }
+  margin-top:0;
+
   .edit-icon {
     opacity: 0;
     display: flex;
@@ -60,6 +57,7 @@
       justify-content: flex-end;
       height: 100%;
       padding: 8px;
+    box-shadow: 0 1px 0 #c0c6d0;
 
       p {
         margin: 0;
@@ -83,7 +81,7 @@
     align-content: center !important;
     min-height: 32px;
     margin:0;
-
+    box-shadow: 0 1px 0 #c0c6d0;
     a {
       text-decoration: none;
       display: flex;
@@ -91,9 +89,7 @@
     p {
       margin: 0;
       // margin-bottom:5px;
-      &:last-of-type{
-        margin-bottom:0px;
-      }
+ 
     }
 
     background: #fff;
