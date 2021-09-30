@@ -51,6 +51,10 @@ export class ActivityPreview extends Component {
                 return `removed Checklist from ${currTask.title}`
             case 'add-member':
                 return `added ${activity.txt} to ${currTask.title}`
+            case 'complete-todo':
+                return `completed ${activity.txt} on ${currTask.title}`
+            case 'incomplete-todo':
+                return `marked ${activity.txt} incomplete on ${currTask.title}`
             default:
                 break;
         }

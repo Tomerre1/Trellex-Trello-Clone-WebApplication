@@ -86,6 +86,7 @@ export class TaskChecklistPreview extends Component {
                     todos={checklist.todos}
                     onSaveTodo={this.onSaveTodo}
                     onRemoveTodo={this.onRemoveTodo}
+                    addActivity={addActivity}
                 />
                 {isPopover &&
                     <CheckDeleteChecklistPopover
