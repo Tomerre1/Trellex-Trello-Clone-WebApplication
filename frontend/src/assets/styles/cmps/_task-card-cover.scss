@@ -3,6 +3,11 @@
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
     position: relative;
+    justify-content: center;
+    > img {
+        object-fit: cover;
+        max-height: 116px;
+    }
     > button {
         cursor: pointer;
         gap: 5px;

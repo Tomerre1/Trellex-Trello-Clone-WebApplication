@@ -12,14 +12,15 @@ export class PopoverAttachment extends Component {
         const res = await cloudinaryService.uploadFile(ev)
         const attach = { name: res.original_filename, id: res.asset_id, createdAt: Date.now(), url: res.secure_url }
         currTask.attachments = (attachments) ? [...attachments, attach] : [attach]
-        await updateTaskDetails(currTask)
+        updateTaskDetails(currTask)
     }
+
     removeFile = async (attachId) => {
         const { currTask, updateTaskDetails } = this.props
         const { attachments } = currTask
         const attachs = attachments.filter(currAttach => currAttach.id !== attachId)
         currTask.attachments = attachs
-        await updateTaskDetails(currTask)
+        updateTaskDetails(currTask)
     }
 
 

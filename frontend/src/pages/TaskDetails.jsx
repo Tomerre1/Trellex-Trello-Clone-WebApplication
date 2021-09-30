@@ -297,6 +297,7 @@ export class _TaskDetails extends Component {
             <TaskCardCover
               bgColor={bgColorCover}
               setCurrentTarget={this.setCurrentTarget}
+              bgUrl={currTask.style.bgUrl}
             />
           )}
 
