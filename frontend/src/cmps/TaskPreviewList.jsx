@@ -22,7 +22,7 @@ export function TaskPreviewList(props) {
             />
           ))}
           {provided.placeholder}
-          {!filteredTasks.length && <div style={{visibilty:'hidden',height:'0.1px'}}>&nbsp;</div>}
+          {!filteredTasks.length && <div style={{visibilty:'hidden',opacity:'0',height:'1px',width:'1px',color:'transparent'}}></div>}
         </div>
       )}
     </Droppable>
