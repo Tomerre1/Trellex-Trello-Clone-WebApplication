@@ -1,13 +1,11 @@
 import React, { Component } from "react";
-
+import { TaskAttachmentPreview } from './TaskAttachmentPreview'
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 
 export class TaskAttachment extends Component {
     state = {
 
     }
-
-
 
     render() {
         const { currTask, updateTaskDetails, addActivity } = this.props
@@ -19,9 +17,19 @@ export class TaskAttachment extends Component {
                     <AttachFileIcon />
                     <h3>Attachment</h3>
                 </div>
-
+                <div className="attachments">
+                    {currTask.attachments.map(attachment => {
+                        return <TaskAttachmentPreview
+                            key={attachment.id}
+                            attachment={attachment}
+                            currTask={currTask}
+                            updateTaskDetails={updateTaskDetails}
+                            addActivity={addActivity}
+                        />
+                    })}
+                </div>
             </div>
         )
     }
-
 }
+
