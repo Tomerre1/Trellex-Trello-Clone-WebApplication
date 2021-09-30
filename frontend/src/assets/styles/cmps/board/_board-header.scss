@@ -5,6 +5,7 @@
     background-color: transparent;
     color: white;
     z-index: 0;
+    gap:10px;
 
     form {
         margin: 0;
@@ -53,7 +54,7 @@
         align-items: center;
 
         button.header-btn {
-            background-color: rgba(180, 179, 179, 0.3);
+            background-color: #ffffff3d;
             padding: 5px 5px;
             width: fit-content;
             border-radius: 3px;
@@ -63,7 +64,7 @@
             justify-content: center;
             text-decoration: none;
             &.last-in-row{
-                margin-inline-end: 10px;
+                margin-inline-end: 12px;
             }
             .icon {
                 padding: 3px;

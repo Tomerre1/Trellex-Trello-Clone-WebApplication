@@ -3,6 +3,7 @@
   position: relative;
   align-items: center;
   flex-wrap: wrap;
+  margin-inline-end: 10px;
 
   .member-wrapper {
     display: flex;
@@ -16,6 +17,8 @@
     justify-content: flex-end;
     margin-top: 5px;
     margin-bottom: 2px;
+    margin-inline-end: unset;
+
     .member-wrapper {
       display: flex;
       align-items: center;
