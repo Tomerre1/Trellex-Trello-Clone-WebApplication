@@ -8,6 +8,7 @@ export class PopoverCover extends React.Component {
         isHeaderSelected: null,
         isFullSelected: false,
         selectedColor: false,
+        selectedPhoto: null
     }
 
     componentDidMount() {
@@ -25,6 +26,7 @@ export class PopoverCover extends React.Component {
                     ...prevState,
                     isHeaderSelected: true,
                     selectedColor: currTask.style?.bgColor || 'rgba(94, 108, 132, 0.3)',
+                    selectedPhoto: currTask.style?.bgUrl || null,
 
                 }))
                 break;
@@ -33,12 +35,14 @@ export class PopoverCover extends React.Component {
                     ...prevState,
                     isFullSelected: true,
                     selectedColor: currTask.style?.bgColor || 'rgba(94, 108, 132, 0.3)',
+                    selectedPhoto: currTask.style?.bgUrl || null,
                 }))
                 break;
             default:
                 this.setState(prevState => ({
                     ...prevState,
                     selectedColor: 'rgba(94, 108, 132, 0.3)',
+                    selectedPhoto: currTask.style?.bgUrl || null,
                 }
                 ))
                 break;
@@ -85,6 +89,7 @@ export class PopoverCover extends React.Component {
     }
 
     uploadFile = async (ev) => {
+        ev.preventDefault()
         const { currTask, updateTaskDetails, setBgUrlCover } = this.props
         const res = await cloudinaryService.uploadFile(ev)
         currTask.style.bgUrl = res.secure_url
@@ -124,7 +129,7 @@ export class PopoverCover extends React.Component {
     }
 
     render() {
-        const { isHeaderSelected, isFullSelected, selectedColor } = this.state
+        const { isHeaderSelected, isFullSelected, selectedColor, selectedPhoto } = this.state
         if (!selectedColor) return <div></div>
         const { togglePopover, currentTarget, title } = this.props
         return (
@@ -133,9 +138,18 @@ export class PopoverCover extends React.Component {
                     <h4>SIZE</h4>
                     <div className="cover-options flex space-between align-center">
                         <div className={`header-cover-preview ${isHeaderSelected ? 'selected' : ''}`} onClick={() => { this.setHeaderSelected() }}>
-                            <div className="header-section" style={{ backgroundColor: selectedColor }}></div>
+                            {(selectedPhoto) ? <div className="header-section">
+                                <img src={selectedPhoto} style={{ objectFit: 'cover', height: '32px', objectPosition: 'top' }} alt="header" />
+                            </div>
+                                : <div className="header-section" style={{ backgroundColor: selectedColor }}></div>
+                            }
+
                         </div>
-                        <div onClick={() => this.setFullSelected()} className={`full-cover-preview ${isFullSelected ? 'selected' : ''}`} style={{ backgroundColor: selectedColor }}></div>
+
+                        {(selectedPhoto) ? <div onClick={() => this.setFullSelected()} className={`full-cover-preview ${isFullSelected ? 'selected' : ''}`} style={{ backgroundImage: `url(${selectedPhoto}`, backgroundSize: 'contain' }}></div> :
+                            <div onClick={() => this.setFullSelected()} className={`full-cover-preview ${isFullSelected ? 'selected' : ''}`} style={{ backgroundColor: selectedColor }}></div>
+                        }
+
                     </div>
                     <div className="flex">
                         <button className="secondary-btn full" onClick={this.removeCover}>Remove Cover</button>
