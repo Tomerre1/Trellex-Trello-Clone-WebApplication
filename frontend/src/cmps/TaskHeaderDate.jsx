@@ -36,7 +36,6 @@ export class TaskHeaderDate extends Component {
          //For Activity
          if(isTaskDone) this.props.addActivity('due-date-complete')
          else this.props.addActivity('due-date-incomplete')
-    //    updateBoard(board)
     }
 
     dueDateFormat = (dueDate) => {
