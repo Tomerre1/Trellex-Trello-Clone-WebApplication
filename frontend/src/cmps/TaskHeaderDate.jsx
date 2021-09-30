@@ -34,8 +34,8 @@ export class TaskHeaderDate extends Component {
         this.props.toggleTaskDone()
 
          //For Activity
-        //  if(isTaskDone) board.activities.push(boardService.createActivity('add-checklist', currTask ))
-        //  else board.activities.push(boardService.createActivity('add-checklist', currTask ))
+         if(isTaskDone) this.props.addActivity('due-date-complete')
+         else this.props.addActivity('due-date-incomplete')
     //    updateBoard(board)
     }
 
