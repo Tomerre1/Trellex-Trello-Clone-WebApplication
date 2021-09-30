@@ -47,7 +47,7 @@
         transition: opacity 0.2s ease-out;
         pointer-events: none;
         max-height:100vh;
-        z-index:15 ;
+        z-index:30 ;
         &.show {
           opacity: 1;
           pointer-events: auto;
