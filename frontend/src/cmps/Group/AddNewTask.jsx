@@ -15,9 +15,9 @@ export function _AddNewTask(props) {
 
   const onAddTask = async () => {
     try {
-      if(!taskTitle) return
+      if(!taskTitle.trim()) return
       setBtnText(<Loader type="Grid" color={"white"} height={14} width={14} />);
-      await props.addTask(taskTitle, props.ids.boardId, props.ids.groupId);
+      await props.addTask(taskTitle.trim(), props.ids.boardId, props.ids.groupId);
       setTaskTitle("");
       setBtnText("Add task");
       props.scrollToBottom();

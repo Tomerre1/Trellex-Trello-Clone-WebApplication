@@ -16,7 +16,7 @@ class _Workspace extends Component {
   };
 
   addBoard = async (title, bgClr = "black", bgImg = "") => {
-    if (!title) return;
+    if (!title.trim()) return;
     try {
       this.props.addBoard(title, bgClr, bgImg);
     } catch (err) {

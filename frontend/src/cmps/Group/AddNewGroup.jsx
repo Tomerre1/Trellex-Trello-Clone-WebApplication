@@ -18,8 +18,9 @@ function _AddNewGroup(props) {
 
   const addGroup = async () => {
     try {
+      if(!title.trim()) return;
       setBtnText(<Loader type="Grid" color={"white"} height={14} width={14} />);
-      await props.addGroup(boardId, title);
+      await props.addGroup(boardId, title.trim());
       setBtnText("Add list");
       setTitle("");
       toggleIsClicked();
