@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { utilService } from '../services/util.service';
+import VideoLabel from '@mui/icons-material/VideoLabel';
 
 export class TaskAttachmentPreview extends Component {
 
@@ -37,8 +39,19 @@ export class TaskAttachmentPreview extends Component {
                 {/* <a className="attachment-thumbnail" href={`${attachment.url}`} target="_blank" title={`${attachment.name}`} style={{ backgroundImage: (`${attachment.url}`), backgroundColor: '#051e46' }} rel="noreferrer nofollow noopener"></a> */}
                 <img src={attachment.url} alt={attachment.name} />
                 <div className="attachment-content">
+                    <div className="attachment-details">
+                        <span className="attachment-title">{attachment.name}</span>
+                        <div className="attachment-actions">
+                            <span className="attachment-date">Added {utilService.timeSince(attachment.createdAt)}</span>
+                            <button>Delete</button>
+                            <button>Edit</button>
+                        </div>
+                        <span>
+                            <VideoLabel className="make-cover-icon" />
+                            <span>Make cover</span>
+                        </span>
+                    </div>
 
-                Attachment preview
                 </div>
             </div>
         )
