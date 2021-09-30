@@ -1,12 +1,12 @@
 .card-cover {
-    height: 116px;
+    height: 160px;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
     position: relative;
     justify-content: center;
     > img {
-        object-fit: cover;
-        max-height: 116px;
+        object-fit: contain;
+        max-height: 160px;
     }
     > button {
         cursor: pointer;
