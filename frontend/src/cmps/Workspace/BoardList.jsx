@@ -6,13 +6,17 @@ export function BoardList(props) {
 
   return (
     <div className="board-list">
-     
-        {boards &&
-          boards.map((board, idx) => (
-            <BoardPreview board={board} key={idx} onRemove={onRemove} />
-          ))}
+      {boards &&
+        boards.map((board, idx) => (
+          <BoardPreview
+            board={board}
+            key={idx}
+            onRemove={onRemove}
+            saveBoard={props.saveBoard}
+          />
+        ))}
 
-      <BoardPreviewAdd onAdd={onAdd} />
+      {!props.starred && <BoardPreviewAdd onAdd={onAdd} />}
     </div>
   );
 }
