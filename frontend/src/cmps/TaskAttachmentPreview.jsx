@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { utilService } from '../services/util.service';
 
 export class TaskAttachmentPreview extends Component {
 
@@ -37,8 +38,13 @@ export class TaskAttachmentPreview extends Component {
                 {/* <a className="attachment-thumbnail" href={`${attachment.url}`} target="_blank" title={`${attachment.name}`} style={{ backgroundImage: (`${attachment.url}`), backgroundColor: '#051e46' }} rel="noreferrer nofollow noopener"></a> */}
                 <img src={attachment.url} alt={attachment.name} />
                 <div className="attachment-content">
-
-                Attachment preview
+                    <div className="attachment-details">
+                        <p className="attachment-title">{attachment.name}</p>
+                        <div className="attachment-actions">
+                            <span className="attachment-date">Added {utilService.timeSince(attachment.createdAt)}</span>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
         )
