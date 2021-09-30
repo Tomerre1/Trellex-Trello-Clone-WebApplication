@@ -47,6 +47,8 @@ export class ActivityPreview extends Component {
                 return `set the due date to of ${currTask.title} to ${activity.txt}`
             case 'add-checklist':
                 return `added Checklist to ${currTask.title}`
+            case 'remove-checklist':
+                return `removed Checklist from ${currTask.title}`
             case 'add-member':
                 return `added ${activity.txt} to ${currTask.title}`
             default:

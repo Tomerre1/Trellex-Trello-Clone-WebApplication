@@ -26,13 +26,7 @@ export class PopoverChecklist extends Component {
         currTask.checklists.push(newList)
         updateTaskDetails(currTask)
         togglePopover()
-
-        //For Activity
         this.props.addActivity('add-checklist')
-
-        //For Activity OLD
-        //    board.activities.push(boardService.createActivity('add-checklist', currTask ))
-        //    updateBoard(board)
     }
 
     render() {
