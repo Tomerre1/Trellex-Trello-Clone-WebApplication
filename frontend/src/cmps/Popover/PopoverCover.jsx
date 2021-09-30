@@ -4,13 +4,11 @@ import { cloudinaryService } from '../../services/cloudinary-service'
 import { Popover } from './Popover'
 
 export class PopoverCover extends React.Component {
-
     state = {
         isHeaderSelected: null,
         isFullSelected: false,
         selectedColor: false,
     }
-
 
     componentDidMount() {
         const { currTask } = this.props
@@ -49,7 +47,6 @@ export class PopoverCover extends React.Component {
 
     setHeaderSelected = () => {
         const { updateTaskDetails, currTask } = this.props
-
         this.setState(prevState => ({
             ...prevState,
             isHeaderSelected: true,
@@ -69,12 +66,11 @@ export class PopoverCover extends React.Component {
 
         }))
         currTask.style.coverMode = 'full'
-
         updateTaskDetails(currTask)
     }
 
     removeCover = () => {
-        const { updateTaskDetails, currTask, setBgColorCover } = this.props
+        const { updateTaskDetails, currTask, setBgColorCover, setBgUrlCover } = this.props
         this.setState(prevState => ({
             ...prevState,
             isFullSelected: false,
@@ -82,16 +78,17 @@ export class PopoverCover extends React.Component {
         }))
         currTask.style.coverMode = null
         currTask.style.bgColor = null
+        currTask.style.bgUrl = null
         setBgColorCover(null)
-        //setBgUrlCover(null)
+        setBgUrlCover(null)
         updateTaskDetails(currTask)
     }
 
     uploadFile = async (ev) => {
-        const { currTask, updateTaskDetails } = this.props
+        const { currTask, updateTaskDetails, setBgUrlCover } = this.props
         const res = await cloudinaryService.uploadFile(ev)
         currTask.style.bgUrl = res.secure_url
-        //setBgUrlCover(null)
+        setBgUrlCover(res.secure_url)
         updateTaskDetails(currTask)
     }
 
@@ -121,7 +118,6 @@ export class PopoverCover extends React.Component {
                 selectedColor: value
             }))
         }
-
         currTask.style.bgColor = value
         setBgColorCover(value)
         updateTaskDetails(currTask)
