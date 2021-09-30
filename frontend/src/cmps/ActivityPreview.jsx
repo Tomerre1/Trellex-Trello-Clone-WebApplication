@@ -37,11 +37,12 @@ export class ActivityPreview extends Component {
     }
 
     get activityToShow() {
-        const { activity} = this.props
+        const { activity, currTask } = this.props
         switch (activity.type) {
             case 'due-date-complete':
                 return 'marked the due date complete'
-                break;
+            case 'add-checklist':
+                return `added Checklist to ${currTask.title}`
             default:
                 break;
         }
@@ -49,10 +50,10 @@ export class ActivityPreview extends Component {
 
 
     render() {
-        const { activity, isShowActivities} = this.props
+        const { activity, isShowActivities } = this.props
         const { byMember } = activity
         console.log('activity', activity)
-        if(!isShowActivities && activity.type !== 'comment') return <></>
+        if (!isShowActivities && activity.type !== 'comment') return <></>
         return (
             <div className="activity-preview-container flex">
                 <article className="member-wrapper">

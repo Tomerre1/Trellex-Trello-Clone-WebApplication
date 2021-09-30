@@ -17,6 +17,7 @@ import { TaskHeaderDetails } from "../cmps/TaskHeaderDetails";
 import { LoaderSpinner } from "../cmps/LoaderSpinner";
 import { PopoverMoveCopy } from "../cmps/Popover/PopoverMoveCopy";
 import { saveBoard, saveTaskDetails } from "../store/board.actions";
+import { boardService } from '../services/board.service'
 import { height } from "@mui/system";
 
 export class _TaskDetails extends Component {
@@ -170,6 +171,14 @@ export class _TaskDetails extends Component {
     this.updateTaskDetails(currTask);
   }
 
+  addActivity = (activityType) => {
+    const { board } = this.props;
+    const { currTask } = this.state;
+
+    board.activities.push(boardService.createActivity(activityType, currTask))
+    this.updateBoard(board)
+  }
+
   render() {
     const {
       currentTarget,
@@ -208,7 +217,15 @@ export class _TaskDetails extends Component {
             />
           );
         case "CHECKLIST":
-          return <PopoverChecklist {...props} title="Checklist" />;
+          return (
+            <PopoverChecklist
+              {...props}
+              title="Checklist"
+              addActivity={this.addActivity}
+            // board={board}
+            // updateBoard={this.updateBoard}
+            />
+          );
         case "DATE":
           return (
             <PopoverDate

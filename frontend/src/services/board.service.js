@@ -737,7 +737,7 @@ const demoBoards = [
             "imgUrl": 'https://media-exp1.licdn.com/dms/image/C5603AQG9slGN5Fgxug/profile-displayphoto-shrink_100_100/0/1516840011642?e=1638403200&v=beta&t=wl9AzbWc9FwsXJ0xGECA_7T4xynvi067vuYs5ABVhfo'
         },
         "style": {
-            "bgClr":"linear-gradient(to top, #0052d4, #4364f7, #6fb1fc)",
+            "bgClr": "linear-gradient(to top, #0052d4, #4364f7, #6fb1fc)",
             "bgImg": ''
         },
         "labels": [
@@ -1075,7 +1075,8 @@ export const boardService = {
     addTask,
     removeTask,
     addGroup,
-    removeGroup
+    removeGroup,
+    createActivity
 }
 async function query() {
     let boards = await storageService.query(STORAGE_KEY)
@@ -1118,6 +1119,31 @@ async function save(board) {
         }
         return storageService.post(STORAGE_KEY, newBoard)
     }
+}
+function createActivity(activityType, currTask) {
+    const loggedinUser = {
+        "_id": 'u101',
+        "fullname": 'BCD',
+        "imgUrl": 'https://media-exp1.licdn.com/dms/image/C5603AQG9slGN5Fgxug/profile-displayphoto-shrink_100_100/0/1516840011642?e=1638403200&v=beta&t=wl9AzbWc9FwsXJ0xGECA_7T4xynvi067vuYs5ABVhfo'
+    }
+    const task = {
+        id: currTask.id,
+        title: currTask.title
+    }
+
+    const activity = {
+
+        id: utilService.makeId(),
+        createdAt: Date.now(),
+        // byMember: userService.getLoggedinUser(),
+        byMember: loggedinUser,
+        task,
+        type: activityType
+
+    }
+
+    // console.log('activity from service', activity)
+    return activity
 }
 
 function updateTask(board, group, task) {

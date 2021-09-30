@@ -32,6 +32,11 @@ export class TaskHeaderDate extends Component {
         const isTaskDone = !this.state.isTaskDone
         this.setState(prevState => ({ ...prevState, isTaskDone }))
         this.props.toggleTaskDone()
+
+         //For Activity
+        //  if(isTaskDone) board.activities.push(boardService.createActivity('add-checklist', currTask ))
+        //  else board.activities.push(boardService.createActivity('add-checklist', currTask ))
+    //    updateBoard(board)
     }
 
     dueDateFormat = (dueDate) => {
