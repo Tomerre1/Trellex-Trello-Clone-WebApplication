@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-
+import AttachFileIcon from '@mui/icons-material/AttachFile';
 
 export class TaskAttachment extends Component {
     state = {
@@ -15,6 +15,10 @@ export class TaskAttachment extends Component {
 
         return (
             <div className="task-attach">
+                <div className="window-modal-title flex align-center">
+                    <AttachFileIcon />
+                    <h3>Attachment</h3>
+                </div>
 
             </div>
         )
