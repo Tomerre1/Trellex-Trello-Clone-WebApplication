@@ -115,6 +115,8 @@ export class _TaskDetails extends Component {
   toggleTaskDone = () => {
     const { currTask } = this.state
     currTask.isDone = !currTask.isDone
+    // console.log('currTask.isDone from toggle',currTask.isDone)
+    this.updateTaskDetails(currTask)
   }
 
   joinTask = () => {
