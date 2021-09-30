@@ -159,6 +159,7 @@ export class _TaskDetails extends Component {
       (task) => task.id !== currTask.id
     );
     board.groups[currGroupIdx] = currGroup
+    this.addActivity('remove-task')
     await this.updateBoard(board);
     this.props.history.goBack();
   }
@@ -166,7 +167,9 @@ export class _TaskDetails extends Component {
   toggleIsArchive = () => {
     const { currTask } = this.state;
     currTask.isArchive = currTask?.isArchive || false
+
     currTask.isArchive = !currTask.isArchive;
+    this.addActivity((currTask.isArchive) ? 'add-to-archive' : 'remove-from-archive')
     this.updateTaskDetails(currTask);
   }
 
