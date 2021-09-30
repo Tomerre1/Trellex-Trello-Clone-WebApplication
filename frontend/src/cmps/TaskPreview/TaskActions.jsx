@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import { removeTask } from "../../store/board.actions";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import ArchiveIcon from '@mui/icons-material/Archive';
 
 function _TaskActions(props) {
   const { menuPos, groupId, boardId, task, removeTask, toggleMenu } = props;
@@ -13,8 +14,8 @@ function _TaskActions(props) {
           toggleMenu();
         }}
       >
-        <DeleteOutlineIcon size="small" />
-        Delete task
+        <ArchiveIcon size="small" />
+        Archive 
       </button>
       <button>Action 2</button>
       <button>Action 3</button>
