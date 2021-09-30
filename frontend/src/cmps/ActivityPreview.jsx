@@ -78,7 +78,6 @@ export class ActivityPreview extends Component {
     render() {
         const { activity, isShowActivities } = this.props
         const { byMember } = activity
-        console.log('activity', activity)
         if (!isShowActivities && activity.type !== 'comment') return <></>
         return (
             <div className="activity-preview-container flex">

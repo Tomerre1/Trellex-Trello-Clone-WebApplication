@@ -25,3 +25,6 @@ function uploadFile(ev) {
         })
         .catch(err => console.error(err))
 }
+
+// const CLOUD_NAME = 'dswmustlv'
+// const PRESET_NAME = 'f7cyi5ho'

@@ -4,6 +4,7 @@ import { Close } from "@mui/icons-material";
 import { TaskHeader } from "../cmps/TaskHeader";
 import { TaskCardCover } from "../cmps/TaskCardCover";
 import { TaskDescription } from "../cmps/TaskDescription";
+import { TaskAttachment } from "../cmps/TaskAttachment";
 import { TaskChecklist } from "../cmps/TaskChecklist";
 import { TaskActivities } from "../cmps/TaskActivities";
 import { TaskActionsMenu } from "../cmps/TaskActionsMenu";
@@ -330,6 +331,11 @@ export class _TaskDetails extends Component {
               <TaskDescription
                 currTask={currTask}
                 updateTaskDetails={this.updateTaskDetails}
+              />
+              <TaskAttachment
+                currTask={currTask}
+                updateTaskDetails={this.updateTaskDetails}
+                addActivity={this.addActivity}
               />
               <TaskChecklist
                 currTask={currTask}
