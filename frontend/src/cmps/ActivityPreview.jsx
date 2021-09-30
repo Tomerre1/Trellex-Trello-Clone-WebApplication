@@ -51,6 +51,12 @@ export class ActivityPreview extends Component {
                 return `removed Checklist from ${currTask.title}`
             case 'add-member':
                 return `added ${activity.txt} to ${currTask.title}`
+            case 'remove-member':
+                return `removed ${activity.txt} from ${currTask.title}`
+            case 'add-self':
+                return `joined task ${currTask.title}`
+            case 'remove-self':
+                return `left task ${currTask.title}`
             default:
                 break;
         }

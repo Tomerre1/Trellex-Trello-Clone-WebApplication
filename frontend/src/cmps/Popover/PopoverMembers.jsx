@@ -9,8 +9,8 @@ export class PopoverMembers extends Component {
         selectedMembers: [],
         selectedMembersIds: []
     }
-            
-        componentDidMount() {
+
+    componentDidMount() {
         const { members, currTask } = this.props
         this.setState(prevState => ({
             ...prevState,
@@ -26,18 +26,20 @@ export class PopoverMembers extends Component {
         }))
     }
 
-
     toggleMemberCheck = async (member) => {
-        const { updateTaskDetails, setSelectedMembers, currTask } = this.props
+        const { updateTaskDetails, setSelectedMembers, currTask, addActivity, loggedinUser } = this.props
         currTask.members = currTask?.members || []
         const selectedMembersIds = currTask.members.map(member => member._id) || []
-        console.log('%c  selectedMembersIds:', 'color: #0e93e0;background: #aaefe5;', selectedMembersIds);
-
         const updatedMembers = (selectedMembersIds.includes(member._id)) ?
             currTask.members.filter(currMember => currMember._id !== member._id) :
             [...currTask.members, member]
         currTask.members = updatedMembers
         this.setState(prevState => ({ ...prevState, selectedMembers: updatedMembers, selectedMembersIds }))
+        if (member._id === loggedinUser._id) {
+            addActivity((selectedMembersIds.includes(member._id)) ? 'remove-self' : 'add-self')
+        } else {
+            addActivity((selectedMembersIds.includes(member._id)) ? 'remove-member' : 'add-member', member.fullname)
+        }
         setSelectedMembers(updatedMembers)
         updateTaskDetails(currTask)
     }
