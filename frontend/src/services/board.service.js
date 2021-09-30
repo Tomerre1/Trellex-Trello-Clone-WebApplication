@@ -344,8 +344,8 @@ const demoBoards = [
         "activities": [
             {
                 "id": "a101",
-                "txt": "Changed Color",
-                "type": "changed-color",
+                "txt": "due-date-complete",
+                "type": "due-date-complete",
                 "createdAt": 1632940470978,
                 "byMember": {
                     "_id": 'u103',
@@ -360,8 +360,8 @@ const demoBoards = [
             },
             {
                 "id": "a102",
-                "txt": "Changed Color",
-                "type": "changed-color",
+                "txt": "due-date-complete",
+                "type": "due-date-complete",
                 "createdAt": 1545321314,
                 "byMember": {
                     "_id": 'u103',
@@ -694,8 +694,8 @@ const demoBoards = [
         "activities": [
             {
                 "id": "a101",
-                "txt": "Changed Color",
-                "type": "changed-color",
+                "txt": "due-date-complete",
+                "type": "due-date-complete",
                 "createdAt": 154514,
                 "byMember": {
                     "_id": "u101",
@@ -710,8 +710,8 @@ const demoBoards = [
             },
             {
                 "id": "a101",
-                "txt": "Changed Color2",
-                "type": "changed-color",
+                "txt": "due-date-complete2",
+                "type": "due-date-complete",
                 "createdAt": 1789983468418,
                 "byMember": {
                     "_id": "u101",
@@ -1043,8 +1043,8 @@ const demoBoards = [
         "activities": [
             {
                 "id": "a101",
-                "txt": "Changed Color",
-                "type": "changed-color",
+                "txt": "due-date-complete",
+                "type": "due-date-complete",
                 "createdAt": 154514,
                 "byMember": {
                     "_id": "u101",

@@ -52,7 +52,7 @@ export class TaskActivities extends Component {
 
     render() {
         const { isShowActivities } = this.state
-        const { currTask, loggedinUser, activities } = this.props
+        const { currTask, loggedinUser } = this.props
         const CommAndAct = this.getTaskCommentsAndActivitiesSorted()
 
         return (

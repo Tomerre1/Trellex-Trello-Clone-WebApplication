@@ -36,6 +36,18 @@ export class ActivityPreview extends Component {
         return Math.floor(seconds) + " seconds ago";
     }
 
+    get activityToShow() {
+        const { activity} = this.props
+        switch (activity.type) {
+            case 'due-date-complete':
+                return 'marked the due date complete'
+                break;
+            default:
+                break;
+        }
+    }
+
+
     render() {
         const { activity, isShowActivities} = this.props
         const { byMember } = activity
@@ -73,7 +85,7 @@ export class ActivityPreview extends Component {
                     <div className="activity-preview">
                         <div className="activity-by-user">
                             <span className="member-name">{byMember.fullname}</span>
-                            <span className="activity-content">marked the due date complete</span>
+                            <span className="activity-content">{this.activityToShow}</span>
                         </div>
                         <div className="activity-created-at-container">
                             <span className="activity-created-at">{this.timeSince(activity.createdAt)}</span>
