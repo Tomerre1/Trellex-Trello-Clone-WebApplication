@@ -59,6 +59,12 @@ export class ActivityPreview extends Component {
                 return `joined task ${currTask.title}`
             case 'remove-self':
                 return `left task ${currTask.title}`
+            case 'add-to-archive':
+                return `archived ${currTask.title}`
+            case 'remove-from-archive':
+                return `returned ${currTask.title} to board `
+            case 'remove-task':
+                return `deleted ${currTask.title} from board`
             case 'complete-todo':
                 return `completed ${activity.txt} on ${currTask.title}`
             case 'incomplete-todo':
