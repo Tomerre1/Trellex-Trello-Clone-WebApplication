@@ -17,6 +17,7 @@ function _AppHeader(props) {
     props.history.push(`/board/${board._id}`)
 }
   return (
+    <>
     <header
       className={`main-header flex align-center ${
         props.location.pathname.includes("board") ? "on-board" : ""
@@ -49,8 +50,9 @@ function _AppHeader(props) {
           className={`overlay ${isCreateShown ? "show" : ""}`}
           onClick={()=>setCreateShown(false)}
           ></div>
-          {isCreateShown && <BoardPreviewAdd boardMode="true" setCreateShown={setCreateShown} onAdd={onAddBoard}/>}
     </header>
+{isCreateShown && <BoardPreviewAdd boardMode="true" setCreateShown={setCreateShown} onAdd={onAddBoard}/>}
+  </>
   );
 }
 

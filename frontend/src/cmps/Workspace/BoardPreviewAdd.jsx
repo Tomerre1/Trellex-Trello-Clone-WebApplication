@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { BoardAddPalette } from "../Workspace/BoardAddPalette";
+import CloseIcon from "@mui/icons-material/Close";
 
 export function BoardPreviewAdd(props) {
   const [bgClr, setBgClr] = useState(
@@ -11,7 +12,7 @@ export function BoardPreviewAdd(props) {
   // const [bgClrs, setBgClrs] = useState([]);
   // if(props.boardMode === true) toggleEditMode(true)
   return (
-    <article className="board-preview-add">
+    <article className={`board-preview-add ${props.boardMode ? 'on-board' : ''}`}>
       <div
         className="board-content flex column"
         style={{
@@ -27,14 +28,6 @@ export function BoardPreviewAdd(props) {
           </div>
         ) : (
           <div className="add-active fade-in">
-            <button
-              className="closer"
-              onClick={() =>
-                !props.boardMode
-                  ? toggleEditMode(!isEditMode)
-                  : props.setCreateShown(false)
-              }
-            ></button>
             <div className="title-box flex">
               <form>
                 <input
@@ -57,6 +50,16 @@ export function BoardPreviewAdd(props) {
                   Create
                 </button>
               </form>
+              <button
+                className="closer"
+                onClick={() =>
+                  !props.boardMode
+                    ? toggleEditMode(!isEditMode)
+                    : props.setCreateShown(false)
+                }
+              >
+                <CloseIcon />
+              </button>
             </div>
             <div className="color-box">
               <BoardAddPalette

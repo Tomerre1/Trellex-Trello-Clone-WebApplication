@@ -1,4 +1,4 @@
-.board-preview-add {
+.board-list .board-preview-add {
   .board-content {
     cursor: pointer;
     height: 100%;
@@ -43,16 +43,12 @@
         text-align: center;
         color:black;
         border-radius:3px;
-        &::after {
-          content:'x';
-          position:relative;
-          left:-2px;
-          top:-2px;
-        }
+
       }
       form{
         all:inherit;
         width: 100%;
+        margin:0;
 
       }
       .title-box {
@@ -82,17 +78,7 @@
         }
       }
       .closer {
-       
-        right: -5px;
-        top:-5px;
-        height: 15px;
-        width: 15px;
-        display: flex;
-        &::after {
-          content:'x';
-          left:-2px;
-          top:-2px;
-        }
+      display:none;
       }
       .color-box {
         width: 100%;
@@ -139,50 +125,102 @@
     }
   }
 }
-.main-header .board-preview-add {
+ .board-preview-add.on-board {
   z-index:60;
-  width:320px;
-  position:fixed;
-  top:50px;
+  position:absolute;
   right:50px;
-  .board-content .add-active{
-    padding:10px;
+  top:40px;
+  height:150px;
+  width:275px;
+  
+  .board-content {
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+    border-radius: 3px;
+    transition: filter 0.2s;
+    filter: brightness(1);
+    align-items: center;
+    justify-items: center;
+    padding:7px;
+
+    .add-active {
+      cursor: auto;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: 6px;
+      gap: 10px;
+      padding:20 10px;
+
+      form{
+        all:inherit;
+        width: 100%;
+        
+
+      }
       .title-box {
-        & > input {
+        height: 40px;
+        flex-direction: row;
+        height: 27px;
+        margin-bottom: 10px;
+        // justify-content: center;
+        
+        input {
           height: 100%;
-          width:230px;
+          width:160px;
+          margin:0;
+
           &:focus {
             outline: 2px solid $clr1;
             color:$clr7;
           }
         }
-      }
-      .closer {
-        position: absolute;
-        right: -5px;
-        top:-5px;
-        border:1px solid rgba(0, 0, 0, 0.425);
-        height: 15px;
-        width: 15px;
-        display: flex;
-        align-items: center;
-        text-align: center;
-        color:black;
-        border-radius:3px;
-        &::after {
-          content:'x';
+        button {
+          background-color: $clr1;
+          color: white;
+          border-radius: 3px;
+          transition: background-color .2s;
+          display:flex;
+          align-items: center;
+          justify-content: center;
+          height:100%;
           position:relative;
-          left:-2px;
-          top:-2px;
+          right:-5px;
+          &:hover {
+            background-color: darken($clr1,5%);
+          }
+          &.closer {
+            position: relative;
+            right:0px;
+
+            border:1px solid rgba(0, 0, 0, 0.425);
+            height: 25px;
+            width: 25px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color:rgb(255, 255, 255);
+            background:transparent;
+            border-radius:3px;
+    
+          }
         }
       }
+
       .color-box {
-     
+        width: 100%;
+        display: flex;
+
         .palettes {
           display: flex;
           flex-direction: column;
           justify-content: center;
-         
+          input {
+            opacity: 0;
+            cursor: pointer;
+          }
           .clrs,
           .imgs {
             display: flex;
@@ -190,18 +228,13 @@
             flex-wrap: wrap;
             align-items: flex-end;
             justify-content: center;
-            
             label.palette-icon {
               display: flex;
-              height:45px;
-              width:45px;
+              height: 37px;
+              width: 37px;
               cursor: pointer;
 
               border-radius: 3px;
-              input {
-                opacity: 0;
-                cursor: pointer;
-              }
               .icon-check {
                 color: white;
                 position: relative;
@@ -219,6 +252,7 @@
       width: auto;
       margin: 0;
     }
+  }
   }
 
 
