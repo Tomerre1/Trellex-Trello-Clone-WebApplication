@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { utilService } from '../services/util.service';
+import VideoLabel from '@mui/icons-material/VideoLabel';
 
 export class TaskAttachmentPreview extends Component {
 
@@ -39,12 +40,18 @@ export class TaskAttachmentPreview extends Component {
                 <img src={attachment.url} alt={attachment.name} />
                 <div className="attachment-content">
                     <div className="attachment-details">
-                        <p className="attachment-title">{attachment.name}</p>
+                        <span className="attachment-title">{attachment.name}</span>
                         <div className="attachment-actions">
                             <span className="attachment-date">Added {utilService.timeSince(attachment.createdAt)}</span>
+                            <button>Delete</button>
+                            <button>Edit</button>
                         </div>
+                        <span>
+                            <VideoLabel className="make-cover-icon" />
+                            <span>Make cover</span>
+                        </span>
                     </div>
-                    
+
                 </div>
             </div>
         )
