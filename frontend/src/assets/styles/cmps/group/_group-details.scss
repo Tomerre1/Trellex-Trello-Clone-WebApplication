@@ -3,9 +3,8 @@
   overflow: hidden;
   border-radius: 3px;
   background-color: #ebecf0;
-  padding: 0.3125rem;
   gap: 3px;
-  padding: 6px;
+  padding:0 6px;
   margin-bottom:0;
   height: fit-content;
   max-width: 272px;
@@ -16,6 +15,7 @@
     padding-left: 0.125rem;
     padding-top:0;
     margin-top:0;
+    height:40px;
     .dots {
       padding: 5px;
       cursor: pointer;
@@ -68,6 +68,11 @@
   .group-main {
     overflow-y: auto;
     overflow-x: hidden;
+    .task-list {
+      gap:6px;
+      display:flex;
+      flex-direction: column;
+    }
 
 
     &::-webkit-scrollbar {
