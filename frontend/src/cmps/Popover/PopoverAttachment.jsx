@@ -6,10 +6,13 @@ import { cloudinaryService } from '../../services/cloudinary-service'
 
 export class PopoverAttachment extends Component {
 
-    uploadFile = (ev) => {
-        console.log('ev', ev)
-        const res = cloudinaryService.uploadFile(ev)
-        console.log('res from popover', res)
+    uploadFile = async (ev) => {
+        const { currTask, updateTaskDetails } = this.props
+        const { attachments } = currTask
+        const res = await cloudinaryService.uploadFile(ev)
+        const attach = { name: res.original_filename, id: res.asset_id, createdAt: Date.now(), url: res.secure_url }
+        currTask.attachments = (attachments) ? [...attachments, attach] : [attach]
+        updateTaskDetails(currTask)
     }
 
 
