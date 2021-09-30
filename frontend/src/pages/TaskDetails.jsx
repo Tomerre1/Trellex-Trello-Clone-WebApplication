@@ -317,6 +317,7 @@ export class _TaskDetails extends Component {
               joinTask={this.joinTask}
               setCurrentTarget={this.setCurrentTarget}
               toggleIsArchive={this.toggleIsArchive}
+              isArchive={isArchive}
             />
           </div>
 
