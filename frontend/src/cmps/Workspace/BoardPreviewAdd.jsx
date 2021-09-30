@@ -39,7 +39,7 @@ export function BoardPreviewAdd(props) {
                 <button
                   onClick={(ev) => {
                     ev.preventDefault();
-                    if (!title) return;
+                    if (!title.trim()) return;
                     props.onAdd(title, bgClr, bgImg);
                     setBgClr("linear-gradient(to bottom, #000000, #434343)");
                     setBgImg("");
