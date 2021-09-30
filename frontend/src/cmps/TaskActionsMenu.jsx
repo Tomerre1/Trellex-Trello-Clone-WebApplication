@@ -13,7 +13,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import RemoveIcon from '@mui/icons-material/Remove';
 export class TaskActionsMenu extends Component {
     render() {
-        const { setCurrentTarget, joinTask, loggedinUserIsJoin, toggleIsArchive, isArchive } = this.props
+        const { setCurrentTarget, joinTask, loggedinUserIsJoin, toggleIsArchive, deleteTask, isArchive } = this.props
         return (
             <aside className="task-details-sidebar flex column full">
                 <div className="actions-wrapper flex">
@@ -87,14 +87,13 @@ export class TaskActionsMenu extends Component {
                             </div>
                         </button>
                         {isArchive &&
-                            <button className="secondary-btn action-btn danger-btn" style={{ color: '#fff' }} onClick={toggleIsArchive}>
+                            <button className="secondary-btn action-btn danger-btn" style={{ color: '#fff' }} onClick={deleteTask}>
                                 <div className="action-btn-content flex align-center" >
                                     <RemoveIcon style={{ color: '#fff' }} />
                                     <span>Delete</span>
                                 </div>
                             </button>
                         }
-
                     </div>
                 </div>
 

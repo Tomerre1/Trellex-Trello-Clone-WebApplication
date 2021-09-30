@@ -151,6 +151,18 @@ export class _TaskDetails extends Component {
     this.updateTaskDetails(currTask);
   };
 
+  deleteTask = async () => {
+    const { currGroup, currTask } = this.state;
+    const { board } = this.props
+    const currGroupIdx = board.groups.indexOf(currGroup)
+    currGroup.tasks = currGroup.tasks.filter(
+      (task) => task.id !== currTask.id
+    );
+    board.groups[currGroupIdx] = currGroup
+    await this.updateBoard(board);
+    this.props.history.goBack();
+  }
+
   toggleIsArchive = () => {
     const { currTask } = this.state;
     currTask.isArchive = currTask?.isArchive || false
@@ -316,6 +328,7 @@ export class _TaskDetails extends Component {
               loggedinUserIsJoin={loggedinUserIsJoin}
               joinTask={this.joinTask}
               setCurrentTarget={this.setCurrentTarget}
+              deleteTask={this.deleteTask}
               toggleIsArchive={this.toggleIsArchive}
               isArchive={isArchive}
             />
