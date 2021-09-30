@@ -4,6 +4,7 @@ import { Close } from "@mui/icons-material";
 import { TaskHeader } from "../cmps/TaskHeader";
 import { TaskCardCover } from "../cmps/TaskCardCover";
 import { TaskDescription } from "../cmps/TaskDescription";
+import { TaskAttachment } from "../cmps/TaskAttachment";
 import { TaskChecklist } from "../cmps/TaskChecklist";
 import { TaskActivities } from "../cmps/TaskActivities";
 import { TaskActionsMenu } from "../cmps/TaskActionsMenu";
@@ -39,6 +40,7 @@ export class _TaskDetails extends Component {
     this.setState((prevState) => ({
       ...prevState,
       bgColorCover: currTask.style?.bgColor || null,
+      bgUrlCover: currTask.style?.bgUrl || null,
       isPopover: false,
       currGroup,
       currTask,
@@ -130,6 +132,10 @@ export class _TaskDetails extends Component {
     this.updateTaskDetails({ ...currTask, title });
   };
 
+  setBgUrlCover = (bgUrlCover) => {
+    this.setState((prevState) => ({ ...prevState, bgUrlCover }));
+  }
+
   toggleTaskDone = () => {
     const { currTask } = this.state;
     currTask.isDone = !currTask.isDone;
@@ -167,7 +173,6 @@ export class _TaskDetails extends Component {
   toggleIsArchive = () => {
     const { currTask } = this.state;
     currTask.isArchive = currTask?.isArchive || false
-
     currTask.isArchive = !currTask.isArchive;
     this.addActivity((currTask.isArchive) ? 'add-to-archive' : 'remove-from-archive')
     this.updateTaskDetails(currTask);
@@ -176,7 +181,6 @@ export class _TaskDetails extends Component {
   addActivity = (activityType, txt = null) => {
     const { board } = this.props;
     const { currTask } = this.state;
-
     board.activities.push(boardService.createActivity(activityType, currTask, txt))
     this.updateBoard(board)
   }
@@ -193,6 +197,7 @@ export class _TaskDetails extends Component {
       currGroup,
       bgColorCover,
       loggedinUserIsJoin,
+      bgUrlCover
     } = this.state;
     const { board, loggedinUser, boards } = this.props;
     if (!currTask || !board) return <LoaderSpinner />;
@@ -241,6 +246,7 @@ export class _TaskDetails extends Component {
             <PopoverCover
               {...props}
               setBgColorCover={this.setBgColorCover}
+              setBgUrlCover={this.setBgUrlCover}
               setIsCover={this.setIsCover}
               title="Cover"
             />
@@ -293,10 +299,11 @@ export class _TaskDetails extends Component {
           >
             <Close />
           </button>
-          {bgColorCover && (
+          {(bgColorCover || bgUrlCover) && (
             <TaskCardCover
               bgColor={bgColorCover}
               setCurrentTarget={this.setCurrentTarget}
+              bgUrl={bgUrlCover}
             />
           )}
 
@@ -330,6 +337,11 @@ export class _TaskDetails extends Component {
               <TaskDescription
                 currTask={currTask}
                 updateTaskDetails={this.updateTaskDetails}
+              />
+              <TaskAttachment
+                currTask={currTask}
+                updateTaskDetails={this.updateTaskDetails}
+                addActivity={this.addActivity}
               />
               <TaskChecklist
                 currTask={currTask}

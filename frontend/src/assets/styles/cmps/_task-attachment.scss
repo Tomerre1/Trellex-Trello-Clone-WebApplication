@@ -1,0 +1,30 @@
+.task-attach {
+    margin-bottom: 8px;
+    .window-modal-title {
+        align-items: center;
+        display: flex;
+        min-height: 32px;
+        margin: 0 0 4px 40px;
+        padding: 8px 0;
+        position: relative;
+        svg {
+            left: -40px;
+            position: absolute;
+            color: #42526e;
+            height: 26px;
+            width: 32px;
+            transform: rotate(40deg);
+        }
+        h3 {
+            margin: 0;
+            font-size: 16px;
+            font-weight: 600;
+            color: #172b4d;
+        }
+    }
+
+  .attachments{
+    margin-left: 40px;
+
+  }
+}

@@ -1,7 +1,7 @@
 import CheckIcon from '@material-ui/icons/Check';
 // import { styles } from '@material-ui/pickers/views/Calendar/Calendar';
 
-export function ColorPalette({ handleChange, selectedColor, isGradient, isColor, count }) {
+export function ColorPalette({ handleChange, selectedColor }) {
 
     const colors = [
         '#61bd4f',

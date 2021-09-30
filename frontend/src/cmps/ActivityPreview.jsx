@@ -1,40 +1,8 @@
 import React, { Component } from 'react'
+import { utilService } from '../services/util.service';
 
 export class ActivityPreview extends Component {
     state = {}
-
-    timeSince = (date) => {
-        var seconds = Math.floor((new Date() - date) / 1000);
-
-        var interval = seconds / 31536000;
-
-        if (interval > 1) {
-            if (Math.floor(interval) === 1) return "a year ago";
-            return Math.floor(interval) + " years ago";
-        }
-        interval = seconds / 2592000;
-        if (interval > 1) {
-            if (Math.floor(interval) === 1) return "a month ago";
-            return Math.floor(interval) + " months ago";
-        }
-        interval = seconds / 86400;
-        if (interval > 1) {
-            if (Math.floor(interval) === 1) return "a day ago";
-            return Math.floor(interval) + " days ago";
-        }
-        interval = seconds / 3600;
-        if (interval > 1) {
-            if (Math.floor(interval) === 1) return "an hour ago";
-            return Math.floor(interval) + " hours ago";
-        }
-        interval = seconds / 60;
-        if (interval > 1) {
-            if (Math.floor(interval) === 1) return "an minute ago";
-            return Math.floor(interval) + " minutes ago";
-        }
-        if (Math.floor(seconds) === 0) return "a few seconds ago";
-        return Math.floor(seconds) + " seconds ago";
-    }
 
     get activityToShow() {
         const { activity, currTask } = this.props
@@ -78,7 +46,6 @@ export class ActivityPreview extends Component {
     render() {
         const { activity, isShowActivities } = this.props
         const { byMember } = activity
-        console.log('activity', activity)
         if (!isShowActivities && activity.type !== 'comment') return <></>
         return (
             <div className="activity-preview-container flex">
@@ -101,7 +68,7 @@ export class ActivityPreview extends Component {
                     <div className="comment-preview">
                         <div className="comment-by-user">
                             <span className="member-name">{byMember.fullname}</span>
-                            <span className="comment-created-at">{this.timeSince(activity.createdAt)}</span>
+                            <span className="comment-created-at">{utilService.timeSince(activity.createdAt)}</span>
                         </div>
                         <div className="comment-content">
                             <p className="comment-txt">{activity.txt}</p>
@@ -115,7 +82,7 @@ export class ActivityPreview extends Component {
                             <span className="activity-content">{this.activityToShow}</span>
                         </div>
                         <div className="activity-created-at-container">
-                            <span className="activity-created-at">{this.timeSince(activity.createdAt)}</span>
+                            <span className="activity-created-at">{utilService.timeSince(activity.createdAt)}</span>
                         </div>
                     </div>
                 }

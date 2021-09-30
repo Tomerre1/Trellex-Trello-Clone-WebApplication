@@ -1,0 +1,57 @@
+.attachment-preview {
+    border-radius: 3px;
+    margin: 0 0 8px;
+    min-height: 80px;
+    overflow: hidden;
+    position: relative;
+    img {
+        height: 80px;
+        width: 112px;
+        object-fit: contain;
+        background-color: #051e46;
+        border-radius: 3px;
+    }
+    .attachment-content {
+        margin-top: 5px;
+        .attachment-details {
+            margin-left: 13px;
+            .attachment-title {
+                word-wrap: break-word;
+                font-weight: 700;
+                color: #172b4d;
+                margin: 0;
+            }
+            .attachment-actions {
+                margin-bottom: 8px;
+                .attachment-date {
+                    color: #5e6c84;
+                }
+                button {
+                    cursor: pointer;
+                    color: #5e6c84;
+                    border: none;
+                    padding: 0;
+                    background-color: transparent;
+                    text-decoration: underline;
+                    margin-left: 6px;
+                }
+                button::before {
+                    content: "-";
+                    text-decoration: none;
+                }
+            }
+            span {
+                span{
+                    margin-left: 3px;
+                    text-decoration: underline;
+                    color: #5e6c84;
+                    cursor: pointer;
+                }
+                .make-cover-icon {
+                    height: 13px;
+                    width: 15px;
+                }
+            }
+        }
+    }
+}
