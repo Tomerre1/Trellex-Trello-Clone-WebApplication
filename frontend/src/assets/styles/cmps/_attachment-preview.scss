@@ -1,0 +1,16 @@
+.attachment-preview {
+    border-radius: 3px;
+    margin: 0 0 8px;
+    min-height: 80px;
+    overflow: hidden;
+    position: relative;
+    img{
+        height: 80px;
+        width: 112px;
+        object-fit: contain;
+        background-color: #051e46;
+        border-radius: 3px;
+    }
+    .attachment-thumbnail{
+    }
+}
