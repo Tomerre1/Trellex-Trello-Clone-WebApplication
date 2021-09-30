@@ -26,7 +26,9 @@ export class PopoverDate extends Component {
         updateTaskDetails(currTask)
         setSelectedDate(currTask.dueDate)
         togglePopover()
-        this.props.addActivity('set-date', this.dueDateFormat(currTask.dueDate))
+        if (date) addActivity('set-date', this.dueDateFormat(currTask.dueDate))
+        else addActivity('remove-date')
+
     }
 
     dueDateFormat = (dueDate) => {

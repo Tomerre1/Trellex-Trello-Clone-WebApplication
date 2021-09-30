@@ -146,6 +146,7 @@ export class _TaskDetails extends Component {
       selectedMembers.push(loggedinUser);
     }
     currTask.members = selectedMembers;
+    this.addActivity('add-self')
     this.setSelectedMembers(selectedMembers);
     this.updateTaskDetails(currTask);
   };
@@ -212,6 +213,7 @@ export class _TaskDetails extends Component {
               title="Members"
               setSelectedMembers={this.setSelectedMembers}
               members={board.members}
+              loggedinUser={loggedinUser}
             />
           );
         case "CHECKLIST":
@@ -219,9 +221,6 @@ export class _TaskDetails extends Component {
             <PopoverChecklist
               {...props}
               title="Checklist"
-              addActivity={this.addActivity}
-            // board={board}
-            // updateBoard={this.updateBoard}
             />
           );
         case "DATE":
@@ -230,7 +229,6 @@ export class _TaskDetails extends Component {
               {...props}
               title="Date"
               setSelectedDate={this.setSelectedDate}
-              addActivity={this.addActivity}
             />
           );
         case "ATTACHMENT":
@@ -360,6 +358,7 @@ export class _TaskDetails extends Component {
               updateTaskDetails={this.updateTaskDetails}
               type={type}
               currTask={currTask}
+              addActivity={this.addActivity}
             />
           )}
         </section>
