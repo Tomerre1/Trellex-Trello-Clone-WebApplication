@@ -17,7 +17,7 @@ import { TaskHeaderDetails } from "../cmps/TaskHeaderDetails";
 import { LoaderSpinner } from "../cmps/LoaderSpinner";
 import { PopoverMoveCopy } from "../cmps/Popover/PopoverMoveCopy";
 import { saveBoard, saveTaskDetails } from "../store/board.actions";
-import { height } from "@mui/system";
+
 
 export class _TaskDetails extends Component {
   state = {
@@ -133,7 +133,6 @@ export class _TaskDetails extends Component {
   toggleTaskDone = () => {
     const { currTask } = this.state;
     currTask.isDone = !currTask.isDone;
-    // console.log('currTask.isDone from toggle',currTask.isDone)
     this.updateTaskDetails(currTask);
   };
 
