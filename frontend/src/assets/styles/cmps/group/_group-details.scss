@@ -73,11 +73,7 @@
       gap:6px;
       display:flex;
       flex-direction: column;
-      .last {
-        position:absolute;
-        top:0;
-        box-shadow:30px 20px -20px black;
-      }
+
     }
 
 
@@ -114,4 +110,5 @@
     flex-grow: 1;
     justify-self: flex-end;
   }
+  
 }

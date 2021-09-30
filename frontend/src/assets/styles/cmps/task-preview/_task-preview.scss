@@ -91,7 +91,12 @@
       // margin-bottom:5px;
  
     }
-
+    .task-cover-img {
+      padding:0 0 6px 0;
+      width: 100%; 
+      height:auto;
+      object-fit: cover;      
+    }
     background: #fff;
     padding: 5px;
     border-radius: 3px;

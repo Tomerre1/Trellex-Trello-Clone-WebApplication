@@ -10,10 +10,20 @@ import CheckBoxOutlinedIcon from "@mui/icons-material/CheckBoxOutlined";
 import SubjectOutlinedIcon from "@mui/icons-material/SubjectOutlined";
 import ChatBubbleOutlineRoundedIcon from "@mui/icons-material/ChatBubbleOutlineRounded";
 import ModeEditOutlinedIcon from "@mui/icons-material/ModeEditOutlined";
+import AttachFileIcon from '@mui/icons-material/AttachFile';
 
 export function TaskPreview(props) {
   const { task, taskUrl, boardLabels, groupId, boardId, index } = props;
-  const { labelIds, title, dueDate, comments, checklists, description } = task;
+  const {
+    labelIds,
+    title,
+    dueDate,
+    comments,
+    checklists,
+    description,
+    attachments,
+    style,
+  } = task;
 
   const [isMenuShown, toggleMenuShown] = useState(false);
   const [menuPos, setMenuPos] = useState();
@@ -42,7 +52,7 @@ export function TaskPreview(props) {
     return `${doneTodos}/${todos}`;
   };
 
-  if (task.style && task.style?.coverMode === "full")
+  if (style && style?.coverMode === "full")
     return (
       <Draggable draggableId={task.id} index={index}>
         {(provided) => (
@@ -53,7 +63,7 @@ export function TaskPreview(props) {
           >
             <div
               className="task-preview-container full-cover"
-              style={{ background: task.style.bgColor, marginBottom: "7px" }}
+              style={{ background: style.bgColor, marginBottom: "7px" }}
             >
               <Link to={taskUrl} className="clean-link">
                 <div className="task-preview">
@@ -90,13 +100,18 @@ export function TaskPreview(props) {
             )}
             <article className="task-preview-container">
               <Link to={taskUrl} className="clean-link">
-                {task.style?.bgColor && (
+                {style?.bgColor && !style?.bgUrl &&(
                   <div
                     className="task-cover"
                     style={{ background: task.style.bgColor }}
                   ></div>
                 )}
+               
                 <div className="task-preview clean-link">
+                {style?.bgUrl && (
+                  <img className="task-cover-img" src={style.bgUrl} style={{backgroundColor:'white'}}alt='cover image'/>
+                    
+                )}
                   {labelIds?.length > 0 && (
                     <TaskLabels labelIds={labelIds} boardLabels={boardLabels} />
                   )}
@@ -125,6 +140,10 @@ export function TaskPreview(props) {
                         txt={comments.length}
                       />
                     )}
+                    {attachments?.length > 0 && <TaskDetailsPreview
+                       icon={<AttachFileIcon className="icon" />}
+                       txt={attachments.length}
+                    />}
                     {checklists?.length > 0 && todos !== 0 && (
                       <TaskDetailsPreview
                         icon={<CheckBoxOutlinedIcon className="icon" />}
