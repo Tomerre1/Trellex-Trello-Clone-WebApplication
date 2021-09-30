@@ -4,7 +4,7 @@
     position: relative;
     background-color: transparent;
     color: white;
-    z-index: 10;
+    z-index: 1;
 
     form {
         margin: 0;
@@ -62,8 +62,6 @@
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            z-index: 10;
-
             .icon {
                 padding: 3px;
                 padding-right: 5px;
