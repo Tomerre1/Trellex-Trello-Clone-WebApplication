@@ -67,7 +67,7 @@ export class TaskChecklistPreview extends Component {
     }
 
     render() {
-        const { checklist, currTask, updateTaskDetails } = this.props
+        const { checklist, currTask, updateTaskDetails, addActivity } = this.props
         const { isPopover, currentTarget } = this.state
 
         return (
@@ -92,10 +92,9 @@ export class TaskChecklistPreview extends Component {
                         togglePopover={this.togglePopover}
                         currentTarget={currentTarget}
                         checklist={checklist}
-                        // updateBoard={this.updateBoard}
                         updateTaskDetails={updateTaskDetails}
-                        // type={type}
                         currTask={currTask}
+                        addActivity={addActivity}
                     />
                 }
                 <TodoAdd onAddTodo={this.onAddTodo} />
