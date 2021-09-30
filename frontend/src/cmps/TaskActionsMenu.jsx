@@ -11,7 +11,7 @@ import ScheduleIcon from '@mui/icons-material/Schedule';
 import ArchiveIcon from '@mui/icons-material/Archive';
 export class TaskActionsMenu extends Component {
     render() {
-        const { setCurrentTarget, joinTask, loggedinUserIsJoin } = this.props
+        const { setCurrentTarget, joinTask, loggedinUserIsJoin, toggleIsArchive } = this.props
         return (
             <aside className="task-details-sidebar flex column full">
                 <div className="actions-wrapper flex">
@@ -66,19 +66,19 @@ export class TaskActionsMenu extends Component {
                     </div>
                     <div className="actions flex column">
                         <h4>ACTIONS</h4>
-                        <button className="secondary-btn action-btn" onClick={(event) => { setCurrentTarget(event,'MOVE') }}>
+                        <button className="secondary-btn action-btn" onClick={(event) => { setCurrentTarget(event, 'MOVE') }}>
                             <div className="action-btn-content flex align-center" >
                                 <ArrowForwardIcon />
                                 <span>Move</span>
                             </div>
                         </button>
-                        <button className="secondary-btn action-btn" onClick={(event) => { setCurrentTarget(event,'COPY') }}>
+                        <button className="secondary-btn action-btn" onClick={(event) => { setCurrentTarget(event, 'COPY') }}>
                             <div className="action-btn-content flex align-center" >
                                 <CopyIcon />
                                 <span>Copy</span>
                             </div>
                         </button>
-                        <button className="secondary-btn action-btn" onClick={(event) => { setCurrentTarget(event,'ARCHIVE') }}>
+                        <button className="secondary-btn action-btn" onClick={toggleIsArchive}>
                             <div className="action-btn-content flex align-center" >
                                 <ArchiveIcon />
                                 <span>Archive</span>

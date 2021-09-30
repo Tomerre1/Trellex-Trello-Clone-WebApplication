@@ -10,6 +10,39 @@
     left: 0;
     margin: 0 auto;
     z-index: 100;
+    .task-details-archived {
+        background-color: #fdfae5;
+        background-image: linear-gradient(
+            to bottom right,
+            rgba(0, 0, 0, 0.05) 25%,
+            transparent 0,
+            transparent 50%,
+            rgba(0, 0, 0, 0.05) 0,
+            rgba(0, 0, 0, 0.05) 75%,
+            transparent 0,
+            transparent
+        );
+        background-size: 14px 14px;
+        min-height: 30px;
+        padding: 12px;
+        position: relative;
+        align-items: center;
+        :first-child {
+            font-size: 20px;
+            margin-inline-end: 22px;
+            height: 16px;
+            width: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        h3 {
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+            line-height: 30px;
+        }
+    }
     .task-details-body {
         .task-details-main {
             width: 552px;
