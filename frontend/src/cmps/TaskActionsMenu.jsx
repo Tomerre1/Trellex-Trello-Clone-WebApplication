@@ -9,9 +9,10 @@ import AttachFileIcon from '@mui/icons-material/AttachFile';
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import ScheduleIcon from '@mui/icons-material/Schedule';
 import ArchiveIcon from '@mui/icons-material/Archive';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 export class TaskActionsMenu extends Component {
     render() {
-        const { setCurrentTarget, joinTask, loggedinUserIsJoin } = this.props
+        const { setCurrentTarget, joinTask, loggedinUserIsJoin, toggleIsArchive, isArchive } = this.props
         return (
             <aside className="task-details-sidebar flex column full">
                 <div className="actions-wrapper flex">
@@ -66,24 +67,30 @@ export class TaskActionsMenu extends Component {
                     </div>
                     <div className="actions flex column">
                         <h4>ACTIONS</h4>
-                        <button className="secondary-btn action-btn" onClick={(event) => { setCurrentTarget(event,'MOVE') }}>
+                        <button className="secondary-btn action-btn" onClick={(event) => { setCurrentTarget(event, 'MOVE') }}>
                             <div className="action-btn-content flex align-center" >
                                 <ArrowForwardIcon />
                                 <span>Move</span>
                             </div>
                         </button>
-                        <button className="secondary-btn action-btn" onClick={(event) => { setCurrentTarget(event,'COPY') }}>
+                        <button className="secondary-btn action-btn" onClick={(event) => { setCurrentTarget(event, 'COPY') }}>
                             <div className="action-btn-content flex align-center" >
                                 <CopyIcon />
                                 <span>Copy</span>
                             </div>
                         </button>
-                        <button className="secondary-btn action-btn" onClick={(event) => { setCurrentTarget(event,'ARCHIVE') }}>
+                        <button className="secondary-btn action-btn" onClick={toggleIsArchive}>
                             <div className="action-btn-content flex align-center" >
-                                <ArchiveIcon />
-                                <span>Archive</span>
+                                {isArchive ? <ArrowBackIcon /> : <ArchiveIcon />}
+                                <span>{isArchive ? 'Return to board' : 'Archive'}</span>
                             </div>
                         </button>
+                        {/* <button className="secondary-btn action-btn" onClick={toggleIsArchive}>
+                            <div className="action-btn-content flex align-center" >
+                                {isArchive ? <ArrowBackIcon /> : <ArchiveIcon />}
+                                <span>{isArchive ? 'Return to board' : 'Archive'}</span>
+                            </div>
+                        </button> */}
                     </div>
                 </div>
 
