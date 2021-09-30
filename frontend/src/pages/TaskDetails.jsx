@@ -331,6 +331,7 @@ export class _TaskDetails extends Component {
               <TaskChecklist
                 currTask={currTask}
                 updateTaskDetails={this.updateTaskDetails}
+                addActivity={this.addActivity}
               />
               <TaskActivities
                 currTask={currTask}

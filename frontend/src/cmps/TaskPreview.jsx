@@ -12,7 +12,7 @@ import ChatBubbleOutlineRoundedIcon from "@mui/icons-material/ChatBubbleOutlineR
 import ModeEditOutlinedIcon from "@mui/icons-material/ModeEditOutlined";
 
 export function TaskPreview(props) {
-  const { task, taskUrl, boardLabels, groupId, boardId, index,ghost } = props;
+  const { task, taskUrl, boardLabels, groupId, boardId, index, ghost } = props;
   const { labelIds, title, dueDate, comments, checklists, description } = task;
 
   const [isMenuShown, toggleMenuShown] = useState(false);
@@ -42,28 +42,29 @@ export function TaskPreview(props) {
     return `${doneTodos}/${todos}`;
   };
 
-  
   if (task.style && task.style?.coverMode === "full")
     return (
       <Draggable draggableId={task.id} index={index}>
         {(provided) => (
           <article
-          
             ref={provided.innerRef}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
-          ><div   className="task-preview-container full-cover" style={{ background: task.style.bgColor,marginBottom:'7px' }}>
-
-            <Link to={taskUrl} className="clean-link">
-              <div className="task-preview">
-                <p>{task.title}</p>
-              </div>
-            </Link>
-            <div className="edit-icon">
-              <Link to={taskUrl}>
-                <ModeEditOutlinedIcon className="icon" />
+          >
+            <div
+              className="task-preview-container full-cover"
+              style={{ background: task.style.bgColor, marginBottom: "7px" }}
+            >
+              <Link to={taskUrl} className="clean-link">
+                <div className="task-preview">
+                  <p>{task.title}</p>
+                </div>
               </Link>
-            </div>
+              <div className="edit-icon">
+                <Link to={taskUrl}>
+                  <ModeEditOutlinedIcon className="icon" />
+                </Link>
+              </div>
             </div>
           </article>
         )}
@@ -71,87 +72,90 @@ export function TaskPreview(props) {
     );
   return (
     <>
-   
-    <Draggable draggableId={task.id} index={index}>
-      {(provided) => (
-        <div
-        ref={provided.innerRef}
-        {...provided.draggableProps}
-        {...provided.dragHandleProps}>
-          {isMenuShown && (
-            <TaskActions
-              toggleMenu={toggleMenuShown}
-              menuPos={menuPos}
-              groupId={groupId}
-              boardId={boardId}
-              task={task}
-            />
-          )}
-          <article className="task-preview-container">
-            <Link to={taskUrl} className="clean-link">
-              {task.style?.bgColor && (
+      <Draggable draggableId={task.id} index={index}>
+        {(provided) => (
+          <div
+            ref={provided.innerRef}
+            {...provided.draggableProps}
+            {...provided.dragHandleProps}
+          >
+            {isMenuShown && (
+              <TaskActions
+                toggleMenu={toggleMenuShown}
+                menuPos={menuPos}
+                groupId={groupId}
+                boardId={boardId}
+                task={task}
+              />
+            )}
+            <article className="task-preview-container">
+              <Link to={taskUrl} className="clean-link">
+                {task.style?.bgColor && (
+                  <div
+                    className="task-cover"
+                    style={{ background: task.style.bgColor }}
+                  ></div>
+                )}
+                <div className="task-preview clean-link">
+                  {labelIds?.length > 0 && (
+                    <TaskLabels labelIds={labelIds} boardLabels={boardLabels} />
+                  )}
+                  <div className="task-title">
+                    <p>{title}</p>
+                  </div>
+                  <div className="task-preview-icons flex align-center">
+                    {dueDate && (
+                      <TaskDatePreview
+                        dueDate={dueDate}
+                        isDone={task.isDone}
+                        taskId={task.id}
+                        groupId={groupId}
+                      />
+                    )}
+                    {description?.length > 0 && (
+                      <TaskDetailsPreview
+                        icon={<SubjectOutlinedIcon className="icon" />}
+                      />
+                    )}
+                    {comments?.length > 0 && (
+                      <TaskDetailsPreview
+                        icon={
+                          <ChatBubbleOutlineRoundedIcon className="icon msg" />
+                        }
+                        txt={comments.length}
+                      />
+                    )}
+                    {checklists?.length > 0 && todos !== 0 && (
+                      <TaskDetailsPreview
+                        icon={<CheckBoxOutlinedIcon className="icon" />}
+                        txt={getChecklistData()}
+                        isDone={
+                          todos === doneTodos && todos !== 0 ? true : false
+                        }
+                      />
+                    )}
+                    {task?.members && (
+                      <MemberList members={task.members} isInPreview={true} />
+                    )}
+                  </div>
+                </div>
+
                 <div
-                  className="task-cover"
-                  style={{ background: task.style.bgColor }}
-                ></div>
-              )}
-              <div className="task-preview clean-link">
-                {labelIds?.length > 0 && (
-                  <TaskLabels labelIds={labelIds} boardLabels={boardLabels} />
-                )}
-                <div className="task-title">
-                  <p>{title}</p>
+                  className="edit-icon"
+                  onClick={(ev) => {
+                    ev.preventDefault();
+                    ev.stopPropagation();
+                    toggleMenu(ev);
+                  }}
+                >
+                  <ModeEditOutlinedIcon className="icon" />
                 </div>
-                <div className="task-preview-icons flex align-center">
-                  {dueDate && (
-                    <TaskDatePreview
-                      dueDate={dueDate}
-                      isDone={task.isDone}
-                      taskId={task.id}
-                      groupId={groupId}
-                    />
-                  )}
-                  {description?.length > 0 && (
-                    <TaskDetailsPreview
-                      icon={<SubjectOutlinedIcon className="icon" />}
-                    />
-                  )}
-                  {comments?.length > 0 && (
-                    <TaskDetailsPreview
-                      icon={
-                        <ChatBubbleOutlineRoundedIcon className="icon msg" />
-                      }
-                      txt={comments.length}
-                    />
-                  )}
-                  {checklists?.length > 0 && todos !== 0 && (
-                    <TaskDetailsPreview
-                      icon={<CheckBoxOutlinedIcon className="icon" />}
-                      txt={getChecklistData()}
-                      isDone={todos === doneTodos && todos !== 0 ? true : false}
-                    />
-                  )}
-                </div>
-                {task?.members && (
-                  <MemberList members={task.members} isInPreview={true} />
-                )}
-              </div>
-              <div
-                className="edit-icon"
-                onClick={(ev) => {
-                  ev.preventDefault();
-                  ev.stopPropagation();
-                  toggleMenu(ev);
-                }}
-              >
-                <ModeEditOutlinedIcon className="icon" />
-              </div>
-            </Link>
-          </article>
-        </div>
-      )}
-    </Draggable>
-    <div
+              </Link>
+            </article>
+          </div>
+        )}
+      </Draggable>
+      <div
         className={`overlay ${isMenuShown ? "show" : ""}`}
         onClick={toggleMenu}
         draggable={false}

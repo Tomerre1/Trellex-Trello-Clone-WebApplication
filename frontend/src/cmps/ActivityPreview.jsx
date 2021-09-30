@@ -45,6 +45,8 @@ export class ActivityPreview extends Component {
                 return 'marked the due date incomplete'
             case 'set-date':
                 return `set the due date to of ${currTask.title} to ${activity.txt}`
+            case 'remove-date':
+                return `removed the due date from ${currTask.title}`
             case 'add-checklist':
                 return `added Checklist to ${currTask.title}`
             case 'remove-checklist':
@@ -57,6 +59,10 @@ export class ActivityPreview extends Component {
                 return `joined task ${currTask.title}`
             case 'remove-self':
                 return `left task ${currTask.title}`
+            case 'complete-todo':
+                return `completed ${activity.txt} on ${currTask.title}`
+            case 'incomplete-todo':
+                return `marked ${activity.txt} incomplete on ${currTask.title}`
             default:
                 break;
         }

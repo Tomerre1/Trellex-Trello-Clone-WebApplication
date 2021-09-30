@@ -2,23 +2,17 @@
   display: flex;
   position: relative;
   align-items: center;
-  flex-wrap: wrap;
   margin-inline-end: 10px;
+  flex-grow:1;
 
-  .member-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    margin-left: -2px;
-  }
   &.preview {
     gap: 1px;
     justify-content: flex-end;
     margin-top: 5px;
     margin-bottom: 2px;
-    margin-inline-end: unset;
-
+    padding:0;
+    margin-right:0;
+    
     .member-wrapper {
       display: flex;
       align-items: center;
@@ -26,6 +20,13 @@
       cursor: pointer;
       margin-left: 0px;
     }
+  }
+  .member-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-left: -2px;
   }
   .member-img {
     height: 32px;

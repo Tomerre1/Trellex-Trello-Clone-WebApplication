@@ -7,11 +7,12 @@ export class CheckDeleteChecklistPopover extends Component {
     }
 
     removeChecklist = (checklist) => {
-        const { togglePopover , updateTaskDetails ,currTask} = this.props
+        const { togglePopover , updateTaskDetails ,currTask, addActivity} = this.props
         const checklistIdx = currTask.checklists.indexOf(checklist)
         currTask.checklists.splice(checklistIdx,1)
         updateTaskDetails(currTask)
         togglePopover()
+        addActivity('remove-checklist')
     }
 
     render() {

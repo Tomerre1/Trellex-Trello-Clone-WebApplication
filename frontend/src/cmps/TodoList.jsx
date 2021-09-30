@@ -1,8 +1,5 @@
 import { TodoPreview } from './TodoPreview'
-export function TodoList({ todos, onSaveTodo, onRemoveTodo }) {
-
-    console.log('todos',todos)
-
+export function TodoList({ todos, onSaveTodo, onRemoveTodo, addActivity }) {
     return (
         <div className="todo-list">
             {todos.map(todo => {
@@ -11,6 +8,7 @@ export function TodoList({ todos, onSaveTodo, onRemoveTodo }) {
                     todo={todo}
                     onSaveTodo={onSaveTodo}
                     onRemoveTodo={onRemoveTodo}
+                    addActivity={addActivity}
                 />
             })}
         </div>
