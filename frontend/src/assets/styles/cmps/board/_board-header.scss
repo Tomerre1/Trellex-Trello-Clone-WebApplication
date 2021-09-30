@@ -62,9 +62,18 @@
             align-items: center;
             justify-content: center;
             text-decoration: none;
+            &.last-in-row{
+                margin-inline-end: 10px;
+            }
             .icon {
                 padding: 3px;
                 padding-right: 5px;
+                &.star {
+                    padding:2px;
+                    &.gold {
+                        color:gold;
+                    }
+                }
             }
         }
     }
