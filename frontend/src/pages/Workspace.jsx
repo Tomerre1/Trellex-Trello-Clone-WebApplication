@@ -8,7 +8,7 @@ import {
   removeBoard,
   saveBoard,
 } from "../store/board.actions";
-import StarIcon from "@mui/icons-material/Star";
+import StarBorderIcon from "@mui/icons-material/StarBorder";
 
 class _Workspace extends Component {
   componentDidMount = () => {
@@ -30,7 +30,7 @@ class _Workspace extends Component {
       <section className="workspace-page main-layout flex column">
         <h1>Your Workspace</h1>
         <h2 className="flex align-center">
-        {this.props.boards.some(board=> board.isFavorite) && <StarIcon />}
+        {this.props.boards.some(board=> board.isFavorite) && <StarBorderIcon style={{height:'35px',width:'35px'}}/>}
         </h2>
         <div className="board-lists flex column">
           {boards.length ? (

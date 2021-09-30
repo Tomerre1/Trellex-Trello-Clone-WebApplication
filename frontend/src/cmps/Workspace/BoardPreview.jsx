@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
-import StarIcon from '@mui/icons-material/Star';
 
 export function BoardPreview(props) {
   const { board, onRemove, saveBoard } = props;
@@ -34,7 +33,7 @@ export function BoardPreview(props) {
           className="action-icon"
           onClick={() => onRemove(board._id)}
         />
-       {board?.isFavorite ? <StarIcon className="action-icon" onClick={onToggleStar}/> : <StarBorderIcon className="action-icon" onClick={onToggleStar} />}
+       {board?.isFavorite ? <StarBorderIcon className="action-icon"  style={{color:'gold'}} onClick={onToggleStar}/> : <StarBorderIcon className="action-icon" onClick={onToggleStar} />}
       </div>
     </article>
   );
