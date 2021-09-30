@@ -32,7 +32,7 @@ const _TaskDatePreview = (props) => {
     if(isDone !== props.isDone) {
       setIsDone(props.isDone)
     }
-  })
+  },[props.isDone,isDone])
   return (
     <span
       className={`due-date ${
