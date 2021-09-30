@@ -171,11 +171,11 @@ export class _TaskDetails extends Component {
     this.updateTaskDetails(currTask);
   }
 
-  addActivity = (activityType) => {
+  addActivity = (activityType, txt = null) => {
     const { board } = this.props;
     const { currTask } = this.state;
 
-    board.activities.push(boardService.createActivity(activityType, currTask))
+    board.activities.push(boardService.createActivity(activityType, currTask, txt))
     this.updateBoard(board)
   }
 

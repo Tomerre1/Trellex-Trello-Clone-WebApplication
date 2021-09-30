@@ -1120,7 +1120,7 @@ async function save(board) {
         return storageService.post(STORAGE_KEY, newBoard)
     }
 }
-function createActivity(activityType, currTask) {
+function createActivity(activityType, currTask,txt = null) {
     const loggedinUser = {
         "_id": 'u101',
         "fullname": 'BCD',
@@ -1138,8 +1138,8 @@ function createActivity(activityType, currTask) {
         // byMember: userService.getLoggedinUser(),
         byMember: loggedinUser,
         task,
-        type: activityType
-
+        type: activityType,
+        txt
     }
 
     // console.log('activity from service', activity)
