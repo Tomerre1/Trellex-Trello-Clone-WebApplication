@@ -3,10 +3,10 @@ import { connect } from "react-redux";
 import { saveBoard } from "../store/board.actions";
 import { MemberList } from "./MemberList";
 import MoreHorizOutlinedIcon from "@mui/icons-material/MoreHorizOutlined";
+import StarBorderIcon from "@mui/icons-material/StarBorder";
 
 function _BoardHeader(props) {
-  const { board } = props;
-
+  const  {board}  = props;
   const [isTitleEdit, setTitleEdit] = useState(false);
   const [title, setTitle] = useState(board.title);
   const [width, setWidth] = useState(board.title.length * 9.5);
@@ -17,6 +17,16 @@ function _BoardHeader(props) {
     if (typeof spanRef.current?.offsetWidth === "number")
       setWidth(spanRef.current?.offsetWidth);
   }, [title]);
+
+  const onToggleStar = async () => {
+    const newBoard = { ...board };
+    newBoard.isFavorite = !newBoard.isFavorite;
+    try {
+      props.saveBoard(newBoard);
+    } catch (err) {
+      console.log("error setting favorite", err);
+    }
+  };
 
   const handleText = (ev) => {
     setTitle(ev.target.value);
@@ -51,7 +61,6 @@ function _BoardHeader(props) {
                 updateTitle();
               }}
               value={title}
-              // style={{ width: `${title.length * 13}px`, minWidth: "10px" }}
               onChange={(ev) => {
                 handleText(ev);
               }}
@@ -61,13 +70,25 @@ function _BoardHeader(props) {
               }}
             ></input>
           </form>
-        )}
-        {board?.members && <MemberList members={board.members} />}
+        )}{" "}
+        <div className="header-btn-container flex">
+          <button className="header-btn last-in-row">
+            {board.isFavorite ? (
+              <StarBorderIcon className="icon star gold" onClick={onToggleStar}/>
+              ) : (
+              <StarBorderIcon className="icon star" onClick={onToggleStar}/>
+            )}
+          </button>
+          {board?.members && <MemberList members={board.members} />}
+        </div>
         <button className="header-btn">Invite</button>
       </div>
       <div className="header-btn-container flex">
         <button className="header-btn"> Dashboard</button>
-        <button className="header-btn"><MoreHorizOutlinedIcon className="icon"/> Show Menu</button>
+        <button className="header-btn ">
+          <MoreHorizOutlinedIcon className="icon" /> Show Menu
+
+        </button>
       </div>
     </header>
   );
@@ -77,7 +98,7 @@ const mapDispatchToProps = {
 };
 function mapStateToProps(state) {
   return {
-    user: {...state.boardModule.board},
+    user: { ...state.boardModule.board },
   };
 }
 export const BoardHeader = connect(

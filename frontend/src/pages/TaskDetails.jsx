@@ -17,7 +17,7 @@ import { TaskHeaderDetails } from "../cmps/TaskHeaderDetails";
 import { LoaderSpinner } from "../cmps/LoaderSpinner";
 import { PopoverMoveCopy } from "../cmps/Popover/PopoverMoveCopy";
 import { saveBoard, saveTaskDetails } from "../store/board.actions";
-
+import { boardService } from '../services/board.service'
 
 export class _TaskDetails extends Component {
   state = {
@@ -169,6 +169,14 @@ export class _TaskDetails extends Component {
     this.updateTaskDetails(currTask);
   }
 
+  addActivity = (activityType) => {
+    const { board } = this.props;
+    const { currTask } = this.state;
+
+    board.activities.push(boardService.createActivity(activityType, currTask))
+    this.updateBoard(board)
+  }
+
   render() {
     const {
       currentTarget,
@@ -211,8 +219,9 @@ export class _TaskDetails extends Component {
             <PopoverChecklist
               {...props}
               title="Checklist"
-              board={board}
-              updateBoard={this.updateBoard}
+              addActivity={this.addActivity}
+            // board={board}
+            // updateBoard={this.updateBoard}
             />
           );
         case "DATE":
