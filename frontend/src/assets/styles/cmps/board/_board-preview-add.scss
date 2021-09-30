@@ -48,6 +48,7 @@
       form{
         all:inherit;
         width: 100%;
+        margin:0;
 
       }
       .title-box {
@@ -77,12 +78,7 @@
         }
       }
       .closer {
-        display: flex;
-        &::after {
-          content:'x';
-          left:-2px;
-          top:-2px;
-        }
+      display:none;
       }
       .color-box {
         width: 100%;
