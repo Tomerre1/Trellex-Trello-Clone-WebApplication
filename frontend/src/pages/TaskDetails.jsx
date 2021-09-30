@@ -17,6 +17,7 @@ import { TaskHeaderDetails } from '../cmps/TaskHeaderDetails'
 import { LoaderSpinner } from '../cmps/LoaderSpinner'
 import { PopoverMoveCopy } from '../cmps/Popover/PopoverMoveCopy'
 import { saveBoard, saveTaskDetails } from '../store/board.actions'
+import { height } from "@mui/system";
 
 export class _TaskDetails extends Component {
   state = {
@@ -131,6 +132,153 @@ export class _TaskDetails extends Component {
   }
 
 
+  // render() {
+  //   const { currentTarget, isPopover, type, selectedLabels, selectedDate, selectedMembers, currTask, currGroup, bgColorCover, loggedinUserIsJoin } = this.state
+  //   const { board, loggedinUser, boards } = this.props
+  //   if (!currTask || !board) return <LoaderSpinner />
+  //   const DynamicCmpPopover = (props) => {
+  //     switch (props.type) {
+  //       case 'LABELS':
+  //         return <PopoverLabels {...props} board={board} currGroup={currGroup} setSelectedLabels={this.setSelectedLabels} title='Labels' />
+  //       case 'MEMBERS':
+  //         return <PopoverMembers {...props} title='Members' setSelectedMembers={this.setSelectedMembers} members={board.members} />
+  //       case 'CHECKLIST':
+  //         return <PopoverChecklist {...props} title='Checklist' />
+  //       case 'DATE':
+  //         return <PopoverDate {...props} title='Date' setSelectedDate={this.setSelectedDate} />
+  //       case 'ATTACHMENT':
+  //         return <PopoverAttachment {...props} title='Attach from...' />
+  //       case 'COVER':
+  //         return <PopoverCover {...props} setBgColorCover={this.setBgColorCover} setIsCover={this.setIsCover} title='Cover' />
+  //       case 'MOVE':
+  //         return <PopoverMoveCopy {...props} isCopy={false} updateBoards={this.updateBoards} boards={boards} board={board} currGroup={currGroup} title='Move to' />
+  //       case 'COPY':
+  //         return <PopoverMoveCopy {...props} isCopy={true} updateBoards={this.updateBoards} boards={boards} board={board} currGroup={currGroup} title='Copy' />
+  //     }
+  //   }
+
+  //   return (
+  //     <>
+  //       <div className='overlay show' onClick={() => this.props.history.push(`/board/${board._id}`)} >
+  //         <section className="task-details flex column">
+  //           <button onClick={() => this.props.history.push(`/board/${board._id}`)} className={`close-task-details ${bgColorCover ? 'cover' : ''}`}><Close /></button>
+  //           {bgColorCover && <TaskCardCover bgColor={bgColorCover} setCurrentTarget={this.setCurrentTarget} />}
+
+  //           <TaskHeader taskTitle={currTask.title} setTaksDetailsTitle={this.setTaksDetailsTitle} taskList={currGroup.title} />
+  //           <div className="task-details-body flex">
+  //             <div className="task-details-main flex column">
+  //               {(selectedLabels || selectedMembers || selectedDate) &&
+  //                 <TaskHeaderDetails
+  //                   setCurrentTarget={this.setCurrentTarget}
+  //                   selectedLabels={selectedLabels}
+  //                   selectedMembers={currTask.members}
+  //                   selectedDate={currTask.dueDate}
+  //                   toggleTaskDone={this.toggleTaskDone}
+  //                   currTask={currTask}
+  //                   updateTaskDetails={this.updateTaskDetails}
+  //                 />
+  //               }
+  //               <TaskDescription currTask={currTask} updateTaskDetails={this.updateTaskDetails} />
+  //               <TaskChecklist currTask={currTask} updateTaskDetails={this.updateTaskDetails} />
+  //               <TaskActivities currTask={currTask} loggedinUser={loggedinUser} activities={board.activities} updateTaskDetails={this.updateTaskDetails} />
+  //             </div>
+  //             <TaskActionsMenu loggedinUserIsJoin={loggedinUserIsJoin} joinTask={this.joinTask} setCurrentTarget={this.setCurrentTarget} />
+  //           </div>
+
+  //           {isPopover &&
+  //             <DynamicCmpPopover
+  //               togglePopover={this.togglePopover}
+  //               currentTarget={currentTarget}
+  //               updateBoard={this.updateBoard}
+  //               updateTaskDetails={this.updateTaskDetails}
+  //               type={type}
+  //               currTask={currTask}
+  //             />
+  //           }
+  //         </section >
+  //       </div>
+  //     </>
+  //   );
+  // }
+  // render() {
+  //   const { currentTarget, isPopover, type, selectedLabels, selectedDate, selectedMembers, currTask, currGroup, bgColorCover, loggedinUserIsJoin } = this.state
+  //   const { board, loggedinUser, boards } = this.props
+  //   if (!currTask || !board) return <LoaderSpinner />
+  //   const DynamicCmpPopover = (props) => {
+  //     switch (props.type) {
+  //       case 'LABELS':
+  //         return <PopoverLabels {...props} board={board} currGroup={currGroup} setSelectedLabels={this.setSelectedLabels} title='Labels' />
+  //       case 'MEMBERS':
+  //         return <PopoverMembers {...props} title='Members' setSelectedMembers={this.setSelectedMembers} members={board.members} />
+  //       case 'CHECKLIST':
+  //         return <PopoverChecklist {...props} title='Checklist' />
+  //       case 'DATE':
+  //         return <PopoverDate {...props} title='Date' setSelectedDate={this.setSelectedDate} />
+  //       case 'ATTACHMENT':
+  //         return <PopoverAttachment {...props} title='Attach from...' />
+  //       case 'COVER':
+  //         return <PopoverCover {...props} setBgColorCover={this.setBgColorCover} setIsCover={this.setIsCover} title='Cover' />
+  //       case 'MOVE':
+  //         return <PopoverMoveCopy {...props} isCopy={false} updateBoards={this.updateBoards} boards={boards} board={board} currGroup={currGroup} title='Move to' />
+  //       case 'COPY':
+  //         return <PopoverMoveCopy {...props} isCopy={true} updateBoards={this.updateBoards} boards={boards} board={board} currGroup={currGroup} title='Copy' />
+  //     }
+  //   }
+  //   const style = {
+  //     position: 'fixed',
+  //     inset: 0,
+  //     height: '100vh',
+  //     overflowY: 'auto',
+  //     zIndex: 90,
+  //     PointerEvents: 'auto'
+  //   }
+
+
+
+  //   return (
+  //     <>
+  //       <div style={style}>
+  //         <section className="task-details flex column">
+  //           <button onClick={() => this.props.history.push(`/board/${board._id}`)} className={`close-task-details ${bgColorCover ? 'cover' : ''}`}><Close /></button>
+  //           {bgColorCover && <TaskCardCover bgColor={bgColorCover} setCurrentTarget={this.setCurrentTarget} />}
+
+  //           <TaskHeader taskTitle={currTask.title} setTaksDetailsTitle={this.setTaksDetailsTitle} taskList={currGroup.title} />
+  //           <div className="task-details-body flex">
+  //             <div className="task-details-main flex column">
+  //               {(selectedLabels || selectedMembers || selectedDate) &&
+  //                 <TaskHeaderDetails
+  //                   setCurrentTarget={this.setCurrentTarget}
+  //                   selectedLabels={selectedLabels}
+  //                   selectedMembers={currTask.members}
+  //                   selectedDate={currTask.dueDate}
+  //                   toggleTaskDone={this.toggleTaskDone}
+  //                   currTask={currTask}
+  //                   updateTaskDetails={this.updateTaskDetails}
+  //                 />
+  //               }
+  //               <TaskDescription currTask={currTask} updateTaskDetails={this.updateTaskDetails} />
+  //               <TaskChecklist currTask={currTask} updateTaskDetails={this.updateTaskDetails} />
+  //               <TaskActivities currTask={currTask} loggedinUser={loggedinUser} activities={board.activities} updateTaskDetails={this.updateTaskDetails} />
+  //             </div>
+  //             <TaskActionsMenu loggedinUserIsJoin={loggedinUserIsJoin} joinTask={this.joinTask} setCurrentTarget={this.setCurrentTarget} />
+  //           </div>
+
+  //           {isPopover &&
+  //             <DynamicCmpPopover
+  //               togglePopover={this.togglePopover}
+  //               currentTarget={currentTarget}
+  //               updateBoard={this.updateBoard}
+  //               updateTaskDetails={this.updateTaskDetails}
+  //               type={type}
+  //               currTask={currTask}
+  //             />
+  //           }
+  //         </section >
+  //       </div>
+  //       <div className='overlay show' onClick={() => this.props.history.push(`/board/${board._id}`)} style={{ PointerEvents: 'auto' }}></div>
+  //     </>
+  //   );
+  // }
   render() {
     const { currentTarget, isPopover, type, selectedLabels, selectedDate, selectedMembers, currTask, currGroup, bgColorCover, loggedinUserIsJoin } = this.state
     const { board, loggedinUser, boards } = this.props
@@ -155,13 +303,22 @@ export class _TaskDetails extends Component {
           return <PopoverMoveCopy {...props} isCopy={true} updateBoards={this.updateBoards} boards={boards} board={board} currGroup={currGroup} title='Copy' />
       }
     }
+    const style = {
+      position: 'fixed',
+      inset: 0,
+      height: '100vh',
+      overflowY: 'auto',
+      zIndex: 90,
+      PointerEvents: 'auto'
+    }
+
+
 
     return (
       <>
         <section className="task-details flex column">
-          <button onClick={this.props.history.goBack} className={`close-task-details ${bgColorCover ? 'cover' : ''}`}><Close /></button>
+          <button onClick={() => this.props.history.push(`/board/${board._id}`)} className={`close-task-details ${bgColorCover ? 'cover' : ''}`}><Close /></button>
           {bgColorCover && <TaskCardCover bgColor={bgColorCover} setCurrentTarget={this.setCurrentTarget} />}
-
           <TaskHeader taskTitle={currTask.title} setTaksDetailsTitle={this.setTaksDetailsTitle} taskList={currGroup.title} />
           <div className="task-details-body flex">
             <div className="task-details-main flex column">
@@ -178,7 +335,7 @@ export class _TaskDetails extends Component {
               }
               <TaskDescription currTask={currTask} updateTaskDetails={this.updateTaskDetails} />
               <TaskChecklist currTask={currTask} updateTaskDetails={this.updateTaskDetails} />
-              <TaskActivities currTask={currTask} loggedinUser={loggedinUser} activities={board.activities} updateTaskDetails={this.updateTaskDetails}/>
+              <TaskActivities currTask={currTask} loggedinUser={loggedinUser} activities={board.activities} updateTaskDetails={this.updateTaskDetails} />
             </div>
             <TaskActionsMenu loggedinUserIsJoin={loggedinUserIsJoin} joinTask={this.joinTask} setCurrentTarget={this.setCurrentTarget} />
           </div>
@@ -194,7 +351,7 @@ export class _TaskDetails extends Component {
             />
           }
         </section >
-        <div className='overlay show' onClick={this.props.history.goBack} ></div>
+        <div className='overlay show' onClick={() => this.props.history.push(`/board/${board._id}`)} ></div>
       </>
     );
   }

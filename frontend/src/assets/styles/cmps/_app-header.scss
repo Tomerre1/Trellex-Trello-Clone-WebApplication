@@ -17,8 +17,8 @@
       background-color: hsla(0, 0%, 100%, 0.3);
       padding: 0 8px;
       border-radius: 3px;
-      height:32px;
-      width:32px;
+      height: 32px;
+      width: 32px;
       color: white;
       display: flex;
       align-items: center;
@@ -26,11 +26,10 @@
       text-decoration: none;
       transition: background-color 0.2s;
       &.boards {
-
-        width:80px;
-        font-weight:600;
-        padding-right:10px;
-        .icon { 
+        width: 80px;
+        font-weight: 600;
+        padding-right: 10px;
+        .icon {
           margin-inline-end: 3px;
         }
       }
@@ -52,16 +51,16 @@
   }
   .overlay {
     position: fixed;
-    inset:0;
-    height:100vh;
+    inset: 0;
+    height: 100vh;
     background-color: #0202022c;
     z-index: 5;
     opacity: 0;
     transition: opacity 0.2s ease-out;
     pointer-events: none;
     &.show {
-        opacity: 1;
-        pointer-events: auto;
+      opacity: 1;
+      pointer-events: auto;
     }
   }
 }
