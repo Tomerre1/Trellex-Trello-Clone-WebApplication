@@ -10,6 +10,7 @@ import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import ScheduleIcon from '@mui/icons-material/Schedule';
 import ArchiveIcon from '@mui/icons-material/Archive';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import RemoveIcon from '@mui/icons-material/Remove';
 export class TaskActionsMenu extends Component {
     render() {
         const { setCurrentTarget, joinTask, loggedinUserIsJoin, toggleIsArchive, isArchive } = this.props
@@ -85,12 +86,15 @@ export class TaskActionsMenu extends Component {
                                 <span>{isArchive ? 'Return to board' : 'Archive'}</span>
                             </div>
                         </button>
-                        {/* <button className="secondary-btn action-btn" onClick={toggleIsArchive}>
-                            <div className="action-btn-content flex align-center" >
-                                {isArchive ? <ArrowBackIcon /> : <ArchiveIcon />}
-                                <span>{isArchive ? 'Return to board' : 'Archive'}</span>
-                            </div>
-                        </button> */}
+                        {isArchive &&
+                            <button className="secondary-btn action-btn danger-btn" style={{ color: '#fff' }} onClick={toggleIsArchive}>
+                                <div className="action-btn-content flex align-center" >
+                                    <RemoveIcon style={{ color: '#fff' }} />
+                                    <span>Delete</span>
+                                </div>
+                            </button>
+                        }
+
                     </div>
                 </div>
 
