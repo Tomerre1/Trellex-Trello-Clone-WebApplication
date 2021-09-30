@@ -1,7 +1,9 @@
 .task-preview-container {
   box-shadow: 0 1px 0 #c0c6d0;
   transition: background-color 0.2s;
-
+  &:last-of-type{
+    margin-bottom:0px;
+  }
   .edit-icon {
     opacity: 0;
     display: flex;
@@ -86,6 +88,9 @@
     p {
       margin: 0;
       // margin-bottom:5px;
+      &:last-of-type{
+        margin-bottom:0px;
+      }
     }
 
     background: #fff;
@@ -95,9 +100,7 @@
     transition: background-color 0.1s;
 
     cursor: pointer;
-    &:last-of-type{
-      margin-bottom:0;
-    }
+
     .task-preview-icons {
       flex-wrap: wrap;
       span {

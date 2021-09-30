@@ -11,7 +11,6 @@
     border-radius: 3px;
     color: #5e6c84;
     cursor: pointer;
-    padding:3px 5px;
 
     .add-icon {
       color: inherit;
@@ -30,7 +29,7 @@
   .add-task-active {
     width: 100%;
     gap: 5px;
-    margin:0;
+    margin-top:4px;
     padding:0;
 
     textarea {
