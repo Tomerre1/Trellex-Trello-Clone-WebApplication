@@ -14,10 +14,10 @@ export class PopoverAttachment extends Component {
         currTask.attachments = (attachments) ? [...attachments, attach] : [attach]
         await updateTaskDetails(currTask)
     }
-    removeFile = async (attach) => {
+    removeFile = async (attachId) => {
         const { currTask, updateTaskDetails } = this.props
         const { attachments } = currTask
-        const attachs = attachments.filter(currAttach => currAttach.id !== attach.id)
+        const attachs = attachments.filter(currAttach => currAttach.id !== attachId)
         currTask.attachments = attachs
         await updateTaskDetails(currTask)
     }
