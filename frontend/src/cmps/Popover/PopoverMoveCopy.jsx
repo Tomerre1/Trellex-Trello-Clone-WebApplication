@@ -47,7 +47,6 @@ export class PopoverMoveCopy extends Component {
 
 
     submitMoveSameBoard = async () => {
-        debugger;
         const { selectedBoard, selectedGroup, selectedPosition, taskTitle } = this.state
         const { currTask, updateBoard, currGroup, isCopy } = this.props
         const fromGroupIdx = selectedBoard.groups.indexOf(currGroup)
