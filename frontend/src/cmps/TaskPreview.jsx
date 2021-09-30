@@ -12,7 +12,7 @@ import ChatBubbleOutlineRoundedIcon from "@mui/icons-material/ChatBubbleOutlineR
 import ModeEditOutlinedIcon from "@mui/icons-material/ModeEditOutlined";
 
 export function TaskPreview(props) {
-  const { task, taskUrl, boardLabels, groupId, boardId, index } = props;
+  const { task, taskUrl, boardLabels, groupId, boardId, index,ghost } = props;
   const { labelIds, title, dueDate, comments, checklists, description } = task;
 
   const [isMenuShown, toggleMenuShown] = useState(false);
@@ -42,6 +42,7 @@ export function TaskPreview(props) {
     return `${doneTodos}/${todos}`;
   };
 
+  
   if (task.style && task.style?.coverMode === "full")
     return (
       <Draggable draggableId={task.id} index={index}>
@@ -70,11 +71,7 @@ export function TaskPreview(props) {
     );
   return (
     <>
-      <div
-        className={`overlay ${isMenuShown ? "show" : ""}`}
-        onClick={toggleMenu}
-        draggable={false}
-      ></div>
+   
     <Draggable draggableId={task.id} index={index}>
       {(provided) => (
         <div
@@ -154,6 +151,11 @@ export function TaskPreview(props) {
         </div>
       )}
     </Draggable>
+    <div
+        className={`overlay ${isMenuShown ? "show" : ""}`}
+        onClick={toggleMenu}
+        draggable={false}
+      ></div>
     </>
   );
 }
