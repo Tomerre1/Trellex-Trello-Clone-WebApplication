@@ -197,6 +197,18 @@ const demoBoards = [
                         "description": "description",
                         "comments": [
                             {
+                                "id": "KAPnm",
+                                "txt": "Board is done",
+                                "createdAt": 1632988079413,
+                                "type": "comment",
+                                "byMember": {
+                                    "_id": "u101",
+                                    "username": "BCD",
+                                    "fullname": "Barak Sidi",
+                                    "imgUrl": 'https://media-exp1.licdn.com/dms/image/C5603AQG9slGN5Fgxug/profile-displayphoto-shrink_100_100/0/1516840011642?e=1638403200&v=beta&t=wl9AzbWc9FwsXJ0xGECA_7T4xynvi067vuYs5ABVhfo',
+                                },
+                            },
+                            {
                                 "id": "ZdPnm",
                                 "txt": "also @yaronb please CR this",
                                 "createdAt": 1632924692515,
@@ -256,7 +268,7 @@ const demoBoards = [
                         ],
                         "labelIds": ["l101", "l102"],
                         "createdAt": 1590999730348,
-                        "dueDate": 16156215211,
+                        "dueDate": 1632987496504,
                         "byMember": {
                             "_id": 'u102',
                             "fullname": 'Tomer',
@@ -315,7 +327,7 @@ const demoBoards = [
                         ],
                         "labelIds": ["l101", "l102"],
                         "createdAt": 1590999730348,
-                        "dueDate": 16156215211,
+                        "dueDate": 1633187908796,
                         "byMember": {
                             "_id": 'u102',
                             "fullname": 'Tomer',
@@ -606,7 +618,7 @@ const demoBoards = [
                         ],
                         "labelIds": ["l101", "l102"],
                         "createdAt": 1590999730348,
-                        "dueDate": 16156215211,
+                        "dueDate": 1632988426504,
                         "byMember": {
                             "_id": 'u102',
                             "fullname": 'Tomer',
@@ -665,7 +677,7 @@ const demoBoards = [
                         ],
                         "labelIds": ["l101", "l102"],
                         "createdAt": 1590999730348,
-                        "dueDate": 16156215211,
+                        "dueDate": 1632987626504,
                         "byMember": {
                             "_id": 'u102',
                             "fullname": 'Tomer',
@@ -955,7 +967,7 @@ const demoBoards = [
                         ],
                         "labelIds": ["l101", "l102"],
                         "createdAt": 1590999730348,
-                        "dueDate": 16156215211,
+                        "dueDate": 1632988426504,
                         "byMember": {
                             "_id": 'u102',
                             "fullname": 'Tomer',
@@ -1014,7 +1026,7 @@ const demoBoards = [
                         ],
                         "labelIds": ["l101", "l102"],
                         "createdAt": 1590999730348,
-                        "dueDate": 16156215211,
+                        "dueDate": 1632987526504,
                         "byMember": {
                             "_id": 'u102',
                             "fullname": 'Tomer',
