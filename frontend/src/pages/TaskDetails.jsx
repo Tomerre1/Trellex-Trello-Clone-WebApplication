@@ -208,7 +208,15 @@ export class _TaskDetails extends Component {
             />
           );
         case "CHECKLIST":
-          return <PopoverChecklist {...props} title="Checklist" />;
+          return (
+            <PopoverChecklist
+              {...props}
+              title="Checklist"
+              board={board}
+              updateBoard={this.updateBoard}
+              loggedinUser={loggedinUser}
+            />
+          );
         case "DATE":
           return (
             <PopoverDate

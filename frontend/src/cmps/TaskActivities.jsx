@@ -67,7 +67,7 @@ export class TaskActivities extends Component {
                     </button>
                 </div>
                 <AddComment currTask={currTask} loggedinUser={loggedinUser} addComment={this.addComment} />
-                {CommAndAct && CommAndAct.length && <ActivitiesList CommAndAct={CommAndAct} isShowActivities={isShowActivities} />}
+                {CommAndAct && CommAndAct.length && <ActivitiesList CommAndAct={CommAndAct} isShowActivities={isShowActivities} currTask={currTask}/>}
             </div>
         )
     }

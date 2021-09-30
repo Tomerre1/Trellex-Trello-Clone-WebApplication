@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Popover } from './Popover'
 import { utilService } from '../../services/util.service'
+import { boardService } from '../../services/board.service'
 
 
 export class PopoverChecklist extends Component {
@@ -14,7 +15,7 @@ export class PopoverChecklist extends Component {
 
     onAddChecklist = (ev) => {
         ev.preventDefault()
-        const { togglePopover , updateTaskDetails ,currTask} = this.props
+        const { togglePopover, updateTaskDetails, currTask, board, updateBoard, loggedinUser } = this.props
 
         if (!currTask.checklists) currTask.checklists = []
         const newList = {
@@ -25,6 +26,10 @@ export class PopoverChecklist extends Component {
         currTask.checklists.push(newList)
         updateTaskDetails(currTask)
         togglePopover()
+
+       //For Activity
+       board.activities.push(boardService.createActivity('add-checklist',loggedinUser, currTask ))
+       updateBoard(board)
     }
 
     render() {
