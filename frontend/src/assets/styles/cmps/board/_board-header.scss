@@ -1,76 +1,71 @@
-.board-header { 
-    top:46px;
-    height:42px;
-    position:relative;
-    background-color:transparent;
-    color:white;
+.board-header {
+    top: 46px;
+    height: 42px;
+    position: relative;
+    background-color: transparent;
+    color: white;
     z-index: 10;
 
-    form 
-    {
- 
-     margin: 0;   
-     span { 
-        opacity:0;
-        font-size:rem(18px)    ;
-        font-weight: bold;
-        white-space:pre;
-    }}
-    .title { 
-        margin:0;
-        padding:0;
-        width:auto;
-        border:none;
-        outline:none;
-        height:32px;
-        font-size:rem(18px)    ;
-        font-weight: bold;
-        border-radius:3px;
-        cursor: text;
-        min-width:30px;
-        padding:7px 5px;
-        margin:0;
-        color:white;
-        background-color: #ffffff3d;
-        white-space:pre;
-
-
+    form {
+        margin: 0;
+        span {
+            opacity: 0;
+            font-size: rem(18px);
+            font-weight: bold;
+            white-space: pre;
+        }
     }
-    input.title { 
-        min-width:30px;
-        margin:0;
-        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Noto Sans,Ubuntu,Droid Sans,Helvetica Neue,sans-serif !important;
-        font-size:rem(18px);
-        background-color:rgba(43, 43, 43, 0.507);
-        color:#fff;
-        border-radius:3px;
-        position:relative;
-        top:-10px;
+    .title {
+        margin: 0;
+        padding: 0;
+        width: auto;
+        border: none;
+        outline: none;
+        height: 32px;
+        font-size: rem(18px);
+        font-weight: bold;
+        border-radius: 3px;
+        cursor: text;
+        min-width: 30px;
+        padding: 7px 5px;
+        margin: 0;
+        color: white;
+        background-color: #ffffff3d;
+        white-space: pre;
+    }
+    input.title {
+        min-width: 30px;
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue,
+            sans-serif !important;
+        font-size: rem(18px);
+        background-color: rgba(43, 43, 43, 0.507);
+        color: #fff;
+        border-radius: 3px;
+        position: relative;
+        top: -10px;
         text-align: center !important;
-        &.height-adjust{
-            top:1px;
+        &.height-adjust {
+            top: 1px;
         }
     }
     .header-btn-container {
-        align-items:center;
-        
+        align-items: center;
+
         button.header-btn {
-                background-color:rgba(180, 179, 179, 0.3);
-                padding:5px 5px;
-                width:fit-content ;
-                border-radius:3px;
-                color:white;
-                display:flex;
-                align-items:center;
-                justify-content:center;
-                text-decoration: none;
-                .icon { 
-                    padding:3px;
-                    padding-right:5px;
-                }
-             }
-        
+            background-color: rgba(180, 179, 179, 0.3);
+            padding: 5px 5px;
+            width: fit-content;
+            border-radius: 3px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            .icon {
+                padding: 3px;
+                padding-right: 5px;
+            }
+        }
     }
-
-
 }

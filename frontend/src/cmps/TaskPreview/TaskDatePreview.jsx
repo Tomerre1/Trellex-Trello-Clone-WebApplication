@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import { connect } from "react-redux";
 import { saveBoard } from "../../store/board.actions";
 
@@ -28,7 +28,11 @@ const _TaskDatePreview = (props) => {
 
     }
   };
-
+  useEffect(()=>{
+    if(isDone !== props.isDone) {
+      setIsDone(props.isDone)
+    }
+  })
   return (
     <span
       className={`due-date ${

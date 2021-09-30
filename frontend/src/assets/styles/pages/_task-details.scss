@@ -37,7 +37,6 @@
         .card-cover {
             background-color: rgba(0, 0, 0, 0.08);
             color: #3d3b3b;
-            
         }
         &.cover {
             background-color: rgba(0, 0, 0, 0.08);
@@ -65,13 +64,14 @@
 .overlay {
     position: fixed;
     inset: 0;
-    background-color: #0202022c;
-    z-index: 15;
+    background-color: rgba(0, 0, 0, 0.659);
     opacity: 0;
     transition: opacity 0.2s ease-out;
     pointer-events: none;
-    max-height:100vh;
-
+    width: 100vw;
+    height: 100vh;
+    z-index: 20;
+    overflow-y: auto;
     &.show {
         opacity: 1;
         pointer-events: auto;
