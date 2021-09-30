@@ -9,7 +9,7 @@
   border: 1px solid lightgray;
   border-radius: 3px;
   box-shadow: 0 0 2px #020202;
-  z-index: 15;
+  z-index: 20;
   padding: 0 12px 12px;
   text-align: center;
   padding: 8px;
@@ -39,12 +39,14 @@
     }
     .overlay {
       position: fixed;
-      inset: 0;
+      // inset: 0;
       background-color: #0202022c;
-      z-index: 5;
+      z-index:15;
       opacity: 0;
       transition: opacity 0.2s ease-out;
       pointer-events: none;
+      max-height:100vh;
+      overflow-y: scroll;
       &.show {
         opacity: 1;
         pointer-events: auto;

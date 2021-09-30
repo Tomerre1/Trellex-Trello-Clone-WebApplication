@@ -49,12 +49,8 @@ class _BoardApp extends Component {
       draggableId,
       type
       );
-
-    
-    console.log('dragend')
   }
   render() {
-    console.log(this.props);
 
     const { board } = this.props;
     if (!board) return <LoaderSpinner />;

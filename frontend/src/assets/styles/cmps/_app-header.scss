@@ -7,7 +7,7 @@
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 15;
+  z-index: 10;
   &.on-board {
     background-color: rgba(0, 0, 0, 0.15);
   }
@@ -53,9 +53,10 @@
   .overlay {
     position: fixed;
     inset:0;
-    height:100vh;
+    max-height:100vh;
+    overflow-y: scroll;
     background-color: #0202022c;
-    z-index: 5;
+    z-index:15;
     opacity: 0;
     transition: opacity 0.2s ease-out;
     pointer-events: none;
