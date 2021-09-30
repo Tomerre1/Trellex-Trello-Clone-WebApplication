@@ -7,7 +7,8 @@ import { HeaderTitle } from "./Group/HeaderTitle";
 import { removeGroup } from "../store/board.actions";
 import MoreHorizOutlinedIcon from "@mui/icons-material/MoreHorizOutlined";
 import { GroupActions } from "./Group/GroupActions";
-import { Droppable, Draggable } from "react-beautiful-dnd";
+import { Draggable } from "react-beautiful-dnd";
+import NaturalDragAnimation from "natural-drag-animation-rbdnd";
 
 const _GroupDetails = (props) => {
   const { group, isAddNew, boardId, boardLabels, index } = props;
@@ -51,15 +52,21 @@ const _GroupDetails = (props) => {
     //     {...provided.draggableProps}
     //     {...provided.dragHandleProps}></div>
 
-
-        <div >
-          <Draggable draggableId={group.id} index={index}>
-            {(provided) => (
-              <article 
-              ref={provided.innerRef}
-              {...provided.draggableProps}
-              {...provided.dragHandleProps}
-              className="group-details flex column">
+    <div>
+      <Draggable draggableId={group.id} index={index}>
+        {(provided, snapshot) => (
+          <NaturalDragAnimation
+            style={provided.draggableProps.style}
+            snapshot={snapshot}
+          >
+            {(style) => (
+              <article
+                ref={provided.innerRef}
+                {...provided.draggableProps}
+                {...provided.dragHandleProps}
+                style={style}
+                className="group-details flex column"
+              >
                 <div className="group-header flex space-between align-center">
                   <HeaderTitle group={group} />
                   <MoreHorizOutlinedIcon
@@ -99,9 +106,10 @@ const _GroupDetails = (props) => {
                 <div className="overlay"></div>
               </article>
             )}
-          </Draggable>
-        </div>
-      
+          </NaturalDragAnimation>
+        )}
+      </Draggable>
+    </div>
   );
 };
 
