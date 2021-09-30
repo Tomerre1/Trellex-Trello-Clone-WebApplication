@@ -230,6 +230,7 @@ export class _TaskDetails extends Component {
               {...props}
               title="Date"
               setSelectedDate={this.setSelectedDate}
+              addActivity={this.addActivity}
             />
           );
         case "ATTACHMENT":
@@ -322,6 +323,7 @@ export class _TaskDetails extends Component {
                   toggleTaskDone={this.toggleTaskDone}
                   currTask={currTask}
                   updateTaskDetails={this.updateTaskDetails}
+                  addActivity={this.addActivity}
                 />
               )}
               <TaskDescription

@@ -21,11 +21,25 @@ export class PopoverDate extends Component {
     }
 
     onSaveDueDate = (date) => {
-        const { togglePopover , updateTaskDetails ,currTask , setSelectedDate} = this.props
+        const { togglePopover, updateTaskDetails, currTask, setSelectedDate, addActivity } = this.props
         currTask.dueDate = date ? Date.parse(date) : null;
         updateTaskDetails(currTask)
         setSelectedDate(currTask.dueDate)
         togglePopover()
+        this.props.addActivity('set-date', this.dueDateFormat(currTask.dueDate))
+    }
+
+    dueDateFormat = (dueDate) => {
+        const currYear = new Date().getFullYear()
+        const dueYear = new Date(dueDate).getFullYear()
+        let strDate = ''
+        strDate += `${new Date(dueDate).toLocaleString('en-GB', { day: 'numeric' })} `
+        strDate += `${new Date(dueDate).toLocaleString('en-GB', { month: 'short' })} at `
+        if (dueYear !== currYear) {
+            strDate += `${dueYear} `
+        }
+        strDate += `${new Date(dueDate).toLocaleString('en-GB', { hour: 'numeric', minute: 'numeric', hour12: true }).toLocaleUpperCase()}`
+        return strDate
     }
 
     onRemoveDate = () => {
