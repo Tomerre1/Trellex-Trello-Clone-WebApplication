@@ -1,5 +1,6 @@
 import React from 'react'
 import { ColorPalette } from '../ColorPalette'
+import { cloudinaryService } from '../../services/cloudinary-service'
 import { Popover } from './Popover'
 
 export class PopoverCover extends React.Component {
@@ -8,7 +9,6 @@ export class PopoverCover extends React.Component {
         isHeaderSelected: null,
         isFullSelected: false,
         selectedColor: false,
-
     }
 
 
@@ -17,7 +17,8 @@ export class PopoverCover extends React.Component {
         if (!currTask.style) {
             currTask.style = {
                 coverMode: '',
-                bgColor: null
+                bgColor: null,
+                bgUrl: null
             }
         }
         switch (currTask.style.coverMode) {
@@ -55,7 +56,6 @@ export class PopoverCover extends React.Component {
             isFullSelected: false,
         }))
         currTask.style.coverMode = 'header'
-
         updateTaskDetails(currTask)
 
     }
@@ -83,12 +83,28 @@ export class PopoverCover extends React.Component {
         currTask.style.coverMode = null
         currTask.style.bgColor = null
         setBgColorCover(null)
-
+        //setBgUrlCover(null)
         updateTaskDetails(currTask)
     }
 
+    uploadFile = async (ev) => {
+        const { currTask, updateTaskDetails } = this.props
+        const res = await cloudinaryService.uploadFile(ev)
+        currTask.style.bgUrl = res.secure_url
+        //setBgUrlCover(null)
+        updateTaskDetails(currTask)
+    }
+
+    removeFile = async (attachId) => {
+        const { currTask, updateTaskDetails } = this.props
+        const { attachments } = currTask
+        const attachs = attachments.filter(currAttach => currAttach.id !== attachId)
+        currTask.attachments = attachs
+        await updateTaskDetails(currTask)
+    }
+
     handleChange = (event) => {
-        const { updateTaskDetails, currTask, setBgColorCover, setIsCover } = this.props
+        const { updateTaskDetails, currTask, setBgColorCover } = this.props
         const { isFullSelected, isHeaderSelected } = this.state
         const { value } = event.target
         if (!isFullSelected && !isHeaderSelected) {
@@ -130,6 +146,11 @@ export class PopoverCover extends React.Component {
                     </div>
                     <h4>COLOR</h4>
                     <ColorPalette handleChange={this.handleChange} selectedColor={selectedColor} />
+                    <h4>ATTACHMENT</h4>
+                    <div className="upload-preview">
+                        <label className="secondary-btn" htmlFor="file-upload">Upload a cover image</label>
+                        <input type="file" onChange={this.uploadFile} accept="img/*" id="file-upload" />
+                    </div>
                 </div>
             </Popover >
         )

@@ -1,5 +1,31 @@
 .cover-popover {
     width: 18rem;
+    .upload-preview {
+        margin-bottom: 8px;
+        label {
+            display: block;
+            padding: 6px 12px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            height: 32px;
+            line-height: 32px;
+            width: 20rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            &:hover {
+                background-color: rgba(9, 30, 66, 0.08);
+            }
+        }
+        input {
+            opacity: 0;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            cursor: pointer;
+            position: absolute;
+        }
+    }
     .cover-options {
         margin-bottom: 0.8rem;
         .header-cover-preview,
@@ -30,6 +56,34 @@
                 height: 2rem;
                 border-radius: 3px;
             }
+        }
+    }
+}
+
+.attachment-container {
+    .upload-preview {
+        margin-bottom: 8px;
+        border-bottom: 1px solid rgba(9, 30, 66, 0.13);
+        label {
+            display: block;
+            padding: 6px 12px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            height: 32px;
+            line-height: 32px;
+            width: 20rem;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            &:hover {
+                background-color: #091e420a;
+            }
+        }
+        input {
+            opacity: 0;
+            height: 0;
+            width: 0;
+            position: absolute;
         }
     }
 }
