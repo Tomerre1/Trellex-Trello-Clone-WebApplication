@@ -4,12 +4,13 @@ import { Droppable } from "react-beautiful-dnd";
 
 export function TaskPreviewList(props) {
   const { groupId, boardId, boardLabels, tasks } = props;
-
+  const filteredTasks = tasks.filter((task) => task?.isArchive !== true)
   return (
     <Droppable droppableId={groupId}>
       {(provided)=>(
       <div {...provided.droppableProps} ref={provided.innerRef}>
-      {tasks?.map((task, idx) => (
+      {filteredTasks?.map((task, idx) => (
+        
         <TaskPreview
           task={task}
           key={task.id}
