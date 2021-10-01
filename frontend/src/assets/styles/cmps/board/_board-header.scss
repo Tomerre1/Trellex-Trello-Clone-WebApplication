@@ -1,11 +1,11 @@
 .board-header {
-    top: 50px;
+    top: 45px;
     height: 42px;
     position: relative;
     background-color: transparent;
     color: white;
     z-index: 0;
-    gap:10px;
+    gap:8px;
 
     form {
         margin: 0;
@@ -44,7 +44,7 @@
         color: #fff;
         border-radius: 3px;
         position: relative;
-        top: -10px;
+        top: -11px;
         text-align: center !important;
         &.height-adjust {
             top: 1px;
