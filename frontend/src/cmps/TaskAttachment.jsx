@@ -8,7 +8,7 @@ export class TaskAttachment extends Component {
     }
 
     render() {
-        const { currTask, updateTaskDetails, addActivity } = this.props
+        const { currTask, updateTaskDetails, addActivity, setBgUrlCover } = this.props
         if (!currTask.attachments) return <React.Fragment></React.Fragment>
 
         return (
@@ -25,6 +25,7 @@ export class TaskAttachment extends Component {
                             currTask={currTask}
                             updateTaskDetails={updateTaskDetails}
                             addActivity={addActivity}
+                            setBgUrlCover={setBgUrlCover}
                         />
                     })}
                 </div>

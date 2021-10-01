@@ -8,12 +8,29 @@ import { Link } from 'react-router-dom';
 
 
 export class TaskAttachmentPreview extends Component {
-
-
     state = {
         isPopover: false,
         isEditPopover: false,
-        currentTarget: null
+        currentTarget: null,
+        bgUrl: null,
+    }
+
+    componentDidMount() {
+        const { currTask } = this.props
+        const bgUrl = currTask.style && currTask.style.bgUrl
+        this.setState(prevState => ({ ...prevState, bgUrl }))
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        const { currTask } = this.props
+        const bgUrl = currTask.style && currTask.style.bgUrl
+        if (bgUrl !== prevState.bgUrl) {
+            this.setState(prevState => ({ ...prevState, bgUrl }))
+        }
+    }
+
+    toggleBgUrl = () => {
+        this.setState(prevState => ({ ...prevState, bgUrl: !prevState.bgUrl }))
     }
 
     togglePopover = () => {
@@ -29,9 +46,10 @@ export class TaskAttachmentPreview extends Component {
     };
 
     removeAttach = () => {
-        const { updateTaskDetails, currTask, addActivity, attachment } = this.props
+        const { updateTaskDetails, currTask, addActivity, attachment, setBgUrlCover } = this.props
         const attachs = currTask.attachments.filter(currAttach => currAttach.id !== attachment.id)
         currTask.attachments = attachs
+        setBgUrlCover(null)
         updateTaskDetails(currTask)
         this.togglePopover()
         addActivity('remove-attachment', attachment.name)
@@ -40,6 +58,32 @@ export class TaskAttachmentPreview extends Component {
     onRemoveAttach = (ev) => {
         this.setCurrentTarget(ev)
         this.togglePopover()
+
+    setCover = () => {
+        const { updateTaskDetails, currTask, attachment, setBgUrlCover } = this.props
+        currTask.style.bgUrl = attachment.url
+        setBgUrlCover(attachment.url)
+        this.toggleBgUrl()
+        updateTaskDetails(currTask)
+    }
+    
+    removeCover = () => {
+        const { updateTaskDetails, currTask, setBgUrlCover } = this.props
+        currTask.style.bgUrl = ''
+        this.toggleBgUrl()
+        setBgUrlCover(null)
+        updateTaskDetails(currTask)
+    }
+
+
+
+    // onRemoveTodo = (todo) => {
+    //     const { currTask, updateTaskDetails, checklist } = this.props
+    //     const checklistIdx = currTask.checklists.indexOf(checklist)
+
+    //     const todoIdx = currTask.checklists[checklistIdx].todos.findIndex((currTodo) => {
+    //         return currTodo.id === todo.id
+    //     })
 
     }
     onEditAttach = (ev) => {
@@ -55,7 +99,7 @@ export class TaskAttachmentPreview extends Component {
     render() {
         const { attachment, currTask, updateTaskDetails, addActivity } = this.props
 
-        const { isPopover, currentTarget, isEditPopover } = this.state
+        const { isPopover, currentTarget, isEditPopover, bgUrl } = this.state
 
         console.log('attachment', attachment)
         console.log('currTask', currTask)
@@ -63,7 +107,7 @@ export class TaskAttachmentPreview extends Component {
         return (
             <div className="attachment-preview flex">
                 {(isWeb) ?
-                    <Link className="attachment-thumbnail flex" to={{ pathname: `https://${attachment.url}` }} target="_blank" title={`${attachment.name}`} style={{ backgroundImage: (`${attachment.url}`) }} rel="noreferrer nofollow noopener">
+                    <Link className="attachment-thumbnail flex" to={{ pathname: `${attachment.url}` }} target="_blank" title={`${attachment.name}`}>
                         <AttachFileIcon />
                     </Link> :
                     <img src={attachment.url} alt={attachment.name} />
@@ -76,15 +120,24 @@ export class TaskAttachmentPreview extends Component {
                             <button onClick={(event) => { this.onRemoveAttach(event) }}>Delete</button>
                             <button onClick={(event) => { this.onEditAttach(event) }}>Edit</button>
                         </div>
-                        {!isWeb &&
+
+                        {!isWeb && !bgUrl &&
                             <span>
                                 <VideoLabel className="make-cover-icon" />
-                                <span>Make cover</span>
+                                <span onClick={this.setCover}>Make cover</span>
                             </span>
                         }
+                        {!isWeb && bgUrl &&
+                            <span>
+                                <VideoLabel className="make-cover-icon" />
+                                <span onClick={this.removeCover}>Remove cover</span>
+                            </span>
+                        }
+
                     </div>
                 </div>
-                {isPopover &&
+                {
+                    isPopover &&
                     <CheckDeletePopover
                         remove={this.removeAttach}
                         type={'attachment'}

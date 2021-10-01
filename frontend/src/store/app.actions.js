@@ -9,11 +9,10 @@ export const setCurrTaskDetails = (currTaskDetails) => {
     }
 }
 
-export const toggleOverlay = (isOn) => {
+export const toggleDragDisable = () => {
     return (dispatch) => {
         dispatch({
-            type: "TOGGLE_OVERLAY",
-            isOn
+            type: "TOGGLE_DRAGGING",
         });
     }
 }

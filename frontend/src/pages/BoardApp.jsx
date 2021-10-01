@@ -64,12 +64,6 @@ class _BoardApp extends Component {
               : board.style.bgClr,
           }}
         >
-          {isAppOverlay && (
-            <div
-              className="app-overlay"
-              onClick={()=>toggleOverlay(!isAppOverlay)}
-            ></div>
-          )}
           <BoardHeader board={{ ...board }} />
           <GroupList
             groups={[...board.groups]}
@@ -84,7 +78,6 @@ class _BoardApp extends Component {
 
 function mapStateToProps(state) {
   return {
-    isAppOverlay: state.appModule.isAppOverlay,
     board: state.boardModule.board
   };
 }
@@ -93,7 +86,6 @@ const mapDispatchToProps = {
   clearBoard,
   loadUsers,
   handleDrag,
-  toggleOverlay,
 };
 
 export const BoardApp = connect(mapStateToProps, mapDispatchToProps)(_BoardApp);

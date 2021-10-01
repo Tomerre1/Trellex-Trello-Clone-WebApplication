@@ -69,7 +69,7 @@
     overflow-y: auto;
     overflow-x: hidden;
     .task-list {
-      gap:6px;
+      gap:10px;
       display:flex;
       flex-direction: column;
 
@@ -77,7 +77,7 @@
 
 
     &::-webkit-scrollbar {
-      width: 12px;
+      width: 16px;
       background: inherit;
     }
     &::-webkit-scrollbar-track:vertical {
@@ -85,19 +85,20 @@
     }
     &::-webkit-scrollbar-track {
       border-radius: 20px;
+
     }
     &::-webkit-scrollbar-thumb:vertical {
       border-right: 8px solid #9d9ea0;
       border-radius: 20px;
     }
-    &::-webkit-scrollbar-track:horizontal {
-      border-bottom: 8px solid rgba(0, 0, 0, 0.089);
-      border-radius: 20px;
-    }
+    // &::-webkit-scrollbar-track:horizontal {
+    //   border-bottom: 8px solid rgba(0, 0, 0, 0.089);
+    //   border-radius: 20px;
+    // }
 
-    &::-webkit-scrollbar-thumb:horizontal {
-      border-bottom: 8px solid #9d9ea0;
-    }
+    // &::-webkit-scrollbar-thumb:horizontal {
+    //   border-bottom: 8px solid #9d9ea0;
+    // }
     // &::-webkit-scrollbar-corner,
     //     &::-webkit-resizer {background:inherit;
     //     border-right:8px solid rgba(255,255,255,.2); //optional
