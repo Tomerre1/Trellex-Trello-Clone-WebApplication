@@ -64,16 +64,8 @@ export class TaskAttachmentPreview extends Component {
 
     render() {
         const { attachment, currTask, updateTaskDetails, addActivity } = this.props
-<<<<<<< HEAD
-
-        const { isPopover, currentTarget } = this.state
-
-        console.log('attachment', attachment)
-        console.log('currTask', currTask)
-=======
         const { isWeb } = attachment
         console.log('%c  attachment:', 'color: #00000;background: #aaefe5;', attachment);
->>>>>>> 8efca16f746210e82bc9401a0d8c15ca20c03a1e
         return (
             <div className="attachment-preview flex">
                 {(isWeb) ?
@@ -87,11 +79,7 @@ export class TaskAttachmentPreview extends Component {
                         <span className="attachment-title">{attachment.name}</span>
                         <div className="attachment-actions">
                             <span className="attachment-date">Added {utilService.timeSince(attachment.createdAt)}</span>
-<<<<<<< HEAD
-                            <button onClick={(event) => { this.setCurrentTarget(event) }}>Delete</button>
-=======
                             <button onClick={() => this.removeAttach(attachment.id)}>Delete</button>
->>>>>>> 8efca16f746210e82bc9401a0d8c15ca20c03a1e
                             <button>Edit</button>
                         </div>
                         {!isWeb &&
@@ -102,20 +90,7 @@ export class TaskAttachmentPreview extends Component {
                         }
                     </div>
                 </div>
-<<<<<<< HEAD
-                {isPopover &&
-                    <CheckDeletePopover
-                        remove={this.remove}
-                        type={'attachment'}
-                        typeTitle={attachment.name}
-                        togglePopover={this.togglePopover}
-                        currentTarget={currentTarget}
-                    />
-                }
-            </div>
-=======
             </div >
->>>>>>> 8efca16f746210e82bc9401a0d8c15ca20c03a1e
         )
     }
 }
