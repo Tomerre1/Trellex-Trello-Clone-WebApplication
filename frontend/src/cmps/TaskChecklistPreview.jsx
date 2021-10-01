@@ -76,7 +76,7 @@ export class TaskChecklistPreview extends Component {
     }
 
     render() {
-        const { checklist, currTask, updateTaskDetails, addActivity } = this.props
+        const { checklist, addActivity } = this.props
         const { isPopover, currentTarget } = this.state
 
         return (

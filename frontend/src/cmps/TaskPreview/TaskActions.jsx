@@ -1,6 +1,5 @@
 import { connect } from "react-redux";
 import { removeTask } from "../../store/board.actions";
-import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import ArchiveIcon from '@mui/icons-material/Archive';
 
 function _TaskActions(props) {

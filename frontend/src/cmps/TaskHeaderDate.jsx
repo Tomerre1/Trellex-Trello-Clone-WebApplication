@@ -32,8 +32,6 @@ export class TaskHeaderDate extends Component {
         const isTaskDone = !this.state.isTaskDone
         this.setState(prevState => ({ ...prevState, isTaskDone }))
         this.props.toggleTaskDone()
-
-         //For Activity
          if(isTaskDone) this.props.addActivity('due-date-complete')
          else this.props.addActivity('due-date-incomplete')
     }
@@ -74,7 +72,7 @@ export class TaskHeaderDate extends Component {
     }
 
     render() {
-        const { selectedDate, setCurrentTarget, currTask } = this.props
+        const { selectedDate, setCurrentTarget } = this.props
         const { formatedDate, isTaskDone } = this.state
         const dueStatus = this.getDueStatus();
         if (selectedDate.length === 0) return <></>

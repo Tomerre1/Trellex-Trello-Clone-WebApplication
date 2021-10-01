@@ -40,6 +40,7 @@ export class ActivityPreview extends Component {
             case 'remove-attachment':
                 return `deleted the ${activity.txt} attachment from ${currTask.title}`
             default:
+                return ''
                 break;
         }
     }

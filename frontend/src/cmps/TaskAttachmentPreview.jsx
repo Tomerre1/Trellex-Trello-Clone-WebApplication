@@ -34,7 +34,7 @@ export class TaskAttachmentPreview extends Component {
     }
 
     togglePopover = () => {
-        this.setState(prevState => ({ ...prevState, isPopover: !prevState.isPopover }))
+        this.setState(prevState => ({ ...prevState, isEditPopover: false, isPopover: !prevState.isPopover }))
     }
     toggleEditPopover = () => {
         this.setState(prevState => ({ ...prevState, isPopover: false, isEditPopover: !prevState.isEditPopover }))
@@ -42,7 +42,6 @@ export class TaskAttachmentPreview extends Component {
 
     setCurrentTarget = (event) => {
         this.setState(prevState => ({ ...prevState, currentTarget: event }))
-        // this.togglePopover()
     }
 
     removeAttach = () => {
@@ -76,34 +75,22 @@ export class TaskAttachmentPreview extends Component {
         updateTaskDetails(currTask)
     }
 
-
-
-    // onRemoveTodo = (todo) => {
-    //     const { currTask, updateTaskDetails, checklist } = this.props
-    //     const checklistIdx = currTask.checklists.indexOf(checklist)
-
-    //     const todoIdx = currTask.checklists[checklistIdx].todos.findIndex((currTodo) => {
-    //         return currTodo.id === todo.id
-    //     })
-
-
     onEditAttach = (ev) => {
         this.setCurrentTarget(ev)
         this.toggleEditPopover()
     }
 
-    updateAttachment = () => {
-        console.log('update attach')
+    updateAttachment = (url, urlName) => {
+        const { updateTaskDetails, currTask, attachment } = this.props
+        attachment.url = url
+        attachment.name = urlName
+        updateTaskDetails(currTask)
+        this.toggleEditPopover()
     }
 
-
     render() {
-        const { attachment, currTask, updateTaskDetails, addActivity } = this.props
-
+        const { attachment } = this.props
         const { isPopover, currentTarget, isEditPopover, bgUrl } = this.state
-
-        console.log('attachment', attachment)
-        console.log('currTask', currTask)
         const { isWeb } = attachment
         return (
             <div className="attachment-preview flex">
@@ -159,9 +146,3 @@ export class TaskAttachmentPreview extends Component {
         )
     }
 }
-
-
-// createdAt: 1633032329759
-// id: "12f50ccf3b1abf770e6418fd66d55750"
-// name: "WhatsApp Image 2021-09-30 at 17.04.52"
-// url: "https:/
