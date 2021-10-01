@@ -43,7 +43,7 @@ export class TaskAttachmentPreview extends Component {
     setCurrentTarget = (event) => {
         this.setState(prevState => ({ ...prevState, currentTarget: event }))
         // this.togglePopover()
-    };
+    }
 
     removeAttach = () => {
         const { updateTaskDetails, currTask, addActivity, attachment, setBgUrlCover } = this.props
@@ -58,6 +58,7 @@ export class TaskAttachmentPreview extends Component {
     onRemoveAttach = (ev) => {
         this.setCurrentTarget(ev)
         this.togglePopover()
+    }
 
     setCover = () => {
         const { updateTaskDetails, currTask, attachment, setBgUrlCover } = this.props
@@ -66,7 +67,7 @@ export class TaskAttachmentPreview extends Component {
         this.toggleBgUrl()
         updateTaskDetails(currTask)
     }
-    
+
     removeCover = () => {
         const { updateTaskDetails, currTask, setBgUrlCover } = this.props
         currTask.style.bgUrl = ''
@@ -85,7 +86,7 @@ export class TaskAttachmentPreview extends Component {
     //         return currTodo.id === todo.id
     //     })
 
-    }
+
     onEditAttach = (ev) => {
         this.setCurrentTarget(ev)
         this.toggleEditPopover()
@@ -158,6 +159,7 @@ export class TaskAttachmentPreview extends Component {
         )
     }
 }
+
 
 // createdAt: 1633032329759
 // id: "12f50ccf3b1abf770e6418fd66d55750"
