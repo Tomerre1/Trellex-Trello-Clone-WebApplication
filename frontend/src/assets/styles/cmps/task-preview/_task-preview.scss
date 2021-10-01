@@ -2,8 +2,8 @@
   box-shadow: 0 1px 0 #c0c6d0;
   transition: background-color 0.2s;
   margin-top: 0;
-  p { 
-    color:#172b4d;
+  p {
+    color: #172b4d;
   }
   .edit-icon {
     opacity: 0;
@@ -53,33 +53,32 @@
   &.full-cover {
     height: 49px;
     border-radius: 3px;
-    position:relative;
+    position: relative;
     cursor: pointer;
     &.img {
-
       height: auto;
       img {
         width: 100%;
         object-fit: cover;
         border-radius: 3px;
       }
-      p { 
-        position:absolute;
-        bottom:0px;
-        color:white;
-        font-size:rem(16px);
+      p {
+        position: absolute;
+        bottom: 0px;
+        color: white;
+        font-size: rem(16px);
         font-weight: 500;
-        padding-left:8px;
-        padding-bottom:15px;
-        margin:0;
+        padding-left: 8px;
+        padding-bottom: 15px;
+        margin: 0;
       }
       .img-overlay {
-        position:absolute;
-        bottom:0;
-        width:100%;
-        height:65px;
-        background: linear-gradient(180deg,#fff0,#000000f3);
-        border-radius :3px;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 65px;
+        background: linear-gradient(180deg, #fff0, #000000f3);
+        border-radius: 3px;
       }
     }
     .task-preview {
@@ -88,16 +87,15 @@
       justify-content: flex-end;
       height: 100%;
       padding: 6px;
-      
+
       box-shadow: 0 1px 0 #c0c6d0;
       position: relative;
       p {
         margin: 0;
-        padding-left:4px;
+        padding-left: 4px;
         font-weight: 500;
       }
     }
-   
   }
   .task-cover {
     height: 32px;
@@ -107,7 +105,7 @@
   .task-preview {
     display: flex;
     flex-direction: column;
-    align-content: center ;
+    align-content: center;
     min-height: 32px;
     margin: 0;
     box-shadow: 0 1px 0 #c0c6d0;
@@ -119,31 +117,31 @@
     p {
       margin: 0;
       // margin-bottom:5px;
-
-
     }
+    background: #fff;
+    padding: 5px 8px;
+    padding-bottom: 3px;
+    border-radius: 3px;
+    font-size: rem(14px);
+    transition: background-color 0.1s;
+    cursor: pointer;
+    
     .task-cover-img {
       padding: 0 0 8px 0;
       width: 100%;
       height: auto;
       object-fit: cover;
+      border-radius: 3px;
+      
     }
-    background: #fff;
-    padding: 5px 8px;
-    padding-bottom:3px;
-    border-radius: 3px;
-    font-size: rem(14px);
-    transition: background-color 0.1s;
-
-    cursor: pointer;
 
     .task-preview-icons {
       flex-wrap: wrap;
-      gap:5px;
+      gap: 5px;
       span {
         align-items: center;
         justify-content: center;
-        max-height:32px;
+        max-height: 32px;
 
         &:last-of-type {
           padding-right: 2px;
@@ -159,7 +157,6 @@
           margin-inline-start: 6px;
           background: rgb(97, 189, 79);
           padding-right: 6px;
-          padding-left: 1px;
           border-radius: 3px;
           height: 20px;
 
@@ -215,7 +212,7 @@
             top: 1px;
           }
           &.attach {
-            padding-right: 0 ;
+            padding-right: 0;
           }
         }
       }

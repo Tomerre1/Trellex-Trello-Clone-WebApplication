@@ -75,11 +75,11 @@ function _TaskPreview(props) {
         >
           {(provided) => (
             <article
-                ref={provided.innerRef}
-                {...provided.draggableProps}
-                {...provided.dragHandleProps}
-              >
-            <Link to={taskUrl} className="clean-link">
+              ref={provided.innerRef}
+              {...provided.draggableProps}
+              {...provided.dragHandleProps}
+            >
+              <Link to={taskUrl} className="clean-link">
                 <div
                   className="task-preview-container full-cover img"
                   src={style.bgUrl}
@@ -87,15 +87,15 @@ function _TaskPreview(props) {
                   <img className="" src={style.bgUrl} alt="" />
                   <div className="img-overlay" />
                   <p>{task.title}</p>
-                  <div className="edit-icon" onClick={(ev) => {
-                        ev.preventDefault();
-                        ev.stopPropagation();
-                        toggleMenu(ev);
-                      }}>
-                    <ModeEditOutlinedIcon
-                      className="icon"
-                     
-                    />
+                  <div
+                    className="edit-icon"
+                    onClick={(ev) => {
+                      ev.preventDefault();
+                      ev.stopPropagation();
+                      toggleMenu(ev);
+                    }}
+                  >
+                    <ModeEditOutlinedIcon className="icon" />
                   </div>
                 </div>
                 {isMenuShown && (
@@ -107,21 +107,18 @@ function _TaskPreview(props) {
                     task={task}
                   />
                 )}
-            </Link>
-                 <div
-              className={`overlay ${isMenuShown ? "show" : ""}`}
-              onClick={toggleMenu}
-            ></div>
-              </article>
-            
+              </Link>
+              <div
+                className={`overlay ${isMenuShown ? "show" : ""}`}
+                onClick={toggleMenu}
+              ></div>
+            </article>
           )}
-          
         </Draggable>
-        
       );
   }
 
-  // full color grad
+  // full color cover
   if (style && style?.coverMode === "full")
     return (
       <Draggable
@@ -170,10 +167,10 @@ function _TaskPreview(props) {
             task={task}
           />
         )}
-         <div
-              className={`overlay ${isMenuShown ? "show" : ""}`}
-              onClick={toggleMenu}
-            ></div>
+        <div
+          className={`overlay ${isMenuShown ? "show" : ""}`}
+          onClick={toggleMenu}
+        ></div>
       </Draggable>
     );
   // normal
@@ -199,7 +196,26 @@ function _TaskPreview(props) {
                 task={task}
               />
             )}
-            <article className="task-preview-container">
+            {style?.bgUrl && (
+              <Link to={taskUrl} className="clean-link">
+                <img
+                  className="task-cover-img"
+                  src={style.bgUrl}
+                  style={{ backgroundColor: "white", borderRadius: "3px" }}
+                  alt=""
+                />
+              </Link>
+            )}
+            <article
+              className="task-preview-container"
+              style={
+                style?.bgUrl && {
+                  position: "relative",
+                  top: "-8px",
+                  marginBottom: "-8px",
+                }
+              }
+            >
               <Link to={taskUrl} className="clean-link">
                 {style?.bgColor && !style?.bgUrl && (
                   <div
@@ -208,15 +224,10 @@ function _TaskPreview(props) {
                   ></div>
                 )}
 
-                <div className="task-preview clean-link">
-                  {style?.bgUrl && (
-                    <img
-                      className="task-cover-img"
-                      src={style.bgUrl}
-                      style={{ backgroundColor: "white" }}
-                      alt=""
-                    />
-                  )}
+                <div
+                  className="task-preview clean-link"
+                  style={style?.bgUrl && { borderRadius: "0px 0px 3px 0px" }}
+                >
                   {labelIds?.length > 0 && (
                     <TaskLabels labelIds={labelIds} boardLabels={boardLabels} />
                   )}
