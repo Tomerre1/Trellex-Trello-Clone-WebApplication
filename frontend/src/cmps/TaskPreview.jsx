@@ -60,6 +60,7 @@ import AttachFileIcon from '@mui/icons-material/AttachFile';
     return (
       <Draggable draggableId={task.id} index={index}>
         {(provided) => (
+          <Link to={taskUrl} className="clean-link">
           <article
             ref={provided.innerRef}
             {...provided.draggableProps}
@@ -68,9 +69,7 @@ import AttachFileIcon from '@mui/icons-material/AttachFile';
             <div className="task-preview-container full-cover img"src={style.bgUrl}>
             <img className=""src={style.bgUrl}/>
             <div className="img-overlay"/>
-              <Link to={taskUrl} className="clean-link">
                   <p>{task.title}</p>
-              </Link>
               <div className="edit-icon">
                 <Link to={taskUrl}>
                   <ModeEditOutlinedIcon className="icon" />
@@ -78,6 +77,7 @@ import AttachFileIcon from '@mui/icons-material/AttachFile';
               </div>
               </div>
           </article>
+              </Link>
         )}
       </Draggable>
     );
@@ -119,7 +119,7 @@ import AttachFileIcon from '@mui/icons-material/AttachFile';
             {...provided.draggableProps}
             {...provided.dragHandleProps}
           >
-            {isMenuShown && (
+            {/* {isMenuShown && (
               <TaskActions
                 toggleMenu={toggleMenuShown}
                 menuPos={menuPos}
@@ -127,7 +127,7 @@ import AttachFileIcon from '@mui/icons-material/AttachFile';
                 boardId={boardId}
                 task={task}
               />
-            )}
+            )} */}
             <article className="task-preview-container">
               <Link to={taskUrl} className="clean-link">
                 {style?.bgColor && !style?.bgUrl &&(
