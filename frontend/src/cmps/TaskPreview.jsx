@@ -23,8 +23,7 @@ function _TaskPreview(props) {
     boardId,
     index,
     isDragDisabled,
-    toggleDragDisable
-
+    toggleDragDisable,
   } = props;
   const {
     labelIds,
@@ -48,11 +47,12 @@ function _TaskPreview(props) {
       left: `${posX}px`,
     });
     toggleMenuShown(!isMenuShown);
-    toggleDragDisable(!isDragDisabled);
+    toggleDragDisable();
   };
 
   let todos;
   let doneTodos;
+
   const getChecklistData = () => {
     todos = 0;
     doneTodos = 0;
@@ -64,39 +64,71 @@ function _TaskPreview(props) {
     });
     return `${doneTodos}/${todos}`;
   };
+  // full cover image
   if (style?.bgUrl && style?.coverMode === "full") {
     if (style && style?.coverMode === "full")
       return (
-        <Draggable draggableId={task.id} index={index} isDragDisabled={isDragDisabled}>
+        <Draggable
+          draggableId={task.id}
+          index={index}
+          isDragDisabled={isDragDisabled}
+        >
           {(provided) => (
-            <Link to={taskUrl} className="clean-link">
-              <article
+            <article
                 ref={provided.innerRef}
                 {...provided.draggableProps}
                 {...provided.dragHandleProps}
               >
+            <Link to={taskUrl} className="clean-link">
                 <div
                   className="task-preview-container full-cover img"
                   src={style.bgUrl}
                 >
-                  <img className="" src={style.bgUrl} />
+                  <img className="" src={style.bgUrl} alt="" />
                   <div className="img-overlay" />
                   <p>{task.title}</p>
-                  <div className="edit-icon">
-                    <Link to={taskUrl}>
-                      <ModeEditOutlinedIcon className="icon" />
-                    </Link>
+                  <div className="edit-icon" onClick={(ev) => {
+                        ev.preventDefault();
+                        ev.stopPropagation();
+                        toggleMenu(ev);
+                      }}>
+                    <ModeEditOutlinedIcon
+                      className="icon"
+                     
+                    />
                   </div>
                 </div>
-              </article>
+                {isMenuShown && (
+                  <TaskActions
+                    toggleMenu={toggleMenuShown}
+                    menuPos={menuPos}
+                    groupId={groupId}
+                    boardId={boardId}
+                    task={task}
+                  />
+                )}
             </Link>
+                 <div
+              className={`overlay ${isMenuShown ? "show" : ""}`}
+              onClick={toggleMenu}
+            ></div>
+              </article>
+            
           )}
+          
         </Draggable>
+        
       );
   }
+
+  // full color grad
   if (style && style?.coverMode === "full")
     return (
-      <Draggable draggableId={task.id} index={index} isDragDisabled={isDragDisabled}>
+      <Draggable
+        draggableId={task.id}
+        index={index}
+        isDragDisabled={isDragDisabled}
+      >
         {(provided) => (
           <article
             ref={provided.innerRef}
@@ -118,13 +150,40 @@ function _TaskPreview(props) {
                 </Link>
               </div>
             </div>
+            {isMenuShown && (
+              <TaskActions
+                toggleMenu={toggleMenuShown}
+                menuPos={menuPos}
+                groupId={groupId}
+                boardId={boardId}
+                task={task}
+              />
+            )}
           </article>
         )}
+        {isMenuShown && (
+          <TaskActions
+            toggleMenu={toggleMenuShown}
+            menuPos={menuPos}
+            groupId={groupId}
+            boardId={boardId}
+            task={task}
+          />
+        )}
+         <div
+              className={`overlay ${isMenuShown ? "show" : ""}`}
+              onClick={toggleMenu}
+            ></div>
       </Draggable>
     );
+  // normal
   return (
     <>
-      <Draggable draggableId={task.id} index={index} isDragDisabled={isDragDisabled}>
+      <Draggable
+        draggableId={task.id}
+        index={index}
+        isDragDisabled={isDragDisabled}
+      >
         {(provided) => (
           <div
             ref={provided.innerRef}
@@ -155,7 +214,7 @@ function _TaskPreview(props) {
                       className="task-cover-img"
                       src={style.bgUrl}
                       style={{ backgroundColor: "white" }}
-                      alt="cover image"
+                      alt=""
                     />
                   )}
                   {labelIds?.length > 0 && (
