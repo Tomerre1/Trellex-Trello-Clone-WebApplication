@@ -159,27 +159,22 @@ export class PopoverCover extends React.Component {
                                     </div>
                                 </>
                             }
-
                         </div>
 
                         {(selectedPhoto) ?
-
                             <div onClick={() => this.setFullSelected()} className={`full-cover-preview ${isFullSelected ? 'selected' : ''}`} style={{ display: 'flex', backgroundImage: `url(${selectedPhoto}`, backgroundSize: 'contain' }}>
                                 <div style={{ padding: '6px 4px 4px 6px', position: 'relative', alignSelf: 'flex-end' }}>
                                     <div className="line" style={{ width: '122px' }}></div>
                                     <div className="line" style={{ width: '98px', marginTop: '4px' }}></div>
                                 </div>
                             </div>
-
                             :
-                            <>
-                                <div onClick={() => this.setFullSelected()} className={`full-cover-preview ${isFullSelected ? 'selected' : ''}`} style={{ backgroundColor: selectedColor, display: 'flex' }}>
-                                    <div style={{ padding: '6px 4px 4px 6px', position: 'relative', alignSelf: 'flex-end' }}>
-                                        <div className="line" style={{ width: '122px' }}></div>
-                                        <div className="line" style={{ width: '98px', marginTop: '4px' }}></div>
-                                    </div>
+                            <div onClick={() => this.setFullSelected()} className={`full-cover-preview ${isFullSelected ? 'selected' : ''}`} style={{ backgroundColor: selectedColor, display: 'flex' }}>
+                                <div style={{ padding: '6px 4px 4px 6px', position: 'relative', alignSelf: 'flex-end' }}>
+                                    <div className="line" style={{ width: '122px' }}></div>
+                                    <div className="line" style={{ width: '98px', marginTop: '4px' }}></div>
                                 </div>
-                            </>
+                            </div>
                         }
 
                     </div>
