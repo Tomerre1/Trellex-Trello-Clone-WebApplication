@@ -12,12 +12,13 @@ export class PopoverAttachment extends Component {
     }
 
     uploadFile = async (ev) => {
-        const { currTask, updateTaskDetails } = this.props
+        const { currTask, updateTaskDetails, togglePopover } = this.props
         const { attachments } = currTask
         const res = await cloudinaryService.uploadFile(ev)
         const attach = { name: res.original_filename, id: res.asset_id, createdAt: Date.now(), url: res.secure_url }
         currTask.attachments = (attachments) ? [...attachments, attach] : [attach]
         updateTaskDetails(currTask)
+        togglePopover()
     }
 
     removeAttach = async (attachId) => {
@@ -35,12 +36,13 @@ export class PopoverAttachment extends Component {
 
     onAttachmentClick = () => {
         const { webUrlSrc, webUrlName } = this.state
-        const { currTask, updateTaskDetails } = this.props
+        const { currTask, updateTaskDetails, togglePopover } = this.props
         const { attachments } = currTask
         if (webUrlSrc) {
             const attach = { name: (webUrlName) ? webUrlName : webUrlSrc, id: utilService.makeId(), createdAt: Date.now(), url: webUrlSrc, isWeb: true }
             currTask.attachments = (attachments) ? [...attachments, attach] : [attach]
             updateTaskDetails(currTask)
+            togglePopover()
         }
     }
 

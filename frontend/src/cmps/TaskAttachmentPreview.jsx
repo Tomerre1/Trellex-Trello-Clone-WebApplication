@@ -23,24 +23,14 @@ export class TaskAttachmentPreview extends Component {
         this.togglePopover()
     };
 
-    remove = () => {
-        console.log('Delete attachment')
+    removeAttach = () => {
         const { updateTaskDetails, currTask, addActivity, attachment } = this.props
-        const attachmentIdx = currTask.attachments.indexOf(attachment)
-        currTask.attachments.splice(attachmentIdx, 1)
+        const attachs = currTask.attachments.filter(currAttach => currAttach.id !== attachment.id)
+        currTask.attachments = attachs
         updateTaskDetails(currTask)
         this.togglePopover()
         addActivity('remove-attachment', attachment.name)
     }
-
-    removeAttach = async (attachId) => {
-        const { currTask, updateTaskDetails } = this.props
-        const { attachments } = currTask
-        const attachs = attachments.filter(currAttach => currAttach.id !== attachId)
-        currTask.attachments = attachs
-        updateTaskDetails(currTask)
-    }
-
 
     // onRemoveTodo = (todo) => {
     //     const { currTask, updateTaskDetails, checklist } = this.props
@@ -64,16 +54,13 @@ export class TaskAttachmentPreview extends Component {
 
     render() {
         const { attachment, currTask, updateTaskDetails, addActivity } = this.props
-<<<<<<< HEAD
 
         const { isPopover, currentTarget } = this.state
 
         console.log('attachment', attachment)
         console.log('currTask', currTask)
-=======
         const { isWeb } = attachment
         console.log('%c  attachment:', 'color: #00000;background: #aaefe5;', attachment);
->>>>>>> 8efca16f746210e82bc9401a0d8c15ca20c03a1e
         return (
             <div className="attachment-preview flex">
                 {(isWeb) ?
@@ -87,11 +74,7 @@ export class TaskAttachmentPreview extends Component {
                         <span className="attachment-title">{attachment.name}</span>
                         <div className="attachment-actions">
                             <span className="attachment-date">Added {utilService.timeSince(attachment.createdAt)}</span>
-<<<<<<< HEAD
                             <button onClick={(event) => { this.setCurrentTarget(event) }}>Delete</button>
-=======
-                            <button onClick={() => this.removeAttach(attachment.id)}>Delete</button>
->>>>>>> 8efca16f746210e82bc9401a0d8c15ca20c03a1e
                             <button>Edit</button>
                         </div>
                         {!isWeb &&
@@ -102,10 +85,9 @@ export class TaskAttachmentPreview extends Component {
                         }
                     </div>
                 </div>
-<<<<<<< HEAD
                 {isPopover &&
                     <CheckDeletePopover
-                        remove={this.remove}
+                        remove={this.removeAttach}
                         type={'attachment'}
                         typeTitle={attachment.name}
                         togglePopover={this.togglePopover}
@@ -113,9 +95,6 @@ export class TaskAttachmentPreview extends Component {
                     />
                 }
             </div>
-=======
-            </div >
->>>>>>> 8efca16f746210e82bc9401a0d8c15ca20c03a1e
         )
     }
 }
