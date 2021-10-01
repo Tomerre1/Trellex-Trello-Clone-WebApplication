@@ -1,12 +1,34 @@
 import React, { Component } from 'react';
 import { utilService } from '../services/util.service';
 import VideoLabel from '@mui/icons-material/VideoLabel';
+import { CheckDeletePopover } from './CheckDeletePopover'
+
 
 export class TaskAttachmentPreview extends Component {
 
 
     state = {
+        isPopover: false,
+        currentTarget: null
+    }
 
+    togglePopover = () => {
+        this.setState(prevState => ({ ...prevState, isPopover: !prevState.isPopover }))
+    }
+
+    setCurrentTarget = (event) => {
+        this.setState(prevState => ({ ...prevState, currentTarget: event }))
+        this.togglePopover()
+    };
+
+    remove = () => {
+        console.log('Delete attachment')
+        const { updateTaskDetails, currTask, addActivity, attachment } = this.props
+        const attachmentIdx = currTask.attachments.indexOf(attachment)
+        currTask.attachments.splice(attachmentIdx, 1)
+        updateTaskDetails(currTask)
+        this.togglePopover()
+        addActivity('remove-attachment', attachment.name)
     }
 
     // onRemoveTodo = (todo) => {
@@ -32,8 +54,10 @@ export class TaskAttachmentPreview extends Component {
     render() {
         const { attachment, currTask, updateTaskDetails, addActivity } = this.props
 
+        const { isPopover, currentTarget } = this.state
 
         console.log('attachment', attachment)
+        console.log('currTask', currTask)
         return (
             <div className="attachment-preview flex">
                 {/* <a className="attachment-thumbnail" href={`${attachment.url}`} target="_blank" title={`${attachment.name}`} style={{ backgroundImage: (`${attachment.url}`), backgroundColor: '#051e46' }} rel="noreferrer nofollow noopener"></a> */}
@@ -43,7 +67,7 @@ export class TaskAttachmentPreview extends Component {
                         <span className="attachment-title">{attachment.name}</span>
                         <div className="attachment-actions">
                             <span className="attachment-date">Added {utilService.timeSince(attachment.createdAt)}</span>
-                            <button>Delete</button>
+                            <button onClick={(event) => { this.setCurrentTarget(event) }}>Delete</button>
                             <button>Edit</button>
                         </div>
                         <span>
@@ -51,8 +75,16 @@ export class TaskAttachmentPreview extends Component {
                             <span>Make cover</span>
                         </span>
                     </div>
-
                 </div>
+                {isPopover &&
+                    <CheckDeletePopover
+                        remove={this.remove}
+                        type={'attachment'}
+                        typeTitle={attachment.name}
+                        togglePopover={this.togglePopover}
+                        currentTarget={currentTarget}
+                    />
+                }
             </div>
         )
     }

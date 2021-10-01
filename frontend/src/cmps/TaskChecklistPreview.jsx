@@ -67,7 +67,6 @@ export class TaskChecklistPreview extends Component {
     }
 
     remove = () => {
-        // const { togglePopover } = this.state
         const { updateTaskDetails, currTask, addActivity, checklist } = this.props
         const checklistIdx = currTask.checklists.indexOf(checklist)
         currTask.checklists.splice(checklistIdx, 1)
