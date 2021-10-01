@@ -9,7 +9,7 @@ export const setCurrTaskDetails = (currTaskDetails) => {
     }
 }
 
-export const toggleDrag = () => {
+export const toggleDragDisable = () => {
     return (dispatch) => {
         dispatch({
             type: "TOGGLE_DRAGGING",

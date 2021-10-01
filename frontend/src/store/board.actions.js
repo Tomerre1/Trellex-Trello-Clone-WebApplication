@@ -91,7 +91,6 @@ export const handleDrag = (
             }
             // different group target
             if (droppableIdStart !== droppableIdEnd) {
-                console.log('wtf')
                 // source group
                 const groupStart = tempBoard.groups.find(group => group.id === droppableIdStart)
                 const task = groupStart.tasks.splice(droppableIndexStart, 1)

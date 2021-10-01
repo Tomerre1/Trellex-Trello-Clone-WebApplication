@@ -5,17 +5,17 @@ import { TaskPreviewList } from "./TaskPreviewList";
 import { AddNewTask } from "./Group/AddNewTask";
 import { HeaderTitle } from "./Group/HeaderTitle";
 import { removeGroup } from "../store/board.actions";
+import { toggleDragDisable } from "../store/app.actions";
 import MoreHorizOutlinedIcon from "@mui/icons-material/MoreHorizOutlined";
 import { GroupActions } from "./Group/GroupActions";
 import { Draggable } from "react-beautiful-dnd";
 import NaturalDragAnimation from "natural-drag-animation-rbdnd";
 
 const _GroupDetails = (props) => {
-  const { group, isAddNew, boardId, boardLabels, index } = props;
+  const { group, isAddNew, boardId, boardLabels, index,isDragDisabled,toggleDragDisable } = props;
   const elRef = useRef();
   const [isMenuShown, toggleMenuShown] = useState(false);
   const [menuPos, setMenuPos] = useState({});
-  const [isDragDisabled,toggleDragDisable] = useState(false);
 
   const toggleMenu = (ev) => {
     let posX = window.innerWidth - ev.pageX > 200 ? ev.pageX : ev.pageX - 200;
@@ -25,6 +25,8 @@ const _GroupDetails = (props) => {
       left: `${posX}px`,
     });
     toggleMenuShown(!isMenuShown);
+    toggleDragDisable();
+
   };
 
   const scrollToBottom = () => {
@@ -105,10 +107,6 @@ const _GroupDetails = (props) => {
                     scrollToBottom={scrollToBottom}
                   />
                 </div>
-                <div
-                  className={`overlay ${isMenuShown ? "show" : ""}`}
-                  onClick={toggleMenu}
-                ></div>
               </article>
             )}
           </NaturalDragAnimation>
@@ -120,5 +118,11 @@ const _GroupDetails = (props) => {
 
 const mapDispatchToProps = {
   removeGroup,
+  toggleDragDisable,
 };
-export const GroupDetails = connect(null, mapDispatchToProps)(_GroupDetails);
+function mapStateToProps(state) {
+  return {
+    isDragDisabled : state.appModule.isDragDisabled,
+  }
+}
+export const GroupDetails = connect(mapStateToProps, mapDispatchToProps)(_GroupDetails);

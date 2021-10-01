@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { TaskLabels } from "./TaskPreview/TaskLabels";
 import { TaskDetailsPreview } from "./TaskPreview/TaskDetailsPreview";
-import { toggleDrag } from "../store/app.actions";
+import { toggleDragDisable } from "../store/app.actions";
 import { TaskDatePreview } from "./TaskPreview/TaskDatePreview";
 import { TaskActions } from "./TaskPreview/TaskActions";
 import { MemberList } from "../cmps/MemberList";
@@ -22,8 +22,9 @@ function _TaskPreview(props) {
     groupId,
     boardId,
     index,
-    isAppOverlay,
-    toggleOverlay,
+    isDragDisabled,
+    toggleDragDisable
+
   } = props;
   const {
     labelIds,
@@ -47,6 +48,7 @@ function _TaskPreview(props) {
       left: `${posX}px`,
     });
     toggleMenuShown(!isMenuShown);
+    toggleDragDisable(!isDragDisabled);
   };
 
   let todos;
@@ -65,7 +67,7 @@ function _TaskPreview(props) {
   if (style?.bgUrl && style?.coverMode === "full") {
     if (style && style?.coverMode === "full")
       return (
-        <Draggable draggableId={task.id} index={index} isDragDisabled={isMenuShown}>
+        <Draggable draggableId={task.id} index={index} isDragDisabled={isDragDisabled}>
           {(provided) => (
             <Link to={taskUrl} className="clean-link">
               <article
@@ -94,7 +96,7 @@ function _TaskPreview(props) {
   }
   if (style && style?.coverMode === "full")
     return (
-      <Draggable draggableId={task.id} index={index} isDragDisabled={isMenuShown}>
+      <Draggable draggableId={task.id} index={index} isDragDisabled={isDragDisabled}>
         {(provided) => (
           <article
             ref={provided.innerRef}
@@ -122,7 +124,7 @@ function _TaskPreview(props) {
     );
   return (
     <>
-      <Draggable draggableId={task.id} index={index} isDragDisabled={isMenuShown}>
+      <Draggable draggableId={task.id} index={index} isDragDisabled={isDragDisabled}>
         {(provided) => (
           <div
             ref={provided.innerRef}
@@ -229,11 +231,11 @@ function _TaskPreview(props) {
 }
 function mapStateToProps(state) {
   return {
-    isAppOverlay: state.appModule.isAppOverlay,
+    isDragDisabled: state.appModule.isDragDisabled,
   };
 }
 const mapDispatchToProps = {
-  toggleDrag,
+  toggleDragDisable,
 };
 
 export const TaskPreview = connect(
