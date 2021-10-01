@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState } from "react";
 import {connect} from 'react-redux'
 import { Link } from "react-router-dom";
 import { TaskLabels } from "./TaskPreview/TaskLabels";
@@ -38,8 +38,8 @@ import AttachFileIcon from '@mui/icons-material/AttachFile';
       top: `${ev.pageY}px`,
       left: `${posX}px`,
     });
+    toggleOverlay(true)
     toggleMenuShown(!isMenuShown);
-    toggleOverlay(!isMenuShown)
   };
   
   let todos;
@@ -56,7 +56,31 @@ import AttachFileIcon from '@mui/icons-material/AttachFile';
     return `${doneTodos}/${todos}`;
   };
   if (style?.bgUrl && style?.coverMode === "full") {
-
+    if (style && style?.coverMode === "full")
+    return (
+      <Draggable draggableId={task.id} index={index}>
+        {(provided) => (
+          <article
+            ref={provided.innerRef}
+            {...provided.draggableProps}
+            {...provided.dragHandleProps}
+          >
+            <div className="task-preview-container full-cover img"src={style.bgUrl}>
+            <img className=""src={style.bgUrl}/>
+            <div className="img-overlay"/>
+              <Link to={taskUrl} className="clean-link">
+                  <p>{task.title}</p>
+              </Link>
+              <div className="edit-icon">
+                <Link to={taskUrl}>
+                  <ModeEditOutlinedIcon className="icon" />
+                </Link>
+              </div>
+              </div>
+          </article>
+        )}
+      </Draggable>
+    );
   }
   if (style && style?.coverMode === "full")
     return (
@@ -88,7 +112,14 @@ import AttachFileIcon from '@mui/icons-material/AttachFile';
     );
   return (
     <>
-    {isMenuShown && isAppOverlay && (
+      <Draggable draggableId={task.id} index={index}>
+        {(provided) => (
+          <div
+            ref={provided.innerRef}
+            {...provided.draggableProps}
+            {...provided.dragHandleProps}
+          >
+            {isMenuShown && (
               <TaskActions
                 toggleMenu={toggleMenuShown}
                 menuPos={menuPos}
@@ -97,14 +128,6 @@ import AttachFileIcon from '@mui/icons-material/AttachFile';
                 task={task}
               />
             )}
-      <Draggable draggableId={task.id} index={index}>
-        {(provided) => (
-          <div
-            ref={provided.innerRef}
-            {...provided.draggableProps}
-            {...provided.dragHandleProps}
-          >
-            
             <article className="task-preview-container">
               <Link to={taskUrl} className="clean-link">
                 {style?.bgColor && !style?.bgUrl &&(
