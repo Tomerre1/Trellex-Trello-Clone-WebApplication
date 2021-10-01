@@ -2,12 +2,12 @@
     display:flex;
     gap: 8px;
     position:relative;
-    margin-top:45px;
+    margin-top:42px;
     padding:8px;
     overflow-x: scroll;
     min-height:90vh;
 
-    
+  
     &::-webkit-scrollbar {
       height:15px;
       border-radius: 50px;
