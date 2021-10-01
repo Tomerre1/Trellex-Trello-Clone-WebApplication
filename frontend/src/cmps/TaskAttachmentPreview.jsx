@@ -42,7 +42,6 @@ export class TaskAttachmentPreview extends Component {
 
     setCurrentTarget = (event) => {
         this.setState(prevState => ({ ...prevState, currentTarget: event }))
-        // this.togglePopover()
     }
 
     removeAttach = () => {
@@ -90,7 +89,7 @@ export class TaskAttachmentPreview extends Component {
     }
 
     render() {
-        const { attachment, currTask } = this.props
+        const { attachment } = this.props
         const { isPopover, currentTarget, isEditPopover, bgUrl } = this.state
         const { isWeb } = attachment
         return (

@@ -47,7 +47,7 @@ export class PopoverLabels extends Component {
     }
 
     submitLabel = async (label) => {
-        const { board, updateBoard, setSelectedLabels, updateTaskDetails, currTask } = this.props
+        const { board, updateBoard, setSelectedLabels, currTask } = this.props
         let labels;
         if (label.id) {
             labels = board.labels.map(currLabel => (currLabel.id === label.id) ? label : currLabel)
@@ -84,8 +84,6 @@ export class PopoverLabels extends Component {
         else if (isCreate) return 'Create a label'
         else return title
     }
-
-
 
     render() {
         const { togglePopover, currentTarget, currTask } = this.props

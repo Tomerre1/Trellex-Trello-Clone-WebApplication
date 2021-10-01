@@ -87,7 +87,7 @@ export class PopoverMoveCopy extends Component {
 
 
     render() {
-        const { togglePopover, currentTarget, title, boards, currTask, isCopy } = this.props
+        const { togglePopover, currentTarget, title, boards, isCopy } = this.props
         const { selectedBoard, selectedGroup, selectedPosition, taskTitle } = this.state
         if (!(selectedBoard)) return <></>
         return (

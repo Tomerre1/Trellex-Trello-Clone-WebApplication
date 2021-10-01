@@ -24,7 +24,7 @@ export class EditAttachmentPopover extends Component {
     }
 
     render() {
-        const { attachment, updateAttachment, currentTarget, togglePopover } = this.props
+        const { attachment, currentTarget, togglePopover } = this.props
         const { url, urlName } = this.state
         const title = `Update ${attachment.name}`
         return (

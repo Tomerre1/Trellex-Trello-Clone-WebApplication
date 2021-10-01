@@ -52,7 +52,6 @@ export class TodoPreview extends Component {
         this.props.onRemoveTodo(todo)
     }
 
-
     onUndoChange = () => {
         const { todo } = this.props
         const { todoTitle } = this.state
@@ -64,7 +63,7 @@ export class TodoPreview extends Component {
     render() {
         const { todo, isEditMode } = this.state
         if (!todo) return <div>Loading...</div>
-        const { title, isDone } = todo
+        const { title } = todo
 
         return (
 
@@ -88,7 +87,6 @@ export class TodoPreview extends Component {
                 </div>
                 <div className={`checklist-btns flex align-center ${isEditMode ? 'show' : 'hidden'}`}>
                     <button onClick={this.onSaveTodo} className="nch-btn primary-btn">Save</button>
-                    {/* <button onClick={this.onUndoChange} className="close-btn"><Close/></button> */}
                     <Close onClick={this.onUndoChange} className="close-btn" />
                 </div >
             </div >
