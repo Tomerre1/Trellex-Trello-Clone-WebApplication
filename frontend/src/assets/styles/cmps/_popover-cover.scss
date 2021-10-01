@@ -1,5 +1,18 @@
 .cover-popover {
     width: 18rem;
+    .line {
+        background: #6b778c;
+        height: 4px;
+        border-radius: 2px;
+    }
+    .dot {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        right: 4px;
+        background: #6b778c;
+        border-radius: 5px;
+    }
     .upload-preview {
         margin-bottom: 8px;
         label {
