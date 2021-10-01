@@ -125,14 +125,13 @@
     font-size: rem(14px);
     transition: background-color 0.1s;
     cursor: pointer;
-    
+
     .task-cover-img {
       padding: 0 0 8px 0;
       width: 100%;
       height: auto;
       object-fit: cover;
       border-radius: 3px;
-      
     }
 
     .task-preview-icons {
