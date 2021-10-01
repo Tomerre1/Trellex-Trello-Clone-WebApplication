@@ -77,7 +77,6 @@ export class TaskHeaderDate extends Component {
         const { selectedDate, setCurrentTarget, currTask } = this.props
         const { formatedDate, isTaskDone } = this.state
         const dueStatus = this.getDueStatus();
-        // console.log('currTask.isDone from TaskHeaderDate',currTask.isDone)
         if (selectedDate.length === 0) return <></>
 
         return (

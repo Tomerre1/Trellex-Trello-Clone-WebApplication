@@ -2,9 +2,6 @@ import React from 'react'
 import CheckIcon from '@material-ui/icons/Check';
 
 export function PopoverMemberPreview({ member, members, selectedMembersIds, toggleMemberCheck }) {
-    console.log('%c  member.id:', 'color: #0e93e0;background: #aaefe5;', member.id);
-    console.log('%c  selectedMembersIds:', 'color: #00000;background: #aaefe5;', selectedMembersIds);
-
     return (
         <li className="member-pop-over-preview flex" onClick={() => { toggleMemberCheck(member) }}>
             {member.imgUrl &&

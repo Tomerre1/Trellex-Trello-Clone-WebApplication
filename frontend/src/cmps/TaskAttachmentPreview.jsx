@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { utilService } from '../services/util.service';
 import VideoLabel from '@mui/icons-material/VideoLabel';
+import AttachFileIcon from '@mui/icons-material/AttachFile';
+import { Link } from 'react-router-dom';
+
 
 export class TaskAttachmentPreview extends Component {
 
@@ -8,6 +11,15 @@ export class TaskAttachmentPreview extends Component {
     state = {
 
     }
+
+    removeAttach = async (attachId) => {
+        const { currTask, updateTaskDetails } = this.props
+        const { attachments } = currTask
+        const attachs = attachments.filter(currAttach => currAttach.id !== attachId)
+        currTask.attachments = attachs
+        updateTaskDetails(currTask)
+    }
+
 
     // onRemoveTodo = (todo) => {
     //     const { currTask, updateTaskDetails, checklist } = this.props
@@ -31,29 +43,34 @@ export class TaskAttachmentPreview extends Component {
 
     render() {
         const { attachment, currTask, updateTaskDetails, addActivity } = this.props
-
-
-        console.log('attachment', attachment)
+        const { isWeb } = attachment
+        console.log('%c  attachment:', 'color: #00000;background: #aaefe5;', attachment);
         return (
             <div className="attachment-preview flex">
-                {/* <a className="attachment-thumbnail" href={`${attachment.url}`} target="_blank" title={`${attachment.name}`} style={{ backgroundImage: (`${attachment.url}`), backgroundColor: '#051e46' }} rel="noreferrer nofollow noopener"></a> */}
-                <img src={attachment.url} alt={attachment.name} />
+                {(isWeb) ?
+                    <Link className="attachment-thumbnail flex" to={{ pathname: `https://${attachment.url}` }} target="_blank" title={`${attachment.name}`} style={{ backgroundImage: (`${attachment.url}`) }} rel="noreferrer nofollow noopener">
+                        <AttachFileIcon />
+                    </Link> :
+                    <img src={attachment.url} alt={attachment.name} />
+                }
                 <div className="attachment-content">
                     <div className="attachment-details">
                         <span className="attachment-title">{attachment.name}</span>
                         <div className="attachment-actions">
                             <span className="attachment-date">Added {utilService.timeSince(attachment.createdAt)}</span>
-                            <button>Delete</button>
+                            <button onClick={() => this.removeAttach(attachment.id)}>Delete</button>
                             <button>Edit</button>
                         </div>
-                        <span>
-                            <VideoLabel className="make-cover-icon" />
-                            <span>Make cover</span>
-                        </span>
+                        {!isWeb &&
+                            <span>
+                                <VideoLabel className="make-cover-icon" />
+                                <span>Make cover</span>
+                            </span>
+                        }
                     </div>
 
                 </div>
-            </div>
+            </div >
         )
     }
 }
