@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { utilService } from '../services/util.service';
 import VideoLabel from '@mui/icons-material/VideoLabel';
 import { CheckDeletePopover } from './CheckDeletePopover'
+import { EditAttachmentPopover } from './EditAttachmentPopover'
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import { Link } from 'react-router-dom';
 
@@ -11,16 +12,20 @@ export class TaskAttachmentPreview extends Component {
 
     state = {
         isPopover: false,
+        isEditPopover: false,
         currentTarget: null
     }
 
     togglePopover = () => {
         this.setState(prevState => ({ ...prevState, isPopover: !prevState.isPopover }))
     }
+    toggleEditPopover = () => {
+        this.setState(prevState => ({ ...prevState, isPopover: false, isEditPopover: !prevState.isEditPopover }))
+    }
 
     setCurrentTarget = (event) => {
         this.setState(prevState => ({ ...prevState, currentTarget: event }))
-        this.togglePopover()
+        // this.togglePopover()
     };
 
     removeAttach = () => {
@@ -32,35 +37,29 @@ export class TaskAttachmentPreview extends Component {
         addActivity('remove-attachment', attachment.name)
     }
 
-    // onRemoveTodo = (todo) => {
-    //     const { currTask, updateTaskDetails, checklist } = this.props
-    //     const checklistIdx = currTask.checklists.indexOf(checklist)
+    onRemoveAttach = (ev) => {
+        this.setCurrentTarget(ev)
+        this.togglePopover()
 
-    //     const todoIdx = currTask.checklists[checklistIdx].todos.findIndex((currTodo) => {
-    //         return currTodo.id === todo.id
-    //     })
+    }
+    onEditAttach = (ev) => {
+        this.setCurrentTarget(ev)
+        this.toggleEditPopover()
+    }
 
-    //     currTask.checklists[checklistIdx].todos.splice(todoIdx, 1)
-    //     updateTaskDetails(currTask)
-    // }
-
-    // onAddTodo = (todo) => {
-    //     const { currTask, updateTaskDetails, checklist } = this.props
-    //     const checklistIdx = currTask.checklists.indexOf(checklist)
-    //     currTask.checklists[checklistIdx].todos.push(todo)
-    //     updateTaskDetails(currTask)
-    // }
+    updateAttachment = () => {
+        console.log('update attach')
+    }
 
 
     render() {
         const { attachment, currTask, updateTaskDetails, addActivity } = this.props
 
-        const { isPopover, currentTarget } = this.state
+        const { isPopover, currentTarget, isEditPopover } = this.state
 
         console.log('attachment', attachment)
         console.log('currTask', currTask)
         const { isWeb } = attachment
-        console.log('%c  attachment:', 'color: #00000;background: #aaefe5;', attachment);
         return (
             <div className="attachment-preview flex">
                 {(isWeb) ?
@@ -74,8 +73,8 @@ export class TaskAttachmentPreview extends Component {
                         <span className="attachment-title">{attachment.name}</span>
                         <div className="attachment-actions">
                             <span className="attachment-date">Added {utilService.timeSince(attachment.createdAt)}</span>
-                            <button onClick={(event) => { this.setCurrentTarget(event) }}>Delete</button>
-                            <button>Edit</button>
+                            <button onClick={(event) => { this.onRemoveAttach(event) }}>Delete</button>
+                            <button onClick={(event) => { this.onEditAttach(event) }}>Edit</button>
                         </div>
                         {!isWeb &&
                             <span>
@@ -92,6 +91,14 @@ export class TaskAttachmentPreview extends Component {
                         typeTitle={attachment.name}
                         togglePopover={this.togglePopover}
                         currentTarget={currentTarget}
+                    />
+                }
+                {isEditPopover &&
+                    <EditAttachmentPopover
+                        togglePopover={this.toggleEditPopover}
+                        currentTarget={currentTarget}
+                        updateAttachment={this.updateAttachment}
+                        attachment={attachment}
                     />
                 }
             </div>
