@@ -136,13 +136,14 @@
         &.due-date {
           display: flex;
           align-items: center;
-          height: 20px;
+          max-height: 20px;
+          padding: 2px 0px 2px 0px;
 
           p {
             font-size: rem(12px);
           }
           &.overdue {
-            padding: 2px 2px;
+            padding: 2px 2px 2px 0px;
             border-radius: 4px;
             p {
               color: white;
@@ -155,7 +156,6 @@
             }
           }
           &.done {
-            padding: 2px 2px;
             border-radius: 4px;
             p {
               color: white;
