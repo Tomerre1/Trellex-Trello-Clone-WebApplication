@@ -67,7 +67,7 @@ class _BoardApp extends Component {
           {isAppOverlay && (
             <div
               className="app-overlay"
-              onClick={toggleOverlay}
+              onClick={()=>toggleOverlay(!isAppOverlay)}
             ></div>
           )}
           <BoardHeader board={{ ...board }} />

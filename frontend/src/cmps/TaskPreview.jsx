@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import {connect} from 'react-redux'
 import { Link } from "react-router-dom";
 import { TaskLabels } from "./TaskPreview/TaskLabels";
@@ -39,6 +39,7 @@ import AttachFileIcon from '@mui/icons-material/AttachFile';
       left: `${posX}px`,
     });
     toggleMenuShown(!isMenuShown);
+    toggleOverlay(!isMenuShown)
   };
   
   let todos;
@@ -87,14 +88,7 @@ import AttachFileIcon from '@mui/icons-material/AttachFile';
     );
   return (
     <>
-      <Draggable draggableId={task.id} index={index}>
-        {(provided) => (
-          <div
-            ref={provided.innerRef}
-            {...provided.draggableProps}
-            {...provided.dragHandleProps}
-          >
-            {isMenuShown && (
+    {isMenuShown && isAppOverlay && (
               <TaskActions
                 toggleMenu={toggleMenuShown}
                 menuPos={menuPos}
@@ -103,6 +97,14 @@ import AttachFileIcon from '@mui/icons-material/AttachFile';
                 task={task}
               />
             )}
+      <Draggable draggableId={task.id} index={index}>
+        {(provided) => (
+          <div
+            ref={provided.innerRef}
+            {...provided.draggableProps}
+            {...provided.dragHandleProps}
+          >
+            
             <article className="task-preview-container">
               <Link to={taskUrl} className="clean-link">
                 {style?.bgColor && !style?.bgUrl &&(
