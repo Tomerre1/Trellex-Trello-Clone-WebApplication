@@ -8,3 +8,12 @@ export const setCurrTaskDetails = (currTaskDetails) => {
 
     }
 }
+
+export const toggleOverlay = () => {
+    return (dispatch) => {
+        dispatch({
+            type: "TOGGLE_OVERLAY",
+        });
+
+    }
+}

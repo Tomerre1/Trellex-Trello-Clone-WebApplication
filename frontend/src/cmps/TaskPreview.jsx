@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import {connect} from 'react-redux'
 import { Link } from "react-router-dom";
 import { TaskLabels } from "./TaskPreview/TaskLabels";
 import { TaskDetailsPreview } from "./TaskPreview/TaskDetailsPreview";
+import { toggleOverlay } from "../store/app.actions"
 import { TaskDatePreview } from "./TaskPreview/TaskDatePreview";
 import { TaskActions } from "./TaskPreview/TaskActions";
 import { MemberList } from "../cmps/MemberList";
@@ -12,8 +14,8 @@ import ChatBubbleOutlineRoundedIcon from "@mui/icons-material/ChatBubbleOutlineR
 import ModeEditOutlinedIcon from "@mui/icons-material/ModeEditOutlined";
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 
-export function TaskPreview(props) {
-  const { task, taskUrl, boardLabels, groupId, boardId, index } = props;
+ function _TaskPreview(props) {
+  const { task, taskUrl, boardLabels, groupId, boardId, index, isAppOverlay, toggleOverlay } = props;
   const {
     labelIds,
     title,
@@ -28,6 +30,7 @@ export function TaskPreview(props) {
   const [isMenuShown, toggleMenuShown] = useState(false);
   const [menuPos, setMenuPos] = useState();
 
+
   const toggleMenu = (ev) => {
     let posX = window.innerWidth - ev.pageX > 200 ? ev.pageX : ev.pageX - 200;
     setMenuPos({
@@ -37,8 +40,8 @@ export function TaskPreview(props) {
     });
     toggleMenuShown(!isMenuShown);
   };
+  
   let todos;
-
   let doneTodos;
   const getChecklistData = () => {
     todos = 0;
@@ -51,7 +54,9 @@ export function TaskPreview(props) {
     });
     return `${doneTodos}/${todos}`;
   };
+  if (style?.bgUrl && style?.coverMode === "full") {
 
+  }
   if (style && style?.coverMode === "full")
     return (
       <Draggable draggableId={task.id} index={index}>
@@ -63,7 +68,7 @@ export function TaskPreview(props) {
           >
             <div
               className="task-preview-container full-cover"
-              style={{ background: style.bgColor, marginBottom: "7px" }}
+              style={{ background: style.bgColor}}
             >
               <Link to={taskUrl} className="clean-link">
                 <div className="task-preview">
@@ -141,7 +146,7 @@ export function TaskPreview(props) {
                       />
                     )}
                     {attachments?.length > 0 && <TaskDetailsPreview
-                       icon={<AttachFileIcon className="icon" />}
+                       icon={<AttachFileIcon className="icon attach" />}
                        txt={attachments.length}
                     />}
                     {checklists?.length > 0 && todos !== 0 && (
@@ -174,11 +179,17 @@ export function TaskPreview(props) {
           </div>
         )}
       </Draggable>
-      <div
-        className={`overlay ${isMenuShown ? "show" : ""}`}
-        onClick={toggleMenu}
-        draggable={false}
-      ></div>
     </>
   );
 }
+function mapStateToProps(state) {
+  return {
+    isAppOverlay: state.appModule.isAppOverlay,
+  };
+}
+const mapDispatchToProps = {
+  toggleOverlay
+}
+
+export const TaskPreview = connect(mapStateToProps,mapDispatchToProps)(_TaskPreview)
+

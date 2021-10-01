@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { BoardHeader } from "../cmps/BoardHeader";
 import { connect } from "react-redux";
-import { loadBoard, clearBoard,handleDrag } from "../store/board.actions";
+import { loadBoard, clearBoard, handleDrag } from "../store/board.actions";
+import { toggleOverlay } from "../store/app.actions";
 import { loadUsers } from "../store/user.actions";
 import { GroupList } from "../cmps/GroupList";
 import { LoaderSpinner } from "../cmps/LoaderSpinner";
-import { DragDropContext} from "react-beautiful-dnd"
+import { DragDropContext } from "react-beautiful-dnd";
 
 class _BoardApp extends Component {
   componentDidMount = async () => {
@@ -37,42 +38,45 @@ class _BoardApp extends Component {
     }
   };
 
-   onDragEnd =(result)=>{
-    const {destination, source, draggableId,type} = result;
-    if (!destination) return
+  onDragEnd = (result) => {
+    const { destination, source, draggableId, type } = result;
+    if (!destination) return;
     this.props.handleDrag(
-      {...this.props.board},
+      { ...this.props.board },
       source.droppableId,
       destination.droppableId,
       source.index,
       destination.index,
       draggableId,
       type
-      );
-  }
+    );
+  };
   render() {
-
-    const { board } = this.props;
+    const { board, isAppOverlay, toggleOverlay } = this.props;
     if (!board) return <LoaderSpinner />;
     return (
-      <DragDropContext
-      onDragEnd={this.onDragEnd}
-    >
-      <section
-        className="board-app flex column"
-        style={{
-          background: board.style.bgImg
-            ? `url(${board.style.bgImg})`
-            : board.style.bgClr,
-        }}
-      >
-        <BoardHeader board={{ ...board }} />
-        <GroupList
-          groups={[...board.groups]}
-          boardId={board._id}
-          boardLabels={[...board.labels]}
-        />
-      </section>
+      <DragDropContext onDragEnd={this.onDragEnd}>
+        <section
+          className="board-app flex column"
+          style={{
+            background: board.style.bgImg
+              ? `url(${board.style.bgImg})`
+              : board.style.bgClr,
+          }}
+        >
+          {isAppOverlay && (
+            <div
+              className="app-overlay"
+              onClick={toggleOverlay}
+            ></div>
+          )}
+          <BoardHeader board={{ ...board }} />
+          <GroupList
+            groups={[...board.groups]}
+            boardId={board._id}
+            boardLabels={[...board.labels]}
+          />
+        </section>
       </DragDropContext>
     );
   }
@@ -80,14 +84,16 @@ class _BoardApp extends Component {
 
 function mapStateToProps(state) {
   return {
-    board: state.boardModule.board,
+    isAppOverlay: state.appModule.isAppOverlay,
+    board: state.boardModule.board
   };
 }
 const mapDispatchToProps = {
   loadBoard,
   clearBoard,
   loadUsers,
-  handleDrag
+  handleDrag,
+  toggleOverlay,
 };
 
 export const BoardApp = connect(mapStateToProps, mapDispatchToProps)(_BoardApp);
