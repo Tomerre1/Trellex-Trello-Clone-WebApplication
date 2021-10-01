@@ -64,7 +64,7 @@ export class TaskAttachmentPreview extends Component {
         return (
             <div className="attachment-preview flex">
                 {(isWeb) ?
-                    <Link className="attachment-thumbnail flex" to={{ pathname: `https://${attachment.url}` }} target="_blank" title={`${attachment.name}`} style={{ backgroundImage: (`${attachment.url}`) }} rel="noreferrer nofollow noopener">
+                    <Link className="attachment-thumbnail flex" to={{ pathname: `${attachment.url}` }} target="_blank" title={`${attachment.name}`}>
                         <AttachFileIcon />
                     </Link> :
                     <img src={attachment.url} alt={attachment.name} />

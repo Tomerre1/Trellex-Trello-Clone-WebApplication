@@ -39,7 +39,13 @@ export class PopoverAttachment extends Component {
         const { currTask, updateTaskDetails, togglePopover } = this.props
         const { attachments } = currTask
         if (webUrlSrc) {
-            const attach = { name: (webUrlName) ? webUrlName : webUrlSrc, id: utilService.makeId(), createdAt: Date.now(), url: webUrlSrc, isWeb: true }
+            const attach = {
+                id: utilService.makeId(),
+                name: (webUrlName) ? webUrlName : webUrlSrc,
+                url: (webUrlSrc.startsWith('http' || 'https')) ? webUrlSrc : 'https://' + webUrlSrc,
+                createdAt: Date.now(),
+                isWeb: true,
+            }
             currTask.attachments = (attachments) ? [...attachments, attach] : [attach]
             updateTaskDetails(currTask)
             togglePopover()
