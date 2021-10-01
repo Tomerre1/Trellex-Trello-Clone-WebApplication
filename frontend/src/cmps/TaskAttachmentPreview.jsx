@@ -7,11 +7,28 @@ import { Link } from 'react-router-dom';
 
 
 export class TaskAttachmentPreview extends Component {
-
-
     state = {
         isPopover: false,
-        currentTarget: null
+        currentTarget: null,
+        bgUrl: null,
+    }
+
+    componentDidMount() {
+        const { currTask } = this.props
+        const bgUrl = currTask.style && currTask.style.bgUrl
+        this.setState(prevState => ({ ...prevState, bgUrl }))
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        const { currTask } = this.props
+        const bgUrl = currTask.style && currTask.style.bgUrl
+        if (bgUrl !== prevState.bgUrl) {
+            this.setState(prevState => ({ ...prevState, bgUrl }))
+        }
+    }
+
+    toggleBgUrl = () => {
+        this.setState(prevState => ({ ...prevState, bgUrl: !prevState.bgUrl }))
     }
 
     togglePopover = () => {
@@ -24,13 +41,31 @@ export class TaskAttachmentPreview extends Component {
     };
 
     removeAttach = () => {
-        const { updateTaskDetails, currTask, addActivity, attachment } = this.props
+        const { updateTaskDetails, currTask, addActivity, attachment, setBgUrlCover } = this.props
         const attachs = currTask.attachments.filter(currAttach => currAttach.id !== attachment.id)
         currTask.attachments = attachs
+        setBgUrlCover(null)
         updateTaskDetails(currTask)
         this.togglePopover()
         addActivity('remove-attachment', attachment.name)
     }
+
+    setCover = () => {
+        const { updateTaskDetails, currTask, attachment, setBgUrlCover } = this.props
+        currTask.style.bgUrl = attachment.url
+        setBgUrlCover(attachment.url)
+        this.toggleBgUrl()
+        updateTaskDetails(currTask)
+    }
+    removeCover = () => {
+        const { updateTaskDetails, currTask, setBgUrlCover } = this.props
+        currTask.style.bgUrl = ''
+        this.toggleBgUrl()
+        setBgUrlCover(null)
+        updateTaskDetails(currTask)
+    }
+
+
 
     // onRemoveTodo = (todo) => {
     //     const { currTask, updateTaskDetails, checklist } = this.props
@@ -53,14 +88,10 @@ export class TaskAttachmentPreview extends Component {
 
 
     render() {
-        const { attachment, currTask, updateTaskDetails, addActivity } = this.props
-
+        const { attachment } = this.props
+        const { bgUrl } = this.state
         const { isPopover, currentTarget } = this.state
-
-        console.log('attachment', attachment)
-        console.log('currTask', currTask)
         const { isWeb } = attachment
-        console.log('%c  attachment:', 'color: #00000;background: #aaefe5;', attachment);
         return (
             <div className="attachment-preview flex">
                 {(isWeb) ?
@@ -77,15 +108,24 @@ export class TaskAttachmentPreview extends Component {
                             <button onClick={(event) => { this.setCurrentTarget(event) }}>Delete</button>
                             <button>Edit</button>
                         </div>
-                        {!isWeb &&
+
+                        {!isWeb && !bgUrl &&
                             <span>
                                 <VideoLabel className="make-cover-icon" />
-                                <span>Make cover</span>
+                                <span onClick={this.setCover}>Make cover</span>
                             </span>
                         }
+                        {!isWeb && bgUrl &&
+                            <span>
+                                <VideoLabel className="make-cover-icon" />
+                                <span onClick={this.removeCover}>Remove cover</span>
+                            </span>
+                        }
+
                     </div>
                 </div>
-                {isPopover &&
+                {
+                    isPopover &&
                     <CheckDeletePopover
                         remove={this.removeAttach}
                         type={'attachment'}
@@ -94,7 +134,7 @@ export class TaskAttachmentPreview extends Component {
                         currentTarget={currentTarget}
                     />
                 }
-            </div>
+            </div >
         )
     }
 }
