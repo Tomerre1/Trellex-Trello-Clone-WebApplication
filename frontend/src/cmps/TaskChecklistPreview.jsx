@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { TodoList } from './TodoList'
-import { CheckDeleteChecklistPopover } from './CheckDeleteChecklistPopover'
+import { CheckDeletePopover } from './CheckDeletePopover'
 import { TodoAdd } from './TodoAdd'
 import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
 import { ProgressBar } from './ProgressBar'
@@ -12,7 +12,7 @@ export class TaskChecklistPreview extends Component {
         isPopover: false,
         currentTarget: null
     }
-    
+
     togglePopover = () => {
         this.setState(prevState => ({ ...prevState, isPopover: !prevState.isPopover }))
     }
@@ -66,6 +66,16 @@ export class TaskChecklistPreview extends Component {
         return (isDoneTodos / checklist.todos.length) * 100
     }
 
+    remove = () => {
+        // const { togglePopover } = this.state
+        const { updateTaskDetails, currTask, addActivity, checklist } = this.props
+        const checklistIdx = currTask.checklists.indexOf(checklist)
+        currTask.checklists.splice(checklistIdx, 1)
+        updateTaskDetails(currTask)
+        this.togglePopover()
+        addActivity('remove-checklist')
+    }
+
     render() {
         const { checklist, currTask, updateTaskDetails, addActivity } = this.props
         const { isPopover, currentTarget } = this.state
@@ -81,7 +91,7 @@ export class TaskChecklistPreview extends Component {
                         Delete
                     </button>
                 </div>
-                <ProgressBar doneTodosCalc={this.doneTodosCalc}/>
+                <ProgressBar doneTodosCalc={this.doneTodosCalc} />
                 <TodoList
                     todos={checklist.todos}
                     onSaveTodo={this.onSaveTodo}
@@ -89,13 +99,12 @@ export class TaskChecklistPreview extends Component {
                     addActivity={addActivity}
                 />
                 {isPopover &&
-                    <CheckDeleteChecklistPopover
+                    <CheckDeletePopover
+                        remove={this.remove}
+                        type={'checklist'}
+                        typeTitle={checklist.title}
                         togglePopover={this.togglePopover}
                         currentTarget={currentTarget}
-                        checklist={checklist}
-                        updateTaskDetails={updateTaskDetails}
-                        currTask={currTask}
-                        addActivity={addActivity}
                     />
                 }
                 <TodoAdd onAddTodo={this.onAddTodo} />
