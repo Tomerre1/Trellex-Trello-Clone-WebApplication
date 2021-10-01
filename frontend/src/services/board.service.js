@@ -703,7 +703,7 @@ const demoBoards = [
                     "imgUrl": "http://some-img"
                 },
                 "task": {
-                    "id": "c1023",
+                    "id": "c1024",
                     "title": "Replace Logo",
                     "labelIds": []
                 }
@@ -1120,7 +1120,7 @@ async function save(board) {
         return storageService.post(STORAGE_KEY, newBoard)
     }
 }
-function createActivity(activityType, currTask,txt = null) {
+function createActivity(activityType, currTask, txt = null) {
     const loggedinUser = {
         "_id": 'u101',
         "fullname": 'BCD',

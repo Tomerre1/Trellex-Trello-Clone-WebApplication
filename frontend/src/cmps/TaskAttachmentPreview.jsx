@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { utilService } from '../services/util.service';
 import VideoLabel from '@mui/icons-material/VideoLabel';
 import { CheckDeletePopover } from './CheckDeletePopover'
+import AttachFileIcon from '@mui/icons-material/AttachFile';
+import { Link } from 'react-router-dom';
 
 
 export class TaskAttachmentPreview extends Component {
@@ -31,6 +33,15 @@ export class TaskAttachmentPreview extends Component {
         addActivity('remove-attachment', attachment.name)
     }
 
+    removeAttach = async (attachId) => {
+        const { currTask, updateTaskDetails } = this.props
+        const { attachments } = currTask
+        const attachs = attachments.filter(currAttach => currAttach.id !== attachId)
+        currTask.attachments = attachs
+        updateTaskDetails(currTask)
+    }
+
+
     // onRemoveTodo = (todo) => {
     //     const { currTask, updateTaskDetails, checklist } = this.props
     //     const checklistIdx = currTask.checklists.indexOf(checklist)
@@ -53,29 +64,45 @@ export class TaskAttachmentPreview extends Component {
 
     render() {
         const { attachment, currTask, updateTaskDetails, addActivity } = this.props
+<<<<<<< HEAD
 
         const { isPopover, currentTarget } = this.state
 
         console.log('attachment', attachment)
         console.log('currTask', currTask)
+=======
+        const { isWeb } = attachment
+        console.log('%c  attachment:', 'color: #00000;background: #aaefe5;', attachment);
+>>>>>>> 8efca16f746210e82bc9401a0d8c15ca20c03a1e
         return (
             <div className="attachment-preview flex">
-                {/* <a className="attachment-thumbnail" href={`${attachment.url}`} target="_blank" title={`${attachment.name}`} style={{ backgroundImage: (`${attachment.url}`), backgroundColor: '#051e46' }} rel="noreferrer nofollow noopener"></a> */}
-                <img src={attachment.url} alt={attachment.name} />
+                {(isWeb) ?
+                    <Link className="attachment-thumbnail flex" to={{ pathname: `https://${attachment.url}` }} target="_blank" title={`${attachment.name}`} style={{ backgroundImage: (`${attachment.url}`) }} rel="noreferrer nofollow noopener">
+                        <AttachFileIcon />
+                    </Link> :
+                    <img src={attachment.url} alt={attachment.name} />
+                }
                 <div className="attachment-content">
                     <div className="attachment-details">
                         <span className="attachment-title">{attachment.name}</span>
                         <div className="attachment-actions">
                             <span className="attachment-date">Added {utilService.timeSince(attachment.createdAt)}</span>
+<<<<<<< HEAD
                             <button onClick={(event) => { this.setCurrentTarget(event) }}>Delete</button>
+=======
+                            <button onClick={() => this.removeAttach(attachment.id)}>Delete</button>
+>>>>>>> 8efca16f746210e82bc9401a0d8c15ca20c03a1e
                             <button>Edit</button>
                         </div>
-                        <span>
-                            <VideoLabel className="make-cover-icon" />
-                            <span>Make cover</span>
-                        </span>
+                        {!isWeb &&
+                            <span>
+                                <VideoLabel className="make-cover-icon" />
+                                <span>Make cover</span>
+                            </span>
+                        }
                     </div>
                 </div>
+<<<<<<< HEAD
                 {isPopover &&
                     <CheckDeletePopover
                         remove={this.remove}
@@ -86,6 +113,9 @@ export class TaskAttachmentPreview extends Component {
                     />
                 }
             </div>
+=======
+            </div >
+>>>>>>> 8efca16f746210e82bc9401a0d8c15ca20c03a1e
         )
     }
 }

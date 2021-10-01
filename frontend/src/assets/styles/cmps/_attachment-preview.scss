@@ -4,6 +4,28 @@
     min-height: 80px;
     overflow: hidden;
     position: relative;
+    .attachment-thumbnail {
+        background-color: #091e420a;
+        background-position: 50%;
+        background-repeat: no-repeat;
+        background-size: contain;
+        border-radius: 3px;
+        height: 80px;
+        left: 0;
+        text-align: center;
+        text-decoration: none;
+        top: 50%;
+        width: 112px;
+        z-index: 1;
+        align-items: center;
+        justify-content: center;
+        svg {
+            color: #42526e;
+            height: 26px;
+            width: 32px;
+            transform: rotate(40deg);
+        }
+    }
     img {
         height: 80px;
         width: 112px;
@@ -41,7 +63,7 @@
                 }
             }
             span {
-                span{
+                span {
                     margin-left: 3px;
                     text-decoration: underline;
                     color: #5e6c84;

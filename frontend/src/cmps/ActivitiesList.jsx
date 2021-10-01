@@ -2,7 +2,6 @@ import { ActivityPreview } from './ActivityPreview'
 
 export function ActivitiesList({ CommAndAct, isShowActivities, currTask }) {
 
-    console.log('CommAndAct', CommAndAct)
     return (
         <div className="activities-list">
             {CommAndAct.map(activity => {
