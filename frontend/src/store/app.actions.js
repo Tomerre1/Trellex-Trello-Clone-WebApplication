@@ -9,11 +9,11 @@ export const setCurrTaskDetails = (currTaskDetails) => {
     }
 }
 
-export const toggleOverlay = () => {
+export const toggleOverlay = (isOn) => {
     return (dispatch) => {
         dispatch({
             type: "TOGGLE_OVERLAY",
+            isOn
         });
-
     }
 }

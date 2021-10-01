@@ -7,7 +7,7 @@ export function appReducer(state = initialState, action) {
         case 'SET_TASK_DETAILS':
             return { ...state, currTaskDetails: { ...action.currTaskDetails } }
         case 'TOGGLE_OVERLAY':
-            return { ...state, isAppOverlay: !state.isAppOverlay }
+            return { ...state, isAppOverlay: action.isOn }
         default:
             return state
     }
