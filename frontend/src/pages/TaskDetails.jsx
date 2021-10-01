@@ -95,6 +95,7 @@ export class _TaskDetails extends Component {
     this.setState((prevState) => ({ ...prevState, bgColorCover: bgColor }));
   };
 
+
   setSelectedLabels = (selectedLabelIds) => {
     const { board } = this.props;
     const labelsSelected = board.labels.filter((label) =>
@@ -342,6 +343,7 @@ export class _TaskDetails extends Component {
                 currTask={currTask}
                 updateTaskDetails={this.updateTaskDetails}
                 addActivity={this.addActivity}
+                setBgUrlCover={this.setBgUrlCover}
               />
               <TaskChecklist
                 currTask={currTask}
