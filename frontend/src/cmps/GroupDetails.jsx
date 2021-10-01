@@ -15,6 +15,7 @@ const _GroupDetails = (props) => {
   const elRef = useRef();
   const [isMenuShown, toggleMenuShown] = useState(false);
   const [menuPos, setMenuPos] = useState({});
+  const [isDragDisabled,toggleDragDisable] = useState(false);
 
   const toggleMenu = (ev) => {
     let posX = window.innerWidth - ev.pageX > 200 ? ev.pageX : ev.pageX - 200;
@@ -53,7 +54,7 @@ const _GroupDetails = (props) => {
     //     {...provided.dragHandleProps}></div>
 
     <div>
-      <Draggable draggableId={group.id} index={index}>
+      <Draggable draggableId={group.id} index={index} isDragDisabled={isDragDisabled}>
         {(provided, snapshot) => (
           <NaturalDragAnimation
             style={provided.draggableProps.style}
@@ -95,6 +96,7 @@ const _GroupDetails = (props) => {
                     boardId={boardId}
                     groupId={group.id}
                     boardLabels={boardLabels}
+                    toggleDragDisable={toggleDragDisable}
                   />
                 </div>
                 <div className="group-footer">
@@ -103,7 +105,10 @@ const _GroupDetails = (props) => {
                     scrollToBottom={scrollToBottom}
                   />
                 </div>
-                <div className="overlay"></div>
+                <div
+                  className={`overlay ${isMenuShown ? "show" : ""}`}
+                  onClick={toggleMenu}
+                ></div>
               </article>
             )}
           </NaturalDragAnimation>

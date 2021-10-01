@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import {connect} from 'react-redux'
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { TaskLabels } from "./TaskPreview/TaskLabels";
 import { TaskDetailsPreview } from "./TaskPreview/TaskDetailsPreview";
-import { toggleOverlay } from "../store/app.actions"
+import { toggleDrag } from "../store/app.actions";
 import { TaskDatePreview } from "./TaskPreview/TaskDatePreview";
 import { TaskActions } from "./TaskPreview/TaskActions";
 import { MemberList } from "../cmps/MemberList";
@@ -12,10 +12,19 @@ import CheckBoxOutlinedIcon from "@mui/icons-material/CheckBoxOutlined";
 import SubjectOutlinedIcon from "@mui/icons-material/SubjectOutlined";
 import ChatBubbleOutlineRoundedIcon from "@mui/icons-material/ChatBubbleOutlineRounded";
 import ModeEditOutlinedIcon from "@mui/icons-material/ModeEditOutlined";
-import AttachFileIcon from '@mui/icons-material/AttachFile';
+import AttachFileIcon from "@mui/icons-material/AttachFile";
 
- function _TaskPreview(props) {
-  const { task, taskUrl, boardLabels, groupId, boardId, index, isAppOverlay, toggleOverlay } = props;
+function _TaskPreview(props) {
+  const {
+    task,
+    taskUrl,
+    boardLabels,
+    groupId,
+    boardId,
+    index,
+    isAppOverlay,
+    toggleOverlay,
+  } = props;
   const {
     labelIds,
     title,
@@ -30,7 +39,6 @@ import AttachFileIcon from '@mui/icons-material/AttachFile';
   const [isMenuShown, toggleMenuShown] = useState(false);
   const [menuPos, setMenuPos] = useState();
 
-
   const toggleMenu = (ev) => {
     let posX = window.innerWidth - ev.pageX > 200 ? ev.pageX : ev.pageX - 200;
     setMenuPos({
@@ -38,10 +46,9 @@ import AttachFileIcon from '@mui/icons-material/AttachFile';
       top: `${ev.pageY}px`,
       left: `${posX}px`,
     });
-    toggleOverlay(true)
     toggleMenuShown(!isMenuShown);
   };
-  
+
   let todos;
   let doneTodos;
   const getChecklistData = () => {
@@ -57,34 +64,37 @@ import AttachFileIcon from '@mui/icons-material/AttachFile';
   };
   if (style?.bgUrl && style?.coverMode === "full") {
     if (style && style?.coverMode === "full")
-    return (
-      <Draggable draggableId={task.id} index={index}>
-        {(provided) => (
-          <Link to={taskUrl} className="clean-link">
-          <article
-            ref={provided.innerRef}
-            {...provided.draggableProps}
-            {...provided.dragHandleProps}
-          >
-            <div className="task-preview-container full-cover img"src={style.bgUrl}>
-            <img className=""src={style.bgUrl}/>
-            <div className="img-overlay"/>
+      return (
+        <Draggable draggableId={task.id} index={index} isDragDisabled={isMenuShown}>
+          {(provided) => (
+            <Link to={taskUrl} className="clean-link">
+              <article
+                ref={provided.innerRef}
+                {...provided.draggableProps}
+                {...provided.dragHandleProps}
+              >
+                <div
+                  className="task-preview-container full-cover img"
+                  src={style.bgUrl}
+                >
+                  <img className="" src={style.bgUrl} />
+                  <div className="img-overlay" />
                   <p>{task.title}</p>
-              <div className="edit-icon">
-                <Link to={taskUrl}>
-                  <ModeEditOutlinedIcon className="icon" />
-                </Link>
-              </div>
-              </div>
-          </article>
-              </Link>
-        )}
-      </Draggable>
-    );
+                  <div className="edit-icon">
+                    <Link to={taskUrl}>
+                      <ModeEditOutlinedIcon className="icon" />
+                    </Link>
+                  </div>
+                </div>
+              </article>
+            </Link>
+          )}
+        </Draggable>
+      );
   }
   if (style && style?.coverMode === "full")
     return (
-      <Draggable draggableId={task.id} index={index}>
+      <Draggable draggableId={task.id} index={index} isDragDisabled={isMenuShown}>
         {(provided) => (
           <article
             ref={provided.innerRef}
@@ -93,7 +103,7 @@ import AttachFileIcon from '@mui/icons-material/AttachFile';
           >
             <div
               className="task-preview-container full-cover"
-              style={{ background: style.bgColor}}
+              style={{ background: style.bgColor }}
             >
               <Link to={taskUrl} className="clean-link">
                 <div className="task-preview">
@@ -112,14 +122,14 @@ import AttachFileIcon from '@mui/icons-material/AttachFile';
     );
   return (
     <>
-      <Draggable draggableId={task.id} index={index}>
+      <Draggable draggableId={task.id} index={index} isDragDisabled={isMenuShown}>
         {(provided) => (
           <div
             ref={provided.innerRef}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
           >
-            {/* {isMenuShown && (
+            {isMenuShown && (
               <TaskActions
                 toggleMenu={toggleMenuShown}
                 menuPos={menuPos}
@@ -127,21 +137,25 @@ import AttachFileIcon from '@mui/icons-material/AttachFile';
                 boardId={boardId}
                 task={task}
               />
-            )} */}
+            )}
             <article className="task-preview-container">
               <Link to={taskUrl} className="clean-link">
-                {style?.bgColor && !style?.bgUrl &&(
+                {style?.bgColor && !style?.bgUrl && (
                   <div
                     className="task-cover"
                     style={{ background: task.style.bgColor }}
                   ></div>
                 )}
-               
+
                 <div className="task-preview clean-link">
-                {style?.bgUrl && (
-                  <img className="task-cover-img" src={style.bgUrl} style={{backgroundColor:'white'}}alt='cover image'/>
-                    
-                )}
+                  {style?.bgUrl && (
+                    <img
+                      className="task-cover-img"
+                      src={style.bgUrl}
+                      style={{ backgroundColor: "white" }}
+                      alt="cover image"
+                    />
+                  )}
                   {labelIds?.length > 0 && (
                     <TaskLabels labelIds={labelIds} boardLabels={boardLabels} />
                   )}
@@ -170,10 +184,12 @@ import AttachFileIcon from '@mui/icons-material/AttachFile';
                         txt={comments.length}
                       />
                     )}
-                    {attachments?.length > 0 && <TaskDetailsPreview
-                       icon={<AttachFileIcon className="icon attach" />}
-                       txt={attachments.length}
-                    />}
+                    {attachments?.length > 0 && (
+                      <TaskDetailsPreview
+                        icon={<AttachFileIcon className="icon attach" />}
+                        txt={attachments.length}
+                      />
+                    )}
                     {checklists?.length > 0 && todos !== 0 && (
                       <TaskDetailsPreview
                         icon={<CheckBoxOutlinedIcon className="icon" />}
@@ -201,6 +217,10 @@ import AttachFileIcon from '@mui/icons-material/AttachFile';
                 </div>
               </Link>
             </article>
+            <div
+              className={`overlay ${isMenuShown ? "show" : ""}`}
+              onClick={toggleMenu}
+            ></div>
           </div>
         )}
       </Draggable>
@@ -213,8 +233,10 @@ function mapStateToProps(state) {
   };
 }
 const mapDispatchToProps = {
-  toggleOverlay
-}
+  toggleDrag,
+};
 
-export const TaskPreview = connect(mapStateToProps,mapDispatchToProps)(_TaskPreview)
-
+export const TaskPreview = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(_TaskPreview);
