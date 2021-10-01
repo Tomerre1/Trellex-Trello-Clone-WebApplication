@@ -37,6 +37,8 @@ export class ActivityPreview extends Component {
                 return `completed ${activity.txt} on ${currTask.title}`
             case 'incomplete-todo':
                 return `marked ${activity.txt} incomplete on ${currTask.title}`
+            case 'remove-attachment':
+                return `deleted the ${activity.txt} attachment from ${currTask.title}`
             default:
                 break;
         }

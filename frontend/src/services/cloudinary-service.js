@@ -20,7 +20,6 @@ function uploadFile(ev) {
     })
         .then(res => res.json())
         .then(res => {
-            console.log('res', res)
             return res
         })
         .catch(err => console.error(err))

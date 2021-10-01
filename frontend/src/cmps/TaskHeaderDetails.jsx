@@ -17,9 +17,6 @@ export class TaskHeaderDetails extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         const { selectedLabels, selectedMembers, selectedDate } = this.props
-        console.log('%c  prevProps:', 'color: #00000;background: #aaefe5;', prevProps);
-        console.log('%c  selectedLabels:', 'color: #00000;background: #aaefe5;', selectedLabels);
-
         if (prevProps.selectedLabels !== selectedLabels) {
             this.setState(prevState => ({ ...prevState, selectedLabels }))
         }
