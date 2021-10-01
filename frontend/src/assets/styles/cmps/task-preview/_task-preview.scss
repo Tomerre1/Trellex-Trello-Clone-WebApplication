@@ -137,13 +137,13 @@
           display: flex;
           align-items: center;
           max-height: 20px;
-          padding: 2px 0px 2px 0px;
+          padding: 2px 2px 2px 0px;
 
           p {
             font-size: rem(12px);
           }
           &.overdue {
-            padding: 2px 2px 2px 0px;
+            padding: 2px 0px 2px 0px;
             border-radius: 4px;
             p {
               color: white;
@@ -157,6 +157,8 @@
           }
           &.done {
             border-radius: 4px;
+            padding: 2px 0px 2px 0px;
+
             p {
               color: white;
               margin-right: 5px;
