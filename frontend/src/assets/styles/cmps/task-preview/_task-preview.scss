@@ -2,7 +2,9 @@
   box-shadow: 0 1px 0 #c0c6d0;
   transition: background-color 0.2s;
   margin-top: 0;
-
+  p { 
+    color:#172b4d;
+  }
   .edit-icon {
     opacity: 0;
     display: flex;
@@ -86,6 +88,7 @@
       justify-content: flex-end;
       height: 100%;
       padding: 6px;
+      
       box-shadow: 0 1px 0 #c0c6d0;
       position: relative;
       p {
@@ -102,7 +105,6 @@
     border-radius: 3px 3px 0 0;
   }
   .task-preview {
-    margin-bottom: 6px;
     display: flex;
     flex-direction: column;
     align-content: center ;
@@ -128,6 +130,7 @@
     }
     background: #fff;
     padding: 5px 10px;
+    padding-bottom:3px;
     border-radius: 3px;
     font-size: rem(14px);
     transition: background-color 0.1s;
@@ -136,10 +139,12 @@
 
     .task-preview-icons {
       flex-wrap: wrap;
+      gap:5px;
       span {
         align-items: center;
         justify-content: center;
-        margin-top: 5px;
+        max-height:32px;
+
         &:last-of-type {
           padding-right: 2px;
         }
