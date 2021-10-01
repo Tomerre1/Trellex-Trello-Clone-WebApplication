@@ -1,7 +1,7 @@
 .task-preview-container {
   box-shadow: 0 1px 0 #c0c6d0;
   transition: background-color 0.2s;
-  margin-top:0;
+  margin-top: 0;
 
   .edit-icon {
     opacity: 0;
@@ -47,42 +47,69 @@
       }
     }
   }
-  article{
-    margin:0 !important;
-  }
+
   &.full-cover {
     height: 49px;
     border-radius: 3px;
-
+    position:relative;
+    
+    &.img {
+      .task-preview{}
+      height: auto;
+      img {
+        width: 100%;
+        object-fit: cover;
+        border-radius: 3px;
+      }
+      p { 
+        position:absolute;
+        bottom:0px;
+        color:white;
+        font-size:rem(16px);
+        font-weight: 500;
+        padding-left:10px;
+        padding-bottom:15px;
+        margin:0;
+      }
+      .img-overlay {
+        position:absolute;
+        bottom:0;
+        width:100%;
+        height:65px;
+        background: linear-gradient(180deg,#fff0,#000000f3);
+        border-radius :3px;
+      }
+    }
     .task-preview {
       background: unset;
       box-shadow: unset;
       justify-content: flex-end;
       height: 100%;
-      // padding: 6px;
+      padding: 6px;
       box-shadow: 0 1px 0 #c0c6d0;
-
+      position: relative;
       p {
         margin: 0;
+        padding-left:4px;
         font-weight: 500;
       }
     }
+   
   }
-
   .task-cover {
     height: 32px;
     width: 100%;
     border-radius: 3px 3px 0 0;
-    
   }
   .task-preview {
-    margin-bottom:6px;
+    margin-bottom: 6px;
     display: flex;
     flex-direction: column;
-    align-content: center !important;
+    align-content: center ;
     min-height: 32px;
-    margin:0;
+    margin: 0;
     box-shadow: 0 1px 0 #c0c6d0;
+
     a {
       text-decoration: none;
       display: flex;
@@ -90,16 +117,17 @@
     p {
       margin: 0;
       // margin-bottom:5px;
- 
+
+
     }
     .task-cover-img {
-      padding:0 0 6px 0;
-      width: 100%; 
-      height:auto;
-      object-fit: cover;      
+      padding: 0 0 6px 0;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
     }
     background: #fff;
-    padding: 5px;
+    padding: 5px 10px;
     border-radius: 3px;
     font-size: rem(14px);
     transition: background-color 0.1s;
@@ -112,8 +140,8 @@
         align-items: center;
         justify-content: center;
         margin-top: 5px;
-        &:last-of-type{
-          padding-right:2px 
+        &:last-of-type {
+          padding-right: 2px;
         }
         p {
           margin: 0;
@@ -125,9 +153,9 @@
         &.checklist.done {
           margin-inline-start: 6px;
           background: rgb(97, 189, 79);
-          padding-right:6px;
-          padding-left:1px;
-          border-radius:3px;
+          padding-right: 6px;
+          padding-left: 1px;
+          border-radius: 3px;
           height: 20px;
 
           p {
@@ -135,7 +163,6 @@
           }
           .icon {
             color: white;
-    
           }
         }
         &.due-date {
@@ -182,12 +209,11 @@
             position: relative;
             top: 1px;
           }
-          &.attach { 
-            padding-right:0 !important;
+          &.attach {
+            padding-right: 0 ;
           }
         }
       }
     }
   }
-  
 }
