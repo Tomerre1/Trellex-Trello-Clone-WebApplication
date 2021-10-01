@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { utilService } from '../services/util.service';
 import VideoLabel from '@mui/icons-material/VideoLabel';
 import { CheckDeletePopover } from './CheckDeletePopover'
+import { EditAttachmentPopover } from './EditAttachmentPopover'
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import { Link } from 'react-router-dom';
 
@@ -9,6 +10,7 @@ import { Link } from 'react-router-dom';
 export class TaskAttachmentPreview extends Component {
     state = {
         isPopover: false,
+        isEditPopover: false,
         currentTarget: null,
         bgUrl: null,
     }
@@ -34,11 +36,14 @@ export class TaskAttachmentPreview extends Component {
     togglePopover = () => {
         this.setState(prevState => ({ ...prevState, isPopover: !prevState.isPopover }))
     }
+    toggleEditPopover = () => {
+        this.setState(prevState => ({ ...prevState, isPopover: false, isEditPopover: !prevState.isEditPopover }))
+    }
 
     setCurrentTarget = (event) => {
         this.setState(prevState => ({ ...prevState, currentTarget: event }))
-        this.togglePopover()
-    };
+        // this.togglePopover()
+    }
 
     removeAttach = () => {
         const { updateTaskDetails, currTask, addActivity, attachment, setBgUrlCover } = this.props
@@ -50,6 +55,11 @@ export class TaskAttachmentPreview extends Component {
         addActivity('remove-attachment', attachment.name)
     }
 
+    onRemoveAttach = (ev) => {
+        this.setCurrentTarget(ev)
+        this.togglePopover()
+    }
+
     setCover = () => {
         const { updateTaskDetails, currTask, attachment, setBgUrlCover } = this.props
         currTask.style.bgUrl = attachment.url
@@ -57,6 +67,7 @@ export class TaskAttachmentPreview extends Component {
         this.toggleBgUrl()
         updateTaskDetails(currTask)
     }
+
     removeCover = () => {
         const { updateTaskDetails, currTask, setBgUrlCover } = this.props
         currTask.style.bgUrl = ''
@@ -75,22 +86,24 @@ export class TaskAttachmentPreview extends Component {
     //         return currTodo.id === todo.id
     //     })
 
-    //     currTask.checklists[checklistIdx].todos.splice(todoIdx, 1)
-    //     updateTaskDetails(currTask)
-    // }
 
-    // onAddTodo = (todo) => {
-    //     const { currTask, updateTaskDetails, checklist } = this.props
-    //     const checklistIdx = currTask.checklists.indexOf(checklist)
-    //     currTask.checklists[checklistIdx].todos.push(todo)
-    //     updateTaskDetails(currTask)
-    // }
+    onEditAttach = (ev) => {
+        this.setCurrentTarget(ev)
+        this.toggleEditPopover()
+    }
+
+    updateAttachment = () => {
+        console.log('update attach')
+    }
 
 
     render() {
-        const { attachment } = this.props
-        const { bgUrl } = this.state
-        const { isPopover, currentTarget } = this.state
+        const { attachment, currTask, updateTaskDetails, addActivity } = this.props
+
+        const { isPopover, currentTarget, isEditPopover, bgUrl } = this.state
+
+        console.log('attachment', attachment)
+        console.log('currTask', currTask)
         const { isWeb } = attachment
         return (
             <div className="attachment-preview flex">
@@ -105,8 +118,8 @@ export class TaskAttachmentPreview extends Component {
                         <span className="attachment-title">{attachment.name}</span>
                         <div className="attachment-actions">
                             <span className="attachment-date">Added {utilService.timeSince(attachment.createdAt)}</span>
-                            <button onClick={(event) => { this.setCurrentTarget(event) }}>Delete</button>
-                            <button>Edit</button>
+                            <button onClick={(event) => { this.onRemoveAttach(event) }}>Delete</button>
+                            <button onClick={(event) => { this.onEditAttach(event) }}>Edit</button>
                         </div>
 
                         {!isWeb && !bgUrl &&
@@ -134,10 +147,19 @@ export class TaskAttachmentPreview extends Component {
                         currentTarget={currentTarget}
                     />
                 }
-            </div >
+                {isEditPopover &&
+                    <EditAttachmentPopover
+                        togglePopover={this.toggleEditPopover}
+                        currentTarget={currentTarget}
+                        updateAttachment={this.updateAttachment}
+                        attachment={attachment}
+                    />
+                }
+            </div>
         )
     }
 }
+
 
 // createdAt: 1633032329759
 // id: "12f50ccf3b1abf770e6418fd66d55750"

@@ -66,7 +66,7 @@ export class TaskChecklistPreview extends Component {
         return (isDoneTodos / checklist.todos.length) * 100
     }
 
-    remove = () => {
+    removeChecklist = () => {
         const { updateTaskDetails, currTask, addActivity, checklist } = this.props
         const checklistIdx = currTask.checklists.indexOf(checklist)
         currTask.checklists.splice(checklistIdx, 1)
@@ -99,7 +99,7 @@ export class TaskChecklistPreview extends Component {
                 />
                 {isPopover &&
                     <CheckDeletePopover
-                        remove={this.remove}
+                        remove={this.removeChecklist}
                         type={'checklist'}
                         typeTitle={checklist.title}
                         togglePopover={this.togglePopover}
