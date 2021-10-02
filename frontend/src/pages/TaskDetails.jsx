@@ -160,11 +160,11 @@ export class _TaskDetails extends Component {
                 addActivity={this.addActivity}
                 setBgUrlCover={this.setBgUrlCover}
               />
-              {/* <TaskChecklist
-                currTask={currTask}
-                updateTaskDetails={this.updateTaskDetails}
-                addActivity={this.addActivity}
-              /> */}
+              <TaskChecklist
+                // currTask={currTask}
+                // updateTaskDetails={this.updateTaskDetails}
+                // addActivity={this.addActivity}
+              />
               {/* <TaskActivities
                 currTask={currTask}
                 loggedinUser={loggedinUser}

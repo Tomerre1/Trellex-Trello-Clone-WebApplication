@@ -39,12 +39,12 @@ export class TodoPreview extends Component {
 
     onToggleTodoIsDone = () => {
         const { todo } = this.state
-        const { addActivity } = this.props
+        // const { addActivity } = this.props
         todo.isDone = !todo.isDone
         this.setState(prevState => ({ ...prevState, todo }))
         this.props.onSaveTodo(todo)
-        if (todo.isDone) addActivity('complete-todo', todo.title)
-        else addActivity('incomplete-todo', todo.title)
+        // if (todo.isDone) addActivity('complete-todo', todo.title)
+        // else addActivity('incomplete-todo', todo.title)
     }
 
     onRemoveTodo = () => {
