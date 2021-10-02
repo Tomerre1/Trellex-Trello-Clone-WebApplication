@@ -6,7 +6,7 @@ import MoreHorizOutlinedIcon from "@mui/icons-material/MoreHorizOutlined";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 
 function _BoardHeader(props) {
-  const  {board}  = props;
+  const { board } = props;
   const [isTitleEdit, setTitleEdit] = useState(false);
   const [title, setTitle] = useState(board.title);
   const [width, setWidth] = useState(board.title.length * 9.5);
@@ -37,6 +37,10 @@ function _BoardHeader(props) {
     setTitle(title.trim());
     props.saveBoard(newBoard);
   };
+  const onToggleMenu = (ev) => {
+    props.toggleMenu(ev)
+  };
+
 
   if (!board) return <h2>Loading</h2>;
   return (
@@ -74,9 +78,9 @@ function _BoardHeader(props) {
         <div className="header-btn-container flex">
           <button className="header-btn last-in-row">
             {board.isFavorite ? (
-              <StarBorderIcon className="icon star gold" onClick={onToggleStar}/>
-              ) : (
-              <StarBorderIcon className="icon star" onClick={onToggleStar}/>
+              <StarBorderIcon className="icon star gold" onClick={onToggleStar} />
+            ) : (
+              <StarBorderIcon className="icon star" onClick={onToggleStar} />
             )}
           </button>
           {board?.members && <MemberList members={board.members} />}
@@ -85,7 +89,7 @@ function _BoardHeader(props) {
       </div>
       <div className="header-btn-container flex">
         <button className="header-btn"> Dashboard</button>
-        <button className="header-btn ">
+        <button className="header-btn" onClick={(ev) => onToggleMenu(ev)}>
           <MoreHorizOutlinedIcon className="icon" /> Show Menu
 
         </button>

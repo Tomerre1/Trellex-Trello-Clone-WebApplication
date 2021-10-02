@@ -1,7 +1,6 @@
 .task-preview-container {
   box-shadow: 0 1px 0 #c0c6d0;
   transition: background-color 0.2s;
-  margin-top: 0;
   margin-bottom:8px;
 
   p {
@@ -19,10 +18,14 @@
     width: 26px;
     pointer-events: hover;
     padding: 14px;
-    background: #ffffff56;
+    background: #ffffffb4;
     border-radius: 3px;
     color: rgb(94, 94, 94);
     pointer-events: visible;
+
+    .icon {
+      pointer-events:none;
+    }
   }
 
   &:hover {
@@ -63,6 +66,7 @@
         width: 100%;
         object-fit: cover;
         border-radius: 3px;
+        max-height:240px;
       }
       p {
         position: absolute;
@@ -89,7 +93,6 @@
       justify-content: flex-end;
       height: 100%;
       padding: 6px;
-
       box-shadow: 0 1px 0 #c0c6d0;
       position: relative;
       p {
@@ -111,6 +114,7 @@
     min-height: 32px;
     margin: 0;
     box-shadow: 0 1px 0 #c0c6d0;
+    
 
     a {
       text-decoration: none;
@@ -118,7 +122,6 @@
     }
     p {
       margin: 0;
-      // margin-bottom:5px;
     }
     background: #fff;
     padding: 5px 8px;
@@ -127,12 +130,13 @@
     font-size: rem(14px);
     transition: background-color 0.1s;
     cursor: pointer;
-
-    .task-cover-img {
+    
+    img.task-cover-img {
       padding: 0 0 8px 0;
       width: 100%;
-      height: auto;
-      object-fit: cover;
+      max-height: 240px;
+      // height: auto;
+      object-fit: contain;
       border-radius: 3px;
     }
 
@@ -218,5 +222,28 @@
         }
       }
     }
+  }
+  &.edit {
+    position:relative;
+    textarea {
+      background: inherit;
+      border: none;
+      border-radius: 3px;
+      padding: 0px 0px;
+      height:90px;
+      font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans,
+          Helvetica Neue, sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      outline: 0;
+      resize: none;
+      transition: min-height 0.6s, box-shadow 0.4s;
+
+      overflow: hidden;
+      overflow-wrap: break-word;
+      min-height: 56px;
+      background-color: #fff;
+      color: #172b4d;
+  }
   }
 }

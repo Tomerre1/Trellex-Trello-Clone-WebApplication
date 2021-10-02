@@ -243,3 +243,20 @@ export const saveTaskDetails = (board, currGroup, currTask) => {
     }
 }
 
+export const updateTask = (boardId, groupId, task) => {
+    return async (dispatch) => {
+        try {
+            const updatedBoard =  await boardService.updateTaskByIds(boardId, groupId, task)
+            const newBoard = await boardService.save(updatedBoard)
+            console.log('newBoard:', newBoard)
+            dispatch({
+                type: "SAVE_BOARD",
+                board: newBoard,
+            })
+        }
+        catch (err) {
+            console.log('cant update task details', err)
+        }
+    }
+}
+

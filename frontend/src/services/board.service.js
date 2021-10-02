@@ -1076,7 +1076,8 @@ export const boardService = {
     removeTask,
     addGroup,
     removeGroup,
-    createActivity
+    createActivity,
+    updateTaskByIds
 }
 async function query() {
     let boards = await storageService.query(STORAGE_KEY)
@@ -1154,6 +1155,8 @@ function updateTask(board, group, task) {
     return { ...board }
 }
 
+
+
 async function addTask(taskTitle, boardId, groupId) {
     if (!taskTitle)
         return
@@ -1230,6 +1233,16 @@ async function removeGroup(boardId, groupId) {
     }
 
 }
+async function updateTaskByIds(boardId,groupId,task) {
+    const board = await getById(boardId)
+    const groupIdx = board.groups.findIndex(group => groupId === group.id)
+    const taskIdx = board.groups[groupIdx].tasks.findIndex(taskToFind => taskToFind.id === task.id)
+    board.groups[groupIdx].tasks[taskIdx] = task
+    save(board)
+    return board
+    
+}
+
 // function getEmptyBoard() {
 //     return {
 //         vendor: 'Susita-' + (Date.now() % 1000),
@@ -1253,8 +1266,3 @@ async function removeGroup(boardId, groupId) {
 //             _notifySubscribersBoardsChanged(boards)
 //         }) 
 // })
-
-
-
-
-
