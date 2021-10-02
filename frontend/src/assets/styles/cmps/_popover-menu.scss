@@ -1,0 +1,16 @@
+.board-menu {
+    .popover {
+        min-height: 100vh;
+        left: 670px !important;
+        top: 46px !important;
+    }
+    .task-activities-header {
+        h3 {
+            margin: 0;
+            margin-left: 8px;
+        }
+        svg {
+            height: 18px;
+        }
+    }
+}
