@@ -20,8 +20,8 @@ export class _PopoverMoveCopy extends Component {
     componentDidMount() {
         const { board, currTaskDetails } = this.props
         const currGroup = board.groups.find(group => group.tasks.some(task => task.id === currTaskDetails.id))
-        const selectedPosition = currGroup.tasks.indexOf(currTaskDetails)
-        console.log('%c  selectedPosition:', 'color: #00000;background: #aaefe5;', selectedPosition);
+        const task = currGroup.tasks.find(task => currTaskDetails.id === task.id)
+        const selectedPosition = currGroup.tasks.indexOf(task)
         this.setState(prevState => ({
             ...prevState,
             selectedBoard: board,
@@ -67,7 +67,6 @@ export class _PopoverMoveCopy extends Component {
     }
 
     submitMoveAnotherBoard = async () => {
-        debugger;
         const { selectedBoard, selectedGroup, selectedPosition, taskTitle, currGroup } = this.state
         const { currTaskDetails, saveBoard, board, boards, isCopy } = this.props
         const currBoard = boards.find(currBoard => currBoard._id === board._id)
