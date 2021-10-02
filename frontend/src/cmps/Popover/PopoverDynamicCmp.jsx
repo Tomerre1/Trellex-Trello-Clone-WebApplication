@@ -26,13 +26,13 @@ const _PopoverDynamicCmp = (props) => {
 
                 />
             );
-        // case "CHECKLIST":
-        //     return (
-        //         <PopoverChecklist
-        //             {...props}
-        //             title="Checklist"
-        //         />
-        //     );
+        case "CHECKLIST":
+            return (
+                <PopoverChecklist
+                    {...props}
+                    title="Checklist"
+                />
+            );
         // case "DATE":
         //     return (
         //         <PopoverDate
