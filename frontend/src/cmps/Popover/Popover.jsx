@@ -13,8 +13,11 @@ export class _Popover extends React.Component {
     componentDidMount() {
         this.onSetPopoverPos()
     }
-    componentWillUnmount() {
-        // this.props.setPosition({ pageX: null, pageY: null, type: null })
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.popover !== this.props.popover) {
+            this.onSetPopoverPos()
+        }
     }
 
     toggleVisibility = () =>

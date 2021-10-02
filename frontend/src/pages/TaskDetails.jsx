@@ -98,7 +98,7 @@ export class _TaskDetails extends Component {
   }
 
   render() {
-    const { loggedinUserIsJoin, currGroup } = this.state;
+    const { currGroup } = this.state;
     const { board, currTaskDetails } = this.props;
     if (!currTaskDetails || !board || !currGroup) return <LoaderSpinner />;
 
@@ -119,19 +119,16 @@ export class _TaskDetails extends Component {
       <div style={taskOverlay}>
         <div
           className="overlay show"
-          onClick={() => this.props.history.push(`/board/${board._id}`)}
-        ></div>
+          onClick={() => this.props.history.push(`/board/${board._id}`)}>
+        </div>
+
         <section className="task-details flex column">
           <button
             onClick={() => this.props.history.push(`/board/${board._id}`)}
-            className={`close-task-details ${bgColor ? "cover" : ""}`}
-          >
+            className={`close-task-details ${bgColor ? "cover" : ""}`}>
             <Close />
           </button>
-          {(bgColor || bgUrl) && (
-            <TaskCardCover
-            />
-          )}
+          {(bgColor || bgUrl) && (<TaskCardCover />)}
 
           {isArchive &&
             <div className="task-details-archived flex">
@@ -139,8 +136,7 @@ export class _TaskDetails extends Component {
               <h3>This card is archived.</h3>
             </div>
           }
-
-
+          
           <TaskHeader
             taskTitle={currTaskDetails.title}
             setTaksDetailsTitle={this.setTaksDetailsTitle}
