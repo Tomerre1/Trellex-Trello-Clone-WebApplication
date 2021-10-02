@@ -23,6 +23,38 @@
         .menu-activity {
             font-weight: 700;
         }
+        .menu-list {
+            margin: 4px 0;
+            cursor: pointer;
+            padding-bottom: 16px;
+            margin-bottom: 16px;
+            border-bottom: 1px solid rgba(9,30,66,.13);
+            li {
+                border-radius: 3px;
+                display: flex;
+                font-weight: 600;
+                line-height: 20px;
+                text-decoration: none;
+                padding: 6px 6px 6px 0px;
+                position: relative;
+                align-items: end;
+                svg{
+                    height: 20px;
+                }
+                .menu-bg-span {
+                    padding-right: 19px;
+                    border-radius: 3px;
+                    height: 20px;
+                }
+                .menu-title{
+                    margin-left: 5px;
+                    margin-bottom: 1px;
+                }
+                &:hover {
+                    background-color: #091e4214;
+                }
+            }
+        }
     }
     .task-activities-header {
         h3 {
