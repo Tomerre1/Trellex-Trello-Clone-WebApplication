@@ -4,10 +4,10 @@ const initialState = {
     popover: {
         pos: {
             posX: null,
-            posY: null
+            posY: null,
+            type: ''
         },
         isOpen: false,
-        type: ''
     }
 }
 export function appReducer(state = initialState, action) {
@@ -17,7 +17,7 @@ export function appReducer(state = initialState, action) {
         case 'TOGGLE_DRAGGING':
             return { ...state, isDragDisabled: !state.isDragDisabled }
         case 'SET_POSITION':
-            return { ...state, popover: { ...state.popover, pos: action.pos, isOpen: !state.popover.isOpen } }
+            return { ...state, popover: { ...state.popover, pos: action.pos } }
         case 'TOOGLE_POPOVER':
             return { ...state, popover: { ...state.popover, isOpen: !state.popover.isOpen } }
         default:

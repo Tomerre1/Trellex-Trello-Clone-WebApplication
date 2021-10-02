@@ -11,7 +11,6 @@ import { TaskActionsMenu } from "../cmps/TaskActionsMenu";
 import { TaskHeaderDetails } from "../cmps/TaskHeaderDetails";
 import { LoaderSpinner } from "../cmps/LoaderSpinner";
 import { boardService } from '../services/board.service'
-import { PopoverDynamicCmp } from '../cmps/Popover/PopoverDynamicCmp'
 import { saveBoard, saveTaskDetails } from "../store/board.actions";
 import { setCurrTaskDetails } from '../store/app.actions'
 

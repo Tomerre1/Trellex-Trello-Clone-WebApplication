@@ -23,7 +23,7 @@ const _PopoverDynamicCmp = (props) => {
                 <PopoverMembers
                     {...props}
                     title="Members"
-          
+
                 />
             );
         // case "CHECKLIST":

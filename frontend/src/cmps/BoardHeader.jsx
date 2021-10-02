@@ -4,6 +4,7 @@ import { saveBoard } from "../store/board.actions";
 import { MemberList } from "./MemberList";
 import MoreHorizOutlinedIcon from "@mui/icons-material/MoreHorizOutlined";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
+import { tooglePopover, setPosition } from '../store/app.actions'
 
 function _BoardHeader(props) {
   const { board } = props;
@@ -39,6 +40,8 @@ function _BoardHeader(props) {
   };
   const onToggleMenu = (ev) => {
     props.toggleMenu(ev)
+    props.tooglePopover()
+
   };
 
 
@@ -89,7 +92,11 @@ function _BoardHeader(props) {
       </div>
       <div className="header-btn-container flex">
         <button className="header-btn"> Dashboard</button>
-        <button className="header-btn" onClick={(ev) => onToggleMenu(ev)}>
+        {/* <button className="header-btn" onClick={(ev) => onToggleMenu(ev)}>
+          <MoreHorizOutlinedIcon className="icon" /> Show Menu
+
+        </button> */}
+        <button className="header-btn" onClick={(event) => { props.setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: '' }) }}>
           <MoreHorizOutlinedIcon className="icon" /> Show Menu
 
         </button>
@@ -99,6 +106,8 @@ function _BoardHeader(props) {
 }
 const mapDispatchToProps = {
   saveBoard,
+  tooglePopover,
+  setPosition
 };
 function mapStateToProps(state) {
   return {

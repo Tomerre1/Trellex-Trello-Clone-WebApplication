@@ -112,7 +112,6 @@ export class _PopoverLabels extends Component {
 function mapStateToProps(state) {
     return {
         currTaskDetails: state.appModule.currTaskDetails,
-        popover: state.appModule.popover,
         board: state.boardModule.board,
     };
 }
