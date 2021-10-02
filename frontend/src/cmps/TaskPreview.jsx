@@ -34,6 +34,7 @@ function _TaskPreview(props) {
     description,
     attachments,
     style,
+    length
   } = task;
 
   const [isMenuShown, toggleMenuShown] = useState(false);
@@ -65,8 +66,7 @@ function _TaskPreview(props) {
     return `${doneTodos}/${todos}`;
   };
   // full cover image
-  if (style?.bgUrl && style?.coverMode === "full") {
-    if (style && style?.coverMode === "full")
+  if (style?.bgUrl && style?.coverMode === "full" && !isMenuShown) {
       return (
         <Draggable
           draggableId={task.id}
@@ -98,20 +98,9 @@ function _TaskPreview(props) {
                     <ModeEditOutlinedIcon className="icon" />
                   </div>
                 </div>
-                {isMenuShown && (
-                  <TaskActions
-                    toggleMenu={toggleMenuShown}
-                    menuPos={menuPos}
-                    groupId={groupId}
-                    boardId={boardId}
-                    task={task}
-                  />
-                )}
+           
               </Link>
-              <div
-                className={`overlay ${isMenuShown ? "show" : ""}`}
-                onClick={toggleMenu}
-              ></div>
+            
             </article>
           )}
         </Draggable>
@@ -119,7 +108,7 @@ function _TaskPreview(props) {
   }
 
   // full color cover
-  if (style && style?.coverMode === "full")
+  if (style && style?.coverMode === "full"  && !isMenuShown)
     return (
       <Draggable
         draggableId={task.id}
@@ -147,30 +136,10 @@ function _TaskPreview(props) {
                 </Link>
               </div>
             </div>
-            {isMenuShown && (
-              <TaskActions
-                toggleMenu={toggleMenuShown}
-                menuPos={menuPos}
-                groupId={groupId}
-                boardId={boardId}
-                task={task}
-              />
-            )}
+       
           </article>
         )}
-        {isMenuShown && (
-          <TaskActions
-            toggleMenu={toggleMenuShown}
-            menuPos={menuPos}
-            groupId={groupId}
-            boardId={boardId}
-            task={task}
-          />
-        )}
-        <div
-          className={`overlay ${isMenuShown ? "show" : ""}`}
-          onClick={toggleMenu}
-        ></div>
+      
       </Draggable>
     );
   // normal
@@ -196,9 +165,14 @@ function _TaskPreview(props) {
                 task={task}
               />
             )}
+             <div
+              className={`overlay ${isMenuShown ? "show" : ""}`}
+              onClick={toggleMenu}
+              style={{zIndx:'2'}}
+            ></div>
                <article
               className="task-preview-container"
-              style={{boxShadow:'none' }}
+              style={{boxShadow:'none' ,zIndex:'25'}}
             >
             {style?.bgUrl && (
               
@@ -229,6 +203,7 @@ function _TaskPreview(props) {
                     top: "-8px",
                     marginBottom: "-8px",
                     borderRadius: "0px 0px 3px 0px"
+                    
                   }
                 }
                 >
@@ -293,10 +268,7 @@ function _TaskPreview(props) {
                 </div>
               </Link>
             </article>
-            <div
-              className={`overlay ${isMenuShown ? "show" : ""}`}
-              onClick={toggleMenu}
-            ></div>
+           
           </div>
         )}
       </Draggable>
