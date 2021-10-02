@@ -19,16 +19,18 @@ export const toggleDragDisable = () => {
     }
 }
 export const setPosition = ({ pos, type }) => {
-
     return (dispatch) => {
         const clickedPos = { ...pos, type };
         dispatch({
             type: "SET_POSITION",
             pos: clickedPos,
         })
-
+        dispatch({
+            type: "TOOGLE_POPOVER",
+        });
     }
 }
+
 export const tooglePopover = () => {
     return (dispatch) => {
         dispatch({

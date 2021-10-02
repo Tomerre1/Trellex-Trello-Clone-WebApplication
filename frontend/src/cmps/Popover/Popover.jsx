@@ -57,7 +57,7 @@ export class _Popover extends React.Component {
     };
 
     render() {
-        const { togglePopover, title, children, popover } = this.props;
+        const { title, children, popover } = this.props;
         return (
             <>
                 {popover.isOpen &&
