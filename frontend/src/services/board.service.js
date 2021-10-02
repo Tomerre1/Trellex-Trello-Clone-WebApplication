@@ -1148,7 +1148,8 @@ function createActivity(activityType, currTask, txt = null) {
 
 function updateTask(board, group, task) {
     const groupIndex = board.groups.indexOf(group)
-    const taskIndex = board.groups[groupIndex].tasks.indexOf(task)
+    const taskNeedToUpdate = board.groups[groupIndex].tasks.find(currTask => currTask.id === task.id)
+    const taskIndex = board.groups[groupIndex].tasks.indexOf(taskNeedToUpdate)
     board.groups[groupIndex].tasks[taskIndex] = task
     return { ...board }
 }

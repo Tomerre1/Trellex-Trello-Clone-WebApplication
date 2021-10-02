@@ -1,7 +1,10 @@
 import React from 'react'
 import AddIcon from '@mui/icons-material/Add';
+import { connect } from 'react-redux';
+import { setPosition } from '../store/app.actions';
 
-export function MemberList(props) {
+
+export function _MemberList(props) {
   const { members, isInPreview, isInDetails, setCurrentTarget } = props
   return (
     <div className={`members ${isInPreview ? 'preview' : ''}`}>
@@ -22,7 +25,27 @@ export function MemberList(props) {
               )}
           </article>
         ))}
-      {isInDetails && <button className="secondary-btn" onClick={(event) => { setCurrentTarget(event, 'MEMBERS') }}><AddIcon /></button>}
+      {isInDetails &&
+        <button className="secondary-btn"
+          onClick={(event) => { props.setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'MEMBERS' }) }}
+        ><AddIcon /></button>}
     </div>
   )
 }
+
+
+function mapStateToProps(state) {
+  return {
+    currTaskDetails: state.appModule.currTaskDetails,
+  };
+}
+const mapDispatchToProps = {
+  setPosition
+};
+
+export const MemberList = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(_MemberList);
+
+

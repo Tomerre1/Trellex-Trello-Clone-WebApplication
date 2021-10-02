@@ -8,17 +8,12 @@ import { TaskAttachment } from "../cmps/TaskAttachment";
 import { TaskChecklist } from "../cmps/TaskChecklist";
 import { TaskActivities } from "../cmps/TaskActivities";
 import { TaskActionsMenu } from "../cmps/TaskActionsMenu";
-import { PopoverLabels } from "../cmps/Popover/PopoverLabels";
-import { PopoverMembers } from "../cmps/Popover/PopoverMembers";
-import { PopoverChecklist } from "../cmps/Popover/PopoverChecklist";
-import { PopoverDate } from "../cmps/Popover/PopoverDate";
-import { PopoverAttachment } from "../cmps/Popover/PopoverAttachment";
-import { PopoverCover } from "../cmps/Popover/PopoverCover";
 import { TaskHeaderDetails } from "../cmps/TaskHeaderDetails";
 import { LoaderSpinner } from "../cmps/LoaderSpinner";
-import { PopoverMoveCopy } from "../cmps/Popover/PopoverMoveCopy";
-import { saveBoard, saveTaskDetails } from "../store/board.actions";
 import { boardService } from '../services/board.service'
+import { PopoverDynamicCmp } from '../cmps/Popover/PopoverDynamicCmp'
+import { saveBoard, saveTaskDetails } from "../store/board.actions";
+import { setCurrTaskDetails } from '../store/app.actions'
 
 export class _TaskDetails extends Component {
   state = {
@@ -33,10 +28,11 @@ export class _TaskDetails extends Component {
   contentEl = null;
 
   componentDidMount() {
-    const { board, loggedinUser } = this.props;
+    const { board, loggedinUser, setCurrTaskDetails } = this.props;
     const { taskId, listId } = this.props.match.params;
     const currGroup = board.groups.find((list) => list.id === listId);
     const currTask = currGroup.tasks.find((task) => task.id === taskId);
+    setCurrTaskDetails(currTask)
     this.setState((prevState) => ({
       ...prevState,
       bgColorCover: currTask.style?.bgColor || null,
@@ -46,14 +42,8 @@ export class _TaskDetails extends Component {
       currTask,
       currentTarget: null,
       selectedMembers: currTask.members,
-      selectedLabels: board.labels.filter((label) =>
-        currTask.labelIds.includes(label.id)
-      ),
-      loggedinUserIsJoin: currTask.members?.find(
-        (member) => member._id === loggedinUser._id
-      )
-        ? true
-        : false || false,
+      selectedLabels: board.labels.filter((label) => currTask.labelIds.includes(label.id)),
+      loggedinUserIsJoin: currTask.members?.find((member) => member._id === loggedinUser._id) ? true : false || false,
     }));
   }
 
@@ -200,85 +190,9 @@ export class _TaskDetails extends Component {
       loggedinUserIsJoin,
       bgUrlCover
     } = this.state;
-    const { board, loggedinUser, boards } = this.props;
+    const { board, loggedinUser, boards, currTaskDetails } = this.props;
     if (!currTask || !board) return <LoaderSpinner />;
     const { isArchive } = currTask
-    const DynamicCmpPopover = (props) => {
-      switch (props.type) {
-        case "LABELS":
-          return (
-            <PopoverLabels
-              {...props}
-              board={board}
-              currGroup={currGroup}
-              setSelectedLabels={this.setSelectedLabels}
-              title="Labels"
-            />
-          );
-        case "MEMBERS":
-          return (
-            <PopoverMembers
-              {...props}
-              title="Members"
-              setSelectedMembers={this.setSelectedMembers}
-              members={board.members}
-              loggedinUser={loggedinUser}
-            />
-          );
-        case "CHECKLIST":
-          return (
-            <PopoverChecklist
-              {...props}
-              title="Checklist"
-            />
-          );
-        case "DATE":
-          return (
-            <PopoverDate
-              {...props}
-              title="Date"
-              setSelectedDate={this.setSelectedDate}
-            />
-          );
-        case "ATTACHMENT":
-          return <PopoverAttachment {...props} title="Attach from..." />;
-        case "COVER":
-          return (
-            <PopoverCover
-              {...props}
-              setBgColorCover={this.setBgColorCover}
-              setBgUrlCover={this.setBgUrlCover}
-              setIsCover={this.setIsCover}
-              title="Cover"
-            />
-          );
-        case "MOVE":
-          return (
-            <PopoverMoveCopy
-              {...props}
-              isCopy={false}
-              updateBoards={this.updateBoards}
-              boards={boards}
-              board={board}
-              currGroup={currGroup}
-              title="Move to"
-            />
-          );
-        case "COPY":
-          return (
-            <PopoverMoveCopy
-              {...props}
-              isCopy={true}
-              updateBoards={this.updateBoards}
-              boards={boards}
-              board={board}
-              currGroup={currGroup}
-              title="Copy"
-            />
-          );
-      }
-    };
-
     const style = {
       position: "fixed",
       inset: 0,
@@ -296,15 +210,12 @@ export class _TaskDetails extends Component {
         <section className="task-details flex column">
           <button
             onClick={() => this.props.history.push(`/board/${board._id}`)}
-            className={`close-task-details ${bgColorCover ? "cover" : ""}`}
+            className={`close-task-details ${currTaskDetails.style.bgColor ? "cover" : ""}`}
           >
             <Close />
           </button>
-          {(bgColorCover || bgUrlCover) && (
+          {(currTaskDetails.style.bgColor || currTaskDetails.style.bgUrl) && (
             <TaskCardCover
-              bgColor={bgColorCover}
-              setCurrentTarget={this.setCurrentTarget}
-              bgUrl={bgUrlCover}
             />
           )}
 
@@ -326,11 +237,11 @@ export class _TaskDetails extends Component {
               {(selectedLabels || selectedMembers || selectedDate) && (
                 <TaskHeaderDetails
                   setCurrentTarget={this.setCurrentTarget}
-                  selectedLabels={selectedLabels}
-                  selectedMembers={currTask.members}
-                  selectedDate={currTask.dueDate}
+                  selectedLabels={currTaskDetails.labelIds}
+                  selectedMembers={currTaskDetails.members}
+                  selectedDate={currTaskDetails.dueDate}
                   toggleTaskDone={this.toggleTaskDone}
-                  currTask={currTask}
+                  currTask={currTaskDetails}
                   updateTaskDetails={this.updateTaskDetails}
                   addActivity={this.addActivity}
                 />
@@ -367,17 +278,6 @@ export class _TaskDetails extends Component {
             />
           </div>
 
-          {isPopover && (
-            <DynamicCmpPopover
-              togglePopover={this.togglePopover}
-              currentTarget={currentTarget}
-              updateBoard={this.updateBoard}
-              updateTaskDetails={this.updateTaskDetails}
-              type={type}
-              currTask={currTask}
-              addActivity={this.addActivity}
-            />
-          )}
         </section>
       </div>
     );
@@ -388,11 +288,14 @@ function mapStateToProps(state) {
     board: state.boardModule.board,
     boards: state.boardModule.boards,
     loggedinUser: state.userModule.loggedinUser,
+    popover: state.appModule.popover,
+    currTaskDetails: state.appModule.currTaskDetails
   };
 }
 const mapDispatchToProps = {
   saveBoard,
   saveTaskDetails,
+  setCurrTaskDetails
 };
 
 export const TaskDetails = connect(
