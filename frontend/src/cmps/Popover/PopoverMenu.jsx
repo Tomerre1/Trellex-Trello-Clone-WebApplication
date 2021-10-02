@@ -11,6 +11,8 @@ class _PopoverMenu extends Component {
     render() {
         const { board } = this.props
         const { togglePopover, currentTarget, title } = this.props
+        let CommAndAct = board.activities
+        CommAndAct.sort((a, b) => (a.createdAt < b.createdAt) ? 1 : ((b.createdAt < a.createdAt) ? -1 : 0))
 
         return <div className="board-menu">
             <Popover togglePopover={togglePopover} currentTarget={currentTarget} title={title}>
@@ -19,7 +21,7 @@ class _PopoverMenu extends Component {
                         <FormatListBulletedIcon />
                         <h3 className="menu-activity">Activity</h3>
                     </div>
-                    <ActivitiesList CommAndAct={board.activities} isShowActivities={true} currTask={null}/>
+                    <ActivitiesList CommAndAct={CommAndAct} isShowActivities={true} currTask={null}/>
                    
                 </div>
             </Popover>
