@@ -1,16 +1,26 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
 import { TodoList } from './TodoList'
 import { CheckDeletePopover } from './CheckDeletePopover'
 import { TodoAdd } from './TodoAdd'
 import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
 import { ProgressBar } from './ProgressBar'
+import { saveBoard, saveTaskDetails } from '../store/board.actions'
+import { togglePopover } from '../store/app.actions'
+import { setPosition } from '../store/app.actions';
 
-export class TaskChecklistPreview extends Component {
 
+export class _TaskChecklistPreview extends Component {
 
     state = {
         isPopover: false,
         currentTarget: null
+    }
+
+    componentDidMount() {
+        const { board, currTaskDetails } = this.props
+        const currGroup = board.groups.find(group => group.tasks.some(task => task.id === currTaskDetails.id))
+        this.setState(prevState => ({ ...prevState, currGroup }))
     }
 
     togglePopover = () => {
@@ -22,35 +32,34 @@ export class TaskChecklistPreview extends Component {
         this.togglePopover()
     };
 
-    onSaveTodo = (todo) => {
-        const { currTask, updateTaskDetails, checklist } = this.props
-        const checklistIdx = currTask.checklists.indexOf(checklist)
-
-        const todoIdx = currTask.checklists[checklistIdx].todos.findIndex((currTodo) => {
+    onSaveTodo = async (todo) => {
+        const { board, currTaskDetails, checklist, saveTaskDetails } = this.props
+        const { currGroup } = this.state
+        const checklistIdx = currTaskDetails.checklists.indexOf(checklist)
+        const todoIdx = currTaskDetails.checklists[checklistIdx].todos.findIndex((currTodo) => {
             return currTodo.id === todo.id
         })
-
-        currTask.checklists[checklistIdx].todos[todoIdx] = todo
-        updateTaskDetails(currTask)
+        currTaskDetails.checklists[checklistIdx].todos[todoIdx] = todo
+        await saveTaskDetails(board, currGroup, currTaskDetails)
     }
 
-    onRemoveTodo = (todo) => {
-        const { currTask, updateTaskDetails, checklist } = this.props
-        const checklistIdx = currTask.checklists.indexOf(checklist)
-
-        const todoIdx = currTask.checklists[checklistIdx].todos.findIndex((currTodo) => {
+    onRemoveTodo = async (todo) => {
+        const { board, currTaskDetails, saveTaskDetails, checklist } = this.props
+        const { currGroup } = this.state
+        const checklistIdx = currTaskDetails.checklists.indexOf(checklist)
+        const todoIdx = currTaskDetails.checklists[checklistIdx].todos.findIndex((currTodo) => {
             return currTodo.id === todo.id
         })
-
-        currTask.checklists[checklistIdx].todos.splice(todoIdx, 1)
-        updateTaskDetails(currTask)
+        currTaskDetails.checklists[checklistIdx].todos.splice(todoIdx, 1)
+        await saveTaskDetails(board, currGroup, currTaskDetails)
     }
 
-    onAddTodo = (todo) => {
-        const { currTask, updateTaskDetails, checklist } = this.props
-        const checklistIdx = currTask.checklists.indexOf(checklist)
-        currTask.checklists[checklistIdx].todos.push(todo)
-        updateTaskDetails(currTask)
+    addTodo = async (todo) => {
+        const { board, currTaskDetails, saveTaskDetails, checklist } = this.props
+        const { currGroup } = this.state
+        const checklistIdx = currTaskDetails.checklists.indexOf(checklist)
+        currTaskDetails.checklists[checklistIdx].todos.push(todo)
+        await saveTaskDetails(board, currGroup, currTaskDetails)
     }
 
     doneTodosCalc = () => {
@@ -62,21 +71,23 @@ export class TaskChecklistPreview extends Component {
         todos.forEach(todo => {
             if (todo.isDone) isDoneTodos++
         })
-
         return (isDoneTodos / checklist.todos.length) * 100
     }
 
-    removeChecklist = () => {
-        const { updateTaskDetails, currTask, addActivity, checklist } = this.props
-        const checklistIdx = currTask.checklists.indexOf(checklist)
-        currTask.checklists.splice(checklistIdx, 1)
-        updateTaskDetails(currTask)
+    removeChecklist = async () => {
+        // const { saveTaskDetails, currTaskDetails, addActivity, checklist } = this.props
+        const { board, saveTaskDetails, currTaskDetails, checklist } = this.props
+        const { currGroup } = this.state
+        const checklistIdx = currTaskDetails.checklists.indexOf(checklist)
+        currTaskDetails.checklists.splice(checklistIdx, 1)
+        await saveTaskDetails(board, currGroup, currTaskDetails)
         this.togglePopover()
-        addActivity('remove-checklist')
+        // addActivity('remove-checklist')
     }
 
     render() {
-        const { checklist, addActivity } = this.props
+        // const { checklist, addActivity } = this.props
+        const { checklist } = this.props
         const { isPopover, currentTarget } = this.state
 
         return (
@@ -86,7 +97,7 @@ export class TaskChecklistPreview extends Component {
                         <CheckBoxOutlinedIcon />
                         <h3>{checklist.title}</h3>
                     </div>
-                    <button className="activity-toggle-btn" onClick={(event) => { this.setCurrentTarget(event) }}>
+                    <button className="activity-toggle-btn" onClick={(event) => { this.props.setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'CHECK_DELETE' }) }}>
                         Delete
                     </button>
                 </div>
@@ -95,7 +106,7 @@ export class TaskChecklistPreview extends Component {
                     todos={checklist.todos}
                     onSaveTodo={this.onSaveTodo}
                     onRemoveTodo={this.onRemoveTodo}
-                    addActivity={addActivity}
+                    // addActivity={addActivity}
                 />
                 {isPopover &&
                     <CheckDeletePopover
@@ -106,9 +117,26 @@ export class TaskChecklistPreview extends Component {
                         currentTarget={currentTarget}
                     />
                 }
-                <TodoAdd onAddTodo={this.onAddTodo} />
+                <TodoAdd addTodo={this.addTodo} />
             </div>
         )
     }
-
 }
+
+function mapStateToProps(state) {
+    return {
+        currTaskDetails: state.appModule.currTaskDetails,
+        board: state.boardModule.board,
+    };
+}
+const mapDispatchToProps = {
+    saveTaskDetails,
+    saveBoard,
+    togglePopover,
+    setPosition,
+};
+
+export const TaskChecklistPreview = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(_TaskChecklistPreview);

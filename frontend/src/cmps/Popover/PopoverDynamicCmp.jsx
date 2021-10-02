@@ -7,6 +7,7 @@ import { PopoverDate } from "./PopoverDate";
 import { PopoverAttachment } from "./PopoverAttachment";
 import { PopoverCover } from "./PopoverCover";
 import { PopoverMoveCopy } from "./PopoverMoveCopy";
+import { CheckDeletePopover } from "../CheckDeletePopover";
 import { saveBoard, saveTaskDetails } from "../../store/board.actions";
 const _PopoverDynamicCmp = (props) => {
     const { type } = props.popover.pos;
@@ -62,6 +63,13 @@ const _PopoverDynamicCmp = (props) => {
                     {...props}
                     isCopy={true}
                     title="Copy"
+                />
+            );
+        case "CHECK_DELETE":
+            return (
+                <CheckDeletePopover
+                    {...props}
+                    title="checkdelete"
                 />
             );
         default:

@@ -24,7 +24,8 @@ export class TodoAdd extends Component {
         const { todo } = this.state
         todo.id = utilService.makeId()
         todo.isDone = false
-        this.setState(prevState => ({ ...prevState, todo }),this.props.onAddTodo(todo))    
+        this.setState(prevState => ({ ...prevState, todo }))    
+        this.props.addTodo(todo)
         this.clearState()
     }
 

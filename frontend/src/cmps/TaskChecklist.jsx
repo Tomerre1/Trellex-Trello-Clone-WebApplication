@@ -1,28 +1,34 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
 import { TaskChecklistPreview } from './TaskChecklistPreview'
 
 
-export class TaskChecklist extends Component {
+export class _TaskChecklist extends Component {
 
     state = {
     }
 
     render() {
-        const { currTask , updateTaskDetails, addActivity } = this.props
-        if (!currTask.checklists) return <React.Fragment></React.Fragment>
+        const { currTaskDetails } = this.props
+        if (!currTaskDetails.checklists) return <React.Fragment></React.Fragment>
         return (
             <div className="task-checklists" >
-                {currTask.checklists.map(checklist => {
+                {currTaskDetails.checklists.map(checklist => {
                     return <TaskChecklistPreview
                         key={checklist.id}
                         checklist={checklist}
-                        currTask={currTask}
-                        updateTaskDetails={updateTaskDetails}
-                        addActivity={addActivity}
                     />
                 })}
             </div>
         )
     }
-
 }
+
+function mapStateToProps(state) {
+    return {
+        currTaskDetails: state.appModule.currTaskDetails,
+    };
+}
+
+
+export const TaskChecklist = connect(mapStateToProps)(_TaskChecklist);
