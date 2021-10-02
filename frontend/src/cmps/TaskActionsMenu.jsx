@@ -44,7 +44,7 @@ export class _TaskActionsMenu extends Component {
                             </div>
                         </button>
 
-                        <button className="secondary-btn action-btn" onClick={(event) => { setCurrentTarget(event, 'CHECKLIST') }}>
+                        <button className="secondary-btn action-btn" onClick={(event) => { this.props.setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'CHECKLIST' }) }}>
                             <div className="action-btn-content flex " >
                                 <CheckboxIcon />
                                 <span>Checklist</span>

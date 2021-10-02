@@ -1,11 +1,21 @@
+import { connect } from "react-redux";
 import React, { Component } from 'react'
 import { Popover } from './Popover'
 import { utilService } from '../../services/util.service'
+import { saveBoard, saveTaskDetails } from '../../store/board.actions'
+import { tooglePopover } from '../../store/app.actions'
 
-export class PopoverChecklist extends Component {
+export class _PopoverChecklist extends Component {
     state = {
         txt: ''
     }
+
+    componentDidMount() {
+        const { board, currTaskDetails } = this.props
+        const currGroup = board.groups.find(group => group.tasks.some(task => task.id === currTaskDetails.id))
+        this.setState(prevState => ({ ...prevState, currGroup }))
+    }
+
     handlechange = (ev) => {
         const txt = ev.target.value
         this.setState(prevState => ({ ...prevState, txt }))
@@ -13,26 +23,27 @@ export class PopoverChecklist extends Component {
 
     onAddChecklist = (ev) => {
         ev.preventDefault()
-        const { togglePopover, updateTaskDetails, currTask, addActivity } = this.props
+        // const {  saveTaskDetails, currTaskDetails, addActivity } = this.props
+        const {  saveTaskDetails, currTaskDetails, tooglePopover } = this.props
 
-        if (!currTask.checklists) currTask.checklists = []
+        if (!currTaskDetails.checklists) currTaskDetails.checklists = []
         const newList = {
             id: utilService.makeId(),
             title: this.state.txt,
             todos: []
         }
-        currTask.checklists.push(newList)
-        updateTaskDetails(currTask)
-        togglePopover()
-        addActivity('add-checklist')
+        currTaskDetails.checklists.push(newList)
+        saveTaskDetails(currTaskDetails)
+        tooglePopover()
+        // addActivity('add-checklist')
     }
 
     render() {
-        const { togglePopover, currentTarget, title } = this.props
+        const { title } = this.props
         const { txt } = this.state
         return (
             <div className="checklist-container">
-                <Popover togglePopover={togglePopover} currentTarget={currentTarget} title={title} >
+                <Popover title={title} >
                     <div>
                         <form className="checklist-form" onSubmit={this.onAddChecklist}>
                             <label htmlFor="checklist" className="pop-over-label">Title</label>
@@ -45,3 +56,20 @@ export class PopoverChecklist extends Component {
         )
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        currTaskDetails: state.appModule.currTaskDetails,
+        board: state.boardModule.board,
+    };
+}
+const mapDispatchToProps = {
+    saveTaskDetails,
+    saveBoard,
+    tooglePopover
+};
+
+export const PopoverChecklist = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(_PopoverChecklist);
