@@ -116,10 +116,11 @@ export class _TaskDetails extends Component {
     }));
   };
 
-  setTaksDetailsTitle = (title) => {
-    const { currTask } = this.state;
-    currTask.title = title;
-    this.updateTaskDetails({ ...currTask, title });
+  setTaksDetailsTitle = async (title) => {
+    const { currTaskDetails, board } = this.props;
+    const { currGroup } = this.state;
+    currTaskDetails.title = title;
+    await saveTaskDetails(board, currGroup, currTaskDetails)
   };
 
   setBgUrlCover = (bgUrlCover) => {
@@ -176,27 +177,15 @@ export class _TaskDetails extends Component {
   }
 
   render() {
-    const {
-      currentTarget,
-      isPopover,
-      type,
-      selectedLabels,
-      selectedDate,
-      selectedMembers,
-      currTask,
-      currGroup,
-      bgColorCover,
-      loggedinUserIsJoin,
-      bgUrlCover
-    } = this.state;
-    const { board, loggedinUser, boards, currTaskDetails } = this.props;
+    const { loggedinUserIsJoin, currGroup } = this.state;
+    const { board, currTaskDetails } = this.props;
 
-    if (!currTaskDetails || !board) return <LoaderSpinner />;
+    if (!currTaskDetails || !board || !currGroup) return <LoaderSpinner />;
     const { style } = currTaskDetails;
     currTaskDetails.style = (style) ? style : { bgColor: null, bgUrl: null }
     const { bgColor, bgUrl } = currTaskDetails.style
     const { isArchive } = currTaskDetails
-    const taskStyle = {
+    const taskOverlay = {
       position: "fixed",
       inset: 0,
       height: "100vh",
@@ -205,7 +194,7 @@ export class _TaskDetails extends Component {
     };
 
     return (
-      <div style={taskStyle}>
+      <div style={taskOverlay}>
         <div
           className="overlay show"
           onClick={() => this.props.history.push(`/board/${board._id}`)}
@@ -231,45 +220,40 @@ export class _TaskDetails extends Component {
 
 
           <TaskHeader
-            taskTitle={currTask.title}
+            taskTitle={currTaskDetails.title}
             setTaksDetailsTitle={this.setTaksDetailsTitle}
-            taskList={currGroup.title}
+            taskList={board.groups.find(group => group.tasks.some(task => task.id === currTaskDetails.id))?.title || ''}
           />
           <div className="task-details-body flex">
             <div className="task-details-main flex column">
-              {(selectedLabels || selectedMembers || selectedDate) && (
-                <TaskHeaderDetails
-                  setCurrentTarget={this.setCurrentTarget}
-                  selectedLabels={currTaskDetails.labelIds}
-                  selectedMembers={currTaskDetails.members}
-                  selectedDate={currTaskDetails.dueDate}
-                  toggleTaskDone={this.toggleTaskDone}
-                  currTask={currTaskDetails}
-                  updateTaskDetails={this.updateTaskDetails}
-                  addActivity={this.addActivity}
-                />
-              )}
+
+              <TaskHeaderDetails
+                selectedDate={currTaskDetails.dueDate}
+                toggleTaskDone={this.toggleTaskDone}
+                addActivity={this.addActivity}
+              />
+
               <TaskDescription
-                currTask={currTask}
+                currTask={currTaskDetails}
                 updateTaskDetails={this.updateTaskDetails}
               />
               <TaskAttachment
-                currTask={currTask}
+                // currTask={currTaskDetails}
                 updateTaskDetails={this.updateTaskDetails}
                 addActivity={this.addActivity}
                 setBgUrlCover={this.setBgUrlCover}
               />
-              <TaskChecklist
+              {/* <TaskChecklist
                 currTask={currTask}
                 updateTaskDetails={this.updateTaskDetails}
                 addActivity={this.addActivity}
-              />
-              <TaskActivities
+              /> */}
+              {/* <TaskActivities
                 currTask={currTask}
                 loggedinUser={loggedinUser}
                 activities={board.activities}
                 updateTaskDetails={this.updateTaskDetails}
-              />
+              /> */}
             </div>
             <TaskActionsMenu
               loggedinUserIsJoin={loggedinUserIsJoin}
