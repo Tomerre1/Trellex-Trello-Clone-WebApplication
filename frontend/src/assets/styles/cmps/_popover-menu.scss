@@ -1,8 +1,17 @@
 .board-menu {
     .popover {
         min-height: 100vh;
-        left: 670px !important;
+        left: 654px !important;
         top: 46px !important;
+        min-width: 21rem!important;
+    }
+    .menu-details{
+        .task-activities-header{
+            margin-bottom: .8rem;
+        }
+        .menu-activity{
+            font-weight: 700;
+        }
     }
     .task-activities-header {
         h3 {

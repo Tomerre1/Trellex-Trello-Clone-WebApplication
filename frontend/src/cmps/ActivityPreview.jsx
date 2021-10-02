@@ -5,7 +5,8 @@ export class ActivityPreview extends Component {
     state = {}
 
     get activityToShow() {
-        const { activity, currTask } = this.props
+        let { activity, currTask } = this.props
+        if (!currTask) currTask = activity.task
         switch (activity.type) {
             case 'due-date-complete':
                 return 'marked the due date complete'

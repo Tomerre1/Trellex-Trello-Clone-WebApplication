@@ -1,7 +1,7 @@
 import { Component } from "react"
 import { connect } from 'react-redux'
 import { Popover } from "./Popover"
-// import { ActivitiesList } from "../ActivitiesList"
+import { ActivitiesList } from "../ActivitiesList"
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 
 
@@ -17,9 +17,9 @@ class _PopoverMenu extends Component {
                 <div className="menu-details ">
                     <div className="task-activities-header flex align-center">
                         <FormatListBulletedIcon />
-                        <h3>Activity</h3>
+                        <h3 className="menu-activity">Activity</h3>
                     </div>
-                    {/* <ActivitiesList activities={board.activities}  /> */}
+                    <ActivitiesList CommAndAct={board.activities} isShowActivities={true} currTask={null}/>
                    
                 </div>
             </Popover>
@@ -38,3 +38,5 @@ const mapDispatchToProps = {
 
 
 export const PopoverMenu = connect(mapStateToProps, mapDispatchToProps)(_PopoverMenu)
+
+{/* <ActivitiesList CommAndAct={CommAndAct} isShowActivities={isShowActivities} currTask={currTask}/> */}
