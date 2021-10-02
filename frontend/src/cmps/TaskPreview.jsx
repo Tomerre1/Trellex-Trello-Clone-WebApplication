@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { TaskPreviewEdit } from "./TaskPreview/TaskPreviewEdit";
 import { TaskLabels } from "./TaskPreview/TaskLabels";
 import { TaskDetailsPreview } from "./TaskPreview/TaskDetailsPreview";
 import { toggleDragDisable } from "../store/app.actions";
@@ -34,7 +35,7 @@ function _TaskPreview(props) {
     description,
     attachments,
     style,
-    length
+    length,
   } = task;
 
   const [isMenuShown, toggleMenuShown] = useState(false);
@@ -67,48 +68,46 @@ function _TaskPreview(props) {
   };
   // full cover image
   if (style?.bgUrl && style?.coverMode === "full" && !isMenuShown) {
-      return (
-        <Draggable
-          draggableId={task.id}
-          index={index}
-          isDragDisabled={isDragDisabled}
-        >
-          {(provided) => (
-            <article
-              ref={provided.innerRef}
-              {...provided.draggableProps}
-              {...provided.dragHandleProps}
-            >
-              <Link to={taskUrl} className="clean-link">
+    return (
+      <Draggable
+        draggableId={task.id}
+        index={index}
+        isDragDisabled={isDragDisabled}
+      >
+        {(provided) => (
+          <article
+            ref={provided.innerRef}
+            {...provided.draggableProps}
+            {...provided.dragHandleProps}
+          >
+            <Link to={taskUrl} className="clean-link">
+              <div
+                className={`task-preview-container full-cover img`}
+                src={style.bgUrl}
+              >
+                <img className="" src={style.bgUrl} alt="" />
+                <div className="img-overlay" />
+                <p>{task.title}</p>
                 <div
-                  className={`task-preview-container full-cover img`}
-                  src={style.bgUrl}
+                  className="edit-icon"
+                  onClick={(ev) => {
+                    ev.preventDefault();
+                    ev.stopPropagation();
+                    toggleMenu(ev);
+                  }}
                 >
-                  <img className="" src={style.bgUrl} alt="" />
-                  <div className="img-overlay" />
-                  <p>{task.title}</p>
-                  <div
-                    className="edit-icon"
-                    onClick={(ev) => {
-                      ev.preventDefault();
-                      ev.stopPropagation();
-                      toggleMenu(ev);
-                    }}
-                  >
-                    <ModeEditOutlinedIcon className="icon" />
-                  </div>
+                  <ModeEditOutlinedIcon className="icon" />
                 </div>
-           
-              </Link>
-            
-            </article>
-          )}
-        </Draggable>
-      );
+              </div>
+            </Link>
+          </article>
+        )}
+      </Draggable>
+    );
   }
 
   // full color cover
-  if (style && style?.coverMode === "full"  && !isMenuShown)
+  if (style && style?.coverMode === "full" && !isMenuShown)
     return (
       <Draggable
         draggableId={task.id}
@@ -136,144 +135,153 @@ function _TaskPreview(props) {
                 </Link>
               </div>
             </div>
-       
           </article>
         )}
-      
       </Draggable>
     );
   // normal
-  return (
-    <>
-      <Draggable
-        draggableId={task.id}
-        index={index}
-        isDragDisabled={isDragDisabled}
-      >
-        {(provided) => (
-          <div
-            ref={provided.innerRef}
-            {...provided.draggableProps}
-            {...provided.dragHandleProps}
-          >
-            {isMenuShown && (
-              <TaskActions
-                toggleMenu={toggleMenuShown}
-                menuPos={menuPos}
-                groupId={groupId}
-                boardId={boardId}
-                task={task}
-              />
-            )}
-             <div
-              className={`overlay ${isMenuShown ? "show" : ""}`}
-              onClick={toggleMenu}
-              style={{zIndx:'2'}}
-            ></div>
-               <article
-              className="task-preview-container"
-              style={{boxShadow:'none' ,zIndex:'25'}}
+  if (!isMenuShown)
+    return (
+      <>
+        <Draggable
+          draggableId={task.id}
+          index={index}
+          isDragDisabled={isDragDisabled}
+        >
+          {(provided) => (
+            <div
+              ref={provided.innerRef}
+              {...provided.draggableProps}
+              {...provided.dragHandleProps}
             >
-            {style?.bgUrl && (
-              
-              <Link to={taskUrl} className="clean-link">
-                <img
-                  className="task-cover-img"
-                  src={style.bgUrl}
-                  style={{ backgroundColor: "white", borderRadius: "3px"}}
-                  alt=""
-                />
-              </Link>
-            )}
-         
-              <Link to={taskUrl} className="clean-link">
-                {style?.bgColor && !style?.bgUrl && (
-                  <div
-                    className="task-cover"
-                    style={{ background: task.style.bgColor }}
-                  ></div>
+              <article
+                className="task-preview-container"
+                style={{ boxShadow: "none", zIndex: isMenuShown ? 55 : 0 }}
+              >
+                {style?.bgUrl && (
+                  <Link to={taskUrl} className="clean-link">
+                    <img
+                      className="task-cover-img"
+                      src={style.bgUrl}
+                      style={{ backgroundColor: "white", borderRadius: "3px" }}
+                      alt=""
+                    />
+                  </Link>
                 )}
 
-                <div
-                  className="task-preview clean-link "
-   
-                style={
-                  style?.bgUrl && {
-                    position: "relative",
-                    top: "-8px",
-                    marginBottom: "-8px",
-                    borderRadius: "0px 0px 3px 0px"
-                    
-                  }
-                }
-                >
-                  {labelIds?.length > 0 && (
-                    <TaskLabels labelIds={labelIds} boardLabels={boardLabels} />
+                <Link to={taskUrl} className="clean-link">
+                  {style?.bgColor && !style?.bgUrl && (
+                    <div
+                      className="task-cover"
+                      style={{ background: task.style.bgColor }}
+                    ></div>
                   )}
-                  <div className="task-title">
-                    <p>{title}</p>
-                  </div>
-                  <div className="task-preview-icons flex align-center">
-                    {dueDate && (
-                      <TaskDatePreview
-                        dueDate={dueDate}
-                        isDone={task.isDone}
-                        taskId={task.id}
-                        groupId={groupId}
-                      />
-                    )}
-                    {description?.length > 0 && (
-                      <TaskDetailsPreview
-                        icon={<SubjectOutlinedIcon className="icon" />}
-                      />
-                    )}
-                    {comments?.length > 0 && (
-                      <TaskDetailsPreview
-                        icon={
-                          <ChatBubbleOutlineRoundedIcon className="icon msg" />
-                        }
-                        txt={comments.length}
-                      />
-                    )}
-                    {attachments?.length > 0 && (
-                      <TaskDetailsPreview
-                        icon={<AttachFileIcon className="icon attach" />}
-                        txt={attachments.length}
-                      />
-                    )}
-                    {checklists?.length > 0 && todos !== 0 && (
-                      <TaskDetailsPreview
-                        icon={<CheckBoxOutlinedIcon className="icon" />}
-                        txt={getChecklistData()}
-                        isDone={
-                          todos === doneTodos && todos !== 0 ? true : false
-                        }
-                      />
-                    )}
-                    {task?.members && (
-                      <MemberList members={task.members} isInPreview={true} />
-                    )}
-                  </div>
-                </div>
 
-                <div
-                  className="edit-icon"
-                  onClick={(ev) => {
-                    ev.preventDefault();
-                    ev.stopPropagation();
-                    toggleMenu(ev);
-                  }}
-                >
-                  <ModeEditOutlinedIcon className="icon" />
-                </div>
-              </Link>
-            </article>
-           
-          </div>
-        )}
-      </Draggable>
-    </>
-  );
+                  <div
+                    className="task-preview clean-link "
+                    style={
+                      style?.bgUrl && {
+                        position: "relative",
+                        top: "-8px",
+                        marginBottom: "-8px",
+                        borderRadius: "0px 0px 3px 0px",
+                      }
+                    }
+                  >
+                    {labelIds?.length > 0 && (
+                      <TaskLabels
+                        labelIds={labelIds}
+                        boardLabels={boardLabels}
+                      />
+                    )}
+                    <div className="task-title">
+                      <p>{title}</p>
+                    </div>
+                    <div className="task-preview-icons flex align-center">
+                      {dueDate && (
+                        <TaskDatePreview
+                          dueDate={dueDate}
+                          isDone={task.isDone}
+                          taskId={task.id}
+                          groupId={groupId}
+                        />
+                      )}
+                      {description?.length > 0 && (
+                        <TaskDetailsPreview
+                          icon={<SubjectOutlinedIcon className="icon" />}
+                        />
+                      )}
+                      {comments?.length > 0 && (
+                        <TaskDetailsPreview
+                          icon={
+                            <ChatBubbleOutlineRoundedIcon className="icon msg" />
+                          }
+                          txt={comments.length}
+                        />
+                      )}
+                      {attachments?.length > 0 && (
+                        <TaskDetailsPreview
+                          icon={<AttachFileIcon className="icon attach" />}
+                          txt={attachments.length}
+                        />
+                      )}
+                      {checklists?.length > 0 && todos !== 0 && (
+                        <TaskDetailsPreview
+                          icon={<CheckBoxOutlinedIcon className="icon" />}
+                          txt={getChecklistData()}
+                          isDone={
+                            todos === doneTodos && todos !== 0 ? true : false
+                          }
+                        />
+                      )}
+                      {task?.members && (
+                        <MemberList members={task.members} isInPreview={true} />
+                      )}
+                    </div>
+                  </div>
+
+                  <div
+                    className="edit-icon"
+                    onClick={(ev) => {
+                      ev.preventDefault();
+                      ev.stopPropagation();
+                      toggleMenu(ev);
+                    }}
+                  >
+                    <ModeEditOutlinedIcon className="icon" />
+                  </div>
+                </Link>
+              </article>
+            </div>
+          )}
+        </Draggable>
+      </>
+    );
+  else
+    return (
+      <>
+        <div
+          className={`overlay ${isMenuShown ? "show" : ""}`}
+          onClick={toggleMenu}
+          style={{ zIndx: 2}}
+        ></div>
+        <TaskPreviewEdit 
+        task={task}
+        getChecklistData={getChecklistData}
+        groupId={groupId}
+        boardId={boardId}
+        boardLabels={boardLabels}
+        />
+
+        <TaskActions
+          toggleMenu={toggleMenuShown}
+          menuPos={menuPos}
+          groupId={groupId}
+          boardId={boardId}
+          task={task}
+        />
+      </>
+    );
 }
 function mapStateToProps(state) {
   return {
