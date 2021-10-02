@@ -40,12 +40,26 @@ function _TaskPreview(props) {
   const [isMenuShown, toggleMenuShown] = useState(false);
   const [menuPos, setMenuPos] = useState();
 
+  const calcPos = (ev) => {
+    let { top, right, height } =
+      ev.target.parentElement.parentElement.getBoundingClientRect();
+    console.log(top, right, height, window.innerHeight);
+    if (top > window.innerHeight - 318) {
+      setMenuPos({
+        position: "absolute",
+        left: `${right}px`,
+        bottom:50,
+      });
+    } else {
+      setMenuPos({
+        position: "fixed",
+        left: `${right}px`,
+        top,
+      });
+    }
+  };
   const toggleMenu = (ev) => {
-    let posX = window.innerWidth - ev.pageX > 200 ? ev.pageX + 24 : ev.pageX - 200;
-    setMenuPos({
-      position: "absolute",
-      top: `${ev.pageY - 100}px`,
-    });
+    calcPos(ev);
     toggleMenuShown(!isMenuShown);
     toggleDragDisable();
   };
@@ -83,7 +97,7 @@ function _TaskPreview(props) {
                 className={`task-preview-container full-cover img`}
                 src={style.bgUrl}
               >
-                <img className="" src={style.bgUrl} alt=""  />
+                <img className="" src={style.bgUrl} alt="" />
                 <div className="img-overlay" />
                 <p>{task.title}</p>
                 <div
@@ -159,7 +173,12 @@ function _TaskPreview(props) {
                     <img
                       className="task-cover-img"
                       src={style.bgUrl}
-                      style={{ backgroundColor: "white", borderRadius: "3px",objectFit:'cover', maxHeight:240} }
+                      style={{
+                        backgroundColor: "white",
+                        borderRadius: "3px",
+                        objectFit: "cover",
+                        maxHeight: 240,
+                      }}
                       alt=""
                     />
                   </Link>
@@ -180,7 +199,7 @@ function _TaskPreview(props) {
                         position: "relative",
                         top: "-8px",
                         marginBottom: "-8px",
-                        borderRadius:'0 0 3px 3px',
+                        borderRadius: "0 0 3px 3px",
                       }
                     }
                   >
@@ -269,6 +288,7 @@ function _TaskPreview(props) {
           boardLabels={boardLabels}
           menuPos={menuPos}
           toggleMenu={toggleMenu}
+          taskUrl={taskUrl}
         />
       </>
     );

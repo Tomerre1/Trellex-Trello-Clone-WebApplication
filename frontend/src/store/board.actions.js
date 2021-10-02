@@ -240,7 +240,6 @@ export const saveTaskDetails = (board, currGroup, currTask) => {
 export const updateTask = (boardId, groupId, task) => {
     return async (dispatch) => {
         try {
-            console.log('sup')
             const updatedBoard =  await boardService.updateTaskByIds(boardId, groupId, task)
             const newBoard = await boardService.save(updatedBoard)
             console.log('newBoard:', newBoard)
