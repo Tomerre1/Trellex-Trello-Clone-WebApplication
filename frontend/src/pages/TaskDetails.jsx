@@ -12,7 +12,7 @@ import { TaskHeaderDetails } from "../cmps/TaskHeaderDetails";
 import { LoaderSpinner } from "../cmps/LoaderSpinner";
 import { boardService } from '../services/board.service'
 import { saveBoard, saveTaskDetails } from "../store/board.actions";
-import { setCurrTaskDetails } from '../store/app.actions'
+import { setCurrTaskDetails, setPopover, setPosition } from '../store/app.actions'
 
 export class _TaskDetails extends Component {
   state = {
@@ -46,6 +46,11 @@ export class _TaskDetails extends Component {
     }));
   }
 
+  componentWillUnmount() {
+    this.props.setCurrTaskDetails(null)
+    this.props.setPopover(false)
+    this.props.setPosition({ pageX: null, pageY: null, type: null })
+  }
   updateBoard = async (board) => {
     await this.props.saveBoard(board);
   };
@@ -152,9 +157,7 @@ export class _TaskDetails extends Component {
     const { currGroup, currTask } = this.state;
     const { board } = this.props
     const currGroupIdx = board.groups.indexOf(currGroup)
-    currGroup.tasks = currGroup.tasks.filter(
-      (task) => task.id !== currTask.id
-    );
+    currGroup.tasks = currGroup.tasks.filter((task) => task.id !== currTask.id);
     board.groups[currGroupIdx] = currGroup
     this.addActivity('remove-task')
     await this.updateBoard(board);
@@ -179,7 +182,6 @@ export class _TaskDetails extends Component {
   render() {
     const { loggedinUserIsJoin, currGroup } = this.state;
     const { board, currTaskDetails } = this.props;
-
     if (!currTaskDetails || !board || !currGroup) return <LoaderSpinner />;
     const { style } = currTaskDetails;
     currTaskDetails.style = (style) ? style : { bgColor: null, bgUrl: null }
@@ -282,7 +284,9 @@ function mapStateToProps(state) {
 const mapDispatchToProps = {
   saveBoard,
   saveTaskDetails,
-  setCurrTaskDetails
+  setCurrTaskDetails,
+  setPopover,
+  setPosition
 };
 
 export const TaskDetails = connect(

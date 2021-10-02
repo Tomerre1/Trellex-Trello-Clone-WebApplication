@@ -37,7 +37,7 @@ const _PopoverDynamicCmp = (props) => {
                 <PopoverDate
                     {...props}
                     title="Date"
-                    // setSelectedDate={this.setSelectedDate}
+                // setSelectedDate={this.setSelectedDate}
                 />
             );
         // case "ATTACHMENT":
@@ -66,7 +66,7 @@ const _PopoverDynamicCmp = (props) => {
                 />
             );
         default:
-            return ''
+            return <></>
     }
 };
 function mapStateToProps(state) {
