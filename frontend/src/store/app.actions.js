@@ -38,3 +38,11 @@ export const tooglePopover = () => {
         });
     }
 }
+export const setPopover = (isOpen) => {
+    return (dispatch) => {
+        dispatch({
+            type: "SET_POPOVER",
+            isOpen
+        });
+    }
+}

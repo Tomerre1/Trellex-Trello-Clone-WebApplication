@@ -65,7 +65,7 @@ const _PopoverDynamicCmp = (props) => {
                 />
             );
         default:
-            return ''
+            return <></>
     }
 };
 function mapStateToProps(state) {
