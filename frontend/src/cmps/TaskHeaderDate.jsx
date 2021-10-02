@@ -87,7 +87,7 @@ export class _TaskHeaderDate extends Component {
         console.log('currTaskDetails',currTaskDetails)
         const { formatedDate, isTaskDone } = this.state
         const dueStatus = this.getDueStatus();
-        if (currTaskDetails.dueDate && currTaskDetails.dueDate.length === 0) return <></>
+        if (!currTaskDetails.dueDate || currTaskDetails.dueDate.length === 0) return <></>
 
         return (
             <div className="task-details-header-date item-container flex column">
