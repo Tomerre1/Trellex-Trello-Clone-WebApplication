@@ -22,11 +22,11 @@ export const loadBoard = (boardId) => {
         try {
             const board = await boardService.getById(boardId)
             // console.log('loading board',board)
-            if(board)
-            dispatch({
-                type: "SET_BOARD",
-                board,
-            });
+            if (board)
+                dispatch({
+                    type: "SET_BOARD",
+                    board,
+                });
 
         }
         catch (err) {
@@ -228,6 +228,12 @@ export const saveTaskDetails = (board, currGroup, currTask) => {
                 type: "SAVE_BOARD",
                 board: newBoard,
             })
+
+            dispatch({
+                type: "SET_TASK_DETAILS",
+                currTaskDetails: currTask
+            });
+
 
 
         }
