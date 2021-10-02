@@ -12,7 +12,15 @@ import { Draggable } from "react-beautiful-dnd";
 import NaturalDragAnimation from "natural-drag-animation-rbdnd";
 
 const _GroupDetails = (props) => {
-  const { group, isAddNew, boardId, boardLabels, index,isDragDisabled,toggleDragDisable } = props;
+  const {
+    group,
+    isAddNew,
+    boardId,
+    boardLabels,
+    index,
+    isDragDisabled,
+    toggleDragDisable,
+  } = props;
   const elRef = useRef();
   const [isMenuShown, toggleMenuShown] = useState(false);
   const [menuPos, setMenuPos] = useState({});
@@ -26,7 +34,6 @@ const _GroupDetails = (props) => {
     });
     toggleMenuShown(!isMenuShown);
     toggleDragDisable();
-
   };
 
   const scrollToBottom = () => {
@@ -56,7 +63,11 @@ const _GroupDetails = (props) => {
     //     {...provided.dragHandleProps}></div>
 
     <div>
-      <Draggable draggableId={group.id} index={index} isDragDisabled={isDragDisabled}>
+      <Draggable
+        draggableId={group.id}
+        index={index}
+        isDragDisabled={isDragDisabled}
+      >
         {(provided, snapshot) => (
           <NaturalDragAnimation
             style={provided.draggableProps.style}
@@ -122,7 +133,10 @@ const mapDispatchToProps = {
 };
 function mapStateToProps(state) {
   return {
-    isDragDisabled : state.appModule.isDragDisabled,
-  }
+    isDragDisabled: state.appModule.isDragDisabled,
+  };
 }
-export const GroupDetails = connect(mapStateToProps, mapDispatchToProps)(_GroupDetails);
+export const GroupDetails = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(_GroupDetails);
