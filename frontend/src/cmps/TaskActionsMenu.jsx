@@ -15,7 +15,8 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import { setPosition } from '../store/app.actions';
 export class _TaskActionsMenu extends Component {
     render() {
-        const { setCurrentTarget, joinTask, loggedinUserIsJoin, toggleIsArchive, deleteTask, isArchive } = this.props
+        const { setCurrentTarget, joinTask, toggleIsArchive, deleteTask, isArchive, currTaskDetails, loggedinUser, setPosition } = this.props
+        const loggedinUserIsJoin = currTaskDetails.members?.find((member) => member._id === loggedinUser._id) ? true : false || false
         return (
             <aside className="task-details-sidebar flex column full">
                 <div className="actions-wrapper flex">
@@ -31,26 +32,26 @@ export class _TaskActionsMenu extends Component {
                     <div className="add-to-card flex column">
                         <h4>ADD TO CARD</h4>
 
-                        <button className="secondary-btn action-btn" onClick={(event) => { this.props.setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'MEMBERS' }) }}>
+                        <button className="secondary-btn action-btn" onClick={(event) => { setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'MEMBERS' }) }}>
                             <div className=" action-btn-content flex" >
                                 <PersonAddAltIcon />
                                 <span>Members</span>
                             </div>
                         </button>
-                        <button className="secondary-btn action-btn" onClick={(event) => { this.props.setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'LABELS' }) }}>
+                        <button className="secondary-btn action-btn" onClick={(event) => { setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'LABELS' }) }}>
                             <div className="action-btn-content flex " >
                                 <LabelIcon />
                                 <span>Labels</span>
                             </div>
                         </button>
 
-                        <button className="secondary-btn action-btn" onClick={(event) => { this.props.setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'CHECKLIST' }) }}>
+                        <button className="secondary-btn action-btn" onClick={(event) => { setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'CHECKLIST' }) }}>
                             <div className="action-btn-content flex " >
                                 <CheckboxIcon />
                                 <span>Checklist</span>
                             </div>
                         </button>
-                        <button className="secondary-btn action-btn" onClick={(event) => { this.props.setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'DATE' }) }}>
+                        <button className="secondary-btn action-btn" onClick={(event) => { setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'DATE' }) }}>
                             <div className=" action-btn-content flex " >
                                 <ScheduleIcon />
                                 <span>Date</span>
@@ -62,7 +63,7 @@ export class _TaskActionsMenu extends Component {
                                 <span>Attachment</span>
                             </div>
                         </button>
-                        <button className="secondary-btn action-btn" onClick={(event) => { this.props.setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'COVER' }) }}>
+                        <button className="secondary-btn action-btn" onClick={(event) => { setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'COVER' }) }}>
                             <div className=" action-btn-content flex " >
                                 <CoverIcon />
                                 <span>Cover</span>
@@ -71,13 +72,13 @@ export class _TaskActionsMenu extends Component {
                     </div>
                     <div className="actions flex column">
                         <h4>ACTIONS</h4>
-                        <button className="secondary-btn action-btn" onClick={(event) => { this.props.setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'MOVE' }) }}>
+                        <button className="secondary-btn action-btn" onClick={(event) => { setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'MOVE' }) }}>
                             <div className="action-btn-content flex " >
                                 <ArrowForwardIcon />
                                 <span>Move</span>
                             </div>
                         </button>
-                        <button className="secondary-btn action-btn" onClick={(event) => { this.props.setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'COPY' }) }}>
+                        <button className="secondary-btn action-btn" onClick={(event) => { setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'COPY' }) }}>
                             <div className="action-btn-content flex " >
                                 <CopyIcon />
                                 <span>Copy</span>
@@ -107,6 +108,7 @@ export class _TaskActionsMenu extends Component {
 function mapStateToProps(state) {
     return {
         currTaskDetails: state.appModule.currTaskDetails,
+        loggedinUser: state.userModule.loggedinUser,
     };
 }
 const mapDispatchToProps = {
