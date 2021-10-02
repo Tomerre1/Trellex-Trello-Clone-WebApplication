@@ -3,16 +3,24 @@
         min-height: 100vh;
         left: 654px !important;
         top: 46px !important;
-        min-width: 21rem!important;
+        min-width: 21rem !important;
+        .popover-header {
+            span {
+                font-weight: 600;
+                font-size: 16px;
+                margin: 6px 0px;
+                color: #172b4d;
+            }
+        }
     }
-    .menu-details{
+    .menu-details {
         .activity-by-user {
             width: 240px;
         }
-        .task-activities-header{
-            margin-bottom: .8rem;
+        .task-activities-header {
+            margin-bottom: 0.8rem;
         }
-        .menu-activity{
+        .menu-activity {
             font-weight: 700;
         }
     }
