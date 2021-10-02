@@ -16,32 +16,21 @@ import { setCurrTaskDetails, setPopover, setPosition } from '../store/app.action
 
 export class _TaskDetails extends Component {
   state = {
-    currentTarget: null,
-    isPopover: false,
-    bgColorCover: null,
-    selectedMembers: null,
-    selectedLabels: [],
-    loggedinUserIsJoin: null,
+    currTask: null,
+    currGroup: null
   };
   contentEl = null;
 
   componentDidMount() {
-    const { board, loggedinUser, setCurrTaskDetails } = this.props;
+    const { board, setCurrTaskDetails } = this.props;
     const { taskId, listId } = this.props.match.params;
     const currGroup = board.groups.find((list) => list.id === listId);
     const currTask = currGroup.tasks.find((task) => task.id === taskId);
     setCurrTaskDetails(currTask)
     this.setState((prevState) => ({
       ...prevState,
-      bgColorCover: currTask.style?.bgColor || null,
-      bgUrlCover: currTask.style?.bgUrl || null,
-      isPopover: false,
       currGroup,
       currTask,
-      currentTarget: null,
-      selectedMembers: currTask.members,
-      selectedLabels: board.labels.filter((label) => currTask.labelIds.includes(label.id)),
-      loggedinUserIsJoin: currTask.members?.find((member) => member._id === loggedinUser._id) ? true : false || false,
     }));
   }
 
@@ -50,13 +39,6 @@ export class _TaskDetails extends Component {
     this.props.setPopover(false)
     this.props.setPosition({ pageX: null, pageY: null, type: null })
   }
-  updateBoard = async (board) => {
-    await this.props.saveBoard(board);
-  };
-
-  updateBoards = async (boards) => {
-    await this.props.saveBoards(boards);
-  };
 
   updateTaskDetails = async (currTask) => {
     const { currGroup } = this.state;
@@ -68,61 +50,12 @@ export class _TaskDetails extends Component {
     this.props.history.goBack();
   };
 
-  setCurrentTarget = (event, type) => {
-    this.setState((prevState) => ({
-      ...prevState,
-      type,
-      currentTarget: event,
-    }));
-    this.togglePopover();
-  };
-
-  togglePopover = () => {
-    this.setState((prevState) => ({
-      ...prevState,
-      isPopover: !prevState.isPopover,
-    }));
-  };
-
-  setBgColorCover = (bgColor) => {
-    this.setState((prevState) => ({ ...prevState, bgColorCover: bgColor }));
-  };
-
-
-  setSelectedLabels = (selectedLabelIds) => {
-    const { board } = this.props;
-    const labelsSelected = board.labels.filter((label) =>
-      selectedLabelIds.includes(label.id)
-    );
-    this.setState((prevState) => ({
-      ...prevState,
-      selectedLabels: labelsSelected,
-    }));
-  };
-
-  setSelectedMembers = (selectedMembers) => {
-    const { loggedinUser } = this.props;
-    this.setState((prevState) => ({
-      ...prevState,
-      selectedMembers: selectedMembers,
-      loggedinUserIsJoin: selectedMembers.find(
-        (member) => member._id === loggedinUser._id
-      )
-        ? true
-        : false,
-    }));
-  };
-
   setTaksDetailsTitle = async (title) => {
     const { currTaskDetails, board } = this.props;
     const { currGroup } = this.state;
     currTaskDetails.title = title;
     await saveTaskDetails(board, currGroup, currTaskDetails)
   };
-
-  setBgUrlCover = (bgUrlCover) => {
-    this.setState((prevState) => ({ ...prevState, bgUrlCover }));
-  }
 
   joinTask = () => {
     const { loggedinUser, currTaskDetails } = this.props;
@@ -139,13 +72,14 @@ export class _TaskDetails extends Component {
   };
 
   deleteTask = async () => {
-    const { currGroup, currTask } = this.state;
+    const { currGroup } = this.state;
+    const { currTaskDetails } = this.props;
     const { board } = this.props
     const currGroupIdx = board.groups.indexOf(currGroup)
-    currGroup.tasks = currGroup.tasks.filter((task) => task.id !== currTask.id);
+    currGroup.tasks = currGroup.tasks.filter((task) => task.id !== currTaskDetails.id);
     board.groups[currGroupIdx] = currGroup
     this.addActivity('remove-task')
-    await this.updateBoard(board);
+    await this.saveBoard(board);
     this.props.history.goBack();
   }
 
@@ -157,21 +91,22 @@ export class _TaskDetails extends Component {
     this.updateTaskDetails(currTaskDetails);
   }
 
-  addActivity = (activityType, txt = null) => {
-    const { board } = this.props;
-    const { currTask } = this.state;
-    board.activities.push(boardService.createActivity(activityType, currTask, txt))
-    this.updateBoard(board)
+  addActivity = async (activityType, txt = null) => {
+    const { board, currTaskDetails } = this.props;
+    board.activities.push(boardService.createActivity(activityType, currTaskDetails, txt))
+    await this.saveBoard(board);
   }
 
   render() {
     const { loggedinUserIsJoin, currGroup } = this.state;
     const { board, currTaskDetails } = this.props;
     if (!currTaskDetails || !board || !currGroup) return <LoaderSpinner />;
+
     const { style } = currTaskDetails;
     currTaskDetails.style = (style) ? style : { bgColor: null, bgUrl: null }
     const { bgColor, bgUrl } = currTaskDetails.style
     const { isArchive } = currTaskDetails
+
     const taskOverlay = {
       position: "fixed",
       inset: 0,
@@ -242,9 +177,7 @@ export class _TaskDetails extends Component {
               /> */}
             </div>
             <TaskActionsMenu
-              loggedinUserIsJoin={loggedinUserIsJoin}
               joinTask={this.joinTask}
-              setCurrentTarget={this.setCurrentTarget}
               deleteTask={this.deleteTask}
               toggleIsArchive={this.toggleIsArchive}
               isArchive={isArchive}
@@ -259,9 +192,7 @@ export class _TaskDetails extends Component {
 function mapStateToProps(state) {
   return {
     board: state.boardModule.board,
-    boards: state.boardModule.boards,
     loggedinUser: state.userModule.loggedinUser,
-    popover: state.appModule.popover,
     currTaskDetails: state.appModule.currTaskDetails
   };
 }
