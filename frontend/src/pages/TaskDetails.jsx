@@ -191,9 +191,13 @@ export class _TaskDetails extends Component {
       bgUrlCover
     } = this.state;
     const { board, loggedinUser, boards, currTaskDetails } = this.props;
-    if (!currTask || !board) return <LoaderSpinner />;
-    const { isArchive } = currTask
-    const style = {
+
+    if (!currTaskDetails || !board) return <LoaderSpinner />;
+    const { style } = currTaskDetails;
+    currTaskDetails.style = (style) ? style : { bgColor: null, bgUrl: null }
+    const { bgColor, bgUrl } = currTaskDetails.style
+    const { isArchive } = currTaskDetails
+    const taskStyle = {
       position: "fixed",
       inset: 0,
       height: "100vh",
@@ -202,7 +206,7 @@ export class _TaskDetails extends Component {
     };
 
     return (
-      <div style={style}>
+      <div style={taskStyle}>
         <div
           className="overlay show"
           onClick={() => this.props.history.push(`/board/${board._id}`)}
@@ -210,11 +214,11 @@ export class _TaskDetails extends Component {
         <section className="task-details flex column">
           <button
             onClick={() => this.props.history.push(`/board/${board._id}`)}
-            className={`close-task-details ${currTaskDetails.style.bgColor ? "cover" : ""}`}
+            className={`close-task-details ${bgColor ? "cover" : ""}`}
           >
             <Close />
           </button>
-          {(currTaskDetails.style.bgColor || currTaskDetails.style.bgUrl) && (
+          {(bgColor || bgUrl) && (
             <TaskCardCover
             />
           )}
