@@ -4,7 +4,7 @@ import { saveBoard } from "../store/board.actions";
 import { MemberList } from "./MemberList";
 import MoreHorizOutlinedIcon from "@mui/icons-material/MoreHorizOutlined";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
-import { tooglePopover, setPosition } from '../store/app.actions'
+import { togglePopover, setPosition } from '../store/app.actions'
 
 function _BoardHeader(props) {
   const { board } = props;
@@ -40,7 +40,7 @@ function _BoardHeader(props) {
   };
   const onToggleMenu = (ev) => {
     props.toggleMenu(ev)
-    props.tooglePopover()
+    props.togglePopover()
 
   };
 
@@ -106,7 +106,7 @@ function _BoardHeader(props) {
 }
 const mapDispatchToProps = {
   saveBoard,
-  tooglePopover,
+  togglePopover,
   setPosition
 };
 function mapStateToProps(state) {

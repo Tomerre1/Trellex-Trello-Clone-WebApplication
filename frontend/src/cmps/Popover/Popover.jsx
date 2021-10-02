@@ -1,7 +1,7 @@
 import React from "react";
 import CloseIcon from '@mui/icons-material/Close';
 import { connect } from "react-redux";
-import { tooglePopover, setPosition } from '../../store/app.actions'
+import { togglePopover, setPosition } from '../../store/app.actions'
 export class _Popover extends React.Component {
     state = {
         visible: false,
@@ -72,7 +72,7 @@ export class _Popover extends React.Component {
                         <div className="popover-header">
                             {/* <h3>{title}</h3> */}
                             <span>{title}</span>
-                            <button className="clean-btn" onClick={this.props.tooglePopover}>
+                            <button className="clean-btn" onClick={this.props.togglePopover}>
                                 <CloseIcon />
                             </button>
                         </div>
@@ -92,7 +92,7 @@ function mapStateToProps(state) {
     };
 }
 const mapDispatchToProps = {
-    tooglePopover,
+    togglePopover,
     setPosition
 };
 

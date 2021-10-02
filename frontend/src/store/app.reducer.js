@@ -18,7 +18,7 @@ export function appReducer(state = initialState, action) {
             return { ...state, isDragDisabled: !state.isDragDisabled }
         case 'SET_POSITION':
             return { ...state, popover: { ...state.popover, pos: {...action.pos} } }
-        case 'TOOGLE_POPOVER':
+        case 'TOGGLE_POPOVER':
             return { ...state, popover: { ...state.popover, isOpen: !state.popover.isOpen } }
         case 'SET_POPOVER':
             return { ...state, popover: { ...state.popover, isOpen: action.isOpen } }

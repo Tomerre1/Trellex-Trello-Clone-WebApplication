@@ -26,15 +26,15 @@ export const setPosition = ({ pos, type }) => {
             pos: clickedPos,
         })
         dispatch({
-            type: "TOOGLE_POPOVER",
+            type: "TOGGLE_POPOVER",
         });
     }
 }
 
-export const tooglePopover = () => {
+export const togglePopover = () => {
     return (dispatch) => {
         dispatch({
-            type: "TOOGLE_POPOVER",
+            type: "TOGGLE_POPOVER",
         });
     }
 }
