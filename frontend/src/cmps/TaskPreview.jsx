@@ -41,6 +41,7 @@ function _TaskPreview(props) {
   const [menuPos, setMenuPos] = useState();
 
   const calcPos = (ev) => {
+    if(!ev) return
     let { top, right, height } =
       ev.target.parentElement.parentElement.getBoundingClientRect();
     console.log(top, right, height, window.innerHeight);
