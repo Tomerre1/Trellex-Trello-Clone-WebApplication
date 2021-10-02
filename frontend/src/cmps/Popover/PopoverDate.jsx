@@ -1,33 +1,39 @@
+import { connect } from "react-redux";
 import React, { Component } from 'react'
 import { Popover } from './Popover'
 import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
+import { saveBoard, saveTaskDetails } from '../../store/board.actions'
+import { tooglePopover } from '../../store/app.actions'
 
 
-
-export class PopoverDate extends Component {
+export class _PopoverDate extends Component {
     state = {
         date: null
     }
 
     componentDidMount() {
-        const { currTask } = this.props
-        const date = currTask.dueDate ? new Date(currTask.dueDate) : new Date()
-        this.setState(prevState => ({ ...prevState, date }))
+        const { board, currTaskDetails } = this.props
+        const currGroup = board.groups.find(group => group.tasks.some(task => task.id === currTaskDetails.id))
+        const date = currTaskDetails.dueDate ? new Date(currTaskDetails.dueDate) : new Date()
+        this.setState(prevState => ({ ...prevState, date, currGroup }))
     }
 
     handleChange = (ev) => {
         this.setState({ date: ev })
     }
 
-    onSaveDueDate = (date) => {
-        const { togglePopover, updateTaskDetails, currTask, setSelectedDate, addActivity } = this.props
-        currTask.dueDate = date ? Date.parse(date) : null;
-        updateTaskDetails(currTask)
-        setSelectedDate(currTask.dueDate)
-        togglePopover()
-        if (date) addActivity('set-date', this.dueDateFormat(currTask.dueDate))
-        else addActivity('remove-date')
+    onSaveDueDate = async (date) => {
+        // const { togglePopover, updateTaskDetails, currTask, setSelectedDate, addActivity } = this.props
+        const { board, tooglePopover, saveTaskDetails, currTaskDetails, setSelectedDate } = this.props
+        const { currGroup } = this.state
+
+        currTaskDetails.dueDate = date ? Date.parse(date) : null;
+        await saveTaskDetails(board, currGroup, currTaskDetails)
+        // setSelectedDate(currTaskDetails.dueDate)
+        tooglePopover()
+        // if (date) addActivity('set-date', this.dueDateFormat(currTask.dueDate))
+        // else addActivity('remove-date')
 
     }
 
@@ -49,11 +55,11 @@ export class PopoverDate extends Component {
     }
 
     render() {
-        const { togglePopover, currentTarget, title } = this.props
+        const { title } = this.props
         const { date } = this.state
         return (
             <div className="date-picker-container">
-                <Popover togglePopover={togglePopover} currentTarget={currentTarget} title={title} >
+                <Popover title={title} >
                     <div>
                         <MuiPickersUtilsProvider utils={DateFnsUtils}>
                             <DatePicker
@@ -73,4 +79,21 @@ export class PopoverDate extends Component {
         )
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        currTaskDetails: state.appModule.currTaskDetails,
+        board: state.boardModule.board,
+    };
+}
+const mapDispatchToProps = {
+    saveTaskDetails,
+    saveBoard,
+    tooglePopover
+};
+
+export const PopoverDate = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(_PopoverDate);
 
