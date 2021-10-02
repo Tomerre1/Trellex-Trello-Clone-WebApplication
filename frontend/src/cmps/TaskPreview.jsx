@@ -41,11 +41,10 @@ function _TaskPreview(props) {
   const [menuPos, setMenuPos] = useState();
 
   const toggleMenu = (ev) => {
-    let posX = window.innerWidth - ev.pageX > 200 ? ev.pageX : ev.pageX - 200;
+    let posX = window.innerWidth - ev.pageX > 200 ? ev.pageX + 24 : ev.pageX - 200;
     setMenuPos({
-      position: "fixed",
-      top: `${ev.pageY}px`,
-      left: `${posX}px`,
+      position: "absolute",
+      top: `${ev.pageY - 100}px`,
     });
     toggleMenuShown(!isMenuShown);
     toggleDragDisable();
@@ -181,7 +180,7 @@ function _TaskPreview(props) {
                         position: "relative",
                         top: "-8px",
                         marginBottom: "-8px",
-                        borderRadius: "0px 0px 3px 0px",
+                        borderRadius:'0 0 3px 3px',
                       }
                     }
                   >

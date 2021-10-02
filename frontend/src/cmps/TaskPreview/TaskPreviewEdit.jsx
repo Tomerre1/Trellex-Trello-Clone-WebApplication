@@ -49,7 +49,7 @@ export function _TaskPreviewEdit({
   
   return (
     <>
-      <article className="task-preview-container edit" style={{ zIndex: 400 }}>
+      <article className="task-preview-container edit" style={{ zIndex: 400 ,borderRadius:3}}>
         {style?.bgUrl && (
           <img
             className="task-cover-img"
@@ -78,7 +78,7 @@ export function _TaskPreviewEdit({
               position: "relative",
               top: "-8px",
               marginBottom: "-8px",
-              borderRadius: "0px 0px 3px 0px",
+              borderRadius:'0 0 3px 3px',
             }
           }
         >
