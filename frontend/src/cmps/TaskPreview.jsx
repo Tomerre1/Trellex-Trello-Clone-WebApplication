@@ -34,6 +34,7 @@ function _TaskPreview(props) {
     description,
     attachments,
     style,
+    length
   } = task;
 
   const [isMenuShown, toggleMenuShown] = useState(false);
@@ -81,7 +82,7 @@ function _TaskPreview(props) {
             >
               <Link to={taskUrl} className="clean-link">
                 <div
-                  className="task-preview-container full-cover img"
+                  className={`task-preview-container full-cover img`}
                   src={style.bgUrl}
                 >
                   <img className="" src={style.bgUrl} alt="" />
@@ -196,26 +197,22 @@ function _TaskPreview(props) {
                 task={task}
               />
             )}
+               <article
+              className="task-preview-container"
+              style={{boxShadow:'none' }}
+            >
             {style?.bgUrl && (
+              
               <Link to={taskUrl} className="clean-link">
                 <img
                   className="task-cover-img"
                   src={style.bgUrl}
-                  style={{ backgroundColor: "white", borderRadius: "3px" }}
+                  style={{ backgroundColor: "white", borderRadius: "3px"}}
                   alt=""
                 />
               </Link>
             )}
-            <article
-              className="task-preview-container"
-              style={
-                style?.bgUrl && {
-                  position: "relative",
-                  top: "-8px",
-                  marginBottom: "-8px",
-                }
-              }
-            >
+         
               <Link to={taskUrl} className="clean-link">
                 {style?.bgColor && !style?.bgUrl && (
                   <div
@@ -225,8 +222,16 @@ function _TaskPreview(props) {
                 )}
 
                 <div
-                  className="task-preview clean-link"
-                  style={style?.bgUrl && { borderRadius: "0px 0px 3px 0px" }}
+                  className="task-preview clean-link "
+                  style={style?.bgUrl && { borderRadius: "0px 0px 3px 0px" }
+                }
+                style={
+                  style?.bgUrl && {
+                    position: "relative",
+                    top: "-8px",
+                    marginBottom: "-8px",
+                  }
+                }
                 >
                   {labelIds?.length > 0 && (
                     <TaskLabels labelIds={labelIds} boardLabels={boardLabels} />
