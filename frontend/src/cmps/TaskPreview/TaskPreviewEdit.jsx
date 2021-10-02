@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { connect } from "react-redux";
+import { updateTask } from "../../store/board.actions";
 import { TaskLabels } from "./TaskLabels";
 import { TaskDetailsPreview } from "./TaskDetailsPreview";
 import { TaskDatePreview } from "./TaskDatePreview";
@@ -17,7 +18,8 @@ export function _TaskPreviewEdit({
   boardLabels,
   getChecklistData,
   menuPos,
-  toggleMenu
+  toggleMenu,
+  updateTask
 }) {
   const {
     style,
@@ -32,90 +34,124 @@ export function _TaskPreviewEdit({
     doneTodos,
   } = task;
 
-  const [editTitle, setEditTitle] = useState(title)
+  const [editTitle, setEditTitle] = useState(title);
+  
+  const updateTaskName = async() => {
+    const newTask = { ...task };
+    newTask.title = editTitle;
+    try{
+        await updateTask(boardId,groupId,newTask);
+    }
+    catch{
 
+    }
+  };
+  
   return (
-      <>
-    <article className="task-preview-container edit"  style={{ zIndex: 400 }}>
-      {style?.bgUrl && (
-        <img
-          className="task-cover-img"
-          src={style.bgUrl}
-          style={{ backgroundColor: "white", borderRadius: "3px",objectFit:'contain', maxHeight:240} }
-          alt=""
-        />
-      )}
-
-      {style?.bgColor && !style?.bgUrl && (
-        <div
-          className="task-cover"
-          style={{ background: task.style.bgColor }}
-        ></div>
-      )}
-
-      <div
-        className="task-preview clean-link "
-        style={
-          style?.bgUrl && {
-            position: "relative",
-            top: "-8px",
-            marginBottom: "-8px",
-            borderRadius: "0px 0px 3px 0px",
-          }
-        }
-      >
-        {labelIds?.length > 0 && (
-          <TaskLabels labelIds={labelIds} boardLabels={boardLabels} />
+    <>
+      <article className="task-preview-container edit" style={{ zIndex: 400 }}>
+        {style?.bgUrl && (
+          <img
+            className="task-cover-img"
+            src={style.bgUrl}
+            style={{
+              backgroundColor: "white",
+              borderRadius: "3px",
+              objectFit: "contain",
+              maxHeight: 240,
+            }}
+            alt=""
+          />
         )}
-        <textarea className="task-title" value={editTitle} autoFocus onChange={ev=>(setEditTitle(ev.target.value))}/>
-        <div className="task-preview-icons flex align-center">
-          {dueDate && (
-            <TaskDatePreview
-              dueDate={dueDate}
-              isDone={task.isDone}
-              taskId={task.id}
-              groupId={groupId}
-            />
+
+        {style?.bgColor && !style?.bgUrl && (
+          <div
+            className="task-cover"
+            style={{ background: task.style.bgColor }}
+          ></div>
+        )}
+
+        <div
+          className="task-preview clean-link "
+          style={
+            style?.bgUrl && {
+              position: "relative",
+              top: "-8px",
+              marginBottom: "-8px",
+              borderRadius: "0px 0px 3px 0px",
+            }
+          }
+        >
+          {labelIds?.length > 0 && (
+            <TaskLabels labelIds={labelIds} boardLabels={boardLabels} />
           )}
-          {description?.length > 0 && (
-            <TaskDetailsPreview
-              icon={<SubjectOutlinedIcon className="icon" />}
-            />
-          )}
-          {comments?.length > 0 && (
-            <TaskDetailsPreview
-              icon={<ChatBubbleOutlineRoundedIcon className="icon msg" />}
-              txt={comments.length}
-            />
-          )}
-          {attachments?.length > 0 && (
-            <TaskDetailsPreview
-              icon={<AttachFileIcon className="icon attach" />}
-              txt={attachments.length}
-            />
-          )}
-          {checklists?.length > 0 && todos !== 0 && (
-            <TaskDetailsPreview
-              icon={<CheckBoxOutlinedIcon className="icon" />}
-              txt={getChecklistData()}
-              isDone={todos === doneTodos && todos !== 0 ? true : false}
-            />
-          )}
-          {task?.members && (
-            <MemberList members={task.members} isInPreview={true} />
-          )}
+          <textarea
+            className="task-title"
+            value={editTitle}
+            autoFocus
+            onChange={(ev) => setEditTitle(ev.target.value)}
+            onBlur={() => {
+              updateTaskName();
+            }}
+          />
+          <div className="task-preview-icons flex align-center">
+            {dueDate && (
+              <TaskDatePreview
+                dueDate={dueDate}
+                isDone={task.isDone}
+                taskId={task.id}
+                groupId={groupId}
+              />
+            )}
+            {description?.length > 0 && (
+              <TaskDetailsPreview
+                icon={<SubjectOutlinedIcon className="icon" />}
+              />
+            )}
+            {comments?.length > 0 && (
+              <TaskDetailsPreview
+                icon={<ChatBubbleOutlineRoundedIcon className="icon msg" />}
+                txt={comments.length}
+              />
+            )}
+            {attachments?.length > 0 && (
+              <TaskDetailsPreview
+                icon={<AttachFileIcon className="icon attach" />}
+                txt={attachments.length}
+              />
+            )}
+            {checklists?.length > 0 && todos !== 0 && (
+              <TaskDetailsPreview
+                icon={<CheckBoxOutlinedIcon className="icon" />}
+                txt={getChecklistData()}
+                isDone={todos === doneTodos && todos !== 0 ? true : false}
+              />
+            )}
+            {task?.members && (
+              <MemberList members={task.members} isInPreview={true} />
+            )}
+          </div>
         </div>
-      </div>
-    
-    </article>
-    <TaskActions
-          toggleMenu={toggleMenu}
-          menuPos={menuPos}
-          groupId={groupId}
-          boardId={boardId}
-          task={task}
-        />
+      </article>
+      <TaskActions
+        toggleMenu={toggleMenu}
+        menuPos={menuPos}
+        groupId={groupId}
+        boardId={boardId}
+        task={task}
+      />
     </>
   );
 }
-export const TaskPreviewEdit = connect()(_TaskPreviewEdit)
+const mapDispatchToProps = {
+  updateTask,
+};
+function mapStateToProps(state) {
+  return {
+    board: state.boardModule.board,
+  };
+}
+export const TaskPreviewEdit = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(_TaskPreviewEdit);
