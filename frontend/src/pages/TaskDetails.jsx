@@ -21,7 +21,6 @@ export class _TaskDetails extends Component {
     bgColorCover: null,
     selectedMembers: null,
     selectedLabels: [],
-    selectedDate: null,
     loggedinUserIsJoin: null,
   };
   contentEl = null;
@@ -109,13 +108,6 @@ export class _TaskDetails extends Component {
     }));
   };
 
-  setSelectedDate = (selectedDate) => {
-    this.setState((prevState) => ({
-      ...prevState,
-      selectedDate: selectedDate,
-    }));
-  };
-
   setTaksDetailsTitle = async (title) => {
     const { currTaskDetails, board } = this.props;
     const { currGroup } = this.state;
@@ -126,12 +118,6 @@ export class _TaskDetails extends Component {
   setBgUrlCover = (bgUrlCover) => {
     this.setState((prevState) => ({ ...prevState, bgUrlCover }));
   }
-
-  // toggleTaskDone = () => {
-  //   const { currTask } = this.state;
-  //   currTask.isDone = !currTask.isDone;
-  //   this.updateTaskDetails(currTask);
-  // };
 
   joinTask = () => {
     let { currTask, selectedMembers } = this.state;
@@ -228,7 +214,6 @@ export class _TaskDetails extends Component {
             <div className="task-details-main flex column">
 
               <TaskHeaderDetails
-                selectedDate={currTaskDetails.dueDate}
                 toggleTaskDone={this.toggleTaskDone}
                 addActivity={this.addActivity}
               />
