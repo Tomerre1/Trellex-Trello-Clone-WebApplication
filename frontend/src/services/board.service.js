@@ -1243,10 +1243,6 @@ async function updateTaskByIds(boardId,groupId,task) {
     
 }
 
-
-
-
-
 // function getEmptyBoard() {
 //     return {
 //         vendor: 'Susita-' + (Date.now() % 1000),
