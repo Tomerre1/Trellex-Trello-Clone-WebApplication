@@ -14,14 +14,14 @@ class _PopoverMenu extends Component {
         const { board } = this.props
         console.log('board',board)
         const { togglePopover, currentTarget, title } = this.props
-        let CommAndAct = board.activities
+        const CommAndAct = board.activities
         CommAndAct.sort((a, b) => (a.createdAt < b.createdAt) ? 1 : ((b.createdAt < a.createdAt) ? -1 : 0))
 
         return <div className="board-menu">
             <Popover togglePopover={togglePopover} currentTarget={currentTarget} title={title}>
                 <div className="menu-details ">
                     <ul className="clean-list menu-list">
-                        <li>
+                        <li onClick={(ev) => this.onOpenPopover(ev, 'BACKGROUND')}>
                             <span className="menu-bg-span" style={{ background: board.style.bgClr }}></span>
                             <span className="menu-title">Change background</span>
                         </li>
