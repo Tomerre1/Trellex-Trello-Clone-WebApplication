@@ -23,17 +23,23 @@ const gUsers = [
     {
     "_id": 'u101',
     "fullname": 'BCD',
-    "imgUrl": 'https://media-exp1.licdn.com/dms/image/C5603AQG9slGN5Fgxug/profile-displayphoto-shrink_100_100/0/1516840011642?e=1638403200&v=beta&t=wl9AzbWc9FwsXJ0xGECA_7T4xynvi067vuYs5ABVhfo'
+    "imgUrl": 'https://media-exp1.licdn.com/dms/image/C5603AQG9slGN5Fgxug/profile-displayphoto-shrink_100_100/0/1516840011642?e=1638403200&v=beta&t=wl9AzbWc9FwsXJ0xGECA_7T4xynvi067vuYs5ABVhfo',
+    "userName": '1',
+    "password":'1'
 },
     {
     "_id": 'u102',
     "fullname": 'Tomer',
-    "imgUrl": 'https://media-exp1.licdn.com/dms/image/C4E03AQFlupY8tXNbnA/profile-displayphoto-shrink_400_400/0/1622442415599?e=1638403200&v=beta&t=DBTF6x9nzwz1G04DZ8hBSG14UyM6BUDX6LM30JL84jg'
+    "imgUrl": 'https://media-exp1.licdn.com/dms/image/C4E03AQFlupY8tXNbnA/profile-displayphoto-shrink_400_400/0/1622442415599?e=1638403200&v=beta&t=DBTF6x9nzwz1G04DZ8hBSG14UyM6BUDX6LM30JL84jg',
+    "userName": '1',
+    "password":'1'
 },
     {
     "_id": 'u103',
     "fullname": 'Matan',
-    "imgUrl": ''
+    "imgUrl": '',
+    "userName": '1',
+    "password":'1'
 },
 ]
 async function getUsers() {

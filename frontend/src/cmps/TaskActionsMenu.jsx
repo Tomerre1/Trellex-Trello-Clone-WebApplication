@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import LabelIcon from '@material-ui/icons/LocalOfferOutlined';
 import CheckboxIcon from '@material-ui/icons/CheckBoxOutlined'
@@ -11,7 +12,8 @@ import ScheduleIcon from '@mui/icons-material/Schedule';
 import ArchiveIcon from '@mui/icons-material/Archive';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import RemoveIcon from '@mui/icons-material/Remove';
-export class TaskActionsMenu extends Component {
+import { setPosition } from '../store/app.actions';
+export class _TaskActionsMenu extends Component {
     render() {
         const { setCurrentTarget, joinTask, loggedinUserIsJoin, toggleIsArchive, deleteTask, isArchive } = this.props
         return (
@@ -29,18 +31,19 @@ export class TaskActionsMenu extends Component {
                     <div className="add-to-card flex column">
                         <h4>ADD TO CARD</h4>
 
-                        <button className="secondary-btn action-btn" onClick={(event) => { setCurrentTarget(event, 'MEMBERS') }}>
+                        <button className="secondary-btn action-btn" onClick={(event) => { this.props.setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'MEMBERS' }) }}>
                             <div className=" action-btn-content flex" >
                                 <PersonAddAltIcon />
                                 <span>Members</span>
                             </div>
                         </button>
-                        <button className="secondary-btn action-btn" onClick={(event) => { setCurrentTarget(event, 'LABELS'); }}>
+                        <button className="secondary-btn action-btn" onClick={(event) => { this.props.setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'LABELS' }) }}>
                             <div className="action-btn-content flex " >
                                 <LabelIcon />
                                 <span>Labels</span>
                             </div>
                         </button>
+
                         <button className="secondary-btn action-btn" onClick={(event) => { setCurrentTarget(event, 'CHECKLIST') }}>
                             <div className="action-btn-content flex " >
                                 <CheckboxIcon />
@@ -59,7 +62,7 @@ export class TaskActionsMenu extends Component {
                                 <span>Attachment</span>
                             </div>
                         </button>
-                        <button className="secondary-btn action-btn" onClick={(event) => { setCurrentTarget(event, 'COVER') }}>
+                        <button className="secondary-btn action-btn" onClick={(event) => { this.props.setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'COVER' }) }}>
                             <div className=" action-btn-content flex " >
                                 <CoverIcon />
                                 <span>Cover</span>
@@ -101,3 +104,16 @@ export class TaskActionsMenu extends Component {
         )
     }
 }
+function mapStateToProps(state) {
+    return {
+        currTaskDetails: state.appModule.currTaskDetails,
+    };
+}
+const mapDispatchToProps = {
+    setPosition,
+};
+
+export const TaskActionsMenu = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(_TaskActionsMenu);

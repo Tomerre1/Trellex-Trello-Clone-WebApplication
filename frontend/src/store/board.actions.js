@@ -22,11 +22,11 @@ export const loadBoard = (boardId) => {
         try {
             const board = await boardService.getById(boardId)
             // console.log('loading board',board)
-            if(board)
-            dispatch({
-                type: "SET_BOARD",
-                board,
-            });
+            if (board)
+                dispatch({
+                    type: "SET_BOARD",
+                    board,
+                });
 
         }
         catch (err) {
@@ -229,6 +229,12 @@ export const saveTaskDetails = (board, currGroup, currTask) => {
                 board: newBoard,
             })
 
+            dispatch({
+                type: "SET_TASK_DETAILS",
+                currTaskDetails: currTask
+            });
+
+
 
         }
         catch (err) {
@@ -240,7 +246,6 @@ export const saveTaskDetails = (board, currGroup, currTask) => {
 export const updateTask = (boardId, groupId, task) => {
     return async (dispatch) => {
         try {
-            console.log('sup')
             const updatedBoard =  await boardService.updateTaskByIds(boardId, groupId, task)
             const newBoard = await boardService.save(updatedBoard)
             console.log('newBoard:', newBoard)

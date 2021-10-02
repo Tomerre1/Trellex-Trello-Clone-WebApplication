@@ -19,7 +19,7 @@ class _BoardApp extends Component {
   }
   setCurrentTarget = (event) => {
     this.setState(prevState => ({ ...prevState, currentTarget: event }))
-}
+  }
 
   componentDidMount = async () => {
     this.loadBoard();
@@ -68,8 +68,8 @@ class _BoardApp extends Component {
     );
   };
   render() {
-    const { isMenuOpen , currentTarget} = this.state
-    const { board } = this.props;
+    const { isMenuOpen, currentTarget } = this.state
+    const { board, popover } = this.props;
     if (!board) return <LoaderSpinner />;
     return (<>
       <DragDropContext onDragEnd={this.onDragEnd}>
@@ -81,7 +81,7 @@ class _BoardApp extends Component {
               : board.style.bgClr,
           }}
         >
-          <BoardHeader board={{ ...board }} toggleMenu={this.toggleMenu}/>
+          <BoardHeader board={{ ...board }} toggleMenu={this.toggleMenu} />
           <GroupList
             groups={[...board.groups]}
             boardId={board._id}
@@ -89,9 +89,9 @@ class _BoardApp extends Component {
           />
         </section>
       </DragDropContext>
-      {isMenuOpen && <PopoverMenu togglePopover={this.toggleMenu} title={'Menu'} currentTarget={currentTarget}/>}
-      </>
-      
+      {popover.isOpen && <PopoverMenu togglePopover={this.toggleMenu} title={'Menu'} currentTarget={currentTarget} />}
+    </>
+
     );
   }
 }
@@ -99,7 +99,8 @@ class _BoardApp extends Component {
 function mapStateToProps(state) {
   return {
     board: state.boardModule.board,
-    boards: state.boardModule.boards
+    boards: state.boardModule.boards,
+    popover: state.appModule.popover,
   };
 }
 const mapDispatchToProps = {

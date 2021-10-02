@@ -19,7 +19,8 @@ export function _TaskPreviewEdit({
   getChecklistData,
   menuPos,
   toggleMenu,
-  updateTask
+  updateTask,
+  taskUrl
 }) {
   const {
     style,
@@ -139,6 +140,7 @@ export function _TaskPreviewEdit({
         groupId={groupId}
         boardId={boardId}
         task={task}
+        taskUrl={taskUrl}
       />
     </>
   );

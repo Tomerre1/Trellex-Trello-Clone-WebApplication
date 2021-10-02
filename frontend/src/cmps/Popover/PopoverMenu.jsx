@@ -12,7 +12,7 @@ class _PopoverMenu extends Component {
 
     render() {
         const { board } = this.props
-        console.log('board',board)
+        console.log('board', board)
         const { togglePopover, currentTarget, title } = this.props
         const CommAndAct = board.activities
         CommAndAct.sort((a, b) => (a.createdAt < b.createdAt) ? 1 : ((b.createdAt < a.createdAt) ? -1 : 0))
@@ -30,7 +30,7 @@ class _PopoverMenu extends Component {
                             <span className="menu-title">Search cards</span>
                         </li>
                         <li>
-                            <RestoreFromTrashIcon/>
+                            <RestoreFromTrashIcon />
                             <span className="menu-title">Archive</span>
                         </li>
                     </ul>
@@ -48,11 +48,13 @@ class _PopoverMenu extends Component {
 
 function mapStateToProps(state) {
     return {
-        board: state.boardModule.board
+        board: state.boardModule.board,
+
     }
 }
 
 const mapDispatchToProps = {
+
 }
 
 

@@ -4,8 +4,7 @@
   gap: 6px;
   position: absolute;
   z-index: 40;
-  top: 0px;
-  margin-left: 264px;
+  margin-left: 8px;
   button {
     color: #e6e6e6;
     display:flex;
@@ -13,6 +12,13 @@
     align-items: center;
     border-radius: 3px;
     width:fit-content;
+    transform:translateX(0px);
+    transition:transform .2s ease-in;
+    &:hover {
+        background: #000c;
+        color: #fff;
+        transform: translateX(5px);
+    }
     p {
       color: #e6e6e6;
       margin:0;
@@ -22,5 +28,11 @@
     line-height:20px;
     padding: 6px 6px 6px 8px;
     }
+    .action-icon {
+        height:16px;
+        width:16px;
+    }
   }
 }
+.slide-in-left{animation:slide-in-left .1s cubic-bezier(.25,.46,.45,.94) both}
+@keyframes slide-in-left{0%{transform:translateX(-200px);opacity:0}100%{transform:translateX(0);opacity:1}}

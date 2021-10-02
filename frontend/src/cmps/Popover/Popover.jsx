@@ -1,7 +1,8 @@
 import React from "react";
 import CloseIcon from '@mui/icons-material/Close';
-
-export class Popover extends React.Component {
+import { connect } from "react-redux";
+import { tooglePopover } from '../../store/app.actions'
+export class _Popover extends React.Component {
     state = {
         visible: false,
         top: 0,
@@ -19,12 +20,13 @@ export class Popover extends React.Component {
     onSetPopoverPos = () => {
         if (!this.contentEl) return
         const elRect = this.contentEl.getBoundingClientRect()
-        let { left, top } = this.setPopoverPos(this.props.currentTarget, elRect)
+        let { left, top } = this.setPopoverPos(elRect)
         this.setState({ top, left })
     }
 
 
-    setPopoverPos(pos, elRect) {
+    setPopoverPos(elRect) {
+        const { pos } = this.props.popover
         const { width, height } = elRect
         let posX = (window.innerWidth - pos.pageX > 200) ? pos.pageX - 200 : pos.pageX - 200;
         let posY = (window.innerHeight - pos.pageY > 200) ? pos.pageY + 20 : pos.pageY - 200;
@@ -55,26 +57,42 @@ export class Popover extends React.Component {
     };
 
     render() {
-        const { togglePopover, title, children } = this.props;
+        const { title, children, popover } = this.props;
         return (
-            <div
-                className="popover"
-                ref={(el) => (this.contentEl = el)}
-                style={this.getContentStyles()}
-            >
-                <div className="popover-header">
-                    {/* <h3>{title}</h3> */}
-                    <span>{title}</span>
-                    <button className="clean-btn" onClick={togglePopover}>
-                        <CloseIcon />
-                    </button>
-                </div>
-                <div className="popover-content">
-                    {children}
-                </div>
-            </div>
+            <>
+                {popover.isOpen &&
+                    <div
+                        className="popover"
+                        ref={(el) => (this.contentEl = el)}
+                        style={this.getContentStyles()}
+                    >
+                        <div className="popover-header">
+                            {/* <h3>{title}</h3> */}
+                            <span>{title}</span>
+                            <button className="clean-btn" onClick={this.props.tooglePopover}>
+                                <CloseIcon />
+                            </button>
+                        </div>
+                        <div className="popover-content">
+                            {children}
+                        </div>
+                    </div>
+                }
+            </>
         );
     }
 }
 
-//type from store
+function mapStateToProps(state) {
+    return {
+        popover: state.appModule.popover,
+    };
+}
+const mapDispatchToProps = {
+    tooglePopover
+};
+
+export const Popover = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(_Popover);
