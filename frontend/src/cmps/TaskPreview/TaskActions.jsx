@@ -16,6 +16,7 @@ import ScheduleIcon from "@mui/icons-material/Schedule";
 class _TaskActions extends Component{
  
   componentWillUnmount = () =>{
+    if(this.props.isPopoverOpen)
     this.props.tooglePopover()
   }
    sendToArchive = async () => {
@@ -106,4 +107,7 @@ const mapDispatchToProps = {
   setCurrTaskDetails,
   tooglePopover
 };
-export const TaskActions = connect(null, mapDispatchToProps)(_TaskActions);
+const mapStateToProps = (state) => {return {
+  isPopoverOpen : state.appModule.popover.isOpen
+}}
+export const TaskActions = connect(mapStateToProps, mapDispatchToProps)(_TaskActions);

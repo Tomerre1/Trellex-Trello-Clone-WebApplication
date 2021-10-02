@@ -71,13 +71,13 @@ export class _TaskActionsMenu extends Component {
                     </div>
                     <div className="actions flex column">
                         <h4>ACTIONS</h4>
-                        <button className="secondary-btn action-btn" onClick={(event) => { setCurrentTarget(event, 'MOVE') }}>
+                        <button className="secondary-btn action-btn" onClick={(event) => { this.props.setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'MOVE' }) }}>
                             <div className="action-btn-content flex " >
                                 <ArrowForwardIcon />
                                 <span>Move</span>
                             </div>
                         </button>
-                        <button className="secondary-btn action-btn" onClick={(event) => { setCurrentTarget(event, 'COPY') }}>
+                        <button className="secondary-btn action-btn" onClick={(event) => { this.props.setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'COPY' }) }}>
                             <div className="action-btn-content flex " >
                                 <CopyIcon />
                                 <span>Copy</span>

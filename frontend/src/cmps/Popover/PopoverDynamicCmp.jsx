@@ -23,7 +23,6 @@ const _PopoverDynamicCmp = (props) => {
                 <PopoverMembers
                     {...props}
                     title="Members"
-
                 />
             );
         case "CHECKLIST":
@@ -50,30 +49,22 @@ const _PopoverDynamicCmp = (props) => {
                     title="Cover"
                 />
             );
-        // case "MOVE":
-        //     return (
-        //         <PopoverMoveCopy
-        //             {...props}
-        //             isCopy={false}
-        //             updateBoards={this.updateBoards}
-        //             boards={boards}
-        //             board={board}
-        //             currGroup={currGroup}
-        //             title="Move to"
-        //         />
-        //     );
-        // case "COPY":
-        //     return (
-        //         <PopoverMoveCopy
-        //             {...props}
-        //             isCopy={true}
-        //             updateBoards={this.updateBoards}
-        //             boards={boards}
-        //             board={board}
-        //             currGroup={currGroup}
-        //             title="Copy"
-        //         />
-        //     );
+        case "MOVE":
+            return (
+                <PopoverMoveCopy
+                    {...props}
+                    isCopy={false}
+                    title="Move to"
+                />
+            );
+        case "COPY":
+            return (
+                <PopoverMoveCopy
+                    {...props}
+                    isCopy={true}
+                    title="Copy"
+                />
+            );
         default:
             return ''
     }
