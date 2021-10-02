@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { updateTask } from "../../store/board.actions";
+import { updateTask,loadBoard } from "../../store/board.actions";
 import { Link } from "react-router-dom";
 import ArchiveIcon from "@mui/icons-material/Archive";
 import PictureInPictureIcon from "@mui/icons-material/PictureInPicture";
@@ -19,6 +19,7 @@ function _TaskActions(props) {
     newTask.isArchive = true;
     try {
        updateTask(boardId, groupId, newTask);
+       loadBoard(boardId)
       toggleMenu();
     } catch (err) {
       console.log("error when sending to archive", err);
