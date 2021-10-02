@@ -6,7 +6,6 @@ import { TaskLabels } from "./TaskPreview/TaskLabels";
 import { TaskDetailsPreview } from "./TaskPreview/TaskDetailsPreview";
 import { toggleDragDisable } from "../store/app.actions";
 import { TaskDatePreview } from "./TaskPreview/TaskDatePreview";
-import { TaskActions } from "./TaskPreview/TaskActions";
 import { MemberList } from "../cmps/MemberList";
 import { Draggable } from "react-beautiful-dnd";
 import CheckBoxOutlinedIcon from "@mui/icons-material/CheckBoxOutlined";
@@ -85,7 +84,7 @@ function _TaskPreview(props) {
                 className={`task-preview-container full-cover img`}
                 src={style.bgUrl}
               >
-                <img className="" src={style.bgUrl} alt="" />
+                <img className="" src={style.bgUrl} alt=""  />
                 <div className="img-overlay" />
                 <p>{task.title}</p>
                 <div
@@ -129,10 +128,8 @@ function _TaskPreview(props) {
                   <p>{task.title}</p>
                 </div>
               </Link>
-              <div className="edit-icon">
-                <Link to={taskUrl}>
-                  <ModeEditOutlinedIcon className="icon" />
-                </Link>
+              <div className="edit-icon" onClick={toggleMenu}>
+                <ModeEditOutlinedIcon className="icon" />
               </div>
             </div>
           </article>
@@ -163,7 +160,7 @@ function _TaskPreview(props) {
                     <img
                       className="task-cover-img"
                       src={style.bgUrl}
-                      style={{ backgroundColor: "white", borderRadius: "3px" }}
+                      style={{ backgroundColor: "white", borderRadius: "3px",objectFit:'cover', maxHeight:240} }
                       alt=""
                     />
                   </Link>
@@ -263,22 +260,16 @@ function _TaskPreview(props) {
         <div
           className={`overlay ${isMenuShown ? "show" : ""}`}
           onClick={toggleMenu}
-          style={{ zIndx: 2}}
+          style={{ zIndx: 2 }}
         ></div>
-        <TaskPreviewEdit 
-        task={task}
-        getChecklistData={getChecklistData}
-        groupId={groupId}
-        boardId={boardId}
-        boardLabels={boardLabels}
-        />
-
-        <TaskActions
-          toggleMenu={toggleMenuShown}
-          menuPos={menuPos}
+        <TaskPreviewEdit
+          task={task}
+          getChecklistData={getChecklistData}
           groupId={groupId}
           boardId={boardId}
-          task={task}
+          boardLabels={boardLabels}
+          menuPos={menuPos}
+          toggleMenu={toggleMenu}
         />
       </>
     );
