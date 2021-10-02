@@ -21,10 +21,11 @@ export class _PopoverChecklist extends Component {
         this.setState(prevState => ({ ...prevState, txt }))
     }
 
-    onAddChecklist = (ev) => {
+    onAddChecklist = async (ev) => {
         ev.preventDefault()
         // const {  saveTaskDetails, currTaskDetails, addActivity } = this.props
-        const {  saveTaskDetails, currTaskDetails, tooglePopover } = this.props
+        const { board, saveTaskDetails, currTaskDetails, tooglePopover } = this.props
+        const { currGroup } = this.state
 
         if (!currTaskDetails.checklists) currTaskDetails.checklists = []
         const newList = {
@@ -33,7 +34,7 @@ export class _PopoverChecklist extends Component {
             todos: []
         }
         currTaskDetails.checklists.push(newList)
-        saveTaskDetails(currTaskDetails)
+        await saveTaskDetails(board, currGroup, currTaskDetails)
         tooglePopover()
         // addActivity('add-checklist')
     }

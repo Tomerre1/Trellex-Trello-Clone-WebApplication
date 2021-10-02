@@ -32,14 +32,14 @@ const _PopoverDynamicCmp = (props) => {
                     title="Checklist"
                 />
             );
-        // case "DATE":
-        //     return (
-        //         <PopoverDate
-        //             {...props}
-        //             title="Date"
-        //             setSelectedDate={this.setSelectedDate}
-        //         />
-        //     );
+        case "DATE":
+            return (
+                <PopoverDate
+                    {...props}
+                    title="Date"
+                    // setSelectedDate={this.setSelectedDate}
+                />
+            );
         // case "ATTACHMENT":
         //     return <PopoverAttachment {...props} title="Attach from..." />;
         case "COVER":

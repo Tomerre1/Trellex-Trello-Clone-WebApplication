@@ -1,39 +1,50 @@
+import { connect } from 'react-redux'
 import React, { Component } from 'react'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 
+import { saveTaskDetails } from '../store/board.actions'
+import { setPosition } from '../store/app.actions';
 
-export class TaskHeaderDate extends Component {
+export class _TaskHeaderDate extends Component {
     state = {
         formatedDate: '',
         dueDate: null,
         isTaskDone: false
     }
     componentDidMount = () => {
-        const { selectedDate, currTask } = this.props
-        const dueDate = selectedDate
-        const isTaskDone = currTask.isDone
-        const formatedDate = this.dueDateFormat(selectedDate)
-        this.setState(prevState => ({ ...prevState, formatedDate, dueDate, isTaskDone }))
+        const { board, currTaskDetails } = this.props
+        const currGroup = board.groups.find(group => group.tasks.some(task => task.id === currTaskDetails.id))
+
+        const dueDate = currTaskDetails.dueDate
+        const isTaskDone = currTaskDetails.isDone
+        const formatedDate = this.dueDateFormat(currTaskDetails.dueDate)
+        this.setState(prevState => ({ ...prevState, formatedDate, dueDate, isTaskDone, currGroup }))
     }
 
     componentDidUpdate(prevProps) {
         const { dueDate } = this.state
-        const { selectedDate } = this.props
-        if (dueDate !== selectedDate) {
-            const dueDate = selectedDate
-            const formatedDate = this.dueDateFormat(selectedDate)
+        const { currTaskDetails } = this.props
+        if (dueDate !== currTaskDetails.dueDate) {
+            const dueDate = currTaskDetails.dueDate
+            const formatedDate = this.dueDateFormat(currTaskDetails.dueDate)
             this.setState(prevState => ({ ...prevState, dueDate, formatedDate }))
         }
     }
 
-    onToggleTaskDone = () => {
+    onToggleTaskDone = async () => {
         const isTaskDone = !this.state.isTaskDone
         this.setState(prevState => ({ ...prevState, isTaskDone }))
-        this.props.toggleTaskDone()
-         if(isTaskDone) this.props.addActivity('due-date-complete')
-         else this.props.addActivity('due-date-incomplete')
+
+        const { board, saveTaskDetails, currTaskDetails } = this.props
+        const { currGroup } = this.state
+
+        currTaskDetails.isDone = !currTaskDetails.isDone;
+        await saveTaskDetails(board, currGroup, currTaskDetails)
+
+        // if (isTaskDone) this.props.addActivity('due-date-complete')
+        // else this.props.addActivity('due-date-incomplete')
     }
 
     dueDateFormat = (dueDate) => {
@@ -51,12 +62,12 @@ export class TaskHeaderDate extends Component {
 
     getDueStatus = () => {
         const now = Date.now()
-        const { currTask } = this.props
+        const { currTaskDetails } = this.props
         let dueStatus = '';
-        if (currTask.isDone) dueStatus = 'done';
-        else if (now > currTask.dueDate) dueStatus = 'overdue';
+        if (currTaskDetails.isDone) dueStatus = 'done';
+        else if (now > currTaskDetails.dueDate) dueStatus = 'overdue';
         else {
-            const timeDiff = currTask.dueDate - now;
+            const timeDiff = currTaskDetails.dueDate - now;
             if (timeDiff < 86400000) dueStatus = 'due-soon'
         }
         return dueStatus
@@ -72,10 +83,11 @@ export class TaskHeaderDate extends Component {
     }
 
     render() {
-        const { selectedDate, setCurrentTarget } = this.props
+        const { currTaskDetails, setPosition } = this.props
+        console.log('currTaskDetails',currTaskDetails)
         const { formatedDate, isTaskDone } = this.state
         const dueStatus = this.getDueStatus();
-        if (selectedDate.length === 0) return <></>
+        if (currTaskDetails.dueDate && currTaskDetails.dueDate.length === 0) return <></>
 
         return (
             <div className="task-details-header-date item-container flex column">
@@ -86,7 +98,9 @@ export class TaskHeaderDate extends Component {
                     <button className="secondary-btn date-btn flex align-center">
                         <span
                             className="date-context"
-                            onClick={(event) => { setCurrentTarget(event, 'DATE'); }}>{formatedDate}</span>
+                            onClick={(event) => { setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'LABELS' }) }}>
+                            {formatedDate}
+                        </span>
                         <span className="drop-down-icon"><ArrowDropDownIcon /></span>
                         <span className={`due-msg ${dueStatus}`}>{this.dueMsg}</span>
                     </button>
@@ -95,5 +109,21 @@ export class TaskHeaderDate extends Component {
         )
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        currTaskDetails: state.appModule.currTaskDetails,
+        board: state.boardModule.board,
+    };
+}
+const mapDispatchToProps = {
+    setPosition,
+    saveTaskDetails
+};
+
+export const TaskHeaderDate = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(_TaskHeaderDate);
 
 

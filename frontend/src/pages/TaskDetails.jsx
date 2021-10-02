@@ -127,11 +127,11 @@ export class _TaskDetails extends Component {
     this.setState((prevState) => ({ ...prevState, bgUrlCover }));
   }
 
-  toggleTaskDone = () => {
-    const { currTask } = this.state;
-    currTask.isDone = !currTask.isDone;
-    this.updateTaskDetails(currTask);
-  };
+  // toggleTaskDone = () => {
+  //   const { currTask } = this.state;
+  //   currTask.isDone = !currTask.isDone;
+  //   this.updateTaskDetails(currTask);
+  // };
 
   joinTask = () => {
     let { currTask, selectedMembers } = this.state;

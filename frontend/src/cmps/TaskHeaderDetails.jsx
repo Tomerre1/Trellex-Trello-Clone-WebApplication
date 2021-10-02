@@ -28,7 +28,8 @@ export class _TaskHeaderDetails extends Component {
             <div className="task-details-header flex">
                 <TaskHeaderMembers />
                 <TaskHeaderLabels />
-                {selectedDate && <TaskHeaderDate selectedDate={selectedDate} setCurrentTarget={setCurrentTarget} toggleTaskDone={toggleTaskDone} currTaskDetails={currTaskDetails} updateTaskDetails={updateTaskDetails} addActivity={addActivity} />}
+                <TaskHeaderDate />
+                {/* {selectedDate && <TaskHeaderDate selectedDate={selectedDate} setCurrentTarget={setCurrentTarget} toggleTaskDone={toggleTaskDone} currTaskDetails={currTaskDetails} updateTaskDetails={updateTaskDetails} addActivity={addActivity} />} */}
             </div>
         )
     }
