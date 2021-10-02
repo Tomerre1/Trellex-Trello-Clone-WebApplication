@@ -51,7 +51,6 @@ export class _TaskDetails extends Component {
   };
 
   setTaksDetailsTitle = async (title) => {
-
     const { currTaskDetails, board, saveTaskDetails } = this.props;
     const { currGroup } = this.state;
     currTaskDetails.title = title;
