@@ -2,6 +2,7 @@ import {Homepage} from './pages/Homepage'
 import {Workspace} from './pages/Workspace'
 import {BoardApp} from './pages/BoardApp'
 import {TaskDetails} from './pages/TaskDetails'
+import {LoginSignup} from './pages/LoginSignup'
 
 
 const routes = [
@@ -17,15 +18,20 @@ const routes = [
         label: 'Board'
     },
     {
+        path:'/board/:boardId/:listId/:taskId',
+        component: TaskDetails,
+        label: 'Task Details'
+    },
+    {
         path:'/board/',
         component: BoardApp,
         label: 'Board',
         isExact:true
     },
     {
-        path:'/board/:boardId/:listId/:taskId',
-        component: TaskDetails,
-        label: 'Task Details'
+        path:'/login',
+        component: LoginSignup,
+        isExact:true
     },
     {
         path:'/',
