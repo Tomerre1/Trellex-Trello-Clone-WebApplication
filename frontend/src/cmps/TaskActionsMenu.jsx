@@ -15,7 +15,8 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import { setPosition } from '../store/app.actions';
 export class _TaskActionsMenu extends Component {
     render() {
-        const { setCurrentTarget, joinTask, loggedinUserIsJoin, toggleIsArchive, deleteTask, isArchive } = this.props
+        const { setCurrentTarget, joinTask, toggleIsArchive, deleteTask, isArchive, currTaskDetails, loggedinUser } = this.props
+        const loggedinUserIsJoin = currTaskDetails.members?.find((member) => member._id === loggedinUser._id) ? true : false || false
         return (
             <aside className="task-details-sidebar flex column full">
                 <div className="actions-wrapper flex">
@@ -107,6 +108,7 @@ export class _TaskActionsMenu extends Component {
 function mapStateToProps(state) {
     return {
         currTaskDetails: state.appModule.currTaskDetails,
+        loggedinUser: state.userModule.loggedinUser,
     };
 }
 const mapDispatchToProps = {

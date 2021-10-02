@@ -125,18 +125,17 @@ export class _TaskDetails extends Component {
   }
 
   joinTask = () => {
-    let { currTask, selectedMembers } = this.state;
-    selectedMembers = selectedMembers || [];
-    const selectedMembersIds =
-      selectedMembers.map((member) => member._id) || [];
-    const { loggedinUser } = this.props;
+    const { loggedinUser, currTaskDetails } = this.props;
+    let { members } = currTaskDetails;
+    members = members || [];
+    const selectedMembersIds = members.map((member) => member._id);
+    // const selectedMembersIds = members.map((member) => member._id) || [];
     if (!selectedMembersIds.includes(loggedinUser._id)) {
-      selectedMembers.push(loggedinUser);
+      members.push(loggedinUser);
     }
-    currTask.members = selectedMembers;
+    currTaskDetails.members = members;
     this.addActivity('add-self')
-    this.setSelectedMembers(selectedMembers);
-    this.updateTaskDetails(currTask);
+    this.updateTaskDetails(currTaskDetails);
   };
 
   deleteTask = async () => {
@@ -151,11 +150,11 @@ export class _TaskDetails extends Component {
   }
 
   toggleIsArchive = () => {
-    const { currTask } = this.state;
-    currTask.isArchive = currTask?.isArchive || false
-    currTask.isArchive = !currTask.isArchive;
-    this.addActivity((currTask.isArchive) ? 'add-to-archive' : 'remove-from-archive')
-    this.updateTaskDetails(currTask);
+    const { currTaskDetails } = this.props;
+    currTaskDetails.isArchive = currTaskDetails?.isArchive || false
+    currTaskDetails.isArchive = !currTaskDetails.isArchive;
+    this.addActivity((currTaskDetails.isArchive) ? 'add-to-archive' : 'remove-from-archive')
+    this.updateTaskDetails(currTaskDetails);
   }
 
   addActivity = (activityType, txt = null) => {
