@@ -2,7 +2,7 @@ import { Component } from "react";
 
 import { connect } from "react-redux";
 import { updateTask } from "../../store/board.actions";
-import { setCurrTaskDetails, setPosition,tooglePopover } from "../../store/app.actions";
+import { setCurrTaskDetails, setPosition,togglePopover } from "../../store/app.actions";
 import { Link } from "react-router-dom";
 import ArchiveIcon from "@mui/icons-material/Archive";
 import PictureInPictureIcon from "@mui/icons-material/PictureInPicture";
@@ -17,7 +17,7 @@ class _TaskActions extends Component{
  
   componentWillUnmount = () =>{
     if(this.props.isPopoverOpen)
-    this.props.tooglePopover()
+    this.props.togglePopover()
   }
    sendToArchive = async () => {
     const newTask = { ...this.props.task };
@@ -105,7 +105,7 @@ const mapDispatchToProps = {
   updateTask,
   setPosition,
   setCurrTaskDetails,
-  tooglePopover
+  togglePopover
 };
 const mapStateToProps = (state) => {return {
   isPopoverOpen : state.appModule.popover.isOpen
