@@ -6,7 +6,7 @@
     padding:8px;
     overflow-x: scroll;
     min-height:90vh;
-
+    overflow-y: hidden;
   
     &::-webkit-scrollbar {
       height:15px;

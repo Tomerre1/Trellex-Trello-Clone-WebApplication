@@ -22,6 +22,7 @@ export const loadBoard = (boardId) => {
         try {
             const board = await boardService.getById(boardId)
             // console.log('loading board',board)
+            if(board)
             dispatch({
                 type: "SET_BOARD",
                 board,
@@ -30,6 +31,7 @@ export const loadBoard = (boardId) => {
         }
         catch (err) {
             console.log('cant set board', err)
+            throw Error(err)
         }
     }
 }

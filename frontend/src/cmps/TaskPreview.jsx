@@ -34,7 +34,6 @@ function _TaskPreview(props) {
     description,
     attachments,
     style,
-    length
   } = task;
 
   const [isMenuShown, toggleMenuShown] = useState(false);
@@ -223,13 +222,13 @@ function _TaskPreview(props) {
 
                 <div
                   className="task-preview clean-link "
-                  style={style?.bgUrl && { borderRadius: "0px 0px 3px 0px" }
-                }
+   
                 style={
                   style?.bgUrl && {
                     position: "relative",
                     top: "-8px",
                     marginBottom: "-8px",
+                    borderRadius: "0px 0px 3px 0px"
                   }
                 }
                 >

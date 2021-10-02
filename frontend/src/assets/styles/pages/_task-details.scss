@@ -1,4 +1,5 @@
 .task-details {
+  
     color: #42526e;
     background-color: #f4f5f7;
     border-radius: 3px;
@@ -49,7 +50,21 @@
             margin: 16px 0 0 16px;
         }
     }
-
+    &::-webkit-scrollbar {
+        height:15px;
+        border-radius: 50px;
+    
+      }
+    
+      &::-webkit-scrollbar-track {
+        background-color: rgba(0, 0, 0, 0.151);
+        margin:0 8px;
+      }
+    
+      &::-webkit-scrollbar-thumb {
+        background-color: #d6d6d68f;
+        border-radius: 5px;
+      }
     .close-task-details {
         cursor: pointer;
         color: #42526e;
@@ -91,6 +106,7 @@
     .items-container {
         margin: 0 8px 8px 0;
     }
+    
 }
 
 .overlay {
@@ -108,4 +124,5 @@
         opacity: 1;
         pointer-events: auto;
     }
+  
 }

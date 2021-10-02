@@ -17,6 +17,12 @@ const routes = [
         label: 'Board'
     },
     {
+        path:'/board/',
+        component: BoardApp,
+        label: 'Board',
+        isExact:true
+    },
+    {
         path:'/board/:boardId/:listId/:taskId',
         component: TaskDetails,
         label: 'Task Details'

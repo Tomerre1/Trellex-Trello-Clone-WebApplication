@@ -62,8 +62,8 @@ const _TaskDatePreview = (props) => {
       )}
       <p>
         {new Date(props.dueDate).toLocaleDateString(undefined, {
-          month: "short",
           day: "numeric",
+          month: "short",
         })}
       </p>
     </span>
