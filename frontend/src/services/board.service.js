@@ -1149,8 +1149,10 @@ function createActivity(activityType, currTask, txt = null) {
 
 function updateTask(board, group, task) {
     const groupIndex = board.groups.indexOf(group)
+    console.log('%c  groupIndex:', 'color: #00000;background: #aaefe5;', groupIndex);
     const taskNeedToUpdate = board.groups[groupIndex].tasks.find(currTask => currTask.id === task.id)
     const taskIndex = board.groups[groupIndex].tasks.indexOf(taskNeedToUpdate)
+    console.log('%c  taskIndex:', 'color: #00000;background: #aaefe5;', taskIndex);
     board.groups[groupIndex].tasks[taskIndex] = task
     return { ...board }
 }
@@ -1233,14 +1235,14 @@ async function removeGroup(boardId, groupId) {
     }
 
 }
-async function updateTaskByIds(boardId,groupId,task) {
+async function updateTaskByIds(boardId, groupId, task) {
     const board = await getById(boardId)
     const groupIdx = board.groups.findIndex(group => groupId === group.id)
     const taskIdx = board.groups[groupIdx].tasks.findIndex(taskToFind => taskToFind.id === task.id)
     board.groups[groupIdx].tasks[taskIdx] = task
     save(board)
     return board
-    
+
 }
 
 // function getEmptyBoard() {

@@ -51,7 +51,8 @@ export class _TaskDetails extends Component {
   };
 
   setTaksDetailsTitle = async (title) => {
-    const { currTaskDetails, board } = this.props;
+
+    const { currTaskDetails, board, saveTaskDetails } = this.props;
     const { currGroup } = this.state;
     currTaskDetails.title = title;
     await saveTaskDetails(board, currGroup, currTaskDetails)
@@ -136,7 +137,7 @@ export class _TaskDetails extends Component {
               <h3>This card is archived.</h3>
             </div>
           }
-          
+
           <TaskHeader
             taskTitle={currTaskDetails.title}
             setTaksDetailsTitle={this.setTaksDetailsTitle}
@@ -161,9 +162,9 @@ export class _TaskDetails extends Component {
                 setBgUrlCover={this.setBgUrlCover}
               />
               <TaskChecklist
-                // currTask={currTask}
-                // updateTaskDetails={this.updateTaskDetails}
-                // addActivity={this.addActivity}
+              // currTask={currTask}
+              // updateTaskDetails={this.updateTaskDetails}
+              // addActivity={this.addActivity}
               />
               {/* <TaskActivities
                 currTask={currTask}

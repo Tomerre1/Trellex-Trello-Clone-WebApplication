@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import React, { Component } from "react";
+import React from "react";
 import { PopoverLabels } from "./PopoverLabels";
 import { PopoverMembers } from "./PopoverMembers";
 import { PopoverChecklist } from "./PopoverChecklist";
@@ -8,7 +8,6 @@ import { PopoverAttachment } from "./PopoverAttachment";
 import { PopoverCover } from "./PopoverCover";
 import { PopoverMoveCopy } from "./PopoverMoveCopy";
 import { CheckDeletePopover } from "../CheckDeletePopover";
-import { saveBoard, saveTaskDetails } from "../../store/board.actions";
 const _PopoverDynamicCmp = (props) => {
     const { type } = props.popover.pos;
     switch (type) {
@@ -82,12 +81,8 @@ function mapStateToProps(state) {
         popover: state.appModule.popover,
     };
 }
-const mapDispatchToProps = {
-    saveBoard,
-    saveTaskDetails,
-};
 
 export const PopoverDynamicCmp = connect(
     mapStateToProps,
-    mapDispatchToProps
+    null
 )(_PopoverDynamicCmp);
