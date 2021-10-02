@@ -9,6 +9,7 @@
   height: fit-content;
   max-width: 272px;
   max-height: 87vh;
+  margin-inline-end: 8px;
 
   .group-header {
     width: 100%;
@@ -69,7 +70,7 @@
     overflow-y: auto;
     overflow-x: hidden;
     .task-list {
-      gap:8px;
+      // gap:8px;
       display:flex;
       flex-direction: column;
 
