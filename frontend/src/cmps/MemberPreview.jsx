@@ -14,7 +14,7 @@ export function MemberPreview({ member, isInPreview, isEditMode }) {
     <article
       className="member-wrapper"
       onClick={(ev) =>
-        isEditMode  ? null : openPop(ev)
+        isEditMode || isInPreview ? null : openPop(ev)
       }
     >
       {member?.imgUrl ? (
