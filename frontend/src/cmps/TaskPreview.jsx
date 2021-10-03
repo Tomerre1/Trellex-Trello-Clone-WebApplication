@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { setPopoverMenu } from "../store/app.actions";
 import { TaskPreviewEdit } from "./TaskPreview/TaskPreviewEdit";
 import { TaskLabels } from "./TaskPreview/TaskLabels";
 import { TaskDetailsPreview } from "./TaskPreview/TaskDetailsPreview";
-import { TaskMenuPreview } from "./TaskPreview/TaskMenuPreview";
+// import { TaskMenuPreview } from "./TaskPreview/TaskMenuPreview";
 import { toggleDragDisable } from "../store/app.actions";
 import { TaskDatePreview } from "./TaskPreview/TaskDatePreview";
 import { MemberList } from "../cmps/MemberList";
@@ -43,7 +44,7 @@ function _TaskPreview(props) {
 
   const calcPos = (ev) => {
     if (!ev) return;
-    let { top, right, height } =
+    let { top, right, height} =
       ev.target.parentElement.parentElement.getBoundingClientRect();
     console.log(top, right, height, window.innerHeight);
     if (top > window.innerHeight - 318) {
@@ -64,6 +65,7 @@ function _TaskPreview(props) {
     calcPos(ev);
     toggleMenuShown(!isMenuShown);
     toggleDragDisable();
+    props.setPopoverMenu(false)
   };
 
   let todos;
@@ -276,6 +278,7 @@ function _TaskPreview(props) {
       </>
     );
   else
+  // edit mode 
     return (
       <>
         <div
@@ -303,6 +306,7 @@ function mapStateToProps(state) {
 }
 const mapDispatchToProps = {
   toggleDragDisable,
+  setPopoverMenu
 };
 
 export const TaskPreview = connect(
