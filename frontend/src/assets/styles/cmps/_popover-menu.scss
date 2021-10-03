@@ -52,6 +52,9 @@
                 align-items: end;
                 svg {
                     height: 20px;
+                    &:nth-child(1) {
+                        width: 20px;
+                    }
                 }
                 .menu-bg-span {
                     padding-right: 19px;
