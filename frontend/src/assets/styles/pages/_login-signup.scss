@@ -20,6 +20,12 @@
       line-height: 28px;
       font-weight: 700;
       margin-bottom: 25px;
+      &:last-child{
+          color:#5e6c84;
+          text-decoration: underline;
+          cursor: pointer;
+          font-weight:500;
+      }
     }
     form {
       width: 100%;
