@@ -1,5 +1,4 @@
 import CheckIcon from '@material-ui/icons/Check';
-// import { styles } from '@material-ui/pickers/views/Calendar/Calendar';
 
 export function ColorPalette({ handleChange, selectedColor }) {
 

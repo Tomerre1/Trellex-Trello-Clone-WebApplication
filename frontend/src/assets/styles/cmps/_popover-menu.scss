@@ -1,4 +1,12 @@
 .board-menu {
+    .back {
+        position: absolute;
+        top: 14px;
+        left: 24px;
+        font-size: 20px;
+        color: #6b778c;
+        cursor: pointer;
+    }
     .popover {
         min-height: 93vh;
         max-height: 93vh;
