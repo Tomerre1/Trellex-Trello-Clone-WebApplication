@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import { connect } from 'react-redux'
 import { Popover } from "./Popover"
 import { TaskMenuPreview } from "../TaskPreview/TaskMenuPreview"
+import { setPosition } from '../../store/app.actions'
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 
@@ -10,13 +11,17 @@ class _PopoverMenuArchive extends React.Component {
 
 
     render() {
-        const { board } = this.props
+        const { board, setPosition } = this.props
         let tasks = board.groups.map(group => group.tasks).flat()
         tasks = tasks.filter(task => task.isArchive)
         return <div className="board-menu">
             <Popover title='Archive'>
                 <div class="pop-over-archive">
-                    <span class="back"><ArrowBackIosIcon /></span>
+                    <span
+                        class="back"
+                        onClick={(event) => { setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'BOARD_SHOW_MENU' }) }}>
+                        <ArrowBackIosIcon />
+                    </span>
                     <div class="card-preview-container">
                         {tasks.map(task => {
                             const taskGroup = board.groups.find(group => group.tasks.some(currTask => currTask.id === task.id));
@@ -44,5 +49,8 @@ function mapStateToProps(state) {
 
     }
 }
+const mapDispatchToProps = {
+    setPosition
+};
 
-export const PopoverMenuArchive = connect(mapStateToProps, null)(_PopoverMenuArchive)
+export const PopoverMenuArchive = connect(mapStateToProps, mapDispatchToProps)(_PopoverMenuArchive)
