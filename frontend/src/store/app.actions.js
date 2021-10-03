@@ -42,3 +42,11 @@ export const setPopover = (isOpen) => {
         });
     }
 }
+export const setPopoverMenu = (isMenu) => {
+    return (dispatch) => {
+        dispatch({
+            type: "SET_POPOVER_MENU",
+            isMenu
+        });
+    }
+}

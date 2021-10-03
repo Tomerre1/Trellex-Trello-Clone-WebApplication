@@ -68,7 +68,6 @@ class _BoardApp extends Component {
     );
   };
   render() {
-    const { isMenuOpen, currentTarget } = this.state
     const { board, popover } = this.props;
     if (!board) return <LoaderSpinner />;
     return (<>
@@ -89,7 +88,7 @@ class _BoardApp extends Component {
           />
         </section>
       </DragDropContext>
-      {popover.isOpen && <PopoverMenu togglePopover={this.toggleMenu} title={'Menu'} currentTarget={currentTarget} />}
+      {popover.isMenu && popover.isOpen && <PopoverMenu togglePopover={this.toggleMenu} title={'Menu'} />}
     </>
 
     );
