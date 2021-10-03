@@ -13,6 +13,10 @@ export class EditAttachmentPopover extends Component {
         this.setState(prevState => ({ ...prevState, url: attachment.url, urlName: attachment.name }))
     }
 
+    componentWillUnmount() {
+        this.props.togglePopover()
+    }
+
     handleChange = (ev) => {
         const { value, name } = ev.target
         this.setState(prevState => ({ ...prevState, [name]: value }))
@@ -24,12 +28,16 @@ export class EditAttachmentPopover extends Component {
     }
 
     render() {
-        const { attachment, currentTarget, togglePopover } = this.props
+        const { attachment } = this.props
         const { url, urlName } = this.state
-        const title = `Update ${attachment.name}`
+
+        let attachName = attachment.name
+        if (attachName.length > 15) attachName = attachName.substr(1, 15) + '...'
+
+        const title = `Update ${attachName}`
         return (
             <div className="edit-attach-container">
-                <Popover togglePopover={togglePopover} currentTarget={currentTarget} title={title} >
+                <Popover title={title} >
                     <div className="attachment-container">
                         {attachment.isWeb &&
                             <>

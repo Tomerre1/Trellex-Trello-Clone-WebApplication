@@ -122,7 +122,14 @@ export class _TaskAttachmentPreview extends Component {
                             }}>
                                 Delete
                             </button>
-                            <button onClick={(event) => { this.onEditAttach(event) }}>Edit</button>
+                            <button className="activity-toggle-btn" onClick={(event) => {
+                                this.props.setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: '' });
+                                this.props.setPopover(true)
+                                this.toggleEditPopover()
+                            }}>
+                                Edit
+                            </button>
+                            {/* <button onClick={(event) => { this.onEditAttach(event) }}>Edit</button> */}
                         </div>
 
                         {!isWeb && !bgUrl &&
@@ -146,13 +153,11 @@ export class _TaskAttachmentPreview extends Component {
                         type={'attachment'}
                         typeTitle={attachment.name}
                         togglePopover={this.togglePopover}
-                        // currentTarget={currentTarget}
                     />
                 }
                 {popover.isOpen && isEditPopover &&
                     <EditAttachmentPopover
                         togglePopover={this.toggleEditPopover}
-                        currentTarget={currentTarget}
                         updateAttachment={this.updateAttachment}
                         attachment={attachment}
                     />
