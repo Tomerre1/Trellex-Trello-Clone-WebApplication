@@ -3,8 +3,7 @@ import React, { Component } from 'react'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
-
-import { saveTaskDetails } from '../store/board.actions'
+import { saveTaskDetails, addActivity } from '../store/board.actions'
 import { setPosition } from '../store/app.actions';
 
 export class _TaskHeaderDate extends Component {
@@ -36,15 +35,12 @@ export class _TaskHeaderDate extends Component {
     onToggleTaskDone = async () => {
         const isTaskDone = !this.state.isTaskDone
         this.setState(prevState => ({ ...prevState, isTaskDone }))
-
-        const { board, saveTaskDetails, currTaskDetails } = this.props
+        const { board, saveTaskDetails, currTaskDetails, addActivity } = this.props
         const { currGroup } = this.state
-
         currTaskDetails.isDone = !currTaskDetails.isDone;
         await saveTaskDetails(board, currGroup, currTaskDetails)
-
-        // if (isTaskDone) this.props.addActivity('due-date-complete')
-        // else this.props.addActivity('due-date-incomplete')
+        if (isTaskDone) addActivity(board, currTaskDetails, 'due-date-complete')
+        else addActivity(board, currTaskDetails, 'due-date-incomplete')
     }
 
     dueDateFormat = (dueDate) => {
@@ -84,7 +80,7 @@ export class _TaskHeaderDate extends Component {
 
     render() {
         const { currTaskDetails, setPosition } = this.props
-        console.log('currTaskDetails',currTaskDetails)
+        console.log('currTaskDetails', currTaskDetails)
         const { formatedDate, isTaskDone } = this.state
         const dueStatus = this.getDueStatus();
         if (!currTaskDetails.dueDate || currTaskDetails.dueDate.length === 0) return <></>
@@ -118,7 +114,8 @@ function mapStateToProps(state) {
 }
 const mapDispatchToProps = {
     setPosition,
-    saveTaskDetails
+    saveTaskDetails,
+    addActivity
 };
 
 export const TaskHeaderDate = connect(

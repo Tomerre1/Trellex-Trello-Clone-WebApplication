@@ -75,7 +75,7 @@ export class _TaskChecklistPreview extends Component {
         currTaskDetails.checklists.splice(checklistIdx, 1)
         await saveTaskDetails(board, currGroup, currTaskDetails)
         this.togglePopover()
-        addActivity(board,currTaskDetails, 'remove-checklist')
+        addActivity(board, currTaskDetails, 'remove-checklist')
     }
 
     render() {
@@ -103,7 +103,6 @@ export class _TaskChecklistPreview extends Component {
                     todos={checklist.todos}
                     onSaveTodo={this.onSaveTodo}
                     onRemoveTodo={this.onRemoveTodo}
-                // addActivity={addActivity}
                 />
                 {this.props.popover.isOpen && isPopover &&
                     <CheckDeletePopover
