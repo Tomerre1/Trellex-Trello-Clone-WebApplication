@@ -255,7 +255,7 @@ function _TaskPreview(props) {
                         />
                       )}
                       {task?.members && (
-                        <MemberList members={task.members} isInPreview={true} />
+                        <MemberList members={task.members} isInPreview={true} task={task}/>
                       )}
                     </div>
                   </div>

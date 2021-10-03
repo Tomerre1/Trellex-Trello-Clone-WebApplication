@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { MemberPopup } from "./MemberPopup";
+import { connect } from "react-redux";
+
 import {
     setCurrTaskDetails,
     setPosition,
     togglePopover,
   } from "../store/app.actions";
 
-export function MemberPreview({ member, isInPreview, isEditMode }) {
+function _MemberPreview({ member, isInPreview, isEditMode,task }) {
   const [isPopOpen, togglePopOpen] = useState(false);
 
   const openPop = (ev) => {
@@ -49,3 +51,5 @@ export function MemberPreview({ member, isInPreview, isEditMode }) {
     </>
   );
 }
+
+export const MemberPreview = connect()(_MemberPreview)
