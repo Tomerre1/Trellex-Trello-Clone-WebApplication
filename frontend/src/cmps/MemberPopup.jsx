@@ -1,6 +1,6 @@
 import React from "react";
 
-export const MemberPopup = ({ member, togglePopOpen }) => {
+export const MemberPopup = ({ member, togglePopOpen, isInPreview }) => {
   return (
     <div className="popup-container">
       <div
@@ -35,7 +35,7 @@ export const MemberPopup = ({ member, togglePopOpen }) => {
         <p className="username">{member.username}</p>
       </div>
       <div className="member-footer">
-          
+          {isInPreview && <p>Remove from task</p>}
       </div>
       </div>
     </div>
