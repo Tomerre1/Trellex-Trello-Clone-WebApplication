@@ -79,7 +79,7 @@ export class _TaskChecklistPreview extends Component {
     }
 
     render() {
-        const { checklist } = this.props
+        const { checklist, popover } = this.props
         const { isPopover } = this.state
         if (!checklist) return <div></div>
 
@@ -104,7 +104,7 @@ export class _TaskChecklistPreview extends Component {
                     onSaveTodo={this.onSaveTodo}
                     onRemoveTodo={this.onRemoveTodo}
                 />
-                {this.props.popover.isOpen && isPopover &&
+                {popover.isOpen && isPopover &&
                     <CheckDeletePopover
                         remove={this.removeChecklist}
                         type={'checklist'}

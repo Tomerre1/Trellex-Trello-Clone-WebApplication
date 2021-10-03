@@ -9,6 +9,7 @@ import { PopoverCover } from "./PopoverCover";
 import { PopoverMoveCopy } from "./PopoverMoveCopy";
 import { PopoverMenu } from "./PopoverMenu";
 import { PopoverMenuArchive } from "./PopoverMenuArchive";
+import { PopoverMenuBackground } from "./PopoverMenuBackground"
 const _PopoverDynamicCmp = (props) => {
     const { type } = props.popover.pos;
     console.log(props.popover)
@@ -78,11 +79,17 @@ const _PopoverDynamicCmp = (props) => {
                 />
             );
         case "BOARD_SHOW_ARCHIVE":
-            console.log(`type from board archive`, type)
             return (
                 <PopoverMenuArchive
                     {...props}
                     title="Archive"
+                />
+            );
+        case "BOARD_SHOW_BACKGROUND":
+            return (
+                <PopoverMenuBackground
+                    {...props}
+                    title="Change Background"
                 />
             );
         default:
