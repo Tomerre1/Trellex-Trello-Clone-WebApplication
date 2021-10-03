@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Popover } from "./Popover"
 import { ColorPalette } from '../ColorPalette'
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import { } from '../../store/app.actions'
+import { setPosition } from '../../store/app.actions'
 import { saveBoard } from '../../store/board.actions'
 
 
@@ -18,18 +18,26 @@ class _PopoverMenuBackground extends React.Component {
         const { board, saveBoard } = this.props
         const { value } = event.target
         board.style.bgClr = value
+        board.style.bgImg = null
         saveBoard(board)
     }
 
     render() {
-        const { board, title } = this.props
+        const { board, title, setPosition } = this.props
+        if (!board) return <></>
 
         return <div className="board-menu">
             <Popover title={title}>
+                <span
+                    class="back"
+                    onClick={(event) => { setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'BOARD_SHOW_MENU' }) }}>
+                    <ArrowBackIosIcon />
+                </span>
                 <div class="pop-over-background">
-                    <span class="back"><ArrowBackIosIcon /></span>
                     <div class="background-styles-container">
-                        <ColorPalette selectedColor={board.style.bgClr} handleChange={this.handleChange} />
+                        <h4>Colors</h4>
+                        <ColorPalette selectedColor={board.style.bgClr} isGradient={true} handleChange={this.handleChange} />
+
 
                     </div>
                 </div>
@@ -44,7 +52,8 @@ function mapStateToProps(state) {
     }
 }
 const mapDispatchToProps = {
-    saveBoard
+    saveBoard,
+    setPosition
 };
 
 export const PopoverMenuBackground = connect(mapStateToProps, mapDispatchToProps)(_PopoverMenuBackground)
