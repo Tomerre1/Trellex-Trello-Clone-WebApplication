@@ -17,15 +17,20 @@ class _PopoverMenu extends Component {
     render() {
         const { board } = this.props
         const { title, setPosition } = this.props
+        if (!board) return <div></div>
         const CommAndAct = board.activities
         CommAndAct.sort((a, b) => (a.createdAt < b.createdAt) ? 1 : ((b.createdAt < a.createdAt) ? -1 : 0))
-
+        const { bgClr, bgImg } = board.style
         return <div className="board-menu">
             <Popover title={title}>
                 <div className="menu-details ">
                     <ul className="clean-list menu-list">
                         <li onClick={(event) => { setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'BOARD_SHOW_BACKGROUND' }); }}>
-                            <span className="menu-bg-span" style={{ background: board.style.bgClr }}></span>
+                            {(bgImg) ?
+                                <span className="menu-bg-span" style={{ backgroundImage: `url(${bgImg}`, backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}></span> :
+                                <span className="menu-bg-span" style={{ background: board.style.bgClr }}></span>
+                            }
+
                             <span className="menu-title">Change background</span>
                         </li>
 
