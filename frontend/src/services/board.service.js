@@ -1,8 +1,14 @@
 
 import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
-import { userService } from './user.service.js'
+import { httpService } from './http.service.js'
+// import Unsplash from 'unsplash-js';
 
+// const unsplash = new Unsplash({
+//     applicationId: "IwjSlLYB-kEXeOlDvuifDixGryX1CK64CwapeKeJC8w",
+//     secret: "TcnJEr-I-fiU2Sk55F7LWMoL5qaXilbZU9v8ohbSCn4"
+// });
+const APP_ID = 'IwjSlLYB-kEXeOlDvuifDixGryX1CK64CwapeKeJC8w'
 
 const demoBoards = [
     {
@@ -1077,7 +1083,8 @@ export const boardService = {
     addGroup,
     removeGroup,
     createActivity,
-    updateTaskByIds
+    updateTaskByIds,
+    queryPhotos
 }
 async function query() {
     let boards = await storageService.query(STORAGE_KEY)
@@ -1085,6 +1092,13 @@ async function query() {
     console.log('no local storage found')
     localStorage.setItem('board', JSON.stringify(demoBoards))
     return demoBoards
+}
+
+async function queryPhotos(query = 'random') {
+    debugger;
+    const photos = await httpService.get(`https://api.unsplash.com/search/photos/?query=dog&client_id=IwjSlLYB-kEXeOlDvuifDixGryX1CK64CwapeKeJC8w`)
+    console.log('%c  photos:', 'color: #00000;background: #aaefe5;', photos);
+    return photos;
 }
 
 function getById(boardId) {
