@@ -12,7 +12,7 @@ import { TaskHeaderDetails } from "../cmps/TaskHeaderDetails";
 import { LoaderSpinner } from "../cmps/LoaderSpinner";
 import { boardService } from '../services/board.service'
 import { saveBoard, saveTaskDetails } from "../store/board.actions";
-import { setCurrTaskDetails, setPopover, setPosition } from '../store/app.actions'
+import { setCurrTaskDetails, setPopover, setPosition, setPopoverMenu } from '../store/app.actions'
 
 export class _TaskDetails extends Component {
   state = {
@@ -22,11 +22,12 @@ export class _TaskDetails extends Component {
   contentEl = null;
 
   componentDidMount() {
-    const { board, setCurrTaskDetails } = this.props;
+    const { board, setCurrTaskDetails, setPopoverMenu } = this.props;
     const { taskId, listId } = this.props.match.params;
     const currGroup = board.groups.find((list) => list.id === listId);
     const currTask = currGroup.tasks.find((task) => task.id === taskId);
     setCurrTaskDetails(currTask)
+    setPopoverMenu(false)
     this.setState((prevState) => ({
       ...prevState,
       currGroup,
@@ -99,7 +100,7 @@ export class _TaskDetails extends Component {
 
   render() {
     const { currGroup } = this.state;
-    const { board, currTaskDetails } = this.props;
+    const { board, currTaskDetails, loggedinUser } = this.props;
     if (!currTaskDetails || !board || !currGroup) return <LoaderSpinner />;
 
     const { style } = currTaskDetails;
@@ -160,17 +161,13 @@ export class _TaskDetails extends Component {
                 addActivity={this.addActivity}
                 setBgUrlCover={this.setBgUrlCover}
               />
-              <TaskChecklist
-              // currTask={currTask}
-              // updateTaskDetails={this.updateTaskDetails}
-              // addActivity={this.addActivity}
-              />
-              {/* <TaskActivities
-                currTask={currTask}
+              <TaskChecklist />
+              <TaskActivities
+                currTask={currTaskDetails}
                 loggedinUser={loggedinUser}
                 activities={board.activities}
                 updateTaskDetails={this.updateTaskDetails}
-              /> */}
+              />
             </div>
             <TaskActionsMenu
               joinTask={this.joinTask}
@@ -197,7 +194,8 @@ const mapDispatchToProps = {
   saveTaskDetails,
   setCurrTaskDetails,
   setPopover,
-  setPosition
+  setPosition,
+  setPopoverMenu
 };
 
 export const TaskDetails = connect(

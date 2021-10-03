@@ -7,7 +7,7 @@ import { PopoverDate } from "./PopoverDate";
 import { PopoverAttachment } from "./PopoverAttachment";
 import { PopoverCover } from "./PopoverCover";
 import { PopoverMoveCopy } from "./PopoverMoveCopy";
-import { CheckDeletePopover } from "../CheckDeletePopover";
+import { PopoverMenu } from "./PopoverMenu";
 const _PopoverDynamicCmp = (props) => {
     const { type } = props.popover.pos;
     console.log(props.popover)
@@ -42,6 +42,7 @@ const _PopoverDynamicCmp = (props) => {
             );
         // case "ATTACHMENT":
         //     return <PopoverAttachment {...props} title="Attach from..." />;
+
         case "COVER":
             return (
                 <PopoverCover
@@ -65,10 +66,11 @@ const _PopoverDynamicCmp = (props) => {
                     title="Copy"
                 />
             );
-        case "CHECK_DELETE_CHECKLIST":
+        case "BOARD_SHOW_MENU":
             return (
-                <CheckDeletePopover
+                <PopoverMenu
                     {...props}
+                    title="Menu"
                 />
             );
         default:

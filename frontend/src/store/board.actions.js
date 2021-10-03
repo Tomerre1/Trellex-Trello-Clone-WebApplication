@@ -208,6 +208,23 @@ export const toggleExpandLabels = () => {
     }
 }
 
+export const addActivity = (board, currTaskDetails, activityType, txt = null) => {
+    return async (dispatch) => {
+        try {
+            board.activities.push(boardService.createActivity(activityType, currTaskDetails, txt))
+            const newBoard = await boardService.save(board)
+            console.log('newBoard:', newBoard)
+            dispatch({
+                type: "SAVE_BOARD",
+                board: newBoard,
+            })
+        }
+        catch (err) {
+            console.log('cant update task details', err)
+        }
+    }
+}
+
 export const saveTaskDetails = (board, currGroup, currTask) => {
     return async (dispatch) => {
         try {
@@ -223,9 +240,6 @@ export const saveTaskDetails = (board, currGroup, currTask) => {
                 type: "SET_TASK_DETAILS",
                 currTaskDetails: currTask
             });
-
-
-
         }
         catch (err) {
             console.log('cant update task details', err)

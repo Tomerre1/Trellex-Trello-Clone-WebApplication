@@ -8,6 +8,7 @@ const initialState = {
             type: ''
         },
         isOpen: false,
+        isMenu: false
     }
 }
 export function appReducer(state = initialState, action) {
@@ -24,6 +25,8 @@ export function appReducer(state = initialState, action) {
             return { ...state, popover: { ...state.popover, isOpen: !state.popover.isOpen } }
         case 'SET_POPOVER':
             return { ...state, popover: { ...state.popover, isOpen: action.isOpen } }
+        case 'SET_POPOVER_MENU':
+            return { ...state, popover: { ...state.popover, isOpen: false, isMenu: action.isMenu } }
         default:
             return state
     }

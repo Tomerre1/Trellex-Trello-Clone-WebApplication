@@ -54,7 +54,7 @@ export class _Popover extends React.Component {
             backgroundColor: "#fff",
             border: "1px solid lightgray",
             padding: "15px",
-            zIndex: 200,
+            zIndex: 100,
             padding: "0 12px 12px",
             borderRadius: "3px",
             marginRight: "4px",
@@ -67,7 +67,7 @@ export class _Popover extends React.Component {
         const { title, children, popover } = this.props;
         return (
             <>
-                {popover.isOpen &&
+                {(popover.isOpen) &&
                     <div
                         className="popover"
                         ref={(el) => (this.contentEl = el)}

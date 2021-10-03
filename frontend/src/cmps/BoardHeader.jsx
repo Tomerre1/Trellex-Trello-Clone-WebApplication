@@ -4,7 +4,7 @@ import { saveBoard } from "../store/board.actions";
 import { MemberList } from "./MemberList";
 import MoreHorizOutlinedIcon from "@mui/icons-material/MoreHorizOutlined";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
-import { togglePopover, setPosition } from '../store/app.actions'
+import { togglePopover, setPosition, setPopoverMenu } from '../store/app.actions'
 
 function _BoardHeader(props) {
   const { board } = props;
@@ -96,7 +96,7 @@ function _BoardHeader(props) {
           <MoreHorizOutlinedIcon className="icon" /> Show Menu
 
         </button> */}
-        <button className="header-btn" onClick={(event) => { props.setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: '' }) }}>
+        <button className="header-btn" onClick={(event) => { props.setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'BOARD_SHOW_MENU' }); props.setPopoverMenu(true); props.togglePopover() }}>
           <MoreHorizOutlinedIcon className="icon" /> Show Menu
 
         </button>
@@ -107,7 +107,8 @@ function _BoardHeader(props) {
 const mapDispatchToProps = {
   saveBoard,
   togglePopover,
-  setPosition
+  setPosition,
+  setPopoverMenu
 };
 function mapStateToProps(state) {
   return {

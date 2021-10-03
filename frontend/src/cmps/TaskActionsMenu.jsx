@@ -12,10 +12,10 @@ import ScheduleIcon from '@mui/icons-material/Schedule';
 import ArchiveIcon from '@mui/icons-material/Archive';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import RemoveIcon from '@mui/icons-material/Remove';
-import { setPosition, togglePopover } from '../store/app.actions';
+import { setPosition, togglePopover, setPopoverMenu } from '../store/app.actions';
 export class _TaskActionsMenu extends Component {
     render() {
-        const { setCurrentTarget, joinTask, toggleIsArchive, deleteTask, isArchive, currTaskDetails, loggedinUser, setPosition,  togglePopover } = this.props
+        const { setCurrentTarget, joinTask, toggleIsArchive, deleteTask, isArchive, currTaskDetails, loggedinUser, setPosition, togglePopover, setPopoverMenu } = this.props
         const loggedinUserIsJoin = currTaskDetails.members?.find((member) => member._id === loggedinUser._id) ? true : false || false
         return (
             <aside className="task-details-sidebar flex column full">
@@ -32,7 +32,7 @@ export class _TaskActionsMenu extends Component {
                     <div className="add-to-card flex column">
                         <h4>ADD TO CARD</h4>
 
-                        <button className="secondary-btn action-btn" onClick={(event) => { setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'MEMBERS' }); togglePopover() }}>
+                        <button className="secondary-btn action-btn" onClick={(event) => { setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'MEMBERS' }); togglePopover(); }}>
                             <div className=" action-btn-content flex" >
                                 <PersonAddAltIcon />
                                 <span>Members</span>
@@ -113,7 +113,8 @@ function mapStateToProps(state) {
 }
 const mapDispatchToProps = {
     setPosition,
-    togglePopover
+    togglePopover,
+    setPopoverMenu
 };
 
 export const TaskActionsMenu = connect(

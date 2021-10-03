@@ -5,7 +5,7 @@ import { CheckDeletePopover } from './CheckDeletePopover'
 import { TodoAdd } from './TodoAdd'
 import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
 import { ProgressBar } from './ProgressBar'
-import { saveBoard, saveTaskDetails } from '../store/board.actions'
+import { saveBoard, saveTaskDetails, addActivity } from '../store/board.actions'
 import { togglePopover } from '../store/app.actions'
 import { setPosition, setPopover } from '../store/app.actions';
 
@@ -13,10 +13,7 @@ import { setPosition, setPopover } from '../store/app.actions';
 export class _TaskChecklistPreview extends Component {
 
     state = {
-        isPopover: false,
-        currentTarget: null,
-        selectedChecklist: this.props.checklist,
-
+        isPopover: false
     }
 
     componentDidMount() {
@@ -28,11 +25,6 @@ export class _TaskChecklistPreview extends Component {
     togglePopover = () => {
         this.setState(prevState => ({ ...prevState, isPopover: !prevState.isPopover }))
     }
-
-    setCurrentTarget = (event) => {
-        this.setState(prevState => ({ ...prevState, currentTarget: event }))
-        this.togglePopover()
-    };
 
     onSaveTodo = async (todo) => {
         const { board, currTaskDetails, checklist, saveTaskDetails } = this.props
@@ -77,23 +69,19 @@ export class _TaskChecklistPreview extends Component {
     }
 
     removeChecklist = async () => {
-        // const { saveTaskDetails, currTaskDetails, addActivity, checklist } = this.props
-        const { board, saveTaskDetails, currTaskDetails, checklist } = this.props
+        const { board, saveTaskDetails, currTaskDetails, checklist, addActivity } = this.props
         const { currGroup } = this.state
         const checklistIdx = currTaskDetails.checklists.indexOf(checklist)
         currTaskDetails.checklists.splice(checklistIdx, 1)
         await saveTaskDetails(board, currGroup, currTaskDetails)
         this.togglePopover()
-        // addActivity('remove-checklist')
+        addActivity(board,currTaskDetails, 'remove-checklist')
     }
 
     render() {
-        // const { checklist, addActivity } = this.props
-        // const { isPopover, currentTarget } = this.state
-        const { checklist, popover } = this.props
-        const { selectedChecklist, isPopover } = this.state
-        if (!selectedChecklist) return <div></div>
-        console.log('checklist', checklist)
+        const { checklist } = this.props
+        const { isPopover } = this.state
+        if (!checklist) return <div></div>
 
         return (
             <div className="task-activities flex column">
@@ -106,7 +94,6 @@ export class _TaskChecklistPreview extends Component {
                         this.props.setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: '' });
                         this.props.setPopover(true)
                         this.togglePopover()
-
                     }}>
                         Delete
                     </button>
@@ -122,13 +109,10 @@ export class _TaskChecklistPreview extends Component {
                     <CheckDeletePopover
                         remove={this.removeChecklist}
                         type={'checklist'}
-                        typeTitle={selectedChecklist.title}
+                        typeTitle={checklist.title}
                         togglePopover={this.togglePopover}
                     />
                 }
-                {/* togglePopover={this.togglePopover}
-                 currentTarget={currentTarget} */}
-
                 <TodoAdd addTodo={this.addTodo} />
             </div>
         )
@@ -147,7 +131,8 @@ const mapDispatchToProps = {
     saveBoard,
     togglePopover,
     setPosition,
-    setPopover
+    setPopover,
+    addActivity
 };
 
 export const TaskChecklistPreview = connect(
