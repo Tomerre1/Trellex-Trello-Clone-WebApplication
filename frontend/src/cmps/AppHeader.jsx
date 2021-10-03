@@ -41,7 +41,7 @@ function _AppHeader(props) {
           </div>
         </Link>
         {props.user ? (
-          <div className="header-btn-container  flex">
+          <div className="header-btn-container flex end">
             <button
               className="header-btn"
               onClick={() => setCreateShown(!isCreateShown)}
@@ -55,7 +55,7 @@ function _AppHeader(props) {
             <MemberList members={[props.user]} isInHeader={true}/>
           </div>
         ) : (
-          <div className="header-btn-container flex">
+          <div className="header-btn-container flex end">
             <Link className="clean-link"to="/login"><button
               className="header-btn boards"
             >
