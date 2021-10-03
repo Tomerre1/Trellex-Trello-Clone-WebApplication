@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import React, { Component } from 'react'
 import { Popover } from './Popover'
 import { utilService } from '../../services/util.service'
-import { saveBoard, saveTaskDetails } from '../../store/board.actions'
+import { saveBoard, saveTaskDetails, addActivity } from '../../store/board.actions'
 import { togglePopover } from '../../store/app.actions'
 
 export class _PopoverChecklist extends Component {
@@ -23,8 +23,7 @@ export class _PopoverChecklist extends Component {
 
     onAddChecklist = async (ev) => {
         ev.preventDefault()
-        // const {  saveTaskDetails, currTaskDetails, addActivity } = this.props
-        const { board, saveTaskDetails, currTaskDetails, togglePopover } = this.props
+        const { board, saveTaskDetails, currTaskDetails, togglePopover, addActivity } = this.props
         const { currGroup } = this.state
 
         if (!currTaskDetails.checklists) currTaskDetails.checklists = []
@@ -36,7 +35,7 @@ export class _PopoverChecklist extends Component {
         currTaskDetails.checklists.push(newList)
         await saveTaskDetails(board, currGroup, currTaskDetails)
         togglePopover()
-        // addActivity('add-checklist')
+        addActivity(board, currTaskDetails, 'add-checklist')
     }
 
     render() {
@@ -67,7 +66,8 @@ function mapStateToProps(state) {
 const mapDispatchToProps = {
     saveTaskDetails,
     saveBoard,
-    togglePopover
+    togglePopover,
+    addActivity
 };
 
 export const PopoverChecklist = connect(

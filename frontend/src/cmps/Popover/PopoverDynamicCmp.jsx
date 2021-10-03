@@ -40,9 +40,12 @@ const _PopoverDynamicCmp = (props) => {
                     title="Date"
                 />
             );
-        // case "ATTACHMENT":
-        //     return <PopoverAttachment {...props} title="Attach from..." />;
-
+        case "ATTACHMENT":
+            return (
+                <PopoverAttachment
+                    {...props}
+                    title="Attach from..." />
+            );
         case "COVER":
             return (
                 <PopoverCover
