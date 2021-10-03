@@ -51,7 +51,7 @@ export class _TaskDetails extends Component {
   };
 
   setTaksDetailsTitle = async (title) => {
-    const { currTaskDetails, board } = this.props;
+    const { currTaskDetails, board, saveTaskDetails } = this.props;
     const { currGroup } = this.state;
     currTaskDetails.title = title;
     await saveTaskDetails(board, currGroup, currTaskDetails)
@@ -73,13 +73,13 @@ export class _TaskDetails extends Component {
 
   deleteTask = async () => {
     const { currGroup } = this.state;
-    const { currTaskDetails } = this.props;
+    const { currTaskDetails, saveBoard } = this.props;
     const { board } = this.props
     const currGroupIdx = board.groups.indexOf(currGroup)
     currGroup.tasks = currGroup.tasks.filter((task) => task.id !== currTaskDetails.id);
     board.groups[currGroupIdx] = currGroup
     this.addActivity('remove-task')
-    await this.saveBoard(board);
+    await saveBoard(board);
     this.props.history.goBack();
   }
 
@@ -92,9 +92,9 @@ export class _TaskDetails extends Component {
   }
 
   addActivity = async (activityType, txt = null) => {
-    const { board, currTaskDetails } = this.props;
+    const { board, currTaskDetails, saveBoard } = this.props;
     board.activities.push(boardService.createActivity(activityType, currTaskDetails, txt))
-    await this.saveBoard(board);
+    await saveBoard(board);
   }
 
   render() {
@@ -136,7 +136,7 @@ export class _TaskDetails extends Component {
               <h3>This card is archived.</h3>
             </div>
           }
-          
+
           <TaskHeader
             taskTitle={currTaskDetails.title}
             setTaksDetailsTitle={this.setTaksDetailsTitle}
@@ -161,9 +161,9 @@ export class _TaskDetails extends Component {
                 setBgUrlCover={this.setBgUrlCover}
               />
               <TaskChecklist
-                // currTask={currTask}
-                // updateTaskDetails={this.updateTaskDetails}
-                // addActivity={this.addActivity}
+              // currTask={currTask}
+              // updateTaskDetails={this.updateTaskDetails}
+              // addActivity={this.addActivity}
               />
               {/* <TaskActivities
                 currTask={currTask}

@@ -22,7 +22,7 @@ export function TaskHeader({ taskTitle, setTaksDetailsTitle, taskList }) {
                                 ev.preventDefault();
                             }
                         }}
-                        onChange={(e) => { setTitle(e.target.value); handleSubmit(e) }}
+                        onChange={(e) => { setTitle(e.target.value) }}
                         onBlur={(e) => { setTitle(e.target.value); handleSubmit(e) }}
                         value={title}>
                     </textarea>

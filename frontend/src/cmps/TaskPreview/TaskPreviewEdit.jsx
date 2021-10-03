@@ -20,7 +20,7 @@ export function _TaskPreviewEdit({
   menuPos,
   toggleMenu,
   updateTask,
-  taskUrl
+  taskUrl,
 }) {
   const {
     style,
@@ -36,21 +36,24 @@ export function _TaskPreviewEdit({
   } = task;
 
   const [editTitle, setEditTitle] = useState(title);
-  
-  const updateTaskName = async() => {
+
+  const updateTaskName = async () => {
     const newTask = { ...task };
     newTask.title = editTitle;
-    try{
-        await updateTask(boardId,groupId,newTask);
-    }
-    catch{
-
+    try {
+      await updateTask(boardId, groupId, newTask);
+      toggleMenu()
+    } catch (err){
+      console.log('error when setting title',err)
     }
   };
-  
+
   return (
     <>
-      <article className="task-preview-container edit" style={{ zIndex: 100 ,borderRadius:3}}>
+      <article
+        className="task-preview-container edit"
+        style={{ zIndex: 100, borderRadius: 3 }}
+      >
         {style?.bgUrl && (
           <img
             className="task-cover-img"
@@ -79,7 +82,7 @@ export function _TaskPreviewEdit({
               position: "relative",
               top: "-8px",
               marginBottom: "-8px",
-              borderRadius:'0 0 3px 3px',
+              borderRadius: "0 0 3px 3px",
             }
           }
         >
@@ -91,9 +94,6 @@ export function _TaskPreviewEdit({
             value={editTitle}
             autoFocus
             onChange={(ev) => setEditTitle(ev.target.value)}
-            onBlur={() => {
-              updateTaskName();
-            }}
           />
           <div className="task-preview-icons flex align-center">
             {dueDate && (
@@ -134,6 +134,14 @@ export function _TaskPreviewEdit({
           </div>
         </div>
       </article>
+      <button
+        className="save-btn"
+        onClick={() => {
+          updateTaskName();
+        }}
+      >
+        Save
+      </button>
       <TaskActions
         toggleMenu={toggleMenu}
         menuPos={menuPos}

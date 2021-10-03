@@ -1,10 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 
 export function BoardPreview(props) {
-  const { board, onRemove, saveBoard } = props;
+  const { board, saveBoard } = props;
 
   const onToggleStar = async () => {
     const newBoard = { ...board };
@@ -29,10 +28,7 @@ export function BoardPreview(props) {
         <p className="board-title">{board.title}</p>
       </Link>
       <div className="hover-actions flex">
-        <DeleteOutlineIcon
-          className="action-icon"
-          onClick={() => onRemove(board._id)}
-        />
+     
        {board?.isFavorite ? <StarBorderIcon className="action-icon"  style={{color:'gold'}} onClick={onToggleStar}/> : <StarBorderIcon className="action-icon" onClick={onToggleStar} />}
       </div>
     </article>
