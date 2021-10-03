@@ -32,23 +32,36 @@ function _AppHeader(props) {
             Boards
           </Link>
         </div>
-        <div className="logo">
-          <DashboardIcon className="logo-icon"/>
-          <h1 >Trellex</h1>
-        </div>
-        <div className="header-btn-container flex">
-          <button
-            className="header-btn"
-            onClick={() => setCreateShown(!isCreateShown)}
-          >
-            <AddIcon className="icon" />
-          </button>
+        <Link to="/" className="clean-link">
+          <div className="logo">
+            <DashboardIcon className="logo-icon" />
+            <h1>Trellex</h1>
+          </div>
+        </Link>
+        {props.user ? (
+          <div className="header-btn-container flex">
+            <button
+              className="header-btn"
+              onClick={() => setCreateShown(!isCreateShown)}
+            >
+              <AddIcon className="icon" />
+            </button>
 
-          <button className="header-btn">
-            <NotificationsNoneIcon className="icon" />
-          </button>
-          <MemberList members={[props.user]} />
-        </div>
+            <button className="header-btn">
+              <NotificationsNoneIcon className="icon" />
+            </button>
+            <MemberList members={[props.user]} />
+          </div>
+        ) : (
+          <div className="header-btn-container flex">
+            <Link className="clean-link"to="/login"><button
+              className="header-btn"
+            >
+              Login
+            </button>
+            </Link>
+          </div>
+        )}
         <div
           className={`overlay ${isCreateShown ? "show" : ""}`}
           onClick={() => setCreateShown(false)}
