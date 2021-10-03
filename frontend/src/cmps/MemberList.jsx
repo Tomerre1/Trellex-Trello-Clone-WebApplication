@@ -13,24 +13,6 @@ export function _MemberList(props) {
       {members &&
         members.map((member, idx) => (
           <MemberPreview member={member} isInPreview={isInPreview} key={idx}/>
-          // <article key={idx} className="member-wrapper">
-          //   {member?.imgUrl ? (
-          //     <img
-          //       src={member.imgUrl}
-          //       className="member-img"
-          //       alt={"member-img"}
-          //     />
-          //   ) : (
-          //     <div
-          //       className="member-img"
-          //       style={{ background: "rgb(223, 225, 230)", color: "inherit" }}
-          //     >
-          //       <p className={`member-letter ${isInPreview ? "preview" : ""}`}>
-          //         {member?.fullname?.[0].toUpperCase() || ""}
-          //       </p>
-          //     </div>
-          //   )}
-          // </article>
         ))}
       {isInDetails && (
         <button

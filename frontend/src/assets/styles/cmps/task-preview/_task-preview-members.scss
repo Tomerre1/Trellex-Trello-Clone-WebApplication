@@ -4,6 +4,7 @@
   align-items: center;
   margin-inline-end: 10px;
   flex-grow:1;
+  // z-index:40;
 
   &.preview {
     gap: 1px;
@@ -26,13 +27,18 @@
     justify-content: center;
     cursor: pointer;
     margin-left: -2px;
+    filter:brightness(1);
+    cursor: pointer;
+
+    &:hover {
+      filter:brightness(1.2)
+    }
   }
   .member-img {
     height: 32px;
     width: 32px;
     object-fit: cover;
     border-radius: 50%;
-    // border: 0.01rem solid rgba(255, 255, 255, 0.329);
     display: flex;
     align-items: center;
     justify-content: center;
