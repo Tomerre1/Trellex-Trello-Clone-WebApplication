@@ -2,7 +2,11 @@ import { Component } from "react";
 
 import { connect } from "react-redux";
 import { updateTask } from "../../store/board.actions";
-import { setCurrTaskDetails, setPosition,togglePopover } from "../../store/app.actions";
+import {
+  setCurrTaskDetails,
+  setPosition,
+  togglePopover,
+} from "../../store/app.actions";
 import { Link } from "react-router-dom";
 import ArchiveIcon from "@mui/icons-material/Archive";
 import PictureInPictureIcon from "@mui/icons-material/PictureInPicture";
@@ -13,28 +17,31 @@ import CopyIcon from "@material-ui/icons/FileCopyOutlined";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import ScheduleIcon from "@mui/icons-material/Schedule";
 
-class _TaskActions extends Component{
- 
-  componentWillUnmount = () =>{
-    if(this.props.isPopoverOpen)
-    this.props.togglePopover()
-  }
-   sendToArchive = async () => {
+class _TaskActions extends Component {
+  componentWillUnmount = () => {
+    if (this.props.isPopoverOpen) this.props.togglePopover();
+  };
+  sendToArchive = async () => {
     const newTask = { ...this.props.task };
     newTask.isArchive = true;
     try {
       this.props.updateTask(this.props.boardId, this.props.groupId, newTask);
-      this.props.loadBoard(this.props.boardId);
       this.props.toggleMenu();
     } catch (err) {
       console.log("error when sending to archive", err);
     }
   };
 
-  
-  render(){
-    const { menuPos, task, toggleMenu, taskUrl } =
-    this.props;
+  popoverDispatch = (ev, type) => {
+    this.props.setCurrTaskDetails(this.props.task);
+    this.props.setPosition({
+      pos: { pageX: ev.pageX, pageY: ev.pageY },
+      type,
+    });
+  };
+
+  render() {
+    const { menuPos, task, toggleMenu, taskUrl } = this.props;
 
     return (
       <div className="task-actions flex column slide-in-left" style={menuPos}>
@@ -46,11 +53,7 @@ class _TaskActions extends Component{
         </Link>
         <button
           onClick={(ev) => {
-            this.props.setCurrTaskDetails(task);
-            this.props.setPosition({
-              pos: { pageX: ev.pageX, pageY: ev.pageY },
-              type: "LABELS",
-            });
+            this.popoverDispatch(ev, "LABELS");
           }}
         >
           <LabelIcon className="action-icon" />
@@ -58,11 +61,7 @@ class _TaskActions extends Component{
         </button>
         <button
           onClick={(ev) => {
-            this.props.setCurrTaskDetails(task);
-            this.props.setPosition({
-              pos: { pageX: ev.pageX, pageY: ev.pageY },
-              type: "MEMBERS",
-            });
+            this.popoverDispatch(ev, "MEMBERS");
           }}
         >
           <PersonOutlineIcon className="action-icon" />
@@ -70,25 +69,33 @@ class _TaskActions extends Component{
         </button>
         <button
           onClick={(ev) => {
-            this.props.setCurrTaskDetails(task);
-            this.props.setPosition({
-              pos: { pageX: ev.pageX, pageY: ev.pageY },
-              type: "COVER",
-            });
+            this.popoverDispatch(ev, "COVER");
           }}
         >
           <CoverIcon className="action-icon" />
           <p>Change cover</p>
         </button>
-        <button>
+        <button
+          onClick={(ev) => {
+            this.popoverDispatch(ev, "MOVE");
+          }}
+        >
           <ArrowForwardIcon className="action-icon" />
           <p>Move</p>
         </button>
-        <button>
+        <button
+          onClick={(ev) => {
+            this.popoverDispatch(ev, "COPY");
+          }}
+        >
           <CopyIcon className="action-icon" />
           <p>Copy</p>
         </button>
-        <button>
+        <button
+          onClick={(ev) => {
+            this.popoverDispatch(ev, "DATE");
+          }}
+        >
           <ScheduleIcon className="action-icon" />
           <p>Edit date</p>
         </button>
@@ -99,15 +106,19 @@ class _TaskActions extends Component{
       </div>
     );
   }
-
 }
 const mapDispatchToProps = {
   updateTask,
   setPosition,
   setCurrTaskDetails,
-  togglePopover
+  togglePopover,
 };
-const mapStateToProps = (state) => {return {
-  isPopoverOpen : state.appModule.popover.isOpen
-}}
-export const TaskActions = connect(mapStateToProps, mapDispatchToProps)(_TaskActions);
+const mapStateToProps = (state) => {
+  return {
+    isPopoverOpen: state.appModule.popover.isOpen,
+  };
+};
+export const TaskActions = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(_TaskActions);
