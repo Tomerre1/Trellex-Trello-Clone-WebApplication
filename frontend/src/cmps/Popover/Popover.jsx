@@ -1,7 +1,7 @@
 import React from "react";
 import CloseIcon from '@mui/icons-material/Close';
 import { connect } from "react-redux";
-import { togglePopover, setPosition } from '../../store/app.actions'
+import { togglePopover, setPosition, setPopover } from '../../store/app.actions'
 export class _Popover extends React.Component {
     state = {
         visible: false,
@@ -19,6 +19,7 @@ export class _Popover extends React.Component {
             this.onSetPopoverPos()
         }
     }
+
 
     toggleVisibility = () =>
         this.setState((prevState) => ({ visible: !prevState.visible }));
@@ -96,7 +97,8 @@ function mapStateToProps(state) {
 }
 const mapDispatchToProps = {
     togglePopover,
-    setPosition
+    setPosition,
+    setPopover
 };
 
 export const Popover = connect(

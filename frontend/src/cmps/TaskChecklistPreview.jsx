@@ -7,7 +7,7 @@ import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
 import { ProgressBar } from './ProgressBar'
 import { saveBoard, saveTaskDetails } from '../store/board.actions'
 import { togglePopover } from '../store/app.actions'
-import { setPosition } from '../store/app.actions';
+import { setPosition, setPopover } from '../store/app.actions';
 
 
 export class _TaskChecklistPreview extends Component {
@@ -104,6 +104,7 @@ export class _TaskChecklistPreview extends Component {
                     </div>
                     <button className="activity-toggle-btn" onClick={(event) => {
                         this.props.setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: '' });
+                        this.props.setPopover(true)
                         this.togglePopover()
 
                     }}>
@@ -122,6 +123,7 @@ export class _TaskChecklistPreview extends Component {
                         remove={this.removeChecklist}
                         type={'checklist'}
                         typeTitle={selectedChecklist.title}
+                        togglePopover={this.togglePopover}
                     />
                 }
                 {/* togglePopover={this.togglePopover}
@@ -145,6 +147,7 @@ const mapDispatchToProps = {
     saveBoard,
     togglePopover,
     setPosition,
+    setPopover
 };
 
 export const TaskChecklistPreview = connect(

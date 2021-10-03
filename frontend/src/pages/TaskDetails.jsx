@@ -36,8 +36,8 @@ export class _TaskDetails extends Component {
 
   componentWillUnmount() {
     this.props.setCurrTaskDetails(null)
-    this.props.setPopover(false)
     this.props.setPosition({ pageX: null, pageY: null, type: null })
+    this.props.setPopover(false)
   }
 
   updateTaskDetails = async (currTask) => {

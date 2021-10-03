@@ -14,6 +14,10 @@ export class _CheckDeletePopover extends Component {
         }))
     }
 
+    componentWillUnmount() {
+        this.props.togglePopover()
+    }
+
     // componentDidUpdate(prevProps, prevState) {
     //     if (prevProps.typeTitle !== this.props.typeTitle) {
     //         console.log('componentDidUpdate')
