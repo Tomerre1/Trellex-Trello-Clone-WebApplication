@@ -133,6 +133,21 @@ async function signUpUsers(){
         "_id":"u103"
         
     })
+    await userService.signup({
+        "fullname": 'Dave',
+        "imgUrl": 'https://m.media-amazon.com/images/M/MV5BMTY5NzY4NzgxNV5BMl5BanBnXkFtZTcwMzcyOTQwOQ@@._V1_UY1200_CR108,0,630,1200_AL_.jpg',
+        "username": 'dave',
+        "password": '1',
+        "_id":"u104"
+        
+    })
+    await userService.signup({
+        "fullname": 'Anna',
+        "imgUrl": 'https://media-cldnry.s-nbcnews.com/image/upload/t_fit-2000w,f_auto,q_auto:best/newscms/2019_50/3139821/191209-ana_de_armas-mc-1505.JPG',
+        "username": 'anna',
+        "password": '1',
+        "_id":"u105"
+    })
 };
 
 
