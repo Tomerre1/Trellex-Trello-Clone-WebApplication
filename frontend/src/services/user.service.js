@@ -70,8 +70,7 @@ async function update(user) {
 
 async function login(userCred) {
     const users = await storageService.query(DB_KEY)
-    console.log('%c%s', 'color: #917399', users);
-    const user = users.find(user => user.username === userCred.username)
+    const user = users.find(user => user.username === userCred.username && user.password === userCred.password)
     return _saveLocalUser(user)
 
     // const user = await httpService.post('auth/login', userCred)
