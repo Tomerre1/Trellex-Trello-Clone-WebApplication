@@ -1,10 +1,25 @@
 .board-menu {
     .pop-over-background {
         width: 20rem;
+        h4 {
+            align-self: flex-start;
+            margin: 7px 0;
+        }
+        .background-styles-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
 
-        .color-palette label {
-            width: 71px;
-            height: 46px;
+        .color-palette {
+            justify-content: center;
+            gap: 10px;
+            label {
+                width: 72px;
+                height: 50px;
+                margin: 0;
+            }
         }
     }
 }
