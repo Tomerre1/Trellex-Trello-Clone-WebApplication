@@ -27,9 +27,9 @@ export function boardReducer(state = initialState, action) {
             boards = state.boards.filter(board => board._id !== action.boardId)
             newState = { ...state, boards }
             break
-        case 'SET_TASK_DETAILS':
-            newState = { ...state, board: { ...state.board, currTaskDetails: { ...action.task } } }
-            break
+        // case 'SET_TASK_DETAILS':
+        //     newState = { ...state, board: { ...state.board, currTaskDetails: { ...action.task } } }
+        //     break
 
         case 'TOGGLE_LABELS':
             newState = { ...state, areLabelsExpanded: !state.areLabelsExpanded }

@@ -70,7 +70,6 @@ export class _TaskAttachmentPreview extends Component {
         const { board, saveTaskDetails, currTaskDetails, attachment } = this.props
         const { currGroup } = this.state
         currTaskDetails.style.bgUrl = attachment.url
-        // setBgUrlCover(attachment.url)
         this.toggleBgUrl()
         await saveTaskDetails(board, currGroup, currTaskDetails)
     }
@@ -78,9 +77,10 @@ export class _TaskAttachmentPreview extends Component {
     removeCover = async () => {
         const { board, saveTaskDetails, currTaskDetails } = this.props
         const { currGroup } = this.state
-        saveTaskDetails.style.bgUrl = ''
+        currTaskDetails.style.coverMode = null
+        currTaskDetails.style.bgColor = null
+        currTaskDetails.style.bgUrl = null
         this.toggleBgUrl()
-        // setBgUrlCover(null)
         await saveTaskDetails(board, currGroup, currTaskDetails)
     }
 

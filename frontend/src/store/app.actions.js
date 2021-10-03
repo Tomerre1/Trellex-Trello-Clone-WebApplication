@@ -2,7 +2,6 @@ import { boardService } from '../services/board.service';
 export const setCurrTaskDetails = (currTaskDetails) => {
     return async (dispatch) => {
         // await boardService.updateTask(board, group, currTaskDetails)
-        console.log(`currTaskDetails from dispatch`, currTaskDetails)
         dispatch({
             type: "SET_TASK_DETAILS",
             currTaskDetails
