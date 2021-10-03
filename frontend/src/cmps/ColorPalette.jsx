@@ -2,15 +2,12 @@ import CheckIcon from '@material-ui/icons/Check';
 import React, { useState } from 'react';
 import { boardService } from '../services/board.service';
 
-export function ColorPalette({ handleChange, selectedColor, isGradient }) {
-    const getImages = async () => {
-        const photos = await boardService.queryPhotos('random');
-        console.log('%c  photos:', 'color: #00000;background: #aaefe5;', photos);
-        setImages(photos);
-    }
+export class ColorPalette extends React.Component {
 
-    const [images, setImages] = useState(getImages());
-    const colors = [
+    state = {
+        photos: null
+    }
+    colors = [
         '#61bd4f',
         '#f2d600',
         '#ff9e1a',
@@ -23,7 +20,7 @@ export function ColorPalette({ handleChange, selectedColor, isGradient }) {
         '#b3bac5',
     ]
 
-    const gradients = [
+    gradients = [
         "linear-gradient(to bottom, #000000, #434343)",
         "linear-gradient(to right, #2980b9, #2c3e50)",
         "linear-gradient(to right, #3494e6, #ec6ead)",
@@ -32,31 +29,42 @@ export function ColorPalette({ handleChange, selectedColor, isGradient }) {
         "linear-gradient(to bottom, #e52d27, #b31217)",
     ]
 
+    async componentDidMount() {
+        const photos = await boardService.queryPhotos();
+        this.setState({ photos })
+    }
 
 
-    return <div className="color-palette">
-        {colors.map(colorCode => {
-            return <label key={colorCode} className="flex align-center justify-center" style={{ background: colorCode }} name="label-color" htmlFor={`color-${colorCode}`}>
-                <input type="radio" name="color" id={`color-${colorCode}`} value={colorCode} onClick={handleChange} />
-                {selectedColor === colorCode && <CheckIcon key={colorCode} style={{ width: '16px', height: '16px', color: 'white' }} />}
-            </label>
-        })}
-        {isGradient &&
-            gradients.map(gradient => {
-                return <label key={gradient} className="flex align-center justify-center" style={{ background: gradient }} name="label-color" htmlFor={`gradient-${gradient}`}>
-                    <input type="radio" name="color" id={`gradient-${gradient}`} value={gradient} onClick={handleChange} />
-                    {selectedColor === gradient && <CheckIcon key={gradient} style={{ width: '16px', height: '16px', color: 'white' }} />}
-                </label>
-            })
-        }
-        {/* {isGradient &&
-            boardService.queryPhotos().map(photo => {
-                return <label key={photo.url} className="flex align-center justify-center" style={{ background: photo.url }} name="label-color" htmlFor={`photo-${photo.url}`}>
-                    <input type="radio" name="color" id={`photo-${photo.url}`} value={photo.url} onClick={handleChange} />
-                    {selectedColor === photo.url && <CheckIcon key={photo.url} style={{ width: '16px', height: '16px', color: 'white' }} />}
-                </label>
-            })
-        } */}
+    render() {
+        const { handleChange, selectedColor, isGradient, isImages } = this.props
+        const { photos } = this.state
+        return <div className="color-palette">
+            {!isImages &&
+                this.colors.map(colorCode => {
+                    return <label key={colorCode} className="flex align-center justify-center" style={{ background: colorCode }} name="label-color" htmlFor={`color-${colorCode}`}>
+                        <input type="radio" name="color" id={`color-${colorCode}`} value={colorCode} onClick={handleChange} />
+                        {selectedColor === colorCode && <CheckIcon key={colorCode} style={{ width: '16px', height: '16px', color: 'white' }} />}
+                    </label>
+                })
+            }
+            {
+                isGradient && !isImages &&
+                this.gradients.map(gradient => {
+                    return <label key={gradient} className="flex align-center justify-center" style={{ background: gradient }} name="label-color" htmlFor={`gradient-${gradient}`}>
+                        <input type="radio" name="color" id={`gradient-${gradient}`} value={gradient} onClick={handleChange} />
+                        {selectedColor === gradient && <CheckIcon key={gradient} style={{ width: '16px', height: '16px', color: 'white' }} />}
+                    </label>
+                })
+            }
+            {
+                isImages && photos && photos.map((photo, idx) => {
+                    return <label key={idx} className="flex align-center justify-center" style={{ width: '150px', height: '100px', backgroundImage: `url(${photo.urls.full}`, backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }} name="label-color" htmlFor={`photo-${idx}`}>
+                        <input type="radio" name="color" id={`photo-${idx}`} value={photo.urls.full} onClick={handleChange} />
+                        {selectedColor === photo.url && <CheckIcon key={idx} style={{ width: '16px', height: '16px', color: 'white' }} />}
+                    </label>
+                })
+            }
 
-    </div>
+        </div >
+    }
 }

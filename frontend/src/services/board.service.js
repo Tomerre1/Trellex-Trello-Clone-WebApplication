@@ -2,6 +2,8 @@
 import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 import { httpService } from './http.service.js'
+import axios from 'axios'
+
 // import Unsplash from 'unsplash-js';
 
 // const unsplash = new Unsplash({
@@ -1107,10 +1109,9 @@ async function query() {
 }
 
 async function queryPhotos(query = 'random') {
-    debugger;
-    const photos = await httpService.get(`https://api.unsplash.com/search/photos/?query=dog&client_id=IwjSlLYB-kEXeOlDvuifDixGryX1CK64CwapeKeJC8w`)
-    console.log('%c  photos:', 'color: #00000;background: #aaefe5;', photos);
-    return photos;
+    const photos = await axios.get(`https://api.unsplash.com/search/photos/?query=dog&client_id=${APP_ID}`)
+    console.log('%c  photos.data.results:', 'color: #00000;background: #aaefe5;', photos.data.results);
+    return photos.data.results
 }
 
 function getById(boardId) {

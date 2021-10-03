@@ -8,8 +8,7 @@
         cursor: pointer;
     }
     .popover {
-        min-height: 93vh;
-        max-height: 93vh;
+        height: calc(100vh - 46px);
         right: 0 !important;
         bottom: 0 !important;
         left: unset !important;
