@@ -17,8 +17,14 @@ class _PopoverMenuBackground extends React.Component {
     handleChange = (event) => {
         const { board, saveBoard } = this.props
         const { value } = event.target
-        board.style.bgClr = value
-        board.style.bgImg = null
+        if (value.includes('http' || 'https')) {
+            board.style.bgImg = value
+            board.style.bgClr = null
+        }
+        else {
+            board.style.bgClr = value
+            board.style.bgImg = null
+        }
         saveBoard(board)
     }
 
@@ -37,7 +43,8 @@ class _PopoverMenuBackground extends React.Component {
                     <div class="background-styles-container">
                         <h4>Colors</h4>
                         <ColorPalette selectedColor={board.style.bgClr} isGradient={true} handleChange={this.handleChange} />
-
+                        <h4>Images</h4>
+                        <ColorPalette selectedColor={board.style.bgClr} isImages={true} handleChange={this.handleChange} />
 
                     </div>
                 </div>
