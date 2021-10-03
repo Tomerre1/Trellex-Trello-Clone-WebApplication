@@ -5,12 +5,16 @@ import { MemberPopup } from "./MemberPopup";
 export function MemberPreview({ member, isInPreview, isEditMode }) {
   const [isPopOpen, togglePopOpen] = useState(false);
 
+  const openPop = (ev) =>{
+    togglePopOpen(!isPopOpen)
+  }
+
   return (
       <>
     <article
       className="member-wrapper"
-      onClick={() =>
-        isEditMode || isInPreview ? null : togglePopOpen(!isPopOpen)
+      onClick={(ev) =>
+        isEditMode  ? null : openPop(ev)
       }
     >
       {member?.imgUrl ? (
@@ -26,7 +30,7 @@ export function MemberPreview({ member, isInPreview, isEditMode }) {
         </div>
       )}
     </article>
-    {isPopOpen && <MemberPopup member={member} togglePopOpen={togglePopOpen}/>}
+    {isPopOpen && <MemberPopup member={member} togglePopOpen={togglePopOpen} isInPreview={isInPreview}/>}
     </>
   );
 }
