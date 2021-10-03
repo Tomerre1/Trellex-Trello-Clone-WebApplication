@@ -101,7 +101,7 @@ const demoBoards = [
                 "_id": "u104"
             },
             {
-                "fullname": 'Matan',
+                "fullname": 'Anna',
                 "imgUrl": 'https://media-cldnry.s-nbcnews.com/image/upload/t_fit-2000w,f_auto,q_auto:best/newscms/2019_50/3139821/191209-ana_de_armas-mc-1505.JPG',
                 "_id":"u105"
             }
