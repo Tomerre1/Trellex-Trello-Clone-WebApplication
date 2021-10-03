@@ -18,36 +18,9 @@ export class _CheckDeletePopover extends Component {
         this.props.togglePopover()
     }
 
-    // componentDidUpdate(prevProps, prevState) {
-    //     if (prevProps.typeTitle !== this.props.typeTitle) {
-    //         console.log('componentDidUpdate')
-    //         console.log('%c  this.props.typeTitle:', 'color: #00000;background: #aaefe5;', this.props.typeTitle);
-    //         console.log('componentDidUpdate')
-    //         this.setState(prevState => ({
-    //             ...prevState,
-    //             typeTitle: this.props.typeTitle
-    //         }))
-    //     }
-    // }
-
-    // getRemoveFunc = () =>{
-    //     switch (typeTitle) {
-    //         case 'checklist':
-
-    //            return removeChecklist()
-
-    //         default:
-    //             break;
-    //     }
-    // }
-
     render() {
-        const { type, remove, togglePopover } = this.props
+        const { type, remove } = this.props
         const { typeTitle } = this.state
-        // console.log('this.props', this.props)
-        console.log('typeTitle', typeTitle)
-
-        // if (!this.props.popover.isOpen) return <React.Fragment></React.Fragment>
 
         const title = `Delete ${typeTitle}?`
         return (
@@ -63,10 +36,7 @@ export class _CheckDeletePopover extends Component {
     }
 }
 function mapStateToProps(state) {
-    return {
-        // popover: state.appModule.popover,
-
-    }
+    return { }
 }
 
 export const CheckDeletePopover = connect(mapStateToProps, null)(_CheckDeletePopover)

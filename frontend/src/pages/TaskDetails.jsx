@@ -100,7 +100,7 @@ export class _TaskDetails extends Component {
 
   render() {
     const { currGroup } = this.state;
-    const { board, currTaskDetails } = this.props;
+    const { board, currTaskDetails, loggedinUser } = this.props;
     if (!currTaskDetails || !board || !currGroup) return <LoaderSpinner />;
 
     const { style } = currTaskDetails;
@@ -161,17 +161,13 @@ export class _TaskDetails extends Component {
                 addActivity={this.addActivity}
                 setBgUrlCover={this.setBgUrlCover}
               />
-              <TaskChecklist
-              // currTask={currTask}
-              // updateTaskDetails={this.updateTaskDetails}
-              // addActivity={this.addActivity}
-              />
-              {/* <TaskActivities
-                currTask={currTask}
+              <TaskChecklist />
+              <TaskActivities
+                currTask={currTaskDetails}
                 loggedinUser={loggedinUser}
                 activities={board.activities}
                 updateTaskDetails={this.updateTaskDetails}
-              /> */}
+              />
             </div>
             <TaskActionsMenu
               joinTask={this.joinTask}
