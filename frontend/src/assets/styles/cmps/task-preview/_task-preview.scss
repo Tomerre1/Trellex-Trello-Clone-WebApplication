@@ -2,6 +2,7 @@
   box-shadow: 0 1px 0 #c0c6d0;
   transition: background-color 0.2s;
   margin-bottom: 8px;
+  max-width:256px;
 
   p {
     color: #172b4d;
@@ -243,7 +244,6 @@
       min-height: 56px;
       background-color: #fff;
       color: #172b4d;
-
   }
 }
 }
