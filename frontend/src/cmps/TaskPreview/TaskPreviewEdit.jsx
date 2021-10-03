@@ -123,9 +123,9 @@ export function _TaskPreviewEdit({
             )}
             {checklists?.length > 0 && todos !== 0 && (
               <TaskDetailsPreview
-                icon={<CheckBoxOutlinedIcon className="icon" />}
+                icon={<CheckBoxOutlinedIcon className="icon"/>}
                 txt={getChecklistData()}
-                isDone={todos === doneTodos && todos !== 0 ? true : false}
+                isDone={getChecklistData(true)}
               />
             )}
             {task?.members && (

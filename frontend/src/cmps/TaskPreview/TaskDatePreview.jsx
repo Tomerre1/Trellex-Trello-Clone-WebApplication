@@ -37,8 +37,8 @@ const _TaskDatePreview = (props) => {
     <span
       className={`due-date ${
         !isDone && props.dueDate < Date.now() ? "overdue" : ""
-      }${isDone ? "done" : ""}`}
-      onMouseEnter={() => setMouseOver(true)}
+      }${isDone ? "done" : ""} `}
+      onMouseEnter={() => setMouseOver(props.noHover ? false : true)}
       onMouseLeave={() => setMouseOver(false)}
       onClick={toggleIsDone}
     >

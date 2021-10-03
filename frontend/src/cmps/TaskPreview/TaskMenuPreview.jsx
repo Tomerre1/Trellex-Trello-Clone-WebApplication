@@ -21,22 +21,22 @@ export function TaskMenuPreview({ task, groupId, boardLabels,taskUrl }) {
   } = task;
   
   
-  let taskTodos = 0;
-  let doneTodos = 0;
-  
-  const getChecklistData = () => {
-    
+
+  const getChecklistData = (isDone) => {
+    let todos = 0;
+    let doneTodos = 0;
     checklists.forEach((checklist) => {
-      taskTodos += checklist.todos.length;
+      todos += checklist.todos.length;
       checklist.todos.forEach((todo) => {
         if (todo.isDone) doneTodos += 1;
       });
     });
-    return `${doneTodos}/${taskTodos}`;
+    if (isDone) return todos === doneTodos;
+    return `${doneTodos}/${todos}`;
   };
 
   return (
-    <Link to={taskUrl}>
+    <Link to={taskUrl} className="clean-link">
       <article
         className="task-preview-container edit"
         style={{ borderRadius: 3 }}
@@ -84,6 +84,7 @@ export function TaskMenuPreview({ task, groupId, boardLabels,taskUrl }) {
                 isDone={task.isDone}
                 taskId={task.id}
                 groupId={groupId}
+                noHover={true}
               />
             )}
             {description?.length > 0 && (
@@ -103,11 +104,11 @@ export function TaskMenuPreview({ task, groupId, boardLabels,taskUrl }) {
                 txt={attachments.length}
               />
             )}
-            {checklists?.length > 0 && taskTodos !== 0 && (
+            {checklists?.length > 0 && (
               <TaskDetailsPreview
                 icon={<CheckBoxOutlinedIcon className="icon" />}
                 txt={getChecklistData()}
-                isDone={taskTodos === doneTodos && taskTodos !== 0 ? true : false}
+                isDone={getChecklistData(true)}
               />
             )}
             {task?.members && (

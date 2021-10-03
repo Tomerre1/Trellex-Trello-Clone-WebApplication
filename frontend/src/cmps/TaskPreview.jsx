@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { TaskPreviewEdit } from "./TaskPreview/TaskPreviewEdit";
 import { TaskLabels } from "./TaskPreview/TaskLabels";
 import { TaskDetailsPreview } from "./TaskPreview/TaskDetailsPreview";
+import { TaskMenuPreview } from "./TaskPreview/TaskMenuPreview";
 import { toggleDragDisable } from "../store/app.actions";
 import { TaskDatePreview } from "./TaskPreview/TaskDatePreview";
 import { MemberList } from "../cmps/MemberList";
@@ -35,14 +36,13 @@ function _TaskPreview(props) {
     description,
     attachments,
     style,
-    length,
   } = task;
 
   const [isMenuShown, toggleMenuShown] = useState(false);
   const [menuPos, setMenuPos] = useState();
 
   const calcPos = (ev) => {
-    if(!ev) return
+    if (!ev) return;
     let { top, right, height } =
       ev.target.parentElement.parentElement.getBoundingClientRect();
     console.log(top, right, height, window.innerHeight);
@@ -50,7 +50,7 @@ function _TaskPreview(props) {
       setMenuPos({
         position: "absolute",
         left: `${right}px`,
-        bottom:50,
+        bottom: 50,
       });
     } else {
       setMenuPos({
@@ -69,7 +69,7 @@ function _TaskPreview(props) {
   let todos;
   let doneTodos;
 
-  const getChecklistData = () => {
+  const getChecklistData = (isDone) => {
     todos = 0;
     doneTodos = 0;
     checklists.forEach((checklist) => {
@@ -78,6 +78,7 @@ function _TaskPreview(props) {
         if (todo.isDone) doneTodos += 1;
       });
     });
+    if (isDone) return todos === doneTodos;
     return `${doneTodos}/${todos}`;
   };
   // full cover image
