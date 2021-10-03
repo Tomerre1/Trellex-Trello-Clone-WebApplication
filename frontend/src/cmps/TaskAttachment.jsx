@@ -17,9 +17,9 @@ export function _TaskAttachment({ currTaskDetails, updateTaskDetails, addActivit
                     return <TaskAttachmentPreview
                         key={attachment.id}
                         attachment={attachment}
-                        currTask={currTaskDetails}
-                        updateTaskDetails={updateTaskDetails}
-                        addActivity={addActivity}
+                        // currTask={currTaskDetails}
+                        // updateTaskDetails={updateTaskDetails}
+                        // addActivity={addActivity}
                         setBgUrlCover={setBgUrlCover}
                     />
                 })}

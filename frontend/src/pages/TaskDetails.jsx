@@ -147,6 +147,7 @@ export class _TaskDetails extends Component {
                 currTask={currTaskDetails}
                 updateTaskDetails={this.updateTaskDetails}
               />
+              <TaskAttachment/>
               {/* <TaskAttachment
                 // currTask={currTaskDetails}
                 updateTaskDetails={this.updateTaskDetails}

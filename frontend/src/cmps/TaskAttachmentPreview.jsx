@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
 import { utilService } from '../services/util.service';
 import VideoLabel from '@mui/icons-material/VideoLabel';
 import { CheckDeletePopover } from './CheckDeletePopover'
@@ -6,8 +7,12 @@ import { EditAttachmentPopover } from './EditAttachmentPopover'
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import { Link } from 'react-router-dom';
 
+import { saveBoard, saveTaskDetails, addActivity } from '../store/board.actions'
+// import { togglePopover } from '../../store/app.actions'
+import { setPosition, setPopover } from '../store/app.actions';
 
-export class TaskAttachmentPreview extends Component {
+
+export class _TaskAttachmentPreview extends Component {
     state = {
         isPopover: false,
         isEditPopover: false,
@@ -16,14 +21,15 @@ export class TaskAttachmentPreview extends Component {
     }
 
     componentDidMount() {
-        const { currTask } = this.props
-        const bgUrl = currTask.style && currTask.style.bgUrl
-        this.setState(prevState => ({ ...prevState, bgUrl }))
+        const { board, currTaskDetails } = this.props
+        const currGroup = board.groups.find(group => group.tasks.some(task => task.id === currTaskDetails.id))
+        const bgUrl = currTaskDetails.style && currTaskDetails.style.bgUrl
+        this.setState(prevState => ({ ...prevState, bgUrl, currGroup }))
     }
 
     componentDidUpdate(prevProps, prevState) {
-        const { currTask } = this.props
-        const bgUrl = currTask.style && currTask.style.bgUrl
+        const { currTaskDetails } = this.props
+        const bgUrl = currTaskDetails.style && currTaskDetails.style.bgUrl
         if (bgUrl !== prevState.bgUrl) {
             this.setState(prevState => ({ ...prevState, bgUrl }))
         }
@@ -44,14 +50,15 @@ export class TaskAttachmentPreview extends Component {
         this.setState(prevState => ({ ...prevState, currentTarget: event }))
     }
 
-    removeAttach = () => {
-        const { updateTaskDetails, currTask, addActivity, attachment, setBgUrlCover } = this.props
-        const attachs = currTask.attachments.filter(currAttach => currAttach.id !== attachment.id)
-        currTask.attachments = attachs
-        setBgUrlCover(null)
-        updateTaskDetails(currTask)
+    removeAttach = async () => {
+        const { board, currTaskDetails, saveTaskDetails, addActivity, attachment } = this.props
+        const { currGroup } = this.state
+        const attachs = currTaskDetails.attachments.filter(currAttach => currAttach.id !== attachment.id)
+        currTaskDetails.attachments = attachs
+        // setBgUrlCover(null)
+        await saveTaskDetails(board, currGroup, currTaskDetails)
         this.togglePopover()
-        addActivity('remove-attachment', attachment.name)
+        addActivity(board, currTaskDetails, 'remove-attachment', attachment.name)
     }
 
     onRemoveAttach = (ev) => {
@@ -59,20 +66,22 @@ export class TaskAttachmentPreview extends Component {
         this.togglePopover()
     }
 
-    setCover = () => {
-        const { updateTaskDetails, currTask, attachment, setBgUrlCover } = this.props
-        currTask.style.bgUrl = attachment.url
-        setBgUrlCover(attachment.url)
+    setCover = async () => {
+        const { board, saveTaskDetails, currTaskDetails, attachment } = this.props
+        const { currGroup } = this.state
+        currTaskDetails.style.bgUrl = attachment.url
+        // setBgUrlCover(attachment.url)
         this.toggleBgUrl()
-        updateTaskDetails(currTask)
+        await saveTaskDetails(board, currGroup, currTaskDetails)
     }
 
-    removeCover = () => {
-        const { updateTaskDetails, currTask, setBgUrlCover } = this.props
-        currTask.style.bgUrl = ''
+    removeCover = async () => {
+        const { board, saveTaskDetails, currTaskDetails } = this.props
+        const { currGroup } = this.state
+        saveTaskDetails.style.bgUrl = ''
         this.toggleBgUrl()
-        setBgUrlCover(null)
-        updateTaskDetails(currTask)
+        // setBgUrlCover(null)
+        await saveTaskDetails(board, currGroup, currTaskDetails)
     }
 
     onEditAttach = (ev) => {
@@ -80,16 +89,17 @@ export class TaskAttachmentPreview extends Component {
         this.toggleEditPopover()
     }
 
-    updateAttachment = (url, urlName) => {
-        const { updateTaskDetails, currTask, attachment } = this.props
+    updateAttachment = async (url, urlName) => {
+        const { board, saveTaskDetails, currTaskDetails, attachment } = this.props
+        const { currGroup } = this.state
         attachment.url = url
         attachment.name = urlName
-        updateTaskDetails(currTask)
+        await saveTaskDetails(board, currGroup, currTaskDetails)
         this.toggleEditPopover()
     }
 
     render() {
-        const { attachment } = this.props
+        const { attachment, popover } = this.props
         const { isPopover, currentTarget, isEditPopover, bgUrl } = this.state
         const { isWeb } = attachment
         return (
@@ -124,8 +134,7 @@ export class TaskAttachmentPreview extends Component {
 
                     </div>
                 </div>
-                {
-                    isPopover &&
+                {popover.isOpen && isPopover &&
                     <CheckDeletePopover
                         remove={this.removeAttach}
                         type={'attachment'}
@@ -134,7 +143,7 @@ export class TaskAttachmentPreview extends Component {
                         currentTarget={currentTarget}
                     />
                 }
-                {isEditPopover &&
+                {popover.isOpen && isEditPopover &&
                     <EditAttachmentPopover
                         togglePopover={this.toggleEditPopover}
                         currentTarget={currentTarget}
@@ -146,3 +155,24 @@ export class TaskAttachmentPreview extends Component {
         )
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        currTaskDetails: state.appModule.currTaskDetails,
+        board: state.boardModule.board,
+        popover: state.appModule.popover,
+    };
+}
+const mapDispatchToProps = {
+    saveTaskDetails,
+    saveBoard,
+    // togglePopover,
+    setPosition,
+    setPopover,
+    addActivity
+};
+
+export const TaskAttachmentPreview = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(_TaskAttachmentPreview);
