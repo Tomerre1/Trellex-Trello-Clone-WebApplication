@@ -1,15 +1,23 @@
 .homepage {
   width: 100%;
-  color: $clr7;
+  color: #172b4d;
+  background-color:#f9fafc;;
+  min-height: 100vh;
+  padding-top:100px;
   .hero {
     align-items: center;
     gap: 40px;
-    margin-top: 100px;
     .hero-content {
       width: 500px;
       h1 {
         font-size: rem(40px);
-        font-weight: 600;
+        font-weight: 400;
+        color: #172b4d;
+
+        span {
+          font-family: Secular;
+          font-weight:400;
+        }
       }
     }
     .hero-img {
@@ -17,7 +25,7 @@
     }
     button {
       font-size: rem(25px);
-      padding: 10px 0;
+      padding: 15px 0;
       border-radius: 6px;
       letter-spacing: 1px;
       width: 50%;
