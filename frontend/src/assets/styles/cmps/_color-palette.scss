@@ -3,6 +3,8 @@
     margin-bottom: 1.5rem;
     display: flex;
     flex-wrap: wrap;
+    gap: 5px;
+    position: relative;
     label[name="label-color"] {
         width: 48px;
         height: 32px;
