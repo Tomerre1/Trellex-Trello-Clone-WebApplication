@@ -20,8 +20,8 @@ export class _CheckDeletePopover extends Component {
 
     render() {
         const { type, remove } = this.props
-        const { typeTitle } = this.state
-
+        let { typeTitle } = this.state
+        if (typeTitle.length > 15) typeTitle = typeTitle.substr(1, 15) + '...'
         const title = `Delete ${typeTitle}?`
         return (
             <div className="no-back-container">
