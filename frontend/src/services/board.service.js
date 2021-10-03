@@ -1109,7 +1109,7 @@ async function query() {
 }
 
 async function queryPhotos(query = 'random') {
-    const photos = await axios.get(`https://api.unsplash.com/search/photos/?query=dog&client_id=${APP_ID}`)
+    const photos = await axios.get(`https://api.unsplash.com/search/photos/?query=${query}&client_id=${APP_ID}`)
     console.log('%c  photos.data.results:', 'color: #00000;background: #aaefe5;', photos.data.results);
     return photos.data.results
 }

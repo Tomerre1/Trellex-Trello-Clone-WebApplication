@@ -5,7 +5,8 @@ import { boardService } from '../services/board.service';
 export class ColorPalette extends React.Component {
 
     state = {
-        photos: null
+        photos: null,
+
     }
     colors = [
         '#61bd4f',
@@ -31,12 +32,20 @@ export class ColorPalette extends React.Component {
 
     async componentDidMount() {
         const photos = await boardService.queryPhotos();
-        this.setState({ photos })
+        this.setState(prevState => ({ ...prevState, photos }))
+    }
+
+    async componentDidUpdate(prevProps) {
+        if (prevProps.search !== this.props.search) {
+            console.log('%c  this.props.search.length:', 'color: #00000;background: #aaefe5;', this.props.search.length);
+            const photos = await boardService.queryPhotos(this.props.search);
+            this.setState(prevState => ({ ...prevState, photos }))
+        }
     }
 
 
     render() {
-        const { handleChange, selectedColor, isGradient, isImages } = this.props
+        const { handleChange, selectedColor, isGradient, isImages, handleSearch, search } = this.props
         const { photos } = this.state
         return <div className="color-palette">
             {!isImages &&

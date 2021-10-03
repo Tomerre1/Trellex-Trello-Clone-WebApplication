@@ -9,9 +9,8 @@ import { saveBoard } from '../../store/board.actions'
 
 
 class _PopoverMenuBackground extends React.Component {
-    static
     state = {
-
+        search: ''
     }
 
     handleChange = (event) => {
@@ -28,9 +27,20 @@ class _PopoverMenuBackground extends React.Component {
         saveBoard(board)
     }
 
+    handleSearch = (event) => {
+        const { value, name } = event.target
+        console.log('%c  value:', 'color: #00000;background: #aaefe5;', value);
+        this.setState(prevState => ({
+            ...prevState,
+            search: value
+        }))
+
+    }
+
     render() {
         const { board, title, setPosition } = this.props
         if (!board) return <></>
+        const { search } = this.state
 
         return <div className="board-menu">
             <Popover title={title}>
@@ -44,7 +54,8 @@ class _PopoverMenuBackground extends React.Component {
                         <h4>Colors</h4>
                         <ColorPalette selectedColor={board.style.bgClr} isGradient={true} handleChange={this.handleChange} />
                         <h4>Images</h4>
-                        <ColorPalette selectedColor={board.style.bgClr} isImages={true} handleChange={this.handleChange} />
+                        <input type="search" value={search} name="search" onChange={this.handleSearch} />
+                        <ColorPalette selectedColor={board.style.bgClr} isImages={true} search={search} handleSearch={this.handleSearch} handleChange={this.handleChange} />
 
                     </div>
                 </div>
