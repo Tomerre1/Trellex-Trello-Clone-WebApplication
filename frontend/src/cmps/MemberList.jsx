@@ -7,12 +7,12 @@ import { setPosition, togglePopover } from "../store/app.actions";
 
 
 export function _MemberList(props) {
-  const { members, isInPreview, isInDetails, togglePopover } = props;
+  const { members, isInPreview, isInDetails, togglePopover ,isEditMode } = props;
   return (
     <div className={`members ${isInPreview ? "preview" : ""}`}>
       {members &&
         members.map((member, idx) => (
-          <MemberPreview member={member} isInPreview={isInPreview} key={idx}/>
+          <MemberPreview member={member} isInPreview={isInPreview} key={idx} isEditMode={isEditMode}/>
         ))}
       {isInDetails && (
         <button

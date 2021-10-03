@@ -88,7 +88,7 @@ function _BoardHeader(props) {
           </button>
           {board?.members && <MemberList members={board.members} />}
         </div>
-        <button className="header-btn">Invite</button>
+        <button className="header-btn">Add Members</button>
       </div>
       <div className="header-btn-container flex">
         <button className="header-btn"> Dashboard</button>
