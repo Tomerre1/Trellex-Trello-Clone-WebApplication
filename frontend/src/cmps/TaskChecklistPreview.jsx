@@ -14,7 +14,9 @@ export class _TaskChecklistPreview extends Component {
 
     state = {
         isPopover: false,
-        currentTarget: null
+        currentTarget: null,
+        selectedChecklist: this.props.checklist,
+
     }
 
     componentDidMount() {
@@ -89,6 +91,8 @@ export class _TaskChecklistPreview extends Component {
         // const { checklist, addActivity } = this.props
         // const { isPopover, currentTarget } = this.state
         const { checklist, popover } = this.props
+        const { selectedChecklist, isPopover } = this.state
+        if (!selectedChecklist) return <div></div>
         console.log('checklist', checklist)
 
         return (
@@ -100,6 +104,8 @@ export class _TaskChecklistPreview extends Component {
                     </div>
                     <button className="activity-toggle-btn" onClick={(event) => {
                         this.props.setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: '' });
+                        this.togglePopover()
+
                     }}>
                         Delete
                     </button>
@@ -111,11 +117,11 @@ export class _TaskChecklistPreview extends Component {
                     onRemoveTodo={this.onRemoveTodo}
                 // addActivity={addActivity}
                 />
-                {popover.isOpen &&
+                {this.props.popover.isOpen && isPopover &&
                     <CheckDeletePopover
                         remove={this.removeChecklist}
                         type={'checklist'}
-                        typeTitle={checklist.title}
+                        typeTitle={selectedChecklist.title}
                     />
                 }
                 {/* togglePopover={this.togglePopover}
@@ -131,7 +137,7 @@ function mapStateToProps(state) {
     return {
         currTaskDetails: state.appModule.currTaskDetails,
         board: state.boardModule.board,
-        popover: state.appModule.popover
+        popover: state.appModule.popover,
     };
 }
 const mapDispatchToProps = {

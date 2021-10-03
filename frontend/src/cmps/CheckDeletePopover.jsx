@@ -1,38 +1,49 @@
 import React, { Component } from 'react'
 import { Popover } from './Popover/Popover'
+import { connect } from 'react-redux'
 
-
-export class CheckDeletePopover extends Component {
+export class _CheckDeletePopover extends Component {
     state = {
+        typeTitle: ''
     }
 
-    componentDidUpdate(prevProps,prevState){
-        console.log('componentDidUpdate')
-        console.log('prevProps',prevProps)
-        console.log('this.props',this.props)
-        console.log('componentDidUpdate')
-        if(prevProps.typeTitle!==this.props.typeTitle){
-            console.log('hi:',this.props.typeTitle)
-        }
+    componentDidMount() {
+        this.setState(prevState => ({
+            ...prevState,
+            typeTitle: this.props.typeTitle
+        }))
     }
+
+    // componentDidUpdate(prevProps, prevState) {
+    //     if (prevProps.typeTitle !== this.props.typeTitle) {
+    //         console.log('componentDidUpdate')
+    //         console.log('%c  this.props.typeTitle:', 'color: #00000;background: #aaefe5;', this.props.typeTitle);
+    //         console.log('componentDidUpdate')
+    //         this.setState(prevState => ({
+    //             ...prevState,
+    //             typeTitle: this.props.typeTitle
+    //         }))
+    //     }
+    // }
 
     // getRemoveFunc = () =>{
     //     switch (typeTitle) {
     //         case 'checklist':
-                
+
     //            return removeChecklist()
-        
+
     //         default:
     //             break;
     //     }
     // }
 
     render() {
-        const { type, typeTitle, remove } = this.props
+        const { type, remove, togglePopover } = this.props
+        const { typeTitle } = this.state
         // console.log('this.props', this.props)
         console.log('typeTitle', typeTitle)
-        console.log('po')
-        if (!this.props) return <React.Fragment></React.Fragment>
+
+        // if (!this.props.popover.isOpen) return <React.Fragment></React.Fragment>
 
         const title = `Delete ${typeTitle}?`
         return (
@@ -47,3 +58,11 @@ export class CheckDeletePopover extends Component {
         )
     }
 }
+function mapStateToProps(state) {
+    return {
+        // popover: state.appModule.popover,
+
+    }
+}
+
+export const CheckDeletePopover = connect(mapStateToProps, null)(_CheckDeletePopover)

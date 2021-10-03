@@ -18,7 +18,7 @@ class _PopoverMenu extends Component {
         CommAndAct.sort((a, b) => (a.createdAt < b.createdAt) ? 1 : ((b.createdAt < a.createdAt) ? -1 : 0))
 
         return <div className="board-menu">
-            <Popover togglePopover={togglePopover} currentTarget={currentTarget} title={title}>
+            {/* <Popover togglePopover={togglePopover} currentTarget={currentTarget} title={title}>
                 <div className="menu-details ">
                     <ul className="clean-list menu-list">
                         <li onClick={(ev) => this.onOpenPopover(ev, 'BACKGROUND')}>
@@ -41,7 +41,7 @@ class _PopoverMenu extends Component {
                     <ActivitiesList CommAndAct={CommAndAct} isShowActivities={true} currTask={null} />
 
                 </div>
-            </Popover>
+            </Popover> */}
         </div>
     }
 }
