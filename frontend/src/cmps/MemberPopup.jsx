@@ -2,7 +2,7 @@ import React from "react";
 
 export const MemberPopup = ({ member, togglePopOpen, isInPreview }) => {
   return (
-    <div className="popup-container">
+    <div className="popup-container flex column">
       <div
         className="pop-overlay"
         style={{
@@ -17,6 +17,7 @@ export const MemberPopup = ({ member, togglePopOpen, isInPreview }) => {
         }}
         onClick={() => togglePopOpen(false)}
       ></div>
+      <div className="wrap">
       <div className="member-popup">
         {member?.imgUrl ? (
           <img src={member.imgUrl} className="member-img" alt="member-img" />
@@ -34,8 +35,9 @@ export const MemberPopup = ({ member, togglePopOpen, isInPreview }) => {
         <p className="fullname">{member.fullname}</p>
         <p className="username">{member.username}</p>
       </div>
+      </div>
       <div className="member-footer">
-          {isInPreview && <p>Remove from task</p>}
+        {isInPreview &&  <p>Remove from task</p>}
       </div>
       </div>
     </div>
