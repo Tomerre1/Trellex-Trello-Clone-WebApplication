@@ -33,6 +33,7 @@ class _TaskActions extends Component {
   };
 
   popoverDispatch = (ev, type) => {
+    this.props.task.style = this.props.task.style ? this.props.task.style : this.props.task.style = {}
     this.props.setCurrTaskDetails(this.props.task);
     this.props.setPosition({
       pos: { pageX: ev.pageX, pageY: ev.pageY },
