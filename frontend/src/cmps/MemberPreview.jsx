@@ -3,12 +3,20 @@ import { MemberPopup } from "./MemberPopup";
 import { connect } from "react-redux";
 
 import {
-    setCurrTaskDetails,
-    setPosition,
-    togglePopover,
-  } from "../store/app.actions";
+  setCurrTaskDetails,
+  setPosition,
+  togglePopover,
+} from "../store/app.actions";
 
-function _MemberPreview({ member, isInPreview, isEditMode,task }) {
+function _MemberPreview({
+  member,
+  isInPreview,
+  isEditMode,
+  task,
+  setPosition,
+  setCurrTaskDetails,
+  togglePopover,
+}) {
   const [isPopOpen, togglePopOpen] = useState(false);
 
   const openPop = (ev) => {
@@ -17,7 +25,7 @@ function _MemberPreview({ member, isInPreview, isEditMode,task }) {
 
   return (
     <>
-     {isPopOpen && (
+      {isPopOpen && (
         <MemberPopup
           member={member}
           togglePopOpen={togglePopOpen}
@@ -28,10 +36,18 @@ function _MemberPreview({ member, isInPreview, isEditMode,task }) {
         className="member-wrapper"
         onClick={(ev) => {
           ev.preventDefault();
-          ev.stopPropagation()
+        //   ev.stopPropagation();
           if (isEditMode) return;
-          if (isInPreview) return
-          openPop(ev);
+          if (isInPreview) {
+            setCurrTaskDetails(task);
+            setPosition({
+                pos: { pageX: ev.pageX, pageY: ev.pageY },
+                type: "MEMBERS",
+            });
+            togglePopover();
+            return
+          }
+          openPop()
         }}
       >
         {member?.imgUrl ? (
@@ -47,9 +63,14 @@ function _MemberPreview({ member, isInPreview, isEditMode,task }) {
           </div>
         )}
       </article>
-     
     </>
   );
 }
 
-export const MemberPreview = connect()(_MemberPreview)
+const mapDispatchToProps = {
+    setCurrTaskDetails,
+    setPosition,
+    togglePopover,
+
+};
+export const MemberPreview = connect(null, mapDispatchToProps)(_MemberPreview);
