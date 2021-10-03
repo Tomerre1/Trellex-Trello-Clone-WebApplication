@@ -7,6 +7,7 @@
     transition: filter 0.2s;
     filter: brightness(1);
     background-size: cover !important;
+    background-position:center !important;
     &:hover {
       filter: brightness(0.8);
     }
