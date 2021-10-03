@@ -13,7 +13,7 @@ export function userReducer(state = initialState, action) {
     var newState = state;
     switch (action.type) {
         case 'SET_USER':
-            newState = { ...state, user: action.user }
+            newState = { ...state, loggedinUser: action.user }
             break;
 
         case 'SET_USERS':

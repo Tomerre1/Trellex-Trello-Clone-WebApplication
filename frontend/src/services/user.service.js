@@ -24,29 +24,28 @@ const gUsers = [
         "_id": 'u101',
         "fullname": 'BCD',
         "imgUrl": 'https://media-exp1.licdn.com/dms/image/C5603AQG9slGN5Fgxug/profile-displayphoto-shrink_100_100/0/1516840011642?e=1638403200&v=beta&t=wl9AzbWc9FwsXJ0xGECA_7T4xynvi067vuYs5ABVhfo',
-        "userName": '1',
+        "username": 'bcd',
         "password": '1'
     },
     {
         "_id": 'u102',
         "fullname": 'Tomer',
         "imgUrl": 'https://media-exp1.licdn.com/dms/image/C4E03AQFlupY8tXNbnA/profile-displayphoto-shrink_400_400/0/1622442415599?e=1638403200&v=beta&t=DBTF6x9nzwz1G04DZ8hBSG14UyM6BUDX6LM30JL84jg',
-        "userName": '1',
+        "username": 'tomer',
         "password": '1'
     },
     {
         "_id": 'u103',
         "fullname": 'Matan',
         "imgUrl": 'https://media-exp1.licdn.com/dms/image/C4D03AQEEFClr3HeA9w/profile-displayphoto-shrink_800_800/0/1575055172966?e=1638403200&v=beta&t=-EaNro-ekUtvBc9ndCkF37SAe2YT6CaaOGe09riqZew',
-        "userName": '1',
+        "username": 'matan',
         "password": '1'
     },
 ]
 async function getUsers() {
     const users = localStorage.getItem(DB_KEY)
-    if (users?.length) return JSON.parse(users);
-    localStorage.setItem(DB_KEY, JSON.stringify(gUsers))
-    return gUsers;
+    if(!users) await signUpUsers()
+    return JSON.parse(localStorage.getItem(DB_KEY))
     // return httpService.get(`user`)
 }
 
@@ -71,6 +70,7 @@ async function update(user) {
 
 async function login(userCred) {
     const users = await storageService.query(DB_KEY)
+    console.log('%c%s', 'color: #917399', users);
     const user = users.find(user => user.username === userCred.username)
     return _saveLocalUser(user)
 
@@ -109,11 +109,26 @@ function getLoggedinUser() {
 }
 
 
-// (async ()=>{
-//     await userService.signup({fullname: 'Puki Norma', username: 'user1', password:'123',score: 10000, isAdmin: false})
-//     await userService.signup({fullname: 'Master Adminov', username: 'admin', password:'123', score: 10000, isAdmin: true})
-//     await userService.signup({fullname: 'Muki G', username: 'muki', password:'123', score: 10000})
-// })();
+async function signUpUsers(){
+    await userService.signup({
+        "fullname": 'BCD',
+        "imgUrl": 'https://media-exp1.licdn.com/dms/image/C5603AQG9slGN5Fgxug/profile-displayphoto-shrink_100_100/0/1516840011642?e=1638403200&v=beta&t=wl9AzbWc9FwsXJ0xGECA_7T4xynvi067vuYs5ABVhfo',
+        "username": 'bcd',
+        "password": '1'
+    })
+    await userService.signup({
+        "fullname": 'Tomer',
+        "imgUrl": 'https://media-exp1.licdn.com/dms/image/C4E03AQFlupY8tXNbnA/profile-displayphoto-shrink_400_400/0/1622442415599?e=1638403200&v=beta&t=DBTF6x9nzwz1G04DZ8hBSG14UyM6BUDX6LM30JL84jg',
+        "username": 'tomer',
+        "password": '1'
+    })
+    await userService.signup({
+        "fullname": 'Matan',
+        "imgUrl": 'https://media-exp1.licdn.com/dms/image/C4D03AQEEFClr3HeA9w/profile-displayphoto-shrink_800_800/0/1575055172966?e=1638403200&v=beta&t=-EaNro-ekUtvBc9ndCkF37SAe2YT6CaaOGe09riqZew',
+        "username": 'matan',
+        "password": '1'
+    })
+};
 
 
 
