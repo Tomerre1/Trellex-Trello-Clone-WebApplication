@@ -32,7 +32,10 @@ function _AppHeader(props) {
             Boards
           </Link>
         </div>
-        <h1 className="logo">Trellex</h1>
+        <div className="logo">
+          <DashboardIcon className="logo-icon"/>
+          <h1 >Trellex</h1>
+        </div>
         <div className="header-btn-container flex">
           <button
             className="header-btn"
