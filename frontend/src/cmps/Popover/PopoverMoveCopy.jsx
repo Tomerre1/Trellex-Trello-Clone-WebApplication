@@ -60,13 +60,16 @@ export class _PopoverMoveCopy extends Component {
         const fromTask = selectedBoard.groups[fromGroupIdx].tasks.find(task => task.id === currTaskDetails.id)
         const fromTaskIdx = selectedBoard.groups[fromGroupIdx].tasks.indexOf(fromTask)
         const task = (isCopy) ? { ...currTaskDetails, id: utilService.makeId(), title: taskTitle } :
-            selectedBoard.groups[fromGroupIdx].tasks.splice(fromTaskIdx, 1)
+        selectedBoard.groups[fromGroupIdx].tasks.splice(fromTaskIdx, 1)
         const toGroupIdx = selectedBoard.groups.indexOf(selectedGroup)
         selectedBoard.groups[toGroupIdx].tasks.splice(selectedPosition, 0, isCopy ? task : task[0])
         await saveBoard(selectedBoard);
     }
 
     submitMoveAnotherBoard = async () => {
+
+        debugger;
+        console.log(`heloooooooooooooooooooo`)
         const { selectedBoard, selectedGroup, selectedPosition, taskTitle, currGroup } = this.state
         const { currTaskDetails, saveBoard, board, boards, isCopy } = this.props
         const currBoard = boards.find(currBoard => currBoard._id === board._id)
@@ -79,7 +82,8 @@ export class _PopoverMoveCopy extends Component {
         await saveBoard(boards[fromBoardIdx])
 
         const toBoardIdx = boards.indexOf(selectedBoard)
-        const toGroupIdx = boards[toBoardIdx].groups.indexOf(selectedGroup)
+        const toGroup = boards[toBoardIdx].groups.find(group => group.id === selectedGroup.id)
+        const toGroupIdx = boards[toBoardIdx].groups.indexOf(toGroup)
         boards[toBoardIdx].groups[toGroupIdx].tasks.splice(selectedPosition, 0, isCopy ? task : task[0])
         await saveBoard(boards[toBoardIdx])
     }
