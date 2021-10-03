@@ -3,8 +3,10 @@ import { Close } from '@mui/icons-material';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { connect } from "react-redux";
+import { addActivity } from '../store/board.actions'
 
-export class TodoPreview extends Component {
+export class _TodoPreview extends Component {
 
     state = {
         todo: null,
@@ -39,12 +41,12 @@ export class TodoPreview extends Component {
 
     onToggleTodoIsDone = () => {
         const { todo } = this.state
-        // const { addActivity } = this.props
+        const { addActivity, board, currTaskDetails } = this.props
         todo.isDone = !todo.isDone
         this.setState(prevState => ({ ...prevState, todo }))
         this.props.onSaveTodo(todo)
-        // if (todo.isDone) addActivity('complete-todo', todo.title)
-        // else addActivity('incomplete-todo', todo.title)
+        if (todo.isDone) addActivity(board, currTaskDetails, 'complete-todo', todo.title)
+        else addActivity(board, currTaskDetails, 'incomplete-todo', todo.title)
     }
 
     onRemoveTodo = () => {
@@ -92,5 +94,16 @@ export class TodoPreview extends Component {
             </div >
         )
     }
-
 }
+
+function mapStateToProps(state) {
+    return {
+        currTaskDetails: state.appModule.currTaskDetails,
+        board: state.boardModule.board,
+    };
+}
+const mapDispatchToProps = {
+    addActivity
+};
+
+export const TodoPreview = connect(mapStateToProps, mapDispatchToProps)(_TodoPreview);
