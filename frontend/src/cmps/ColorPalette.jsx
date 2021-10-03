@@ -58,8 +58,8 @@ export class ColorPalette extends React.Component {
             }
             {
                 isImages && photos && photos.map((photo, idx) => {
-                    return <label key={idx} className="flex align-center justify-center" style={{ width: '150px', height: '100px', backgroundImage: `url(${photo.urls.full}`, backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }} name="label-color" htmlFor={`photo-${idx}`}>
-                        <input type="radio" name="color" id={`photo-${idx}`} value={photo.urls.full} onClick={handleChange} />
+                    return <label key={idx} className="flex align-center justify-center" style={{ width: '150px', height: '100px', backgroundImage: `url(${photo.urls.regular}`, backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }} name="label-color" htmlFor={`photo-${idx}`}>
+                        <input type="radio" name="color" id={`photo-${idx}`} value={photo.urls.regular} onClick={handleChange} />
                         {selectedColor === photo.url && <CheckIcon key={idx} style={{ width: '16px', height: '16px', color: 'white' }} />}
                     </label>
                 })
