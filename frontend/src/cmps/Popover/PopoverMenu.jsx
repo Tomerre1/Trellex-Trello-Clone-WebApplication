@@ -5,15 +5,19 @@ import { ActivitiesList } from "../ActivitiesList"
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import SearchIcon from '@mui/icons-material/Search';
 import RestoreFromTrashIcon from '@mui/icons-material/RestoreFromTrash';
+import { setPosition } from '../../store/app.actions'
 
 
 
 class _PopoverMenu extends Component {
+    state = {
+
+    }
 
     render() {
         const { board } = this.props
         console.log('board', board)
-        const { togglePopover, currentTarget, title } = this.props
+        const { togglePopover, currentTarget, title, setPosition } = this.props
         const CommAndAct = board.activities
         CommAndAct.sort((a, b) => (a.createdAt < b.createdAt) ? 1 : ((b.createdAt < a.createdAt) ? -1 : 0))
 
@@ -29,9 +33,9 @@ class _PopoverMenu extends Component {
                             <SearchIcon />
                             <span className="menu-title">Search cards</span>
                         </li>
-                        <li>
+                        <li onClick={(event) => { setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'BOARD_SHOW_ARCHIVE' }); }}>
                             <RestoreFromTrashIcon />
-                            <span className="menu-title">Archive</span>
+                            <span className="menu-title" >Archive</span>
                         </li>
                     </ul>
                     <div className="task-activities-header flex align-center">
@@ -54,7 +58,7 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-
+    setPosition,
 }
 
 

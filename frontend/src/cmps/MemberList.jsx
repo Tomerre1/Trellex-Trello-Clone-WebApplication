@@ -1,11 +1,11 @@
 import React from 'react'
 import AddIcon from '@mui/icons-material/Add';
 import { connect } from 'react-redux';
-import { setPosition } from '../store/app.actions';
+import { setPosition, togglePopover } from '../store/app.actions';
 
 
 export function _MemberList(props) {
-  const { members, isInPreview, isInDetails, setCurrentTarget } = props
+  const { members, isInPreview, isInDetails, togglePopover } = props
   return (
     <div className={`members ${isInPreview ? 'preview' : ''}`}>
       {members &&
@@ -27,11 +27,13 @@ export function _MemberList(props) {
         ))}
       {isInDetails &&
         <button className="secondary-btn"
-          onClick={(event) => { props.setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'MEMBERS' }) }}
+          onClick={(event) => { props.setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'MEMBERS' }); togglePopover(); }}
         ><AddIcon /></button>}
     </div>
   )
 }
+
+
 
 
 function mapStateToProps(state) {
@@ -40,7 +42,8 @@ function mapStateToProps(state) {
   };
 }
 const mapDispatchToProps = {
-  setPosition
+  setPosition,
+  togglePopover
 };
 
 export const MemberList = connect(

@@ -5,7 +5,7 @@ import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 
 import { saveTaskDetails } from '../store/board.actions'
-import { setPosition } from '../store/app.actions';
+import { setPosition, togglePopover } from '../store/app.actions';
 
 export class _TaskHeaderDate extends Component {
     state = {
@@ -83,8 +83,8 @@ export class _TaskHeaderDate extends Component {
     }
 
     render() {
-        const { currTaskDetails, setPosition } = this.props
-        console.log('currTaskDetails',currTaskDetails)
+        const { currTaskDetails, setPosition, togglePopover } = this.props
+        console.log('currTaskDetails', currTaskDetails)
         const { formatedDate, isTaskDone } = this.state
         const dueStatus = this.getDueStatus();
         if (!currTaskDetails.dueDate || currTaskDetails.dueDate.length === 0) return <></>
@@ -98,7 +98,7 @@ export class _TaskHeaderDate extends Component {
                     <button className="secondary-btn date-btn flex align-center">
                         <span
                             className="date-context"
-                            onClick={(event) => { setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'LABELS' }) }}>
+                            onClick={(event) => { setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'DATE' }); togglePopover(); }}>
                             {formatedDate}
                         </span>
                         <span className="drop-down-icon"><ArrowDropDownIcon /></span>
@@ -118,7 +118,8 @@ function mapStateToProps(state) {
 }
 const mapDispatchToProps = {
     setPosition,
-    saveTaskDetails
+    saveTaskDetails,
+    togglePopover
 };
 
 export const TaskHeaderDate = connect(
