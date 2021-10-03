@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { Popover } from './Popover'
 import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
-import { saveBoard, saveTaskDetails } from '../../store/board.actions'
+import { saveBoard, saveTaskDetails, addActivity } from '../../store/board.actions'
 import { togglePopover } from '../../store/app.actions'
 
 
@@ -24,17 +24,13 @@ export class _PopoverDate extends Component {
     }
 
     onSaveDueDate = async (date) => {
-        // const { togglePopover, updateTaskDetails, currTask, setSelectedDate, addActivity } = this.props
-        const { board, togglePopover, saveTaskDetails, currTaskDetails, setSelectedDate } = this.props
+        const { board, togglePopover, saveTaskDetails, currTaskDetails, addActivity } = this.props
         const { currGroup } = this.state
-
         currTaskDetails.dueDate = date ? Date.parse(date) : null;
         await saveTaskDetails(board, currGroup, currTaskDetails)
-        // setSelectedDate(currTaskDetails.dueDate)
         togglePopover()
-        // if (date) addActivity('set-date', this.dueDateFormat(currTask.dueDate))
-        // else addActivity('remove-date')
-
+        if (date) addActivity(board, currTaskDetails, 'set-date', this.dueDateFormat(currTaskDetails.dueDate))
+        else addActivity(board, currTaskDetails, 'remove-date')
     }
 
     dueDateFormat = (dueDate) => {
@@ -89,7 +85,8 @@ function mapStateToProps(state) {
 const mapDispatchToProps = {
     saveTaskDetails,
     saveBoard,
-    togglePopover
+    togglePopover,
+    addActivity
 };
 
 export const PopoverDate = connect(
