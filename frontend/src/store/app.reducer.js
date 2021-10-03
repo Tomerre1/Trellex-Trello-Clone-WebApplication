@@ -18,8 +18,8 @@ export function appReducer(state = initialState, action) {
             return { ...state, isDragDisabled: !state.isDragDisabled }
         case 'SET_POSITION':
             const popover = { ...state.popover, pos: { ...action.pos } }
-            const popoverDeepCopy = JSON.parse(JSON.stringify(popover))
-            return { ...state, popover: { ...popoverDeepCopy } }
+            // const popoverDeepCopy = JSON.parse(JSON.stringify(popover))
+            return { ...state, popover }
         case 'TOGGLE_POPOVER':
             return { ...state, popover: { ...state.popover, isOpen: !state.popover.isOpen } }
         case 'SET_POPOVER':

@@ -10,6 +10,7 @@ import { PopoverMoveCopy } from "./PopoverMoveCopy";
 import { CheckDeletePopover } from "../CheckDeletePopover";
 const _PopoverDynamicCmp = (props) => {
     const { type } = props.popover.pos;
+    console.log(props.popover)
     switch (type) {
         case "LABELS":
             return (
@@ -64,11 +65,10 @@ const _PopoverDynamicCmp = (props) => {
                     title="Copy"
                 />
             );
-        case "CHECK_DELETE":
+        case "CHECK_DELETE_CHECKLIST":
             return (
                 <CheckDeletePopover
                     {...props}
-                    title="checkdelete"
                 />
             );
         default:
