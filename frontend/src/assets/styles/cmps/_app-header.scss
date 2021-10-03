@@ -14,8 +14,12 @@
     background-color: rgba(0, 0, 0, 0.15);
   }
   .logo {
-    max-height:16px;
-    width:auto;
+    font-family:Secular,sans-serif;
+    margin: 0;
+    color:white;
+    letter-spacing:0.02em;
+    font-size: rem(25px);
+    font-weight: 400;
   }
   .header-btn-container {
     gap: 5px;
