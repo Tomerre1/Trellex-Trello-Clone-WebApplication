@@ -10,10 +10,6 @@ import { setPosition } from '../../store/app.actions'
 
 
 class _PopoverMenu extends Component {
-    state = {
-
-    }
-
     render() {
         const { board } = this.props
         const { title, setPosition } = this.props
