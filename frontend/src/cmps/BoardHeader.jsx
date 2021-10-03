@@ -77,7 +77,7 @@ function _BoardHeader(props) {
               }}
             ></input>
           </form>
-        )}{" "}
+        )}
         <div className="header-btn-container flex">
           <button className="header-btn last-in-row">
             {board.isFavorite ? (
@@ -90,16 +90,14 @@ function _BoardHeader(props) {
         </div>
         <button className="header-btn">Add Members</button>
       </div>
-      <div className="header-btn-container flex">
+      <div className="header-btn-container flex" style={{zIndex:0}}>
         <button className="header-btn"> Dashboard</button>
-        {/* <button className="header-btn" onClick={(ev) => onToggleMenu(ev)}>
-          <MoreHorizOutlinedIcon className="icon" /> Show Menu
-
-        </button> */}
+     
         <button className="header-btn" onClick={(event) => { props.setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'BOARD_SHOW_MENU' }); props.setPopoverMenu(true); props.togglePopover() }}>
           <MoreHorizOutlinedIcon className="icon" /> Show Menu
 
         </button>
+        
       </div>
     </header>
   );

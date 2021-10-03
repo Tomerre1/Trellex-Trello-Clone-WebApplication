@@ -3,9 +3,14 @@ import { connect } from "react-redux";
 
 import { onLogout } from "../store/user.actions";
 
-const _MemberPopup = ({ member, togglePopOpen, isInHeader,onLogout,history }) => {
+const _MemberPopup = ({
+  member,
+  togglePopOpen,
+  isInHeader,
+  onLogout,
+}) => {
   return (
-    <div className="popup-container flex column">
+    <div className={`popup-container flex column`}>
       <div
         className="pop-overlay"
         style={{
@@ -20,7 +25,7 @@ const _MemberPopup = ({ member, togglePopOpen, isInHeader,onLogout,history }) =>
         }}
         onClick={() => togglePopOpen(false)}
       ></div>
-      <div className="wrap">
+      <div className={`wrap  ${isInHeader ? 'header' :''}`}>
         <div className="member-popup">
           {member?.imgUrl ? (
             <img src={member.imgUrl} className="member-img" alt="member-img" />
@@ -39,9 +44,7 @@ const _MemberPopup = ({ member, togglePopOpen, isInHeader,onLogout,history }) =>
             <p className="username">{member.username}</p>
           </div>
         </div>
-        <div className="member-footer" onClick={() => 
-            onLogout()
-            }>
+        <div className="member-footer" onClick={onLogout}>
           {isInHeader && <p className="logout">Logout</p>}
         </div>
       </div>
@@ -52,4 +55,4 @@ const _MemberPopup = ({ member, togglePopOpen, isInHeader,onLogout,history }) =>
 const mapDispatchToProps = {
   onLogout,
 };
-export const MemberPopup = connect(null,mapDispatchToProps)(_MemberPopup);
+export const MemberPopup = connect(null, mapDispatchToProps)(_MemberPopup);
