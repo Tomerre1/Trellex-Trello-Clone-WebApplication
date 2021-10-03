@@ -18,7 +18,7 @@ export const toggleDragDisable = () => {
         });
     }
 }
-export const setPosition = ({ pos, type }) => {
+export const setPosition = ({ pos, type}) => {
     return (dispatch) => {
         dispatch({
             type: "SET_POSITION",

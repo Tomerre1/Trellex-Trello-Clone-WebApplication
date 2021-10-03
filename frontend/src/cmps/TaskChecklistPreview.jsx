@@ -87,8 +87,9 @@ export class _TaskChecklistPreview extends Component {
 
     render() {
         // const { checklist, addActivity } = this.props
-        const { checklist } = this.props
-        const { isPopover, currentTarget } = this.state
+        // const { isPopover, currentTarget } = this.state
+        const { checklist, popover } = this.props
+        console.log('checklist', checklist)
 
         return (
             <div className="task-activities flex column">
@@ -97,7 +98,9 @@ export class _TaskChecklistPreview extends Component {
                         <CheckBoxOutlinedIcon />
                         <h3>{checklist.title}</h3>
                     </div>
-                    <button className="activity-toggle-btn" onClick={(event) => { this.props.setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'CHECK_DELETE' }) }}>
+                    <button className="activity-toggle-btn" onClick={(event) => {
+                        this.props.setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: '' });
+                    }}>
                         Delete
                     </button>
                 </div>
@@ -106,17 +109,18 @@ export class _TaskChecklistPreview extends Component {
                     todos={checklist.todos}
                     onSaveTodo={this.onSaveTodo}
                     onRemoveTodo={this.onRemoveTodo}
-                    // addActivity={addActivity}
+                // addActivity={addActivity}
                 />
-                {isPopover &&
+                {popover.isOpen &&
                     <CheckDeletePopover
                         remove={this.removeChecklist}
                         type={'checklist'}
                         typeTitle={checklist.title}
-                        togglePopover={this.togglePopover}
-                        currentTarget={currentTarget}
                     />
                 }
+                {/* togglePopover={this.togglePopover}
+                 currentTarget={currentTarget} */}
+
                 <TodoAdd addTodo={this.addTodo} />
             </div>
         )
@@ -127,6 +131,7 @@ function mapStateToProps(state) {
     return {
         currTaskDetails: state.appModule.currTaskDetails,
         board: state.boardModule.board,
+        popover: state.appModule.popover
     };
 }
 const mapDispatchToProps = {
