@@ -3,24 +3,20 @@
     .member-popup {
         background: #fff;
         border-radius: 3px;
-        // box-shadow: 0 8px 16px -4px rgb(9 30 66 / 25%), 0 0 0 1px rgb(9 30 66 / 8%);
+        box-shadow: 0 8px 16px -4px rgba(9, 30, 66, 0.253), 0 0 0 1px rgba(9, 30, 66, 0.082);
         position: absolute;
-        top:35px;
+        top:20px;
+        left:-150px;
         padding: 0 12px 12px;
         min-width: 20rem;
         margin-right: 4px;
         max-width: 100%;
         height:100px;
-       
+        display:flex;
+       .member-img {
+           height:50px;
+           width:50px;
+       }
     }
-    // .pop-overlay {
-    //     // all:revert;
-    //     position:fixed;
-    //     top:-10vh;
-    //     left:-15vw;
-    //     overflow:hidden;
-    //     background-color: rgba(255, 255, 255, 0.151);
-    //     height:100vh;
-    //     width:100vw;
-    // }
+
 }
