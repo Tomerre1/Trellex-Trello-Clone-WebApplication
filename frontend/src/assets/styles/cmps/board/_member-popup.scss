@@ -1,0 +1,12 @@
+.member-popup {
+    background: #fff;
+    border-radius: 3px;
+    // box-shadow: 0 8px 16px -4px rgb(9 30 66 / 25%), 0 0 0 1px rgb(9 30 66 / 8%);
+    position: fixed;
+    z-index: 170;
+    top:200px;
+    padding: 0 12px 12px;
+    min-width: 20rem;
+    margin-right: 4px;
+    max-width: 100%;
+}
