@@ -88,6 +88,18 @@ const demoBoards = [
                 "fullname": 'Matan',
                 "imgUrl": 'https://media-exp1.licdn.com/dms/image/C4D03AQEEFClr3HeA9w/profile-displayphoto-shrink_800_800/0/1575055172966?e=1638403200&v=beta&t=-EaNro-ekUtvBc9ndCkF37SAe2YT6CaaOGe09riqZew'
             },
+            {
+                "fullname": 'Dave',
+                "imgUrl": 'https://m.media-amazon.com/images/M/MV5BMTY5NzY4NzgxNV5BMl5BanBnXkFtZTcwMzcyOTQwOQ@@._V1_UY1200_CR108,0,630,1200_AL_.jpg',
+
+                "_id": "u104"
+            },
+            {
+                "fullname": 'Matan',
+                "imgUrl": 'https://media-cldnry.s-nbcnews.com/image/upload/t_fit-2000w,f_auto,q_auto:best/newscms/2019_50/3139821/191209-ana_de_armas-mc-1505.JPG',
+                "_id":"u105"
+            }
+
         ],
         "groups": [
             {
