@@ -90,7 +90,7 @@ function _BoardHeader(props) {
         </div>
         <button className="header-btn">Add Members</button>
       </div>
-      <div className="header-btn-container flex" style={{zIndex:0}}>
+      <div className="header-btn-container flex  flex ">
         <button className="header-btn"> Dashboard</button>
      
         <button className="header-btn" onClick={(event) => { props.setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'BOARD_SHOW_MENU' }); props.setPopoverMenu(true); props.togglePopover() }}>

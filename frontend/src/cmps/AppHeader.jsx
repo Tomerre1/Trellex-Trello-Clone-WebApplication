@@ -9,6 +9,8 @@ import AddIcon from "@mui/icons-material/Add";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 
+
+
 function _AppHeader(props) {
   const [isCreateShown, setCreateShown] = useState(false);
   const onAddBoard = async (title, bgClr, bgImg) => {
@@ -39,7 +41,7 @@ function _AppHeader(props) {
           </div>
         </Link>
         {props.user ? (
-          <div className="header-btn-container flex">
+          <div className="header-btn-container  flex">
             <button
               className="header-btn"
               onClick={() => setCreateShown(!isCreateShown)}
