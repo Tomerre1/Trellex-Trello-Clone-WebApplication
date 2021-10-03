@@ -1,10 +1,10 @@
 .board-menu {
     .popover {
-        min-height: 100vh;
+        min-height: 95vh;
         right: 0 !important;
         bottom: 0 !important;
-        left: unset!important;
-        top: unset!important;
+        left: unset !important;
+        top: unset !important;
         min-width: 21rem !important;
         .popover-header {
             span {
@@ -30,7 +30,7 @@
             cursor: pointer;
             padding-bottom: 16px;
             margin-bottom: 16px;
-            border-bottom: 1px solid rgba(9,30,66,.13);
+            border-bottom: 1px solid rgba(9, 30, 66, 0.13);
             li {
                 border-radius: 3px;
                 display: flex;
@@ -40,7 +40,7 @@
                 padding: 6px 6px 6px 0px;
                 position: relative;
                 align-items: end;
-                svg{
+                svg {
                     height: 20px;
                 }
                 .menu-bg-span {
@@ -48,7 +48,7 @@
                     border-radius: 3px;
                     height: 20px;
                 }
-                .menu-title{
+                .menu-title {
                     margin-left: 7px;
                     margin-bottom: 1px;
                 }
