@@ -148,6 +148,21 @@ async function signUpUsers(){
         "password": '1',
         "_id":"u105"
     })
+    await userService.signup({
+        "fullname": 'Rick',
+        "imgUrl": 'https://pbs.twimg.com/profile_images/1098178907163975681/cuz_rA54_400x400.jpg',
+        "username": 'pickleRick',
+        "password": '1',
+        "_id":"u106"
+        
+    })
+    await userService.signup({
+        "fullname": 'Archer',
+        "imgUrl": 'https://pbs.twimg.com/profile_images/1194678819602305024/vFMWJwiT.jpg',
+        "username": 'archer',
+        "password": '1',
+        "_id":"u107"
+    })
 };
 
 
