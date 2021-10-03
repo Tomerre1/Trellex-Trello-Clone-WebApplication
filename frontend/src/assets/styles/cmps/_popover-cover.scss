@@ -39,8 +39,14 @@
             position: absolute;
         }
     }
+    .color-palette {
+        grid-gap: unset;
+        gap: unset;
+    }
     .cover-options {
         margin-bottom: 0.8rem;
+        gap: 10px;
+        justify-content: center;
         .header-cover-preview,
         .full-cover-preview {
             margin: 0;
