@@ -13,6 +13,10 @@
   &.on-board {
     background-color: rgba(0, 0, 0, 0.15);
   }
+  .logo {
+    max-height:16px;
+    width:auto;
+  }
   .header-btn-container {
     gap: 5px;
     .header-btn {
@@ -27,12 +31,16 @@
       justify-content: space-around;
       text-decoration: none;
       transition: background-color 0.2s;
+      .icon {
+        padding:2px;
+      }
       &.boards {
         width: 80px;
         font-weight: 600;
         padding-right: 10px;
         .icon {
           margin-inline-end: 3px;
+          padding:2px;
         }
       }
       &:hover {
