@@ -33,7 +33,7 @@
             flex-grow: 1;
         }
         button {
-            background-color: white;
+            background-color: transparent;
             color: #6b778c;
             padding: 10px 12px 10px 8px;
             position: absolute;
@@ -51,7 +51,7 @@
     .popover-content {
         overflow-x: hidden;
         overflow-y: auto;
-        padding: 0 12px 12px;
+
         h4 {
             // color: #5e6c84;
             // font-weight: 500;

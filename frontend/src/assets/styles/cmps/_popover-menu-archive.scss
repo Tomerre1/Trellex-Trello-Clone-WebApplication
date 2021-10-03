@@ -1,5 +1,11 @@
 .board-menu {
     .pop-over-archive {
-        width: 22.5rem;
+        width: 20rem;
+        .card-preview-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
     }
 }
