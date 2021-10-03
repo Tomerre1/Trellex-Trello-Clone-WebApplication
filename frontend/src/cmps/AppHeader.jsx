@@ -9,8 +9,6 @@ import AddIcon from "@mui/icons-material/Add";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 
-import logo from "../assets/img/logo.png";
-
 function _AppHeader(props) {
   const [isCreateShown, setCreateShown] = useState(false);
   const onAddBoard = async (title, bgClr, bgImg) => {
@@ -34,17 +32,17 @@ function _AppHeader(props) {
             Boards
           </Link>
         </div>
-          <img src={logo} alt="logo" className="logo" />
+        <h1 className="logo">Trellex</h1>
         <div className="header-btn-container flex">
           <button
             className="header-btn"
             onClick={() => setCreateShown(!isCreateShown)}
           >
-            <AddIcon className="icon"/>
+            <AddIcon className="icon" />
           </button>
 
           <button className="header-btn">
-            <NotificationsNoneIcon className="icon"/>
+            <NotificationsNoneIcon className="icon" />
           </button>
           <MemberList members={[props.user]} />
         </div>
