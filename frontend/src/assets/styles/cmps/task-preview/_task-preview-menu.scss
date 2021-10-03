@@ -1,58 +1,55 @@
 .task-preview-menu {
-    width: 200px;
+  width: 200px;
   //   height: 100px;
-  position:fixed;
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #fff;
-    border: 1px solid lightgray;
-    border-radius: 3px;
-    box-shadow: 0 0 2px #020202;
-    z-index: 50;
-    padding: 0 12px 12px;
-    text-align: center;
-    padding: 8px;
-    box-shadow: 0 8px 16px -4px rgba(9, 30, 66, 0.25),
-      0 0 0 1px rgba(9, 30, 66, 0.08);
-      h3{
-          width:90%;
-          border-bottom:1px solid #5e6c8477;;
-          padding-bottom:10px;
-          font-size:14px;
-          color:#5e6c84;
-          margin:0;
-      }
-      button {
-          width:90%;
-          margin-top:10px;
-          padding:5px 10px;
-          display:flex;
-          align-items: center;
-          text-align: left;
-          background-color:inherit;
-          color:#172b4d;
-          &:hover {
-              background-color:#02020215;
-              border-radius:3px;
-          }
-
-      }
-      .overlay {
-        position: fixed;
-        // inset: 0;
-        background-color: #0202022c;
-        opacity: 0;
-        transition: opacity 0.2s ease-out;
-        pointer-events: none;
-        max-height:100vh;
-        z-index:30 ;
-        &.show {
-          opacity: 1;
-          pointer-events: auto;
-
-        }
-      }
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid lightgray;
+  border-radius: 3px;
+  box-shadow: 0 0 2px #020202;
+  z-index: 50;
+  padding: 0 12px 12px;
+  text-align: center;
+  padding: 8px;
+  box-shadow: 0 8px 16px -4px rgba(9, 30, 66, 0.25),
+    0 0 0 1px rgba(9, 30, 66, 0.08);
+  h3 {
+    width: 90%;
+    border-bottom: 1px solid #5e6c8477;
+    padding-bottom: 10px;
+    font-size: 14px;
+    color: #5e6c84;
+    margin: 0;
   }
-  
+  button {
+    width: 90%;
+    margin-top: 10px;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    text-align: left;
+    background-color: inherit;
+    color: #172b4d;
+    &:hover {
+      background-color: #02020215;
+      border-radius: 3px;
+    }
+  }
+  .overlay {
+    position: fixed;
+    // inset: 0;
+    background-color: #0202022c;
+    opacity: 0;
+    transition: opacity 0.2s ease-out;
+    pointer-events: none;
+    max-height: 100vh;
+    z-index: 30;
+    &.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+}
