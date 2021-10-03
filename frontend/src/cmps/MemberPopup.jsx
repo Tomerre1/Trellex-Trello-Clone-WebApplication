@@ -1,9 +1,22 @@
-import React from 'react'
+import React from "react";
 
-export  const MemberPopup = ({member,togglePopOpen}) => {
-    return (
+export const MemberPopup = ({ member, togglePopOpen }) => {
+  return (
     <div className="popup-container">
-    <div className="pop-overlay" style={{position:'fixed',top:0,right:0,inset:0,height:'100vh',width:'100%',backgroundColor:'transparent',zIndex:10}} onClick={()=>togglePopOpen(false)}></div>
+      <div
+        className="pop-overlay"
+        style={{
+          position: "fixed",
+          top: 0,
+          right: 0,
+          inset: 0,
+          height: "100vh",
+          width: "100%",
+          backgroundColor: "transparent",
+          zIndex: 10,
+        }}
+        onClick={() => togglePopOpen(false)}
+      ></div>
       <div className="member-popup">
         {member?.imgUrl ? (
           <img src={member.imgUrl} className="member-img" alt="member-img" />
@@ -17,7 +30,14 @@ export  const MemberPopup = ({member,togglePopOpen}) => {
             </p>
           </div>
         )}
+      <div className="member-info flex column"> 
+        <p className="fullname">{member.fullname}</p>
+        <p className="username">{member.username}</p>
+      </div>
+      <div className="member-footer">
+          
+      </div>
       </div>
     </div>
-    );
-  };
+  );
+};

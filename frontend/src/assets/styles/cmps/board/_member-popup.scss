@@ -1,22 +1,43 @@
 .popup-container {
-    position:relative;
-    .member-popup {
-        background: #fff;
-        border-radius: 3px;
-        box-shadow: 0 8px 16px -4px rgba(9, 30, 66, 0.253), 0 0 0 1px rgba(9, 30, 66, 0.082);
-        position: absolute;
-        top:20px;
-        left:-150px;
-        padding: 0 12px 12px;
-        min-width: 20rem;
-        margin-right: 4px;
-        max-width: 100%;
-        height:100px;
-        display:flex;
-       .member-img {
-           height:50px;
-           width:50px;
-       }
+  position: relative;
+  .member-popup {
+    background: #fff;
+    border-radius: 3px;
+    box-shadow: 0 8px 16px -4px rgba(9, 30, 66, 0.253),
+      0 0 0 1px rgba(9, 30, 66, 0.082);
+    position: absolute;
+    top: 20px;
+    left: -150px;
+    padding: 12px 12px;
+    min-width: 15rem;
+    margin-right: 4px;
+    max-width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    .member-img {
+      height: 50px;
+      width: 50px;
     }
-
+    .member-info {
+      align-items: left;
+      justify-content: center;
+      height: 100px;
+      p {
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: 600;
+        margin: 0;
+        &.username {
+          color: #5e6c84;
+          font-size: 14px;
+          font-weight: 400;
+          &:before {
+            content: "@";
+          }
+        }
+      }
+    }
+  }
 }
