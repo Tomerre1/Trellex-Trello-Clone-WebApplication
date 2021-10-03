@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { TaskPreviewEdit } from "./TaskPreview/TaskPreviewEdit";
+import { TaskMenuPreview } from "./TaskPreview/TaskMenuPreview";
 import { TaskLabels } from "./TaskPreview/TaskLabels";
 import { TaskDetailsPreview } from "./TaskPreview/TaskDetailsPreview";
 import { toggleDragDisable } from "../store/app.actions";
@@ -35,7 +35,6 @@ function _TaskPreview(props) {
     description,
     attachments,
     style,
-    length,
   } = task;
 
   const [isMenuShown, toggleMenuShown] = useState(false);
@@ -282,7 +281,7 @@ function _TaskPreview(props) {
           onClick={toggleMenu}
           style={{ zIndx: 2 }}
         ></div>
-        <TaskPreviewEdit
+        <TaskMenuPreview
           task={task}
           getChecklistData={getChecklistData}
           groupId={groupId}
