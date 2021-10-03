@@ -1,18 +1,31 @@
 import React, { useEffect } from "react";
 import AddIcon from "@mui/icons-material/Add";
-import {MemberPreview} from "./MemberPreview"
+import { MemberPreview } from "./MemberPreview";
 import { connect } from "react-redux";
 import { setPosition, togglePopover } from "../store/app.actions";
 
-
-
 export function _MemberList(props) {
-  const { members, isInPreview, isInDetails, togglePopover ,isEditMode,task } = props;
+  const {
+    members,
+    isInPreview,
+    isInDetails,
+    isInHeader,
+    togglePopover,
+    isEditMode,
+    task,
+  } = props;
   return (
     <div className={`members ${isInPreview ? "preview" : ""}`}>
       {members &&
         members.map((member, idx) => (
-          <MemberPreview member={member} isInPreview={isInPreview} key={idx} isEditMode={isEditMode} task={task}/>
+          <MemberPreview
+            member={member}
+            isInPreview={isInPreview}
+            key={idx}
+            isEditMode={isEditMode}
+            task={task}
+            isInHeader={isInHeader}
+          />
         ))}
       {isInDetails && (
         <button

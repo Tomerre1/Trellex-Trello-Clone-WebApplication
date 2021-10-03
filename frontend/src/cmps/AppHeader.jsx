@@ -50,7 +50,7 @@ function _AppHeader(props) {
             <button className="header-btn">
               <NotificationsNoneIcon className="icon" />
             </button>
-            <MemberList members={[props.user]} />
+            <MemberList members={[props.user]} isInHeader={true}/>
           </div>
         ) : (
           <div className="header-btn-container flex">

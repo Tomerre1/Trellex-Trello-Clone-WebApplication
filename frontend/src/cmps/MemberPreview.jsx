@@ -12,10 +12,12 @@ function _MemberPreview({
   member,
   isInPreview,
   isEditMode,
+  isInHeader,
   task,
   setPosition,
   setCurrTaskDetails,
   togglePopover,
+  onLogout,
 }) {
   const [isPopOpen, togglePopOpen] = useState(false);
 
@@ -25,29 +27,22 @@ function _MemberPreview({
 
   return (
     <>
-      {isPopOpen && (
-        <MemberPopup
-          member={member}
-          togglePopOpen={togglePopOpen}
-          isInPreview={isInPreview}
-        />
-      )}
       <article
         className="member-wrapper"
         onClick={(ev) => {
           ev.preventDefault();
-        //   ev.stopPropagation();
+          //   ev.stopPropagation();
           if (isEditMode) return;
           if (isInPreview) {
             setCurrTaskDetails(task);
             setPosition({
-                pos: { pageX: ev.pageX, pageY: ev.pageY },
-                type: "MEMBERS",
+              pos: { pageX: ev.pageX, pageY: ev.pageY },
+              type: "MEMBERS",
             });
             togglePopover();
-            return
+            return;
           }
-          openPop()
+          openPop();
         }}
       >
         {member?.imgUrl ? (
@@ -63,14 +58,22 @@ function _MemberPreview({
           </div>
         )}
       </article>
+      {isPopOpen && (
+        <MemberPopup
+          member={member}
+          togglePopOpen={togglePopOpen}
+          isInPreview={isInPreview}
+          isInHeader={isInHeader}
+          onLogout={onLogout}
+        />
+      )}
     </>
   );
 }
 
 const mapDispatchToProps = {
-    setCurrTaskDetails,
-    setPosition,
-    togglePopover,
-
+  setCurrTaskDetails,
+  setPosition,
+  togglePopover,
 };
 export const MemberPreview = connect(null, mapDispatchToProps)(_MemberPreview);
