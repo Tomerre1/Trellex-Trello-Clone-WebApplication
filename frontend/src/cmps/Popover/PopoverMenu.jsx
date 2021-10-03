@@ -16,8 +16,7 @@ class _PopoverMenu extends Component {
 
     render() {
         const { board } = this.props
-        console.log('board', board)
-        const { togglePopover, currentTarget, title, setPosition } = this.props
+        const { title, setPosition } = this.props
         const CommAndAct = board.activities
         CommAndAct.sort((a, b) => (a.createdAt < b.createdAt) ? 1 : ((b.createdAt < a.createdAt) ? -1 : 0))
 
@@ -25,7 +24,7 @@ class _PopoverMenu extends Component {
             <Popover title={title}>
                 <div className="menu-details ">
                     <ul className="clean-list menu-list">
-                        <li onClick={(ev) => this.onOpenPopover(ev, 'BACKGROUND')}>
+                        <li onClick={(event) => { setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'BOARD_SHOW_BACKGROUND' }); }}>
                             <span className="menu-bg-span" style={{ background: board.style.bgClr }}></span>
                             <span className="menu-title">Change background</span>
                         </li>
