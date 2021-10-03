@@ -1,5 +1,4 @@
 import React from "react";
-import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 export function GroupActions(props) {
 
   return (
@@ -11,7 +10,7 @@ export function GroupActions(props) {
           props.toggleMenuShown(false);
         }}
       >
-        <DeleteOutlineIcon /> Delete list
+         Delete list
       </button>
     </div>
   );
