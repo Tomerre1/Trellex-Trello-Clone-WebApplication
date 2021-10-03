@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import { onLogout } from "../store/user.actions";
 
-const _MemberPopup = ({ member, togglePopOpen, isInHeader,onLogout }) => {
+const _MemberPopup = ({ member, togglePopOpen, isInHeader,onLogout,history }) => {
   return (
     <div className="popup-container flex column">
       <div
@@ -39,7 +39,9 @@ const _MemberPopup = ({ member, togglePopOpen, isInHeader,onLogout }) => {
             <p className="username">{member.username}</p>
           </div>
         </div>
-        <div className="member-footer" onClick={() => onLogout()}>
+        <div className="member-footer" onClick={() => 
+            onLogout()
+            }>
           {isInHeader && <p className="logout">Logout</p>}
         </div>
       </div>

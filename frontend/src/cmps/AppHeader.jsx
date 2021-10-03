@@ -55,7 +55,7 @@ function _AppHeader(props) {
         ) : (
           <div className="header-btn-container flex">
             <Link className="clean-link"to="/login"><button
-              className="header-btn"
+              className="header-btn boards"
             >
               Login
             </button>
