@@ -20,16 +20,11 @@ export class _TaskHeaderDetails extends Component {
     }
 
     render() {
-        const { selectedDate } = this.state
-        const { setCurrentTarget, toggleTaskDone, currTaskDetails, board, updateTaskDetails, addActivity } = this.props
-
-
         return (
             <div className="task-details-header flex">
                 <TaskHeaderMembers />
                 <TaskHeaderLabels />
                 <TaskHeaderDate />
-                {/* {selectedDate && <TaskHeaderDate selectedDate={selectedDate} setCurrentTarget={setCurrentTarget} toggleTaskDone={toggleTaskDone} currTaskDetails={currTaskDetails} updateTaskDetails={updateTaskDetails} addActivity={addActivity} />} */}
             </div>
         )
     }

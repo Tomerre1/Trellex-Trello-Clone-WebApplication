@@ -1,43 +1,53 @@
 import React, { Component } from 'react'
+import { connect } from "react-redux";
 import { Popover } from './Popover'
 import { utilService } from '../../services/util.service'
 import { cloudinaryService } from '../../services/cloudinary-service'
+import { saveBoard, saveTaskDetails, addActivity } from '../../store/board.actions'
+import { togglePopover } from '../../store/app.actions'
 
 
-export class PopoverAttachment extends Component {
+export class _PopoverAttachment extends Component {
     state = {
         webUrlSrc: '',
         webUrlName: '',
+    }
 
+    componentDidMount() {
+        const { board, currTaskDetails } = this.props
+        const currGroup = board.groups.find(group => group.tasks.some(task => task.id === currTaskDetails.id))
+        this.setState(prevState => ({ ...prevState, currGroup }))
     }
 
     uploadFile = async (ev) => {
-        const { currTask, updateTaskDetails, togglePopover } = this.props
-        const { attachments } = currTask
+        const { board, currTaskDetails, saveTaskDetails, togglePopover } = this.props
+        const { currGroup } = this.state
+        const { attachments } = currTaskDetails
         const res = await cloudinaryService.uploadFile(ev)
         const attach = { name: res.original_filename, id: res.asset_id, createdAt: Date.now(), url: res.secure_url }
-        currTask.attachments = (attachments) ? [...attachments, attach] : [attach]
-        updateTaskDetails(currTask)
+        currTaskDetails.attachments = (attachments) ? [...attachments, attach] : [attach]
+        await saveTaskDetails(board, currGroup, currTaskDetails)
         togglePopover()
     }
 
-    removeAttach = async (attachId) => {
-        const { currTask, updateTaskDetails } = this.props
-        const { attachments } = currTask
-        const attachs = attachments.filter(currAttach => currAttach.id !== attachId)
-        currTask.attachments = attachs
-        updateTaskDetails(currTask)
-    }
+    // removeAttach = async (attachId) => {
+    //     const { board, currTaskDetails, saveTaskDetails } = this.props
+    //     const { currGroup } = this.state
+    //     const { attachments } = currTaskDetails
+    //     const attachs = attachments.filter(currAttach => currAttach.id !== attachId)
+    //     currTaskDetails.attachments = attachs
+    //     await saveTaskDetails(board, currGroup, currTaskDetails)
+    // }
 
     handleChange = (ev) => {
         const { value, name } = ev.target
         this.setState(prevState => ({ ...prevState, [name]: value }))
     }
 
-    onAttachmentClick = () => {
-        const { webUrlSrc, webUrlName } = this.state
-        const { currTask, updateTaskDetails, togglePopover } = this.props
-        const { attachments } = currTask
+    onAttachmentClick = async () => {
+        const { webUrlSrc, webUrlName, currGroup } = this.state
+        const { board, currTaskDetails, saveTaskDetails, togglePopover } = this.props
+        const { attachments } = currTaskDetails
         if (webUrlSrc) {
             const attach = {
                 id: utilService.makeId(),
@@ -46,17 +56,17 @@ export class PopoverAttachment extends Component {
                 createdAt: Date.now(),
                 isWeb: true,
             }
-            currTask.attachments = (attachments) ? [...attachments, attach] : [attach]
-            updateTaskDetails(currTask)
+            currTaskDetails.attachments = (attachments) ? [...attachments, attach] : [attach]
+            await saveTaskDetails(board, currGroup, currTaskDetails)
             togglePopover()
         }
     }
 
     render() {
-        const { togglePopover, currentTarget, title } = this.props
+        const { title } = this.props
         const { webUrlSrc, webUrlName } = this.state
         return (
-            <Popover togglePopover={togglePopover} currentTarget={currentTarget} title={title} >
+            <Popover title={title} >
                 <div className="attachment-container">
                     <div className="upload-preview" >
                         <label htmlFor="file-upload">Computer</label>
@@ -83,4 +93,23 @@ export class PopoverAttachment extends Component {
         )
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        currTaskDetails: state.appModule.currTaskDetails,
+        board: state.boardModule.board,
+    };
+}
+const mapDispatchToProps = {
+    saveTaskDetails,
+    saveBoard,
+    togglePopover,
+    addActivity
+};
+
+export const PopoverAttachment = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(_PopoverAttachment);
+
 

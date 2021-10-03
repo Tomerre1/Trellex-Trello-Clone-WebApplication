@@ -1,5 +1,4 @@
 import { TodoPreview } from './TodoPreview'
-// export function TodoList({ todos, onSaveTodo, onRemoveTodo, addActivity }) {
 export function TodoList({ todos, onSaveTodo, onRemoveTodo }) {
     return (
         <div className="todo-list">
@@ -9,7 +8,6 @@ export function TodoList({ todos, onSaveTodo, onRemoveTodo }) {
                     todo={todo}
                     onSaveTodo={onSaveTodo}
                     onRemoveTodo={onRemoveTodo}
-                    // addActivity={addActivity}
                 />
             })}
         </div>

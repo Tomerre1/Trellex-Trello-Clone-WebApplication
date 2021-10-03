@@ -57,7 +57,7 @@ export class _TaskActionsMenu extends Component {
                                 <span>Date</span>
                             </div>
                         </button>
-                        <button className="secondary-btn action-btn" onClick={(event) => { setCurrentTarget(event, 'ATTACHMENT'); togglePopover() }}>
+                        <button className="secondary-btn action-btn" onClick={(event) => { setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'ATTACHMENT' }); togglePopover() }}>
                             <div className="action-btn-content flex " >
                                 <AttachFileIcon />
                                 <span>Attachment</span>

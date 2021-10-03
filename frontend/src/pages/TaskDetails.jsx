@@ -11,7 +11,7 @@ import { TaskActionsMenu } from "../cmps/TaskActionsMenu";
 import { TaskHeaderDetails } from "../cmps/TaskHeaderDetails";
 import { LoaderSpinner } from "../cmps/LoaderSpinner";
 import { boardService } from '../services/board.service'
-import { saveBoard, saveTaskDetails } from "../store/board.actions";
+import { saveBoard, saveTaskDetails, addActivity } from "../store/board.actions";
 import { setCurrTaskDetails, setPopover, setPosition, setPopoverMenu } from '../store/app.actions'
 
 export class _TaskDetails extends Component {
@@ -59,7 +59,7 @@ export class _TaskDetails extends Component {
   };
 
   joinTask = () => {
-    const { loggedinUser, currTaskDetails } = this.props;
+    const { board, currTaskDetails, loggedinUser, addActivity } = this.props;
     let { members } = currTaskDetails;
     members = members || [];
     const selectedMembersIds = members.map((member) => member._id);
@@ -68,34 +68,27 @@ export class _TaskDetails extends Component {
       members.push(loggedinUser);
     }
     currTaskDetails.members = members;
-    this.addActivity('add-self')
+    addActivity(board, currTaskDetails, 'add-self')
     this.updateTaskDetails(currTaskDetails);
   };
 
   deleteTask = async () => {
     const { currGroup } = this.state;
-    const { currTaskDetails, saveBoard } = this.props;
-    const { board } = this.props
+    const { board, currTaskDetails, saveBoard, addActivity } = this.props;
     const currGroupIdx = board.groups.indexOf(currGroup)
     currGroup.tasks = currGroup.tasks.filter((task) => task.id !== currTaskDetails.id);
     board.groups[currGroupIdx] = currGroup
-    this.addActivity('remove-task')
+    addActivity(board, currTaskDetails, 'remove-task')
     await saveBoard(board);
     this.props.history.goBack();
   }
 
   toggleIsArchive = () => {
-    const { currTaskDetails } = this.props;
+    const { board, currTaskDetails, addActivity } = this.props;
     currTaskDetails.isArchive = currTaskDetails?.isArchive || false
     currTaskDetails.isArchive = !currTaskDetails.isArchive;
-    this.addActivity((currTaskDetails.isArchive) ? 'add-to-archive' : 'remove-from-archive')
+    addActivity((currTaskDetails.isArchive) ? (board, currTaskDetails, 'add-to-archive') : (board, currTaskDetails, 'remove-from-archive'))
     this.updateTaskDetails(currTaskDetails);
-  }
-
-  addActivity = async (activityType, txt = null) => {
-    const { board, currTaskDetails, saveBoard } = this.props;
-    board.activities.push(boardService.createActivity(activityType, currTaskDetails, txt))
-    await saveBoard(board);
   }
 
   render() {
@@ -148,19 +141,18 @@ export class _TaskDetails extends Component {
 
               <TaskHeaderDetails
                 toggleTaskDone={this.toggleTaskDone}
-                addActivity={this.addActivity}
               />
 
               <TaskDescription
                 currTask={currTaskDetails}
                 updateTaskDetails={this.updateTaskDetails}
               />
-              <TaskAttachment
+              {/* <TaskAttachment
                 // currTask={currTaskDetails}
                 updateTaskDetails={this.updateTaskDetails}
-                addActivity={this.addActivity}
+                // addActivity={this.addActivity}
                 setBgUrlCover={this.setBgUrlCover}
-              />
+              /> */}
               <TaskChecklist />
               <TaskActivities
                 currTask={currTaskDetails}
@@ -195,7 +187,8 @@ const mapDispatchToProps = {
   setCurrTaskDetails,
   setPopover,
   setPosition,
-  setPopoverMenu
+  setPopoverMenu,
+  addActivity
 };
 
 export const TaskDetails = connect(

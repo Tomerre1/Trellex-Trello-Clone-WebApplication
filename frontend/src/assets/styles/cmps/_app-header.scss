@@ -14,8 +14,7 @@
     background-color: rgba(0, 0, 0, 0.15);
   }
   .logo {
-    color: rgba(255, 255, 255, 0.5);
-
+    color: rgba(255, 255, 255, 0.603);
     display: flex;
     h1 {
       font-family: Secular, sans-serif;
@@ -24,7 +23,10 @@
       font-size: rem(25px);
       font-weight: 400;
       margin-left:2px;
-      color: rgba(255, 255, 255, 0.5);
+      color: inherit;
+    }
+    &:hover{
+      color:white;
     }
   }
   .header-btn-container {
