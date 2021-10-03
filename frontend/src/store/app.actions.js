@@ -24,9 +24,6 @@ export const setPosition = ({ pos, type}) => {
             type: "SET_POSITION",
             pos: { ...pos, type },
         })
-        dispatch({
-            type: "TOGGLE_POPOVER",
-        });
     }
 }
 
