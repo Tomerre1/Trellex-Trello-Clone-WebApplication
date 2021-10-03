@@ -25,7 +25,7 @@ export function TaskMenuPreview({ task, groupId, boardLabels,taskUrl }) {
   let doneTodos = 0;
   
   const getChecklistData = () => {
-    
+    console.log('whaaaaaaaaaaaaaat',checklists)
     checklists.forEach((checklist) => {
       taskTodos += checklist.todos.length;
       checklist.todos.forEach((todo) => {
@@ -36,7 +36,7 @@ export function TaskMenuPreview({ task, groupId, boardLabels,taskUrl }) {
   };
 
   return (
-    <Link to={taskUrl}>
+    <Link to={taskUrl} className="clean-link">
       <article
         className="task-preview-container edit"
         style={{ borderRadius: 3 }}
@@ -84,6 +84,7 @@ export function TaskMenuPreview({ task, groupId, boardLabels,taskUrl }) {
                 isDone={task.isDone}
                 taskId={task.id}
                 groupId={groupId}
+                noHover={true}
               />
             )}
             {description?.length > 0 && (
