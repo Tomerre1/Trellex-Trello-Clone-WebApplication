@@ -2,13 +2,31 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { onLogin, onSignup } from "../store/user.actions";
 import DashboardIcon from "@mui/icons-material/Dashboard";
+import { GoogleLogin } from "react-google-login";
 
 function _LoginSignup(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [fullname, setFullname] = useState("");
   const [isLogin, setIsLogin] = useState(true);
+  
+  const CLIENT_ID = "1066940480428-m4n85h2lafgf2m7v5j7prda0tmigel93.apps.googleusercontent.com"
+  
+  const onSuccess = (res) => {
+    console.log('success');
+    console.log(res.profileObj)
+    const fullname = res.profileObj.name;
+    const username = res.profileObj.givenName;
+    const password = res.profileObj.googleId;
+    const imgUrl = res.profileObj.imageUrl;
+    props.onSignup({username,password,fullname,imgUrl})
+  }
+  const onFail = (response) => {
+    console.log('failed');
+    console.dir(response)
 
+  }
+  
   const onSubmit = async (ev) => {
     ev.preventDefault();
     if (username.trim() && password.trim()) {
@@ -52,7 +70,15 @@ function _LoginSignup(props) {
           <button className="login-submit">
             {isLogin ? "Log me in" : "Sign me up"}
           </button>
+          <GoogleLogin
+          clientId={CLIENT_ID}
+          buttonText="Login"
+          onSuccess={onSuccess}
+          onFailure={onFail}
+          cookiePolicy={"single_host_origin"}
+        />
         </form>
+     
         <p onClick={() => setIsLogin(!isLogin)}>
           {isLogin ? "Or sign up..." : "Back to Login"}
         </p>
