@@ -4,18 +4,243 @@ import { utilService } from './util.service.js'
 import { httpService } from './http.service.js'
 import axios from 'axios'
 
-// import Unsplash from 'unsplash-js';
-
-// const unsplash = new Unsplash({
-//     applicationId: "IwjSlLYB-kEXeOlDvuifDixGryX1CK64CwapeKeJC8w",
-//     secret: "TcnJEr-I-fiU2Sk55F7LWMoL5qaXilbZU9v8ohbSCn4"
-// });
 const APP_ID = 'IwjSlLYB-kEXeOlDvuifDixGryX1CK64CwapeKeJC8w'
+const STORAGE_KEY = 'board'
+
+export const boardService = {
+    query,
+    getById,
+    save,
+    // remove,
+    updateTask,
+    addTask,
+    removeTask,
+    addGroup,
+    removeGroup,
+    createActivity,
+    updateTaskByIds,
+    queryPhotos
+}
+
+async function query() {
+    // const res = await axios.get('http://localhost:3030/api/toy', { params: filterBy })
+    // return res.data
+    const boards = await httpService.get('board')
+    return boards
+}
+// async function query() {
+//     let boards = await storageService.query(STORAGE_KEY)
+//     if (boards.length) return boards
+//     console.log('no local storage found')
+//     localStorage.setItem('board', JSON.stringify(demoBoards))
+//     return demoBoards
+// }
+
+async function queryPhotos(query = 'random') {
+    const photos = await axios.get(`https://api.unsplash.com/search/photos/?query=${query}&client_id=${APP_ID}`)
+    return photos.data.results
+}
+
+// function getById(boardId) {
+//     return storageService.get(STORAGE_KEY, boardId)
+// }
+async function getById(boardId) {
+    // const res = await axios.get(`http://localhost:3030/api/toy/${toyId}`)
+    // return res.data
+    const board = await httpService.get(`board/${boardId}`)
+    return board
+}
+
+
+
+// async function remove(boardId) {
+//     try {
+//         return storageService.remove(STORAGE_KEY, boardId)
+//     } catch (err) {
+//         console.log('couldnt remove board', err)
+//     }
+// }
+
+async function save(board) {
+    if (board._id) {
+        const updatedBoard = await httpService.put('board', board)
+        return updatedBoard
+        // return storageService.put(STORAGE_KEY, board)
+    } else {
+        const newBoard = {
+            "title": board.title,
+            "createdAt": Date.now(),
+            "createdBy": 'TEMP USER', // logged in user
+            "groups": [],
+            "tasks": [],
+            "labels": [],
+            "activities": [],
+            "members": [],
+            "style": {
+                "bgClr": board.style.bgClr,
+                "bgImg": board.style.bgImg
+            },
+        }
+        const savedBoard = await httpService.post('board', newBoard)
+        return savedBoard
+        // return storageService.post(STORAGE_KEY, newBoard)
+    }
+}
+
+
+function createActivity(activityType, currTask, txt = null) {
+    const loggedinUser = {
+        "_id": 'u101',
+        "fullname": 'BCD',
+        "imgUrl": 'https://media-exp1.licdn.com/dms/image/C5603AQG9slGN5Fgxug/profile-displayphoto-shrink_100_100/0/1516840011642?e=1638403200&v=beta&t=wl9AzbWc9FwsXJ0xGECA_7T4xynvi067vuYs5ABVhfo'
+    }
+    const task = {
+        id: currTask.id,
+        title: currTask.title
+    }
+
+    const activity = {
+
+        id: utilService.makeId(),
+        createdAt: Date.now(),
+        // byMember: userService.getLoggedinUser(),
+        byMember: loggedinUser,
+        task,
+        type: activityType,
+        txt
+    }
+
+    // console.log('activity from service', activity)
+    return activity
+}
+
+function updateTask(board, group, task) {
+    const groupNeedToUpdate = board.groups.find(currGroup => currGroup.id === group.id)
+    const groupIndex = board.groups.indexOf(groupNeedToUpdate)
+    const taskNeedToUpdate = board.groups[groupIndex].tasks.find(currTask => currTask.id === task.id)
+    const taskIndex = board.groups[groupIndex].tasks.indexOf(taskNeedToUpdate)
+    board.groups[groupIndex].tasks[taskIndex] = task
+    return { ...board }
+}
+
+
+
+async function addTask(taskTitle, boardId, groupId) {
+    if (!taskTitle)
+        return
+    const newTask =
+    {
+        "id": `t-${utilService.makeId()}`,
+        "title": taskTitle,
+        "description": "",
+        "createdAt": Date.now(),
+        "byMember": {
+            "_id": "u101",
+            "username": "BCD",
+            "fullname": "Barak Sidi",
+            "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+        },
+        "style": {},
+        "labelIds": []
+    }
+    const board = await getById(boardId)
+    const idx = board.groups.findIndex((group) => group.id === groupId)
+    board.groups[idx].tasks.push(newTask)
+    save(board)
+    return board
+}
+
+async function removeTask(boardId, groupId, taskId) {
+    try {
+        const board = await getById(boardId)
+        const groupIdx = board.groups.findIndex(group => groupId === group.id)
+        board.groups[groupIdx].tasks = board.groups[groupIdx].tasks.filter(task => taskId !== task.id)
+        save(board)
+        return board
+    }
+
+    catch (err) {
+        console.log(err)
+    }
+
+}
+
+async function addGroup(boardId, title = "Untitled group") {
+    if (!boardId) return
+    const newGroup = {
+        "id": `g-${utilService.makeId()}`,
+        "title": title,
+        tasks: [],
+        "style": {
+            bgImg: "",
+            bgClr: ""
+        }
+    }
+    try {
+        const board = await getById(boardId)
+        board.groups.push(newGroup)
+        save(board)
+
+        return board
+    }
+    catch (err) {
+        console.log('couldnt add group', err)
+    }
+}
+
+async function removeGroup(boardId, groupId) {
+    try {
+        const board = await getById(boardId)
+        board.groups = board.groups.filter(group => group.id !== groupId)
+        save(board)
+        return board
+    }
+
+    catch (err) {
+        console.log(err)
+    }
+
+}
+async function updateTaskByIds(boardId, groupId, task) {
+    const board = await getById(boardId)
+    const groupIdx = board.groups.findIndex(group => groupId === group.id)
+    const taskIdx = board.groups[groupIdx].tasks.findIndex(taskToFind => taskToFind.id === task.id)
+    board.groups[groupIdx].tasks[taskIdx] = task
+    save(board)
+    return board
+
+}
+
+// function getEmptyBoard() {
+//     return {
+//         vendor: 'Susita-' + (Date.now() % 1000),
+//         price: utilService.getRandomIntInclusive(1000, 9000),
+//     }
+// }
+
+// function subscribe(listener) {
+//     listeners.push(listener)
+// }
+
+// function _notifySubscribersBoardsChanged(boards) {
+//     console.log('Notifying Listeners');
+//     listeners.forEach(listener => listener(boards))
+// }
+
+// window.addEventListener('storage', () => {
+//     console.log('Storage Changed from another Browser!');
+//     query()
+//         .then(boards => {
+//             _notifySubscribersBoardsChanged(boards)
+//         }) 
+// })
+
+
 
 const demoBoards = [
     {
         "_id": "b101",
-        "isFavorite":true,
+        "isFavorite": true,
 
         "title": "Trellex dev proj",
         "createdAt": 1589983468418,
@@ -24,7 +249,7 @@ const demoBoards = [
             "fullname": 'BCD',
             "imgUrl": 'https://media-exp1.licdn.com/dms/image/C5603AQG9slGN5Fgxug/profile-displayphoto-shrink_100_100/0/1516840011642?e=1638403200&v=beta&t=wl9AzbWc9FwsXJ0xGECA_7T4xynvi067vuYs5ABVhfo'
         },
-        
+
         "style": {
             "bgClr": 'linear-gradient(to right, #2980b9, #2c3e50)',
             "bgImg": "https://images.unsplash.com/photo-1494253109108-2e30c049369b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNjQ5Nzd8MHwxfHNlYXJjaHw4fHxyYW5kb218ZW58MHx8fHwxNjMzMjc4MzE4&ixlib=rb-1.2.1&q=80&w=1080"
@@ -96,7 +321,7 @@ const demoBoards = [
                 "fullname": 'Tomer',
                 "imgUrl": 'https://media-exp1.licdn.com/dms/image/C4E03AQFlupY8tXNbnA/profile-displayphoto-shrink_400_400/0/1622442415599?e=1638403200&v=beta&t=DBTF6x9nzwz1G04DZ8hBSG14UyM6BUDX6LM30JL84jg',
                 "username": 'tomer',
-                "_id":"u102"
+                "_id": "u102"
             },
             {
                 "fullname": 'Matan',
@@ -1092,215 +1317,3 @@ const demoBoards = [
     },
 
 ]
-const STORAGE_KEY = 'board'
-// const listeners = []
-
-export const boardService = {
-    query,
-    getById,
-    save,
-    remove,
-    updateTask,
-    addTask,
-    removeTask,
-    addGroup,
-    removeGroup,
-    createActivity,
-    updateTaskByIds,
-    queryPhotos
-}
-async function query() {
-    let boards = await storageService.query(STORAGE_KEY)
-    if (boards.length) return boards
-    console.log('no local storage found')
-    localStorage.setItem('board', JSON.stringify(demoBoards))
-    return demoBoards
-}
-
-async function queryPhotos(query = 'random') {
-    const photos = await axios.get(`https://api.unsplash.com/search/photos/?query=${query}&client_id=${APP_ID}`)
-    console.log('%c  photos.data.results:', 'color: #00000;background: #aaefe5;', photos.data.results);
-    return photos.data.results
-}
-
-function getById(boardId) {
-    return storageService.get(STORAGE_KEY, boardId)
-}
-
-async function remove(boardId) {
-    try {
-        return storageService.remove(STORAGE_KEY, boardId)
-    } catch (err) {
-        console.log('couldnt remove board', err)
-    }
-}
-
-async function save(board) {
-    if (board._id) {
-        return storageService.put(STORAGE_KEY, board)
-    } else {
-        const newBoard = {
-            "_id": utilService.makeId(),
-            "title": board.title,
-            "createdAt": Date.now(),
-            "createdBy": 'TEMP USER', // logged in user
-            "groups": [],
-            "tasks": [],
-            "labels": [],
-            "activities": [],
-            "members": [],
-            "style": {
-                "bgClr": board.style.bgClr,
-                "bgImg": board.style.bgImg
-            },
-        }
-        return storageService.post(STORAGE_KEY, newBoard)
-    }
-}
-function createActivity(activityType, currTask, txt = null) {
-    const loggedinUser = {
-        "_id": 'u101',
-        "fullname": 'BCD',
-        "imgUrl": 'https://media-exp1.licdn.com/dms/image/C5603AQG9slGN5Fgxug/profile-displayphoto-shrink_100_100/0/1516840011642?e=1638403200&v=beta&t=wl9AzbWc9FwsXJ0xGECA_7T4xynvi067vuYs5ABVhfo'
-    }
-    const task = {
-        id: currTask.id,
-        title: currTask.title
-    }
-
-    const activity = {
-
-        id: utilService.makeId(),
-        createdAt: Date.now(),
-        // byMember: userService.getLoggedinUser(),
-        byMember: loggedinUser,
-        task,
-        type: activityType,
-        txt
-    }
-
-    // console.log('activity from service', activity)
-    return activity
-}
-
-function updateTask(board, group, task) {
-    const groupIndex = board.groups.indexOf(group)
-    console.log('%c  groupIndex:', 'color: #00000;background: #aaefe5;', groupIndex);
-    const taskNeedToUpdate = board.groups[groupIndex].tasks.find(currTask => currTask.id === task.id)
-    const taskIndex = board.groups[groupIndex].tasks.indexOf(taskNeedToUpdate)
-    console.log('%c  taskIndex:', 'color: #00000;background: #aaefe5;', taskIndex);
-    board.groups[groupIndex].tasks[taskIndex] = task
-    return { ...board }
-}
-
-
-
-async function addTask(taskTitle, boardId, groupId) {
-    if (!taskTitle)
-        return
-    const newTask =
-    {
-        "id": `t-${utilService.makeId()}`,
-        "title": taskTitle,
-        "description": "",
-        "createdAt": Date.now(),
-        "byMember": {
-            "_id": "u101",
-            "username": "BCD",
-            "fullname": "Barak Sidi",
-            "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
-        },
-        "style": {},
-        "labelIds": []
-    }
-    const board = await getById(boardId)
-    const idx = board.groups.findIndex((group) => group.id === groupId)
-    board.groups[idx].tasks.push(newTask)
-    save(board)
-    return board
-}
-
-async function removeTask(boardId, groupId, taskId) {
-    try {
-        const board = await getById(boardId)
-        const groupIdx = board.groups.findIndex(group => groupId === group.id)
-        board.groups[groupIdx].tasks = board.groups[groupIdx].tasks.filter(task => taskId !== task.id)
-        save(board)
-        return board
-    }
-
-    catch (err) {
-        console.log(err)
-    }
-
-}
-
-async function addGroup(boardId, title = "Untitled group") {
-    if (!boardId) return
-    const newGroup = {
-        "id": `g-${utilService.makeId()}`,
-        "title": title,
-        tasks: [],
-        "style": {
-            bgImg: "",
-            bgClr: ""
-        }
-    }
-    try {
-        const board = await getById(boardId)
-        board.groups.push(newGroup)
-        save(board)
-
-        return board
-    }
-    catch (err) {
-        console.log('couldnt add group', err)
-    }
-}
-
-async function removeGroup(boardId, groupId) {
-    try {
-        const board = await getById(boardId)
-        board.groups = board.groups.filter(group => group.id !== groupId)
-        save(board)
-        return board
-    }
-
-    catch (err) {
-        console.log(err)
-    }
-
-}
-async function updateTaskByIds(boardId, groupId, task) {
-    const board = await getById(boardId)
-    const groupIdx = board.groups.findIndex(group => groupId === group.id)
-    const taskIdx = board.groups[groupIdx].tasks.findIndex(taskToFind => taskToFind.id === task.id)
-    board.groups[groupIdx].tasks[taskIdx] = task
-    save(board)
-    return board
-
-}
-
-// function getEmptyBoard() {
-//     return {
-//         vendor: 'Susita-' + (Date.now() % 1000),
-//         price: utilService.getRandomIntInclusive(1000, 9000),
-//     }
-// }
-
-// function subscribe(listener) {
-//     listeners.push(listener)
-// }
-
-// function _notifySubscribersBoardsChanged(boards) {
-//     console.log('Notifying Listeners');
-//     listeners.forEach(listener => listener(boards))
-// }
-
-// window.addEventListener('storage', () => {
-//     console.log('Storage Changed from another Browser!');
-//     query()
-//         .then(boards => {
-//             _notifySubscribersBoardsChanged(boards)
-//         }) 
-// })

@@ -94,7 +94,7 @@ export class _TaskDetails extends Component {
   render() {
     const { currGroup } = this.state;
     const { board, currTaskDetails, loggedinUser } = this.props;
-    if (!currTaskDetails || !board || !currGroup) return <LoaderSpinner />;
+    if (!currTaskDetails || !board || !currGroup) return <></>;
 
     const { style } = currTaskDetails;
     currTaskDetails.style = (style) ? style : { bgColor: null, bgUrl: null }
@@ -147,7 +147,7 @@ export class _TaskDetails extends Component {
                 currTask={currTaskDetails}
                 updateTaskDetails={this.updateTaskDetails}
               />
-              <TaskAttachment/>
+              <TaskAttachment />
               {/* <TaskAttachment
                 // currTask={currTaskDetails}
                 updateTaskDetails={this.updateTaskDetails}
