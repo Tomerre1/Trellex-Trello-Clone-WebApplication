@@ -6,7 +6,7 @@ import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
-import { setCurrTaskDetails, togglePopover } from '../../store/app.actions'
+import { setCurrTaskDetails } from '../../store/app.actions'
 import { saveBoard } from '../../store/board.actions'
 export class _PopoverMoveCopy extends Component {
     state = {
@@ -54,7 +54,7 @@ export class _PopoverMoveCopy extends Component {
 
     submitMoveSameBoard = async () => {
         const { selectedBoard, selectedGroup, selectedPosition, taskTitle, currGroup } = this.state
-        const { currTaskDetails, saveBoard, isCopy, togglePopover } = this.props
+        const { currTaskDetails, saveBoard, isCopy } = this.props
         const fromGroup = selectedBoard.groups.find(group => group.id === currGroup.id)
         const fromGroupIdx = selectedBoard.groups.indexOf(fromGroup)
         const fromTask = selectedBoard.groups[fromGroupIdx].tasks.find(task => task.id === currTaskDetails.id)
@@ -63,13 +63,13 @@ export class _PopoverMoveCopy extends Component {
             selectedBoard.groups[fromGroupIdx].tasks.splice(fromTaskIdx, 1)
         const toGroupIdx = selectedBoard.groups.indexOf(selectedGroup)
         selectedBoard.groups[toGroupIdx].tasks.splice(selectedPosition, 0, isCopy ? task : task[0])
-        togglePopover()
+        this.setState(prevState => ({ ...prevState, currGroup: selectedGroup }))
         await saveBoard(selectedBoard);
     }
 
     submitMoveAnotherBoard = async () => {
         const { selectedBoard, selectedGroup, selectedPosition, taskTitle, currGroup } = this.state
-        const { currTaskDetails, saveBoard, board, boards, isCopy, togglePopover } = this.props
+        const { currTaskDetails, saveBoard, board, boards, isCopy } = this.props
         const currBoard = boards.find(currBoard => currBoard._id === board._id)
         const fromBoardIdx = boards.indexOf(currBoard)
         const fromGroup = boards[fromBoardIdx].groups.find(group => group.id === currGroup.id)
@@ -77,14 +77,17 @@ export class _PopoverMoveCopy extends Component {
         const fromTask = boards[fromBoardIdx].groups[fromGroupIdx].tasks.find(task => task.id === currTaskDetails.id)
         const fromTaskIdx = boards[fromBoardIdx].groups[fromGroupIdx].tasks.indexOf(fromTask)
         const task = (isCopy) ? { ...currTaskDetails, id: utilService.makeId(), title: taskTitle } : boards[fromBoardIdx].groups[fromGroupIdx].tasks.splice(fromTaskIdx, 1)
-        await saveBoard(boards[fromBoardIdx])
 
         const toBoardIdx = boards.indexOf(selectedBoard)
         const toGroup = boards[toBoardIdx].groups.find(group => group.id === selectedGroup.id)
         const toGroupIdx = boards[toBoardIdx].groups.indexOf(toGroup)
         boards[toBoardIdx].groups[toGroupIdx].tasks.splice(selectedPosition, 0, isCopy ? task : task[0])
+
+        this.setState(prevState => ({ ...prevState, currGroup: selectedGroup, selectedBoard: boards[toBoardIdx] }))
+        await saveBoard(boards[fromBoardIdx])
         await saveBoard(boards[toBoardIdx])
-        togglePopover()
+
+
     }
 
     onSubmit = () => {
@@ -93,9 +96,7 @@ export class _PopoverMoveCopy extends Component {
         if (!selectedBoard || !selectedGroup || !taskTitle) return
         if (board._id !== selectedBoard._id) this.submitMoveAnotherBoard()
         else this.submitMoveSameBoard()
-
     }
-
 
     render() {
         const { title, boards, isCopy } = this.props
@@ -178,7 +179,6 @@ function mapStateToProps(state) {
 const mapDispatchToProps = {
     setCurrTaskDetails,
     saveBoard,
-    togglePopover
 
 };
 
