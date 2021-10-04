@@ -52,17 +52,16 @@ export class _MembersAddToBoard extends Component {
           className={`overlay show`}
           onClick={() => setMembersPopup(false)}
         ></div>
-        <div title={title} className="popover board-member-add">
+        <div title={title} className=" board-member-add flex column">
           <div className="members-popover">
+            <h4>ADD TO BOARD</h4>
             <input
               type="search"
               placeholder="Search members"
               onChange={this.handleSearch}
             />
-            <h4>ADD TO BOARD</h4>
-
-            <ul className="clean-list">
-              {this.filteredUsers.length > 0 ?
+            <ul className="clean-list flex column">
+              {this.filteredUsers.length > 0 ? (
                 this.filteredUsers
                   .filter((member) =>
                     member.fullname.toLowerCase().includes(search.toLowerCase())
@@ -77,7 +76,10 @@ export class _MembersAddToBoard extends Component {
                       }
                       members={users}
                     />
-                  )): <p>No members available</p>}
+                  ))
+              ) : (
+                <p>No members available</p>
+              )}
             </ul>
           </div>
         </div>
