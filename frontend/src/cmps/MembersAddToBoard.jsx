@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { PopoverMemberPreview } from "./Popover/PopoverMemberPreview";
-import { Popover } from "./Popover/Popover";
 import { connect } from "react-redux";
-import { saveTaskDetails } from "../store/board.actions";
+import { saveBoard } from "../store/board.actions";
 
 export class _MembersAddToBoard extends Component {
   state = {
@@ -17,74 +16,72 @@ export class _MembersAddToBoard extends Component {
   };
   boardUsers = [];
 
-  toggleMemberCheck = async (member) => {
-    const { board, addActivity, loggedinUser } = this.props;
-    const { currGroup } = this.state;
-    this.boardUsers = board.members || [];
-    const selectedMembersIds =
-      this.boardUsers.map((member) => member._id) || [];
-    const updatedMembers = selectedMembersIds.includes(member._id)
-      ? this.boardUsers.filter((currMember) => currMember._id !== member._id)
-      : [...this.boardUsers, member];
-    this.boardUsers = updatedMembers;
-    this.setState((prevState) => ({
-      ...prevState,
-      selectedMembers: updatedMembers,
-      selectedMembersIds,
-    }));
-    // if (member._id === loggedinUser._id) {
-    //     addActivity((selectedMembersIds.includes(member._id)) ? 'remove-self' : 'add-self')
-    // } else {
-    //     addActivity((selectedMembersIds.includes(member._id)) ? 'remove-member' : 'add-member', member.fullname)
-    // }
-    // await this.props.saveTaskDetails(board, currGroup, this.boardUsers);
+  addUserToBoard = async (member) => {
+    const { board, saveBoard } = this.props;
+    delete member.password;
+    const newBoard = { ...board, members: [...board.members, member] };
+    await saveBoard(newBoard);
   };
-  
-  getFilteredUsers = () =>{ 
-      const {board,users} = this.props;
-    const fUsers = users.filter(user=>
-        board.members.every(member => member._id !== user._id)
-    ) || []  
+
+  getFilteredUsers = () => {
+    const { board, users } = this.props;
+    const fUsers =
+      users.filter((user) =>
+        board.members.every((member) => member._id !== user._id)
+      ) || [];
     return fUsers;
-}
-  filteredUsers = this.getFilteredUsers()
-  
+  };
+
+  filteredUsers = this.getFilteredUsers();
+
+  componentDidUpdate = (prevProps) => {
+    if (this.props.board.members.length !== prevProps.board.members.length) {
+      this.filteredUsers = this.getFilteredUsers();
+      this.forceUpdate();
+    }
+  };
+
   render() {
-    const { title, board, currTaskDetails, users,setMembersPopup } = this.props;
+    const { title, board, currTaskDetails, users, setMembersPopup } =
+      this.props;
     const { search } = this.state;
 
     return (
-        <>
-        <div className={`overlay show`} onClick={()=>setMembersPopup(false)}></div>
-      <div title={title} className='popover board-member-add'>
-        <div className="members-popover">
-          <input
-            type="search"
-            placeholder="Search members"
-            onChange={this.handleSearch}
-          />
-          <h4>ADD TO BOARD</h4>
+      <>
+        <div
+          className={`overlay show`}
+          onClick={() => setMembersPopup(false)}
+        ></div>
+        <div title={title} className="popover board-member-add">
+          <div className="members-popover">
+            <input
+              type="search"
+              placeholder="Search members"
+              onChange={this.handleSearch}
+            />
+            <h4>ADD TO BOARD</h4>
 
-          <ul className="clean-list">
-            {this.filteredUsers.length > 0 &&
-              this.filteredUsers
-                .filter((member) =>
-                  member.fullname.toLowerCase().includes(search.toLowerCase())
-                )
-                .map((member,idx) => (
-                  <PopoverMemberPreview
-                    toggleMemberCheck={this.toggleMemberCheck}
-                    member={member}
-                    key={idx}
-                    selectedMembersIds={
+            <ul className="clean-list">
+              {this.filteredUsers.length > 0 ?
+                this.filteredUsers
+                  .filter((member) =>
+                    member.fullname.toLowerCase().includes(search.toLowerCase())
+                  )
+                  .map((member, idx) => (
+                    <PopoverMemberPreview
+                      toggleMemberCheck={() => this.addUserToBoard(member)}
+                      member={member}
+                      key={idx}
+                      selectedMembersIds={
                         this.boardUsers?.map((member) => member._id) || []
-                    }
-                    members={users}
-                  />
-                ))}
-          </ul>
+                      }
+                      members={users}
+                    />
+                  )): <p>No members available</p>}
+            </ul>
+          </div>
         </div>
-      </div></>
+      </>
     );
   }
 }
@@ -98,7 +95,7 @@ function mapStateToProps(state) {
   };
 }
 const mapDispatchToProps = {
-  saveTaskDetails,
+  saveBoard,
 };
 
 export const MembersAddToBoard = connect(
