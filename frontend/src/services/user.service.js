@@ -45,7 +45,7 @@ const gUsers = [
 ]
 async function getUsers() {
     const users = localStorage.getItem(DB_KEY)
-    if(!users) await signUpUsers()
+    if (!users) await signUpUsers()
     return JSON.parse(localStorage.getItem(DB_KEY))
     // return httpService.get(`user`)
 }
@@ -70,8 +70,10 @@ async function update(user) {
 }
 
 async function login(userCred) {
-    const users = await storageService.query(DB_KEY)
-    const user = users.find(user => user.username === userCred.username && user.password === userCred.password)
+    // const users = await storageService.query(DB_KEY)
+    // const user = users.find(user => user.username === userCred.username && user.password === userCred.password)
+    // const res = await axios.post('http://localhost:3030/api/auth/login', credentials)
+    const user = await httpService.post('auth/login', userCred)
     return _saveLocalUser(user)
 
     // const user = await httpService.post('auth/login', userCred)
@@ -109,13 +111,13 @@ function getLoggedinUser() {
 }
 
 
-async function signUpUsers(){
+async function signUpUsers() {
     await userService.signup({
         "fullname": 'BCD',
         "imgUrl": 'https://media-exp1.licdn.com/dms/image/C5603AQG9slGN5Fgxug/profile-displayphoto-shrink_100_100/0/1516840011642?e=1638403200&v=beta&t=wl9AzbWc9FwsXJ0xGECA_7T4xynvi067vuYs5ABVhfo',
         "username": 'bcd',
         "password": '1',
-        "_id":"u101"
+        "_id": "u101"
 
     })
     await userService.signup({
@@ -123,7 +125,7 @@ async function signUpUsers(){
         "imgUrl": 'https://media-exp1.licdn.com/dms/image/C4E03AQFlupY8tXNbnA/profile-displayphoto-shrink_400_400/0/1622442415599?e=1638403200&v=beta&t=DBTF6x9nzwz1G04DZ8hBSG14UyM6BUDX6LM30JL84jg',
         "username": 'tomer',
         "password": '1',
-        "_id":"u102"
+        "_id": "u102"
 
     })
     await userService.signup({
@@ -131,38 +133,38 @@ async function signUpUsers(){
         "imgUrl": 'https://media-exp1.licdn.com/dms/image/C4D03AQEEFClr3HeA9w/profile-displayphoto-shrink_800_800/0/1575055172966?e=1638403200&v=beta&t=-EaNro-ekUtvBc9ndCkF37SAe2YT6CaaOGe09riqZew',
         "username": 'matan',
         "password": '1',
-        "_id":"u103"
-        
+        "_id": "u103"
+
     })
     await userService.signup({
         "fullname": 'Dave',
         "imgUrl": 'https://m.media-amazon.com/images/M/MV5BMTY5NzY4NzgxNV5BMl5BanBnXkFtZTcwMzcyOTQwOQ@@._V1_UY1200_CR108,0,630,1200_AL_.jpg',
         "username": 'dave',
         "password": '1',
-        "_id":"u104"
-        
+        "_id": "u104"
+
     })
     await userService.signup({
         "fullname": 'Anna',
         "imgUrl": 'https://media-cldnry.s-nbcnews.com/image/upload/t_fit-2000w,f_auto,q_auto:best/newscms/2019_50/3139821/191209-ana_de_armas-mc-1505.JPG',
         "username": 'anna',
         "password": '1',
-        "_id":"u105"
+        "_id": "u105"
     })
     await userService.signup({
         "fullname": 'Rick',
         "imgUrl": 'https://pbs.twimg.com/profile_images/1098178907163975681/cuz_rA54_400x400.jpg',
         "username": 'pickleRick',
         "password": '1',
-        "_id":"u106"
-        
+        "_id": "u106"
+
     })
     await userService.signup({
         "fullname": 'Archer',
         "imgUrl": 'https://pbs.twimg.com/profile_images/1194678819602305024/vFMWJwiT.jpg',
         "username": 'archer',
         "password": '1',
-        "_id":"u107"
+        "_id": "u107"
     })
 };
 
