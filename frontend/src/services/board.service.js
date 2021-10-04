@@ -15,6 +15,8 @@ const APP_ID = 'IwjSlLYB-kEXeOlDvuifDixGryX1CK64CwapeKeJC8w'
 const demoBoards = [
     {
         "_id": "b101",
+        "isFavorite":true,
+
         "title": "Trellex dev proj",
         "createdAt": 1589983468418,
         "createdBy": {

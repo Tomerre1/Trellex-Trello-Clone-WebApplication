@@ -22,6 +22,7 @@
     top: 0;
   }
   .hover-actions {
+
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.2s;
@@ -30,7 +31,9 @@
     right: 10px;
     color: rgb(255, 255, 255);
     gap:5px;
-
+    &.show {
+      opacity:1;
+    }
     .action-icon {
       height: 27px;
       width: 27px;

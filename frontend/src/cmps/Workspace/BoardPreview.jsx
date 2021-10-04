@@ -27,7 +27,7 @@ export function BoardPreview(props) {
         ></div>
         <p className="board-title">{board.title}</p>
       </Link>
-      <div className="hover-actions flex">
+      <div className={`hover-actions flex ${board?.isFavorite ? 'show' :''}`}>
      
        {board?.isFavorite ? <StarBorderIcon className="action-icon"  style={{color:'gold'}} onClick={onToggleStar}/> : <StarBorderIcon className="action-icon" onClick={onToggleStar} />}
       </div>
