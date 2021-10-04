@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { connect } from "react-redux";
 import { saveBoard } from "../store/board.actions";
 import { MemberList } from "./MemberList";
+import { MembersAddToBoard} from "../cmps/MembersAddToBoard"
 import MoreHorizOutlinedIcon from "@mui/icons-material/MoreHorizOutlined";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import { togglePopover, setPosition, setPopoverMenu } from '../store/app.actions'
@@ -89,6 +90,7 @@ function _BoardHeader(props) {
           {board?.members && <MemberList members={board.members} />}
         </div>
         <button className="header-btn">Add Members</button>
+        {<MembersAddToBoard/>}
       </div>
       <div className="header-btn-container flex  flex ">
         <button className="header-btn"> Dashboard</button>
