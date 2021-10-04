@@ -41,9 +41,12 @@
       padding:2px;
       border-radius: 3px;
       cursor:pointer;
-      transition: background-color .2s;
+      transition: background-color .2s,transform .2s ease-out;
+      transform:scale(1);
       &:hover{
         background-color:rgba(107, 104, 104, 0.185);
+        transform:scale(1.1)
+
       }
     }
   }
