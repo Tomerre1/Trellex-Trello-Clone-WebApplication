@@ -13,6 +13,7 @@ function _MemberPreview({
   isInPreview,
   isEditMode,
   isInHeader,
+  isInBoardList,
   task,
   setPosition,
   setCurrTaskDetails,
@@ -64,6 +65,7 @@ function _MemberPreview({
           togglePopOpen={togglePopOpen}
           isInPreview={isInPreview}
           isInHeader={isInHeader}
+          isInBoardList={isInBoardList}
           onLogout={onLogout}
         />
       )}

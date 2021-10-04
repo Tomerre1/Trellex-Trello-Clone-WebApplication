@@ -12,6 +12,7 @@ export function _MemberList(props) {
     isInHeader,
     togglePopover,
     isEditMode,
+    isInBoardList,
     task,
   } = props;
   return (
@@ -23,12 +24,13 @@ export function _MemberList(props) {
       {members &&
         members.map((member, idx) => (
           <MemberPreview
-            member={member}
             isInPreview={isInPreview}
-            key={idx}
             isEditMode={isEditMode}
-            task={task}
             isInHeader={isInHeader}
+            isInBoardList={isInBoardList}
+            member={member}
+            key={idx}
+            task={task}
           />
         ))}
       {isInDetails && (

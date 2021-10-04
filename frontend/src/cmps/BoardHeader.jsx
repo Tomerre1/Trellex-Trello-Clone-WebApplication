@@ -81,14 +81,14 @@ function _BoardHeader(props) {
           </form>
         )}
         <div className="header-btn-container flex">
-          <button className="header-btn last-in-row">
+          <button className="header-btn ">
             {board.isFavorite ? (
               <StarBorderIcon className="icon star gold" onClick={onToggleStar} />
             ) : (
               <StarBorderIcon className="icon star" onClick={onToggleStar} />
             )}
           </button>
-          {board?.members && <MemberList members={board.members} />}
+          {board?.members && <MemberList members={board.members} isInBoardList={true}/>}
         </div>
         <button className="header-btn" onClick={()=>setMembersPopup(!isMembersPopup)}>Add Members</button>
         {isMembersPopup && <MembersAddToBoard setMembersPopup={setMembersPopup}/>}

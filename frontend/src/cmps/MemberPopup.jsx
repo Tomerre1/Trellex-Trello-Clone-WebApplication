@@ -1,12 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
-
 import { onLogout } from "../store/user.actions";
 
 const _MemberPopup = ({
   member,
   togglePopOpen,
   isInHeader,
+  isInBoardList,
   onLogout,
 }) => {
   return (
@@ -25,7 +25,7 @@ const _MemberPopup = ({
         }}
         onClick={() => togglePopOpen(false)}
       ></div>
-      <div className={`wrap  ${isInHeader ? 'header' :''}`}>
+      <div className={`wrap  ${isInHeader ? "header" : ""}`}>
         <div className="member-popup">
           {member?.imgUrl ? (
             <img src={member.imgUrl} className="member-img" alt="member-img" />
@@ -46,6 +46,7 @@ const _MemberPopup = ({
         </div>
         <div className="member-footer" onClick={onLogout}>
           {isInHeader && <p className="logout">Logout</p>}
+          {isInBoardList && <p>Remove from board</p>}
         </div>
       </div>
     </div>
@@ -55,4 +56,10 @@ const _MemberPopup = ({
 const mapDispatchToProps = {
   onLogout,
 };
-export const MemberPopup = connect(null, mapDispatchToProps)(_MemberPopup);
+const mapStateToProps = ({userModule,boardModule}) => {
+  return {
+    user:userModule.loggedinUser,
+    board:boardModule.board
+  }
+}
+export const MemberPopup = connect(mapStateToProps, mapDispatchToProps)(_MemberPopup);
