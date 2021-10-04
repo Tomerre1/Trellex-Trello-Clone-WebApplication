@@ -81,15 +81,17 @@ async function login(userCred) {
     // if (user) return _saveLocalUser(user)
 }
 async function signup(userCred) {
-    const user = await storageService.post(DB_KEY, userCred)
+    // const user = await storageService.post(DB_KEY, userCred)
     // const user = await httpService.post('auth/signup', userCred)
     // socketService.emit('set-user-socket', user._id);
+
+    const user = await httpService.post('auth/signup', userCred)
     return _saveLocalUser(user)
 }
 async function logout() {
-    sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
+    // sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
     // socketService.emit('unset-user-socket');
-    // return await httpService.post('auth/logout')
+    return await httpService.post('auth/logout')
 }
 
 async function changeScore(by) {
