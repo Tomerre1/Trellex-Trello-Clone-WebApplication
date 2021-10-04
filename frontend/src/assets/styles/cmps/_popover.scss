@@ -51,6 +51,10 @@
     .popover-content {
         overflow-x: hidden;
         overflow-y: auto;
+        display: flex;
+
+        justify-content: center;
+        flex-direction: column;
 
         h4 {
             // color: #5e6c84;

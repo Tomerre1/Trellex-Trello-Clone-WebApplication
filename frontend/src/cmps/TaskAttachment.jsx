@@ -30,11 +30,12 @@ export function _TaskAttachment({ currTaskDetails, updateTaskDetails, addActivit
 
 function mapStateToProps(state) {
     return {
-        currTaskDetails: state.appModule.currTaskDetails
+        currTaskDetails: state.appModule.currTaskDetails,
+        board: state.boardModule.board,
     };
 }
 const mapDispatchToProps = {
-    
+
 };
 
 export const TaskAttachment = connect(

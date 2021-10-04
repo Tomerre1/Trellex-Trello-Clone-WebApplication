@@ -27,6 +27,7 @@ export class _TaskChecklist extends Component {
 function mapStateToProps(state) {
     return {
         currTaskDetails: state.appModule.currTaskDetails,
+        board: state.boardModule.board,
     };
 }
 
