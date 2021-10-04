@@ -2,13 +2,23 @@ import React from "react";
 import { connect } from "react-redux";
 import { onLogout } from "../store/user.actions";
 
+
+
 const _MemberPopup = ({
   member,
   togglePopOpen,
   isInHeader,
   isInBoardList,
   onLogout,
+  user,
+  board
 }) => {
+
+  const removeUserFromBoard = () =>{
+      if(member._id === user?._id) 
+      console.log('wtf')
+  }
+
   return (
     <div className={`popup-container flex column`}>
       <div
@@ -44,9 +54,9 @@ const _MemberPopup = ({
             <p className="username">{member.username}</p>
           </div>
         </div>
-        <div className="member-footer" onClick={onLogout}>
-          {isInHeader && <p className="logout">Logout</p>}
-          {isInBoardList && <p>Remove from board</p>}
+        <div className="member-footer">
+          {isInHeader && <p className="logout" onClick={onLogout}>Logout</p>}
+          {isInBoardList && <p onClick={removeUserFromBoard}>Remove from board</p>}
         </div>
       </div>
     </div>

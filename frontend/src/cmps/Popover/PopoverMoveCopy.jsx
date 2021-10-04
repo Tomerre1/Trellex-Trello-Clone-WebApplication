@@ -68,7 +68,7 @@ export class _PopoverMoveCopy extends Component {
 
     submitMoveAnotherBoard = async () => {
 
-        debugger;
+        // debugger;
         console.log(`heloooooooooooooooooooo`)
         const { selectedBoard, selectedGroup, selectedPosition, taskTitle, currGroup } = this.state
         const { currTaskDetails, saveBoard, board, boards, isCopy } = this.props

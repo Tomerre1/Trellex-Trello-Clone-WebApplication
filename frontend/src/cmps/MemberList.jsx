@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import { MemberPreview } from "./MemberPreview";
 import { connect } from "react-redux";
