@@ -6,9 +6,7 @@ import { CheckDeletePopover } from './CheckDeletePopover'
 import { EditAttachmentPopover } from './EditAttachmentPopover'
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import { Link } from 'react-router-dom';
-
 import { saveBoard, saveTaskDetails, addActivity } from '../store/board.actions'
-// import { togglePopover } from '../../store/app.actions'
 import { setPosition, setPopover } from '../store/app.actions';
 
 
@@ -55,7 +53,6 @@ export class _TaskAttachmentPreview extends Component {
         const { currGroup } = this.state
         const attachs = currTaskDetails.attachments.filter(currAttach => currAttach.id !== attachment.id)
         currTaskDetails.attachments = attachs
-        // setBgUrlCover(null)
         await saveTaskDetails(board, currGroup, currTaskDetails)
         this.togglePopover()
         addActivity(board, currTaskDetails, 'remove-attachment', attachment.name)
@@ -129,7 +126,6 @@ export class _TaskAttachmentPreview extends Component {
                             }}>
                                 Edit
                             </button>
-                            {/* <button onClick={(event) => { this.onEditAttach(event) }}>Edit</button> */}
                         </div>
 
                         {!isWeb && !bgUrl &&
@@ -177,7 +173,6 @@ function mapStateToProps(state) {
 const mapDispatchToProps = {
     saveTaskDetails,
     saveBoard,
-    // togglePopover,
     setPosition,
     setPopover,
     addActivity

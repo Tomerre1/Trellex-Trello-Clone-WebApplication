@@ -4,8 +4,8 @@ import AttachFileIcon from '@mui/icons-material/AttachFile';
 import { connect } from "react-redux";
 
 
-export function _TaskAttachment({ currTaskDetails, updateTaskDetails, addActivity, setBgUrlCover }) {
-    if (!currTaskDetails.attachments) return <React.Fragment></React.Fragment>
+export function _TaskAttachment({ currTaskDetails }) {
+    if (!currTaskDetails.attachments || !currTaskDetails.attachments.length ) return <React.Fragment></React.Fragment>
     return (
         <div className="task-attach">
             <div className="window-modal-title flex align-center">
@@ -17,10 +17,6 @@ export function _TaskAttachment({ currTaskDetails, updateTaskDetails, addActivit
                     return <TaskAttachmentPreview
                         key={attachment.id}
                         attachment={attachment}
-                        // currTask={currTaskDetails}
-                        // updateTaskDetails={updateTaskDetails}
-                        // addActivity={addActivity}
-                        setBgUrlCover={setBgUrlCover}
                     />
                 })}
             </div>
