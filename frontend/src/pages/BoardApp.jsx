@@ -33,11 +33,11 @@ class _BoardApp extends Component {
   };
 
   componentDidUpdate = () => {
-    // if (this.props.match.params?.boardId !== this.props.board?._id) {
-    //   this.props.clearBoard();
-    //   this.loadBoard();
-    //   this.props.loadUsers();
-    // }
+    if (this.props.match.params?.boardId !== this.props.board?._id) {
+      this.props.clearBoard();
+      this.loadBoard();
+      this.props.loadUsers();
+    }
   };
   loadBoard = async () => {
     const id = this.props.match.params.boardId;

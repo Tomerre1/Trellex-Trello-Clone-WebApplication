@@ -10,7 +10,7 @@ import { togglePopover } from '../../store/app.actions'
 export class _PopoverAttachment extends Component {
     state = {
         webUrlSrc: '',
-        webUrlName: '',
+        webUrlName: ''
     }
 
     componentDidMount() {
@@ -30,14 +30,9 @@ export class _PopoverAttachment extends Component {
         togglePopover()
     }
 
-    // removeAttach = async (attachId) => {
-    //     const { board, currTaskDetails, saveTaskDetails } = this.props
-    //     const { currGroup } = this.state
-    //     const { attachments } = currTaskDetails
-    //     const attachs = attachments.filter(currAttach => currAttach.id !== attachId)
-    //     currTaskDetails.attachments = attachs
-    //     await saveTaskDetails(board, currGroup, currTaskDetails)
-    // }
+    clearState = () => {
+        this.setState(prevState => ({ ...prevState, webUrlSrc: '', webUrlName: '' }))
+    }
 
     handleChange = (ev) => {
         const { value, name } = ev.target
@@ -58,6 +53,7 @@ export class _PopoverAttachment extends Component {
             }
             currTaskDetails.attachments = (attachments) ? [...attachments, attach] : [attach]
             await saveTaskDetails(board, currGroup, currTaskDetails)
+            this.clearState()
             togglePopover()
         }
     }
