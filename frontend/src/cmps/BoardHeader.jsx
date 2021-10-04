@@ -96,7 +96,7 @@ function _BoardHeader(props) {
       <div className="header-btn-container flex  flex ">
         <button className="header-btn"> Dashboard</button>
      
-        <button className="header-btn flex align-center" onClick={()=>(event) => { props.setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'BOARD_SHOW_MENU' }); props.setPopoverMenu(true); props.togglePopover() }}>
+        <button className="header-btn last-in-row" onClick={(event) => { props.setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'BOARD_SHOW_MENU' }); props.setPopoverMenu(true); props.togglePopover() }}>
           <MoreHorizOutlinedIcon className="icon" /> Show Menu
 
         </button>
