@@ -21,7 +21,7 @@ function _LoginSignup(props) {
     const password = res.profileObj.googleId;
     const imgUrl = res.profileObj.imageUrl;
     await props.onSignup({ username, password, imgUrl, fullname });
-    await props.onLogin({username,password})
+    // await props.onLogin({username,password})
     // props.onLogin({username, password})
     // props.history.push('/workspace/')
   };
