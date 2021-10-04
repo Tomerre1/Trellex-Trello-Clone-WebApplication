@@ -9,7 +9,7 @@ export class TodoAdd extends Component {
             title: ''
         }
     }
-    selectedInput=null
+    selectedInput = null
 
     handleChange = (ev) => {
         const { value } = ev.target
@@ -22,9 +22,10 @@ export class TodoAdd extends Component {
 
     onTodoAdd = () => {
         const { todo } = this.state
+        if (!todo.title) return
         todo.id = utilService.makeId()
         todo.isDone = false
-        this.setState(prevState => ({ ...prevState, todo }))    
+        this.setState(prevState => ({ ...prevState, todo }))
         this.props.addTodo(todo)
         this.clearState()
     }
