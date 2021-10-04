@@ -69,6 +69,7 @@ function _AppHeader(props) {
           className={`overlay ${isCreateShown ? "show" : ""}`}
           onClick={() => setCreateShown(false)}
         ></div>
+        {/* <div style={{background:`url(${props.user.imgUrl})`,width:400,height:400,position:'fixed',top:100,left:400}}/> */}
       </header>
       {isCreateShown && (
         <BoardPreviewAdd
