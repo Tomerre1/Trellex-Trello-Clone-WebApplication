@@ -29,6 +29,13 @@ export class _PopoverLabels extends Component {
         }))
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.isEditCreate) {
+            this.setState(prevState => ({ ...prevState, isEditCreate: false }))
+        }
+    }
+
+
     handleChange = (e) => {
         this.setState(prevState => ({
             ...prevState,

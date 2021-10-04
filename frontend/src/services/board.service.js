@@ -2,6 +2,7 @@
 import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 import { httpService } from './http.service.js'
+import { userService } from './user.service'
 import axios from 'axios'
 
 const APP_ID = 'IwjSlLYB-kEXeOlDvuifDixGryX1CK64CwapeKeJC8w'
@@ -89,28 +90,18 @@ async function save(board) {
 
 
 function createActivity(activityType, currTask, txt = null) {
-    const loggedinUser = {
-        "_id": 'u101',
-        "fullname": 'BCD',
-        "imgUrl": 'https://media-exp1.licdn.com/dms/image/C5603AQG9slGN5Fgxug/profile-displayphoto-shrink_100_100/0/1516840011642?e=1638403200&v=beta&t=wl9AzbWc9FwsXJ0xGECA_7T4xynvi067vuYs5ABVhfo'
-    }
     const task = {
         id: currTask.id,
         title: currTask.title
     }
-
     const activity = {
-
         id: utilService.makeId(),
         createdAt: Date.now(),
-        // byMember: userService.getLoggedinUser(),
-        byMember: loggedinUser,
+        byMember: userService.getLoggedinUser(),
         task,
         type: activityType,
         txt
     }
-
-    // console.log('activity from service', activity)
     return activity
 }
 
