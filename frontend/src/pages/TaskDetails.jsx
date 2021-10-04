@@ -60,6 +60,7 @@ export class _TaskDetails extends Component {
 
   joinTask = () => {
     const { board, currTaskDetails, loggedinUser, addActivity } = this.props;
+    if (!loggedinUser) return
     let { members } = currTaskDetails;
     members = members || [];
     const selectedMembersIds = members.map((member) => member._id);

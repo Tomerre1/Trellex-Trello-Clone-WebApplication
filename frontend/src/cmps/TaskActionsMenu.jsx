@@ -15,8 +15,10 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import { setPosition, togglePopover, setPopoverMenu } from '../store/app.actions';
 export class _TaskActionsMenu extends Component {
     render() {
-        const { setCurrentTarget, joinTask, toggleIsArchive, deleteTask, isArchive, currTaskDetails, loggedinUser, setPosition, togglePopover, setPopoverMenu } = this.props
-        const loggedinUserIsJoin = currTaskDetails.members?.find((member) => member._id === loggedinUser._id) ? true : false || false
+        const { joinTask, toggleIsArchive, deleteTask, isArchive, currTaskDetails, loggedinUser, setPosition, togglePopover } = this.props
+        const loggedinUserIsJoin = (currTaskDetails && loggedinUser) ?
+            currTaskDetails.members?.find((member) => member._id === loggedinUser._id) ? true : false || false :
+            null
         return (
             <aside className="task-details-sidebar flex column full">
                 <div className="actions-wrapper flex">
