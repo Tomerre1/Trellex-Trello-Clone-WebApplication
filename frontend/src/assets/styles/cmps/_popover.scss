@@ -1,4 +1,7 @@
 .popover {
+    &.slide-in-right {
+        animation: slide-in-right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    }
     .clean-mui-arrow {
         svg {
             display: none;
@@ -92,5 +95,15 @@
                 box-shadow: inset 0 0 0 2px #0079bf;
             }
         }
+    }
+}
+@keyframes slide-in-right {
+    0% {
+        transform: translateX(1000px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
     }
 }

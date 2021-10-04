@@ -88,7 +88,6 @@ class _BoardApp extends Component {
           />
         </section>
       </DragDropContext>
-      {popover.isMenu && popover.isOpen && <PopoverMenu togglePopover={this.toggleMenu} title={'Menu'} />}
     </>
 
     );
