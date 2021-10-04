@@ -84,7 +84,7 @@ export class _TodoPreview extends Component {
                     }
                     {!isEditMode && <div className="checklist-txt-and-btn">
                         <span className={`${todo.isDone ? 'done' : ''}`} onClick={this.onEditMode}>{title}</span>
-                        <DeleteIcon className="todo-remove-icon" nClick={this.onRemoveTodo}  />
+                        <DeleteIcon className="todo-remove-icon" onClick={this.onRemoveTodo}  />
                     </div>}
                 </div>
                 <div className={`checklist-btns flex align-center ${isEditMode ? 'show' : 'hidden'}`}>
