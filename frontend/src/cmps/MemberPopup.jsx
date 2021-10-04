@@ -1,8 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { onLogout } from "../store/user.actions";
-
-
+import { saveBoard } from "../store/board.actions";
 
 const _MemberPopup = ({
   member,
@@ -11,13 +10,24 @@ const _MemberPopup = ({
   isInBoardList,
   onLogout,
   user,
-  board
+  board,
+  saveBoard,
 }) => {
+  const removeUserFromBoard = async () => {
+    // if (member._id === user?._id) {
+      const newBoard = JSON.parse(JSON.stringify(board));
+      const userIdx = newBoard.members.findIndex(mmbr => mmbr._id === member._id)
+      newBoard.members.splice(userIdx, 1);
+      try{
+        await saveBoard(newBoard);
+        togglePopOpen(false);
 
-  const removeUserFromBoard = () =>{
-      if(member._id === user?._id) 
-      console.log('wtf')
-  }
+      }
+      catch(err){
+        console.log('error when deleting user from board',err)
+      // }
+    }
+  };
 
   return (
     <div className={`popup-container flex column`}>
@@ -55,8 +65,14 @@ const _MemberPopup = ({
           </div>
         </div>
         <div className="member-footer">
-          {isInHeader && <p className="logout" onClick={onLogout}>Logout</p>}
-          {isInBoardList && <p onClick={removeUserFromBoard}>Remove from board</p>}
+          {isInHeader && (
+            <p className="logout" onClick={onLogout}>
+              Logout
+            </p>
+          )}
+          {isInBoardList && (
+            <p onClick={removeUserFromBoard}>Remove from board</p>
+          )}
         </div>
       </div>
     </div>
@@ -65,11 +81,15 @@ const _MemberPopup = ({
 
 const mapDispatchToProps = {
   onLogout,
+  saveBoard,
 };
-const mapStateToProps = ({userModule,boardModule}) => {
+const mapStateToProps = ({ userModule, boardModule }) => {
   return {
-    user:userModule.loggedinUser,
-    board:boardModule.board
-  }
-}
-export const MemberPopup = connect(mapStateToProps, mapDispatchToProps)(_MemberPopup);
+    user: userModule.loggedinUser,
+    board: boardModule.board,
+  };
+};
+export const MemberPopup = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(_MemberPopup);
