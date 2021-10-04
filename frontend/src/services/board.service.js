@@ -22,9 +22,11 @@ const demoBoards = [
             "fullname": 'BCD',
             "imgUrl": 'https://media-exp1.licdn.com/dms/image/C5603AQG9slGN5Fgxug/profile-displayphoto-shrink_100_100/0/1516840011642?e=1638403200&v=beta&t=wl9AzbWc9FwsXJ0xGECA_7T4xynvi067vuYs5ABVhfo'
         },
+        
         "style": {
             "bgClr": 'linear-gradient(to right, #2980b9, #2c3e50)',
-            "bgImg": 'https://img2.goodfon.com/wallpaper/nbig/2/73/texture-lines-colours-cveta.jpg'
+            "bgImg": "https://images.unsplash.com/photo-1494253109108-2e30c049369b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNjQ5Nzd8MHwxfHNlYXJjaHw4fHxyYW5kb218ZW58MHx8fHwxNjMzMjc4MzE4&ixlib=rb-1.2.1&q=80&w=1080"
+
         },
         "labels": [
             {
