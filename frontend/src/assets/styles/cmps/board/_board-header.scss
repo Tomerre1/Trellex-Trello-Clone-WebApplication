@@ -4,7 +4,7 @@
     position: relative;
     background-color: transparent;
     color: white;
-    z-index: 1;
+    z-index: 0;
     gap:6px;
 
     form {
@@ -52,7 +52,9 @@
     }
     .header-btn-container {
         align-items: center;
-
+        &.login { 
+            min-width:114px;
+        }
         button.header-btn {
             background-color: #ffffff3d;
             padding: 5px 5px;

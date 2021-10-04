@@ -31,6 +31,10 @@
     }
   }
   .header-btn-container {
+    &.login { 
+      min-width:114px;
+      justify-content: flex-end;
+    }
     gap: 5px;
     .header-btn {
       background-color: hsla(0, 0%, 100%, 0.3);

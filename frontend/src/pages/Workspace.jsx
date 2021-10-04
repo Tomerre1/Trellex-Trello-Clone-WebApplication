@@ -30,7 +30,7 @@ class _Workspace extends Component {
       <section className="workspace-page main-layout flex column">
         <h1>Your Workspace</h1>
         <h2 className="flex align-center">
-        {this.props.boards.some(board=> board.isFavorite) && <StarBorderIcon style={{height:'35px',width:'35px'}}/>}
+        {this.props.boards.some(board=> board.isFavorite) && <><StarBorderIcon style={{height:'35px',width:'35px'}}/> Starred boards</>}
         </h2>
         <div className="board-lists flex column">
           {boards.length ? (
