@@ -14,15 +14,16 @@ function _LoginSignup(props) {
   const CLIENT_ID =
     "1066940480428-m4n85h2lafgf2m7v5j7prda0tmigel93.apps.googleusercontent.com";
 
-  const onSuccess = async (res) => {
+  const onSuccessSignup = async (res) => {
     console.log("success");
     const fullname = res.profileObj.name;
-    const username = `${res.profileObj.givenName} ${utilService.makeId()}`;
+    const username = `${res.profileObj.givenName} `;
     const password = res.profileObj.googleId;
     const imgUrl = res.profileObj.imageUrl;
-    console.log(imgUrl)
-    await props.onSignup({ username, password, fullname, imgUrl });
-    props.history.push('/workspace/')
+    await props.onSignup({ username, password, imgUrl, fullname });
+    await props.onLogin({username,password})
+    // props.onLogin({username, password})
+    // props.history.push('/workspace/')
   };
   const onFail = (response) => {
     console.log("failed");
@@ -33,7 +34,7 @@ function _LoginSignup(props) {
     ev.preventDefault();
     if (username.trim() && password.trim()) {
       if (fullname) {
-        await props.onSignup({ username, password, fullname,imgUrl:'' });
+        await props.onSignup({ username, password, fullname, imgUrl: "" });
       } else {
         props.onLogin({ username, password });
       }
@@ -74,8 +75,8 @@ function _LoginSignup(props) {
           </button>
           <GoogleLogin
             clientId={CLIENT_ID}
-            buttonText="Login"
-            onSuccess={onSuccess}
+            buttonText="Sign up with Google"
+            onSuccess={onSuccessSignup}
             onFailure={onFail}
             cookiePolicy={"single_host_origin"}
           />

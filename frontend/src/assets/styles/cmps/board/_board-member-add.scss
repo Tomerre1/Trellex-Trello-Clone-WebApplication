@@ -10,6 +10,8 @@
   z-index: 100;
   border-radius: 3px;
   max-width: 100%;
+  max-height:calc(100vh - 190px);
+  overflow-y:scroll;
   box-shadow: rgba(9, 30, 66, 0.25) 0px 8px 16px -4px,
   rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
   h4 {
