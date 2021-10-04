@@ -50,10 +50,12 @@ export class _MembersAddToBoard extends Component {
   filteredUsers = this.getFilteredUsers()
   
   render() {
-    const { title, board, currTaskDetails, users } = this.props;
+    const { title, board, currTaskDetails, users,setMembersPopup } = this.props;
     const { search } = this.state;
 
     return (
+        <>
+        <div className={`overlay show`} onClick={()=>setMembersPopup(false)}></div>
       <div title={title} className='popover board-member-add'>
         <div className="members-popover">
           <input
@@ -69,10 +71,11 @@ export class _MembersAddToBoard extends Component {
                 .filter((member) =>
                   member.fullname.toLowerCase().includes(search.toLowerCase())
                 )
-                .map((member) => (
+                .map((member,idx) => (
                   <PopoverMemberPreview
                     toggleMemberCheck={this.toggleMemberCheck}
                     member={member}
+                    key={idx}
                     selectedMembersIds={
                         this.boardUsers?.map((member) => member._id) || []
                     }
@@ -81,7 +84,7 @@ export class _MembersAddToBoard extends Component {
                 ))}
           </ul>
         </div>
-      </div>
+      </div></>
     );
   }
 }

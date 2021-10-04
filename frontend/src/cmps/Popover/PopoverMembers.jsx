@@ -55,11 +55,12 @@ export class _PopoverMembers extends Component {
                     <ul className="clean-list">
                         {board.members.length > 0 &&
                             board.members.filter(member => member.fullname.toLowerCase().includes(search.toLowerCase()))
-                                .map(member => <PopoverMemberPreview
+                                .map((member,idx) => <PopoverMemberPreview
                                     toggleMemberCheck={this.toggleMemberCheck}
                                     member={member}
                                     selectedMembersIds={currTaskDetails.members?.map(member => member._id) || []}
                                     members={board.members}
+                                    key={idx}
                                 />)
                         }
                     </ul>

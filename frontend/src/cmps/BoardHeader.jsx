@@ -12,7 +12,7 @@ function _BoardHeader(props) {
   const [isTitleEdit, setTitleEdit] = useState(false);
   const [title, setTitle] = useState(board.title);
   const [width, setWidth] = useState(board.title.length * 9.5);
-  const [isMemberMenu,setMemberMenu] = useState(false)
+  const [isMembersPopup,setMembersPopup] = useState(false)
   const spanRef = useRef();
 
   useEffect(() => {
@@ -90,8 +90,8 @@ function _BoardHeader(props) {
           </button>
           {board?.members && <MemberList members={board.members} />}
         </div>
-        <button className="header-btn" onClick={()=>setMemberMenu(!isMemberMenu)}>Add Members</button>
-        {isMemberMenu && <MembersAddToBoard/>}
+        <button className="header-btn" onClick={()=>setMembersPopup(!isMembersPopup)}>Add Members</button>
+        {isMembersPopup && <MembersAddToBoard setMembersPopup={setMembersPopup}/>}
       </div>
       <div className="header-btn-container flex  flex ">
         <button className="header-btn"> Dashboard</button>
