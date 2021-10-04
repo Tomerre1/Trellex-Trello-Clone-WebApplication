@@ -52,7 +52,7 @@
     }
     .header-btn-container {
         align-items: center;
-
+        position: relative;
         button.header-btn {
             background-color: #ffffff3d;
             padding: 5px 5px;
@@ -64,7 +64,7 @@
             justify-content: center;
             text-decoration: none;
             &.last-in-row{
-                margin-inline-end: 12px;
+                padding-inline-end: 10px;
             }
             .icon {
                 padding: 3px;

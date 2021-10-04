@@ -1,14 +1,34 @@
 import React from "react";
 import { connect } from "react-redux";
-
 import { onLogout } from "../store/user.actions";
+import { saveBoard } from "../store/board.actions";
 
 const _MemberPopup = ({
   member,
   togglePopOpen,
   isInHeader,
+  isInBoardList,
   onLogout,
+  user,
+  board,
+  saveBoard,
 }) => {
+  const removeUserFromBoard = async () => {
+    // if (member._id === user?._id) {
+      const newBoard = JSON.parse(JSON.stringify(board));
+      const userIdx = newBoard.members.findIndex(mmbr => mmbr._id === member._id)
+      newBoard.members.splice(userIdx, 1);
+      try{
+        await saveBoard(newBoard);
+        togglePopOpen(false);
+
+      }
+      catch(err){
+        console.log('error when deleting user from board',err)
+      // }
+    }
+  };
+
   return (
     <div className={`popup-container flex column`}>
       <div
@@ -25,7 +45,7 @@ const _MemberPopup = ({
         }}
         onClick={() => togglePopOpen(false)}
       ></div>
-      <div className={`wrap  ${isInHeader ? 'header' :''}`}>
+      <div className={`wrap  ${isInHeader ? "header" : ""}`}>
         <div className="member-popup">
           {member?.imgUrl ? (
             <img src={member.imgUrl} className="member-img" alt="member-img" />
@@ -44,8 +64,15 @@ const _MemberPopup = ({
             <p className="username">{member.username}</p>
           </div>
         </div>
-        <div className="member-footer" onClick={onLogout}>
-          {isInHeader && <p className="logout">Logout</p>}
+        <div className="member-footer">
+          {isInHeader && (
+            <p className="logout" onClick={onLogout}>
+              Logout
+            </p>
+          )}
+          {isInBoardList && (
+            <p onClick={removeUserFromBoard}>Remove from board</p>
+          )}
         </div>
       </div>
     </div>
@@ -54,5 +81,15 @@ const _MemberPopup = ({
 
 const mapDispatchToProps = {
   onLogout,
+  saveBoard,
 };
-export const MemberPopup = connect(null, mapDispatchToProps)(_MemberPopup);
+const mapStateToProps = ({ userModule, boardModule }) => {
+  return {
+    user: userModule.loggedinUser,
+    board: boardModule.board,
+  };
+};
+export const MemberPopup = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(_MemberPopup);
