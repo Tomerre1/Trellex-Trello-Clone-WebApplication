@@ -111,6 +111,7 @@ function mapStateToProps(state) {
     return {
         currTaskDetails: state.appModule.currTaskDetails,
         loggedinUser: state.userModule.loggedinUser,
+        board: state.boardModule.board,
     };
 }
 const mapDispatchToProps = {

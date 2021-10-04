@@ -1,5 +1,5 @@
 .popover-labels {
-    z-index:9999;
+    z-index: 9999;
     .secondary-btn {
         color: #172b4d;
         width: 100%;
@@ -20,4 +20,11 @@
 }
 .label-add-content {
     width: 18rem;
+    .color-palette {
+   
+        gap: 10px;
+        label {
+            margin: unset !important;
+        }
+    }
 }

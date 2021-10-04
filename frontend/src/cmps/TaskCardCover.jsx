@@ -17,6 +17,7 @@ export function _TaskCardCover({ setPosition, currTaskDetails, togglePopover }) 
 function mapStateToProps(state) {
     return {
         currTaskDetails: state.appModule.currTaskDetails,
+        board: state.boardModule.board,
     };
 }
 const mapDispatchToProps = {
