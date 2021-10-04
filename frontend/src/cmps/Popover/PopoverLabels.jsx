@@ -87,7 +87,7 @@ export class _PopoverLabels extends Component {
     render() {
         const { currTaskDetails, title } = this.props
         const { search, label, labels, isEditCreate, } = this.state
-        if (!currTaskDetails || !labels) return <LoaderSpinner />
+        if (!currTaskDetails || !labels) return <></>
         return (
             <>
                 <Popover title={title} >

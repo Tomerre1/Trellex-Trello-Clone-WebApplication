@@ -69,7 +69,7 @@ class _BoardApp extends Component {
   };
   render() {
     const { board, popover } = this.props;
-    if (!board) return <LoaderSpinner />;
+    if (!board) return <></>;
     return (<>
       <DragDropContext onDragEnd={this.onDragEnd}>
         <section
