@@ -47,7 +47,7 @@ function _MemberPreview({
         }}
       >
         {member?.imgUrl ? (
-          <img src={member.imgUrl} className="member-img" alt={"member-img"} />
+          <img src={member.imgUrl} className="member-img" alt={member.fullname[0].toUpperCase()} />
         ) : (
           <div
             className="member-img"

@@ -50,7 +50,6 @@ export class PopoverLabelCreateEdit extends Component {
                 />
                 <h4>Color</h4>
                 <ColorPalette handleChange={this.handleChange} selectedColor={color} />
-            </div>
             <div className="flex space-between">
                 <button className="primary-btn" onClick={this.onSubmitEditLabel} >
                     {label && label.title ? 'Save' : 'Create'}
@@ -58,6 +57,7 @@ export class PopoverLabelCreateEdit extends Component {
                 {label.title && <button className="danger-btn" onClick={this.onRemoveLabel}>
                     Delete
                 </button>}
+            </div>
             </div>
         </>
     }
