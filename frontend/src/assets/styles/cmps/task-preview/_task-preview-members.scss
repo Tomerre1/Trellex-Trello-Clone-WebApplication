@@ -4,6 +4,9 @@
   align-items: center;
   margin-inline-end: 10px;
   flex-grow:1;
+  &.in-header {
+    margin-inline-end: 0;
+  }
 
   &.preview {
     gap: 1px;
