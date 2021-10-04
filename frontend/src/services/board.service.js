@@ -1140,7 +1140,7 @@ async function save(board) {
         return storageService.put(STORAGE_KEY, board)
     } else {
         const newBoard = {
-            "_id": utilService.makeId,
+            "_id": utilService.makeId(),
             "title": board.title,
             "createdAt": Date.now(),
             "createdBy": 'TEMP USER', // logged in user
