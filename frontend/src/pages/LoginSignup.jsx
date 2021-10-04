@@ -14,16 +14,23 @@ function _LoginSignup(props) {
   const CLIENT_ID =
     "1066940480428-m4n85h2lafgf2m7v5j7prda0tmigel93.apps.googleusercontent.com";
 
-  const onSuccessSignup = async (res) => {
+  const onSuccessLogin = async (res) => {
+    console.log("success");
+    const fullname = res.profileObj.name;
+    const username = `${res.profileObj.givenName} `;
+    const password = res.profileObj.googleId;
+    const imgUrl = res.profileObj.imageUrl;
+    await props.onLogin({username,password})
+    props.history.push('/workspace/')
+  };
+  const onSuccessSignup= async (res) => {
     console.log("success");
     const fullname = res.profileObj.name;
     const username = `${res.profileObj.givenName} `;
     const password = res.profileObj.googleId;
     const imgUrl = res.profileObj.imageUrl;
     await props.onSignup({ username, password, imgUrl, fullname });
-    // await props.onLogin({username,password})
-    // props.onLogin({username, password})
-    // props.history.push('/workspace/')
+    props.history.push('/workspace/')
   };
   const onFail = (response) => {
     console.log("failed");
@@ -73,13 +80,21 @@ function _LoginSignup(props) {
           <button className="login-submit">
             {isLogin ? "Log me in" : "Sign me up"}
           </button>
-          <GoogleLogin
+          {isLogin ? <GoogleLogin
             clientId={CLIENT_ID}
-            buttonText="Sign up with Google"
-            onSuccess={onSuccessSignup}
+            buttonText="Already signed in ? log in with Google"
+            onSuccess={onSuccessLogin}
             onFailure={onFail}
             cookiePolicy={"single_host_origin"}
           />
+          :<GoogleLogin
+          clientId={CLIENT_ID}
+          buttonText="Sign up with Google"
+          onSuccess={onSuccessSignup}
+          onFailure={onFail}
+          cookiePolicy={"single_host_origin"}
+        />
+        }
         </form>
 
         <p onClick={() => setIsLogin(!isLogin)}>
