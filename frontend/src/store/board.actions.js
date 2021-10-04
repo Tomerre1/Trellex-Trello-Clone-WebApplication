@@ -236,10 +236,10 @@ export const saveTaskDetails = (board, currGroup, currTask) => {
                 board: newBoard,
             })
 
-            dispatch({
-                type: "SET_TASK_DETAILS",
-                currTaskDetails: currTask
-            });
+            // dispatch({
+            //     type: "SET_TASK_DETAILS",
+            //     currTaskDetails: currTask
+            // });
         }
         catch (err) {
             console.log('cant update task details', err)
