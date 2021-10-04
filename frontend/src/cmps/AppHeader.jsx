@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { MemberList } from "../cmps/MemberList";
 import { BoardPreviewAdd } from "./Workspace/BoardPreviewAdd";
 import { addBoard } from "../store/board.actions";
-import { MembersAddToBoard} from "../cmps/MembersAddToBoard"
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import AddIcon from "@mui/icons-material/Add";
 import DashboardIcon from "@mui/icons-material/Dashboard";
@@ -69,7 +68,6 @@ function _AppHeader(props) {
           className={`overlay ${isCreateShown ? "show" : ""}`}
           onClick={() => setCreateShown(false)}
         ></div>
-        {/* <div style={{background:`url(${props.user.imgUrl})`,width:400,height:400,position:'fixed',top:100,left:400}}/> */}
       </header>
       {isCreateShown && (
         <BoardPreviewAdd
