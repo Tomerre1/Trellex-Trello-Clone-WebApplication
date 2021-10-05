@@ -1,5 +1,5 @@
-import { connect } from "react-redux";
 import React from "react";
+import { connect } from "react-redux";
 import { PopoverLabels } from "./PopoverLabels";
 import { PopoverMembers } from "./PopoverMembers";
 import { PopoverChecklist } from "./PopoverChecklist";
@@ -12,93 +12,47 @@ import { PopoverMenuArchive } from "./PopoverMenuArchive";
 import { PopoverMenuBackground } from "./PopoverMenuBackground"
 const _PopoverDynamicCmp = (props) => {
     const { type } = props.popover.pos;
-    console.log(props.popover)
     switch (type) {
         case "LABELS":
-            return (
-                <PopoverLabels
-                    {...props}
-                    title="Labels"
-                />
-            );
+            return <PopoverLabels  {...props} title="Labels" />
+
         case "MEMBERS":
-            return (
-                <PopoverMembers
-                    {...props}
-                    title="Members"
-                />
-            );
+            return <PopoverMembers {...props} title="Members" />
+
         case "CHECKLIST":
-            return (
-                <PopoverChecklist
-                    {...props}
-                    title="Checklist"
-                />
-            );
+            return <PopoverChecklist {...props} title="Checklist" />
+
         case "DATE":
-            return (
-                <PopoverDate
-                    {...props}
-                    title="Date"
-                />
-            );
+            return <PopoverDate {...props} title="Date" />
+
         case "ATTACHMENT":
-            return (
-                <PopoverAttachment
-                    {...props}
-                    title="Attach from..." />
-            );
+            return <PopoverAttachment {...props} title="Attach from..." />
+
         case "COVER":
-            return (
-                <PopoverCover
-                    {...props}
-                    title="Cover"
-                />
-            );
+            return <PopoverCover {...props} title="Cover" />
+
         case "MOVE":
-            return (
-                <PopoverMoveCopy
-                    {...props}
-                    isCopy={false}
-                    title="Move to"
-                />
-            );
+            return <PopoverMoveCopy {...props} isCopy={false} title="Move to" />
+
         case "COPY":
-            return (
-                <PopoverMoveCopy
-                    {...props}
-                    isCopy={true}
-                    title="Copy"
-                />
-            );
+            return <PopoverMoveCopy {...props} isCopy={true} title="Copy" />
+
         case "BOARD_SHOW_MENU":
-            return (
-                <PopoverMenu
-                    {...props}
-                    title="Menu"
-                />
-            );
+            return <PopoverMenu {...props} title="Menu" />
+
         case "BOARD_SHOW_ARCHIVE":
-            return (
-                <PopoverMenuArchive
-                    {...props}
-                    title="Archive"
-                />
-            );
+            return <PopoverMenuArchive {...props} title="Archive" />
+
         case "BOARD_SHOW_BACKGROUND":
-            return (
-                <PopoverMenuBackground
-                    {...props}
-                    title="Change Background"
-                />
-            );
+            return <PopoverMenuBackground {...props} title="Change Background" />
+
         default:
             return <></>
     }
 };
+
 function mapStateToProps(state) {
     return {
-        currTaskDetails: state.appModule.currTaskDetails,
         popover: state.appModule.popover,
     };
 }
