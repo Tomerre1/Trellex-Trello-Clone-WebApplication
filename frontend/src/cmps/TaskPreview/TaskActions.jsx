@@ -22,12 +22,11 @@ class _TaskActions extends Component {
   componentWillUnmount = () => {
     if (this.props.isPopoverOpen) this.props.togglePopover();
     this.setState({ selectedAction: "" });
-
   };
 
   setActiveAction = (ev) => {
     ev.stopPropagation();
-    this.setState({ selectedAction: ev.target.parentElement.dataset.type});
+    this.setState({ selectedAction: ev.target.parentElement.dataset.type });
   };
 
   sendToArchive = async () => {
@@ -65,7 +64,9 @@ class _TaskActions extends Component {
           </button>
         </Link>
         <button
-        className={`${this.state.selectedAction === 'labels' ? 'active' : ''}`}
+          className={`${
+            (this.state.selectedAction === "labels" && this.props.isPopoverOpen)? "active" : ""
+          }`}
           data-type="labels"
           onClick={(ev) => {
             this.setActiveAction(ev);
@@ -76,11 +77,12 @@ class _TaskActions extends Component {
           <p>Edit labels</p>
         </button>
         <button
-        className={`${this.state.selectedAction === 'members' ? 'active' : ''}`}
+          className={`${
+            (this.state.selectedAction === "members" && this.props.isPopoverOpen)? "active" : ""
+          }`}
           data-type="members"
           onClick={(ev) => {
             this.setActiveAction(ev);
-
             this.popoverDispatch(ev, "MEMBERS");
           }}
         >
@@ -88,7 +90,7 @@ class _TaskActions extends Component {
           <p>Change members</p>
         </button>
         <button
-        className={`${this.state.selectedAction === 'cover' ? 'active' : ''}`}
+          className={`${(this.state.selectedAction === "cover" && this.props.isPopoverOpen)? "active" : ""}`}
           data-type="cover"
           onClick={(ev) => {
             this.setActiveAction(ev);
@@ -100,11 +102,10 @@ class _TaskActions extends Component {
           <p>Change cover</p>
         </button>
         <button
-        className={`${this.state.selectedAction === 'move' ? 'active' : ''}`}
+          className={`${(this.state.selectedAction === "move" && this.props.isPopoverOpen)? "active" : ""}`}
           data-type="move"
           onClick={(ev) => {
             this.setActiveAction(ev);
-
             this.popoverDispatch(ev, "MOVE");
           }}
         >
@@ -112,11 +113,10 @@ class _TaskActions extends Component {
           <p>Move</p>
         </button>
         <button
-        className={`${this.state.selectedAction === 'copy' ? 'active' : ''}`}
+          className={`${(this.state.selectedAction === "copy" && this.props.isPopoverOpen) ? "active" : ""}`}
           data-type="copy"
           onClick={(ev) => {
             this.setActiveAction(ev);
-
             this.popoverDispatch(ev, "COPY");
           }}
         >
@@ -124,11 +124,10 @@ class _TaskActions extends Component {
           <p>Copy</p>
         </button>
         <button
-        className={`${this.state.selectedAction === 'date' ? '' : ''}`}
+          className={`${(this.state.selectedAction === "date"&& this.props.isPopoverOpen) ? "" : ""}`}
           data-type="date"
           onClick={(ev) => {
             this.setActiveAction(ev);
-
             this.popoverDispatch(ev, "DATE");
           }}
         >
