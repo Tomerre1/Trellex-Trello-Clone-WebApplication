@@ -24,7 +24,7 @@ export function BarChart({ board }) {
         labels: Object.keys(taskPerMember),
         datasets: [
             {
-                label: '# of task for each member',
+                label: 'Tasks for member',
                 data: Object.values(taskPerMember),
                 backgroundColor: [
                     'rgba(255, 99, 132, 1)',
