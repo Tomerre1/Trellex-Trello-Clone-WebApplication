@@ -15,6 +15,15 @@ export class PopoverLabelCreateEdit extends Component {
         })
     }
 
+    componentWillUnmount() {
+        this.setState({
+            title: '',
+            color:  '',
+            id:  ''
+        })
+    }
+
+
     handleChange = ({ target }) => {
         const { name, value } = target
         this.setState({ [name]: value })
@@ -50,14 +59,14 @@ export class PopoverLabelCreateEdit extends Component {
                 />
                 <h4>Color</h4>
                 <ColorPalette handleChange={this.handleChange} selectedColor={color} />
-            <div className="flex space-between">
-                <button className="primary-btn" onClick={this.onSubmitEditLabel} >
-                    {label && label.title ? 'Save' : 'Create'}
-                </button>
-                {label.title && <button className="danger-btn" onClick={this.onRemoveLabel}>
-                    Delete
-                </button>}
-            </div>
+                <div className="flex space-between">
+                    <button className="primary-btn" onClick={this.onSubmitEditLabel} >
+                        {label && label.title ? 'Save' : 'Create'}
+                    </button>
+                    {label.title && <button className="danger-btn" onClick={this.onRemoveLabel}>
+                        Delete
+                    </button>}
+                </div>
             </div>
         </>
     }
