@@ -40,11 +40,11 @@ function _BoardHeader(props) {
     setTitle(title.trim());
     props.saveBoard(newBoard);
   };
-  const onToggleMenu = (ev) => {
-    props.toggleMenu(ev)
-    props.togglePopover()
-
-  };
+  
+  // const onToggleMenu = (ev) => {
+  //   props.toggleMenu(ev)
+  //   props.togglePopover()
+  // };
 
 
   if (!board) return <h2>Loading</h2>;
