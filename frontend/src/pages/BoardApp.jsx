@@ -15,20 +15,17 @@ class _BoardApp extends Component {
     currentTarget: null,
   }
 
-  // componentDidMount = () => {
-  // };
-
   toggleMenu = (ev) => {
     this.setState(prevState => ({ ...prevState, isMenuOpen: !this.state.isMenuOpen }))
     this.setCurrentTarget(ev)
   }
+  
   setCurrentTarget = (event) => {
     this.setState(prevState => ({ ...prevState, currentTarget: event }))
   }
 
   componentDidMount = async () => {
-    if(!this.props.user)
-      this.props.onLogin({ username:'guest', password:'1'})
+    if(!this.props.user) this.props.onLogin({ username:'guest', password:'1'})
     this.loadBoard();
     if (!this.props.boards.length)
       this.props.loadBoards()
@@ -49,6 +46,7 @@ class _BoardApp extends Component {
       this.props.loadUsers();
     }
   };
+
   loadBoard = async () => {
     const id = this.props.match.params.boardId;
     if (!id) this.props.history.push('/workspace')
@@ -77,6 +75,7 @@ class _BoardApp extends Component {
       type
     );
   };
+
   render() {
     const { board } = this.props;
     if (!board) return <></>;
