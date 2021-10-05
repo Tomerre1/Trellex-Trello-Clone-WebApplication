@@ -31,18 +31,6 @@ function connectSockets(http, session) {
             console.log('Emitting board change');
             socket.broadcast.to(socket.myBoardId).emit('updated-board')
         })
-
-        socket.on('user-watch', userId => {
-            socket.join('watching:' + userId)
-        })
-        socket.on('set-user-socket', userId => {
-            logger.debug(`Setting (${socket.id}) socket.userId = ${userId}`)
-            socket.userId = userId
-        })
-        socket.on('unset-user-socket', () => {
-            delete socket.userId
-        })
-
     })
 }
 

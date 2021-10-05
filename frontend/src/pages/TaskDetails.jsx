@@ -10,7 +10,6 @@ import { TaskActivities } from "../cmps/TaskActivities";
 import { TaskActionsMenu } from "../cmps/TaskActionsMenu";
 import { TaskHeaderDetails } from "../cmps/TaskHeaderDetails";
 import { LoaderSpinner } from "../cmps/LoaderSpinner";
-import { boardService } from '../services/board.service'
 import { saveBoard, saveTaskDetails, addActivity } from "../store/board.actions";
 import { setCurrTaskDetails, setPopover, setPosition, setPopoverMenu } from '../store/app.actions'
 
@@ -51,20 +50,22 @@ export class _TaskDetails extends Component {
     this.props.history.goBack();
   };
 
-  setTaksDetailsTitle = async (title) => {
-    const { currTaskDetails, board, saveTaskDetails } = this.props;
-    const { currGroup } = this.state;
+  setTaksDetailsTitle = (title) => {
+    const { currTaskDetails } = this.props;
     currTaskDetails.title = title;
-    await saveTaskDetails(board, currGroup, currTaskDetails)
+    // await saveTaskDetails(board, currGroup, currTaskDetails)
+    this.updateTaskDetails(currTaskDetails);
   };
 
   joinTask = () => {
     const { board, currTaskDetails, loggedinUser, addActivity } = this.props;
-    if (!loggedinUser) return
     let { members } = currTaskDetails;
     members = members || [];
+    if (!loggedinUser) return
+    if (!board.members.includes(loggedinUser.id)) {
+      board.members.push(loggedinUser)
+    }
     const selectedMembersIds = members.map((member) => member._id);
-    // const selectedMembersIds = members.map((member) => member._id) || [];
     if (!selectedMembersIds.includes(loggedinUser._id)) {
       members.push(loggedinUser);
     }
