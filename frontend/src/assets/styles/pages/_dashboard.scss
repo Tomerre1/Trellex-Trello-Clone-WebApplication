@@ -14,9 +14,16 @@
     }
     .dashboard-container {
         max-height: 100vh;
-        // gap: 150px;
+        justify-content: center;
+        gap:45px;
+        
         .chart {
-
+            
+            width:25%;
+            background-color : rgba(7, 27, 39, 0.541);
+            padding: 40px 20px;
+            border-radius:25px;
+            border: 2px solid rgba(255, 255, 255, 0.192);
         }
     }
 }

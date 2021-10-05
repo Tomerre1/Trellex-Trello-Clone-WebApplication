@@ -19,14 +19,14 @@ export function _Dashboard(props) {
             <button onClick={onBack} class="close-btn clean-btn">
                 <Close />
             </button>
-            <div className="dashboard-container flex main-layout">
-                <div className="chart">
+            <div className="dashboard-container flex">
+                <div className="chart flex align-center">
                     <DoughnutChart board={board} />
                 </div>
-                <div className="chart">
+                <div className="chart flex align-center">
                     <TodoChart board={{ ...board }} />
                 </div>
-                <div className="chart">
+                <div className="chart flex align-center">
                     <BarChart board={props.board} />
                 </div>
             </div>
