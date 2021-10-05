@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { socketService } from '../services/socket.service'
 import { BoardList } from "../cmps/Workspace/BoardList";
 import { LoaderSpinner } from "../cmps/LoaderSpinner";
 import {
@@ -11,14 +12,22 @@ import {
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 
 class _Workspace extends Component {
+
   componentDidMount = () => {
+    socketService.on("new-board-added", this.props.loadBoards)
     this.props.loadBoards();
   };
 
+  componentWillUnmount() {
+    socketService.off("new-board-added")
+    socketService.terminate()
+  }
+
   addBoard = async (title, bgClr = "black", bgImg = "") => {
-    if (!title || !title.trim() ) return;
+    if (!title || !title.trim()) return;
     try {
       this.props.addBoard(title, bgClr, bgImg);
+      socketService.emit("new-board");
     } catch (err) {
       console.log("problem adding board", err);
     }
@@ -30,7 +39,7 @@ class _Workspace extends Component {
       <section className="workspace-page main-layout flex column">
         <h1>Your Workspace</h1>
         <h2 className="flex align-center">
-        {this.props.boards.some(board=> board.isFavorite) && <><StarBorderIcon style={{height:'35px',width:'35px'}}/> Starred boards</>}
+          {this.props.boards.some(board => board.isFavorite) && <><StarBorderIcon style={{ height: '35px', width: '35px' }} /> Starred boards</>}
         </h2>
         <div className="board-lists flex column">
           {boards.length ? (

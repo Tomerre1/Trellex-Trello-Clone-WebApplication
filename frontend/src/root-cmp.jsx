@@ -5,7 +5,7 @@ import { Switch, Route } from 'react-router'
 import routes from './routes'
 import { AppHeader } from './cmps/AppHeader'
 import { TaskDetails } from './pages/TaskDetails'
-import { PopoverDynamicCmp} from './cmps/Popover/PopoverDynamicCmp'
+import { PopoverDynamicCmp } from './cmps/Popover/PopoverDynamicCmp'
 // import {UserDetails} from './pages/user-details'
 
 export class RootCmp extends React.Component {

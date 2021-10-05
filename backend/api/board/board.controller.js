@@ -4,9 +4,6 @@ const logger = require('../../services/logger.service')
 // GET LIST boards
 async function getBoards(req, res) {
   try {
-    //if barak sidi want filter boards do this:
-    // var queryParams = req.query;
-    // const boards = await boardService.query(JSON.parse(queryParams.params))
     const boards = await boardService.query()
     res.json(boards);
   } catch (err) {
