@@ -41,6 +41,8 @@ export class ActivityPreview extends Component {
                 return `marked ${activity.txt} incomplete on ${currTask.title}`
             case 'remove-attachment':
                 return `deleted the ${activity.txt} attachment from ${currTask.title}`
+            case 'change-title':
+                return `changed task title to ${activity.txt} `
             default:
                 return ''
                 break;

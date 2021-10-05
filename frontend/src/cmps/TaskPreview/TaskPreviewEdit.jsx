@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { connect } from "react-redux";
-import { updateTask } from "../../store/board.actions";
+import { updateTask, addActivity } from "../../store/board.actions";
 import { TaskLabels } from "./TaskLabels";
 import { TaskDetailsPreview } from "./TaskDetailsPreview";
 import { TaskDatePreview } from "./TaskDatePreview";
@@ -21,6 +21,8 @@ export function _TaskPreviewEdit({
   toggleMenu,
   updateTask,
   taskUrl,
+  addActivity,
+  board,
 }) {
   const {
     style,
@@ -39,12 +41,14 @@ export function _TaskPreviewEdit({
 
   const updateTaskName = async () => {
     const newTask = { ...task };
+    if (newTask.title === editTitle) return;
     newTask.title = editTitle;
+
     try {
       await updateTask(boardId, groupId, newTask);
-      toggleMenu()
-    } catch (err){
-      console.log('error when setting title',err)
+      toggleMenu();
+    } catch (err) {
+      console.log("error when setting title", err);
     }
   };
 
@@ -123,13 +127,17 @@ export function _TaskPreviewEdit({
             )}
             {checklists?.length > 0 && todos !== 0 && (
               <TaskDetailsPreview
-                icon={<CheckBoxOutlinedIcon className="icon"/>}
+                icon={<CheckBoxOutlinedIcon className="icon" />}
                 txt={getChecklistData()}
                 isDone={getChecklistData(true)}
               />
             )}
             {task?.members && (
-              <MemberList members={task.members} isInPreview={true}  isEditMode={true} />
+              <MemberList
+                members={task.members}
+                isInPreview={true}
+                isEditMode={true}
+              />
             )}
           </div>
         </div>
@@ -155,6 +163,7 @@ export function _TaskPreviewEdit({
 }
 const mapDispatchToProps = {
   updateTask,
+  addActivity,
 };
 function mapStateToProps(state) {
   return {

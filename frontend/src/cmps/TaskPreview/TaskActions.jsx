@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { connect } from "react-redux";
-import { updateTask } from "../../store/board.actions";
+import { updateTask,addActivity } from "../../store/board.actions";
 import {
   setCurrTaskDetails,
   setPosition,
@@ -33,6 +33,8 @@ class _TaskActions extends Component {
     const newTask = { ...this.props.task };
     newTask.isArchive = true;
     try {
+      this.props.addActivity(this.props.board,this.props.task,'add-to-archive',null)
+
       this.props.updateTask(this.props.boardId, this.props.groupId, newTask);
       this.props.toggleMenu();
     } catch (err) {
@@ -94,7 +96,6 @@ class _TaskActions extends Component {
           data-type="cover"
           onClick={(ev) => {
             this.setActiveAction(ev);
-
             this.popoverDispatch(ev, "COVER");
           }}
         >
@@ -147,10 +148,12 @@ const mapDispatchToProps = {
   setPosition,
   setCurrTaskDetails,
   togglePopover,
+  addActivity
 };
 const mapStateToProps = (state) => {
   return {
     isPopoverOpen: state.appModule.popover.isOpen,
+    board: state.boardModule.board
   };
 };
 export const TaskActions = connect(

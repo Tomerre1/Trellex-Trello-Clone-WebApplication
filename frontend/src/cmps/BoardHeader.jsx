@@ -106,7 +106,7 @@ function _BoardHeader(props) {
         )}
       </div>
       <div className="header-btn-container flex  flex ">
-        <Link to={`/board/${board._id}/dashboard`}>
+        <Link to={`/board/${board._id}/dashboard`} className="clean-link">
           <button className="header-btn"><BarChartIcon className="icon"/> Dashboard</button>
         </Link>
 
