@@ -17,7 +17,7 @@ export function _Dashboard(props) {
                 <div className="chart">
                     <h1>Label statistics:</h1>
                     <div>
-                        {/* <DoughnutChart board={board} /> */}
+                        <DoughnutChart board={props.board} />
                     </div>
                 </div>
             </div>
