@@ -40,11 +40,11 @@ function _BoardHeader(props) {
     setTitle(title.trim());
     props.saveBoard(newBoard);
   };
-  const onToggleMenu = (ev) => {
-    props.toggleMenu(ev)
-    props.togglePopover()
-
-  };
+  
+  // const onToggleMenu = (ev) => {
+  //   props.toggleMenu(ev)
+  //   props.togglePopover()
+  // };
 
 
   if (!board) return <h2>Loading</h2>;
@@ -81,7 +81,7 @@ function _BoardHeader(props) {
           </form>
         )}
         <div className="header-btn-container flex">
-          <button className="header-btn ">
+          <button className="header-btn star">
             {board.isFavorite ? (
               <StarBorderIcon className="icon star gold" onClick={onToggleStar} />
             ) : (

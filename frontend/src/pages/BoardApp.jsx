@@ -1,18 +1,18 @@
 import React, { Component } from "react";
 import { BoardHeader } from "../cmps/BoardHeader";
 import { connect } from "react-redux";
+import { onLogin } from "../store/user.actions"
 import { loadBoard, loadBoards, clearBoard, handleDrag } from "../store/board.actions";
 import { loadUsers } from "../store/user.actions";
 import { GroupList } from "../cmps/GroupList";
-import { LoaderSpinner } from "../cmps/LoaderSpinner";
 import { DragDropContext } from "react-beautiful-dnd";
-import { PopoverMenu } from "../cmps/Popover/PopoverMenu";
 
 class _BoardApp extends Component {
   state = {
     isMenuOpen: false,
     currentTarget: null,
   }
+
   toggleMenu = (ev) => {
     this.setState(prevState => ({ ...prevState, isMenuOpen: !this.state.isMenuOpen }))
     this.setCurrentTarget(ev)
@@ -22,6 +22,8 @@ class _BoardApp extends Component {
   }
 
   componentDidMount = async () => {
+    if(!this.props.loggedinUser)
+      this.props.onLogin({ username:'guest', password:'1'})
     this.loadBoard();
     if (!this.props.boards.length)
       this.props.loadBoards()
@@ -68,7 +70,7 @@ class _BoardApp extends Component {
     );
   };
   render() {
-    const { board, popover } = this.props;
+    const { board } = this.props;
     if (!board) return <></>;
     return (<>
       <DragDropContext onDragEnd={this.onDragEnd}>
@@ -98,7 +100,7 @@ function mapStateToProps(state) {
   return {
     board: state.boardModule.board,
     boards: state.boardModule.boards,
-    popover: state.appModule.popover,
+    user:state.userModule.loggedinUser
   };
 }
 const mapDispatchToProps = {
@@ -107,6 +109,7 @@ const mapDispatchToProps = {
   clearBoard,
   loadUsers,
   handleDrag,
+  onLogin
 };
 
 export const BoardApp = connect(mapStateToProps, mapDispatchToProps)(_BoardApp);

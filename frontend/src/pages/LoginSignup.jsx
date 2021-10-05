@@ -14,24 +14,18 @@ function _LoginSignup(props) {
   const CLIENT_ID =
     "1066940480428-m4n85h2lafgf2m7v5j7prda0tmigel93.apps.googleusercontent.com";
 
-  const onSuccessLogin = async (res) => {
+  const onSuccess = async (res) => {
     console.log("success");
     const fullname = res.profileObj.name;
     const username = `${res.profileObj.givenName} `;
     const password = res.profileObj.googleId;
     const imgUrl = res.profileObj.imageUrl;
-    await props.onLogin({username,password})
-    props.history.push('/workspace/')
+    isLogin
+      ? await props.onLogin({ username, password })
+      : await props.onSignup({ username, password, imgUrl, fullname });
+    props.history.push("/workspace/");
   };
-  const onSuccessSignup= async (res) => {
-    console.log("success");
-    const fullname = res.profileObj.name;
-    const username = `${res.profileObj.givenName} `;
-    const password = res.profileObj.googleId;
-    const imgUrl = res.profileObj.imageUrl;
-    await props.onSignup({ username, password, imgUrl, fullname });
-    props.history.push('/workspace/')
-  };
+
   const onFail = (response) => {
     console.log("failed");
     console.dir(response);
@@ -80,21 +74,13 @@ function _LoginSignup(props) {
           <button className="login-submit">
             {isLogin ? "Log me in" : "Sign me up"}
           </button>
-          {isLogin ? <GoogleLogin
+          <GoogleLogin
             clientId={CLIENT_ID}
-            buttonText="Already signed in ? log in with Google"
-            onSuccess={onSuccessLogin}
+            buttonText={isLogin ? "Already Signed up with Google? Log in" : "Sign up with Google"}
+            onSuccess={onSuccess}
             onFailure={onFail}
             cookiePolicy={"single_host_origin"}
           />
-          :<GoogleLogin
-          clientId={CLIENT_ID}
-          buttonText="Sign up with Google"
-          onSuccess={onSuccessSignup}
-          onFailure={onFail}
-          cookiePolicy={"single_host_origin"}
-        />
-        }
         </form>
 
         <p onClick={() => setIsLogin(!isLogin)}>

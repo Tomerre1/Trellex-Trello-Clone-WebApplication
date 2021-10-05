@@ -63,8 +63,12 @@
             align-items: center;
             justify-content: center;
             text-decoration: none;
+            &.star {
+                margin-inline-end: 10px;
+            }
             &.last-in-row{
                 padding-inline-end: 10px;
+                
             }
             .icon {
                 padding: 3px;
