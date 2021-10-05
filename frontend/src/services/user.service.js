@@ -25,8 +25,8 @@ async function login(userCred) {
 
 async function signup(userCred) {
     const user = await httpService.post('auth/signup', userCred)
-
 }
+
 async function logout() {
     return await httpService.post('auth/logout')
 
