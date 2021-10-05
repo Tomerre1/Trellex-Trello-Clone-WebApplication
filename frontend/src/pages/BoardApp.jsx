@@ -15,8 +15,8 @@ class _BoardApp extends Component {
     currentTarget: null,
   }
 
-  componentDidMount = () => {
-  };
+  // componentDidMount = () => {
+  // };
 
   toggleMenu = (ev) => {
     this.setState(prevState => ({ ...prevState, isMenuOpen: !this.state.isMenuOpen }))
@@ -27,7 +27,7 @@ class _BoardApp extends Component {
   }
 
   componentDidMount = async () => {
-    if(!this.props.loggedinUser)
+    if(!this.props.user)
       this.props.onLogin({ username:'guest', password:'1'})
     this.loadBoard();
     if (!this.props.boards.length)
