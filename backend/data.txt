@@ -1,5 +1,4 @@
 db.getCollection('board').insertMany([ 
-    /* 1 */
 {
     "_id" : ObjectId("615b71033de393d9a9b593b3"),
     "title" : "Light me",
@@ -274,9 +273,8 @@ db.getCollection('board').insertMany([
         "bgClr" : null,
         "bgImg" : "https://images.unsplash.com/photo-1493612276216-ee3925520721?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyNjQ5Nzd8MHwxfHNlYXJjaHwxfHxyYW5kb218ZW58MHx8fHwxNjMzNDUyMzI3&ixlib=rb-1.2.1&q=85"
     }
-}
+},
 
-/* 2 */
 {
     "_id" : ObjectId("615c1c5a92955b86fe16e49e"),
     "title" : "Coffe time",
@@ -392,9 +390,7 @@ db.getCollection('board').insertMany([
         "bgImg" : "https://images.unsplash.com/photo-1489533119213-66a5cd877091?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyNjQ5Nzd8MHwxfHNlYXJjaHw3fHxyYW5kb218ZW58MHx8fHwxNjMzNDUyMzI3&ixlib=rb-1.2.1&q=85"
     },
     "isFavorite" : true
-}
-
-/* 3 */
+},
 {
     "_id" : ObjectId("615c1c6992955b86fe16e49f"),
     "title" : "Orange",
@@ -409,9 +405,8 @@ db.getCollection('board').insertMany([
         "bgClr" : null,
         "bgImg" : "https://images.unsplash.com/photo-1494253109108-2e30c049369b?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyNjQ5Nzd8MHwxfHNlYXJjaHw4fHxyYW5kb218ZW58MHx8fHwxNjMzNDUyMzI3&ixlib=rb-1.2.1&q=85"
     }
-}
+},
 
-/* 4 */
 {
     "_id" : ObjectId("615c1c7192955b86fe16e4a0"),
     "title" : "Trellex development board",
@@ -2670,9 +2665,8 @@ db.getCollection('board').insertMany([
         "bgImg" : "https://images.unsplash.com/photo-1471922694854-ff1b63b20054?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyNjQ5Nzd8MHwxfHNlYXJjaHwxfHxoZWF2ZW58ZW58MHx8fHwxNjMzNDYwODY0&ixlib=rb-1.2.1&q=85"
     },
     "isFavorite" : true
-}
+},
 
-/* 5 */
 {
     "_id" : ObjectId("615c1c7692955b86fe16e4a1"),
     "title" : "Trip to trees",
@@ -2782,9 +2776,8 @@ db.getCollection('board').insertMany([
         "bgClr" : null,
         "bgImg" : "https://images.unsplash.com/photo-1508138221679-760a23a2285b?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyNjQ5Nzd8MHwxfHNlYXJjaHw0fHxyYW5kb218ZW58MHx8fHwxNjMzNDUyMzI3&ixlib=rb-1.2.1&q=85"
     }
-}
+},
 
-/* 6 */
 {
     "_id" : ObjectId("615c1c7f92955b86fe16e4a2"),
     "title" : "Sweet times",
@@ -2833,9 +2826,8 @@ db.getCollection('board').insertMany([
         "bgImg" : "https://c.pxhere.com/photos/4f/ee/candy_toppings_sweet_colorful_sugar-883692.jpg!d"
     },
     "isFavorite" : false
-}
+},
 
-/* 7 */
 {
     "_id" : ObjectId("615c230ca798451bdbf5f064"),
     "title" : "Help me",
@@ -2850,9 +2842,8 @@ db.getCollection('board').insertMany([
         "bgClr" : null,
         "bgImg" : "https://images.unsplash.com/photo-1484100356142-db6ab6244067?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyNjQ5Nzd8MHwxfHNlYXJjaHwxMHx8cmFuZG9tfGVufDB8fHx8MTYzMzQ1MjMyNw&ixlib=rb-1.2.1&q=85"
     }
-}
+},
 
-/* 8 */
 {
     "_id" : ObjectId("615c2312a798451bdbf5f065"),
     "title" : "Not for yoni",
@@ -2935,9 +2926,7 @@ db.getCollection('board').insertMany([
         "bgClr" : "linear-gradient(to bottom, #e52d27, #b31217)",
         "bgImg" : "https://img2.goodfon.com/wallpaper/nbig/2/73/texture-lines-colours-cveta.jpg"
     }
-}
-
-/* 9 */
+},
 {
     "_id" : ObjectId("615c910c308cac23e062a96f"),
     "title" : "Portugal",
