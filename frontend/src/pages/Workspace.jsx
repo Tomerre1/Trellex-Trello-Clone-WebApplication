@@ -20,7 +20,7 @@ class _Workspace extends Component {
 
   componentWillUnmount() {
     socketService.off("new-board-added")
-    socketService.terminate()
+    // socketService.terminate()
   }
 
   addBoard = async (title, bgClr = "black", bgImg = "") => {
