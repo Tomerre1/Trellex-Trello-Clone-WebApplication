@@ -25,13 +25,13 @@ async function getById(boardId) {
     }
 }
 
-async function remove(toyId) {
+async function remove(boardId) {
     try {
-        const collection = await dbService.getCollection('toy')
-        await collection.deleteOne({ '_id': ObjectId(toyId) })
-        return toyId
+        const collection = await dbService.getCollection('board')
+        await collection.deleteOne({ '_id': ObjectId(boardId) })
+        return boardId
     } catch (err) {
-        logger.error(`cannot remove toy ${toyId}`, err)
+        logger.error(`cannot remove board ${boardId}`, err)
         throw err
     }
 }
