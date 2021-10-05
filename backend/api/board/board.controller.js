@@ -1,5 +1,6 @@
 const boardService = require('./board.service.js');
 const logger = require('../../services/logger.service')
+const socketService = require('../../services/socket.service')
 
 // GET LIST boards
 async function getBoards(req, res) {
@@ -50,22 +51,11 @@ async function updateBoard(req, res) {
   }
 }
 
-// DELETE (Remove car)
-async function removeToy(req, res) {
-  try {
-    const toyId = req.params.id;
-    const removedId = await toyService.remove(toyId)
-    res.send(removedId)
-  } catch (err) {
-    logger.error('Failed to remove toy', err)
-    res.status(500).send({ err: 'Failed to remove toy' })
-  }
-}
+
 
 module.exports = {
   getBoards,
   getBoardById,
   addBoard,
-  updateBoard,
-  removeToy
+  updateBoard
 }

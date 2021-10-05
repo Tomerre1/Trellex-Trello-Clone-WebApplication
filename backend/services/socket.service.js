@@ -15,23 +15,23 @@ function connectSockets(http, session) {
         socket.on('disconnect', socket => {
             console.log('Someone disconnected')
         })
-        // socket.on('chat topic', topic => {
-        //     if (socket.myTopic === topic) return;
-        //     if (socket.myTopic) {
-        //         socket.leave(socket.myTopic)
-        //     }
-        //     socket.join(topic)
-        //     socket.myTopic = topic
-        // })
+        socket.on('join-board', boardId => {
+            if (socket.myBoardId === boardId) return;
+            if (socket.myBoardId) {
+                socket.leave(socket.myBoardId)
+            }
+            socket.join(boardId)
+            socket.myBoardId = boardId
+        })
         socket.on('new-board', () => {
             console.log('Emitting new board');
             socket.broadcast.emit('new-board-added')
         })
         socket.on('board-change', () => {
             console.log('Emitting board change');
-            socket.broadcast.emit('updated-board')
+            socket.broadcast.to(socket.myBoardId).emit('updated-board')
         })
-     
+
         socket.on('user-watch', userId => {
             socket.join('watching:' + userId)
         })

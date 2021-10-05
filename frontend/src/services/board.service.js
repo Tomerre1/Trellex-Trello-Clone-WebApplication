@@ -1,5 +1,5 @@
 
-import { storageService } from './async-storage.service.js'
+import { socketService } from '../services/socket.service'
 import { utilService } from './util.service.js'
 import { httpService } from './http.service.js'
 import { userService } from './user.service'
@@ -65,6 +65,7 @@ async function getById(boardId) {
 async function save(board) {
     if (board._id) {
         const updatedBoard = await httpService.put('board', board)
+        socketService.emit("board-change")
         return updatedBoard
         // return storageService.put(STORAGE_KEY, board)
     } else {
@@ -83,6 +84,7 @@ async function save(board) {
             },
         }
         const savedBoard = await httpService.post('board', newBoard)
+        socketService.emit("board-change")
         return savedBoard
         // return storageService.post(STORAGE_KEY, newBoard)
     }

@@ -15,22 +15,14 @@ class _BoardApp extends Component {
     currentTarget: null,
   }
 
-  toggleMenu = (ev) => {
-    this.setState(prevState => ({ ...prevState, isMenuOpen: !this.state.isMenuOpen }))
-    this.setCurrentTarget(ev)
-  }
-  
-  setCurrentTarget = (event) => {
-    this.setState(prevState => ({ ...prevState, currentTarget: event }))
-  }
-
   componentDidMount = async () => {
-    if(!this.props.user) this.props.onLogin({ username:'guest', password:'1'})
+    const { boardId } = this.props.match.params
+    if (!this.props.user) this.props.onLogin({ username: 'guest', password: '1' })
     this.loadBoard();
     if (!this.props.boards.length) this.props.loadBoards()
     this.props.loadUsers();
-
-    socketService.on("updated-board",this.loadBoard)
+    socketService.emit('join-board', boardId)
+    socketService.on("updated-board", () => { this.props.loadBoard(boardId) })
   };
 
   componentWillUnmount = () => {
@@ -45,6 +37,17 @@ class _BoardApp extends Component {
       this.props.loadUsers();
     }
   };
+
+  toggleMenu = (ev) => {
+    this.setState(prevState => ({ ...prevState, isMenuOpen: !this.state.isMenuOpen }))
+    this.setCurrentTarget(ev)
+  }
+
+  setCurrentTarget = (event) => {
+    this.setState(prevState => ({ ...prevState, currentTarget: event }))
+  }
+
+
 
   loadBoard = async () => {
     const id = this.props.match.params.boardId;
@@ -106,7 +109,7 @@ function mapStateToProps(state) {
   return {
     board: state.boardModule.board,
     boards: state.boardModule.boards,
-    user:state.userModule.loggedinUser
+    user: state.userModule.loggedinUser
   };
 }
 const mapDispatchToProps = {

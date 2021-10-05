@@ -137,7 +137,6 @@ export const addTask = (taskTitle, boardId, groupId) => {
                 type: "SAVE_BOARD",
                 board: board,
             });
-
         }
         catch (err) {
             console.log('cant add task', err)
