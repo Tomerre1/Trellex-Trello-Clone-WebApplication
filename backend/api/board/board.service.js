@@ -54,7 +54,6 @@ async function update(board) {
         delete board._id
         const collection = await dbService.getCollection('board')
         const updatedBoard = await collection.findOneAndUpdate({ "_id": id }, { $set: { ...board } })
-        console.log(' updatedBoard id:', updatedBoard._id);
         board._id = prevId
         return board
     } catch (err) {

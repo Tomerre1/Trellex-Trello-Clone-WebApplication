@@ -27,13 +27,11 @@ function connectSockets(http, session) {
             console.log('Emitting new board');
             socket.broadcast.emit('new-board-added')
         })
-        socket.on('chat typing', typing => {
-            console.log('Emitting Chat typing msg', typing);
-            // emits to all sockets:
-            // gIo.emit('chat addMsg', msg)
-            // emits only to sockets in the same room
-            socket.broadcast.to(socket.myTopic).emit('chat addTypingMsg', typing)
+        socket.on('board-change', () => {
+            console.log('Emitting board change');
+            socket.broadcast.emit('updated-board')
         })
+     
         socket.on('user-watch', userId => {
             socket.join('watching:' + userId)
         })

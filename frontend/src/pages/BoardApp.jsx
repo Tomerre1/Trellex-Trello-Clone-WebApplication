@@ -31,12 +31,12 @@ class _BoardApp extends Component {
       this.props.loadBoards()
     this.props.loadUsers();
 
-    // socketService.on("board-change",this.loadBoard)
+    socketService.on("updated-board",this.loadBoard)
   };
 
   componentWillUnmount = () => {
     this.props.clearBoard();
-    // socketService.off("board-change")
+    socketService.off("updated-board")
   };
 
   componentDidUpdate = () => {
