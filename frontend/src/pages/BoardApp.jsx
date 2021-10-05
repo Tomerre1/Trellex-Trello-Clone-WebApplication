@@ -6,12 +6,17 @@ import { loadBoard, loadBoards, clearBoard, handleDrag } from "../store/board.ac
 import { loadUsers } from "../store/user.actions";
 import { GroupList } from "../cmps/GroupList";
 import { DragDropContext } from "react-beautiful-dnd";
+import { socketService } from '../services/socket.service'
+
 
 class _BoardApp extends Component {
   state = {
     isMenuOpen: false,
     currentTarget: null,
   }
+
+  componentDidMount = () => {
+  };
 
   toggleMenu = (ev) => {
     this.setState(prevState => ({ ...prevState, isMenuOpen: !this.state.isMenuOpen }))
@@ -28,10 +33,13 @@ class _BoardApp extends Component {
     if (!this.props.boards.length)
       this.props.loadBoards()
     this.props.loadUsers();
+
+    // socketService.on("board-change",this.loadBoard)
   };
 
   componentWillUnmount = () => {
     this.props.clearBoard();
+    // socketService.off("board-change")
   };
 
   componentDidUpdate = () => {

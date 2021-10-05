@@ -6,17 +6,13 @@
         }
     }
 
-    .MuiPickersStaticWrapper-staticWrapperRoot > * {
-        h4,
-        h6 {
+    // .MuiPickersToolbarText-toolbarTxt {
+    //     color: white !important;
+    // }
+
+    .MuiPickersStaticWrapper-staticWrapperRoot{
+        h6,h4 {
             color: white !important;
         }
-        h4 {
-            font-size: 2rem !important;
-        }
-        h6 {
-            font-size: 1rem !important;
-        }
-        background-color: $clr1;
     }
 }
