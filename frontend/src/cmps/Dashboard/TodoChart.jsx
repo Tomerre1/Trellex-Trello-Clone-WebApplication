@@ -30,51 +30,32 @@ export const TodoChart = ({ board }) => {
         }
       });
     });
-    return [[todos, doneTodos], [checklists, doneChecklists]];
+    return [
+      [todos, doneTodos],
+      [checklists, doneChecklists],
+    ];
   };
-  const totalData = getChecklistData()
+  const totalData = getChecklistData();
   const data = {
-    labels: [
-        "Total Checklists",
-        "Completed Checklists",
-    ],
+    labels: ["Total Checklists", "Completed Checklists"],
     datasets: [
       {
         label: "Amount",
         data: [...totalData[1]],
-        backgroundColor: [
-          "#c277e0",
-          "#61bd4f",
-
-        ],
-        borderColor: [
-          "#c277e0",
-          "darkgreen",
-
-        ],
+        backgroundColor: ["#c277e0", "#61bd4f"],
+        borderColor: ["#c277e0", "darkgreen"],
         borderWidth: 1,
       },
-      
     ],
   };
   const data2 = {
-    labels: [
-
-      "Total Todo's",
-      "Completed Todo's",
-    ],
+    labels: ["Total Todo's", "Completed Todo's"],
     datasets: [
       {
         label: "Amount",
         data: [...totalData[0]],
-        backgroundColor: [
-          "#f2d600",
-          "#b3bac5",
-        ],
-        borderColor: [
-          "#f2d600",
-          "#b3bac5",
-        ],
+        backgroundColor: ["#f2d600", "#b3bac5"],
+        borderColor: ["#f2d600", "#b3bac5"],
         borderWidth: 1,
       },
     ],
@@ -91,34 +72,42 @@ export const TodoChart = ({ board }) => {
     },
     responsive: true,
     plugins: {
-        legend: {
-            display: false,
-        },
+      legend: {
+        display: false,
+      },
       title: {
         display: true,
         text: "Checklist Stats:",
-        color:'white',
+        color: "white",
         font: {
-            size: '30',
-            family:'Segoe UI'
-        }
+          size: "30",
+          family: "Segoe UI",
+        },
       },
     },
     scales: {
       x: {
         ticks: {
-          color: "white"
-        }
+          color: "white",
+          font: {
+            family: "Segoe UI",
+            size: 15,
+          },
+        },
       },
       y: {
         ticks: {
-          color: "white"
-        }
-      }
+          color: "white",
+          font: {
+            family: "Segoe UI",
+            size: 15,
+          },
+        },
+      },
     },
     grid: {
-      color: "white"
-    }
+      color: "white",
+    },
   };
   const options2 = {
     indexAxis: "x",
@@ -130,44 +119,51 @@ export const TodoChart = ({ board }) => {
       },
     },
     responsive: true,
-  plugins: {
-        legend: {
-            display: false,
-        },
+    plugins: {
+      legend: {
+        display: false,
+      },
       title: {
         display: true,
         text: "Checklist Stats:",
-        color:'white',
+        color: "white",
         font: {
-            size: '30',
-            family:'Segoe UI'
-        }
+          size: "30",
+          family: "Segoe UI",
+        },
       },
     },
     scales: {
       x: {
         ticks: {
-          color: "white"
-        }
+          color: "white",
+          font: {
+            family: "Segoe UI",
+            size: 15,
+          },
+        },
       },
       y: {
-        
         ticks: {
-          color: "white"
-        }
-      }
+          color: "white",
+          font: {
+            family: "Segoe UI",
+            size: 15,
+          },
+        },
+      },
     },
     grid: {
-      color: "white"
-    }
+      color: "white",
+    },
   };
   return (
     <div className="chart-todo">
       <div className="chart-checklist">
-      <Bar data={data} options={options1} />
+        <Bar data={data} options={options1} />
       </div>
       <div className="chart-todo">
-      <Bar data={data2} options={options2} />
+        <Bar data={data2} options={options2} />
       </div>
     </div>
   );

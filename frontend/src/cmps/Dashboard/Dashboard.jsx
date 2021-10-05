@@ -19,7 +19,7 @@ export function _Dashboard(props) {
             <button onClick={onBack} class="close-btn clean-btn">
                 <Close />
             </button>
-            <div className="dashboard-container flex column">
+            <div className="dashboard-container flex main-layout">
                 <div className="chart">
                     <DoughnutChart board={board} />
                 </div>
