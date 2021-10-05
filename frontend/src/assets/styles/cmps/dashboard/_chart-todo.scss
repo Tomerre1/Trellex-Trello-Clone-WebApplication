@@ -1,12 +1,8 @@
 .chart-todo {
     display:flex;
     flex-direction: column;
-    gap:25px;
-    .chart-checklist {
-        width:400px;
-
-    }
-    .chart-todo {
-        width:400px;
+    gap:90px;
+    .chart-1 {
+        width:350px;
     }
 }

@@ -159,12 +159,10 @@ export const TodoChart = ({ board }) => {
   };
   return (
     <div className="chart-todo">
-      <div className="chart-checklist">
+      <div className="chart-1">
         <Bar data={data} options={options1} />
       </div>
-      <div className="chart-todo">
         <Bar data={data2} options={options2} />
-      </div>
     </div>
   );
 };

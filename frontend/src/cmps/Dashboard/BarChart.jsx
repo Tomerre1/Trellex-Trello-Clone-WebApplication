@@ -69,8 +69,6 @@ export function BarChart({ board }) {
               },
             },
           },
-        // Elements options apply to all of the options unless overridden in a dataset
-        // In this case, we are setting the border of each horizontal bar to be 2px wide
         elements: {
             bar: {
                 borderWidth: 2,
@@ -83,7 +81,7 @@ export function BarChart({ board }) {
                 text: "Tasks by labels:",
                 color: 'white',
                 font: {
-                    size: '40'
+                    size: '30'
                 }
             },
             datalabels: {
