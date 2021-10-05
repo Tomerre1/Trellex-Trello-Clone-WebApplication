@@ -1,46 +1,53 @@
-import {Homepage} from './pages/Homepage'
-import {Workspace} from './pages/Workspace'
-import {BoardApp} from './pages/BoardApp'
-import {TaskDetails} from './pages/TaskDetails'
-import {LoginSignup} from './pages/LoginSignup'
+import { Homepage } from './pages/Homepage'
+import { Workspace } from './pages/Workspace'
+import { BoardApp } from './pages/BoardApp'
+import { TaskDetails } from './pages/TaskDetails'
+import { LoginSignup } from './pages/LoginSignup'
+import { Dashboard } from './cmps/Dashboard'
 
 
 const routes = [
     {
-        path:'/workspace',
+        path: '/workspace',
         component: Workspace,
         label: 'Workspace',
-        isExact:true
+        isExact: true
     },
     {
-        path:'/board/:boardId',
+        path: '/board/:boardId',
         component: BoardApp,
         label: 'Board'
     },
     {
-        path:'/board/:boardId/:listId/:taskId',
+        path: '/board/:boardId/dashboard',
+        component: Dashboard,
+        label: 'Board',
+        isExact: true
+    },
+    {
+        path: '/board/:boardId/:listId/:taskId',
         component: TaskDetails,
         label: 'Task Details'
     },
     {
-        path:'/board/',
+        path: '/board/',
         component: BoardApp,
         label: 'Board',
-        isExact:true
+        isExact: true
     },
     {
-        path:'/login',
+        path: '/login',
         component: LoginSignup,
-        isExact:true
+        isExact: true
     },
     {
-        path:'/',
+        path: '/',
         component: Homepage,
         label: 'Home 🏠',
-        isExact:true
+        isExact: true
 
     },
-    
+
 ]
 
 export default routes;
