@@ -57,6 +57,8 @@ export function DoughnutChart({ board }) {
             legend: {
                 labels: {
                     color: 'white',
+                    boxWidth: 14,
+                    boxHeight:14,
                     // This more specific font property overrides the global property
                     font: {
                         size: 14,
