@@ -79,7 +79,7 @@ export function BarChart({ board }) {
             title: {
                 display: true,
                 text: "Tasks by labels:",
-                color: 'white',
+                color: 'rgba(255, 255, 255, 0.897)',
                 font: {
                     size: '30'
                 }
@@ -93,7 +93,7 @@ export function BarChart({ board }) {
             },
             legend: {
                 labels: {
-                    color: 'white',
+                    color: 'rgba(255, 255, 255, 0.897)',
                     font: {
                         size: 12,
                         family: 'Segoe UI'

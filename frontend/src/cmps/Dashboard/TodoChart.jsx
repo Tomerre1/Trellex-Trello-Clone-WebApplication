@@ -37,7 +37,7 @@ export const TodoChart = ({ board }) => {
   };
   const totalData = getChecklistData();
   const data = {
-    labels: ["Total Checklists", "Completed Checklists"],
+    labels: ["Total", "Completed"],
     datasets: [
       {
         label: "Amount",
@@ -49,7 +49,7 @@ export const TodoChart = ({ board }) => {
     ],
   };
   const data2 = {
-    labels: ["Total Todo's", "Completed Todo's"],
+    labels: ["Total", "Completed"],
     datasets: [
       {
         label: "Amount",
@@ -78,7 +78,7 @@ export const TodoChart = ({ board }) => {
       title: {
         display: true,
         text: "Checklist Stats:",
-        color: "white",
+        color: "rgba(255, 255, 255, 0.897)",
         font: {
           size: "30",
           family: "Segoe UI",
@@ -88,7 +88,7 @@ export const TodoChart = ({ board }) => {
     scales: {
       x: {
         ticks: {
-          color: "white",
+          color: "rgba(255, 255, 255, 0.897)",
           font: {
             family: "Segoe UI",
             size: 15,
@@ -97,7 +97,7 @@ export const TodoChart = ({ board }) => {
       },
       y: {
         ticks: {
-          color: "white",
+          color: "rgba(255, 255, 255, 0.897)",
           font: {
             family: "Segoe UI",
             size: 15,
@@ -106,7 +106,7 @@ export const TodoChart = ({ board }) => {
       },
     },
     grid: {
-      color: "white",
+      color: "rgba(255, 255, 255, 0.897)",
     },
   };
   const options2 = {
@@ -125,10 +125,10 @@ export const TodoChart = ({ board }) => {
       },
       title: {
         display: true,
-        text: "Checklist Stats:",
-        color: "white",
+        text: "Todo Stats:",
+        color: "rgba(255, 255, 255, 0.897)",
         font: {
-          size: "30",
+          size: 30,
           family: "Segoe UI",
         },
       },
@@ -136,7 +136,7 @@ export const TodoChart = ({ board }) => {
     scales: {
       x: {
         ticks: {
-          color: "white",
+          color: "rgba(255, 255, 255, 0.897)",
           font: {
             family: "Segoe UI",
             size: 15,
@@ -145,7 +145,7 @@ export const TodoChart = ({ board }) => {
       },
       y: {
         ticks: {
-          color: "white",
+          color: "rgba(255, 255, 255, 0.897)",
           font: {
             family: "Segoe UI",
             size: 15,
@@ -154,15 +154,15 @@ export const TodoChart = ({ board }) => {
       },
     },
     grid: {
-      color: "white",
+      color: "rgba(255, 255, 255, 0.897)",
     },
   };
   return (
     <div className="chart-todo">
       <div className="chart-1">
-        <Bar data={data} options={options1} />
+        <Bar data={data} options={options1} width={250} height={150}/>
+        <Bar data={data2} options={options2} width={300} height={300} />
       </div>
-        <Bar data={data2} options={options2} />
     </div>
   );
 };

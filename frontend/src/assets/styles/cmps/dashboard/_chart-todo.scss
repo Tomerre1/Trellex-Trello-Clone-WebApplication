@@ -1,8 +1,13 @@
 .chart-todo {
     display:flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap:90px;
+    position:relative;
+    left:8%;
+    // max-height:500px;
     .chart-1 {
-        width:350px;
+        // width:350px;
     }
 }

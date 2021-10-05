@@ -37,12 +37,12 @@ db.getCollection('board').insertMany([
         {
             "id" : "4ttsLi",
             "createdAt" : 1633384906588.0,
-            "byMember" : {
-                "_id" : "615b776c10e9fa751fb059df",
-                "username" : "תומר רון ",
-                "fullname" : "תומר רון רווח",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GjtfVGId1UME4UjmMrLWORW0sN0rNjTwA5fkbV5DQ=s96-c"
-            },
+            "byMember" :    {
+    "username" : "תומר רון ",
+    "password" : "$2b$10$jvI6sNYKDK66KC5JYTp2xuMkAaXJBPO2ZOjRUL8hG9/M0lOg.YBw2",
+    "fullname" : "תומר רון רווח",
+    "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GjtfVGId1UME4UjmMrLWORW0sN0rNjTwA5fkbV5DQ=s96-c"
+},
             "task" : {
                 "id" : "t-S3DLMl",
                 "title" : "sadasasdsad"
@@ -2653,12 +2653,12 @@ db.getCollection('board').insertMany([
             "username" : "archer",
             "_id" : "u107"
         }, 
-        {
+   {
+            "_id" : "615b776c10e9fa751fb059df",
             "username" : "תומר רון ",
-            "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GjtfVGId1UME4UjmMrLWORW0sN0rNjTwA5fkbV5DQ=s96-c",
             "fullname" : "תומר רון רווח",
-            "_id" : "cpwtl"
-        }
+            "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GjtfVGId1UME4UjmMrLWORW0sN0rNjTwA5fkbV5DQ=s96-c"
+        }, 
     ],
     "style" : {
         "bgClr" : null,

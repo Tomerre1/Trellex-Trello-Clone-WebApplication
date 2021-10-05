@@ -48,7 +48,7 @@ export function DoughnutChart({ board }) {
             title: {
                 display: true,
                 text: "Tasks by labels:",
-                color: 'white',
+                color: 'rgba(255, 255, 255, 0.897)',
                 font: {
                     size: '30',
                     family: 'Segoe UI'
@@ -56,7 +56,7 @@ export function DoughnutChart({ board }) {
             },
             legend: {
                 labels: {
-                    color: 'white',
+                    color: 'rgba(255, 255, 255, 0.897)',
                     boxWidth: 14,
                     boxHeight:14,
                     // This more specific font property overrides the global property

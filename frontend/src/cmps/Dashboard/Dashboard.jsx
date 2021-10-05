@@ -38,31 +38,30 @@ export function _Dashboard(props) {
         <Close />
       </button>
       <div className="dashboard-container flex column">
-        <h1 className="dash-title">{board.title} Dashboard</h1>
+        <div className="header flex column justify-center align-center">
+        <h1 className="dash-title">{board.title}</h1>
+        <p className="date">Created at {(new Date(board.createdAt)).toLocaleString()}</p>
+        </div>
         <div className="info-container flex align-center">
-          <div className="info-box flex column align-center">
+          <div className="info-box flex column ">
+            <p className="info-num">{board.members?.length}</p>
             <p>Total Members</p>
-            <p>{board.members?.length}</p>
           </div>
           <div className="info-box flex column align-center">
+            <p className="info-num">{taskDetails.tasks}</p>
             <p>Total Tasks</p>
-            <p>{taskDetails.tasks}</p>
           </div>
           <div className="info-box flex column align-center">
-            <p>Tasks in Archive</p>
-            <p>{taskDetails.archivedTasks}</p>
+            <p className="info-num">{taskDetails.archivedTasks}</p>
+            <p>{`Task${taskDetails.archivedTasks > 1 ? 's':''} in Archive`}</p>
           </div>
           <div className="info-box flex column align-center">
-            <p>Tasks in Archive</p>
-            <p>{taskDetails.archivedTasks}</p>
+            <p className="info-num">{taskDetails.overDueTasks}</p>
+            <p>{`Overdue Task${taskDetails.overDueTasks > 1 ? 's':''}`}</p>
           </div>
           <div className="info-box flex column align-center">
-            <p>Overdue Tasks</p>
-            <p>{taskDetails.overDueTasks}</p>
-          </div>
-          <div className="info-box flex column align-center">
-            <p>Completed Tasks</p>
-            <p>{taskDetails.doneTasks}</p>
+            <p className="info-num">{taskDetails.doneTasks}</p>
+            <p>{`Completed Task${taskDetails.doneTasks > 1 ? 's':''}`}</p>
           </div>
         </div>
         <div className="chart-container flex ">
