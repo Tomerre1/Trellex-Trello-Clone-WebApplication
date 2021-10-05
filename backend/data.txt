@@ -3002,5 +3002,11 @@ db.getCollection('board').insertMany([
         "password" : "$2b$10$nKwYaFnS4EmmbMG4YF6bvO.mr.RIWvYu/eifV.mspSzxmwXLUjgRi",
         "fullname" : "Guest",
         "imgUrl" : "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png"
-    }
+    },
+    {
+    "username" : "תומר רון ",
+    "password" : "$2b$10$jvI6sNYKDK66KC5JYTp2xuMkAaXJBPO2ZOjRUL8hG9/M0lOg.YBw2",
+    "fullname" : "תומר רון רווח",
+    "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GjtfVGId1UME4UjmMrLWORW0sN0rNjTwA5fkbV5DQ=s96-c"
+}
 ])
