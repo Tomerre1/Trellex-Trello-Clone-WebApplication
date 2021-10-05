@@ -3,7 +3,7 @@ import { Workspace } from './pages/Workspace'
 import { BoardApp } from './pages/BoardApp'
 import { TaskDetails } from './pages/TaskDetails'
 import { LoginSignup } from './pages/LoginSignup'
-import { Dashboard } from './cmps/Dashboard'
+import { Dashboard } from './cmps/Dashboard/Dashboard'
 
 
 const routes = [
