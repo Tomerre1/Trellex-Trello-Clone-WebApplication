@@ -54,7 +54,7 @@ export function DoughnutChart({ board }) {
         plugins: {
             title: {
                 display: true,
-                text: "Labels per task:",
+                text: "Tasks by labels:",
                 color: 'white',
                 font: {
                     size: '40'
