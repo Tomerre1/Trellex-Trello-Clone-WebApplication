@@ -51,37 +51,24 @@ export function BarChart({ board }) {
     const options = {
         scales: {
             x: {
-                ticks: {
-                    color: "white"
-                }
+              ticks: {
+                color: "white",
+                font: {
+                  family: "Segoe UI",
+                  size: 15,
+                },
+              },
             },
-            xAxes: [
-                {
-                    categoryPercentage: 0.7,
-                    barPercentage: 0.7,
-                    gridLines: { display: false },
-                    ticks: {
-                        beginAtZero: true,
-                    },
-                }
-            ],
-            yAxes: [
-                {
-                    categoryPercentage: 1.0,
-                    barPercentage: 1.0,
-                    gridLines: {
-                        drawBorder: false,
-                        drawTicks: false
-                    },
-                    ticks: {
-                        display: false,
-                        min: 0,
-                        max: 20,
-                        stepSize: 5
-                    }
-                }
-            ]
-        },
+            y: {
+              ticks: {
+                color: "white",
+                font: {
+                  family: "Segoe UI",
+                  size: 15,
+                },
+              },
+            },
+          },
         // Elements options apply to all of the options unless overridden in a dataset
         // In this case, we are setting the border of each horizontal bar to be 2px wide
         elements: {
@@ -106,51 +93,21 @@ export function BarChart({ board }) {
                 color: "#000000",
                 font: { size: 12 }
             },
+            legend: {
+                labels: {
+                    color: 'white',
+                    font: {
+                        size: 12,
+                        family: 'Segoe UI'
+                    }
+                }
+            }
         },
         maintainAspectRatio: false,
     };
 
-    const options2 = {
-        indexAxis: "x",
-        // Elements options apply to all of the options unless overridden in a dataset
-        // In this case, we are setting the border of each horizontal bar to be 2px wide
-        elements: {
-            bar: {
-                borderWidth: 2,
-            },
-        },
-        responsive: true,
-        plugins: {
-            legend: {
-                display: false,
-            },
-            title: {
-                display: true,
-                text: "Checklist Stats:",
-                color: 'white',
-                font: {
-                    size: '30',
-                    family: 'Segoe UI'
-                }
-            },
-        },
-        scales: {
-            x: {
-                ticks: {
-                    color: "white"
-                }
-            },
-            y: {
-                ticks: {
-                    color: "white"
-                }
-            }
-        },
-        grid: {
-            color: "white"
-        }
-    };
     return (
         <Bar data={data} options={options} width={250} height={450} />
     )
+       
 }
