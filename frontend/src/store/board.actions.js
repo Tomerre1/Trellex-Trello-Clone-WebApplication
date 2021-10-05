@@ -1,4 +1,5 @@
 import { boardService } from '../services/board.service';
+import { socketService } from '../services/socket.service'
 
 export const loadBoards = () => {
     return async (dispatch) => {
@@ -44,7 +45,7 @@ export const saveBoard = (board) => {
                 type: "SAVE_BOARD",
                 board: newBoard,
             });
-
+            socketService.emit("board-change")
         }
         catch (err) {
             console.log('cant save board', err)
