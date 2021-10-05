@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { PopoverMemberPreview } from './PopoverMemberPreview'
 import { Popover } from './Popover'
 import { connect } from 'react-redux'
-import { saveTaskDetails } from '../../store/board.actions'
+import { saveTaskDetails, addActivity } from '../../store/board.actions'
 export class _PopoverMembers extends Component {
     state = {
         search: '',
@@ -34,11 +34,11 @@ export class _PopoverMembers extends Component {
             [...currTaskDetails.members, member]
         currTaskDetails.members = updatedMembers
         this.setState(prevState => ({ ...prevState, selectedMembers: updatedMembers, selectedMembersIds }))
-        // if (member._id === loggedinUser._id) {
-        //     addActivity((selectedMembersIds.includes(member._id)) ? 'remove-self' : 'add-self')
-        // } else {
-        //     addActivity((selectedMembersIds.includes(member._id)) ? 'remove-member' : 'add-member', member.fullname)
-        // }
+        if (member._id === loggedinUser._id) {
+            addActivity(board, currTaskDetails, (selectedMembersIds.includes(member._id)) ? 'remove-self' : 'add-self')
+        } else {
+            addActivity(board, currTaskDetails, (selectedMembersIds.includes(member._id)) ? 'remove-member' : 'add-member', member.fullname)
+        }
         await this.props.saveTaskDetails(board, currGroup, currTaskDetails)
     }
 
@@ -55,7 +55,7 @@ export class _PopoverMembers extends Component {
                     <ul className="clean-list">
                         {board.members.length > 0 &&
                             board.members.filter(member => member.fullname.toLowerCase().includes(search.toLowerCase()))
-                                .map((member,idx) => <PopoverMemberPreview
+                                .map((member, idx) => <PopoverMemberPreview
                                     toggleMemberCheck={this.toggleMemberCheck}
                                     member={member}
                                     selectedMembersIds={currTaskDetails.members?.map(member => member._id) || []}
@@ -80,6 +80,7 @@ function mapStateToProps(state) {
 }
 const mapDispatchToProps = {
     saveTaskDetails,
+    addActivity
 };
 
 export const PopoverMembers = connect(
