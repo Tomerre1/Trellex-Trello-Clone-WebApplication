@@ -32,7 +32,7 @@ export const TodoChart = ({ board }) => {
   };
   console.log({...getChecklistData()});
   const data = {
-    labels: ["Red", "Blue", "Yellow", "Green",],
+    labels: ["Total Todo's", "Completed Todo's", "Yellow", "Green",],
     datasets: [
       {
         label: "# of Votes",
@@ -79,19 +79,10 @@ export const TodoChart = ({ board }) => {
     },
   };
   return (
-    <>
-      <div className="header">
-        <h1 className="title">Horizontal Bar Chart</h1>
-        <div className="links">
-          <a
-            className="btn btn-gh"
-            href="https://github.com/reactchartjs/react-chartjs-2/blob/master/example/src/charts/HorizontalBar.js"
-          >
-            Github Source
-          </a>
-        </div>
-      </div>
+    <div className="chart-todo">
+        <h1 className="title">Todo's Status: </h1>
+       
       <Bar data={data} options={options} />
-    </>
+    </div>
   );
 };
