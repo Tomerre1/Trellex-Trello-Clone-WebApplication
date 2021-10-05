@@ -14,44 +14,47 @@ export const TodoChart = ({ board }) => {
       group.tasks.forEach((task) => {
         if (task.checklists) {
           checklists += task.checklists.length;
-          let inChecklists = checklists.length;
           task.checklists.forEach((checklist) => {
-            let inDoneChecklists = 0;
+            let inTodos = checklist.todos.length;
+            let inDoneTodos = 0;
             todos += checklist.todos.length;
             checklist.todos.forEach((todo) => {
-              if (todo.isDone) doneTodos += 1;
-              inDoneChecklists +=1;
+              if (todo.isDone) {
+                doneTodos += 1;
+                inDoneTodos += 1;
+              }
             });
-            // if(inChecklists)
+            console.log(inTodos, inDoneTodos);
+            if (inTodos === inDoneTodos) doneChecklists += 1;
           });
         }
       });
     });
-    console.log("todos", todos, "donetodos", doneTodos, checklists);
-    return [todos,doneTodos];
+    return [todos, doneTodos, checklists, doneChecklists];
   };
-  console.log({...getChecklistData()});
+  
   const data = {
-    labels: ["Total Todo's", "Completed Todo's", "Yellow", "Green",],
+    labels: [
+      "Total Todo's",
+      "Completed Todo's",
+      "Total Checklists",
+      "Completed Checklists",
+    ],
     datasets: [
       {
-        label: "# of Votes",
+        label: "Amount",
         data: [...getChecklistData()],
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
-          "rgba(54, 162, 235, 0.2)",
+          "#61bd4f",
           "rgba(255, 206, 86, 0.2)",
           "rgba(75, 192, 192, 0.2)",
-          "rgba(153, 102, 255, 0.2)",
-          "rgba(255, 159, 64, 0.2)",
         ],
         borderColor: [
           "rgba(255, 99, 132, 1)",
-          "rgba(54, 162, 235, 1)",
+          "darkgreen",
           "rgba(255, 206, 86, 1)",
           "rgba(75, 192, 192, 1)",
-          "rgba(153, 102, 255, 1)",
-          "rgba(255, 159, 64, 1)",
         ],
         borderWidth: 1,
       },
@@ -74,14 +77,14 @@ export const TodoChart = ({ board }) => {
       },
       title: {
         display: true,
-        text: "Chart.js Horizontal Bar Chart",
+        text: "Checklist Stats:",
+        color:'white',
       },
     },
   };
   return (
     <div className="chart-todo">
-        <h1 className="title">Todo's Status: </h1>
-       
+
       <Bar data={data} options={options} />
     </div>
   );
