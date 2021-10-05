@@ -3,42 +3,73 @@ import { Doughnut } from 'react-chartjs-2';
 
 export function DoughnutChart({ board }) {
 
-    // const toyData = {
-    //     labels: ['150', '199', '255', '400', '800', '1000'],
-    //     datasets: [
-    //         {
-    //             label: '# of Toys',
-    //             data,
-    //             backgroundColor: [
-    //                 'rgba(255, 99, 132, 0.2)',
-    //                 'rgba(54, 162, 235, 0.2)',
-    //                 'rgba(255, 206, 86, 0.2)',
-    //                 'rgba(75, 192, 192, 0.2)',
-    //                 'rgba(153, 102, 255, 0.2)',
-    //                 'rgba(255, 199, 64, 0.2)'
+    const calcTasksByLabel = () => {
+        const labelIds = board.labels.map(label => label.id);
+        const labelCounts = [];
+
+        for (let i = 0; i < labelIds.length; i++) {
+            labelCounts.push(0);
+        }
+
+        for (let i = 0; i < board.groups.length; i++) {
+            for (let j = 0; j < board.groups[i].tasks.length; j++) {
+                for (let k = 0; k < board.groups[i].tasks[j].labelIds.length; k++) {
+                    if (labelIds.includes(board.groups[i].tasks[j].labelIds[k])) {
+                        labelCounts[labelIds.indexOf(board.groups[i].tasks[j].labelIds[k])]++;
+                    }
+                }
+            }
+        }
+        return labelCounts;
+    }
 
 
-    //             ],
-    //             borderColor: [
-    //                 'rgba(255, 99, 132, 1)',
-    //                 'rgba(54, 162, 235, 1)',
-    //                 'rgba(255, 206, 86, 1)',
-    //                 'rgba(75, 192, 192, 1)',
-    //                 'rgba(153, 102, 255, 1)',
-    //                 'rgba(255, 199, 64, 1)'
 
-    //             ],
-    //             borderWidth: 3,
-    //         },
-    //     ],
-    // };
+    const labelsData = {
+        labels: board.labels.map(label => label.title),
+        datasets: [
+            {
+                label: '# of labels',
+                data: calcTasksByLabel(),
+                backgroundColor: [
+                    ...board.labels.map(label => label.color),
+                ],
+                borderColor: [
+                    ...board.labels.map(label => label.color),
+                ],
+                borderWidth: 3,
+            },
+        ],
+    };
+    const options = {
+        indexAxis: "y",
+        // Elements options apply to all of the options unless overridden in a dataset
+        // In this case, we are setting the border of each horizontal bar to be 2px wide
+        elements: {
+            bar: {
+                borderWidth: 2,
+            },
+        },
+        responsive: true,
+        plugins: {
+            title: {
+                display: true,
+                text: "Tasks by labels:",
+                color: 'white',
+                font: {
+                    size: '40'
+                }
+            },
+        },
+        maintainAspectRatio: false,
 
-
+    };
 
     return (
         <Doughnut
+            data={labelsData}
             width={350}
             height={350}
-            options={{ maintainAspectRatio: false }} />
+            options={options} />
     )
 }

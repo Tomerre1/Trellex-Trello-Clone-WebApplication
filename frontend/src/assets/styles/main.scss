@@ -19,6 +19,7 @@
 @import "pages/workspace";
 @import "pages/board-app";
 @import "pages/login-signup";
+@import "cmps/dashboard";
 
 // Components
 @import "cmps/app-header";
@@ -75,4 +76,4 @@
 @import "cmps/todo-preview";
 @import "cmps/todo-add";
 
-@import "cmps/dashboard";
+@import "cmps/dashboard/chart-todo"
