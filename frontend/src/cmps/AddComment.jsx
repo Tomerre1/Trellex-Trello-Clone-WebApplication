@@ -34,7 +34,7 @@ export class AddComment extends Component {
                         <img
                             src={loggedinUser.imgUrl}
                             className="member-img"
-                            alt={"member-img"}
+                            alt={loggedinUser.fullname[0].toUpperCase()}
                         />
                     ) :
                         (

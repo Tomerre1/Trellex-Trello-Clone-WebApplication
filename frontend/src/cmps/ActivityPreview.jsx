@@ -59,7 +59,7 @@ export class ActivityPreview extends Component {
                         <img
                             src={byMember.imgUrl}
                             className="member-img"
-                            alt={"member-img"}
+                            alt={byMember.fullname[0].toUpperCase()}
                         />
                     ) :
                         (
