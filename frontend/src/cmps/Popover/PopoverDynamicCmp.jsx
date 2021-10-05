@@ -10,6 +10,7 @@ import { PopoverMoveCopy } from "./PopoverMoveCopy";
 import { PopoverMenu } from "./PopoverMenu";
 import { PopoverMenuArchive } from "./PopoverMenuArchive";
 import { PopoverMenuBackground } from "./PopoverMenuBackground"
+
 const _PopoverDynamicCmp = (props) => {
     const { type } = props.popover.pos;
     switch (type) {

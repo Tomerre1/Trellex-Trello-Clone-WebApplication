@@ -15,9 +15,6 @@ class _BoardApp extends Component {
     currentTarget: null,
   }
 
-  componentDidMount = () => {
-  };
-
   toggleMenu = (ev) => {
     this.setState(prevState => ({ ...prevState, isMenuOpen: !this.state.isMenuOpen }))
     this.setCurrentTarget(ev)
@@ -27,11 +24,9 @@ class _BoardApp extends Component {
   }
 
   componentDidMount = async () => {
-    if(!this.props.loggedinUser)
-      this.props.onLogin({ username:'guest', password:'1'})
+    if(!this.props.loggedinUser) this.props.onLogin({ username:'guest', password:'1'})
     this.loadBoard();
-    if (!this.props.boards.length)
-      this.props.loadBoards()
+    if (!this.props.boards.length) this.props.loadBoards()
     this.props.loadUsers();
 
     // socketService.on("board-change",this.loadBoard)
@@ -49,13 +44,14 @@ class _BoardApp extends Component {
       this.props.loadUsers();
     }
   };
+
   loadBoard = async () => {
     const id = this.props.match.params.boardId;
     if (!id) this.props.history.push('/workspace')
     if (id) {
       try {
         await this.props.loadBoard(id);
-        if (this.props.board == null)
+        if (!this.props.board)
           this.props.history.push('/workspace')
 
       } catch (err) {
