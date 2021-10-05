@@ -81,7 +81,7 @@ function _BoardHeader(props) {
           </form>
         )}
         <div className="header-btn-container flex">
-          <button className="header-btn ">
+          <button className="header-btn star">
             {board.isFavorite ? (
               <StarBorderIcon className="icon star gold" onClick={onToggleStar} />
             ) : (
