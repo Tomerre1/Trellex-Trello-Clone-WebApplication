@@ -1,11 +1,10 @@
 .dashboard-overlay {
-    z-index: 99999999;
+    z-index: 9;
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.87);
     overflow-y: auto;
     justify-content: center;
-    align-content:center;
     .close-btn {
         position: absolute;
         top: 10px;
@@ -13,17 +12,44 @@
         color: #fff;
     }
     .dashboard-container {
-        max-height: 100vh;
-        justify-content: center;
-        gap:45px;
-        
-        .chart {
-            
-            width:25%;
-            background-color : rgba(7, 27, 39, 0.541);
-            padding: 40px 20px;
-            border-radius:25px;
-            border: 2px solid rgba(255, 255, 255, 0.192);
+        align-items: center;
+        gap:50px;
+       
+        .dash-title { 
+            color:white;
+            z-index:10;
+            font-size:rem(42px);
+            margin-bottom:30px;
         }
+        .info-container {
+            text-align: center;
+        }
+        .info-box {
+            width:100px;
+            justify-content: space-between;
+            align-items: center;
+            
+            p{
+                margin:10px 0;
+                color:white;
+                font-size:1rem
+            }
+        }
+        
+     
+        .chart-container {
+            max-height: 100vh;
+            justify-content: center;
+            gap:45px;
+            flex-wrap: wrap;
+            .chart {
+                min-width:400px;
+                background-color : rgba(7, 27, 39, 0.541);
+                padding: 40px 20px;
+                border-radius:25px;
+                border: 2px solid rgba(255, 255, 255, 0.192);
+            }
+        }
+
     }
 }

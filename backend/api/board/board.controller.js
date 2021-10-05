@@ -37,7 +37,6 @@ async function addBoard(req, res) {
   }
 }
 
-
 // PUT (Update board)
 async function updateBoard(req, res) {
   try {
@@ -50,8 +49,6 @@ async function updateBoard(req, res) {
 
   }
 }
-
-
 
 module.exports = {
   getBoards,
