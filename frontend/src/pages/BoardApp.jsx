@@ -19,22 +19,23 @@ class _BoardApp extends Component {
     this.setState(prevState => ({ ...prevState, isMenuOpen: !this.state.isMenuOpen }))
     this.setCurrentTarget(ev)
   }
+  
   setCurrentTarget = (event) => {
     this.setState(prevState => ({ ...prevState, currentTarget: event }))
   }
 
   componentDidMount = async () => {
-    if(!this.props.loggedinUser) this.props.onLogin({ username:'guest', password:'1'})
+    if(!this.props.user) this.props.onLogin({ username:'guest', password:'1'})
     this.loadBoard();
     if (!this.props.boards.length) this.props.loadBoards()
     this.props.loadUsers();
 
-    // socketService.on("board-change",this.loadBoard)
+    socketService.on("updated-board",this.loadBoard)
   };
 
   componentWillUnmount = () => {
     this.props.clearBoard();
-    // socketService.off("board-change")
+    socketService.off("updated-board")
   };
 
   componentDidUpdate = () => {
@@ -73,6 +74,7 @@ class _BoardApp extends Component {
       type
     );
   };
+
   render() {
     const { board } = this.props;
     if (!board) return <></>;

@@ -14,7 +14,7 @@
     width:fit-content;
     transform:translateX(0px);
     transition:transform .2s ease-in;
-    &:hover {
+    &:hover,&.active {
         background: #000c;
         color: #fff;
         transform: translateX(5px);
