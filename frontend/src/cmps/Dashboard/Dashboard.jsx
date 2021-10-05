@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Close } from '@mui/icons-material';
 
 import { DoughnutChart } from './DoughnutChart'
+import { BarChart } from './BarChart'
 
 export function _Dashboard(props) {
 
@@ -18,6 +19,12 @@ export function _Dashboard(props) {
                     <h1>Label statistics:</h1>
                     <div>
                         {/* <DoughnutChart board={board} /> */}
+                    </div>
+                </div>
+                <div className="chart">
+                    <h1>Tasks per member:</h1>
+                    <div id="myChart">
+                        <BarChart board={props.board} />
                     </div>
                 </div>
             </div>
