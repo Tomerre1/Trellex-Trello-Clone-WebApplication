@@ -3,42 +3,44 @@
         "fullname": "BCD",
         "imgUrl": "https://media-exp1.licdn.com/dms/image/C5603AQG9slGN5Fgxug/profile-displayphoto-shrink_100_100/0/1516840011642?e=1638403200&v=beta&t=wl9AzbWc9FwsXJ0xGECA_7T4xynvi067vuYs5ABVhfo",
         "username": "bcd",
-        "password": "1"
+        "password" : "$2b$10$j2PoCeso0SrVr9Hthq0gr.lND3cQ2tSXcATS3YLEx6dRndflUECgG"
     },
     {
         "fullname": "Tomer",
         "imgUrl": "https://media-exp1.licdn.com/dms/image/C4E03AQFlupY8tXNbnA/profile-displayphoto-shrink_400_400/0/1622442415599?e=1638403200&v=beta&t=DBTF6x9nzwz1G04DZ8hBSG14UyM6BUDX6LM30JL84jg",
         "username": "tomer",
-        "password": "1"
+        "password" : "$2b$10$AQIArrm3MXdILol/JLb/9uPOI9ceAoHq1Pw2C2AIuqrq1FP5qRFum"
     },
     {
         "fullname": "Matan",
         "imgUrl": "https://media-exp1.licdn.com/dms/image/C4D03AQEEFClr3HeA9w/profile-displayphoto-shrink_800_800/0/1575055172966?e=1638403200&v=beta&t=-EaNro-ekUtvBc9ndCkF37SAe2YT6CaaOGe09riqZew",
-        "username": "matan",
-        "password": "1"
+        "username": "matan",   
+        "password" : "$2b$10$CXSFpeR6bMpg/a4Z71hVjeGYYq5tHLX8sO7pG4MeNIu4AYFFZbtTa"
     },
     {
         "fullname": "Dave",
         "imgUrl": "https://m.media-amazon.com/images/M/MV5BMTY5NzY4NzgxNV5BMl5BanBnXkFtZTcwMzcyOTQwOQ@@._V1_UY1200_CR108,0,630,1200_AL_.jpg",
-        "username": "dave",
-        "password": "1"
+        "username": "dave"
     },
     {
         "fullname": "Anna",
         "imgUrl": "https://media-cldnry.s-nbcnews.com/image/upload/t_fit-2000w,f_auto,q_auto:best/newscms/2019_50/3139821/191209-ana_de_armas-mc-1505.JPG",
-        "username": "anna",
-        "password": "1"
+        "username": "anna"
     },
     {
         "fullname": "Rick",
         "imgUrl": "https://pbs.twimg.com/profile_images/1098178907163975681/cuz_rA54_400x400.jpg",
-        "username": "pickleRick",
-        "password": "1"
+        "username": "pickleRick"
     },
     {
         "fullname": "Archer",
         "imgUrl": "https://pbs.twimg.com/profile_images/1194678819602305024/vFMWJwiT.jpg",
-        "username": "archer",
-        "password": "1"
+        "username": "archer"
+    },
+    {
+        "username" : "guest",
+        "password" : "$2b$10$nKwYaFnS4EmmbMG4YF6bvO.mr.RIWvYu/eifV.mspSzxmwXLUjgRi",
+        "fullname" : "Guest",
+        "imgUrl" : "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png"
     }
 ]
