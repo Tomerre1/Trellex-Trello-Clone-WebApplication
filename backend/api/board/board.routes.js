@@ -11,6 +11,6 @@ router.get('/', log, getBoards)
 router.get('/:id', getBoardById)
 router.post('/', addBoard)
 router.put('/', updateBoard)
-// router.delete('/:id', requireAuth, requireAdmin, removeToy)
+// router.delete('/:id', requireAuth, requireAdmin, remove)
 
 module.exports = router
