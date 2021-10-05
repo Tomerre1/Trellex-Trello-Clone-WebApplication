@@ -13,9 +13,11 @@ export function DoughnutChart({ board }) {
 
         for (let i = 0; i < board.groups.length; i++) {
             for (let j = 0; j < board.groups[i].tasks.length; j++) {
-                const index = labelIds.findIndex(labelId =>
-                    board.groups[i].tasks[j].labelIds.includes(labelId))
-                if (index !== -1) labelCounts[index]++;
+                for (let k = 0; k < board.groups[i].tasks[j].labelIds.length; k++) {
+                    if (labelIds.includes(board.groups[i].tasks[j].labelIds[k])) {
+                        labelCounts[labelIds.indexOf(board.groups[i].tasks[j].labelIds[k])]++;
+                    }
+                }
             }
         }
         return labelCounts;
@@ -30,14 +32,37 @@ export function DoughnutChart({ board }) {
                 label: '# of labels',
                 data: calcTasksByLabel(),
                 backgroundColor: [
-                    ...board.labels.map(label =>label.color),
+                    ...board.labels.map(label => label.color),
                 ],
                 borderColor: [
-                    ...board.labels.map(label =>label.color),
+                    ...board.labels.map(label => label.color),
                 ],
                 borderWidth: 3,
             },
         ],
+    };
+    const options = {
+        indexAxis: "y",
+        // Elements options apply to all of the options unless overridden in a dataset
+        // In this case, we are setting the border of each horizontal bar to be 2px wide
+        elements: {
+            bar: {
+                borderWidth: 2,
+            },
+        },
+        responsive: true,
+        plugins: {
+            title: {
+                display: true,
+                text: "Labels per task:",
+                color: 'white',
+                font: {
+                    size: '40'
+                }
+            },
+        },
+        maintainAspectRatio: false,
+
     };
 
     return (
@@ -45,6 +70,6 @@ export function DoughnutChart({ board }) {
             data={labelsData}
             width={350}
             height={350}
-            options={{ maintainAspectRatio: false }} />
+            options={options} />
     )
 }
