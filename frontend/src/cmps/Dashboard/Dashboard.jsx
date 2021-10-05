@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Close } from "@mui/icons-material";
 
+import { BarChart } from './BarChart'
 import { DoughnutChart } from "./DoughnutChart";
 import { TodoChart } from "./TodoChart";
 
@@ -20,17 +21,13 @@ export function _Dashboard(props) {
             </button>
             <div className="dashboard-container flex column">
                 <div className="chart">
-                    <h1>Label statistics:</h1>
-                    <div>
-                        <DoughnutChart board={board} />
-                    </div>
+                    <DoughnutChart board={board} />
                 </div>
                 <div className="chart">
-                    <h1>Label statistics:</h1>
-                    <div>
-                        {/* <DoughnutChart board={board} /> */}
-                        <TodoChart board={{ ...board }} />
-                    </div>
+                    <TodoChart board={{ ...board }} />
+                </div>
+                <div className="chart">
+                    <BarChart board={props.board} />
                 </div>
             </div>
         </section>
