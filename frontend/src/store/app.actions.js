@@ -3,7 +3,6 @@ import { socketService } from '../services/socket.service'
 
 export const setCurrTaskDetails = (currTaskDetails) => {
     return async (dispatch) => {
-        // await boardService.updateTask(board, group, currTaskDetails)
         dispatch({
             type: "SET_TASK_DETAILS",
             currTaskDetails
