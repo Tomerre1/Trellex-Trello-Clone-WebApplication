@@ -48,40 +48,119 @@ export function BarChart({ board }) {
         ],
     };
 
-    const options = {
-        scales: {
-            yAxes: [
-                {
-                    ticks: {
-                        beginAtZero: true,
-                    },
-                },
-            ],
-        },
-        // indexAxis: "y",
-        // Elements options apply to all of the options unless overridden in a dataset
-        // In this case, we are setting the border of each horizontal bar to be 2px wide
-        elements: {
-            bar: {
-                borderWidth: 2,
-            },
-        },
-        responsive: true,
-        plugins: {
-            title: {
-                display: true,
-                text: "Tasks by labels:",
-                color: 'white',
-                font: {
-                    size: '40'
-                }
-            },
-        },
-        maintainAspectRatio: false,
-    };
+    // const options = {
+    //     // scales: {
+    //     //     yAxes: [
+    //     //         {
+    //     //             ticks: {
+    //     //                 beginAtZero: true,
+    //     //             },
+    //     //         },
+    //     //     ],
+    //     // },
+    //     scales: {
+    //         xAxes: [
+    //             {
+    //                 categoryPercentage: 0.7,
+    //                 barPercentage: 0.7,
+    //                 gridLines: { display: false },
+    //                 ticks: {
+    //                     beginAtZero: true,
+    //                 },
+    //             }
+    //         ],
+    //         yAxes: [
+    //             {
+    //                 categoryPercentage: 1.0,
+    //                 barPercentage: 1.0,
+    //                 gridLines: {
+    //                     drawBorder: false,
+    //                     drawTicks: false
+    //                 },
+    //                 ticks: {
+    //                     display: false,
+    //                     min: 0,
+    //                     max: 20,
+    //                     stepSize: 5
+    //                 }
+    //             }
+    //         ]
+    //     },
+    //     // Elements options apply to all of the options unless overridden in a dataset
+    //     // In this case, we are setting the border of each horizontal bar to be 2px wide
+    //     elements: {
+    //         bar: {
+    //             borderWidth: 2,
+    //         },
+    //     },
+    //     responsive: true,
+    //     plugins: {
+    //         title: {
+    //             display: true,
+    //             text: "Tasks by labels:",
+    //             color: 'white',
+    //             font: {
+    //                 size: '40'
+    //             }
+    //         },
+    //         datalabels: {
+    //             anchor: "end",
+    //             align: "end",
+    //             offset: -2,
+    //             color: "#000000",
+    //             font: { size: 12 }
+    //         },
+    //     },
+    //     maintainAspectRatio: false,
+    // };
 
     return (
-        <Bar data={data} options={options}   width={250}
-        height={450}/>
-    )
+        // <Bar data={data} options={options} width={250} height={450} />
+        <Bar
+            data={data}
+            height={200}
+            options={{
+                maintainAspectRatio: false,
+                legend: {
+                    labels: {
+                        boxWidth: 12,
+                        fontSize: 14
+                    }
+                },
+                scales: {
+                    xAxes: [
+                        {
+                            categoryPercentage: 0.7,
+                            barPercentage: 0.7,
+                            gridLines: { display: false }
+                        }
+                    ],
+                    yAxes: [
+                        {
+                            categoryPercentage: 1.0,
+                            barPercentage: 1.0,
+                            gridLines: {
+                                drawBorder: false,
+                                drawTicks: false
+                            },
+                            ticks: {
+                                display: false,
+                                min: 0,
+                                max: 20,
+                                stepSize: 5
+                            }
+                        }
+                    ]
+                },
+                plugins: {
+                    datalabels: {
+                        anchor: "end",
+                        align: "end",
+                        offset: -2,
+                        color: "#000000",
+                        font: { size: 12 }
+                    }
+                }
+            }}
+        />)
 }
