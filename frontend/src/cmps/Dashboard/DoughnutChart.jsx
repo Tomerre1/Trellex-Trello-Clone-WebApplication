@@ -57,7 +57,7 @@ export function DoughnutChart({ board }) {
                 text: "Labels per task:",
                 color: 'white',
                 font: {
-                    size: '40'
+                    size: '30'
                 }
             },
         },
