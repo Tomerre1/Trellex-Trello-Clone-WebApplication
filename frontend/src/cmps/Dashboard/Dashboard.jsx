@@ -21,21 +21,18 @@ export function _Dashboard(props) {
             </button>
             <div className="dashboard-container flex column">
                 <div className="chart">
-                    <h1>Label statistics:</h1>
                     <div>
                         <DoughnutChart board={board} />
                     </div>
                 </div>
                 <div className="chart">
-                    <h1>Label statistics:</h1>
                     <div>
                         {/* <DoughnutChart board={board} /> */}
                         <TodoChart board={{ ...board }} />
                     </div>
                 </div>
                 <div className="chart">
-                    <h1>Tasks per member:</h1>
-                    <div id="myChart">
+                    <div>
                         <BarChart board={props.board} />
                     </div>
                 </div>

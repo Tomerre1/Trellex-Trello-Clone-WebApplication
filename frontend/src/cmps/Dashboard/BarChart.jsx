@@ -58,9 +58,30 @@ export function BarChart({ board }) {
                 },
             ],
         },
+        // indexAxis: "y",
+        // Elements options apply to all of the options unless overridden in a dataset
+        // In this case, we are setting the border of each horizontal bar to be 2px wide
+        elements: {
+            bar: {
+                borderWidth: 2,
+            },
+        },
+        responsive: true,
+        plugins: {
+            title: {
+                display: true,
+                text: "Tasks by labels:",
+                color: 'white',
+                font: {
+                    size: '40'
+                }
+            },
+        },
+        maintainAspectRatio: false,
     };
 
     return (
-        <Bar data={data} options={options} />
+        <Bar data={data} options={options}   width={250}
+        height={450}/>
     )
 }
