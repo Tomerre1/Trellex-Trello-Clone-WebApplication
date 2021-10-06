@@ -53,7 +53,7 @@ export class _PopoverMembers extends Component {
                     <h4>BOARD MEMBERS</h4>
 
                     <ul className="clean-list">
-                        {board.members.length > 0 &&
+                        {board && board.members.length > 0 &&
                             board.members.filter(member => member.fullname.toLowerCase().includes(search.toLowerCase()))
                                 .map((member, idx) => <PopoverMemberPreview
                                     toggleMemberCheck={this.toggleMemberCheck}

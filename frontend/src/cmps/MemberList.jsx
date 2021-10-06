@@ -13,7 +13,6 @@ export function _MemberList(props) {
     isEditMode,
     isInBoardList,
     task,
-    setPopoverMenu
   } = props;
   return (
     <div
@@ -31,7 +30,6 @@ export function _MemberList(props) {
             member={member}
             key={idx}
             task={task}
-            setPopoverMenu={setPopoverMenu}
           />
         ))}
       {isInDetails && (

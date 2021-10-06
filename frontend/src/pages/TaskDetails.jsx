@@ -61,8 +61,9 @@ export class _TaskDetails extends Component {
     const { board, currTaskDetails, loggedinUser, addActivity } = this.props;
     let { members } = currTaskDetails;
     members = members || [];
+    const boardMemberIds = board.members.map(member => member._id)
     if (!loggedinUser) return
-    if (!board.members.includes(loggedinUser.id)) {
+    if (!boardMemberIds.includes(loggedinUser._id)) {
       board.members.push(loggedinUser)
     }
     const selectedMembersIds = members.map((member) => member._id);
