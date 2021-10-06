@@ -49,6 +49,10 @@
             width: 552px;
             margin: 16px 0 0 16px;
         }
+        flex-direction: column-reverse;
+        @include for-narrow-layout {
+            flex-direction: row;
+        }
     }
     &::-webkit-scrollbar {
         height:15px;

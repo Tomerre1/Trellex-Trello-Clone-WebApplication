@@ -42,6 +42,13 @@
         }
         .add-to-card {
             margin-bottom: 24px;
+
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0 10px;
+            @include for-narrow-layout {
+                display:flex;
+            }
         }
     }
 }
