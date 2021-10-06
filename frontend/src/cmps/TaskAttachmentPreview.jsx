@@ -14,7 +14,6 @@ export class _TaskAttachmentPreview extends Component {
     state = {
         isPopover: false,
         isEditPopover: false,
-        currentTarget: null,
         bgUrl: null,
     }
 
@@ -44,10 +43,6 @@ export class _TaskAttachmentPreview extends Component {
         this.setState(prevState => ({ ...prevState, isPopover: false, isEditPopover: !prevState.isEditPopover }))
     }
 
-    setCurrentTarget = (event) => {
-        this.setState(prevState => ({ ...prevState, currentTarget: event }))
-    }
-
     removeAttach = async () => {
         const { board, currTaskDetails, saveTaskDetails, addActivity, attachment } = this.props
         const { currGroup } = this.state
@@ -56,11 +51,6 @@ export class _TaskAttachmentPreview extends Component {
         await saveTaskDetails(board, currGroup, currTaskDetails)
         this.togglePopover()
         addActivity(board, currTaskDetails, 'remove-attachment', attachment.name)
-    }
-
-    onRemoveAttach = (ev) => {
-        this.setCurrentTarget(ev)
-        this.togglePopover()
     }
 
     setCover = async () => {
@@ -81,11 +71,6 @@ export class _TaskAttachmentPreview extends Component {
         await saveTaskDetails(board, currGroup, currTaskDetails)
     }
 
-    onEditAttach = (ev) => {
-        this.setCurrentTarget(ev)
-        this.toggleEditPopover()
-    }
-
     updateAttachment = async (url, urlName) => {
         const { board, saveTaskDetails, currTaskDetails, attachment } = this.props
         const { currGroup } = this.state
@@ -97,8 +82,10 @@ export class _TaskAttachmentPreview extends Component {
 
     render() {
         const { attachment, popover } = this.props
-        const { isPopover, currentTarget, isEditPopover, bgUrl } = this.state
+        const { isPopover, isEditPopover, bgUrl } = this.state
         const { isWeb } = attachment
+        let attachName
+        if (attachment.name.length > 15) attachName = attachment.name.substr(1, 15) + '...'
         return (
             <div className="attachment-preview flex">
                 {(isWeb) ?
@@ -109,7 +96,7 @@ export class _TaskAttachmentPreview extends Component {
                 }
                 <div className="attachment-content">
                     <div className="attachment-details">
-                        <span className="attachment-title">{attachment.name}</span>
+                        <span className="attachment-title">{attachName}</span>
                         <div className="attachment-actions">
                             <span className="attachment-date">Added {utilService.timeSince(attachment.createdAt)}</span>
                             <button className="activity-toggle-btn" onClick={(event) => {
