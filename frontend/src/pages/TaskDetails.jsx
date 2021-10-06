@@ -53,12 +53,11 @@ export class _TaskDetails extends Component {
   setTaksDetailsTitle = (title) => {
     const { currTaskDetails } = this.props;
     currTaskDetails.title = title;
-    // await saveTaskDetails(board, currGroup, currTaskDetails)
     this.updateTaskDetails(currTaskDetails);
   };
 
-  joinTask = () => {
-    const { board, currTaskDetails, loggedinUser, addActivity } = this.props;
+  joinTask = async () => {
+    const { board, currTaskDetails, loggedinUser, addActivity, setCurrTaskDetails } = this.props;
     let { members } = currTaskDetails;
     members = members || [];
     const boardMemberIds = board.members.map(member => member._id)
@@ -72,6 +71,7 @@ export class _TaskDetails extends Component {
     }
     currTaskDetails.members = members;
     addActivity(board, currTaskDetails, 'add-self')
+    setCurrTaskDetails(currTaskDetails)
     this.updateTaskDetails(currTaskDetails);
   };
 

@@ -24,7 +24,7 @@ export function BarChart({ board }) {
         labels: Object.keys(taskPerMember),
         datasets: [
             {
-                label: 'Tasks for member',
+                label: 'Tasks per member',
                 data: Object.values(taskPerMember),
                 backgroundColor: [
                     'rgba(255, 99, 132, 1)',
@@ -78,7 +78,7 @@ export function BarChart({ board }) {
         plugins: {
             title: {
                 display: true,
-                text: "Tasks by labels:",
+                text: "Tasks per member:",
                 color: 'rgba(255, 255, 255, 0.897)',
                 font: {
                     size: '30'

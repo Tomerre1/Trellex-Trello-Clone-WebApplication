@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { connect } from "react-redux";
-import { updateTask,addActivity } from "../../store/board.actions";
+import { updateTask, addActivity } from "../../store/board.actions";
 import {
   setCurrTaskDetails,
   setPosition,
@@ -32,9 +32,18 @@ class _TaskActions extends Component {
   sendToArchive = async () => {
     const newTask = { ...this.props.task };
     newTask.isArchive = true;
+    await this.props.addActivity(
+      this.props.board,
+      this.props.task,
+      "add-to-archive",
+      newTask.title
+    );
     try {
-     await this.props.updateTask(this.props.boardId, this.props.groupId, newTask);
-      this.props.addActivity(this.props.board,this.props.task,'add-to-archive',null)
+      await this.props.updateTask(
+        this.props.boardId,
+        this.props.groupId,
+        newTask
+      );
       this.props.toggleMenu();
     } catch (err) {
       console.log("error when sending to archive", err);
@@ -66,7 +75,9 @@ class _TaskActions extends Component {
         </Link>
         <button
           className={`${
-            (this.state.selectedAction === "labels" && this.props.isPopoverOpen)? "active" : ""
+            this.state.selectedAction === "labels" && this.props.isPopoverOpen
+              ? "active"
+              : ""
           }`}
           data-type="labels"
           onClick={(ev) => {
@@ -79,7 +90,9 @@ class _TaskActions extends Component {
         </button>
         <button
           className={`${
-            (this.state.selectedAction === "members" && this.props.isPopoverOpen)? "active" : ""
+            this.state.selectedAction === "members" && this.props.isPopoverOpen
+              ? "active"
+              : ""
           }`}
           data-type="members"
           onClick={(ev) => {
@@ -91,7 +104,11 @@ class _TaskActions extends Component {
           <p>Change members</p>
         </button>
         <button
-          className={`${(this.state.selectedAction === "cover" && this.props.isPopoverOpen)? "active" : ""}`}
+          className={`${
+            this.state.selectedAction === "cover" && this.props.isPopoverOpen
+              ? "active"
+              : ""
+          }`}
           data-type="cover"
           onClick={(ev) => {
             this.setActiveAction(ev);
@@ -102,7 +119,11 @@ class _TaskActions extends Component {
           <p>Change cover</p>
         </button>
         <button
-          className={`${(this.state.selectedAction === "move" && this.props.isPopoverOpen)? "active" : ""}`}
+          className={`${
+            this.state.selectedAction === "move" && this.props.isPopoverOpen
+              ? "active"
+              : ""
+          }`}
           data-type="move"
           onClick={(ev) => {
             this.setActiveAction(ev);
@@ -113,7 +134,11 @@ class _TaskActions extends Component {
           <p>Move</p>
         </button>
         <button
-          className={`${(this.state.selectedAction === "copy" && this.props.isPopoverOpen) ? "active" : ""}`}
+          className={`${
+            this.state.selectedAction === "copy" && this.props.isPopoverOpen
+              ? "active"
+              : ""
+          }`}
           data-type="copy"
           onClick={(ev) => {
             this.setActiveAction(ev);
@@ -124,7 +149,11 @@ class _TaskActions extends Component {
           <p>Copy</p>
         </button>
         <button
-          className={`${(this.state.selectedAction === "date"&& this.props.isPopoverOpen) ? "" : ""}`}
+          className={`${
+            this.state.selectedAction === "date" && this.props.isPopoverOpen
+              ? ""
+              : ""
+          }`}
           data-type="date"
           onClick={(ev) => {
             this.setActiveAction(ev);
@@ -147,12 +176,12 @@ const mapDispatchToProps = {
   setPosition,
   setCurrTaskDetails,
   togglePopover,
-  addActivity
+  addActivity,
 };
 const mapStateToProps = (state) => {
   return {
     isPopoverOpen: state.appModule.popover.isOpen,
-    board: state.boardModule.board
+    board: state.boardModule.board,
   };
 };
 export const TaskActions = connect(
