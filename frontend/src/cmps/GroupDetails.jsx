@@ -78,7 +78,7 @@ const _GroupDetails = (props) => {
                 ref={provided.innerRef}
                 {...provided.draggableProps}
                 {...provided.dragHandleProps}
-                style={style}
+                style={{...style,maxHeight:window.innerHeight -120 ,}}
                 className="group-details flex column"
               >
                 <div className="group-header flex space-between align-center">
