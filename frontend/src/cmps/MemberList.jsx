@@ -1,7 +1,7 @@
 import AddIcon from "@mui/icons-material/Add";
 import { MemberPreview } from "./MemberPreview";
 import { connect } from "react-redux";
-import { setPosition, togglePopover } from "../store/app.actions";
+import { setPosition, togglePopover,setPopoverMenu } from "../store/app.actions";
 
 export function _MemberList(props) {
   const {
@@ -13,6 +13,7 @@ export function _MemberList(props) {
     isEditMode,
     isInBoardList,
     task,
+    setPopoverMenu
   } = props;
   return (
     <div
@@ -30,6 +31,7 @@ export function _MemberList(props) {
             member={member}
             key={idx}
             task={task}
+            setPopoverMenu={setPopoverMenu}
           />
         ))}
       {isInDetails && (
@@ -58,6 +60,8 @@ function mapStateToProps(state) {
 const mapDispatchToProps = {
   setPosition,
   togglePopover,
+  setPopoverMenu,
+  
 };
 
 export const MemberList = connect(

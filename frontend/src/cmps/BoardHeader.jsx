@@ -118,7 +118,7 @@ function _BoardHeader(props) {
               type: "BOARD_SHOW_MENU",
             });
             props.setPopoverMenu(true);
-            props.togglePopover();
+            props.togglePopover(false);
           }}
         >
           <MoreHorizOutlinedIcon className="icon" /> Show Menu

@@ -6,6 +6,7 @@ import {
   setCurrTaskDetails,
   setPosition,
   togglePopover,
+  setPopoverMenu
 } from "../store/app.actions";
 
 function _MemberPreview({
@@ -18,6 +19,7 @@ function _MemberPreview({
   setPosition,
   setCurrTaskDetails,
   togglePopover,
+  setPopoverMenu,
   onLogout,
 }) {
   const [isPopOpen, togglePopOpen] = useState(false);
@@ -40,6 +42,8 @@ function _MemberPreview({
               pos: { pageX: ev.pageX, pageY: ev.pageY },
               type: "MEMBERS",
             });
+            setPopoverMenu(false)
+
             togglePopover();
             return;
           }
@@ -77,5 +81,6 @@ const mapDispatchToProps = {
   setCurrTaskDetails,
   setPosition,
   togglePopover,
+  setPopoverMenu
 };
 export const MemberPreview = connect(null, mapDispatchToProps)(_MemberPreview);
