@@ -79,7 +79,7 @@ const _GroupDetails = (props) => {
                 {...provided.draggableProps}
                 {...provided.dragHandleProps}
                 // style={style}
-                style={{...style,maxHeight:window.innerHeight - 130}}
+                style={{...style,maxHeight:document.clientHeight - 130}}
 
                 className="group-details flex column"
               >

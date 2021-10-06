@@ -2,10 +2,10 @@
     display:flex;
     // gap: 8px;
     position:relative;
-    margin-top:42px;
     padding:8px;
+    padding-top:50px;
     overflow-x: auto;
-    min-height:90vh;
+    // min-height:90vh;
     overflow-y: hidden;
   
     &::-webkit-scrollbar {

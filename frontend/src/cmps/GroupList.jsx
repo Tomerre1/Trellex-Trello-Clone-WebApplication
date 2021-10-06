@@ -6,13 +6,6 @@ export function GroupList(props) {
   const { groups, boardId, boardLabels } = props;
 
   return (
-    // <Droppable droppableId={groupId}>
-    // {(provided)=>(
-    // <div {...provided.droppableProps} ref={provided.innerRef}>
-    // {provided.placeholder}
-    //     </div>
-    //       )}
-    //     </Droppable>
     <>
       <Droppable
         droppableId={"all-groups"}
@@ -24,8 +17,7 @@ export function GroupList(props) {
           className="group-list"
             {...provided.droppableProps}
             ref={provided.innerRef}
-            style={{maxHeight:window.innerHeight - 130}}
-
+            style={{maxHeight:document.clientHeight - 130,height:document.clientHeight  - 130}}
           >
             {groups.map((group, idx) => (
               <div key={group.id}>
