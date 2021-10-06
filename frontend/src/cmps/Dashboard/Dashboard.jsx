@@ -23,7 +23,7 @@ export function _Dashboard(props) {
         group?.tasks.forEach((task) => {
           task.isArchive ? (archivedTasks += 1) : (tasks += 1);
           doneTasks += task?.isDone ? 1 : 0;
-          overDueTasks += task?.dueDate < Date.now() && task.isDone ? 1 : 0;
+          overDueTasks += task?.dueDate < Date.now() && !task.isDone ? 1 : 0;
         });
       });
     }
@@ -53,15 +53,15 @@ export function _Dashboard(props) {
           </div>
           <div className="info-box flex column align-center">
             <p className="info-num">{taskDetails.archivedTasks}</p>
-            <p>{`Task${taskDetails.archivedTasks > 1 ? 's':''} in Archive`}</p>
+            <p>{`Task${taskDetails.archivedTasks !== 1 ? 's':''} in Archive`}</p>
           </div>
           <div className="info-box flex column align-center">
             <p className="info-num">{taskDetails.overDueTasks}</p>
-            <p>{`Overdue Task${taskDetails.overDueTasks > 1 ? 's':''}`}</p>
+            <p>{`Overdue Task${taskDetails.overDueTasks !== 1 ? 's':''}`}</p>
           </div>
           <div className="info-box flex column align-center">
             <p className="info-num">{taskDetails.doneTasks}</p>
-            <p>{`Completed Task${taskDetails.doneTasks > 1 ? 's':''}`}</p>
+            <p>{`Completed Task${taskDetails.doneTasks !== 1 ? 's':''}`}</p>
           </div>
         </div>
         <div className="chart-container flex ">
