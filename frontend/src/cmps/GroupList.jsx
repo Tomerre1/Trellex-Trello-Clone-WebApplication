@@ -21,7 +21,7 @@ export function GroupList(props) {
       >
         {(provided) => (
           <div
-            className="group-list"  style={{height:window.innerHeight -120,maxHeight:window.innerHeight -120}}
+            className="group-list"
             {...provided.droppableProps}
             ref={provided.innerRef}
           >

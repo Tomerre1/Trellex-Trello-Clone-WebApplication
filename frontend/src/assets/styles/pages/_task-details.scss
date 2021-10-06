@@ -46,11 +46,8 @@
     }
     .task-details-body {
         .task-details-main {
-            // width: 552px;
+            width: 552px;
             margin: 16px 0 0 16px;
-            @include for-narrow-layout {
-                width: 552px;
-            }
         }
         flex-direction: column-reverse;
         @include for-narrow-layout {

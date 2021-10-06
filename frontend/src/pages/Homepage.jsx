@@ -14,7 +14,7 @@ export class Homepage extends Component {
               From high rises to the home office, the way your team works is
               unique—accomplish it all with Trellex.
             </p>
-            <button onClick={() =>this.props.history.push('/workspace')}>Check us out!</button>
+            <button onClick={() =>this.props.history.push('/workspace')}>Get Started!</button>
           </div>
           <div >
               <img src={heroImg} className="hero-img"/>

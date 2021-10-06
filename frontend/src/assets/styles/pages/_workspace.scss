@@ -1,16 +1,13 @@
 .workspace-page {
-    align-items: center;
-    @include for-workspace-layout {
-        align-items: unset;
-    }
-    margin-top: 100px;
-    h1 {
-        margin-bottom: 25px;
+    margin-top:100px;
+    h1{
+        margin-bottom:25px;
+    
     }
     svg {
-        padding: 5px;
+        padding:5px;
     }
-    .board-lists {
-        gap: 20px;
+    .board-lists { 
+        gap:20px;
     }
 }

@@ -12,12 +12,6 @@
     }
 }
 
-@mixin for-workspace-layout {
-    @media (min-width: $workspace-breakpoint + 40) {
-        @content;
-    }
-}
-
 @mixin for-normal-layout {
     @media (min-width: $narrow-breakpoint + 40) {
         @content;

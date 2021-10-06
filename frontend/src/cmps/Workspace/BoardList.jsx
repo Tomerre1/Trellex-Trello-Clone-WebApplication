@@ -5,7 +5,7 @@ export function BoardList(props) {
   const { boards, onAdd, onRemove } = props;
 
   return (
-    <div className="board-list" style={{maxHeight:window.innerHeight -123}}>
+    <div className="board-list">
       {boards &&
         boards.map((board, idx) => (
           <BoardPreview
