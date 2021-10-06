@@ -43,6 +43,7 @@ export class _TaskDetails extends Component {
   updateTaskDetails = async (currTask) => {
     const { currGroup } = this.state;
     const { board, saveTaskDetails } = this.props;
+    setCurrTaskDetails(currTask)
     await saveTaskDetails(board, currGroup, currTask);
   };
 
@@ -58,7 +59,7 @@ export class _TaskDetails extends Component {
   };
 
   joinTask = () => {
-    const { board, currTaskDetails, loggedinUser, addActivity } = this.props;
+    const { board, currTaskDetails, loggedinUser, addActivity, setCurrTaskDetails } = this.props;
     let { members } = currTaskDetails;
     members = members || [];
     const boardMemberIds = board.members.map(member => member._id)
