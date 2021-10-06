@@ -33,9 +33,8 @@ class _TaskActions extends Component {
     const newTask = { ...this.props.task };
     newTask.isArchive = true;
     try {
+     await this.props.updateTask(this.props.boardId, this.props.groupId, newTask);
       this.props.addActivity(this.props.board,this.props.task,'add-to-archive',null)
-
-      this.props.updateTask(this.props.boardId, this.props.groupId, newTask);
       this.props.toggleMenu();
     } catch (err) {
       console.log("error when sending to archive", err);
