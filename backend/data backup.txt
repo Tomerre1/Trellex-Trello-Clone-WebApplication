@@ -423,10 +423,10 @@ db.getCollection('board').insertMany([
                     "description" : "",
                     "createdAt" : 1633439319522.0,
                     "byMember" : {
-                        "_id" : "615cbcd49ec77d59ecd482a6",
-                        "username" : "Barak ",
+                        "_id" : "u101",
+                        "username" : "BCD",
                         "fullname" : "Barak Sidi",
-                        "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
+                        "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
                     },
                     "style" : {},
                     "labelIds" : [ 
@@ -442,10 +442,10 @@ db.getCollection('board').insertMany([
                     "description" : "",
                     "createdAt" : 1633439344920.0,
                     "byMember" : {
-                        "_id" : "615cbcd49ec77d59ecd482a6",
-                        "username" : "Barak ",
+                        "_id" : "u101",
+                        "username" : "BCD",
                         "fullname" : "Barak Sidi",
-                        "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
+                        "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
                     },
                     "style" : {},
                     "labelIds" : [],
@@ -458,10 +458,10 @@ db.getCollection('board').insertMany([
                     "description" : "",
                     "createdAt" : 1633439387255.0,
                     "byMember" : {
-                        "_id" : "615cbcd49ec77d59ecd482a6",
-                        "username" : "Barak ",
+                        "_id" : "u101",
+                        "username" : "BCD",
                         "fullname" : "Barak Sidi",
-                        "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
+                        "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
                     },
                     "style" : {},
                     "labelIds" : [ 
@@ -477,10 +477,10 @@ db.getCollection('board').insertMany([
                     "description" : "Responsive design for Trellex app",
                     "createdAt" : 1633457124428.0,
                     "byMember" : {
-                        "_id" : "615cbcd49ec77d59ecd482a6",
-                        "username" : "Barak ",
+                        "_id" : "u101",
+                        "username" : "BCD",
                         "fullname" : "Barak Sidi",
-                        "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
+                        "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
                     },
                     "style" : {
                         "coverMode" : "header",
@@ -497,7 +497,7 @@ db.getCollection('board').insertMany([
                             "username" : "תומר רון ",
                             "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GjtfVGId1UME4UjmMrLWORW0sN0rNjTwA5fkbV5DQ=s96-c",
                             "fullname" : "תומר רון רווח",
-                            "_id" : "615cb86f056f57195973bc69"
+                            "_id" : "cpwtl"
                         }
                     ],
                     "attachments" : [ 
@@ -540,10 +540,10 @@ db.getCollection('board').insertMany([
                     "description" : "Logo for trellex ",
                     "createdAt" : 1633457147363.0,
                     "byMember" : {
-                        "_id" : "615cbcd49ec77d59ecd482a6",
-                        "username" : "Barak ",
+                        "_id" : "u101",
+                        "username" : "BCD",
                         "fullname" : "Barak Sidi",
-                        "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
+                        "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
                     },
                     "style" : {
                         "coverMode" : "header",
@@ -557,13 +557,13 @@ db.getCollection('board').insertMany([
                             "fullname" : "Matan",
                             "imgUrl" : "https://media-exp1.licdn.com/dms/image/C4D03AQEEFClr3HeA9w/profile-displayphoto-shrink_800_800/0/1575055172966?e=1638403200&v=beta&t=-EaNro-ekUtvBc9ndCkF37SAe2YT6CaaOGe09riqZew",
                             "username" : "matan",
-                            "_id" : "615cb86f056f57195973bc63"
+                            "_id" : "u103"
                         }, 
                         {
-                            "_id" : "615cbcd49ec77d59ecd482a6",
-                            "username" : "Barak ",
-                            "fullname" : "Barak Sidi",
-                            "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
+                            "fullname" : "BCD",
+                            "imgUrl" : "https://media-exp1.licdn.com/dms/image/C5603AQG9slGN5Fgxug/profile-displayphoto-shrink_100_100/0/1516840011642?e=1638403200&v=beta&t=wl9AzbWc9FwsXJ0xGECA_7T4xynvi067vuYs5ABVhfo",
+                            "username" : "bcd",
+                            "_id" : "u101"
                         }
                     ],
                     "dueDate" : 1635014100000.0,
@@ -578,11 +578,10 @@ db.getCollection('board').insertMany([
                                 "password" : "112240656108611012452",
                                 "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GjtfVGId1UME4UjmMrLWORW0sN0rNjTwA5fkbV5DQ=s96-c",
                                 "fullname" : "תומר רון רווח",
-                                "_id" : "615cb86f056f57195973bc69"
+                                "_id" : "cpwtl"
                             }
                         }
-                    ],
-                    "isDone" : false
+                    ]
                 }, 
                 {
                     "id" : "t-BVm2Wg",
@@ -590,10 +589,10 @@ db.getCollection('board').insertMany([
                     "description" : "Add progress bar to checklist",
                     "createdAt" : 1633457169143.0,
                     "byMember" : {
-                        "_id" : "615cbcd49ec77d59ecd482a6",
-                        "username" : "Barak ",
+                        "_id" : "u101",
+                        "username" : "BCD",
                         "fullname" : "Barak Sidi",
-                        "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
+                        "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
                     },
                     "style" : {
                         "bgUrl" : "https://res.cloudinary.com/dusakec3z/image/upload/v1633459706/qljaylccxgnp8qo5vyt4.jpg",
@@ -612,47 +611,15 @@ db.getCollection('board').insertMany([
                             "password" : "112240656108611012452",
                             "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GjtfVGId1UME4UjmMrLWORW0sN0rNjTwA5fkbV5DQ=s96-c",
                             "fullname" : "תומר רון רווח",
-                            "_id" : "615cb86f056f57195973bc69"
+                            "_id" : "cpwtl"
                         }, 
                         {
                             "fullname" : "Matan",
                             "imgUrl" : "https://media-exp1.licdn.com/dms/image/C4D03AQEEFClr3HeA9w/profile-displayphoto-shrink_800_800/0/1575055172966?e=1638403200&v=beta&t=-EaNro-ekUtvBc9ndCkF37SAe2YT6CaaOGe09riqZew",
                             "username" : "matan",
-                            "_id" : "615cb86f056f57195973bc63"
+                            "_id" : "u103"
                         }
                     ]
-                }, 
-                {
-                    "id" : "t-M0w5R9",
-                    "title" : "No one needs this task",
-                    "description" : "",
-                    "createdAt" : 1633476140918.0,
-                    "byMember" : {
-                        "_id" : "615cbcd49ec77d59ecd482a6",
-                        "username" : "Barak ",
-                        "fullname" : "Barak Sidi",
-                        "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
-                    },
-                    "style" : {},
-                    "labelIds" : [],
-                    "orgIdx" : 6,
-                    "isArchive" : true
-                }, 
-                {
-                    "id" : "t-y7aPDz",
-                    "title" : "asdadsf sdfdf sfs as asdfsdf",
-                    "description" : "",
-                    "createdAt" : 1633476419709.0,
-                    "byMember" : {
-                        "_id" : "615cbcd49ec77d59ecd482a6",
-                        "username" : "Barak ",
-                        "fullname" : "Barak Sidi",
-                        "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
-                    },
-                    "style" : {},
-                    "labelIds" : [],
-                    "orgIdx" : 7,
-                    "isArchive" : true
                 }
             ],
             "style" : {
@@ -670,10 +637,10 @@ db.getCollection('board').insertMany([
                     "description" : "",
                     "createdAt" : 1633457301465.0,
                     "byMember" : {
-                        "_id" : "615cbcd49ec77d59ecd482a6",
-                        "username" : "Barak ",
+                        "_id" : "u101",
+                        "username" : "BCD",
                         "fullname" : "Barak Sidi",
-                        "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
+                        "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
                     },
                     "style" : {
                         "bgUrl" : "https://res.cloudinary.com/dusakec3z/image/upload/v1633458681/ytz1fqcxw4p13k7n8ykj.jpg"
@@ -691,85 +658,7 @@ db.getCollection('board').insertMany([
                             "url" : "https://res.cloudinary.com/dusakec3z/image/upload/v1633458681/ytz1fqcxw4p13k7n8ykj.jpg"
                         }
                     ],
-                    "orgIdx" : 0,
-                    "members" : [ 
-                        {
-                            "_id" : "615cb86f056f57195973bc68",
-                            "username" : "guest",
-                            "fullname" : "Guest",
-                            "imgUrl" : "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png"
-                        }
-                    ]
-                }, 
-                {
-                    "id" : "t-qrlbwD",
-                    "title" : "Popover dynamic cmp",
-                    "description" : "Dynamic popover cmp that will used in each popover cmp",
-                    "createdAt" : 1633457448947.0,
-                    "byMember" : {
-                        "_id" : "615cbcd49ec77d59ecd482a6",
-                        "username" : "Barak ",
-                        "fullname" : "Barak Sidi",
-                        "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
-                    },
-                    "style" : {
-                        "coverMode" : "header",
-                        "bgColor" : "#ff9e1a"
-                    },
-                    "labelIds" : [ 
-                        "Wg7a1W", 
-                        "6UZlzw", 
-                        "yp1H2V"
-                    ],
-                    "checklists" : [ 
-                        {
-                            "id" : "NsteRj",
-                            "title" : "Popover cmps",
-                            "todos" : [ 
-                                {
-                                    "title" : "Popover labels",
-                                    "id" : "25TWLj",
-                                    "isDone" : true
-                                }, 
-                                {
-                                    "title" : "Popover members ",
-                                    "id" : "L10tKd",
-                                    "isDone" : true
-                                }, 
-                                {
-                                    "title" : "Popover attachment",
-                                    "id" : "QPXtCC",
-                                    "isDone" : true
-                                }, 
-                                {
-                                    "title" : "Popover date",
-                                    "id" : "B0XZo7",
-                                    "isDone" : false
-                                }, 
-                                {
-                                    "title" : "Popover cover",
-                                    "id" : "DEDspB",
-                                    "isDone" : false
-                                }, 
-                                {
-                                    "title" : "Popover show menu",
-                                    "id" : "sOaL7u",
-                                    "isDone" : false
-                                }
-                            ]
-                        }
-                    ],
-                    "members" : [ 
-                        {
-                            "username" : "תומר רון ",
-                            "password" : "112240656108611012452",
-                            "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GjtfVGId1UME4UjmMrLWORW0sN0rNjTwA5fkbV5DQ=s96-c",
-                            "fullname" : "תומר רון רווח",
-                            "_id" : "615cb86f056f57195973bc69"
-                        }
-                    ],
-                    "orgIdx" : 1,
-                    "isArchive" : false
+                    "orgIdx" : 0
                 }, 
                 {
                     "id" : "t-E40elh",
@@ -777,10 +666,10 @@ db.getCollection('board').insertMany([
                     "description" : "Meet with asi from coding academy and get design options for trellex\n",
                     "createdAt" : 1633457322761.0,
                     "byMember" : {
-                        "_id" : "615cbcd49ec77d59ecd482a6",
-                        "username" : "Barak ",
+                        "_id" : "u101",
+                        "username" : "BCD",
                         "fullname" : "Barak Sidi",
-                        "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
+                        "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
                     },
                     "style" : {
                         "coverMode" : "header",
@@ -799,28 +688,10 @@ db.getCollection('board').insertMany([
                             "password" : "112240656108611012452",
                             "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GjtfVGId1UME4UjmMrLWORW0sN0rNjTwA5fkbV5DQ=s96-c",
                             "fullname" : "תומר רון רווח",
-                            "_id" : "615cb86f056f57195973bc69"
+                            "_id" : "cpwtl"
                         }
                     ],
-                    "dueDate" : 1633373640000.0,
-                    "orgIdx" : 2,
-                    "isArchive" : false
-                }, 
-                {
-                    "id" : "t-djH5hM",
-                    "title" : "unnecessary ",
-                    "description" : "",
-                    "createdAt" : 1633474896358.0,
-                    "byMember" : {
-                        "_id" : "615cbcd49ec77d59ecd482a6",
-                        "username" : "Barak ",
-                        "fullname" : "Barak Sidi",
-                        "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
-                    },
-                    "style" : {},
-                    "labelIds" : [],
-                    "orgIdx" : 3,
-                    "isArchive" : true
+                    "dueDate" : 1633373640000.0
                 }
             ],
             "style" : {
@@ -838,10 +709,10 @@ db.getCollection('board').insertMany([
                     "description" : "Login and signup with react-google-login libary",
                     "createdAt" : 1633457187717.0,
                     "byMember" : {
-                        "_id" : "615cbcd49ec77d59ecd482a6",
-                        "username" : "Barak ",
+                        "_id" : "u101",
+                        "username" : "BCD",
                         "fullname" : "Barak Sidi",
-                        "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
+                        "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
                     },
                     "style" : {
                         "bgUrl" : "https://res.cloudinary.com/dusakec3z/image/upload/v1633459071/hf6iuipeb0c30bu5gr2j.jpg",
@@ -898,10 +769,10 @@ db.getCollection('board').insertMany([
                     ],
                     "members" : [ 
                         {
-                            "_id" : "615cbcd49ec77d59ecd482a6",
-                            "username" : "Barak ",
-                            "fullname" : "Barak Sidi",
-                            "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
+                            "fullname" : "BCD",
+                            "imgUrl" : "https://media-exp1.licdn.com/dms/image/C5603AQG9slGN5Fgxug/profile-displayphoto-shrink_100_100/0/1516840011642?e=1638403200&v=beta&t=wl9AzbWc9FwsXJ0xGECA_7T4xynvi067vuYs5ABVhfo",
+                            "username" : "bcd",
+                            "_id" : "u101"
                         }, 
                         {
                             "fullname" : "Archer",
@@ -918,10 +789,10 @@ db.getCollection('board').insertMany([
                     "description" : "Create dashboard analysis by labels , checklist and tasks",
                     "createdAt" : 1633457199924.0,
                     "byMember" : {
-                        "_id" : "615cbcd49ec77d59ecd482a6",
-                        "username" : "Barak ",
+                        "_id" : "u101",
+                        "username" : "BCD",
                         "fullname" : "Barak Sidi",
-                        "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
+                        "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
                     },
                     "style" : {
                         "bgUrl" : "https://res.cloudinary.com/dusakec3z/image/upload/v1633459384/cvbq4ooxabz6gs5zt9xv.jpg",
@@ -935,16 +806,16 @@ db.getCollection('board').insertMany([
                     ],
                     "members" : [ 
                         {
-                            "_id" : "615cbcd49ec77d59ecd482a6",
-                            "username" : "Barak ",
-                            "fullname" : "Barak Sidi",
-                            "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
+                            "fullname" : "BCD",
+                            "imgUrl" : "https://media-exp1.licdn.com/dms/image/C5603AQG9slGN5Fgxug/profile-displayphoto-shrink_100_100/0/1516840011642?e=1638403200&v=beta&t=wl9AzbWc9FwsXJ0xGECA_7T4xynvi067vuYs5ABVhfo",
+                            "username" : "bcd",
+                            "_id" : "u101"
                         }, 
                         {
                             "username" : "תומר רון ",
                             "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GjtfVGId1UME4UjmMrLWORW0sN0rNjTwA5fkbV5DQ=s96-c",
                             "fullname" : "תומר רון רווח",
-                            "_id" : "615cb86f056f57195973bc69"
+                            "_id" : "cpwtl"
                         }
                     ],
                     "dueDate" : 1633632240000.0,
@@ -983,10 +854,10 @@ db.getCollection('board').insertMany([
                     "description" : "Show menu cmp as side bar ",
                     "createdAt" : 1633457260549.0,
                     "byMember" : {
-                        "_id" : "615cbcd49ec77d59ecd482a6",
-                        "username" : "Barak ",
+                        "_id" : "u101",
+                        "username" : "BCD",
                         "fullname" : "Barak Sidi",
-                        "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
+                        "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
                     },
                     "style" : {
                         "coverMode" : "header",
@@ -1002,19 +873,19 @@ db.getCollection('board').insertMany([
                             "username" : "תומר רון ",
                             "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GjtfVGId1UME4UjmMrLWORW0sN0rNjTwA5fkbV5DQ=s96-c",
                             "fullname" : "תומר רון רווח",
-                            "_id" : "615cb86f056f57195973bc69"
+                            "_id" : "cpwtl"
                         }, 
                         {
                             "fullname" : "Matan",
                             "imgUrl" : "https://media-exp1.licdn.com/dms/image/C4D03AQEEFClr3HeA9w/profile-displayphoto-shrink_800_800/0/1575055172966?e=1638403200&v=beta&t=-EaNro-ekUtvBc9ndCkF37SAe2YT6CaaOGe09riqZew",
                             "username" : "matan",
-                            "_id" : "615cb86f056f57195973bc63"
+                            "_id" : "u103"
                         }, 
                         {
-                            "_id" : "615cbcd49ec77d59ecd482a6",
-                            "username" : "Barak ",
-                            "fullname" : "Barak Sidi",
-                            "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
+                            "fullname" : "BCD",
+                            "imgUrl" : "https://media-exp1.licdn.com/dms/image/C5603AQG9slGN5Fgxug/profile-displayphoto-shrink_100_100/0/1516840011642?e=1638403200&v=beta&t=wl9AzbWc9FwsXJ0xGECA_7T4xynvi067vuYs5ABVhfo",
+                            "username" : "bcd",
+                            "_id" : "u101"
                         }, 
                         {
                             "fullname" : "Archer",
@@ -1046,9 +917,7 @@ db.getCollection('board').insertMany([
                                 }
                             ]
                         }
-                    ],
-                    "orgIdx" : 2,
-                    "isArchive" : false
+                    ]
                 }, 
                 {
                     "id" : "t-FSNMtM",
@@ -1056,10 +925,10 @@ db.getCollection('board').insertMany([
                     "description" : "",
                     "createdAt" : 1633462097188.0,
                     "byMember" : {
-                        "_id" : "615cbcd49ec77d59ecd482a6",
-                        "username" : "Barak ",
+                        "_id" : "u101",
+                        "username" : "BCD",
                         "fullname" : "Barak Sidi",
-                        "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
+                        "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
                     },
                     "style" : {
                         "coverMode" : "header",
@@ -1073,10 +942,10 @@ db.getCollection('board').insertMany([
                     ],
                     "members" : [ 
                         {
-                            "_id" : "615cbcd49ec77d59ecd482a6",
-                            "username" : "Barak ",
-                            "fullname" : "Barak Sidi",
-                            "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
+                            "fullname" : "BCD",
+                            "imgUrl" : "https://media-exp1.licdn.com/dms/image/C5603AQG9slGN5Fgxug/profile-displayphoto-shrink_100_100/0/1516840011642?e=1638403200&v=beta&t=wl9AzbWc9FwsXJ0xGECA_7T4xynvi067vuYs5ABVhfo",
+                            "username" : "bcd",
+                            "_id" : "u101"
                         }
                     ],
                     "dueDate" : 1633548480000.0
@@ -1097,10 +966,10 @@ db.getCollection('board').insertMany([
                     "description" : "Backend crashed while filtering tasks",
                     "createdAt" : 1633457367323.0,
                     "byMember" : {
-                        "_id" : "615cbcd49ec77d59ecd482a6",
-                        "username" : "Barak ",
+                        "_id" : "u101",
+                        "username" : "BCD",
                         "fullname" : "Barak Sidi",
-                        "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
+                        "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
                     },
                     "style" : {
                         "coverMode" : "header",
@@ -1115,16 +984,16 @@ db.getCollection('board').insertMany([
                     ],
                     "members" : [ 
                         {
-                            "_id" : "615cbcd49ec77d59ecd482a6",
-                            "username" : "Barak ",
-                            "fullname" : "Barak Sidi",
-                            "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
+                            "fullname" : "BCD",
+                            "imgUrl" : "https://media-exp1.licdn.com/dms/image/C5603AQG9slGN5Fgxug/profile-displayphoto-shrink_100_100/0/1516840011642?e=1638403200&v=beta&t=wl9AzbWc9FwsXJ0xGECA_7T4xynvi067vuYs5ABVhfo",
+                            "username" : "bcd",
+                            "_id" : "u101"
                         }, 
                         {
                             "fullname" : "Matan",
                             "imgUrl" : "https://media-exp1.licdn.com/dms/image/C4D03AQEEFClr3HeA9w/profile-displayphoto-shrink_800_800/0/1575055172966?e=1638403200&v=beta&t=-EaNro-ekUtvBc9ndCkF37SAe2YT6CaaOGe09riqZew",
                             "username" : "matan",
-                            "_id" : "615cb86f056f57195973bc63"
+                            "_id" : "u103"
                         }, 
                         {
                             "fullname" : "Archer",
@@ -1136,7 +1005,7 @@ db.getCollection('board').insertMany([
                             "username" : "תומר רון ",
                             "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GjtfVGId1UME4UjmMrLWORW0sN0rNjTwA5fkbV5DQ=s96-c",
                             "fullname" : "תומר רון רווח",
-                            "_id" : "615cb86f056f57195973bc69"
+                            "_id" : "cpwtl"
                         }
                     ],
                     "dueDate" : 1633633560000.0
@@ -1147,10 +1016,10 @@ db.getCollection('board').insertMany([
                     "description" : "Test alogrithem that test performance of trellex.",
                     "createdAt" : 1633457411115.0,
                     "byMember" : {
-                        "_id" : "615cbcd49ec77d59ecd482a6",
-                        "username" : "Barak ",
+                        "_id" : "u101",
+                        "username" : "BCD",
                         "fullname" : "Barak Sidi",
-                        "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
+                        "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
                     },
                     "style" : {
                         "bgUrl" : "https://res.cloudinary.com/dusakec3z/image/upload/v1633460737/jhqmd3ygdwahosatxvxw.png",
@@ -1167,13 +1036,13 @@ db.getCollection('board').insertMany([
                             "password" : "112240656108611012452",
                             "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GjtfVGId1UME4UjmMrLWORW0sN0rNjTwA5fkbV5DQ=s96-c",
                             "fullname" : "תומר רון רווח",
-                            "_id" : "615cb86f056f57195973bc69"
+                            "_id" : "cpwtl"
                         }, 
                         {
                             "fullname" : "Matan",
                             "imgUrl" : "https://media-exp1.licdn.com/dms/image/C4D03AQEEFClr3HeA9w/profile-displayphoto-shrink_800_800/0/1575055172966?e=1638403200&v=beta&t=-EaNro-ekUtvBc9ndCkF37SAe2YT6CaaOGe09riqZew",
                             "username" : "matan",
-                            "_id" : "615cb86f056f57195973bc63"
+                            "_id" : "u103"
                         }
                     ],
                     "dueDate" : 1633805760000.0,
@@ -1190,15 +1059,83 @@ db.getCollection('board').insertMany([
             "title" : "Done",
             "tasks" : [ 
                 {
+                    "id" : "t-qrlbwD",
+                    "title" : "Popover dynamic cmp",
+                    "description" : "Dynamic popover cmp that will used in each popover cmp",
+                    "createdAt" : 1633457448947.0,
+                    "byMember" : {
+                        "_id" : "u101",
+                        "username" : "BCD",
+                        "fullname" : "Barak Sidi",
+                        "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                    },
+                    "style" : {
+                        "coverMode" : "header",
+                        "bgColor" : "#ff9e1a"
+                    },
+                    "labelIds" : [ 
+                        "Wg7a1W", 
+                        "6UZlzw", 
+                        "yp1H2V"
+                    ],
+                    "checklists" : [ 
+                        {
+                            "id" : "NsteRj",
+                            "title" : "Popover cmps",
+                            "todos" : [ 
+                                {
+                                    "title" : "Popover labels",
+                                    "id" : "25TWLj",
+                                    "isDone" : true
+                                }, 
+                                {
+                                    "title" : "Popover members ",
+                                    "id" : "L10tKd",
+                                    "isDone" : true
+                                }, 
+                                {
+                                    "title" : "Popover attachment",
+                                    "id" : "QPXtCC",
+                                    "isDone" : true
+                                }, 
+                                {
+                                    "title" : "Popover date",
+                                    "id" : "B0XZo7",
+                                    "isDone" : false
+                                }, 
+                                {
+                                    "title" : "Popover cover",
+                                    "id" : "DEDspB",
+                                    "isDone" : false
+                                }, 
+                                {
+                                    "title" : "Popover show menu",
+                                    "id" : "sOaL7u",
+                                    "isDone" : false
+                                }
+                            ]
+                        }
+                    ],
+                    "members" : [ 
+                        {
+                            "username" : "תומר רון ",
+                            "password" : "112240656108611012452",
+                            "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GjtfVGId1UME4UjmMrLWORW0sN0rNjTwA5fkbV5DQ=s96-c",
+                            "fullname" : "תומר רון רווח",
+                            "_id" : "cpwtl"
+                        }
+                    ]
+                }, 
+                {
                     "id" : "t-TnkC8S",
                     "title" : "Add board , groups and tasks",
                     "description" : "Add new board , groups and tasks.",
                     "createdAt" : 1633457467307.0,
                     "byMember" : {
-                        "_id" : "615cbcd49ec77d59ecd482a6",
-                        "username" : "Barak ",
+                        "_id" : "u101",
+                        "username" : "BCD",
                         "fullname" : "Barak Sidi",
-                        "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
+                        "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
                     },
                     "style" : {
                         "coverMode" : "header",
@@ -1209,16 +1146,16 @@ db.getCollection('board').insertMany([
                     ],
                     "members" : [ 
                         {
-                            "_id" : "615cbcd49ec77d59ecd482a6",
-                            "username" : "Barak ",
-                            "fullname" : "Barak Sidi",
-                            "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
+                            "fullname" : "BCD",
+                            "imgUrl" : "https://media-exp1.licdn.com/dms/image/C5603AQG9slGN5Fgxug/profile-displayphoto-shrink_100_100/0/1516840011642?e=1638403200&v=beta&t=wl9AzbWc9FwsXJ0xGECA_7T4xynvi067vuYs5ABVhfo",
+                            "username" : "bcd",
+                            "_id" : "u101"
                         }, 
                         {
                             "fullname" : "Matan",
                             "imgUrl" : "https://media-exp1.licdn.com/dms/image/C4D03AQEEFClr3HeA9w/profile-displayphoto-shrink_800_800/0/1575055172966?e=1638403200&v=beta&t=-EaNro-ekUtvBc9ndCkF37SAe2YT6CaaOGe09riqZew",
                             "username" : "matan",
-                            "_id" : "615cb86f056f57195973bc63"
+                            "_id" : "u103"
                         }
                     ],
                     "checklists" : [ 
@@ -1245,8 +1182,7 @@ db.getCollection('board').insertMany([
                         }
                     ],
                     "dueDate" : 1633633200000.0,
-                    "isDone" : true,
-                    "orgIdx" : 0
+                    "isDone" : true
                 }, 
                 {
                     "id" : "t-L2mbh8",
@@ -1254,10 +1190,10 @@ db.getCollection('board').insertMany([
                     "description" : "Add move , copy and drag&drop tasks and groups between boards and groups.",
                     "createdAt" : 1633457514593.0,
                     "byMember" : {
-                        "_id" : "615cbcd49ec77d59ecd482a6",
-                        "username" : "Barak ",
+                        "_id" : "u101",
+                        "username" : "BCD",
                         "fullname" : "Barak Sidi",
-                        "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
+                        "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
                     },
                     "style" : {
                         "coverMode" : "header",
@@ -1269,22 +1205,23 @@ db.getCollection('board').insertMany([
                     ],
                     "members" : [ 
                         {
-                            "_id" : "615cbcd49ec77d59ecd482a6",
-                            "username" : "Barak ",
-                            "fullname" : "Barak Sidi",
-                            "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
+                            "username" : "תומר רון ",
+                            "password" : "112240656108611012452",
+                            "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GjtfVGId1UME4UjmMrLWORW0sN0rNjTwA5fkbV5DQ=s96-c",
+                            "fullname" : "תומר רון רווח",
+                            "_id" : "cpwtl"
                         }, 
                         {
                             "fullname" : "Matan",
                             "imgUrl" : "https://media-exp1.licdn.com/dms/image/C4D03AQEEFClr3HeA9w/profile-displayphoto-shrink_800_800/0/1575055172966?e=1638403200&v=beta&t=-EaNro-ekUtvBc9ndCkF37SAe2YT6CaaOGe09riqZew",
                             "username" : "matan",
-                            "_id" : "615cb86f056f57195973bc63"
+                            "_id" : "u103"
                         }, 
                         {
-                            "_id" : "615cb86f056f57195973bc69",
-                            "username" : "תומר רון ",
-                            "fullname" : "תומר רון רווח",
-                            "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GjtfVGId1UME4UjmMrLWORW0sN0rNjTwA5fkbV5DQ=s96-c"
+                            "fullname" : "BCD",
+                            "imgUrl" : "https://media-exp1.licdn.com/dms/image/C5603AQG9slGN5Fgxug/profile-displayphoto-shrink_100_100/0/1516840011642?e=1638403200&v=beta&t=wl9AzbWc9FwsXJ0xGECA_7T4xynvi067vuYs5ABVhfo",
+                            "username" : "bcd",
+                            "_id" : "u101"
                         }
                     ],
                     "checklists" : [ 
@@ -1311,8 +1248,7 @@ db.getCollection('board').insertMany([
                         }
                     ],
                     "dueDate" : 1633546980000.0,
-                    "isDone" : true,
-                    "orgIdx" : 1
+                    "isDone" : true
                 }, 
                 {
                     "id" : "t-AuGSge",
@@ -1320,10 +1256,10 @@ db.getCollection('board').insertMany([
                     "description" : "Card details cmp with actions",
                     "createdAt" : 1633457524920.0,
                     "byMember" : {
-                        "_id" : "615cbcd49ec77d59ecd482a6",
-                        "username" : "Barak ",
+                        "_id" : "u101",
+                        "username" : "BCD",
                         "fullname" : "Barak Sidi",
-                        "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
+                        "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
                     },
                     "style" : {
                         "coverMode" : "full",
@@ -1336,13 +1272,13 @@ db.getCollection('board').insertMany([
                             "password" : "112240656108611012452",
                             "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GjtfVGId1UME4UjmMrLWORW0sN0rNjTwA5fkbV5DQ=s96-c",
                             "fullname" : "תומר רון רווח",
-                            "_id" : "615cb86f056f57195973bc69"
+                            "_id" : "cpwtl"
                         }, 
                         {
                             "fullname" : "Matan",
                             "imgUrl" : "https://media-exp1.licdn.com/dms/image/C4D03AQEEFClr3HeA9w/profile-displayphoto-shrink_800_800/0/1575055172966?e=1638403200&v=beta&t=-EaNro-ekUtvBc9ndCkF37SAe2YT6CaaOGe09riqZew",
                             "username" : "matan",
-                            "_id" : "615cb86f056f57195973bc63"
+                            "_id" : "u103"
                         }
                     ]
                 }, 
@@ -1352,10 +1288,10 @@ db.getCollection('board').insertMany([
                     "description" : "Board header component with logo and trello design",
                     "createdAt" : 1633457539048.0,
                     "byMember" : {
-                        "_id" : "615cbcd49ec77d59ecd482a6",
-                        "username" : "Barak ",
+                        "_id" : "u101",
+                        "username" : "BCD",
                         "fullname" : "Barak Sidi",
-                        "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
+                        "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
                     },
                     "style" : {
                         "coverMode" : "header",
@@ -1369,10 +1305,10 @@ db.getCollection('board').insertMany([
                     ],
                     "members" : [ 
                         {
-                            "_id" : "615cbcd49ec77d59ecd482a6",
-                            "username" : "Barak ",
-                            "fullname" : "Barak Sidi",
-                            "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
+                            "fullname" : "BCD",
+                            "imgUrl" : "https://media-exp1.licdn.com/dms/image/C5603AQG9slGN5Fgxug/profile-displayphoto-shrink_100_100/0/1516840011642?e=1638403200&v=beta&t=wl9AzbWc9FwsXJ0xGECA_7T4xynvi067vuYs5ABVhfo",
+                            "username" : "bcd",
+                            "_id" : "u101"
                         }
                     ],
                     "dueDate" : 1633460760000.0,
@@ -1394,10 +1330,10 @@ db.getCollection('board').insertMany([
                     "description" : "",
                     "createdAt" : 1633461693244.0,
                     "byMember" : {
-                        "_id" : "615cbcd49ec77d59ecd482a6",
-                        "username" : "Barak ",
+                        "_id" : "u101",
+                        "username" : "BCD",
                         "fullname" : "Barak Sidi",
-                        "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
+                        "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
                     },
                     "style" : {
                         "coverMode" : "header",
@@ -1416,7 +1352,7 @@ db.getCollection('board').insertMany([
                             "password" : "112240656108611012452",
                             "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GjtfVGId1UME4UjmMrLWORW0sN0rNjTwA5fkbV5DQ=s96-c",
                             "fullname" : "תומר רון רווח",
-                            "_id" : "615cb86f056f57195973bc69"
+                            "_id" : "cpwtl"
                         }, 
                         {
                             "fullname" : "Archer",
@@ -1428,13 +1364,13 @@ db.getCollection('board').insertMany([
                             "fullname" : "Matan",
                             "imgUrl" : "https://media-exp1.licdn.com/dms/image/C4D03AQEEFClr3HeA9w/profile-displayphoto-shrink_800_800/0/1575055172966?e=1638403200&v=beta&t=-EaNro-ekUtvBc9ndCkF37SAe2YT6CaaOGe09riqZew",
                             "username" : "matan",
-                            "_id" : "615cb86f056f57195973bc63"
+                            "_id" : "u103"
                         }, 
                         {
-                            "_id" : "615cbcd49ec77d59ecd482a6",
-                            "username" : "Barak ",
-                            "fullname" : "Barak Sidi",
-                            "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
+                            "fullname" : "BCD",
+                            "imgUrl" : "https://media-exp1.licdn.com/dms/image/C5603AQG9slGN5Fgxug/profile-displayphoto-shrink_100_100/0/1516840011642?e=1638403200&v=beta&t=wl9AzbWc9FwsXJ0xGECA_7T4xynvi067vuYs5ABVhfo",
+                            "username" : "bcd",
+                            "_id" : "u101"
                         }
                     ]
                 }, 
@@ -1444,10 +1380,10 @@ db.getCollection('board').insertMany([
                     "description" : "",
                     "createdAt" : 1633461635986.0,
                     "byMember" : {
-                        "_id" : "615cbcd49ec77d59ecd482a6",
-                        "username" : "Barak ",
+                        "_id" : "u101",
+                        "username" : "BCD",
                         "fullname" : "Barak Sidi",
-                        "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
+                        "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
                     },
                     "style" : {
                         "coverMode" : "header",
@@ -1465,19 +1401,19 @@ db.getCollection('board').insertMany([
                             "password" : "112240656108611012452",
                             "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GjtfVGId1UME4UjmMrLWORW0sN0rNjTwA5fkbV5DQ=s96-c",
                             "fullname" : "תומר רון רווח",
-                            "_id" : "615cb86f056f57195973bc69"
+                            "_id" : "cpwtl"
                         }, 
                         {
                             "fullname" : "Matan",
                             "imgUrl" : "https://media-exp1.licdn.com/dms/image/C4D03AQEEFClr3HeA9w/profile-displayphoto-shrink_800_800/0/1575055172966?e=1638403200&v=beta&t=-EaNro-ekUtvBc9ndCkF37SAe2YT6CaaOGe09riqZew",
                             "username" : "matan",
-                            "_id" : "615cb86f056f57195973bc63"
+                            "_id" : "u103"
                         }, 
                         {
-                            "_id" : "615cbcd49ec77d59ecd482a6",
-                            "username" : "Barak ",
-                            "fullname" : "Barak Sidi",
-                            "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
+                            "fullname" : "BCD",
+                            "imgUrl" : "https://media-exp1.licdn.com/dms/image/C5603AQG9slGN5Fgxug/profile-displayphoto-shrink_100_100/0/1516840011642?e=1638403200&v=beta&t=wl9AzbWc9FwsXJ0xGECA_7T4xynvi067vuYs5ABVhfo",
+                            "username" : "bcd",
+                            "_id" : "u101"
                         }
                     ],
                     "dueDate" : 1633548180000.0,
@@ -1489,10 +1425,10 @@ db.getCollection('board').insertMany([
                     "description" : "",
                     "createdAt" : 1633461654962.0,
                     "byMember" : {
-                        "_id" : "615cbcd49ec77d59ecd482a6",
-                        "username" : "Barak ",
+                        "_id" : "u101",
+                        "username" : "BCD",
                         "fullname" : "Barak Sidi",
-                        "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
+                        "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
                     },
                     "style" : {
                         "coverMode" : "header",
@@ -1511,19 +1447,19 @@ db.getCollection('board').insertMany([
                             "password" : "112240656108611012452",
                             "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GjtfVGId1UME4UjmMrLWORW0sN0rNjTwA5fkbV5DQ=s96-c",
                             "fullname" : "תומר רון רווח",
-                            "_id" : "615cb86f056f57195973bc69"
+                            "_id" : "cpwtl"
                         }, 
                         {
                             "fullname" : "Matan",
                             "imgUrl" : "https://media-exp1.licdn.com/dms/image/C4D03AQEEFClr3HeA9w/profile-displayphoto-shrink_800_800/0/1575055172966?e=1638403200&v=beta&t=-EaNro-ekUtvBc9ndCkF37SAe2YT6CaaOGe09riqZew",
                             "username" : "matan",
-                            "_id" : "615cb86f056f57195973bc63"
+                            "_id" : "u103"
                         }, 
                         {
-                            "_id" : "615cbcd49ec77d59ecd482a6",
-                            "username" : "Barak ",
-                            "fullname" : "Barak Sidi",
-                            "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
+                            "fullname" : "BCD",
+                            "imgUrl" : "https://media-exp1.licdn.com/dms/image/C5603AQG9slGN5Fgxug/profile-displayphoto-shrink_100_100/0/1516840011642?e=1638403200&v=beta&t=wl9AzbWc9FwsXJ0xGECA_7T4xynvi067vuYs5ABVhfo",
+                            "username" : "bcd",
+                            "_id" : "u101"
                         }, 
                         {
                             "fullname" : "Archer",
@@ -1540,10 +1476,10 @@ db.getCollection('board').insertMany([
                     "description" : "Done!!!!!!!!! ✅ ",
                     "createdAt" : 1633461678395.0,
                     "byMember" : {
-                        "_id" : "615cbcd49ec77d59ecd482a6",
-                        "username" : "Barak ",
+                        "_id" : "u101",
+                        "username" : "BCD",
                         "fullname" : "Barak Sidi",
-                        "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
+                        "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
                     },
                     "style" : {
                         "bgUrl" : "https://res.cloudinary.com/dusakec3z/image/upload/v1633461996/blkwmkqltvsbredmme8e.jpg",
@@ -1562,13 +1498,13 @@ db.getCollection('board').insertMany([
                             "password" : "112240656108611012452",
                             "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GjtfVGId1UME4UjmMrLWORW0sN0rNjTwA5fkbV5DQ=s96-c",
                             "fullname" : "תומר רון רווח",
-                            "_id" : "615cb86f056f57195973bc69"
+                            "_id" : "cpwtl"
                         }, 
                         {
-                            "_id" : "615cbcd49ec77d59ecd482a6",
-                            "username" : "Barak ",
-                            "fullname" : "Barak Sidi",
-                            "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
+                            "fullname" : "BCD",
+                            "imgUrl" : "https://media-exp1.licdn.com/dms/image/C5603AQG9slGN5Fgxug/profile-displayphoto-shrink_100_100/0/1516840011642?e=1638403200&v=beta&t=wl9AzbWc9FwsXJ0xGECA_7T4xynvi067vuYs5ABVhfo",
+                            "username" : "bcd",
+                            "_id" : "u101"
                         }, 
                         {
                             "fullname" : "Archer",
@@ -1580,7 +1516,7 @@ db.getCollection('board').insertMany([
                             "fullname" : "Matan",
                             "imgUrl" : "https://media-exp1.licdn.com/dms/image/C4D03AQEEFClr3HeA9w/profile-displayphoto-shrink_800_800/0/1575055172966?e=1638403200&v=beta&t=-EaNro-ekUtvBc9ndCkF37SAe2YT6CaaOGe09riqZew",
                             "username" : "matan",
-                            "_id" : "615cb86f056f57195973bc63"
+                            "_id" : "u103"
                         }
                     ],
                     "orgIdx" : 2
@@ -1626,718 +1562,6 @@ db.getCollection('board').insertMany([
         }
     ],
     "activities" : [ 
-        {
-            "id" : "CK4ZEt",
-            "createdAt" : 1633506113253.0,
-            "byMember" : {
-                "_id" : "615cb86f056f57195973bc68",
-                "username" : "guest",
-                "fullname" : "Guest",
-                "imgUrl" : "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png"
-            },
-            "task" : {
-                "id" : "t-yNrQ2u",
-                "title" : "Show menu with change background for board and archive"
-            },
-            "type" : "add-to-archive",
-            "txt" : null
-        }, 
-        {
-            "id" : "E1nV29",
-            "createdAt" : 1633477145092.0,
-            "byMember" : {
-                "_id" : "615cbcd49ec77d59ecd482a6",
-                "username" : "Barak ",
-                "fullname" : "Barak Sidi",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
-            },
-            "task" : {
-                "id" : "t-y7aPDz",
-                "title" : "asdadsf sdfdf sfs as asdfsdf"
-            },
-            "type" : "add-to-archive",
-            "txt" : null
-        }, 
-        {
-            "id" : "bfVx4y",
-            "createdAt" : 1633477135047.0,
-            "byMember" : {
-                "_id" : "615cbcd49ec77d59ecd482a6",
-                "username" : "Barak ",
-                "fullname" : "Barak Sidi",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
-            },
-            "task" : {
-                "id" : "t-y7aPDz",
-                "title" : "asdadsf sdfdf sfs asd asdasd"
-            },
-            "type" : "change-title",
-            "txt" : "sdadsf sdfdf..."
-        }, 
-        {
-            "id" : "lS7Rda",
-            "createdAt" : 1633477125954.0,
-            "byMember" : {
-                "_id" : "615cbcd49ec77d59ecd482a6",
-                "username" : "Barak ",
-                "fullname" : "Barak Sidi",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
-            },
-            "task" : {
-                "id" : "t-y7aPDz",
-                "title" : "asdadsf sdfdf sfs as asdfdf"
-            },
-            "type" : "change-title",
-            "txt" : "asdadsf sdfdf sfs as"
-        }, 
-        {
-            "id" : "RBcf1I",
-            "createdAt" : 1633477115067.0,
-            "byMember" : {
-                "_id" : "615cbcd49ec77d59ecd482a6",
-                "username" : "Barak ",
-                "fullname" : "Barak Sidi",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
-            },
-            "task" : {
-                "id" : "t-y7aPDz",
-                "title" : "asdadsf sdfdf sfs as asdasdasd"
-            },
-            "type" : "change-title",
-            "txt" : "sdadsf sdfdf..."
-        }, 
-        {
-            "id" : "eXSpD9",
-            "createdAt" : 1633477105308.0,
-            "byMember" : {
-                "_id" : "615cbcd49ec77d59ecd482a6",
-                "username" : "Barak ",
-                "fullname" : "Barak Sidi",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
-            },
-            "task" : {
-                "id" : "t-y7aPDz",
-                "title" : "asdadsf sdfdf sfs as asdfdf"
-            },
-            "type" : "change-title",
-            "txt" : "sdadsf sdfdf..."
-        }, 
-        {
-            "id" : "SxCsTf",
-            "createdAt" : 1633477075259.0,
-            "byMember" : {
-                "_id" : "615cbcd49ec77d59ecd482a6",
-                "username" : "Barak ",
-                "fullname" : "Barak Sidi",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
-            },
-            "task" : {
-                "id" : "t-y7aPDz",
-                "title" : "asdadsf sdfdf sfs as"
-            },
-            "type" : "add-to-archive",
-            "txt" : null
-        }, 
-        {
-            "id" : "0pW2XT",
-            "createdAt" : 1633476969605.0,
-            "byMember" : {
-                "_id" : "615cbcd49ec77d59ecd482a6",
-                "username" : "Barak ",
-                "fullname" : "Barak Sidi",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
-            },
-            "task" : {
-                "id" : "t-y7aPDz",
-                "title" : "asdadsf sdfdf sfs as asdasdasd"
-            },
-            "type" : "change-title",
-            "txt" : "sdadsf sdfdf..."
-        }, 
-        {
-            "id" : "KuOES7",
-            "createdAt" : 1633476951771.0,
-            "byMember" : {
-                "_id" : "615cbcd49ec77d59ecd482a6",
-                "username" : "Barak ",
-                "fullname" : "Barak Sidi",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
-            },
-            "task" : {
-                "id" : "t-y7aPDz",
-                "title" : "asdadsf sdfdf sfs as"
-            },
-            "type" : "change-title",
-            "txt" : "asdadsf s"
-        }, 
-        {
-            "id" : "g8oxPv",
-            "createdAt" : 1633476946151.0,
-            "byMember" : {
-                "_id" : "615cbcd49ec77d59ecd482a6",
-                "username" : "Barak ",
-                "fullname" : "Barak Sidi",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
-            },
-            "task" : {
-                "id" : "t-y7aPDz",
-                "title" : "asdadsf sdfdf sfs as"
-            },
-            "type" : "change-title",
-            "txt" : "sdadsf sdfdf..."
-        }, 
-        {
-            "id" : "nIUjYe",
-            "createdAt" : 1633476875892.0,
-            "byMember" : {
-                "_id" : "615cbcd49ec77d59ecd482a6",
-                "username" : "Barak ",
-                "fullname" : "Barak Sidi",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
-            },
-            "task" : {
-                "id" : "t-y7aPDz",
-                "title" : "asdadsf sdfdf sfs asdfasdf asdfas fasdf"
-            },
-            "type" : "change-title",
-            "txt" : "sdadsf sdfdf..."
-        }, 
-        {
-            "id" : "mXzyEm",
-            "createdAt" : 1633476870584.0,
-            "byMember" : {
-                "_id" : "615cbcd49ec77d59ecd482a6",
-                "username" : "Barak ",
-                "fullname" : "Barak Sidi",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
-            },
-            "task" : {
-                "id" : "t-y7aPDz",
-                "title" : "asdadsf sdfdf sfs asdfasdf asdfas fasdf"
-            },
-            "type" : "change-title",
-            "txt" : "sdadsf sdfdf..."
-        }, 
-        {
-            "id" : "RBa6Ax",
-            "createdAt" : 1633476838399.0,
-            "byMember" : {
-                "_id" : "615cbcd49ec77d59ecd482a6",
-                "username" : "Barak ",
-                "fullname" : "Barak Sidi",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
-            },
-            "task" : {
-                "id" : "t-y7aPDz",
-                "title" : "asdadsf sdfdf sfs asdfasdf"
-            },
-            "type" : "change-title",
-            "txt" : "sdadsf sdfdf..."
-        }, 
-        {
-            "id" : "TougHc",
-            "createdAt" : 1633476796965.0,
-            "byMember" : {
-                "_id" : "615cbcd49ec77d59ecd482a6",
-                "username" : "Barak ",
-                "fullname" : "Barak Sidi",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
-            },
-            "task" : {
-                "id" : "t-y7aPDz",
-                "title" : "asdadsf sdfdf sfs asdfasdf"
-            },
-            "type" : "change-title",
-            "txt" : "sdadsf sdfdf..."
-        }, 
-        {
-            "id" : "6wqaK8",
-            "createdAt" : 1633476796963.0,
-            "byMember" : {
-                "_id" : "615cbcd49ec77d59ecd482a6",
-                "username" : "Barak ",
-                "fullname" : "Barak Sidi",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
-            },
-            "task" : {
-                "id" : "t-y7aPDz",
-                "title" : "asdadsf sdfdf sfs asdfasdf"
-            },
-            "type" : "change-title",
-            "txt" : "sdadsf sdfdf..."
-        }, 
-        {
-            "id" : "KV8H5i",
-            "createdAt" : 1633476789400.0,
-            "byMember" : {
-                "_id" : "615cbcd49ec77d59ecd482a6",
-                "username" : "Barak ",
-                "fullname" : "Barak Sidi",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
-            },
-            "task" : {
-                "id" : "t-y7aPDz",
-                "title" : "asdadsf sdfdf sfs asdfasdf"
-            },
-            "type" : "change-title",
-            "txt" : "archive"
-        }, 
-        {
-            "id" : "7clqeT",
-            "createdAt" : 1633476789398.0,
-            "byMember" : {
-                "_id" : "615cbcd49ec77d59ecd482a6",
-                "username" : "Barak ",
-                "fullname" : "Barak Sidi",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
-            },
-            "task" : {
-                "id" : "t-y7aPDz",
-                "title" : "asdadsf sdfdf sfs asdfasdf"
-            },
-            "type" : "change-title",
-            "txt" : "archive"
-        }, 
-        {
-            "id" : "a0mGqb",
-            "createdAt" : 1633476779184.0,
-            "byMember" : {
-                "_id" : "615cbcd49ec77d59ecd482a6",
-                "username" : "Barak ",
-                "fullname" : "Barak Sidi",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
-            },
-            "task" : {
-                "id" : "t-y7aPDz",
-                "title" : "asdadsf sdfdf sfs asdfasdf"
-            },
-            "type" : "change-title",
-            "txt" : "To the archive "
-        }, 
-        {
-            "id" : "JnEDAM",
-            "createdAt" : 1633476779182.0,
-            "byMember" : {
-                "_id" : "615cbcd49ec77d59ecd482a6",
-                "username" : "Barak ",
-                "fullname" : "Barak Sidi",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
-            },
-            "task" : {
-                "id" : "t-y7aPDz",
-                "title" : "asdadsf sdfdf sfs asdfasdf"
-            },
-            "type" : "change-title",
-            "txt" : "To the archive "
-        }, 
-        {
-            "id" : "VKWl8H",
-            "createdAt" : 1633476760514.0,
-            "byMember" : {
-                "_id" : "615cbcd49ec77d59ecd482a6",
-                "username" : "Barak ",
-                "fullname" : "Barak Sidi",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
-            },
-            "task" : {
-                "id" : "t-y7aPDz",
-                "title" : "asdadsf sdfdf sfs asdfasdf"
-            },
-            "type" : "change-title",
-            "txt" : "sdadsf sdfdf..."
-        }, 
-        {
-            "id" : "kPZb1V",
-            "createdAt" : 1633476760512.0,
-            "byMember" : {
-                "_id" : "615cbcd49ec77d59ecd482a6",
-                "username" : "Barak ",
-                "fullname" : "Barak Sidi",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
-            },
-            "task" : {
-                "id" : "t-y7aPDz",
-                "title" : "asdadsf sdfdf sfs asdfasdf"
-            },
-            "type" : "change-title",
-            "txt" : "sdadsf sdfdf..."
-        }, 
-        {
-            "id" : "yFbhJY",
-            "createdAt" : 1633476144789.0,
-            "byMember" : {
-                "_id" : "615cbcd49ec77d59ecd482a6",
-                "username" : "Barak ",
-                "fullname" : "Barak Sidi",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
-            },
-            "task" : {
-                "id" : "t-M0w5R9",
-                "title" : "No one needs this task"
-            },
-            "type" : "add-to-archive",
-            "txt" : null
-        }, 
-        {
-            "id" : "g6SDpC",
-            "createdAt" : 1633475609908.0,
-            "byMember" : {
-                "_id" : "615cbcd49ec77d59ecd482a6",
-                "username" : "Barak ",
-                "fullname" : "Barak Sidi",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
-            },
-            "task" : {
-                "id" : "t-319ge6",
-                "title" : "Dashboard analysis"
-            },
-            "type" : "remove-member",
-            "txt" : "Archer"
-        }, 
-        {
-            "id" : "W2oPPa",
-            "createdAt" : 1633475609198.0,
-            "byMember" : {
-                "_id" : "615cbcd49ec77d59ecd482a6",
-                "username" : "Barak ",
-                "fullname" : "Barak Sidi",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
-            },
-            "task" : {
-                "id" : "t-319ge6",
-                "title" : "Dashboard analysis"
-            },
-            "type" : "add-member",
-            "txt" : "Archer"
-        }, 
-        {
-            "id" : "cfHMwf",
-            "createdAt" : 1633472368876.0,
-            "byMember" : {
-                "_id" : "615cbcd49ec77d59ecd482a6",
-                "username" : "Barak ",
-                "fullname" : "Barak Sidi",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
-            },
-            "task" : {
-                "id" : "t-qrlbwD",
-                "title" : "Popover dynamic cmp"
-            },
-            "type" : "remove-member",
-            "txt" : "Archer"
-        }, 
-        {
-            "id" : "U26yaV",
-            "createdAt" : 1633472368388.0,
-            "byMember" : {
-                "_id" : "615cbcd49ec77d59ecd482a6",
-                "username" : "Barak ",
-                "fullname" : "Barak Sidi",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
-            },
-            "task" : {
-                "id" : "t-qrlbwD",
-                "title" : "Popover dynamic cmp"
-            },
-            "type" : "remove-member",
-            "txt" : "תומר רון רווח"
-        }, 
-        {
-            "id" : "fKfHSj",
-            "createdAt" : 1633472367872.0,
-            "byMember" : {
-                "_id" : "615cbcd49ec77d59ecd482a6",
-                "username" : "Barak ",
-                "fullname" : "Barak Sidi",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
-            },
-            "task" : {
-                "id" : "t-qrlbwD",
-                "title" : "Popover dynamic cmp"
-            },
-            "type" : "add-member",
-            "txt" : "תומר רון רווח"
-        }, 
-        {
-            "id" : "gYTbs3",
-            "createdAt" : 1633472367077.0,
-            "byMember" : {
-                "_id" : "615cbcd49ec77d59ecd482a6",
-                "username" : "Barak ",
-                "fullname" : "Barak Sidi",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
-            },
-            "task" : {
-                "id" : "t-qrlbwD",
-                "title" : "Popover dynamic cmp"
-            },
-            "type" : "add-member",
-            "txt" : "Archer"
-        }, 
-        {
-            "id" : "iNftaQ",
-            "createdAt" : 1633472366396.0,
-            "byMember" : {
-                "_id" : "615cbcd49ec77d59ecd482a6",
-                "username" : "Barak ",
-                "fullname" : "Barak Sidi",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
-            },
-            "task" : {
-                "id" : "t-qrlbwD",
-                "title" : "Popover dynamic cmp"
-            },
-            "type" : "remove-member",
-            "txt" : "Archer"
-        }, 
-        {
-            "id" : "yrPFnY",
-            "createdAt" : 1633472359910.0,
-            "byMember" : {
-                "_id" : "615cbcd49ec77d59ecd482a6",
-                "username" : "Barak ",
-                "fullname" : "Barak Sidi",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
-            },
-            "task" : {
-                "id" : "t-qrlbwD",
-                "title" : "Popover dynamic cmp"
-            },
-            "type" : "add-member",
-            "txt" : "Archer"
-        }, 
-        {
-            "id" : "6Zv96U",
-            "createdAt" : 1633472359431.0,
-            "byMember" : {
-                "_id" : "615cbcd49ec77d59ecd482a6",
-                "username" : "Barak ",
-                "fullname" : "Barak Sidi",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
-            },
-            "task" : {
-                "id" : "t-qrlbwD",
-                "title" : "Popover dynamic cmp"
-            },
-            "type" : "remove-member",
-            "txt" : "BCD"
-        }, 
-        {
-            "id" : "IL2SOx",
-            "createdAt" : 1633472358927.0,
-            "byMember" : {
-                "_id" : "615cbcd49ec77d59ecd482a6",
-                "username" : "Barak ",
-                "fullname" : "Barak Sidi",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
-            },
-            "task" : {
-                "id" : "t-qrlbwD",
-                "title" : "Popover dynamic cmp"
-            },
-            "type" : "add-member",
-            "txt" : "BCD"
-        }, 
-        {
-            "id" : "IgKCL3",
-            "createdAt" : 1633472358438.0,
-            "byMember" : {
-                "_id" : "615cbcd49ec77d59ecd482a6",
-                "username" : "Barak ",
-                "fullname" : "Barak Sidi",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
-            },
-            "task" : {
-                "id" : "t-qrlbwD",
-                "title" : "Popover dynamic cmp"
-            },
-            "type" : "remove-member",
-            "txt" : "Matan"
-        }, 
-        {
-            "id" : "fTeh1U",
-            "createdAt" : 1633472357973.0,
-            "byMember" : {
-                "_id" : "615cbcd49ec77d59ecd482a6",
-                "username" : "Barak ",
-                "fullname" : "Barak Sidi",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
-            },
-            "task" : {
-                "id" : "t-qrlbwD",
-                "title" : "Popover dynamic cmp"
-            },
-            "type" : "add-member",
-            "txt" : "Matan"
-        }, 
-        {
-            "id" : "fUOoPy",
-            "createdAt" : 1633472357526.0,
-            "byMember" : {
-                "_id" : "615cbcd49ec77d59ecd482a6",
-                "username" : "Barak ",
-                "fullname" : "Barak Sidi",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
-            },
-            "task" : {
-                "id" : "t-qrlbwD",
-                "title" : "Popover dynamic cmp"
-            },
-            "type" : "remove-member",
-            "txt" : "תומר רון רווח"
-        }, 
-        {
-            "id" : "wYS0pU",
-            "createdAt" : 1633472356351.0,
-            "byMember" : {
-                "_id" : "615cbcd49ec77d59ecd482a6",
-                "username" : "Barak ",
-                "fullname" : "Barak Sidi",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
-            },
-            "task" : {
-                "id" : "t-qrlbwD",
-                "title" : "Popover dynamic cmp"
-            },
-            "type" : "add-member",
-            "txt" : "תומר רון רווח"
-        }, 
-        {
-            "id" : "CSdLRX",
-            "createdAt" : 1633462112193.0,
-            "byMember" : {
-                "username" : "תומר רון ",
-                "password" : "112240656108611012452",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GjtfVGId1UME4UjmMrLWORW0sN0rNjTwA5fkbV5DQ=s96-c",
-                "fullname" : "תומר רון רווח",
-                "_id" : "cpwtl"
-            },
-            "task" : {
-                "id" : "t-FSNMtM",
-                "title" : "Task preview in board groups"
-            },
-            "type" : "set-date",
-            "txt" : "6 Oct at 10:28 PM"
-        }, 
-        {
-            "id" : "zVoVk1",
-            "createdAt" : 1633462014300.0,
-            "byMember" : {
-                "username" : "תומר רון ",
-                "password" : "112240656108611012452",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GjtfVGId1UME4UjmMrLWORW0sN0rNjTwA5fkbV5DQ=s96-c",
-                "fullname" : "תומר רון רווח",
-                "_id" : "cpwtl"
-            },
-            "task" : {
-                "id" : "t-JDaanH",
-                "title" : "28.9.21 Demo 1 meeting"
-            },
-            "type" : "add-self",
-            "txt" : null
-        }, 
-        {
-            "id" : "Pm4rAJ",
-            "createdAt" : 1633462013186.0,
-            "byMember" : {
-                "username" : "תומר רון ",
-                "password" : "112240656108611012452",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GjtfVGId1UME4UjmMrLWORW0sN0rNjTwA5fkbV5DQ=s96-c",
-                "fullname" : "תומר רון רווח",
-                "_id" : "cpwtl"
-            },
-            "task" : {
-                "id" : "t-JDaanH",
-                "title" : "28.9.21 Demo 1 meeting"
-            },
-            "type" : "due-date-complete",
-            "txt" : null
-        }, 
-        {
-            "id" : "bKKBLI",
-            "createdAt" : 1633462011756.0,
-            "byMember" : {
-                "username" : "תומר רון ",
-                "password" : "112240656108611012452",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GjtfVGId1UME4UjmMrLWORW0sN0rNjTwA5fkbV5DQ=s96-c",
-                "fullname" : "תומר רון רווח",
-                "_id" : "cpwtl"
-            },
-            "task" : {
-                "id" : "t-JDaanH",
-                "title" : "28.9.21 Demo 1 meeting"
-            },
-            "type" : "set-date",
-            "txt" : "28 Oct at 10:26 PM"
-        }, 
-        {
-            "id" : "2EhgtJ",
-            "createdAt" : 1633461858675.0,
-            "byMember" : {
-                "username" : "תומר רון ",
-                "password" : "112240656108611012452",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GjtfVGId1UME4UjmMrLWORW0sN0rNjTwA5fkbV5DQ=s96-c",
-                "fullname" : "תומר רון רווח",
-                "_id" : "cpwtl"
-            },
-            "task" : {
-                "id" : "t-giJzvZ",
-                "title" : "12.10.21 Final project presentation"
-            },
-            "type" : "add-self",
-            "txt" : null
-        }, 
-        {
-            "id" : "v5iD0G",
-            "createdAt" : 1633461835584.0,
-            "byMember" : {
-                "username" : "תומר רון ",
-                "password" : "112240656108611012452",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GjtfVGId1UME4UjmMrLWORW0sN0rNjTwA5fkbV5DQ=s96-c",
-                "fullname" : "תומר רון רווח",
-                "_id" : "cpwtl"
-            },
-            "task" : {
-                "id" : "t-ek8D9k",
-                "title" : "10.10.21 Demo 3 meeting"
-            },
-            "type" : "set-date",
-            "txt" : "10 Oct at 10:23 PM"
-        }, 
-        {
-            "id" : "GgCzbm",
-            "createdAt" : 1633461827298.0,
-            "byMember" : {
-                "username" : "תומר רון ",
-                "password" : "112240656108611012452",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GjtfVGId1UME4UjmMrLWORW0sN0rNjTwA5fkbV5DQ=s96-c",
-                "fullname" : "תומר רון רווח",
-                "_id" : "cpwtl"
-            },
-            "task" : {
-                "id" : "t-ek8D9k",
-                "title" : "10.10.21 Demo 3 meeting"
-            },
-            "type" : "add-self",
-            "txt" : null
-        }, 
-        {
-            "id" : "HpRGRB",
-            "createdAt" : 1633461802849.0,
-            "byMember" : {
-                "username" : "תומר רון ",
-                "password" : "112240656108611012452",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GjtfVGId1UME4UjmMrLWORW0sN0rNjTwA5fkbV5DQ=s96-c",
-                "fullname" : "תומר רון רווח",
-                "_id" : "cpwtl"
-            },
-            "task" : {
-                "id" : "t-GraUVY",
-                "title" : "6.10.21 Demo 2 meeting"
-            },
-            "type" : "set-date",
-            "txt" : "6 Oct at 10:23 PM"
-        }, 
         {
             "id" : "dfJhiv",
             "createdAt" : 1633461773883.0,
@@ -3274,207 +2498,167 @@ db.getCollection('board').insertMany([
             "txt" : null
         }, 
         {
-            "id" : "E0jttI",
-            "createdAt" : 1633506928183.0,
+            "id" : "HpRGRB",
+            "createdAt" : 1633461802849.0,
             "byMember" : {
-                "_id" : "615cb86f056f57195973bc68",
-                "username" : "guest",
-                "fullname" : "Guest",
-                "imgUrl" : "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png"
-            },
-            "task" : {
-                "id" : "t-UKRBQS",
-                "title" : "Wire up backend"
-            },
-            "type" : "add-self",
-            "txt" : null
-        }, 
-        {
-            "id" : "USVg3A",
-            "createdAt" : 1633507670620.0,
-            "byMember" : {
-                "_id" : "615cb86f056f57195973bc68",
-                "username" : "guest",
-                "fullname" : "Guest",
-                "imgUrl" : "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png"
-            },
-            "task" : {
-                "id" : "t-UKRBQS",
-                "title" : "Wire up backend"
-            },
-            "type" : "remove-self",
-            "txt" : null
-        }, 
-        {
-            "id" : "MAZGYV",
-            "createdAt" : 1633507677048.0,
-            "byMember" : {
-                "_id" : "615cb86f056f57195973bc68",
-                "username" : "guest",
-                "fullname" : "Guest",
-                "imgUrl" : "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png"
-            },
-            "task" : {
-                "id" : "t-UKRBQS",
-                "title" : "Wire up backend"
-            },
-            "type" : "add-self",
-            "txt" : null
-        }, 
-        {
-            "id" : "gvJV9V",
-            "createdAt" : 1633507967483.0,
-            "byMember" : {
-                "_id" : "615cb86f056f57195973bc69",
-                "username" : "תומר רון",
+                "username" : "תומר רון ",
+                "password" : "112240656108611012452",
+                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GjtfVGId1UME4UjmMrLWORW0sN0rNjTwA5fkbV5DQ=s96-c",
                 "fullname" : "תומר רון רווח",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GjtfVGId1UME4UjmMrLWORW0sN0rNjTwA5fkbV5DQ=s96-c"
+                "_id" : "cpwtl"
             },
             "task" : {
-                "id" : "t-qrlbwD",
-                "title" : "Popover dynamic cmp"
+                "id" : "t-GraUVY",
+                "title" : "6.10.21 Demo 2 meeting"
+            },
+            "type" : "set-date",
+            "txt" : "6 Oct at 10:23 PM"
+        }, 
+        {
+            "id" : "GgCzbm",
+            "createdAt" : 1633461827298.0,
+            "byMember" : {
+                "username" : "תומר רון ",
+                "password" : "112240656108611012452",
+                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GjtfVGId1UME4UjmMrLWORW0sN0rNjTwA5fkbV5DQ=s96-c",
+                "fullname" : "תומר רון רווח",
+                "_id" : "cpwtl"
+            },
+            "task" : {
+                "id" : "t-ek8D9k",
+                "title" : "10.10.21 Demo 3 meeting"
             },
             "type" : "add-self",
             "txt" : null
         }, 
         {
-            "id" : "FRSfCd",
-            "createdAt" : 1633507968305.0,
+            "id" : "v5iD0G",
+            "createdAt" : 1633461835584.0,
             "byMember" : {
-                "_id" : "615cb86f056f57195973bc69",
-                "username" : "תומר רון",
+                "username" : "תומר רון ",
+                "password" : "112240656108611012452",
+                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GjtfVGId1UME4UjmMrLWORW0sN0rNjTwA5fkbV5DQ=s96-c",
                 "fullname" : "תומר רון רווח",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GjtfVGId1UME4UjmMrLWORW0sN0rNjTwA5fkbV5DQ=s96-c"
+                "_id" : "cpwtl"
             },
             "task" : {
-                "id" : "t-qrlbwD",
-                "title" : "Popover dynamic cmp"
+                "id" : "t-ek8D9k",
+                "title" : "10.10.21 Demo 3 meeting"
             },
-            "type" : "remove-self",
+            "type" : "set-date",
+            "txt" : "10 Oct at 10:23 PM"
+        }, 
+        {
+            "id" : "2EhgtJ",
+            "createdAt" : 1633461858675.0,
+            "byMember" : {
+                "username" : "תומר רון ",
+                "password" : "112240656108611012452",
+                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GjtfVGId1UME4UjmMrLWORW0sN0rNjTwA5fkbV5DQ=s96-c",
+                "fullname" : "תומר רון רווח",
+                "_id" : "cpwtl"
+            },
+            "task" : {
+                "id" : "t-giJzvZ",
+                "title" : "12.10.21 Final project presentation"
+            },
+            "type" : "add-self",
             "txt" : null
         }, 
         {
-            "id" : "cnNAPr",
-            "createdAt" : 1633510142050.0,
+            "id" : "bKKBLI",
+            "createdAt" : 1633462011756.0,
             "byMember" : {
-                "_id" : "615cbcd49ec77d59ecd482a6",
-                "username" : "Barak ",
-                "fullname" : "Barak Sidi",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
+                "username" : "תומר רון ",
+                "password" : "112240656108611012452",
+                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GjtfVGId1UME4UjmMrLWORW0sN0rNjTwA5fkbV5DQ=s96-c",
+                "fullname" : "תומר רון רווח",
+                "_id" : "cpwtl"
             },
             "task" : {
-                "id" : "t-L2mbh8",
-                "title" : "Move tasks between boards and drag and drop in same board"
+                "id" : "t-JDaanH",
+                "title" : "28.9.21 Demo 1 meeting"
             },
-            "type" : "remove-member",
-            "txt" : "Matan"
+            "type" : "set-date",
+            "txt" : "28 Oct at 10:26 PM"
         }, 
         {
-            "id" : "F0F8Aq",
-            "createdAt" : 1633510143426.0,
+            "id" : "Pm4rAJ",
+            "createdAt" : 1633462013186.0,
             "byMember" : {
-                "_id" : "615cbcd49ec77d59ecd482a6",
-                "username" : "Barak ",
-                "fullname" : "Barak Sidi",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
+                "username" : "תומר רון ",
+                "password" : "112240656108611012452",
+                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GjtfVGId1UME4UjmMrLWORW0sN0rNjTwA5fkbV5DQ=s96-c",
+                "fullname" : "תומר רון רווח",
+                "_id" : "cpwtl"
             },
             "task" : {
-                "id" : "t-L2mbh8",
-                "title" : "Move tasks between boards and drag and drop in same board"
+                "id" : "t-JDaanH",
+                "title" : "28.9.21 Demo 1 meeting"
             },
-            "type" : "add-member",
-            "txt" : "Matan"
+            "type" : "due-date-complete",
+            "txt" : null
         }, 
         {
-            "id" : "jnRN63",
-            "createdAt" : 1633510156344.0,
+            "id" : "zVoVk1",
+            "createdAt" : 1633462014300.0,
             "byMember" : {
-                "_id" : "615cbcd49ec77d59ecd482a6",
-                "username" : "Barak ",
-                "fullname" : "Barak Sidi",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
+                "username" : "תומר רון ",
+                "password" : "112240656108611012452",
+                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GjtfVGId1UME4UjmMrLWORW0sN0rNjTwA5fkbV5DQ=s96-c",
+                "fullname" : "תומר רון רווח",
+                "_id" : "cpwtl"
             },
             "task" : {
-                "id" : "t-L2mbh8",
-                "title" : "Move tasks between boards and drag and drop in same board"
+                "id" : "t-JDaanH",
+                "title" : "28.9.21 Demo 1 meeting"
             },
-            "type" : "add-member",
-            "txt" : "תומר רון רווח"
+            "type" : "add-self",
+            "txt" : null
         }, 
         {
-            "id" : "Nyz2WV",
-            "createdAt" : 1633510165914.0,
+            "id" : "CSdLRX",
+            "createdAt" : 1633462112193.0,
             "byMember" : {
-                "_id" : "615cbcd49ec77d59ecd482a6",
-                "username" : "Barak ",
-                "fullname" : "Barak Sidi",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
+                "username" : "תומר רון ",
+                "password" : "112240656108611012452",
+                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GjtfVGId1UME4UjmMrLWORW0sN0rNjTwA5fkbV5DQ=s96-c",
+                "fullname" : "תומר רון רווח",
+                "_id" : "cpwtl"
             },
             "task" : {
-                "id" : "t-L2mbh8",
-                "title" : "Move tasks between boards and drag and drop in same board"
+                "id" : "t-FSNMtM",
+                "title" : "Task preview in board groups"
             },
-            "type" : "add-member",
-            "txt" : "תומר רון רווח"
-        }, 
-        {
-            "id" : "7yFeku",
-            "createdAt" : 1633510170766.0,
-            "byMember" : {
-                "_id" : "615cbcd49ec77d59ecd482a6",
-                "username" : "Barak ",
-                "fullname" : "Barak Sidi",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
-            },
-            "task" : {
-                "id" : "t-TnkC8S",
-                "title" : "Add board , groups and tasks"
-            },
-            "type" : "add-member",
-            "txt" : "Archer"
-        }, 
-        {
-            "id" : "Br7FVJ",
-            "createdAt" : 1633510174344.0,
-            "byMember" : {
-                "_id" : "615cbcd49ec77d59ecd482a6",
-                "username" : "Barak ",
-                "fullname" : "Barak Sidi",
-                "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
-            },
-            "task" : {
-                "id" : "t-TnkC8S",
-                "title" : "Add board , groups and tasks"
-            },
-            "type" : "remove-member",
-            "txt" : "Archer"
+            "type" : "set-date",
+            "txt" : "6 Oct at 10:28 PM"
         }
     ],
     "members" : [ 
+        {
+            "fullname" : "BCD",
+            "imgUrl" : "https://media-exp1.licdn.com/dms/image/C5603AQG9slGN5Fgxug/profile-displayphoto-shrink_100_100/0/1516840011642?e=1638403200&v=beta&t=wl9AzbWc9FwsXJ0xGECA_7T4xynvi067vuYs5ABVhfo",
+            "username" : "bcd",
+            "_id" : "u101"
+        }, 
+        {
+            "fullname" : "Matan",
+            "imgUrl" : "https://media-exp1.licdn.com/dms/image/C4D03AQEEFClr3HeA9w/profile-displayphoto-shrink_800_800/0/1575055172966?e=1638403200&v=beta&t=-EaNro-ekUtvBc9ndCkF37SAe2YT6CaaOGe09riqZew",
+            "username" : "matan",
+            "_id" : "u103"
+        }, 
         {
             "fullname" : "Archer",
             "imgUrl" : "https://pbs.twimg.com/profile_images/1194678819602305024/vFMWJwiT.jpg",
             "username" : "archer",
             "_id" : "u107"
         }, 
-        {
-            "_id" : "615cbcd49ec77d59ecd482a6",
-            "username" : "Barak ",
-            "fullname" : "Barak Sidi",
-            "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
-        }, 
-        {
-            "fullname" : "Matan",
-            "imgUrl" : "https://media-exp1.licdn.com/dms/image/C4D03AQEEFClr3HeA9w/profile-displayphoto-shrink_800_800/0/1575055172966?e=1638403200&v=beta&t=-EaNro-ekUtvBc9ndCkF37SAe2YT6CaaOGe09riqZew",
-            "username" : "matan",
-            "_id" : "615cb86f056f57195973bc63"
-        }, 
-        {
-            "_id" : "615cb86f056f57195973bc69",
+   {
+            "_id" : "615b776c10e9fa751fb059df",
             "username" : "תומר רון ",
             "fullname" : "תומר רון רווח",
             "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GjtfVGId1UME4UjmMrLWORW0sN0rNjTwA5fkbV5DQ=s96-c"
-        }
+        }, 
     ],
     "style" : {
         "bgClr" : null,
@@ -3764,79 +2948,54 @@ db.getCollection('board').insertMany([
 
 
     db.getCollection('user').insertMany([
-{
-    "_id" : ObjectId("615cb86f056f57195973bc61"),
-    "fullname" : "BCD",
-    "imgUrl" : "https://media-exp1.licdn.com/dms/image/C5603AQG9slGN5Fgxug/profile-displayphoto-shrink_100_100/0/1516840011642?e=1638403200&v=beta&t=wl9AzbWc9FwsXJ0xGECA_7T4xynvi067vuYs5ABVhfo",
-    "username" : "bcd",
-    "password" : "$2b$10$j2PoCeso0SrVr9Hthq0gr.lND3cQ2tSXcATS3YLEx6dRndflUECgG"
-}
-
-,{
-    "_id" : ObjectId("615cb86f056f57195973bc62"),
-    "fullname" : "Tomer",
-    "imgUrl" : "https://media-exp1.licdn.com/dms/image/C4E03AQFlupY8tXNbnA/profile-displayphoto-shrink_400_400/0/1622442415599?e=1638403200&v=beta&t=DBTF6x9nzwz1G04DZ8hBSG14UyM6BUDX6LM30JL84jg",
-    "username" : "tomer",
-    "password" : "$2b$10$AQIArrm3MXdILol/JLb/9uPOI9ceAoHq1Pw2C2AIuqrq1FP5qRFum"
-}
-
-,{
-    "_id" : ObjectId("615cb86f056f57195973bc63"),
-    "fullname" : "Matan",
-    "imgUrl" : "https://media-exp1.licdn.com/dms/image/C4D03AQEEFClr3HeA9w/profile-displayphoto-shrink_800_800/0/1575055172966?e=1638403200&v=beta&t=-EaNro-ekUtvBc9ndCkF37SAe2YT6CaaOGe09riqZew",
-    "username" : "matan",
-    "password" : "$2b$10$CXSFpeR6bMpg/a4Z71hVjeGYYq5tHLX8sO7pG4MeNIu4AYFFZbtTa"
-}
-
-,{
-    "_id" : ObjectId("615cb86f056f57195973bc64"),
-    "fullname" : "Dave",
-    "imgUrl" : "https://m.media-amazon.com/images/M/MV5BMTY5NzY4NzgxNV5BMl5BanBnXkFtZTcwMzcyOTQwOQ@@._V1_UY1200_CR108,0,630,1200_AL_.jpg",
-    "username" : "dave"
-}
-
-,{
-    "_id" : ObjectId("615cb86f056f57195973bc65"),
-    "fullname" : "Anna",
-    "imgUrl" : "https://media-cldnry.s-nbcnews.com/image/upload/t_fit-2000w,f_auto,q_auto:best/newscms/2019_50/3139821/191209-ana_de_armas-mc-1505.JPG",
-    "username" : "anna"
-}
-
-,{
-    "_id" : ObjectId("615cb86f056f57195973bc66"),
-    "fullname" : "Rick",
-    "imgUrl" : "https://pbs.twimg.com/profile_images/1098178907163975681/cuz_rA54_400x400.jpg",
-    "username" : "pickleRick"
-}
-
-,{
-    "_id" : ObjectId("615cb86f056f57195973bc67"),
-    "fullname" : "Archer",
-    "imgUrl" : "https://pbs.twimg.com/profile_images/1194678819602305024/vFMWJwiT.jpg",
-    "username" : "archer"
-}
-
-,{
-    "_id" : ObjectId("615cb86f056f57195973bc68"),
-    "username" : "guest",
-    "password" : "$2b$10$nKwYaFnS4EmmbMG4YF6bvO.mr.RIWvYu/eifV.mspSzxmwXLUjgRi",
-    "fullname" : "Guest",
-    "imgUrl" : "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png"
-}
-
-,{
-    "_id" : ObjectId("615cb86f056f57195973bc69"),
-    "username" : "תומר רון",
+    {
+        "fullname": "BCD",
+        "imgUrl": "https://media-exp1.licdn.com/dms/image/C5603AQG9slGN5Fgxug/profile-displayphoto-shrink_100_100/0/1516840011642?e=1638403200&v=beta&t=wl9AzbWc9FwsXJ0xGECA_7T4xynvi067vuYs5ABVhfo",
+        "username": "bcd",
+        "password" : "$2b$10$j2PoCeso0SrVr9Hthq0gr.lND3cQ2tSXcATS3YLEx6dRndflUECgG"
+    },
+    {
+        "fullname": "Tomer",
+        "imgUrl": "https://media-exp1.licdn.com/dms/image/C4E03AQFlupY8tXNbnA/profile-displayphoto-shrink_400_400/0/1622442415599?e=1638403200&v=beta&t=DBTF6x9nzwz1G04DZ8hBSG14UyM6BUDX6LM30JL84jg",
+        "username": "tomer",
+        "password" : "$2b$10$AQIArrm3MXdILol/JLb/9uPOI9ceAoHq1Pw2C2AIuqrq1FP5qRFum"
+    },
+    {
+        "fullname": "Matan",
+        "imgUrl": "https://media-exp1.licdn.com/dms/image/C4D03AQEEFClr3HeA9w/profile-displayphoto-shrink_800_800/0/1575055172966?e=1638403200&v=beta&t=-EaNro-ekUtvBc9ndCkF37SAe2YT6CaaOGe09riqZew",
+        "username": "matan",   
+        "password" : "$2b$10$CXSFpeR6bMpg/a4Z71hVjeGYYq5tHLX8sO7pG4MeNIu4AYFFZbtTa"
+    },
+    {
+        "fullname": "Dave",
+        "imgUrl": "https://m.media-amazon.com/images/M/MV5BMTY5NzY4NzgxNV5BMl5BanBnXkFtZTcwMzcyOTQwOQ@@._V1_UY1200_CR108,0,630,1200_AL_.jpg",
+        "username": "dave"
+    },
+    {
+        "fullname": "Anna",
+        "imgUrl": "https://media-cldnry.s-nbcnews.com/image/upload/t_fit-2000w,f_auto,q_auto:best/newscms/2019_50/3139821/191209-ana_de_armas-mc-1505.JPG",
+        "username": "anna"
+    },
+    {
+        "fullname": "Rick",
+        "imgUrl": "https://pbs.twimg.com/profile_images/1098178907163975681/cuz_rA54_400x400.jpg",
+        "username": "pickleRick"
+    },
+    {
+        "fullname": "Archer",
+        "imgUrl": "https://pbs.twimg.com/profile_images/1194678819602305024/vFMWJwiT.jpg",
+        "username": "archer"
+    },
+    {
+        "username" : "guest",
+        "password" : "$2b$10$nKwYaFnS4EmmbMG4YF6bvO.mr.RIWvYu/eifV.mspSzxmwXLUjgRi",
+        "fullname" : "Guest",
+        "imgUrl" : "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png"
+    },
+    {
+    "username" : "תומר רון ",
     "password" : "$2b$10$jvI6sNYKDK66KC5JYTp2xuMkAaXJBPO2ZOjRUL8hG9/M0lOg.YBw2",
     "fullname" : "תומר רון רווח",
     "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GjtfVGId1UME4UjmMrLWORW0sN0rNjTwA5fkbV5DQ=s96-c"
-}
-
-,{
-    "_id" : ObjectId("615cbcd49ec77d59ecd482a6"),
-    "username" : "Barak ",
-    "password" : "$2b$10$UAu7/A1e1mkhTl/VUSq7p.xxzA.huf.JpyzgzL4qGHnl9usz5m6DG",
-    "fullname" : "Barak Sidi",
-    "imgUrl" : "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
 }
 ])
