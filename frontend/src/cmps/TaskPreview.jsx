@@ -152,7 +152,7 @@ function _TaskPreview(props) {
       </Draggable>
     );
   }
-  if(task?.media?.audioUrl) {
+  if (task?.media?.audioUrl) {
     return (
       <Draggable
         draggableId={task.id}
@@ -170,8 +170,10 @@ function _TaskPreview(props) {
               style={{ background: style.bgColor }}
             >
               <Link to={taskUrl} className="clean-link">
-                <div className="task-preview">
-                <audio controls src={task.media.audioUrl}/>
+                <div className="task-preview  ">
+                  <div className="audio-wrap">
+                    <audio controls src={task.media.audioUrl} />
+                  </div>
                 </div>
               </Link>
               <div className="edit-icon" onClick={toggleMenu}>
@@ -181,8 +183,7 @@ function _TaskPreview(props) {
           </article>
         )}
       </Draggable>
-
-    )
+    );
   }
   // full color cover
   if (style && style?.coverMode === "full" && !isMenuShown)
