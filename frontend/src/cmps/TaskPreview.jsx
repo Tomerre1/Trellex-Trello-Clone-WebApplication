@@ -152,6 +152,39 @@ function _TaskPreview(props) {
       </Draggable>
     );
   }
+  if (task?.media?.audioUrl) {
+    return (
+      <Draggable
+        draggableId={task.id}
+        index={index}
+        isDragDisabled={isDragDisabled}
+      >
+        {(provided) => (
+          <article
+            ref={provided.innerRef}
+            {...provided.draggableProps}
+            {...provided.dragHandleProps}
+          >
+            <div
+              className="task-preview-container audio"
+              style={{ background: style.bgColor }}
+            >
+              <Link to={taskUrl} className="clean-link">
+                <div className="task-preview  ">
+                  <div className="audio-wrap">
+                    <audio controls src={task.media.audioUrl} />
+                  </div>
+                </div>
+              </Link>
+              <div className="edit-icon" onClick={toggleMenu}>
+                <ModeEditOutlinedIcon className="icon" />
+              </div>
+            </div>
+          </article>
+        )}
+      </Draggable>
+    );
+  }
   // full color cover
   if (style && style?.coverMode === "full" && !isMenuShown)
     return (

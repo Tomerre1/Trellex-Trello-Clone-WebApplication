@@ -238,12 +238,19 @@
       outline: 0;
       resize: none;
       transition: min-height 0.6s, box-shadow 0.4s;
-
       overflow: hidden;
       overflow-wrap: break-word;
       min-height: 56px;
       background-color: #fff;
       color: #172b4d;
+    }
+  }
+  &.audio { 
+    .task-preview{
+      padding:8px ;
+      audio {
+        max-width:100%;
+      }
     }
   }
 }
