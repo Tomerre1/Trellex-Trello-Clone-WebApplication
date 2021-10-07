@@ -12,7 +12,7 @@ const _MediaRecord = (props) => {
             {props.type === 'video' && < ReactMediaRecorder
                 video
                 onStop={async (blobUrl, blob) => {
-                    const res = await cloudinaryService.uploadFile(null, props.type, blob)
+                    const res = await cloudinaryService.uploadFile(null, 'video', blob)
                     const videoUrl = res.secure_url
                     props.addTask('Media', props.boardId, props.groupId, null, videoUrl)
                 }
@@ -24,6 +24,7 @@ const _MediaRecord = (props) => {
                         <div className="flex media-btns">
                             <button onClick={(ev) => { ev.stopPropagation(); startRecording(); }}><h1>Start Recording</h1></button>
                             <button onClick={(ev) => { ev.stopPropagation(); stopRecording() }}>Stop Recording</button>
+
                         </div>
 
                     </div>
@@ -33,15 +34,18 @@ const _MediaRecord = (props) => {
             {props.type === 'audio' && <ReactMediaRecorder
                 audio
                 onStop={async (blobUrl, blob) => {
-                    const res = await cloudinaryService.uploadFile(null, props.type, blob)
+                    console.log('blob :>> ', blob);
+                    const res = await cloudinaryService.uploadFile(null, 'video', blob)
                     const audioUrl = res.secure_url
+                    props.addTask('Audio', props.boardId, props.groupId, audioUrl, null)
                 }
                 }
 
                 render={({ status, startRecording, stopRecording, mediaBlobUrl }) => (
                     <div>
-                        <button onClick={startRecording}><h1>Start Recording</h1></button>
-                        <button onClick={stopRecording}>Stop Recording</button>
+                        <button onClick={(ev) => { ev.stopPropagation(); startRecording(); }}><h1>Start Recording</h1></button>
+                        <button onClick={(ev) => { ev.stopPropagation(); stopRecording() }}>Stop Recording</button>
+                        <audio controls />
                     </div>
                 )}
             />
