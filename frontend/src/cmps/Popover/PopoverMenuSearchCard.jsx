@@ -4,8 +4,9 @@ import { Popover } from "./Popover"
 import { ColorPalette } from '../ColorPalette'
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { PopoverLabelPreview } from './PopoverLabelPreview'
+import { PopoverMemberPreview } from './PopoverMemberPreview'
 import { setPosition } from '../../store/app.actions'
-import { loadBoard } from '../../store/board.actions'
+import { loadBoard, setFilterBy } from '../../store/board.actions'
 
 
 
@@ -33,28 +34,43 @@ class _PopoverMenuSearchCard extends React.Component {
 
 
     handleSearch = (event) => {
-        const { loadBoard, board } = this.props
-        const { filterBy } = this.state
+        const { loadBoard, board, setFilterBy } = this.props
         const { value, name } = event.target
         this.setState(prevState => ({
             ...prevState,
             filterBy: { ...prevState.filterBy, [name]: value }
-        }), () => { loadBoard(board._id, this.state.filterBy) })
-
-
-
+        }), () => {
+            setFilterBy(this.state.filterBy)
+            loadBoard(board._id, this.state.filterBy)
+        })
     }
 
 
 
     toggleLabelCheck = (labelId) => {
-        const { board, loadBoard } = this.props
+        const { board, loadBoard, setFilterBy } = this.props
         const { filterBy } = this.state
         const labels = filterBy.labels.includes(labelId) ? filterBy.labels.filter(id => id !== labelId) : [...filterBy.labels, labelId]
         this.setState(prevState => ({
             ...prevState,
             filterBy: { ...prevState.filterBy, labels }
-        }), () => { loadBoard(board._id, this.state.filterBy) })
+        }), () => {
+            setFilterBy(this.state.filterBy)
+            loadBoard(board._id, this.state.filterBy)
+        })
+    }
+
+    toggleMemberCheck = (memberId) => {
+        const { board, loadBoard, setFilterBy } = this.props
+        const { filterBy } = this.state
+        const members = filterBy.members.includes(memberId) ? filterBy.members.filter(id => id !== memberId) : [...filterBy.members, memberId]
+        this.setState(prevState => ({
+            ...prevState,
+            filterBy: { ...prevState.filterBy, members }
+        }), () => {
+            setFilterBy(this.state.filterBy)
+            loadBoard(board._id, this.state.filterBy)
+        })
     }
 
 
@@ -78,6 +94,7 @@ class _PopoverMenuSearchCard extends React.Component {
                     <p>Filter by task labels</p>
                     {board.labels.map(label => <PopoverLabelPreview key={label.id} label={label} labelsId={filterBy.labels} isFilter={true} toggleLabelCheck={this.toggleLabelCheck} />)}
                     <hr />
+                    {board.members.map(member => <PopoverMemberPreview key={member.id} member={member} selectedMembersIds={filterBy.members} isFilter={true} toggleMemberCheck={this.toggleMemberCheck} />)}
                 </div>
             </Popover>
         </div>
@@ -92,7 +109,8 @@ function mapStateToProps(state) {
 }
 const mapDispatchToProps = {
     setPosition,
-    loadBoard
+    loadBoard,
+    setFilterBy
 };
 
 export const PopoverMenuSearchCard = connect(mapStateToProps, mapDispatchToProps)(_PopoverMenuSearchCard)

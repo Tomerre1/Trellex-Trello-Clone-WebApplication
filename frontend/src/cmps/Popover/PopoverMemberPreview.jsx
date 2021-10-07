@@ -1,7 +1,7 @@
 import React from 'react'
 import CheckIcon from '@material-ui/icons/Check';
 
-export function PopoverMemberPreview({ member, selectedMembersIds, toggleMemberCheck }) {
+export function PopoverMemberPreview({ member, selectedMembersIds, toggleMemberCheck, isFilter }) {
     return (
         <li className="member-pop-over-preview flex" onClick={() => { toggleMemberCheck(member) }}>
             {member.imgUrl &&
