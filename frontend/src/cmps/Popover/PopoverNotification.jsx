@@ -39,17 +39,10 @@ class _PopoverNotification extends React.Component {
             notify.isNotRead = true;
             notify.isNotify = true;
         });
+
+        userNotifications.sort((a, b) => (a.createdAt < b.createdAt) ? 1 : ((b.createdAt < a.createdAt) ? -1 : 0))
         this.setState(prevState => ({ ...prevState, userNotifications }))
     }
-
-    componentDidUpdate = (prevProps) => {
-        // const { board } = this.props
-        // if (this.state.board.activities.length !== prevProps.board.activities.length) {
-        // console.log('componentDidUpdate')
-        //   this.filteredUsers = this.getFilteredUsers();
-        //   this.forceUpdate();
-        // }
-    };
 
     selectNotification = (notify) => {
         const { board } = this.props
