@@ -6,6 +6,9 @@ import { BarChart } from "./BarChart";
 import { DoughnutChart } from "./DoughnutChart";
 import { ActivityChart } from "./ActivityChart";
 import { LoaderSpinner } from "../LoaderSpinner";
+import PeopleIcon from "@mui/icons-material/People";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import ListAltIcon from '@mui/icons-material/ListAlt';
 
 export function _Dashboard(props) {
   const onBack = () => {
@@ -96,52 +99,42 @@ export function _Dashboard(props) {
           </p>
         </div>
         <div className="info-container flex align-center">
-          {/* <div className="info-box flex column ">
-            <p className="info-num">{board.members?.length}</p>
-            <p>Total Members</p>
-          </div> */}
-            <div className="info-box flex">
-              <div className="flex column big-num-box">
-                <p className="info-num">{taskDetails.tasks}</p>
-                <p>Total Tasks</p>
-              </div>
-                <div className="flex column details">
-                  <p className="green">{taskDetails.doneTasks} Completed</p>
-                  <p className="red">{taskDetails.overDueTasks} Overdue </p>
-                </div>
+          <div className="info-box flex">
+            <div className="flex column big-num-box">
+              <p className="info-num">{board.members?.length}</p>
+              <p className="below-num">
+                <PeopleIcon className="icon" />
+                Members
+              </p>
+            </div>
           </div>
-          {/* <div className="info-box flex column align-center">
-            <p className="info-num">{taskDetails.archivedTasks}</p>
-            <p>{`Task${
-              taskDetails.archivedTasks !== 1 ? "s" : ""
-            } in Archive`}</p>
+          <div className="info-box flex">
+            <div className="flex column big-num-box">
+              <p className="info-num">{taskDetails.tasks}</p>
+              <p className="below-num">
+                <DashboardIcon className="icon" />
+                Tasks
+              </p>
+            </div>
+            <div className="flex column details">
+              <p className="green">{taskDetails.doneTasks} Completed</p>
+              <p className="red">{taskDetails.overDueTasks} Overdue </p>
+              <p className="yellow">{taskDetails.archivedTasks} Archived </p>
+            </div>
           </div>
-          <div className="info-box flex column align-center">
-            <p className="info-num">{taskDetails.overDueTasks}</p>
-            <p>{`Overdue Task${taskDetails.overDueTasks !== 1 ? "s" : ""}`}</p>
+          <div className="info-box flex">
+            <div className="flex column big-num-box">
+              <p className="info-num">{taskDetails.checklists}</p>
+              <p className="below-num"><ListAltIcon className="icon"/>{`Checklist${taskDetails.checklists !== 1 ? "s" : ""}`}</p>
+            </div>
+            <div className="flex column details">
+              <p className="green">{taskDetails.doneChecklists} Completed</p>
+              <p className="yellow">{taskDetails.todos} Todos </p>
+              <p className="red">
+                {taskDetails.todos - taskDetails.doneTodos} Unresolved todos{" "}
+              </p>
+            </div>
           </div>
-          <div className="info-box flex column align-center">
-            <p className="info-num">{taskDetails.doneTasks}</p>
-            <p>{`Completed Task${taskDetails.doneTasks !== 1 ? "s" : ""}`}</p>
-          </div>
-          <div className="info-box flex column align-center">
-            <p className="info-num">{taskDetails.checklists}</p>
-            <p>{`Checklist${taskDetails.checklists !== 1 ? "s" : ""}`}</p>
-          </div>
-          <div className="info-box flex column align-center">
-            <p className="info-num">{taskDetails.doneTasks}</p>
-            <p>{`Completed Checklist${
-              taskDetails.doneChecklists !== 1 ? "s" : ""
-            }`}</p>
-          </div>
-          <div className="info-box flex column align-center">
-            <p className="info-num">{taskDetails.todos}</p>
-            <p>{`Todo${taskDetails.todos !== 1 ? "s" : ""}`}</p>
-          </div>
-          <div className="info-box flex column align-center">
-            <p className="info-num">{taskDetails.doneTodos}</p>
-            <p>{`Done Todo${taskDetails.doneTodos !== 1 ? "s" : ""}`}</p>
-          </div> */}
         </div>
         <div className="chart-container flex ">
           <div className="chart flex align-center">
