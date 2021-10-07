@@ -30,8 +30,11 @@ class _PopoverMenuSearchCard extends React.Component {
     }
 
 
+
+
     handleSearch = (event) => {
         const { loadBoard, board } = this.props
+        const { filterBy } = this.state
         const { value, name } = event.target
         this.setState(prevState => ({
             ...prevState,
@@ -42,13 +45,16 @@ class _PopoverMenuSearchCard extends React.Component {
 
     }
 
+
+
     toggleLabelCheck = (labelId) => {
+        const { board, loadBoard } = this.props
         const { filterBy } = this.state
         const labels = filterBy.labels.includes(labelId) ? filterBy.labels.filter(id => id !== labelId) : [...filterBy.labels, labelId]
         this.setState(prevState => ({
             ...prevState,
             filterBy: { ...prevState.filterBy, labels }
-        }))
+        }), () => { loadBoard(board._id, this.state.filterBy) })
     }
 
 
@@ -66,9 +72,10 @@ class _PopoverMenuSearchCard extends React.Component {
                     <ArrowBackIosIcon />
                 </span>
                 <div className="popover-filter">
-                    <input type="search" value={search} name="search" onChange={this.handleSearch} autoFocus />
-                    <p>Search by term, label, member, or due time</p>
+                    <p>Search by task title</p>
+                    <input type="search" value={search} name="search" onChange={this.handleSearch} placeholder="Enter task title" autoFocus />
                     <hr />
+                    <p>Filter by task labels</p>
                     {board.labels.map(label => <PopoverLabelPreview key={label.id} label={label} labelsId={filterBy.labels} isFilter={true} toggleLabelCheck={this.toggleLabelCheck} />)}
                     <hr />
                 </div>
