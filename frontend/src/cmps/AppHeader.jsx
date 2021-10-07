@@ -22,9 +22,8 @@ function _AppHeader(props) {
   return (
     <>
       <header
-        className={`main-header flex align-center ${
-          props.location.pathname.includes("board") ? "on-board" : ""
-        }`}
+        className={`main-header flex align-center ${props.location.pathname.includes("board") ? "on-board" : ""
+          }`}
       >
         <div className="header-btn-container flex">
           <Link to="/" className="header-btn">
@@ -50,16 +49,16 @@ function _AppHeader(props) {
               <AddIcon className="icon" />
             </button>
 
-            <button 
-            className="header-btn" 
-            onClick={(event) => { props.setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'NOTIFICATION' }); props.togglePopover() }}>
+            <button
+              className="header-btn"
+              onClick={(event) => { props.setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'NOTIFICATION' }); props.setPopoverMenu(true); props.togglePopover(); }}>
               <NotificationsNoneIcon className="icon" />
             </button>
-            <MemberList members={[props.user]} isInHeader={true}/>
+            <MemberList members={[props.user]} isInHeader={true} />
           </div>
         ) : (
           <div className="header-btn-container flex login">
-            <Link className="clean-link"to="/login"><button
+            <Link className="clean-link" to="/login"><button
               className="header-btn boards"
             >
               Login
@@ -92,7 +91,8 @@ function mapStateToProps(state) {
 const mapDispatchToProps = {
   addBoard,
   setPosition,
-  togglePopover
+  togglePopover,
+  setPopoverMenu
 };
 
 export const AppHeader = withRouter(
