@@ -8,9 +8,11 @@ import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import AddIcon from "@mui/icons-material/Add";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
-import { setPosition, togglePopover, setPopoverMenu } from '../store/app.actions';
-
-
+import {
+  setPosition,
+  togglePopover,
+  setPopoverMenu,
+} from "../store/app.actions";
 
 function _AppHeader(props) {
   const [isCreateShown, setCreateShown] = useState(false);
@@ -19,11 +21,13 @@ function _AppHeader(props) {
     setCreateShown(false);
     props.history.push(`/board/${board._id}`);
   };
+  const isOnBoard = props.location.pathname.includes("board") ;
   return (
     <>
       <header
-        className={`main-header flex align-center ${props.location.pathname.includes("board") ? "on-board" : ""
-          }`}
+        className={`main-header flex align-center ${
+          isOnBoard ? "on-board" : ""
+        }`}
       >
         <div className="header-btn-container flex">
           <Link to="/" className="header-btn">
@@ -51,18 +55,29 @@ function _AppHeader(props) {
 
             <button
               className="header-btn"
-              onClick={(event) => { props.setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'NOTIFICATION' }); props.setPopoverMenu(true); props.togglePopover(); }}>
+              style={{
+                opacity: isOnBoard ? 1 : 0.4,
+                pointerEvents: isOnBoard ? 'auto' : 'none',
+              }}
+              onClick={(event) => {
+                if(!isOnBoard) return
+                props.setPosition({
+                  
+                  pos: { pageX: event.pageX, pageY: event.pageY },
+                  type: "NOTIFICATION",
+                });
+                props.setPopoverMenu(true);
+                props.togglePopover();
+              }}
+            >
               <NotificationsNoneIcon className="icon" />
             </button>
             <MemberList members={[props.user]} isInHeader={true} />
           </div>
         ) : (
           <div className="header-btn-container flex login">
-            <Link className="clean-link" to="/login"><button
-              className="header-btn boards"
-            >
-              Login
-            </button>
+            <Link className="clean-link" to="/login">
+              <button className="header-btn boards">Login</button>
             </Link>
           </div>
         )}
@@ -92,7 +107,7 @@ const mapDispatchToProps = {
   addBoard,
   setPosition,
   togglePopover,
-  setPopoverMenu
+  setPopoverMenu,
 };
 
 export const AppHeader = withRouter(

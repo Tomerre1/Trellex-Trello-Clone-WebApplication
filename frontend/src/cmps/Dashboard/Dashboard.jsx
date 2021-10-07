@@ -82,16 +82,16 @@ export function _Dashboard(props) {
   const taskDetails = getTaskDetails(props);
   if (!props.board)
     return (
-      <section className="dashboard-overlay flex column">
+      <section className="dashboard-overlay flex column ">
         <LoaderSpinner />
       </section>
     );
   return (
-    <section className="dashboard-overlay flex column">
+    <section className="dashboard-overlay flex column fade-in">
       <button onClick={onBack} class="close-btn clean-btn">
         <Close />
       </button>
-      <div className="dashboard-container flex column">
+      <div className="dashboard-container flex column ">
         <div className="header flex column justify-center align-center">
           <h1 className="dash-title">{board.title}</h1>
           <p className="date">
