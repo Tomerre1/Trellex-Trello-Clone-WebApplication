@@ -2,15 +2,14 @@ import React from "react";
 import { Bar } from "react-chartjs-2";
 
 export const ActivityChart = ({ membersActivity }) => {
- 
   const data = {
     labels: [...Object.keys(membersActivity)],
     datasets: [
       {
         label: "Amount",
         data: [...Object.values(membersActivity)],
-        backgroundColor: ["#c277e0", "#61bd4f"],
-        borderColor: ["#c277e0", "darkgreen"],
+        backgroundColor: ["#c277e0", "#61bd4f", "#ff9e1a", "#334563"],
+        borderColor: ["#c277e0", "darkgreen", "#ff9e1a", "#334563"],
         borderWidth: 1,
       },
     ],
@@ -18,8 +17,6 @@ export const ActivityChart = ({ membersActivity }) => {
 
   const options1 = {
     indexAxis: "x",
-    // Elements options apply to all of the options unless overridden in a dataset
-    // In this case, we are setting the border of each horizontal bar to be 2px wide
     elements: {
       bar: {
         borderWidth: 2,
@@ -32,7 +29,7 @@ export const ActivityChart = ({ membersActivity }) => {
       },
       title: {
         display: true,
-        text: "Members by activity",
+        text: "Member activity",
         color: "rgba(255, 255, 255, 0.897)",
         font: {
           size: "30",
@@ -67,11 +64,7 @@ export const ActivityChart = ({ membersActivity }) => {
 
   return (
     <div className="chart-todo">
-      {    console.log(Object.keys(membersActivity))
-}
-      <div className="chart-1">
-        <Bar data={data} options={options1} width={350} height={350}/>
-\      </div>
+      <Bar data={data} options={options1} width={350} height={450} />
     </div>
   );
 };

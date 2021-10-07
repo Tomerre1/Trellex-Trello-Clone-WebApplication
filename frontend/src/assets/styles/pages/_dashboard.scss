@@ -29,15 +29,28 @@
       text-align: center;
     }
     .info-box {
-      width: 140px;
-      align-items: space-between;
-      gap: 20px;
-      &:last-child {
-        border: none;
+      width:auto;
+      padding:20px 15px ;
+      align-items: center;
+      
+      gap:8px;
+      background-color:rgba(255, 255, 255, 0.185);
+      border-radius:3px;
+      border:2px solid rgba(255, 255, 255, 0.452);
+      .big-num-box { 
+        gap:30px;
+        height:100%;
+        position:relative;
+        top:10px;
       }
-      border-inline-end: 2px solid rgba(255, 255, 255, 0.336);
+      .details {
+        align-items:flex-start;
+        p { margin:0}
+        position: relative;
+
+      }
       p {
-        margin: 10px 0;
+        margin:0;
         color: rgba(255, 255, 255, 0.897);
         font-size: 1rem;
         font-weight: 500;
