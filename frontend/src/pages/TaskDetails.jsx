@@ -12,6 +12,7 @@ import { TaskHeaderDetails } from "../cmps/TaskHeaderDetails";
 import { LoaderSpinner } from "../cmps/LoaderSpinner";
 import { saveBoard, saveTaskDetails, addActivity } from "../store/board.actions";
 import { setCurrTaskDetails, setPopover, setPosition, setPopoverMenu } from '../store/app.actions'
+import { MediaRecord } from '../cmps/MediaRecord'
 
 export class _TaskDetails extends Component {
   state = {

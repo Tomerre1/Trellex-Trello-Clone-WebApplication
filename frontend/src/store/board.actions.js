@@ -130,7 +130,7 @@ export const removeBoard = (boardId) => {
         }
     }
 }
-export const addTask = (taskTitle, boardId, groupId) => {
+export const addTask = (taskTitle, boardId, groupId,audioUrl,videoUrl) => {
     return async (dispatch) => {
         try {
             const board = await boardService.addTask(taskTitle, boardId, groupId)
