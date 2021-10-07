@@ -25,7 +25,6 @@ export function _TaskPreviewList(props) {
     filteredTasks = filteredTasks.filter(task => task.members.some(member => filterBy.members.every(member => {
       const taskMembersIds = task.members.map(member => member._id)
       return taskMembersIds.includes(member)
-
     })))
   }
 

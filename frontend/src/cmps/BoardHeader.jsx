@@ -124,9 +124,7 @@ function _BoardHeader(props) {
             }}
 
           >
-            {
-              board.groups.reduce((acc, group) => acc + group.tasks.length, 0)
-            } Search results
+            Change Filter
 
           </button>
           <span className="flex" style={{ alignItems: 'center', backgroundColor: "#61bd4f" }}>
