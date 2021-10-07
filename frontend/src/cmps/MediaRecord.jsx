@@ -20,11 +20,10 @@ const _MediaRecord = (props) => {
 
                 render={({ status, startRecording, stopRecording, mediaBlobUrl }) => (
                     <div className="media-record">
-                        <video controls />
+                        <video controls src={mediaBlobUrl} />
                         <div className="flex media-btns">
                             <button onClick={(ev) => { ev.stopPropagation(); startRecording(); }}><h1>Start Recording</h1></button>
                             <button onClick={(ev) => { ev.stopPropagation(); stopRecording() }}>Stop Recording</button>
-
                         </div>
 
                     </div>
@@ -45,7 +44,7 @@ const _MediaRecord = (props) => {
                     <div>
                         <button onClick={(ev) => { ev.stopPropagation(); startRecording(); }}><h1>Start Recording</h1></button>
                         <button onClick={(ev) => { ev.stopPropagation(); stopRecording() }}>Stop Recording</button>
-                        <audio controls />
+                        <audio controls src={mediaBlobUrl} />
                     </div>
                 )}
             />
