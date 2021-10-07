@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux'
 import { Popover } from "./Popover"
-import { setPosition } from '../../store/app.actions'
-import { saveBoard } from '../../store/board.actions'
 import { ActivitiesList } from '../ActivitiesList'
 import { withRouter } from "react-router";
 
@@ -40,7 +38,6 @@ class _PopoverNotification extends React.Component {
         userNotifications.forEach(notify => {
             notify.isNotRead = true;
             notify.isNotify = true;
-            notify.isNewNotify = false;
         });
         this.setState(prevState => ({ ...prevState, userNotifications }))
     }
@@ -58,11 +55,11 @@ class _PopoverNotification extends React.Component {
         const { board } = this.props
         const currGroup = board.groups.find(group => group.tasks.some(task => task.id === notify.task.id))
         notify.isNotRead = false
-        this.NotifyRead(notify)
+        this.NotifyUpdate(notify)
         this.props.history.push(`/board/${board._id}/${currGroup.id}/${notify.task.id}`)
     }
 
-    NotifyRead = (notify) => {
+    NotifyUpdate = (notify) => {
         const { userNotifications } = this.state
         const notifyIdx = userNotifications.findIndex(currNotify => currNotify.id === notify.id)
         userNotifications[notifyIdx] = notify
@@ -87,12 +84,7 @@ function mapStateToProps(state) {
     return {
         board: state.boardModule.board,
         loggedinUser: state.userModule.loggedinUser,
-        users: state.userModule.users,
     }
 }
-const mapDispatchToProps = {
-    saveBoard,
-    setPosition
-};
 
-export const PopoverNotification = withRouter(connect(mapStateToProps, mapDispatchToProps)(_PopoverNotification))
+export const PopoverNotification = withRouter(connect(mapStateToProps, null)(_PopoverNotification))
