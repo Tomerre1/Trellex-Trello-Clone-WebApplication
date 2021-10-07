@@ -78,7 +78,7 @@ export function _GroupFooter(props) {
           </div>
         )}
       </div>
-      {mediaType && <MediaRecord boardId={props.ids.boardId} overlay={true} groupId={props.ids.groupId} type={mediaType} setMediaType={setMediaType} />}
+      {mediaType && <MediaRecord boardId={props.ids.boardId} groupId={props.ids.groupId} type={mediaType} setMediaType={setMediaType} />}
     </>
   );
 }
