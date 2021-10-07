@@ -73,7 +73,7 @@ class _PopoverNotification extends React.Component {
         const { userNotifications } = this.state
         if (!userNotifications) return <></>
 
-        return <div className="board-menu">
+        return <div className="board-menu notification-popover">
             <Popover title={title}>
                 <ActivitiesList CommAndAct={userNotifications} isShowActivities={true} currTask={null} selectNotification={this.selectNotification} />
             </Popover>

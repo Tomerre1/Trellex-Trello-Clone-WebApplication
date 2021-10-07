@@ -1,3 +1,6 @@
 .notification-popover {
-   
+    .popover {
+        height: calc(100vh - 62px) !important;
+        bottom: 15px !important;
+    }
 }
