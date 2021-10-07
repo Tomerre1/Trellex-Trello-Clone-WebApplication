@@ -8,6 +8,7 @@ import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import AddIcon from "@mui/icons-material/Add";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
+import { setPosition, togglePopover, setPopoverMenu } from '../store/app.actions';
 
 
 
@@ -49,7 +50,9 @@ function _AppHeader(props) {
               <AddIcon className="icon" />
             </button>
 
-            <button className="header-btn">
+            <button 
+            className="header-btn" 
+            onClick={(event) => { props.setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'NOTIFICATION' }); props.togglePopover() }}>
               <NotificationsNoneIcon className="icon" />
             </button>
             <MemberList members={[props.user]} isInHeader={true}/>
@@ -88,6 +91,8 @@ function mapStateToProps(state) {
 }
 const mapDispatchToProps = {
   addBoard,
+  setPosition,
+  togglePopover
 };
 
 export const AppHeader = withRouter(

@@ -10,6 +10,7 @@ import { PopoverMoveCopy } from "./PopoverMoveCopy";
 import { PopoverMenu } from "./PopoverMenu";
 import { PopoverMenuArchive } from "./PopoverMenuArchive";
 import { PopoverMenuBackground } from "./PopoverMenuBackground"
+import { PopoverNotification } from "./PopoverNotification"
 
 const _PopoverDynamicCmp = (props) => {
     const { type } = props.popover.pos;
@@ -46,6 +47,9 @@ const _PopoverDynamicCmp = (props) => {
 
         case "BOARD_SHOW_BACKGROUND":
             return <PopoverMenuBackground {...props} title="Change Background" />
+
+        case "NOTIFICATION":
+            return <PopoverNotification {...props} title="Notifications" />
 
         default:
             return <></>

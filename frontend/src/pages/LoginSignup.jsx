@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { onLogin, onSignup } from "../store/user.actions";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import { GoogleLogin } from "react-google-login";
-import { utilService } from "../services/util.service";
 
 function _LoginSignup(props) {
   const [username, setUsername] = useState("");

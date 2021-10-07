@@ -99,6 +99,22 @@
     cursor: pointer;
 }
 
+// Notification
+.unread {
+    // background-color: rgba(9, 30, 66, 0.05);
+}
+
+.notify {
+    border-radius: 6px;
+    padding: 4px;
+    margin-bottom: 5px !important;
+    cursor: pointer;
+    max-width: 400px;
+    &:hover {
+        background-color: rgba(9, 30, 66, 0.05);
+    }
+}
+
 //Button
 .atlaskit-portal-container .nch-button,
 body .nch-button {
