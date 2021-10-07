@@ -45,10 +45,26 @@ async function queryPhotos(query = 'random') {
 // function getById(boardId) {
 //     return storageService.get(STORAGE_KEY, boardId)
 // }
-async function getById(boardId) {
+async function getById(boardId, filterBy) {
     // const res = await axios.get(`http://localhost:3030/api/toy/${toyId}`)
     // return res.data
     const board = await httpService.get(`board/${boardId}`)
+    const filteredBoard = (filterBy) ? filterBoard(board, filterBy) : board
+    return filteredBoard
+}
+
+const filterBoard = (board, filterBy) => {
+    if (filterBy.search) {
+        const search = filterBy.search.toLowerCase()
+        console.log('board.groups.tasks :>> ', board.groups.tasks);
+        board.groups = board.groups.filter(group => group.tasks.some(task => task.title.toLowerCase().includes(search))).map(group => {
+            group.tasks = group.tasks.filter(task => task.title.toLowerCase().includes(search))
+            return group
+        })
+    }
+    // if(filterBy.labels) {
+    //     board.groups = board.groups.filter(group => group.labels.some(label => filterBy.labels.includes(label)))
+    // }
     return board
 }
 
@@ -127,7 +143,7 @@ async function addTask(taskTitle, boardId, groupId) {
         "title": taskTitle,
         "description": "",
         "createdAt": Date.now(),
-        "byMember":userService.getLoggedinUser(),
+        "byMember": userService.getLoggedinUser(),
         "style": {},
         "labelIds": []
     }

@@ -5,6 +5,7 @@ import { ColorPalette } from '../ColorPalette'
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { PopoverLabelPreview } from './PopoverLabelPreview'
 import { setPosition } from '../../store/app.actions'
+import { loadBoard } from '../../store/board.actions'
 
 
 
@@ -25,16 +26,20 @@ class _PopoverMenuSearchCard extends React.Component {
                 labels: [],
                 members: []
             }
-        }, () => {
         })
     }
 
+
     handleSearch = (event) => {
+        const { loadBoard, board } = this.props
         const { value, name } = event.target
         this.setState(prevState => ({
             ...prevState,
             filterBy: { ...prevState.filterBy, [name]: value }
-        }))
+        }), () => { loadBoard(board._id, this.state.filterBy) })
+
+
+
     }
 
     toggleLabelCheck = (labelId) => {
@@ -79,7 +84,8 @@ function mapStateToProps(state) {
     }
 }
 const mapDispatchToProps = {
-    setPosition
+    setPosition,
+    loadBoard
 };
 
 export const PopoverMenuSearchCard = connect(mapStateToProps, mapDispatchToProps)(_PopoverMenuSearchCard)

@@ -18,10 +18,10 @@ export const loadBoards = () => {
     }
 }
 
-export const loadBoard = (boardId) => {
+export const loadBoard = (boardId, filterBy = null) => {
     return async (dispatch) => {
         try {
-            const board = await boardService.getById(boardId)
+            const board = await boardService.getById(boardId, filterBy)
             // console.log('loading board',board)
             if (board)
                 dispatch({
@@ -35,16 +35,6 @@ export const loadBoard = (boardId) => {
             throw Error(err)
         }
     }
-}
-
-export const boardFilter = (board, filterBy) => {
-    if (filterBy.search) {
-        console.log('filter.search')
-    }
-    if (filterBy.labels.length > 0) {
-        console.log('filter.labels')
-    }
-    return true
 }
 
 
@@ -275,3 +265,11 @@ export const updateTask = (boardId, groupId, task) => {
     }
 }
 
+export const setFilterBy = (filterBy) => {
+    return (dispatch) => {
+        dispatch({
+            type: "SET_FILTER",
+            filterBy
+        });
+    }
+}
