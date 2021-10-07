@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 import { Popover } from "./Popover"
 import { ActivitiesList } from "../ActivitiesList"
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
-import SearchIcon from '@mui/icons-material/Search';
 import RestoreFromTrashIcon from '@mui/icons-material/RestoreFromTrash';
 import { setPosition } from '../../store/app.actions'
+import SearchIcon from '@mui/icons-material/Search';
 
 
 
@@ -31,6 +31,7 @@ class _PopoverMenu extends Component {
                         </li>
 
                         <li onClick={(event) => { setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'BOARD_FILTER_CARDS' }); }}>
+                            <SearchIcon />
                             <span className="menu-title" >Search cards</span>
                         </li>
                         <li onClick={(event) => { setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'BOARD_SHOW_ARCHIVE' }); }}>

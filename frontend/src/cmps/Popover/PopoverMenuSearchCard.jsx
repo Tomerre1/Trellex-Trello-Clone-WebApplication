@@ -70,8 +70,6 @@ class _PopoverMenuSearchCard extends React.Component {
         })
     }
 
-
-
     render() {
         const { board, title, setPosition } = this.props
         if (!board) return <></>

@@ -16,7 +16,7 @@ class _BoardApp extends Component {
   }
 
   componentDidMount = async () => {
-    this.props.setFilterBy(null);
+    this.props.setFilterBy({ labels: [], members: [], search: '' })
     const { boardId } = this.props.match.params
     if (!this.props.user) this.props.onLogin({ username: 'guest', password: '1' })
     this.loadBoard();
