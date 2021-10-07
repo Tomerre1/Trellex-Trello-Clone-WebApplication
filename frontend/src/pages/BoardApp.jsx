@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { BoardHeader } from "../cmps/BoardHeader";
 import { connect } from "react-redux";
 import { onLogin } from "../store/user.actions"
-import { loadBoard, loadBoards, clearBoard, handleDrag } from "../store/board.actions";
+import { loadBoard, loadBoards, clearBoard, handleDrag, setFilterBy } from "../store/board.actions";
 import { loadUsers } from "../store/user.actions";
 import { GroupList } from "../cmps/GroupList";
 import { DragDropContext } from "react-beautiful-dnd";
@@ -16,6 +16,7 @@ class _BoardApp extends Component {
   }
 
   componentDidMount = async () => {
+    this.props.setFilterBy(null);
     const { boardId } = this.props.match.params
     if (!this.props.user) this.props.onLogin({ username: 'guest', password: '1' })
     this.loadBoard();
@@ -23,11 +24,14 @@ class _BoardApp extends Component {
     this.props.loadUsers();
     socketService.emit('join-board', boardId)
     socketService.on("updated-board", () => { this.props.loadBoard(boardId) })
+
   };
 
   componentWillUnmount = () => {
     this.props.clearBoard();
     socketService.off("updated-board")
+    this.props.setFilterBy({ labels: [], members: [], search: '' })
+
   };
 
   componentDidUpdate = () => {
@@ -35,6 +39,7 @@ class _BoardApp extends Component {
       this.props.clearBoard();
       this.loadBoard();
       this.props.loadUsers();
+
     }
   };
 
@@ -118,7 +123,8 @@ const mapDispatchToProps = {
   clearBoard,
   loadUsers,
   handleDrag,
-  onLogin
+  onLogin,
+  setFilterBy
 };
 
 export const BoardApp = connect(mapStateToProps, mapDispatchToProps)(_BoardApp);
