@@ -57,7 +57,7 @@
             transition-timing-function: ease;
             transition-property: background-color, border-color, box-shadow;
             line-height: 20px;
-            padding: 6px 12px;
+            padding: rem(6px) rem(12px);
             text-decoration: none;
             transition-duration: 85ms;
             font-size: 14px;

@@ -1,0 +1,6 @@
+.task-checklists {
+    margin-right: 15px;
+    @include for-narrow-layout {
+        margin-right: unset;
+    }
+}

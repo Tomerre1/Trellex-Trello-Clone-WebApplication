@@ -31,6 +31,7 @@ h6 {
     line-height: 1;
     font-weight: 400;
     color: $clr7;
+    
 }
 
 img {
@@ -39,7 +40,10 @@ img {
 
 p {
     margin: 0 0 1em;
-    color: $clr7;
+    color: #172b4d;
+     -webkit-font-smoothing: antialiased;
+     font-smooth: always;
+
 }
 
 a {

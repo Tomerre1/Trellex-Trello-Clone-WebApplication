@@ -76,7 +76,7 @@ function _LoginSignup(props) {
           </button>
           <GoogleLogin
             clientId={CLIENT_ID}
-            buttonText={isLogin ? "Already Signed up with Google? Log in" : "Sign up with Google"}
+            buttonText={isLogin ? "Login with Google ": "Sign up with Google"}
             onSuccess={onSuccess}
             onFailure={onFail}
             cookiePolicy={"single_host_origin"}

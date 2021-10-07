@@ -1,4 +1,8 @@
 .task-activities {
+    margin-right: 15px;
+    @include for-narrow-layout {
+        margin-right: unset;
+    }
     .window-modal-title {
         align-items: center;
         display: flex;
