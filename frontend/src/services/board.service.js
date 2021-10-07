@@ -54,21 +54,21 @@ async function getById(boardId, filterBy) {
 }
 
 const filterBoard = (board, filterBy) => {
-    if (filterBy.search) {
-        const search = filterBy.search.toLowerCase()
-        board.groups = board.groups.filter(group => group.tasks.some(task => task.title.toLowerCase().includes(search)))
-            .map(group => {
-                group.tasks = group.tasks.filter(task => task.title.toLowerCase().includes(search))
-                return group
-            })
-    }
-    if (filterBy.labels.length > 0) {
-        board.groups = board.groups.filter(group => group.tasks.some(task => task.labelIds.some(labelId => filterBy.labels.every(label => task.labelIds.includes(label)))))
-            .map(group => {
-                group.tasks = group.tasks.filter(task => task.labelIds.some(labelId => filterBy.labels.every(label => task.labelIds.includes(label))))
-                return group
-            })
-    }
+    // if (filterBy.search) {
+    //     const search = filterBy.search.toLowerCase()
+    //     board.groups = board.groups.filter(group => group.tasks.some(task => task.title.toLowerCase().includes(search)))
+    //         .map(group => {
+    //             group.tasks = group.tasks.filter(task => task.title.toLowerCase().includes(search))
+    //             return group
+    //         })
+    // }
+    // if (filterBy.labels.length > 0) {
+    //     board.groups = board.groups.filter(group => group.tasks.some(task => task.labelIds.some(labelId => filterBy.labels.every(label => task.labelIds.includes(label)))))
+    //         .map(group => {
+    //             group.tasks = group.tasks.filter(task => task.labelIds.some(labelId => filterBy.labels.every(label => task.labelIds.includes(label))))
+    //             return group
+    //         })
+    // }
     // if (filterBy.members.length > 0) {
     //     board.groups = board.groups.filter(group => group.tasks.some(task => task.labelIds.some(labelId => filterBy.labels.every(label => task.labelIds.includes(label)))))
     //         .map(group => {
