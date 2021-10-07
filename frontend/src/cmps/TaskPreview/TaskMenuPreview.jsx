@@ -39,7 +39,7 @@ export function TaskMenuPreview({ task, groupId, boardLabels,taskUrl }) {
     <Link to={taskUrl} className="clean-link">
       <article
         className="task-preview-container edit"
-        style={{ borderRadius: 3 }}
+        style={{ borderRadius: 3,minWidth:240 }}
       >
         {style?.bgUrl && (
           <img
