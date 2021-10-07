@@ -5,7 +5,7 @@
     background-color: transparent;
     color: white;
     z-index: 1;
-    gap:6px;
+    gap: 6px;
 
     form {
         margin: 0;
@@ -66,19 +66,38 @@
             &.star {
                 margin-inline-end: 10px;
             }
-            &.last-in-row{
+            &.last-in-row {
                 padding-inline-end: 10px;
-                
             }
             .icon {
                 padding: 3px;
                 padding-right: 5px;
                 &.star {
-                    padding:2px;
+                    padding: 2px;
                     &.gold {
-                        color:gold;
+                        color: gold;
                     }
                 }
+            }
+        }
+        .results {
+            background-color: #5aac44;
+            border-radius: 3px;
+            &:hover {
+                background-color: #ffffff3d;
+            }
+
+            .btn-results {
+                padding: 0px 8px;
+                background-color: #5aac44;
+                border-radius: 3px;
+                &:hover {
+                    background-color: #ffffff3d;
+                }
+            }
+            span {
+                border-top-right-radius: 3px;
+                border-bottom-right-radius: 3px;
             }
         }
     }

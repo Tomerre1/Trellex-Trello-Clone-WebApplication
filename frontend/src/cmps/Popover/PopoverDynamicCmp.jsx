@@ -11,6 +11,7 @@ import { PopoverMenu } from "./PopoverMenu";
 import { PopoverMenuArchive } from "./PopoverMenuArchive";
 import { PopoverMenuBackground } from "./PopoverMenuBackground"
 import { PopoverNotification } from "./PopoverNotification"
+import { PopoverMenuSearchCard } from './PopoverMenuSearchCard'
 
 const _PopoverDynamicCmp = (props) => {
     const { type } = props.popover.pos;
@@ -46,7 +47,10 @@ const _PopoverDynamicCmp = (props) => {
             return <PopoverMenuArchive {...props} title="Archive" />
 
         case "BOARD_SHOW_BACKGROUND":
-            return <PopoverMenuBackground {...props} title="Change Background" />
+            return <PopoverMenuBackground {...props} title="Change background" />
+
+        case "BOARD_FILTER_CARDS":
+            return <PopoverMenuSearchCard {...props} title="Search cards" />
 
         case "NOTIFICATION":
             return <PopoverNotification {...props} title="Notifications" />
@@ -66,3 +70,41 @@ export const PopoverDynamicCmp = connect(
     mapStateToProps,
     null
 )(_PopoverDynamicCmp);
+
+// אני הולך להציג את קוד - תצוגה - קוד
+
+{/* <button className="secondary-btn action-btn" onClick={(event) => { setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'LABELS' }); togglePopover() }}>
+<div className="action-btn-content flex " >
+    <LabelIcon />
+    <span>Labels</span>
+</div>
+</button>
+
+<button onClick={(event) => { setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'CHECKLIST' }); }}>
+<div>
+    <CheckboxIcon />
+    <span>Checklist</span>
+</div>
+</button> */}
+
+
+// export const setPosition = ({ pos, type}) => {
+//     return (dispatch) => {
+//         dispatch({
+//             type: "SET_POSITION",
+//             pos: { ...pos, type },
+//         })
+//     }
+// }
+
+
+
+// setPopoverPos(elRect) {
+//     const { pos } = this.props.popover
+//     const { width, height } = elRect
+//     let posX = (window.innerWidth - pos.pageX > 200) ? pos.pageX - 200 : pos.pageX - 200;
+//     let posY = (window.innerHeight - pos.pageY > 200) ? pos.pageY + 20 : pos.pageY - 200;
+//     posX = (posX + width > window.innerWidth) ? window.innerWidth - width - 20 : posX;
+//     posY = (posY + height > window.innerHeight) ? window.innerHeight - height - 20 : posY;
+//     return { left: posX, top: posY }
+// }

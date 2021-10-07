@@ -1,11 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
 import { connect } from "react-redux";
-import { saveBoard } from "../store/board.actions";
+import { saveBoard, setFilterBy } from "../store/board.actions";
 import { MemberList } from "./MemberList";
 import { MembersAddToBoard } from "../cmps/MembersAddToBoard";
 import MoreHorizOutlinedIcon from "@mui/icons-material/MoreHorizOutlined";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import BarChartIcon from '@mui/icons-material/BarChart';
+import { Close } from '@mui/icons-material';
+
 import {
   togglePopover,
   setPosition,
@@ -15,7 +17,7 @@ import {
 import { Link } from "react-router-dom";
 
 function _BoardHeader(props) {
-  const { board } = props;
+  const { board, setFilterBy } = props;
   const [isTitleEdit, setTitleEdit] = useState(false);
   const [title, setTitle] = useState(board.title);
   const [width, setWidth] = useState(board.title.length * 9.5);
@@ -105,11 +107,34 @@ function _BoardHeader(props) {
           <MembersAddToBoard setMembersPopup={setMembersPopup} />
         )}
       </div>
-      <div className="header-btn-container flex  flex ">
+      <div className="header-btn-container flex ">
         <Link to={`/board/${board._id}/dashboard`} className="clean-link">
-          <button className="header-btn"><BarChartIcon className="icon"/> Dashboard</button>
+          <button className="header-btn"><BarChartIcon className="icon" /> Dashboard</button>
         </Link>
+        {(props.filterBy.search || props.filterBy.labels.length > 0 || props.filterBy.members.length > 0) && <div className="flex results">
+          <button
+            className="header-btn btn-results"
+            onClick={(event) => {
+              props.setPosition({
+                pos: { pageX: event.pageX, pageY: event.pageY },
+                type: "BOARD_FILTER_CARDS",
+              });
+              props.setPopoverMenu(true);
+              props.togglePopover(false);
+            }}
 
+          >
+            Change Filter
+
+          </button>
+          <span className="flex" style={{ alignItems: 'center', backgroundColor: "#61bd4f" }}>
+            <Close className="icon clean-btn"
+              onClick={(event) => { event.stopPropagation(); setFilterBy({ labels: [], members: [], search: '' }) }}
+            />
+          </span>
+
+        </div>
+        }
         <button
           className="header-btn last-in-row"
           onClick={(event) => {
@@ -132,10 +157,12 @@ const mapDispatchToProps = {
   togglePopover,
   setPosition,
   setPopoverMenu,
+  setFilterBy
 };
 function mapStateToProps(state) {
   return {
     board: state.boardModule.board,
+    filterBy: state.boardModule.filterBy,
   };
 }
 export const BoardHeader = connect(

@@ -127,9 +127,10 @@ async function addTask(taskTitle, boardId, groupId) {
         "title": taskTitle,
         "description": "",
         "createdAt": Date.now(),
-        "byMember":userService.getLoggedinUser(),
+        "byMember": userService.getLoggedinUser(),
         "style": {},
-        "labelIds": []
+        "labelIds": [], 
+        "members": []
     }
     const board = await getById(boardId)
     const idx = board.groups.findIndex((group) => group.id === groupId)

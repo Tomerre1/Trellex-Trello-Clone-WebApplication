@@ -14,10 +14,9 @@ export function GroupList(props) {
       >
         {(provided) => (
           <div
-          className="group-list"
+            className="group-list"
             {...provided.droppableProps}
             ref={provided.innerRef}
-            style={{maxHeight:document.clientHeight - 130,height:document.clientHeight  - 130}}
           >
             {groups.map((group, idx) => (
               <div key={group.id}>
