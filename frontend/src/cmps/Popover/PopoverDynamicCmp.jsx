@@ -82,3 +82,25 @@ export const PopoverDynamicCmp = connect(
     <span>Checklist</span>
 </div>
 </button> */}
+
+
+// export const setPosition = ({ pos, type}) => {
+//     return (dispatch) => {
+//         dispatch({
+//             type: "SET_POSITION",
+//             pos: { ...pos, type },
+//         })
+//     }
+// }
+
+
+
+// setPopoverPos(elRect) {
+//     const { pos } = this.props.popover
+//     const { width, height } = elRect
+//     let posX = (window.innerWidth - pos.pageX > 200) ? pos.pageX - 200 : pos.pageX - 200;
+//     let posY = (window.innerHeight - pos.pageY > 200) ? pos.pageY + 20 : pos.pageY - 200;
+//     posX = (posX + width > window.innerWidth) ? window.innerWidth - width - 20 : posX;
+//     posY = (posY + height > window.innerHeight) ? window.innerHeight - height - 20 : posY;
+//     return { left: posX, top: posY }
+// }
