@@ -43,7 +43,7 @@ function _TaskPreview(props) {
 
   const calcPos = (ev) => {
     if (!ev) return;
-    let { top, right, height} =
+    let { top, right, height } =
       ev.target.parentElement.parentElement.getBoundingClientRect();
     console.log(top, right, height, window.innerHeight);
     if (top > window.innerHeight - 318) {
@@ -64,7 +64,7 @@ function _TaskPreview(props) {
     calcPos(ev);
     toggleMenuShown(!isMenuShown);
     toggleDragDisable();
-    props.setPopoverMenu(false)
+    props.setPopoverMenu(false);
   };
 
   let todos;
@@ -121,7 +121,37 @@ function _TaskPreview(props) {
       </Draggable>
     );
   }
-
+  // video mode
+  if (task?.media?.videoUrl) {
+    return (
+      <Draggable
+        draggableId={task.id}
+        index={index}
+        isDragDisabled={isDragDisabled}
+      >
+        {(provided) => (
+          <article
+            ref={provided.innerRef}
+            {...provided.draggableProps}
+            {...provided.dragHandleProps}
+          >
+            <div className="task-preview-container video">
+              <Link to={taskUrl} className="clean-link">
+                <div className="task-preview video">
+                  <video width={250} controls>
+                    <source src={task.media.videoUrl} type="video/mp4" />
+                  </video>
+                </div>
+              </Link>
+              <div className="edit-icon" onClick={toggleMenu}>
+                <ModeEditOutlinedIcon className="icon" />
+              </div>
+            </div>
+          </article>
+        )}
+      </Draggable>
+    );
+  }
   // full color cover
   if (style && style?.coverMode === "full" && !isMenuShown)
     return (
@@ -254,7 +284,11 @@ function _TaskPreview(props) {
                         />
                       )}
                       {task?.members && (
-                        <MemberList members={task.members} isInPreview={true} task={task}/>
+                        <MemberList
+                          members={task.members}
+                          isInPreview={true}
+                          task={task}
+                        />
                       )}
                     </div>
                   </div>
@@ -276,8 +310,8 @@ function _TaskPreview(props) {
         </Draggable>
       </>
     );
+  // edit mode
   else
-  // edit mode 
     return (
       <>
         <div
@@ -305,7 +339,7 @@ function mapStateToProps(state) {
 }
 const mapDispatchToProps = {
   toggleDragDisable,
-  setPopoverMenu
+  setPopoverMenu,
 };
 
 export const TaskPreview = connect(
