@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux'
 import { Popover } from "./Popover"
-import { setPosition } from '../../store/app.actions'
-import { saveBoard } from '../../store/board.actions'
 import { ActivitiesList } from '../ActivitiesList'
 import { withRouter } from "react-router";
 
@@ -11,7 +9,8 @@ import { withRouter } from "react-router";
 
 class _PopoverNotification extends React.Component {
     state = {
-        userNotifications: null
+        userNotifications: null,
+        boardId: null
     }
 
     componentDidMount = () => {
@@ -21,8 +20,8 @@ class _PopoverNotification extends React.Component {
     setNotifications = () => {
         const { board } = this.props
         const { loggedinUser } = this.props
+        if (!board) return
         const userTasks = []
-
         board.groups.forEach(group => {
             group.tasks.forEach(task => {
                 if (!task.members || !task.members.length) return
@@ -35,34 +34,34 @@ class _PopoverNotification extends React.Component {
         let userNotifications = board.activities.filter(activity => {
             return userTasks.includes(activity.task.id)
         })
-        userNotifications = JSON.parse(JSON.stringify(userNotifications))
 
+        userNotifications = JSON.parse(JSON.stringify(userNotifications))
         userNotifications.forEach(notify => {
             notify.isNotRead = true;
             notify.isNotify = true;
-            notify.isNewNotify = false;
         });
-        this.setState(prevState => ({ ...prevState, userNotifications }))
+        userNotifications.sort((a, b) => (a.createdAt < b.createdAt) ? 1 : ((b.createdAt < a.createdAt) ? -1 : 0))
+
+        this.setState(prevState => ({ ...prevState, userNotifications, boardId: board._id }))
     }
 
-    componentDidUpdate = (prevProps) => {
-        // const { board } = this.props
-        // if (this.state.board.activities.length !== prevProps.board.activities.length) {
-        // console.log('componentDidUpdate')
-        //   this.filteredUsers = this.getFilteredUsers();
-        //   this.forceUpdate();
-        // }
-    };
-
+    componentDidUpdate = () => {
+        const { board } = this.props
+        const { boardId } = this.state
+        if (!board) return
+        if (board._id !== boardId) {
+            this.setNotifications()
+        }
+    }
     selectNotification = (notify) => {
         const { board } = this.props
         const currGroup = board.groups.find(group => group.tasks.some(task => task.id === notify.task.id))
         notify.isNotRead = false
-        this.NotifyRead(notify)
+        this.NotifyUpdate(notify)
         this.props.history.push(`/board/${board._id}/${currGroup.id}/${notify.task.id}`)
     }
 
-    NotifyRead = (notify) => {
+    NotifyUpdate = (notify) => {
         const { userNotifications } = this.state
         const notifyIdx = userNotifications.findIndex(currNotify => currNotify.id === notify.id)
         userNotifications[notifyIdx] = notify
@@ -74,8 +73,7 @@ class _PopoverNotification extends React.Component {
         const { userNotifications } = this.state
         if (!userNotifications) return <></>
 
-        console.log('userNotifications', userNotifications)
-        return <div className="board-menu">
+        return <div className="board-menu notification-popover">
             <Popover title={title}>
                 <ActivitiesList CommAndAct={userNotifications} isShowActivities={true} currTask={null} selectNotification={this.selectNotification} />
             </Popover>
@@ -87,12 +85,7 @@ function mapStateToProps(state) {
     return {
         board: state.boardModule.board,
         loggedinUser: state.userModule.loggedinUser,
-        users: state.userModule.users,
     }
 }
-const mapDispatchToProps = {
-    saveBoard,
-    setPosition
-};
 
-export const PopoverNotification = withRouter(connect(mapStateToProps, mapDispatchToProps)(_PopoverNotification))
+export const PopoverNotification = withRouter(connect(mapStateToProps, null)(_PopoverNotification))
