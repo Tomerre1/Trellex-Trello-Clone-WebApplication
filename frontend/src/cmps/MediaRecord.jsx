@@ -14,14 +14,18 @@ const _MediaRecord = (props) => {
                 onStop={async (blobUrl, blob) => {
                     const res = await cloudinaryService.uploadFile(null, props.type, blob)
                     const videoUrl = res.secure_url
-                    
+                    props.addTask('Media', props.boardId, props.groupId, null, videoUrl)
                 }
                 }
 
                 render={({ status, startRecording, stopRecording, mediaBlobUrl }) => (
-                    <div>
-                        <button onClick={startRecording}><h1>Start Recording</h1></button>
-                        <button onClick={stopRecording}>Stop Recording</button>
+                    <div className="media-record">
+                        <video controls />
+                        <div className="flex media-btns">
+                            <button onClick={(ev) => { ev.stopPropagation(); startRecording(); }}><h1>Start Recording</h1></button>
+                            <button onClick={(ev) => { ev.stopPropagation(); stopRecording() }}>Stop Recording</button>
+                        </div>
+
                     </div>
                 )}
             />

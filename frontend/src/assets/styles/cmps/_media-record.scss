@@ -1,0 +1,10 @@
+.media-record {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .media-btns {
+        width: 100%;
+        justify-content: space-around;
+    }
+}

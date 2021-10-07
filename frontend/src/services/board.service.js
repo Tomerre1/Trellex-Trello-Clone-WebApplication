@@ -118,7 +118,7 @@ function updateTask(board, group, task) {
 
 
 
-async function addTask(taskTitle, boardId, groupId) {
+async function addTask(taskTitle, boardId, groupId, audioUrl, videoUrl) {
     if (!taskTitle)
         return
     const newTask =
@@ -130,8 +130,11 @@ async function addTask(taskTitle, boardId, groupId) {
         "byMember": userService.getLoggedinUser(),
         "style": {},
         "labelIds": [],
-        "members": []
+        "members": [],
     }
+    if (audioUrl) newTask.audioUrl = audioUrl
+    else if (videoUrl) newTask.videoUrl = videoUrl
+
     const board = await getById(boardId)
     const idx = board.groups.findIndex((group) => group.id === groupId)
     board.groups[idx].tasks.push(newTask)
