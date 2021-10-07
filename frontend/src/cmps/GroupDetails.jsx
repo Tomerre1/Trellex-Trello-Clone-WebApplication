@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { connect } from "react-redux";
 import { AddNewGroup } from "./Group/AddNewGroup";
 import { TaskPreviewList } from "./TaskPreviewList";
-import { AddNewTask } from "./Group/AddNewTask";
+import { GroupFooter } from "./Group/GroupFooter";
 import { HeaderTitle } from "./Group/HeaderTitle";
 import { removeGroup } from "../store/board.actions";
 import { toggleDragDisable } from "../store/app.actions";
@@ -115,7 +115,7 @@ const _GroupDetails = (props) => {
                   />
                 </div>
                 <div className="group-footer">
-                  <AddNewTask
+                  <GroupFooter
                     ids={{ groupId: group.id, boardId }}
                     scrollToBottom={scrollToBottom}
                   />

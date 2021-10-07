@@ -6,13 +6,14 @@ import { connect } from "react-redux";
 import Loader from "react-loader-spinner";
 import VideoCallIcon from '@mui/icons-material/VideoCall';
 import MicNoneIcon from '@mui/icons-material/MicNone';
+import { MediaRecord } from "../MediaRecord";
 
-export function _AddNewTask(props) {
+export function _GroupFooter(props) {
   const [isClicked, setIsClicked] = useState(false);
   const [taskTitle, setTaskTitle] = useState("");
   const [btnText, setBtnText] = useState("Add task");
-  const [isMediaPopover,setMediaPopover] = useState(false);
-  
+  const [mediaType,setMediaType] = useState('');
+
   const toggleIsClicked = () => {
     setIsClicked(!isClicked);
   };
@@ -37,6 +38,7 @@ export function _AddNewTask(props) {
   };
 
   return (
+    <>
     <div className="grp-add-task">
       {!isClicked ? (
         <div className="add-task-inactive flex space-between" >
@@ -45,8 +47,8 @@ export function _AddNewTask(props) {
             <p>Add a task</p>
           </div>
           <div className="media-btns flex align-center">
-          <VideoCallIcon  className="media-icon"/>
-          <MicNoneIcon className="media-icon"/>
+          <VideoCallIcon  className="media-icon" onClick={()=> setMediaType('video')}/>
+          <MicNoneIcon className="media-icon" onClick={()=> setMediaType('audio')}/>
           </div>
         </div>
       ) : (
@@ -76,6 +78,8 @@ export function _AddNewTask(props) {
         </div>
       )}
     </div>
+   { mediaType &&  <MediaRecord boardId={props.ids.boardId} groupId={props.ids.groupId} type={mediaType} setMediaType={setMediaType}/>}
+    </>
   );
 }
 
@@ -83,4 +87,4 @@ const mapDispatchToProps = {
   addTask,
 };
 
-export const AddNewTask = connect(null, mapDispatchToProps)(_AddNewTask);
+export const GroupFooter = connect(null, mapDispatchToProps)(_GroupFooter);

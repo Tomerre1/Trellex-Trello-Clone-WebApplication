@@ -103,7 +103,6 @@ class _BoardApp extends Component {
           />
         </section>
       </DragDropContext>
-      <MediaRecord type="video" />
     </>
 
     );
