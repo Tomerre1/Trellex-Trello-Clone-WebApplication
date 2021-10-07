@@ -1,7 +1,11 @@
 const initialState = {
     boards: [],
     board: null,
-    filterBy: {},
+    filterBy: {
+        search: '',
+        labels: [],
+        members: []
+    },
     areLabelsExpanded: false
 }
 export function boardReducer(state = initialState, action) {
@@ -21,6 +25,9 @@ export function boardReducer(state = initialState, action) {
             break
         case 'ADD_BOARD':
             newState = { ...state, boards: [...state.boards, action.board] }
+            break
+        case 'SET_FILTER':
+            newState = { ...state, filterBy: { ...state.filterBy, ...action.filterBy } }
             break
         case 'REMOVE_BOARD':
             // const lastRemovedBoard = state.boards.find(board => board._id === action.boardId)

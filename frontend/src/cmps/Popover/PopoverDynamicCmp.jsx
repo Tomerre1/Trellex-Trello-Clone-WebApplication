@@ -10,6 +10,7 @@ import { PopoverMoveCopy } from "./PopoverMoveCopy";
 import { PopoverMenu } from "./PopoverMenu";
 import { PopoverMenuArchive } from "./PopoverMenuArchive";
 import { PopoverMenuBackground } from "./PopoverMenuBackground"
+import { PopoverMenuSearchCard } from './PopoverMenuSearchCard'
 
 const _PopoverDynamicCmp = (props) => {
     const { type } = props.popover.pos;
@@ -45,7 +46,10 @@ const _PopoverDynamicCmp = (props) => {
             return <PopoverMenuArchive {...props} title="Archive" />
 
         case "BOARD_SHOW_BACKGROUND":
-            return <PopoverMenuBackground {...props} title="Change Background" />
+            return <PopoverMenuBackground {...props} title="Change background" />
+
+        case "BOARD_FILTER_CARDS":
+            return <PopoverMenuSearchCard {...props} title="Search cards" />
 
         default:
             return <></>

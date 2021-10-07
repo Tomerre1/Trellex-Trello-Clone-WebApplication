@@ -30,6 +30,9 @@ class _PopoverMenu extends Component {
                             <span className="menu-title">Change background</span>
                         </li>
 
+                        <li onClick={(event) => { setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'BOARD_FILTER_CARDS' }); }}>
+                            <span className="menu-title" >Search cards</span>
+                        </li>
                         <li onClick={(event) => { setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'BOARD_SHOW_ARCHIVE' }); }}>
                             <RestoreFromTrashIcon />
                             <span className="menu-title" >Archive</span>

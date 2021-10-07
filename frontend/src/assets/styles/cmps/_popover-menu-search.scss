@@ -1,0 +1,18 @@
+.popover-filter {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    hr {
+        background-color: rgba(9, 30, 66, 0.13);
+        border: 0;
+        height: 1px;
+        margin: 16px 0;
+        padding: 0;
+        width: 100%;
+    }
+    p {
+        margin: 0;
+        color: #5e6c84;
+    }
+}

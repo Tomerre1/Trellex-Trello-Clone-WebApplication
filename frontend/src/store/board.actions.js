@@ -37,6 +37,17 @@ export const loadBoard = (boardId) => {
     }
 }
 
+export const boardFilter = (board, filterBy) => {
+    if (filterBy.search) {
+        console.log('filter.search')
+    }
+    if (filterBy.labels.length > 0) {
+        console.log('filter.labels')
+    }
+    return true
+}
+
+
 export const saveBoard = (board) => {
     return async (dispatch) => {
         try {
