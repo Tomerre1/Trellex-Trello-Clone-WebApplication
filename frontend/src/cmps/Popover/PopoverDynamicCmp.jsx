@@ -66,3 +66,19 @@ export const PopoverDynamicCmp = connect(
     mapStateToProps,
     null
 )(_PopoverDynamicCmp);
+
+// אני הולך להציג את קוד - תצוגה - קוד
+
+{/* <button className="secondary-btn action-btn" onClick={(event) => { setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'LABELS' }); togglePopover() }}>
+<div className="action-btn-content flex " >
+    <LabelIcon />
+    <span>Labels</span>
+</div>
+</button>
+
+<button onClick={(event) => { setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'CHECKLIST' }); }}>
+<div>
+    <CheckboxIcon />
+    <span>Checklist</span>
+</div>
+</button> */}
