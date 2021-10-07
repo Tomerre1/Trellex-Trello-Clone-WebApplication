@@ -129,7 +129,7 @@ async function addTask(taskTitle, boardId, groupId) {
         "createdAt": Date.now(),
         "byMember": userService.getLoggedinUser(),
         "style": {},
-        "labelIds": [], 
+        "labelIds": [],
         "members": []
     }
     const board = await getById(boardId)

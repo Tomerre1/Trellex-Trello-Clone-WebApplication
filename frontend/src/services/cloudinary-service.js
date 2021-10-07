@@ -2,14 +2,14 @@ export const cloudinaryService = {
     uploadFile
 }
 
-function uploadFile(ev) {
+function uploadFile(ev, type = 'image', blob = null) {
     const CLOUD_NAME = 'dusakec3z'
     const PRESET_NAME = 'pjprwzkr'
-    const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`
+    const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/${type}/upload`
 
     const formData = new FormData();
     // console.log('target', ev.target)
-    formData.append('file', ev.target.files[0])
+    (type === 'image') ? formData.append('file', ev.target.files[0]) : formData.append('file', blob)
     // console.log('ev.target.files[0]):', ev.target.files[0])
     formData.append('upload_preset', PRESET_NAME);
     // console.log('formData:', formData)
