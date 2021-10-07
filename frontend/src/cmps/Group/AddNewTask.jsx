@@ -4,20 +4,29 @@ import { Close } from "@mui/icons-material";
 import { addTask } from "../../store/board.actions";
 import { connect } from "react-redux";
 import Loader from "react-loader-spinner";
+import VideoCallIcon from '@mui/icons-material/VideoCall';
+import MicNoneIcon from '@mui/icons-material/MicNone';
 
 export function _AddNewTask(props) {
   const [isClicked, setIsClicked] = useState(false);
   const [taskTitle, setTaskTitle] = useState("");
   const [btnText, setBtnText] = useState("Add task");
+  const [isMediaPopover,setMediaPopover] = useState(false);
+  
   const toggleIsClicked = () => {
-    setIsClicked(!isClicked)
+    setIsClicked(!isClicked);
   };
+
 
   const onAddTask = async () => {
     try {
-      if(!taskTitle.trim()) return
+      if (!taskTitle.trim()) return;
       setBtnText(<Loader type="Grid" color={"white"} height={14} width={14} />);
-      await props.addTask(taskTitle.trim(), props.ids.boardId, props.ids.groupId);
+      await props.addTask(
+        taskTitle.trim(),
+        props.ids.boardId,
+        props.ids.groupId
+      );
       setTaskTitle("");
       setBtnText("Add task");
       props.scrollToBottom();
@@ -30,9 +39,15 @@ export function _AddNewTask(props) {
   return (
     <div className="grp-add-task">
       {!isClicked ? (
-        <div className="add-task-inactive flex" onClick={toggleIsClicked}>
-          <AddIcon className="add-icon" />
-          <p>Add a task</p>
+        <div className="add-task-inactive flex space-between" >
+          <div className="add-btn flex align-center" onClick={toggleIsClicked}>
+            <AddIcon className="icon" />
+            <p>Add a task</p>
+          </div>
+          <div className="media-btns flex align-center">
+          <VideoCallIcon  className="media-icon"/>
+          <MicNoneIcon className="media-icon"/>
+          </div>
         </div>
       ) : (
         <div className="add-task-active flex column">
