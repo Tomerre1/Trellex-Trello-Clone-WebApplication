@@ -45,37 +45,10 @@ async function queryPhotos(query = 'random') {
 // function getById(boardId) {
 //     return storageService.get(STORAGE_KEY, boardId)
 // }
-async function getById(boardId, filterBy) {
+async function getById(boardId) {
     // const res = await axios.get(`http://localhost:3030/api/toy/${toyId}`)
     // return res.data
     const board = await httpService.get(`board/${boardId}`)
-    const filteredBoard = (filterBy) ? filterBoard(board, filterBy) : board
-    return filteredBoard
-}
-
-const filterBoard = (board, filterBy) => {
-    // if (filterBy.search) {
-    //     const search = filterBy.search.toLowerCase()
-    //     board.groups = board.groups.filter(group => group.tasks.some(task => task.title.toLowerCase().includes(search)))
-    //         .map(group => {
-    //             group.tasks = group.tasks.filter(task => task.title.toLowerCase().includes(search))
-    //             return group
-    //         })
-    // }
-    // if (filterBy.labels.length > 0) {
-    //     board.groups = board.groups.filter(group => group.tasks.some(task => task.labelIds.some(labelId => filterBy.labels.every(label => task.labelIds.includes(label)))))
-    //         .map(group => {
-    //             group.tasks = group.tasks.filter(task => task.labelIds.some(labelId => filterBy.labels.every(label => task.labelIds.includes(label))))
-    //             return group
-    //         })
-    // }
-    // if (filterBy.members.length > 0) {
-    //     board.groups = board.groups.filter(group => group.tasks.some(task => task.labelIds.some(labelId => filterBy.labels.every(label => task.labelIds.includes(label)))))
-    //         .map(group => {
-    //             group.tasks = group.tasks.filter(task => task.labelIds.some(labelId => filterBy.labels.every(label => task.labelIds.includes(label))))
-    //             return group
-    //         })
-    // }
     return board
 }
 
@@ -156,7 +129,8 @@ async function addTask(taskTitle, boardId, groupId) {
         "createdAt": Date.now(),
         "byMember": userService.getLoggedinUser(),
         "style": {},
-        "labelIds": []
+        "labelIds": [], 
+        "members": []
     }
     const board = await getById(boardId)
     const idx = board.groups.findIndex((group) => group.id === groupId)

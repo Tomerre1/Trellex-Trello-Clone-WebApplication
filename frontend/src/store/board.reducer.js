@@ -30,14 +30,9 @@ export function boardReducer(state = initialState, action) {
             newState = { ...state, filterBy: { ...state.filterBy, ...action.filterBy } }
             break
         case 'REMOVE_BOARD':
-            // const lastRemovedBoard = state.boards.find(board => board._id === action.boardId)
             boards = state.boards.filter(board => board._id !== action.boardId)
             newState = { ...state, boards }
             break
-        // case 'SET_TASK_DETAILS':
-        //     newState = { ...state, board: { ...state.board, currTaskDetails: { ...action.task } } }
-        //     break
-
         case 'TOGGLE_LABELS':
             newState = { ...state, areLabelsExpanded: !state.areLabelsExpanded }
             break

@@ -21,6 +21,14 @@ export function _TaskPreviewList(props) {
     filteredTasks = filteredTasks.filter(task => task.labelIds.some(labelId => filterBy.labels.every(label => task.labelIds.includes(label))))
   }
 
+  if (filterBy.members.length > 0) {
+    filteredTasks = filteredTasks.filter(task => task.members.some(member => filterBy.members.every(member => {
+      const taskMembersIds = task.members.map(member => member._id)
+      return taskMembersIds.includes(member)
+
+    })))
+  }
+
   return (
     <Droppable droppableId={groupId}>
       {(provided) => (
