@@ -19,7 +19,7 @@ class _BoardApp extends Component {
     this.props.setFilterBy({ labels: [], members: [], search: '' })
     const { boardId } = this.props.match.params
     if (!this.props.user) this.props.onLogin({ username: 'guest', password: '1' })
-    this.loadBoard();
+    this._loadBoard();
     if (!this.props.boards.length) this.props.loadBoards()
     this.props.loadUsers();
     socketService.emit('join-board', boardId)
@@ -37,7 +37,7 @@ class _BoardApp extends Component {
   componentDidUpdate = () => {
     if (this.props.match.params?.boardId !== this.props.board?._id) {
       this.props.clearBoard();
-      this.loadBoard();
+      this._loadBoard();
       this.props.loadUsers();
 
     }
@@ -52,9 +52,7 @@ class _BoardApp extends Component {
     this.setState(prevState => ({ ...prevState, currentTarget: event }))
   }
 
-
-
-  loadBoard = async () => {
+  _loadBoard = async () => {
     const id = this.props.match.params.boardId;
     if (!id) this.props.history.push('/workspace')
     if (id) {

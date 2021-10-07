@@ -1,19 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Close } from "@mui/icons-material";
-
+import { loadBoard } from "../../store/board.actions";
 import { BarChart } from "./BarChart";
 import { DoughnutChart } from "./DoughnutChart";
 import { ActivityChart } from "./ActivityChart";
+import { LoaderSpinner } from "../LoaderSpinner";
 
 export function _Dashboard(props) {
   const onBack = () => {
     props.history.goBack();
   };
 
+  useEffect(() => {
+    if (!props?.board) {
+      const { boardId } = props.match.params;
+      props.loadBoard(boardId);
+    }
+  }, [props]);
   const { board } = props;
 
   const getTaskDetails = () => {
+    if (!props.board) return;
     let tasks = 0;
     let archivedTasks = 0;
     let overDueTasks = 0;
@@ -68,8 +76,13 @@ export function _Dashboard(props) {
     };
   };
 
-  const taskDetails = getTaskDetails();
-
+  const taskDetails = getTaskDetails(props);
+  if (!props.board)
+    return (
+      <section className="dashboard-overlay flex column">
+        <LoaderSpinner />
+      </section>
+    );
   return (
     <section className="dashboard-overlay flex column">
       <button onClick={onBack} class="close-btn clean-btn">
@@ -83,15 +96,21 @@ export function _Dashboard(props) {
           </p>
         </div>
         <div className="info-container flex align-center">
-          <div className="info-box flex column ">
+          {/* <div className="info-box flex column ">
             <p className="info-num">{board.members?.length}</p>
             <p>Total Members</p>
+          </div> */}
+            <div className="info-box flex">
+              <div className="flex column big-num-box">
+                <p className="info-num">{taskDetails.tasks}</p>
+                <p>Total Tasks</p>
+              </div>
+                <div className="flex column details">
+                  <p className="green">{taskDetails.doneTasks} Completed</p>
+                  <p className="red">{taskDetails.overDueTasks} Overdue </p>
+                </div>
           </div>
-          <div className="info-box flex column align-center">
-            <p className="info-num">{taskDetails.tasks}</p>
-            <p>Total Tasks</p>
-          </div>
-          <div className="info-box flex column align-center">
+          {/* <div className="info-box flex column align-center">
             <p className="info-num">{taskDetails.archivedTasks}</p>
             <p>{`Task${
               taskDetails.archivedTasks !== 1 ? "s" : ""
@@ -122,7 +141,7 @@ export function _Dashboard(props) {
           <div className="info-box flex column align-center">
             <p className="info-num">{taskDetails.doneTodos}</p>
             <p>{`Done Todo${taskDetails.doneTodos !== 1 ? "s" : ""}`}</p>
-          </div>
+          </div> */}
         </div>
         <div className="chart-container flex ">
           <div className="chart flex align-center">
@@ -145,5 +164,10 @@ function mapStateToProps(state) {
     board: state.boardModule.board,
   };
 }
-
-export const Dashboard = connect(mapStateToProps, null)(_Dashboard);
+const mapDispatchToProps = {
+  loadBoard,
+};
+export const Dashboard = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(_Dashboard);

@@ -13,6 +13,32 @@ import { PopoverMenuBackground } from "./PopoverMenuBackground"
 import { PopoverNotification } from "./PopoverNotification"
 import { PopoverMenuSearchCard } from './PopoverMenuSearchCard'
 
+{/* <button className="secondary-btn action-btn" onClick={(event) => { setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'LABELS' }); togglePopover() }}>
+<div className="action-btn-content flex " >
+    <LabelIcon />
+    <span>Labels</span>
+</div>
+</button>
+
+<button onClick={(event) => { setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'CHECKLIST' }); }}>
+<div>
+    <CheckboxIcon />
+    <span>Checklist</span>
+</div>
+</button> */}
+
+
+// export const setPosition = ({ pos, type}) => {
+//     return (dispatch) => {
+//         dispatch({
+//             type: "SET_POSITION",
+//             pos: { ...pos, type },
+//         })
+//     }
+// }
+
+
+
 const _PopoverDynamicCmp = (props) => {
     const { type } = props.popover.pos;
     switch (type) {
@@ -70,33 +96,6 @@ export const PopoverDynamicCmp = connect(
     mapStateToProps,
     null
 )(_PopoverDynamicCmp);
-
-// אני הולך להציג את קוד - תצוגה - קוד
-
-{/* <button className="secondary-btn action-btn" onClick={(event) => { setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'LABELS' }); togglePopover() }}>
-<div className="action-btn-content flex " >
-    <LabelIcon />
-    <span>Labels</span>
-</div>
-</button>
-
-<button onClick={(event) => { setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'CHECKLIST' }); }}>
-<div>
-    <CheckboxIcon />
-    <span>Checklist</span>
-</div>
-</button> */}
-
-
-// export const setPosition = ({ pos, type}) => {
-//     return (dispatch) => {
-//         dispatch({
-//             type: "SET_POSITION",
-//             pos: { ...pos, type },
-//         })
-//     }
-// }
-
 
 
 // setPopoverPos(elRect) {
