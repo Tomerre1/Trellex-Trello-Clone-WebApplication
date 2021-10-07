@@ -78,10 +78,11 @@ export function BarChart({ board }) {
         plugins: {
             title: {
                 display: true,
-                text: "Tasks per member:",
+                text: "Tasks per member",
                 color: 'rgba(255, 255, 255, 0.897)',
                 font: {
-                    size: '30'
+                    size: '30',
+                    family: 'Segoe UI'
                 }
             },
             datalabels: {
@@ -92,13 +93,9 @@ export function BarChart({ board }) {
                 font: { size: 12 }
             },
             legend: {
-                labels: {
-                    color: 'rgba(255, 255, 255, 0.897)',
-                    font: {
-                        size: 12,
-                        family: 'Segoe UI'
-                    }
-                }
+
+                display:false
+
             }
         },
         maintainAspectRatio: false,
