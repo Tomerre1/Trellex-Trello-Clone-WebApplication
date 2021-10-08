@@ -242,7 +242,7 @@ function _TaskPreview(props) {
                       )}
                       {description?.length > 0 && (
                         <TaskDetailsPreview
-                          icon={<SubjectOutlinedIcon className="icon" />}
+                          icon={<SubjectOutlinedIcon className="icon desc" />}
                         />
                       )}
                       {comments?.length > 0 && (

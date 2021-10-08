@@ -218,7 +218,12 @@
             top: 1px;
           }
           &.attach {
-            padding-right: 0;
+            padding:4px 0px 4px 0px;
+          }
+          &.desc {
+            padding:4px 0px 4px 0px;
+            margin-right:-3px;
+
           }
         }
       }

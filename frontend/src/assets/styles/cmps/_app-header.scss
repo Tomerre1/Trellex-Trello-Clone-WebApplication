@@ -19,8 +19,10 @@
     color: rgba(255, 255, 255, 0.603);
     display: flex;
     position: relative;
-    left: -3px;
-
+    left: 0px;
+    @include for-normal-layout {
+      left: -3px;
+    }
     h1 {
       font-family: Secular, sans-serif;
       margin: 0;
@@ -37,8 +39,12 @@
   .header-btn-container {
     justify-content: flex-start;
     &.login {
-      min-width: 134px;
+      min-width: 100px;
       justify-content: flex-end !important;
+      @include for-normal-layout {
+        min-width: 134px;
+
+      }
     }
     gap: 5px;
     .header-btn {
