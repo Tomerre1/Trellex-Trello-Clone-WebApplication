@@ -7,9 +7,12 @@
   margin-bottom:0;
   height: fit-content;
   max-width: 272px;
-  max-height: 86vh;
+  max-height: 80vh;
   margin-inline-end: 8px;
+  @include for-normal-layout {
+    max-height:86vh;
 
+  }
   .group-header {
     width: 100%;
     padding-top:0;
