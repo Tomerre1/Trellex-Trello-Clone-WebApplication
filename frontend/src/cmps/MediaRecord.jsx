@@ -23,6 +23,10 @@ export class _MediaRecord extends React.Component {
         this.setOverlay(true)
     }
 
+    compoentWillUnmount() {
+        this.stopRecording()
+    }
+
     startRecording = () => {
         this.setState({
             record: true

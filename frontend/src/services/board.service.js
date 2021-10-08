@@ -119,7 +119,6 @@ function updateTask(board, group, task) {
 
 
 async function addTask(taskTitle, boardId, groupId, audioUrl, videoUrl) {
-    debugger;
     if (!taskTitle)
         return
     const newTask =
