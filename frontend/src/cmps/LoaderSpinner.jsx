@@ -11,7 +11,7 @@ export  function LoaderSpinner() {
         height={100}
         width={100}
         timeout={3000} 
-        className="loader"
+        className="loader fade-in"
       />
     )
 }
