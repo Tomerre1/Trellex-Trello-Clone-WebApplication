@@ -70,49 +70,54 @@ export class _MediaRecord extends React.Component {
         return (
             <>
                 {
-                    <div className="media" style={{ width: "100%", maxWidth: 400, height: 400 }}>
-                        {this.props.type === 'video' && <VideoRecorder
-                            className="video-recorder"
-                            isFlipped={false}
-                            countdownTime={0}
-                            mimeType="video/webm;codecs=vp8,opus"
-                            constraints={{
-                                audio: true,
-                                video: {
-                                    resizeMode: "crop-and-scale",
-                                    width: { exact: 480, ideal: 480 },
-                                    height: { exact: 640, ideal: 640 },
-                                    aspectRatio: { exact: 0.7500000001, ideal: 0.7500000001 },
-                                }
-                            }}
-                            onRecordingComplete={(blob) => this.onStop(blob, 'video')}
-                        />}
+                    <div className="media" style={{ width: "100%", maxWidth: 400, height: 400, padding: '0 20px' }}>
+                        <div className="media-container">
+                            {this.props.type === 'video' && <VideoRecorder
+                                className="video-recorder"
+                                isFlipped={false}
+                                countdownTime={0}
+                                mimeType="video/webm;codecs=vp8,opus"
+                                constraints={{
+                                    audio: true,
+                                    video: {
+                                        resizeMode: "crop-and-scale",
+                                        width: { exact: 480, ideal: 480 },
+                                        height: { exact: 640, ideal: 640 },
+                                        aspectRatio: { exact: 0.7500000001, ideal: 0.7500000001 },
+                                    }
+                                }}
+                                onRecordingComplete={(blob) => this.onStop(blob, 'video')}
+                            />}
+                        </div>
                     </div>
 
                 }
                 {
                     this.props.type === 'audio' && <div className="media">
-                        <ReactMic
-                            record={this.state.record}
-                            className="sound-wave"
-                            onStop={(blob) => this.onStop(blob, 'audio')}
-                            strokeColor="white"
-                            backgroundColor="black"
-                            setAudioPath={setAudioPath}
-                            height={240}
-                            width={400}
-                        />
-                        <Grid item container justify="center" xs={12}>
-                            {!this.state.record && <StyledFab
-                                onClick={this.startRecording}
-                                color="secondary" aria-label="record">
-                                <MicIcon />
-                            </StyledFab>}
-                            {this.state.record && <StyledFab color="secondary" aria-label="record"
-                                onClick={this.stopRecording}>
-                                <StopIcon />
-                            </StyledFab>}
-                        </Grid>
+                        <div className="media-container">
+
+                            <ReactMic
+                                record={this.state.record}
+                                className="sound-wave"
+                                onStop={(blob) => this.onStop(blob, 'audio')}
+                                strokeColor="white"
+                                backgroundColor="black"
+                                setAudioPath={setAudioPath}
+                                height={240}
+                                width={370}
+                            />
+                            <Grid item container justify="center" xs={12}>
+                                {!this.state.record && <StyledFab
+                                    onClick={this.startRecording}
+                                    color="secondary" aria-label="record">
+                                    <MicIcon />
+                                </StyledFab>}
+                                {this.state.record && <StyledFab color="secondary" aria-label="record"
+                                    onClick={this.stopRecording}>
+                                    <StopIcon />
+                                </StyledFab>}
+                            </Grid>
+                        </div>
 
                     </div>
                 }
