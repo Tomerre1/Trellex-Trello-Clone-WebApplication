@@ -1,7 +1,6 @@
 .board-member-add {
-  position: absolute;
-  top: 39px;
-  left: 275px;
+  margin-top: 447px;
+  margin-left: -150px;
   color: $clr7;
   background-color: rgb(255, 255, 255);
   border: 1px solid lightgray;
@@ -9,12 +8,12 @@
   padding-bottom:12px;
   z-index: 100;
   border-radius: 3px;
-  // max-width: 100%;
   max-height:400px;
   overflow-y:auto;
   overflow-x: hidden;
   box-shadow: rgba(9, 30, 66, 0.25) 0px 8px 16px -4px,
   rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+
   h4 {
     color: #5e6c84;
     line-height: 40px;
@@ -30,5 +29,8 @@
   .clean-list {
       gap:2px;
     
+  }
+  @include for-normal-layout {
+  
   }
 }

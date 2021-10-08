@@ -23,8 +23,10 @@ function _MemberPreview({
   onLogout,
 }) {
   const [isPopOpen, togglePopOpen] = useState(false);
+  const [menuPos, setMenuPos] = useState('')
 
   const openPop = (ev) => {
+    setMenuPos(ev.target.pageX)
     togglePopOpen(!isPopOpen);
   };
 
@@ -47,7 +49,7 @@ function _MemberPreview({
             togglePopover();
             return;
           }
-          openPop();
+          openPop(ev);
         }}
       >
         {member?.imgUrl ? (
@@ -71,6 +73,7 @@ function _MemberPreview({
           isInHeader={isInHeader}
           isInBoardList={isInBoardList}
           onLogout={onLogout}
+          pos={menuPos}
         />
       )}
     </>
