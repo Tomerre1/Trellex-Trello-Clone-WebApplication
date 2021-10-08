@@ -10,7 +10,7 @@ import { TaskActivities } from "../cmps/TaskActivities";
 import { TaskActionsMenu } from "../cmps/TaskActionsMenu";
 import { TaskHeaderDetails } from "../cmps/TaskHeaderDetails";
 import { LoaderSpinner } from "../cmps/LoaderSpinner";
-import { saveBoard, saveTaskDetails, addActivity } from "../store/board.actions";
+import { saveBoard, saveTaskDetails, addActivity,loadBoard } from "../store/board.actions";
 import { setCurrTaskDetails, setPopover, setPosition, setPopoverMenu } from '../store/app.actions'
 import { MediaRecord } from '../cmps/MediaRecord'
 
@@ -21,11 +21,12 @@ export class _TaskDetails extends Component {
   };
   contentEl = null;
 
-  componentDidMount() {
+  componentDidMount = async  () => {
+    const { boardId,taskId, listId } = this.props.match.params;
     const { board, setCurrTaskDetails, setPopoverMenu } = this.props;
-    const { taskId, listId } = this.props.match.params;
-    const currGroup = board.groups.find((list) => list.id === listId);
-    const currTask = currGroup.tasks.find((task) => task.id === taskId);
+    if(!board) await this.props.loadBoard(boardId)
+    const currGroup = this.props.board?.groups.find((list) => list.id === listId);
+    const currTask = currGroup?.tasks.find((task) => task.id === taskId);
     setCurrTaskDetails(currTask)
     setPopoverMenu(false)
     this.setState((prevState) => ({
@@ -187,7 +188,8 @@ const mapDispatchToProps = {
   setPopover,
   setPosition,
   setPopoverMenu,
-  addActivity
+  addActivity,
+  loadBoard
 };
 
 export const TaskDetails = connect(
