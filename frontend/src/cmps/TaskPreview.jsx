@@ -196,7 +196,6 @@ function _TaskPreview(props) {
                       style={{ background: task.style.bgColor }}
                     ></div>
                   )}
-
                   <div
                     className="task-preview clean-link "
                     style={

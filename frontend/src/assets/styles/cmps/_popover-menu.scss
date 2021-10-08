@@ -9,8 +9,7 @@
     }
     .popover {
         height: calc(100vh - 46px);
-        right: 0px !important;
-        // right: -4px !important; no right margin
+        right: -4px !important; 
         bottom: 0 !important;
         left: unset !important;
         top: unset !important;

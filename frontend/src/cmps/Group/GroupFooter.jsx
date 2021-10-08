@@ -4,20 +4,19 @@ import { Close } from "@mui/icons-material";
 import { addTask } from "../../store/board.actions";
 import { connect } from "react-redux";
 import Loader from "react-loader-spinner";
-import VideoCallIcon from '@mui/icons-material/VideoCall';
-import MicNoneIcon from '@mui/icons-material/MicNone';
+import VideoCallIcon from "@mui/icons-material/VideoCall";
+import MicNoneIcon from "@mui/icons-material/MicNone";
 import { MediaRecord } from "../MediaRecord";
 
 export function _GroupFooter(props) {
   const [isClicked, setIsClicked] = useState(false);
   const [taskTitle, setTaskTitle] = useState("");
   const [btnText, setBtnText] = useState("Add task");
-  const [mediaType, setMediaType] = useState('');
+  const [mediaType, setType] = useState("");
 
   const toggleIsClicked = () => {
     setIsClicked(!isClicked);
   };
-
 
   const onAddTask = async () => {
     try {
@@ -36,19 +35,32 @@ export function _GroupFooter(props) {
       setBtnText("Add task");
     }
   };
+  const setMediaType = (type) => {
+    setType(type);
+    type ? props.toggleDragDisable(true) : props.toggleDragDisable(false);
+  };
 
   return (
     <>
       <div className="grp-add-task">
         {!isClicked ? (
-          <div className="add-task-inactive flex space-between" >
-            <div className="add-btn flex align-center" onClick={toggleIsClicked}>
+          <div className="add-task-inactive flex space-between">
+            <div
+              className="add-btn flex align-center"
+              onClick={toggleIsClicked}
+            >
               <AddIcon className="icon" />
               <p>Add a task</p>
             </div>
             <div className="media-btns flex align-center">
-              <VideoCallIcon className="media-icon" onClick={() => setMediaType('video')} />
-              <MicNoneIcon className="media-icon" onClick={() => setMediaType('audio')} />
+              <VideoCallIcon
+                className="media-icon"
+                onClick={() => setMediaType("video")}
+              />
+              <MicNoneIcon
+                className="media-icon"
+                onClick={() => setMediaType("audio")}
+              />
             </div>
           </div>
         ) : (
@@ -78,7 +90,14 @@ export function _GroupFooter(props) {
           </div>
         )}
       </div>
-      {mediaType && <MediaRecord boardId={props.ids.boardId} groupId={props.ids.groupId} type={mediaType} setMediaType={setMediaType} />}
+      {mediaType && (
+        <MediaRecord
+          boardId={props.ids.boardId}
+          groupId={props.ids.groupId}
+          type={mediaType}
+          setMediaType={setMediaType}
+        />
+      )}
     </>
   );
 }
