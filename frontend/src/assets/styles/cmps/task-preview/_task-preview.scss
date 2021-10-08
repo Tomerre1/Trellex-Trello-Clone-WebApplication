@@ -222,6 +222,24 @@
         }
       }
     }
+    .video {
+      position: relative;
+      max-width: 100%;
+      height: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      video {
+        padding-bottom: 5px;
+      }
+    }
+    .audio {
+      padding: 8px;
+      audio {
+        max-width: 100%;
+      }
+    
+  }
   }
   &.edit {
     position: relative;
@@ -245,25 +263,8 @@
       color: #172b4d;
     }
   }
-  .video {
-    position: relative;
-    max-width: 100%;
-    height: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    video {
-      padding-bottom: 5px;
-    }
-  }
-  &.audio {
-    .task-preview {
-      padding: 8px;
-      audio {
-        max-width: 100%;
-      }
-    }
-  }
+ 
+
 }
 button.save-btn {
   z-index: 50;

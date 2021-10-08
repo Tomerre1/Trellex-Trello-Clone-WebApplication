@@ -123,39 +123,6 @@ function _TaskPreview(props) {
     );
   }
 
-  if (task?.media?.audioUrl) {
-    return (
-      <Draggable
-        draggableId={task.id}
-        index={index}
-        isDragDisabled={isDragDisabled}
-      >
-        {(provided) => (
-          <article
-            ref={provided.innerRef}
-            {...provided.draggableProps}
-            {...provided.dragHandleProps}
-          >
-            <div
-              className="task-preview-container audio"
-              style={{ background: style.bgColor }}
-            >
-              <Link to={taskUrl} className="clean-link">
-                <div className="task-preview  ">
-                  <div className="audio-wrap">
-                    <audio controls src={task.media.audioUrl} />
-                  </div>
-                </div>
-              </Link>
-              <div className="edit-icon" onClick={toggleMenu}>
-                <ModeEditOutlinedIcon className="icon" />
-              </div>
-            </div>
-          </article>
-        )}
-      </Draggable>
-    );
-  }
   // full color cover
   if (style && style?.coverMode === "full" && !isMenuShown)
     return (
@@ -247,13 +214,21 @@ function _TaskPreview(props) {
                         boardLabels={boardLabels}
                       />
                     )}
-                    { media?.videoUrl &&
-                      <div className="video flex" onDrag={ev=>ev.stopPropagation()}>
-                        <video width={'100%'} controls>
+                    {media?.videoUrl && (
+                      <div
+                        className="video flex"
+                        onDrag={(ev) => ev.stopPropagation()}
+                      >
+                        <video width={"100%"} controls>
                           <source src={task.media.videoUrl} type="video/mp4" />
                         </video>
                       </div>
-                    }
+                    )}
+                    {media?.audioUrl && (
+                      <div className="audio">
+                        <audio controls src={task.media.audioUrl} />
+                      </div>
+                    )}
                     <div className="task-title">
                       <p>{title}</p>
                     </div>
