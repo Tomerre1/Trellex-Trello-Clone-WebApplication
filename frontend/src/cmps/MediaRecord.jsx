@@ -19,7 +19,6 @@ export class _MediaRecord extends React.Component {
         isOverlay: true
     };
 
-
     componentDidMount() {
         this.setOverlay(true)
     }
