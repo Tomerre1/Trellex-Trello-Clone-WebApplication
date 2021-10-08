@@ -36,7 +36,7 @@ const _MemberPopup = ({
         style={{
           position: "fixed",
           top: 0,
-          right: 0,
+          left: 0,
           inset: 0,
           height: "100vh",
           width: "100%",
