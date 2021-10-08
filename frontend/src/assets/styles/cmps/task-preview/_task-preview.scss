@@ -231,8 +231,8 @@
       border-radius: 3px;
       padding: 0px 0px;
       height: 90px;
-      font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue,
-        sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+        Noto Sans, Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
       font-size: 14px;
       font-weight: 400;
       outline: 0;
@@ -245,23 +245,22 @@
       color: #172b4d;
     }
   }
-  &.video { 
-    position:relative;
-    max-width:100%;
-    .img-overlay {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      height: 65px;
-      background: linear-gradient(180deg, #fff0, #000000f3);
-      border-radius: 3px;
+  .video {
+    position: relative;
+    max-width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    video {
+      padding-bottom: 5px;
     }
   }
-  &.audio { 
-    .task-preview{
-      padding:8px ;
+  &.audio {
+    .task-preview {
+      padding: 8px;
       audio {
-        max-width:100%;
+        max-width: 100%;
       }
     }
   }

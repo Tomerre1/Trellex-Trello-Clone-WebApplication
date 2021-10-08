@@ -248,8 +248,8 @@ function _TaskPreview(props) {
                       />
                     )}
                     { media?.videoUrl &&
-                      <div className="video">
-                        <video width={240} controls>
+                      <div className="video flex" onDrag={ev=>ev.stopPropagation()}>
+                        <video width={'100%'} controls>
                           <source src={task.media.videoUrl} type="video/mp4" />
                         </video>
                       </div>
