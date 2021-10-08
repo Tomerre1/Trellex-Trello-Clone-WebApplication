@@ -6,24 +6,17 @@
   color: white;
   z-index: 1;
   gap: 6px;
-  overflow-x: hidden;
-  overflow-y: hidden;
 
   form {
     margin: 0;
-    width:300px;
-    @include for-normal-layout {
-      width:unset;
-
-    }
     span {
       opacity: 0;
       font-size: rem(18px);
+
       font-weight: bold;
       white-space: pre;
     }
   }
-
   .title {
     margin: 0;
     padding: 0;
@@ -59,6 +52,7 @@
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans,
       Ubuntu, Droid Sans, Helvetica Neue, sans-serif !important;
+
     font-size: rem(18px);
     background-color: rgba(43, 43, 43, 0.507);
     color: #fff;
@@ -66,12 +60,11 @@
     position: relative;
     top: -11px;
     // text-align: center !important;
-    min-width:280px !important;
-@include for-normal-layout {
+    min-width: 280px !important;
+    @include for-normal-layout {
       max-width: unset;
       overflow-x: unset;
-      min-width:30px;
-
+      min-width: 30px;
     }
     &.height-adjust {
       top: 1px;
@@ -109,7 +102,7 @@
         padding: 3px;
         padding-right: 3px;
         &.menu {
-            padding-right:5px;
+          padding-right: 5px;
         }
         &.star {
           padding: 2px;
@@ -125,7 +118,6 @@
       &:hover {
         background-color: #ffffff3d;
       }
-
       .btn-results {
         padding: 0px 8px;
         background-color: #5aac44;
