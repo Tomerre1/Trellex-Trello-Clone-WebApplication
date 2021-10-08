@@ -40,11 +40,11 @@ export class _MediaRecord extends React.Component {
     };
 
     onStop = async (blob, type) => {
+        this.props.setMediaType('')
         const res = await cloudinaryService.uploadFile(null, 'video', type === 'video' ? blob : blob.blob);
         const url = res.secure_url
         if (type === 'video') this.props.addTask('Media Video', this.props.boardId, this.props.groupId, null, url)
         else this.props.addTask('Media Audio', this.props.boardId, this.props.groupId, url, null)
-        this.props.setMediaType('')
     }
 
     setOverlay = (isOverlay) => {
