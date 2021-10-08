@@ -46,22 +46,6 @@ const _GroupDetails = (props) => {
   if (isAddNew) return <AddNewGroup />;
 
   return (
-    // }
-    // <Droppable droppableId={groupId}>
-    // {(provided)=>(
-    // <div {...provided.droppableProps} ref={provided.innerRef}>
-    // {provided.placeholder}
-    //     </div>
-    //       )}
-    //     </Droppable>
-
-    // <Draggable draggableId={task.id} index={index}>
-    //   {(provided) => (
-    //     <div
-    //     ref={provided.innerRef}
-    //     {...provided.draggableProps}
-    //     {...provided.dragHandleProps}></div>
-
     <div>
       <Draggable
         draggableId={group.id}
@@ -118,6 +102,7 @@ const _GroupDetails = (props) => {
                   <GroupFooter
                     ids={{ groupId: group.id, boardId }}
                     scrollToBottom={scrollToBottom}
+                    toggleDragDisable={toggleDragDisable}
                   />
                 </div>
               </article>

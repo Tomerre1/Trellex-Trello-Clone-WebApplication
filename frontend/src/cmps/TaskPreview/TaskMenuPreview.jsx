@@ -8,7 +8,7 @@ import SubjectOutlinedIcon from "@mui/icons-material/SubjectOutlined";
 import ChatBubbleOutlineRoundedIcon from "@mui/icons-material/ChatBubbleOutlineRounded";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
 
-export function TaskMenuPreview({ task, groupId, boardLabels,taskUrl }) {
+export function TaskMenuPreview({ task, groupId, boardLabels, taskUrl }) {
   const {
     style,
     labelIds,
@@ -18,9 +18,8 @@ export function TaskMenuPreview({ task, groupId, boardLabels,taskUrl }) {
     comments,
     attachments,
     checklists,
+    media
   } = task;
-  
-  
 
   const getChecklistData = (isDone) => {
     let todos = 0;
@@ -39,7 +38,7 @@ export function TaskMenuPreview({ task, groupId, boardLabels,taskUrl }) {
     <Link to={taskUrl} className="clean-link">
       <article
         className="task-preview-container edit"
-        style={{ borderRadius: 3,minWidth:240 }}
+        style={{ borderRadius: 3, minWidth: 240 }}
       >
         {style?.bgUrl && (
           <img
@@ -75,6 +74,18 @@ export function TaskMenuPreview({ task, groupId, boardLabels,taskUrl }) {
         >
           {labelIds?.length > 0 && (
             <TaskLabels labelIds={labelIds} boardLabels={boardLabels} />
+          )}
+          {media?.videoUrl && (
+            <div className="video flex" onDrag={(ev) => ev.stopPropagation()}>
+              <video width={"100%"} controls>
+                <source src={task.media.videoUrl} type="video/mp4" />
+              </video>
+            </div>
+          )}
+          {media?.audioUrl && (
+            <div className="audio">
+              <audio controls src={task.media.audioUrl} />
+            </div>
           )}
           <p className="task-title">{title}</p>
           <div className="task-preview-icons flex align-center">
