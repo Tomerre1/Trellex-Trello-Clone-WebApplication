@@ -3,7 +3,6 @@
   color: white;
   justify-content: space-between;
   padding: 8px;
-
   transition: background-color 0.1s;
   position: fixed;
   top: 0;
@@ -20,9 +19,14 @@
     display: flex;
     position: relative;
     left: 0px;
+    .logo-icon { 
+      position:relative;
+      top:-1px;
+    }
     @include for-normal-layout {
       left: -3px;
     }
+  
     h1 {
       font-family: Secular, sans-serif;
       margin: 0;

@@ -11,7 +11,7 @@
     align-items: center;
     padding: 30px 40px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.116);
-    min-width: 400px;
+    width: 90%;
     p {
       color: #5e6c84;
       text-align: center;
@@ -25,6 +25,11 @@
           text-decoration: underline;
           cursor: pointer;
           font-weight:500;
+      }
+      @include for-normal-layout {
+        .login-container{
+          width: 400px;
+        }
       }
     }
     form {
