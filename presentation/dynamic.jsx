@@ -91,17 +91,6 @@ function _PopoverDynamicCmp(props) {
     }
 }
 
-function mapStateToProps(state) {
-    return {
-        popover: state.appModule.popover,
-    };
-}
-
-export const PopoverDynamicCmp = connect(
-    mapStateToProps,
-    null
-)(_PopoverDynamicCmp);
-
 
 const setPopoverPos = (elRect) => {
     const { pos } = this.props.popover

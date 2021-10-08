@@ -18,7 +18,7 @@ export function _MemberList(props) {
     <div
       className={`members ${isInPreview ? "preview" : ""}${
         isInHeader ? "in-header" : ""
-      } `}
+      } ${task?.members.length >= 5 ? 'many':''}`}
     >
       {members &&
         members.map((member, idx) => (
