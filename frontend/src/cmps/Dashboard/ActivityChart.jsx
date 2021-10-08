@@ -63,8 +63,8 @@ export const ActivityChart = ({ membersActivity }) => {
   };
 
   return (
-    <div className="chart-todo">
-      <Bar data={data} options={options1} width={350} height={450} />
+    <div className="chart-activity">
+      <Bar data={data} options={options1}   height={280}/>
     </div>
   );
 };

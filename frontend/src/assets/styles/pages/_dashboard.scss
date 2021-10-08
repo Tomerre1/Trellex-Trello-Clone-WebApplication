@@ -13,13 +13,32 @@
   }
   .dashboard-container {
     align-items: center;
-    gap: 50px;
+    position: relative;
+    margin:0;
+    padding:0;
+    top:350px;
+    gap: 20px;
+    justify-content: center;
+    @include for-normal-layout {
+      align-items: flex-start;
+      top:0px;
+      width:100%;
+      justify-content: center;
+      align-items: center;
+      gap: 50px;
 
+    }
     .dash-title {
       color: rgba(255, 255, 255, 0.897);
       z-index: 10;
       font-size: rem(42px);
       margin-bottom: 10px;
+      text-align: center;
+      @include for-normal-layout {
+        text-align: unset;
+
+      }
+
     }
     .date {
       color: rgba(255, 255, 255, 0.897);
@@ -27,8 +46,13 @@
     }
     .info-container {
       text-align: center;
-      gap: 30px;
-    }
+      gap: 20px;
+      flex-direction: column;
+      @include for-normal-layout {
+        flex-direction: row;
+        gap: 30px;
+
+    }}
     .info-box {
       max-width: auto;
       padding: 20px 15px;
@@ -40,7 +64,6 @@
       border: 2px solid rgba(255, 255, 255, 0.192);
 
       .big-num-box {
-
         gap: 30px;
         height: 100%;
         position: relative;
@@ -100,15 +123,21 @@
     .chart-container {
       max-height: 100vh;
       justify-content: center;
+      align-items: center;
       gap: 45px;
       flex-wrap: wrap;
       .chart {
-        width: 400px;
-        max-height: 600px;
+        width: 90%;
+        height: 400px;
         padding: 40px 20px;
         border-radius: 25px;
         background-color: rgba(7, 27, 39, 0.541);
         border: 2px solid rgba(255, 255, 255, 0.192);
+        @include for-normal-layout {
+          width: 400px;
+          height: fit-content;
+
+        }
       }
     }
   }
