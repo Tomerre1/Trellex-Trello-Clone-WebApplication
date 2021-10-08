@@ -1,14 +1,20 @@
 .homepage {
   width: 100%;
   color: #172b4d;
-  background-color:#f9fafc;;
+  background-color: #f9fafc;
   min-height: 100vh;
-  padding-top:100px;
+  padding: 100px 10%;
+  @include for-normal-layout {
+    padding: 0;
+    padding-top: 100px;
+  }
+
   .hero {
     align-items: center;
-    gap: 40px;
+    flex-direction: column;
+    gap: 20px;
     .hero-content {
-      width: 500px;
+      width: 100%;
       h1 {
         font-size: rem(40px);
         font-weight: 400;
@@ -16,8 +22,18 @@
 
         span {
           font-family: Secular;
-          font-weight:400;
+          font-weight: 400;
         }
+      }
+    }
+    @include for-normal-layout {
+      padding: 0;
+      padding-top: 100px;
+      align-items: center;
+      gap: 40px;
+      flex-direction: row;
+      .hero-content {
+        width: 500px;
       }
     }
     .hero-img {
@@ -28,12 +44,15 @@
       padding: 15px 0;
       border-radius: 6px;
       letter-spacing: 1px;
-      width: 50%;
+      width: 100%;
       color: white;
-      background-color:$clr1;
-      text-decoration:none;
+      background-color: $clr1;
+      text-decoration: none;
       transition: background-color 0.15s ease-in;
-
+      margin:10% 0;
+      @include for-normal-layout {
+        width: 50%;
+      }
       &:hover {
         background-color: darken($clr1, 10%);
       }
