@@ -42,7 +42,6 @@ class _Workspace extends Component {
           {this.props.boards.some(board => board.isFavorite) && <><StarBorderIcon style={{ height: '35px', width: '35px' }} /> Starred boards</>}
         </h2>
         <div className="board-lists flex column">
-          {boards.length ? (
             <BoardList
               starred={true}
               boards={boards.filter((board) => board.isFavorite)}
@@ -50,9 +49,7 @@ class _Workspace extends Component {
               onRemove={this.props.removeBoard}
               saveBoard={this.props.saveBoard}
             />
-          ) : (
-            <LoaderSpinner />
-          )}
+         
           {boards.length ? (
             <BoardList
               boards={boards.filter((board) => !board.isFavorite)}
