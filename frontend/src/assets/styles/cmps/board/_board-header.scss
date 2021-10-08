@@ -6,9 +6,16 @@
   color: white;
   z-index: 1;
   gap: 6px;
+  overflow-x: hidden;
+  overflow-y: hidden;
 
   form {
     margin: 0;
+    width:300px;
+    @include for-normal-layout {
+      width:unset;
+
+    }
     span {
       opacity: 0;
       font-size: rem(18px);
@@ -34,8 +41,9 @@
     color: white;
     background-color: #ffffff3d;
     white-space: pre;
-    max-width: 100px;
+    max-width: 175px;
     overflow-x: hidden;
+    text-overflow: ellipsis;
     @include for-normal-layout {
       max-width: unset;
       overflow-x: unset;
@@ -48,7 +56,6 @@
     }
   }
   input.title {
-    min-width: 30px;
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans,
       Ubuntu, Droid Sans, Helvetica Neue, sans-serif !important;
@@ -58,8 +65,14 @@
     border-radius: 3px;
     position: relative;
     top: -11px;
-    text-align: center !important;
+    // text-align: center !important;
+    min-width:280px !important;
+@include for-normal-layout {
+      max-width: unset;
+      overflow-x: unset;
+      min-width:30px;
 
+    }
     &.height-adjust {
       top: 1px;
     }
