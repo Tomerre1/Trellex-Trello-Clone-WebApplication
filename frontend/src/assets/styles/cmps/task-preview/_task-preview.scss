@@ -245,6 +245,18 @@
       color: #172b4d;
     }
   }
+  &.video { 
+    position:relative;
+    max-width:100%;
+    .img-overlay {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 65px;
+      background: linear-gradient(180deg, #fff0, #000000f3);
+      border-radius: 3px;
+    }
+  }
   &.audio { 
     .task-preview{
       padding:8px ;

@@ -36,6 +36,7 @@ function _TaskPreview(props) {
     description,
     attachments,
     style,
+    media,
   } = task;
 
   const [isMenuShown, toggleMenuShown] = useState(false);
@@ -76,7 +77,7 @@ function _TaskPreview(props) {
     checklists.forEach((checklist) => {
       todos += checklist.todos.length;
       checklist.todos.forEach((todo) => {
-        if (todo.isDone) doneTodos += 1;
+        if (todo.isDone) doneTodos++;
       });
     });
     if (isDone) return todos === doneTodos;
@@ -121,37 +122,7 @@ function _TaskPreview(props) {
       </Draggable>
     );
   }
-  // video mode
-  if (task?.media?.videoUrl) {
-    return (
-      <Draggable
-        draggableId={task.id}
-        index={index}
-        isDragDisabled={isDragDisabled}
-      >
-        {(provided) => (
-          <article
-            ref={provided.innerRef}
-            {...provided.draggableProps}
-            {...provided.dragHandleProps}
-          >
-            <div className="task-preview-container video">
-              <Link to={taskUrl} className="clean-link">
-                <div className="task-preview video">
-                  <video width={250} controls>
-                    <source src={task.media.videoUrl} type="video/mp4" />
-                  </video>
-                </div>
-              </Link>
-              <div className="edit-icon" onClick={toggleMenu}>
-                <ModeEditOutlinedIcon className="icon" />
-              </div>
-            </div>
-          </article>
-        )}
-      </Draggable>
-    );
-  }
+
   if (task?.media?.audioUrl) {
     return (
       <Draggable
@@ -276,6 +247,13 @@ function _TaskPreview(props) {
                         boardLabels={boardLabels}
                       />
                     )}
+                    { media?.videoUrl &&
+                      <div className="video">
+                        <video width={240} controls>
+                          <source src={task.media.videoUrl} type="video/mp4" />
+                        </video>
+                      </div>
+                    }
                     <div className="task-title">
                       <p>{title}</p>
                     </div>
