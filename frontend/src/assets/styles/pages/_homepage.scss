@@ -87,6 +87,8 @@
       font-weight: 400;
       color: #172b4d;
       margin: 45px 0;
+      width:100%;
+    
       @include for-normal-layout {
         margin: 75px 0;
 
@@ -123,6 +125,16 @@
         width: 150px;
         border-radius: 50%;
         object-fit: cover;
+        transform:scale(1);
+        filter:saturate(0.7);
+
+        transition: filter .2s ease-in, transform 0.1s ease-in;
+        
+        &:hover {
+          filter:saturate(1);
+          transform:scale(1.1);
+
+        }
       }
 
       h2 {
