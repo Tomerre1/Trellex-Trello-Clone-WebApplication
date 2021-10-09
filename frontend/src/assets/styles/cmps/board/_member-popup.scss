@@ -1,6 +1,5 @@
 .popup-container {
   position: relative;
- 
 
   .wrap {
     display: flex;
@@ -18,15 +17,15 @@
     position: absolute;
     z-index: 40;
     &.header {
-        top: 25px;
-        margin-left:-75px;
+      top: 25px;
+      margin-left: -75px;
     }
   }
   .member-popup {
     display: flex;
     align-items: center;
     gap: 10px;
-    
+
     .member-img {
       height: 55px;
       width: 55px;
@@ -40,6 +39,7 @@
         line-height: 20px;
         font-weight: 600;
         margin: 0;
+
         &.username {
           color: #5e6c84;
           font-size: 14px;
@@ -53,6 +53,13 @@
   }
   .member-footer {
     cursor: pointer;
-    position:relative;
+    position: relative;
+    p {
+      font-weight:500;
+      &.logout:hover {
+        color: $clr1;
+        text-decoration: underline;
+      }
+    }
   }
 }
