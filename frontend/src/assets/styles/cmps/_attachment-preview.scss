@@ -1,9 +1,13 @@
 .attachment-preview {
+    align-items: center;
     border-radius: 3px;
     margin: 0 0 8px;
     min-height: 80px;
     overflow: hidden;
     position: relative;
+    @include for-normal-layout {
+        align-items: unset;
+    }
     .attachment-thumbnail {
         background-color: #091e420a;
         background-position: 50%;
@@ -34,7 +38,10 @@
         border-radius: 3px;
     }
     .attachment-content {
-        margin-top: 5px;
+        margin-top: unset;
+        @include for-normal-layout {
+            margin-top: 5px;
+        }
         .attachment-details {
             margin-left: 13px;
             .attachment-title {

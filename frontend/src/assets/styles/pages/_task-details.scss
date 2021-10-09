@@ -10,9 +10,7 @@
     left: 0;
     margin: 0 auto;
     z-index: 100;
-    @include for-narrow-layout {
-        padding: 0 5px;
-    }
+
     .task-details-archived {
         background-color: #fdfae5;
         background-image: linear-gradient(
