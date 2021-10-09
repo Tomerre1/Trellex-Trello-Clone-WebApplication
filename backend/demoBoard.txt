@@ -456,12 +456,6 @@
               "username": "Barak ",
               "fullname": "Barak Sidi",
               "imgUrl": "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
-            },
-            {
-              "fullname": "Archer",
-              "imgUrl": "https://pbs.twimg.com/profile_images/1194678819602305024/vFMWJwiT.jpg",
-              "username": "archer",
-              "_id": "u107"
             }
           ],
           "dueDate": 1635532800000.0
@@ -561,12 +555,6 @@
               "username": "Barak ",
               "fullname": "Barak Sidi",
               "imgUrl": "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
-            },
-            {
-              "fullname": "Archer",
-              "imgUrl": "https://pbs.twimg.com/profile_images/1194678819602305024/vFMWJwiT.jpg",
-              "username": "archer",
-              "_id": "u107"
             }
           ],
           "dueDate": 1633805340000.0,
@@ -660,12 +648,6 @@
               "imgUrl": "https://media-exp1.licdn.com/dms/image/C4D03AQEEFClr3HeA9w/profile-displayphoto-shrink_800_800/0/1575055172966?e=1638403200&v=beta&t=-EaNro-ekUtvBc9ndCkF37SAe2YT6CaaOGe09riqZew",
               "username": "matan",
               "_id": "615cb86f056f57195973bc63"
-            },
-            {
-              "fullname": "Archer",
-              "imgUrl": "https://pbs.twimg.com/profile_images/1194678819602305024/vFMWJwiT.jpg",
-              "username": "archer",
-              "_id": "u107"
             },
             {
               "username": "תומר רון ",
@@ -934,12 +916,6 @@
               "_id": "615cb86f056f57195973bc69"
             },
             {
-              "fullname": "Archer",
-              "imgUrl": "https://pbs.twimg.com/profile_images/1194678819602305024/vFMWJwiT.jpg",
-              "username": "archer",
-              "_id": "u107"
-            },
-            {
               "fullname": "Matan",
               "imgUrl": "https://media-exp1.licdn.com/dms/image/C4D03AQEEFClr3HeA9w/profile-displayphoto-shrink_800_800/0/1575055172966?e=1638403200&v=beta&t=-EaNro-ekUtvBc9ndCkF37SAe2YT6CaaOGe09riqZew",
               "username": "matan",
@@ -1028,12 +1004,6 @@
               "username": "Barak ",
               "fullname": "Barak Sidi",
               "imgUrl": "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
-            },
-            {
-              "fullname": "Archer",
-              "imgUrl": "https://pbs.twimg.com/profile_images/1194678819602305024/vFMWJwiT.jpg",
-              "username": "archer",
-              "_id": "u107"
             }
           ],
           "dueDate": 1633893780000.0
@@ -1067,12 +1037,6 @@
               "username": "Barak ",
               "fullname": "Barak Sidi",
               "imgUrl": "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
-            },
-            {
-              "fullname": "Archer",
-              "imgUrl": "https://pbs.twimg.com/profile_images/1194678819602305024/vFMWJwiT.jpg",
-              "username": "archer",
-              "_id": "u107"
             },
             {
               "fullname": "Matan",
@@ -2853,12 +2817,6 @@
     }
   ],
   "members": [
-    {
-      "fullname": "Archer",
-      "imgUrl": "https://pbs.twimg.com/profile_images/1194678819602305024/vFMWJwiT.jpg",
-      "username": "archer",
-      "_id": "u107"
-    },
     {
       "_id": "615cbcd49ec77d59ecd482a6",
       "username": "Barak ",
