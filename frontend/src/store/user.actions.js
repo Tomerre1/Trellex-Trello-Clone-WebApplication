@@ -45,18 +45,17 @@ export function onLogin(credentials) {
 
 
 export function onSignup(credentials) {
-    return (dispatch) => {
-        userService.signup(credentials)
-            .then(user => {
-                dispatch({
-                    type: 'SET_USER',
-                    user
-                })
+    return async (dispatch) => {
+        try {
+            const user = await userService.signup(credentials)
+            dispatch({
+                type: 'SET_USER',
+                user
             })
-            .catch(err => {
-                showErrorMsg('Cannot signup')
-                console.log('Cannot signup', err)
-            })
+
+        } catch (err) {
+            console.log('error when signing up', err)
+        }
 
     }
 }

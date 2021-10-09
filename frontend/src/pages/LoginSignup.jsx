@@ -33,13 +33,15 @@ function _LoginSignup(props) {
   const onSubmit = async (ev) => {
     ev.preventDefault();
     if (username.trim() && password.trim()) {
-      if (fullname) {
-        await props.onSignup({ username, password, fullname, imgUrl: "" });
+      if (!isLogin) {
+         props.onSignup({ username, password, fullname, imgUrl: "" });
+        props.history.push("/workspace");
       } else {
         props.onLogin({ username, password });
+        props.history.push("/workspace");
       }
     }
-    props.history.push("/workspace");
+    // props.history.push("/workspace");
   };
   return (
     <div className="login-signup  flex column align-center">
