@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import heroImg from "../assets/img/hero.png";
 import { HomeProfile } from "../cmps/Home/HomeProfile";
 import reactImg from "../assets/img/reactRedux.jpg"
@@ -28,7 +27,7 @@ export class Homepage extends Component {
             </button>
           </div>
           <div>
-            <img src={heroImg} className="hero-img" />
+            <img src={heroImg} className="hero-img" alt=""/>
           </div>
         </div>
         <section className="about main-layout">
