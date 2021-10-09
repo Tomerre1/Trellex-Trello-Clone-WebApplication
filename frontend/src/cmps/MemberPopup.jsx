@@ -71,7 +71,7 @@ const _MemberPopup = ({
             </p>
           )}
           {isInBoardList && (
-            <p onClick={removeUserFromBoard}>Remove from board</p>
+            <p className="logout" onClick={removeUserFromBoard}>Remove from board</p>
           )}
         </div>
       </div>
