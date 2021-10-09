@@ -140,9 +140,7 @@ async function addTask(taskTitle, boardId, groupId, audioUrl, videoUrl) {
             url: (audioUrl) ? audioUrl : videoUrl,
             createdAt: Date.now(),
             isWeb: true
-
-        }]
-            : [],
+        }] : [],
     }
     if (audioUrl) newTask.media.audioUrl = audioUrl
     else if (videoUrl) newTask.media.videoUrl = videoUrl
