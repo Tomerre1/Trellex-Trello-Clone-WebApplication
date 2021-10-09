@@ -122,6 +122,7 @@ async function addTask(taskTitle, boardId, groupId, audioUrl, videoUrl) {
     //להוסיף לאטצמנטס
     if (!taskTitle)
         return
+
     const newTask =
     {
         "id": `t-${utilService.makeId()}`,
@@ -132,7 +133,16 @@ async function addTask(taskTitle, boardId, groupId, audioUrl, videoUrl) {
         "style": {},
         "labelIds": [],
         "members": [],
-        "media": {}
+        "media": {},
+        "attachments": (audioUrl || videoUrl) ? [{
+            id: utilService.makeId(),
+            name: 'Media url',
+            url: (audioUrl) ? audioUrl : videoUrl,
+            createdAt: Date.now(),
+            isWeb: true
+
+        }]
+            : [],
     }
     if (audioUrl) newTask.media.audioUrl = audioUrl
     else if (videoUrl) newTask.media.videoUrl = videoUrl
