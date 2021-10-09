@@ -79,6 +79,22 @@
         background-color: hsla(0, 0%, 100%, 0.2);
       }
     }
+    .notify-btn{
+        position: relative;
+      .notify-count{
+        background-color: #f02849;
+        position: absolute;
+        color: whitesmoke;
+        top: -5px;
+        left: -6px;
+        height: 17px;
+        width: 17px;
+        border-radius: 50%;
+        font-size: 0.7rem;
+        line-height: normal;
+      }
+
+    }
     .user-profile {
       border-radius: 50%;
       background-color: rgba(36, 5, 5, 0.37);

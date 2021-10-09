@@ -35,10 +35,13 @@
         font-weight: 400;
         margin: 0 0 8px;
         outline: 0;
-        // width: 94%;
+        width: 87%;
         resize: none;
         transition: min-height 0.6s, box-shadow 0.4s;
         margin-left: 30px;
+        @include for-narrow-layout {
+            width: 94%;
+        }
     }
     textarea:focus {
         min-height: 108px;

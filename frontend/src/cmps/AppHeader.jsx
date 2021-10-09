@@ -21,13 +21,21 @@ function _AppHeader(props) {
     setCreateShown(false);
     props.history.push(`/board/${board._id}`);
   };
-  const isOnBoard = props.location.pathname.includes("board") ;
+
+  const getNotifyCount = () => {
+    if (!props.userNotifications) return 0
+    const notifyCount = props.userNotifications.reduce((acc, notify) => {
+      if (notify.isNotRead) acc++
+      return acc;
+    }, 0)
+    return notifyCount
+  };
+  const isOnBoard = props.location.pathname.includes("board");
   return (
     <>
       <header
-        className={`main-header flex align-center ${
-          isOnBoard ? "on-board" : ""
-        }`}
+        className={`main-header flex align-center ${isOnBoard ? "on-board" : ""
+          }`}
       >
         <div className="header-btn-container flex">
           <Link to="/" className="header-btn">
@@ -54,15 +62,15 @@ function _AppHeader(props) {
             </button>
 
             <button
-              className="header-btn"
+              className="header-btn notify-btn"
               style={{
                 opacity: isOnBoard ? 1 : 0.4,
                 pointerEvents: isOnBoard ? 'auto' : 'none',
               }}
               onClick={(event) => {
-                if(!isOnBoard) return
+                if (!isOnBoard) return
                 props.setPosition({
-                  
+
                   pos: { pageX: event.pageX, pageY: event.pageY },
                   type: "NOTIFICATION",
                 });
@@ -71,6 +79,10 @@ function _AppHeader(props) {
               }}
             >
               <NotificationsNoneIcon className="icon" />
+              {/* {props.userNotifications && props.userNotifications.length > 0 &&
+                <div className="notify-count">{props.userNotifications ? getNotifyCount() : 0}</div>
+              } */}
+
             </button>
             <MemberList members={[props.user]} isInHeader={true} />
           </div>
@@ -101,6 +113,7 @@ function mapStateToProps(state) {
   return {
     user: state.userModule.loggedinUser,
     boards: state.boardModule.boards,
+    userNotifications: state.userModule.userNotifications,
   };
 }
 const mapDispatchToProps = {
