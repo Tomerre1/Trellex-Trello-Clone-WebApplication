@@ -1,11 +1,12 @@
 .board-header {
   top: 48px;
+  height: 45px;
   position: relative;
   background-color: transparent;
   color: white;
   z-index: 1;
-  gap: 6px;  
-
+  gap: 6px;
+  overflow: hidden;
 
   form {
     margin: 0;
@@ -34,7 +35,7 @@
     color: white;
     background-color: #ffffff3d;
     white-space: pre;
-    max-width: 185px;
+    max-width: 180px;
     overflow-x: hidden;
     text-overflow: ellipsis;
     @include for-normal-layout {
@@ -64,7 +65,7 @@
     @include for-normal-layout {
       max-width: unset;
       overflow-x: unset;
-      min-width: 30px;
+      min-width: 30px  !important;
     }
     &.height-adjust {
       top: 1px;
@@ -112,7 +113,7 @@
         }
       }
     }
-    .results {      
+    .results {
       position:fixed;
       background-color: #5aac44;
       border-radius: 3px;
@@ -133,10 +134,11 @@
         border-top-right-radius: 3px;
         border-bottom-right-radius: 3px;
       }
+
       @include for-normal-layout {
         position:relative;
         top:unset;
-        margin-left:15px;
+
       }
     }
   }
