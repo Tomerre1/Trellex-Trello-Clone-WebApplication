@@ -15,7 +15,7 @@
           "byMember": {
             "_id": "615cbcd49ec77d59ecd482a6",
             "username": "Barak ",
-            "fullname": "Barak Sidi",
+            "fullname": "Barak Sidi", 
             "imgUrl": "https://lh3.googleusercontent.com/a-/AOh14GhShl-7w1DPMaIhKXwV4L2wfg22fFjrU1oUZgGAQg=s96-c"
           },
           "style": {},
