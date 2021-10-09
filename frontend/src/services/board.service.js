@@ -119,6 +119,7 @@ function updateTask(board, group, task) {
 
 
 async function addTask(taskTitle, boardId, groupId, audioUrl, videoUrl) {
+    //להוסיף לאטצמנטס
     if (!taskTitle)
         return
     const newTask =
