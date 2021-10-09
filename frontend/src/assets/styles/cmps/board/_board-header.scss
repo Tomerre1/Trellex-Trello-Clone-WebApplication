@@ -114,8 +114,11 @@
       }
     }
     .results {
+      position:fixed;
       background-color: #5aac44;
       border-radius: 3px;
+      top:55px;
+      right:9px;
       &:hover {
         background-color: #ffffff3d;
       }
@@ -130,6 +133,12 @@
       span {
         border-top-right-radius: 3px;
         border-bottom-right-radius: 3px;
+      }
+
+      @include for-normal-layout {
+        position:relative;
+        top:unset;
+
       }
     }
   }
