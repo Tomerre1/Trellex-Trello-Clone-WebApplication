@@ -2982,11 +2982,6 @@ db.getCollection('board').insertMany([
         "username": "pickleRick"
     },
     {
-        "fullname": "Archer",
-        "imgUrl": "https://pbs.twimg.com/profile_images/1194678819602305024/vFMWJwiT.jpg",
-        "username": "archer"
-    },
-    {
         "username" : "guest",
         "password" : "$2b$10$nKwYaFnS4EmmbMG4YF6bvO.mr.RIWvYu/eifV.mspSzxmwXLUjgRi",
         "fullname" : "Guest",
