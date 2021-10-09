@@ -4,7 +4,7 @@ import { Popover } from './Popover'
 import { utilService } from '../../services/util.service'
 import { cloudinaryService } from '../../services/cloudinary-service'
 import { saveBoard, saveTaskDetails, addActivity } from '../../store/board.actions'
-import { togglePopover } from '../../store/app.actions'
+import { togglePopover, setCurrTaskDetails } from '../../store/app.actions'
 
 
 export class _PopoverAttachment extends Component {
@@ -20,12 +20,13 @@ export class _PopoverAttachment extends Component {
     }
 
     uploadFile = async (ev) => {
-        const { board, currTaskDetails, saveTaskDetails, togglePopover } = this.props
+        const { board, currTaskDetails, saveTaskDetails, togglePopover, setCurrTaskDetails } = this.props
         const { currGroup } = this.state
         const { attachments } = currTaskDetails
         const res = await cloudinaryService.uploadFile(ev)
         const attach = { name: res.original_filename, id: res.asset_id, createdAt: Date.now(), url: res.secure_url }
         currTaskDetails.attachments = (attachments) ? [...attachments, attach] : [attach]
+        setCurrTaskDetails(currTaskDetails)
         await saveTaskDetails(board, currGroup, currTaskDetails)
         togglePopover()
     }
@@ -41,7 +42,7 @@ export class _PopoverAttachment extends Component {
 
     onAttachmentClick = async () => {
         const { webUrlSrc, webUrlName, currGroup } = this.state
-        const { board, currTaskDetails, saveTaskDetails, togglePopover } = this.props
+        const { board, currTaskDetails, saveTaskDetails, togglePopover, setCurrTaskDetails } = this.props
         const { attachments } = currTaskDetails
         if (webUrlSrc) {
             const attach = {
@@ -52,6 +53,7 @@ export class _PopoverAttachment extends Component {
                 isWeb: true,
             }
             currTaskDetails.attachments = (attachments) ? [...attachments, attach] : [attach]
+            setCurrTaskDetails(currTaskDetails)
             await saveTaskDetails(board, currGroup, currTaskDetails)
             this.clearState()
             togglePopover()
@@ -100,7 +102,8 @@ const mapDispatchToProps = {
     saveTaskDetails,
     saveBoard,
     togglePopover,
-    addActivity
+    addActivity,
+    setCurrTaskDetails
 };
 
 export const PopoverAttachment = connect(

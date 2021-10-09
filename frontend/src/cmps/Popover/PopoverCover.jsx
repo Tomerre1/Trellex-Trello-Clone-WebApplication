@@ -4,6 +4,7 @@ import { cloudinaryService } from '../../services/cloudinary-service'
 import { Popover } from './Popover'
 import { connect } from 'react-redux'
 import { saveTaskDetails } from '../../store/board.actions'
+import { setCurrTaskDetails } from '../../store/app.actions'
 
 export class _PopoverCover extends React.Component {
     state = {
@@ -56,7 +57,7 @@ export class _PopoverCover extends React.Component {
     }
 
     setHeaderSelected = async () => {
-        const { currTaskDetails, saveTaskDetails, board } = this.props
+        const { currTaskDetails, saveTaskDetails, board, setCurrTaskDetails } = this.props
         const { currGroup } = this.state
         this.setState(prevState => ({
             ...prevState,
@@ -64,12 +65,13 @@ export class _PopoverCover extends React.Component {
             isFullSelected: false,
         }))
         currTaskDetails.style.coverMode = 'header'
+        setCurrTaskDetails(currTaskDetails)
         await saveTaskDetails(board, currGroup, currTaskDetails)
 
     }
 
     setFullSelected = async () => {
-        const { currTaskDetails, board, saveTaskDetails } = this.props
+        const { currTaskDetails, board, saveTaskDetails, setCurrTaskDetails } = this.props
         const { currGroup } = this.state
         this.setState(prevState => ({
             ...prevState,
@@ -77,11 +79,12 @@ export class _PopoverCover extends React.Component {
             isHeaderSelected: false,
         }))
         currTaskDetails.style.coverMode = 'full'
+        setCurrTaskDetails(currTaskDetails)
         await saveTaskDetails(board, currGroup, currTaskDetails)
     }
 
     removeCover = async () => {
-        const { saveTaskDetails, currTaskDetails, board } = this.props
+        const { saveTaskDetails, currTaskDetails, board, setCurrTaskDetails } = this.props
         const { currGroup } = this.state
         this.setState(prevState => ({
             ...prevState,
@@ -91,32 +94,33 @@ export class _PopoverCover extends React.Component {
         currTaskDetails.style.coverMode = null
         currTaskDetails.style.bgColor = null
         currTaskDetails.style.bgUrl = null
-        // setBgColorCover(null)
-        // setBgUrlCover(null)
+        setCurrTaskDetails(currTaskDetails)
         await saveTaskDetails(board, currGroup, currTaskDetails)
 
     }
 
     uploadFile = async (ev) => {
         ev.preventDefault()
-        const { currTaskDetails, saveTaskDetails, board } = this.props
+        const { currTaskDetails, saveTaskDetails, board, setCurrTaskDetails } = this.props
         const { currGroup } = this.state
         const res = await cloudinaryService.uploadFile(ev)
         currTaskDetails.style.bgUrl = res.secure_url
+        setCurrTaskDetails(currTaskDetails)
         await saveTaskDetails(board, currGroup, currTaskDetails)
     }
 
     removeFile = async (attachId) => {
-        const { currTaskDetails, saveTaskDetails, board } = this.props
+        const { currTaskDetails, saveTaskDetails, board, setCurrTaskDetails } = this.props
         const { currGroup } = this.state
         const { attachments } = currTaskDetails
         const attachs = attachments.filter(currAttach => currAttach.id !== attachId)
         currTaskDetails.attachments = attachs
+        setCurrTaskDetails(currTaskDetails)
         await saveTaskDetails(board, currGroup, currTaskDetails)
     }
 
     handleChange = async (event) => {
-        const { saveTaskDetails, currTaskDetails, board } = this.props
+        const { saveTaskDetails, currTaskDetails, board, setCurrTaskDetails } = this.props
         const { isFullSelected, isHeaderSelected, currGroup } = this.state
         const { value } = event.target
         if (!isFullSelected && !isHeaderSelected) {
@@ -134,7 +138,7 @@ export class _PopoverCover extends React.Component {
             }))
         }
         currTaskDetails.style.bgColor = value
-        // setBgColorCover(value)
+        setCurrTaskDetails(currTaskDetails)
         await saveTaskDetails(board, currGroup, currTaskDetails)
     }
 
@@ -214,6 +218,7 @@ function mapStateToProps(state) {
 }
 const mapDispatchToProps = {
     saveTaskDetails,
+    setCurrTaskDetails
 };
 
 export const PopoverCover = connect(

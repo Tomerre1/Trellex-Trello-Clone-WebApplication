@@ -7,7 +7,7 @@ import { EditAttachmentPopover } from './EditAttachmentPopover'
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import { Link } from 'react-router-dom';
 import { saveBoard, saveTaskDetails, addActivity } from '../store/board.actions'
-import { setPosition, setPopover } from '../store/app.actions';
+import { setPosition, setPopover, setCurrTaskDetails } from '../store/app.actions';
 
 
 export class _TaskAttachmentPreview extends Component {
@@ -44,38 +44,42 @@ export class _TaskAttachmentPreview extends Component {
     }
 
     removeAttach = async () => {
-        const { board, currTaskDetails, saveTaskDetails, addActivity, attachment } = this.props
+        const { board, currTaskDetails, saveTaskDetails, addActivity, attachment, setCurrTaskDetails } = this.props
         const { currGroup } = this.state
         const attachs = currTaskDetails.attachments.filter(currAttach => currAttach.id !== attachment.id)
         currTaskDetails.attachments = attachs
+        setCurrTaskDetails(currTaskDetails)
         await saveTaskDetails(board, currGroup, currTaskDetails)
         this.togglePopover()
         addActivity(board, currTaskDetails, 'remove-attachment', attachment.name)
     }
 
     setCover = async () => {
-        const { board, saveTaskDetails, currTaskDetails, attachment } = this.props
+        const { board, saveTaskDetails, currTaskDetails, attachment, setCurrTaskDetails } = this.props
         const { currGroup } = this.state
         currTaskDetails.style.bgUrl = attachment.url
         this.toggleBgUrl()
+        setCurrTaskDetails(currTaskDetails)
         await saveTaskDetails(board, currGroup, currTaskDetails)
     }
 
     removeCover = async () => {
-        const { board, saveTaskDetails, currTaskDetails } = this.props
+        const { board, saveTaskDetails, currTaskDetails, setCurrTaskDetails } = this.props
         const { currGroup } = this.state
         currTaskDetails.style.coverMode = null
         currTaskDetails.style.bgColor = null
         currTaskDetails.style.bgUrl = null
         this.toggleBgUrl()
+        setCurrTaskDetails(currTaskDetails)
         await saveTaskDetails(board, currGroup, currTaskDetails)
     }
 
     updateAttachment = async (url, urlName) => {
-        const { board, saveTaskDetails, currTaskDetails, attachment } = this.props
+        const { board, saveTaskDetails, currTaskDetails, attachment, setCurrTaskDetails } = this.props
         const { currGroup } = this.state
         attachment.url = url
         attachment.name = urlName
+        setCurrTaskDetails(currTaskDetails)
         await saveTaskDetails(board, currGroup, currTaskDetails)
         this.toggleEditPopover()
     }
@@ -160,7 +164,8 @@ const mapDispatchToProps = {
     saveBoard,
     setPosition,
     setPopover,
-    addActivity
+    addActivity,
+    setCurrTaskDetails
 };
 
 export const TaskAttachmentPreview = connect(

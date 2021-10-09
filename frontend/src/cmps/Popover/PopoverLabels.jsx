@@ -6,6 +6,7 @@ import { LoaderSpinner } from '../LoaderSpinner'
 import { PopoverLabelsListPreview } from './PopoverLabelsListPreview'
 import { PopoverLabelCreateEdit } from './PopoverLabelCreateEdit'
 import { saveBoard, saveTaskDetails } from '../../store/board.actions'
+import { setCurrTaskDetails } from '../../store/app.actions'
 export class _PopoverLabels extends Component {
     state = {
         search: '',
@@ -44,13 +45,14 @@ export class _PopoverLabels extends Component {
     }
 
     toggleLabelCheck = async (labelId) => {
-        const { currTaskDetails, board, saveTaskDetails } = this.props
+        const { currTaskDetails, board, saveTaskDetails, setCurrTaskDetails } = this.props
         const { currGroup } = this.state
         const updatedLabelsId = (currTaskDetails.labelIds.includes(labelId)) ?
             currTaskDetails.labelIds.filter(currLabelId => currLabelId !== labelId) :
             [...currTaskDetails.labelIds, labelId]
         currTaskDetails.labelIds = updatedLabelsId
         this.setState(prevState => ({ ...prevState, labelIds: updatedLabelsId }))
+        setCurrTaskDetails(currTaskDetails)
         await saveTaskDetails(board, currGroup, currTaskDetails)
     }
 
@@ -74,13 +76,14 @@ export class _PopoverLabels extends Component {
     }
 
     removeLabel = async (label) => {
-        const { board, saveBoard, currTaskDetails } = this.props
+        const { board, saveBoard, currTaskDetails, setCurrTaskDetails } = this.props
         const { currGroup } = this.state
         const labels = board.labels.filter(currLabel => currLabel.id !== label.id)
         currTaskDetails.labelIds = currTaskDetails.labelIds.filter(currLabelId => currLabelId !== label.id)
         this.setState(prevState => ({ ...prevState, labels: labels }))
         this.toggleIsEditCreate()
         board.labels = labels
+        setCurrTaskDetails(currTaskDetails)
         await saveTaskDetails(board, currGroup, currTaskDetails)
         await saveBoard(board)
     }
@@ -124,7 +127,8 @@ function mapStateToProps(state) {
 }
 const mapDispatchToProps = {
     saveTaskDetails,
-    saveBoard
+    saveBoard,
+    setCurrTaskDetails
 };
 
 export const PopoverLabels = connect(

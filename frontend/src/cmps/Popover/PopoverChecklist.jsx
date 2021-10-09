@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { Popover } from './Popover'
 import { utilService } from '../../services/util.service'
 import { saveBoard, saveTaskDetails, addActivity } from '../../store/board.actions'
-import { togglePopover } from '../../store/app.actions'
+import { togglePopover, setCurrTaskDetails } from '../../store/app.actions'
 
 export class _PopoverChecklist extends Component {
     state = {
@@ -27,7 +27,7 @@ export class _PopoverChecklist extends Component {
 
     onAddChecklist = async (ev) => {
         ev.preventDefault()
-        const { board, saveTaskDetails, currTaskDetails, togglePopover, addActivity } = this.props
+        const { board, saveTaskDetails, currTaskDetails, togglePopover, addActivity, setCurrTaskDetails } = this.props
         const { currGroup } = this.state
 
         if (!currTaskDetails.checklists) currTaskDetails.checklists = []
@@ -37,6 +37,7 @@ export class _PopoverChecklist extends Component {
             todos: []
         }
         currTaskDetails.checklists.push(newList)
+        setCurrTaskDetails(currTaskDetails)
         await saveTaskDetails(board, currGroup, currTaskDetails)
         this.clearState()
         togglePopover()
@@ -72,7 +73,8 @@ const mapDispatchToProps = {
     saveTaskDetails,
     saveBoard,
     togglePopover,
-    addActivity
+    addActivity,
+    setCurrTaskDetails
 };
 
 export const PopoverChecklist = connect(

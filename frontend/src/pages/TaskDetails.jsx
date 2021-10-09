@@ -10,7 +10,7 @@ import { TaskActivities } from "../cmps/TaskActivities";
 import { TaskActionsMenu } from "../cmps/TaskActionsMenu";
 import { TaskHeaderDetails } from "../cmps/TaskHeaderDetails";
 import { LoaderSpinner } from "../cmps/LoaderSpinner";
-import { saveBoard, saveTaskDetails, addActivity,loadBoard } from "../store/board.actions";
+import { saveBoard, saveTaskDetails, addActivity, loadBoard } from "../store/board.actions";
 import { setCurrTaskDetails, setPopover, setPosition, setPopoverMenu } from '../store/app.actions'
 import { MediaRecord } from '../cmps/MediaRecord'
 
@@ -21,10 +21,10 @@ export class _TaskDetails extends Component {
   };
   contentEl = null;
 
-  componentDidMount = async  () => {
-    const { boardId,taskId, listId } = this.props.match.params;
+  componentDidMount = async () => {
+    const { boardId, taskId, listId } = this.props.match.params;
     const { board, setCurrTaskDetails, setPopoverMenu } = this.props;
-    if(!board) await this.props.loadBoard(boardId)
+    if (!board) await this.props.loadBoard(boardId)
     const currGroup = this.props.board?.groups.find((list) => list.id === listId);
     const currTask = currGroup?.tasks.find((task) => task.id === taskId);
     setCurrTaskDetails(currTask)
@@ -53,8 +53,9 @@ export class _TaskDetails extends Component {
   };
 
   setTaksDetailsTitle = (title) => {
-    const { currTaskDetails } = this.props;
+    const { currTaskDetails, setCurrTaskDetails } = this.props;
     currTaskDetails.title = title;
+    setCurrTaskDetails(currTaskDetails)
     this.updateTaskDetails(currTaskDetails);
   };
 
@@ -93,6 +94,7 @@ export class _TaskDetails extends Component {
     currTaskDetails.isArchive = currTaskDetails?.isArchive || false
     currTaskDetails.isArchive = !currTaskDetails.isArchive;
     addActivity((currTaskDetails.isArchive) ? (board, currTaskDetails, 'add-to-archive') : (board, currTaskDetails, 'remove-from-archive'))
+    setCurrTaskDetails(currTaskDetails)
     this.updateTaskDetails(currTaskDetails);
   }
 
