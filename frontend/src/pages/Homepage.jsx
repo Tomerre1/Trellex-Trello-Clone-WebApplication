@@ -2,6 +2,12 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import heroImg from "../assets/img/hero.png";
 import { HomeProfile } from "../cmps/Home/HomeProfile";
+import reactImg from "../assets/img/reactRedux.jpg"
+import nodeImg from "../assets/img/nodejs.png";
+import mongoImg from "../assets/img/mongo.png";
+import socketImg from "../assets/img/socket.jpg";
+import expressImg from "../assets/img/express.png";
+import rbdndImg from "../assets/img/rbdnd.png";
 
 export class Homepage extends Component {
   render() {
@@ -25,7 +31,16 @@ export class Homepage extends Component {
             <img src={heroImg} className="hero-img" />
           </div>
         </div>
-        <section className="profiles main-layout">
+        <section className="about main-layout">
+            <h1>Made with</h1>
+          <div className="tech flex align-center">
+              <img src={reactImg} alt="logo" className="tech-logo"/>
+              <img src={nodeImg} alt="logo" className="tech-logo"/>
+              <img src={expressImg} alt="logo" className="tech-logo"/>
+              <img src={socketImg} alt="logo" className="tech-logo"/>
+              <img src={mongoImg} alt="logo" className="tech-logo"/>
+              <img src={rbdndImg} alt="logo" className="tech-logo"/>
+          </div>
           <h1>Created by</h1>
           <div className=" profiles-wrapper flex">
             <HomeProfile
