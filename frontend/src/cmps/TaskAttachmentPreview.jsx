@@ -84,7 +84,6 @@ export class _TaskAttachmentPreview extends Component {
         const { attachment, popover } = this.props
         const { isPopover, isEditPopover, bgUrl } = this.state
         const { isWeb } = attachment
-        let attachName
         return (
             <div className="attachment-preview flex">
                 {(isWeb) ?
