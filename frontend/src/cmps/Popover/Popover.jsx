@@ -39,8 +39,11 @@ export class _Popover extends React.Component {
         let posY = (window.innerHeight - pos.pageY > 200) ? pos.pageY + 20 : pos.pageY - 200;
         posX = (posX + width > window.innerWidth) ? window.innerWidth - width - 20 : posX;
         posY = (posY + height > window.innerHeight) ? window.innerHeight - height - 20 : posY;
+        if (posX < 0) posX = 10;
         return { left: posX, top: posY }
     }
+
+
 
 
     getContentStyles = () => {
