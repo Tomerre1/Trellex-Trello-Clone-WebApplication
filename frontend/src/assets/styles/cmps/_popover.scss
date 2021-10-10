@@ -60,12 +60,6 @@
         flex-direction: column;
 
         h4 {
-            // color: #5e6c84;
-            // font-weight: 500;
-            // letter-spacing: 0.04em;
-            // font-size: 12px;
-            // margin-bottom: 0.5rem;
-
             color: #5e6c84;
             font-size: 12px;
             font-weight: 500;
@@ -74,6 +68,9 @@
             margin-top: 16px;
             text-transform: uppercase;
             margin-bottom: 4px;
+            &.MuiTypography-h4 {
+                color: white;
+            }
         }
 
         input[type="search"],
