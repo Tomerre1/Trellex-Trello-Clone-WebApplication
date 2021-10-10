@@ -64,6 +64,7 @@ export class _PopoverDate extends Component {
                                 variant="static"
                                 value={date}
                                 openTo="date"
+                                color='white'
                                 onChange={this.handleChange} />
                         </MuiPickersUtilsProvider>
                     </div>

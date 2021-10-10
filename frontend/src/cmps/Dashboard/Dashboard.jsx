@@ -8,7 +8,7 @@ import { ActivityChart } from "./ActivityChart";
 import { LoaderSpinner } from "../LoaderSpinner";
 import PeopleIcon from "@mui/icons-material/People";
 import DashboardIcon from "@mui/icons-material/Dashboard";
-import ListAltIcon from '@mui/icons-material/ListAlt';
+import ListAltIcon from "@mui/icons-material/ListAlt";
 
 export function _Dashboard(props) {
   const onBack = () => {
@@ -37,7 +37,7 @@ export function _Dashboard(props) {
 
     if (board.groups.length) {
       board?.activities.forEach((activity) => {
-        if(activity.byMember){
+        if (activity.byMember) {
           membersActivity[activity.byMember?.fullname] = membersActivity[
             activity.byMember.fullname
           ]
@@ -68,6 +68,12 @@ export function _Dashboard(props) {
         });
       });
     }
+    const sortedActivity = Object.entries(membersActivity).sort(
+      (a, b) => b[1] - a[1]
+    );
+    const sortedNames = sortedActivity.map(activity => activity[0])
+    const sortedAmount = sortedActivity.map(activity => activity[1])
+    console.log(sortedActivity);
     return {
       tasks,
       archivedTasks,
@@ -77,7 +83,8 @@ export function _Dashboard(props) {
       doneChecklists,
       todos,
       doneTodos,
-      membersActivity,
+      sortedNames,
+      sortedAmount
     };
   };
 
@@ -90,7 +97,7 @@ export function _Dashboard(props) {
     );
   return (
     <section className="dashboard-overlay flex column fade-in">
-      <button onClick={onBack} class="close-btn clean-btn">
+      <button onClick={onBack} className="close-btn clean-btn">
         <Close />
       </button>
       <div className="dashboard-container flex column ">
@@ -104,19 +111,16 @@ export function _Dashboard(props) {
           <div className="info-box flex">
             <div className="flex column big-num-box">
               <p className="info-num">{board.members?.length}</p>
-              <p className="below-num">
-                <PeopleIcon className="icon" />
-                Members
-              </p>
+              <p className="below-num">Members</p>
+            </div>
+            <div className="flex column details">
+              <PeopleIcon className="icon" />
             </div>
           </div>
           <div className="info-box flex">
             <div className="flex column big-num-box">
               <p className="info-num">{taskDetails.tasks}</p>
-              <p className="below-num">
-                <DashboardIcon className="icon" />
-                Tasks
-              </p>
+              <p className="below-num">Tasks</p>
             </div>
             <div className="flex column details">
               <p className="green">{taskDetails.doneTasks} Completed</p>
@@ -127,13 +131,15 @@ export function _Dashboard(props) {
           <div className="info-box flex">
             <div className="flex column big-num-box">
               <p className="info-num">{taskDetails.checklists}</p>
-              <p className="below-num"><ListAltIcon className="icon"/>{`Checklist${taskDetails.checklists !== 1 ? "s" : ""}`}</p>
+              <p className="below-num">{`Checklist${
+                taskDetails.checklists !== 1 ? "s" : ""
+              }`}</p>
             </div>
             <div className="flex column details">
               <p className="green">{taskDetails.doneChecklists} Completed</p>
               <p className="yellow">{taskDetails.todos} Todos </p>
               <p className="red">
-                {taskDetails.todos - taskDetails.doneTodos} Unresolved todos{" "}
+                {taskDetails.todos - taskDetails.doneTodos} Open todos
               </p>
             </div>
           </div>
@@ -143,7 +149,7 @@ export function _Dashboard(props) {
             <DoughnutChart board={board} />
           </div>
           <div className="chart flex align-center">
-            <ActivityChart membersActivity={taskDetails.membersActivity} />
+            <ActivityChart taskDetails={taskDetails} />
           </div>
           <div className="chart flex align-center">
             <BarChart board={board} />

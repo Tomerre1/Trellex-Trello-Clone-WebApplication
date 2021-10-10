@@ -86,7 +86,7 @@ export class _Popover extends React.Component {
                                     <CloseIcon />
                                 </button>
                             </div>
-                            <div className="popover-content">
+                            <div className='popover-content'>
                                 {children}
                             </div>
                         </div>

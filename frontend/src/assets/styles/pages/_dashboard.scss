@@ -57,8 +57,11 @@
       max-width: auto;
       padding: 20px 15px;
       align-items: center;
-      justify-content:space-between;
-      gap: 12px;
+      justify-content:space-around;
+      width:225px;
+      height:120px;
+      max-height:150px;
+      gap: 0px;
       border-radius: 3px;
       background-color: rgba(7, 27, 39, 0.541);
       border: 2px solid rgba(255, 255, 255, 0.192);
@@ -92,9 +95,15 @@
       .details {
         align-items: flex-start;
         position:absolute;
+        .icon { 
+          height:100px;
+          width:100px;
+          color:#f1f1f1a2;
+        }
         p {
           margin: 0;
           font-weight: 400;
+          font-size:rem(14px);
         }
         .green {
           color: rgba(156, 240, 156, 0.87);
@@ -128,7 +137,7 @@
       flex-wrap: wrap;
       .chart {
         width: 90%;
-        height: 400px;
+        max-height: 400px;
         padding: 40px 20px;
         border-radius: 25px;
         background-color: rgba(7, 27, 39, 0.541);

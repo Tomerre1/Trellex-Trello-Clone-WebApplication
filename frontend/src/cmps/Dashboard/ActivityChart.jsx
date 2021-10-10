@@ -1,13 +1,13 @@
 import React from "react";
-import { Bar } from "react-chartjs-2";
+import { Bar,Line } from "react-chartjs-2";
 
-export const ActivityChart = ({ membersActivity }) => {
+export const ActivityChart = (props ) => {
   const data = {
-    labels: [...Object.keys(membersActivity)],
+    labels: [...props.taskDetails.sortedNames],
     datasets: [
       {
-        label: "Amount",
-        data: [...Object.values(membersActivity)],
+        label: "Activities",
+        data: [...props.taskDetails.sortedAmount],
         backgroundColor: ["#c277e0", "#61bd4f", "#ff9e1a", "#334563"],
         borderColor: ["#c277e0", "darkgreen", "#ff9e1a", "#334563"],
         borderWidth: 1,
@@ -41,6 +41,7 @@ export const ActivityChart = ({ membersActivity }) => {
       x: {
         ticks: {
           color: "rgba(255, 255, 255, 0.897)",
+
           font: {
             family: "Segoe UI",
             size: 15,
@@ -50,6 +51,7 @@ export const ActivityChart = ({ membersActivity }) => {
       y: {
         ticks: {
           color: "rgba(255, 255, 255, 0.897)",
+          title: 'Activity',
           font: {
             family: "Segoe UI",
             size: 15,
@@ -64,7 +66,7 @@ export const ActivityChart = ({ membersActivity }) => {
 
   return (
     <div className="chart-activity">
-      <Bar data={data} options={options1}   height={280}/>
+      <Line data={data} options={options1}   height={280}/>
     </div>
   );
 };
