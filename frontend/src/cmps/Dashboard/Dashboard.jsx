@@ -37,11 +37,13 @@ export function _Dashboard(props) {
 
     if (board.groups.length) {
       board?.activities.forEach((activity) => {
-        membersActivity[activity.byMember.fullname] = membersActivity[
-          activity.byMember.fullname
-        ]
-          ? membersActivity[activity.byMember.fullname] + 1
-          : 1;
+        if(activity.byMember){
+          membersActivity[activity.byMember?.fullname] = membersActivity[
+            activity.byMember.fullname
+          ]
+            ? membersActivity[activity.byMember.fullname] + 1
+            : 1;
+        }
       });
       board.groups.forEach((group) => {
         group?.tasks.forEach((task) => {

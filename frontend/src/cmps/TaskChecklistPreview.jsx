@@ -7,7 +7,7 @@ import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
 import { ProgressBar } from './ProgressBar'
 import { saveBoard, saveTaskDetails, addActivity } from '../store/board.actions'
 import { togglePopover } from '../store/app.actions'
-import { setPosition, setPopover } from '../store/app.actions';
+import { setPosition, setPopover, setCurrTaskDetails } from '../store/app.actions';
 
 
 export class _TaskChecklistPreview extends Component {
@@ -27,32 +27,35 @@ export class _TaskChecklistPreview extends Component {
     }
 
     onSaveTodo = async (todo) => {
-        const { board, currTaskDetails, checklist, saveTaskDetails } = this.props
+        const { board, currTaskDetails, checklist, saveTaskDetails, setCurrTaskDetails } = this.props
         const { currGroup } = this.state
         const checklistIdx = currTaskDetails.checklists.indexOf(checklist)
         const todoIdx = currTaskDetails.checklists[checklistIdx].todos.findIndex((currTodo) => {
             return currTodo.id === todo.id
         })
         currTaskDetails.checklists[checklistIdx].todos[todoIdx] = todo
+        setCurrTaskDetails(currTaskDetails)
         await saveTaskDetails(board, currGroup, currTaskDetails)
     }
 
     onRemoveTodo = async (todo) => {
-        const { board, currTaskDetails, saveTaskDetails, checklist } = this.props
+        const { board, currTaskDetails, saveTaskDetails, checklist, setCurrTaskDetails } = this.props
         const { currGroup } = this.state
         const checklistIdx = currTaskDetails.checklists.indexOf(checklist)
         const todoIdx = currTaskDetails.checklists[checklistIdx].todos.findIndex((currTodo) => {
             return currTodo.id === todo.id
         })
         currTaskDetails.checklists[checklistIdx].todos.splice(todoIdx, 1)
+        setCurrTaskDetails(currTaskDetails)
         await saveTaskDetails(board, currGroup, currTaskDetails)
     }
 
     addTodo = async (todo) => {
-        const { board, currTaskDetails, saveTaskDetails, checklist } = this.props
+        const { board, currTaskDetails, saveTaskDetails, checklist, setCurrTaskDetails } = this.props
         const { currGroup } = this.state
         const checklistIdx = currTaskDetails.checklists.indexOf(checklist)
         currTaskDetails.checklists[checklistIdx].todos.push(todo)
+        setCurrTaskDetails(currTaskDetails)
         await saveTaskDetails(board, currGroup, currTaskDetails)
     }
 
@@ -69,10 +72,11 @@ export class _TaskChecklistPreview extends Component {
     }
 
     removeChecklist = async () => {
-        const { board, saveTaskDetails, currTaskDetails, checklist, addActivity } = this.props
+        const { board, saveTaskDetails, currTaskDetails, checklist, addActivity, setCurrTaskDetails } = this.props
         const { currGroup } = this.state
         const checklistIdx = currTaskDetails.checklists.indexOf(checklist)
         currTaskDetails.checklists.splice(checklistIdx, 1)
+        setCurrTaskDetails(currTaskDetails)
         await saveTaskDetails(board, currGroup, currTaskDetails)
         this.togglePopover()
         addActivity(board, currTaskDetails, 'remove-checklist')
@@ -131,7 +135,8 @@ const mapDispatchToProps = {
     togglePopover,
     setPosition,
     setPopover,
-    addActivity
+    addActivity,
+    setCurrTaskDetails
 };
 
 export const TaskChecklistPreview = connect(

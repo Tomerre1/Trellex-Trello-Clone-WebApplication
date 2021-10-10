@@ -4,7 +4,7 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import { saveTaskDetails, addActivity } from '../store/board.actions'
-import { setPosition, togglePopover } from '../store/app.actions';
+import { setPosition, togglePopover, setCurrTaskDetails } from '../store/app.actions';
 
 export class _TaskHeaderDate extends Component {
     state = {
@@ -35,9 +35,10 @@ export class _TaskHeaderDate extends Component {
     onToggleTaskDone = async () => {
         const isTaskDone = !this.state.isTaskDone
         this.setState(prevState => ({ ...prevState, isTaskDone }))
-        const { board, saveTaskDetails, currTaskDetails, addActivity } = this.props
+        const { board, saveTaskDetails, currTaskDetails, addActivity, setCurrTaskDetails } = this.props
         const { currGroup } = this.state
         currTaskDetails.isDone = !currTaskDetails.isDone;
+        setCurrTaskDetails(currTaskDetails)
         await saveTaskDetails(board, currGroup, currTaskDetails)
         if (isTaskDone) addActivity(board, currTaskDetails, 'due-date-complete')
         else addActivity(board, currTaskDetails, 'due-date-incomplete')
@@ -116,7 +117,8 @@ const mapDispatchToProps = {
     setPosition,
     saveTaskDetails,
     togglePopover,
-    addActivity
+    addActivity,
+    setCurrTaskDetails
 };
 
 export const TaskHeaderDate = connect(

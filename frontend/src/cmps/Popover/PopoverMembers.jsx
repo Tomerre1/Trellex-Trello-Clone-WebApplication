@@ -3,6 +3,7 @@ import { PopoverMemberPreview } from './PopoverMemberPreview'
 import { Popover } from './Popover'
 import { connect } from 'react-redux'
 import { saveTaskDetails, addActivity } from '../../store/board.actions'
+import { setCurrTaskDetails } from '../../store/app.actions'
 export class _PopoverMembers extends Component {
     state = {
         search: '',
@@ -25,7 +26,7 @@ export class _PopoverMembers extends Component {
     }
 
     toggleMemberCheck = async (member) => {
-        const { board, currTaskDetails, addActivity, loggedinUser } = this.props
+        const { board, currTaskDetails, addActivity, loggedinUser, setCurrTaskDetails } = this.props
         const { currGroup } = this.state
         currTaskDetails.members = currTaskDetails?.members || []
         const selectedMembersIds = currTaskDetails.members.map(member => member._id) || []
@@ -33,6 +34,7 @@ export class _PopoverMembers extends Component {
             currTaskDetails.members.filter(currMember => currMember._id !== member._id) :
             [...currTaskDetails.members, member]
         currTaskDetails.members = updatedMembers
+        setCurrTaskDetails(currTaskDetails)
         this.setState(prevState => ({ ...prevState, selectedMembers: updatedMembers, selectedMembersIds }))
         if (member._id === loggedinUser._id) {
             addActivity(board, currTaskDetails, (selectedMembersIds.includes(member._id)) ? 'remove-self' : 'add-self')
@@ -80,7 +82,8 @@ function mapStateToProps(state) {
 }
 const mapDispatchToProps = {
     saveTaskDetails,
-    addActivity
+    addActivity,
+    setCurrTaskDetails
 };
 
 export const PopoverMembers = connect(
