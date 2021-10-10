@@ -145,7 +145,7 @@ function _BoardHeader(props) {
             props.togglePopover(false);
           }}
         >
-          <MoreHorizOutlinedIcon className="icon menu" /> <span className="btn-txt">Show Menu</span>
+          <MoreHorizOutlinedIcon className="icon menu" /> <span className="btn-txt">Show menu</span>
         </button>
       </div>
     </header>
