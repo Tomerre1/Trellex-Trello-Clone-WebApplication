@@ -37,10 +37,10 @@ export class _PopoverChecklist extends Component {
             todos: []
         }
         currTaskDetails.checklists.push(newList)
+        togglePopover()
         setCurrTaskDetails(currTaskDetails)
         await saveTaskDetails(board, currGroup, currTaskDetails)
         this.clearState()
-        togglePopover()
         addActivity(board, currTaskDetails, 'add-checklist')
     }
 

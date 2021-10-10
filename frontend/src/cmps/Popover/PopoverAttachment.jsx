@@ -26,9 +26,9 @@ export class _PopoverAttachment extends Component {
         const res = await cloudinaryService.uploadFile(ev)
         const attach = { name: res.original_filename, id: res.asset_id, createdAt: Date.now(), url: res.secure_url }
         currTaskDetails.attachments = (attachments) ? [...attachments, attach] : [attach]
+        togglePopover()
         setCurrTaskDetails(currTaskDetails)
         await saveTaskDetails(board, currGroup, currTaskDetails)
-        togglePopover()
     }
 
     clearState = () => {
@@ -53,10 +53,10 @@ export class _PopoverAttachment extends Component {
                 isWeb: true,
             }
             currTaskDetails.attachments = (attachments) ? [...attachments, attach] : [attach]
+            togglePopover()
             setCurrTaskDetails(currTaskDetails)
             await saveTaskDetails(board, currGroup, currTaskDetails)
             this.clearState()
-            togglePopover()
         }
     }
 
