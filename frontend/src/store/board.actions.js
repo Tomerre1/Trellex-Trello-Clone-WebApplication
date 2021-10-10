@@ -40,17 +40,30 @@ export const loadBoard = (boardId, filterBy = null) => {
 
 export const saveBoard = (board) => {
     return async (dispatch) => {
+        // --- change back to this if something goes wrong
+    //     try {
+    //         const newBoard = await boardService.save(board)
+    //         dispatch({
+    //             type: "SAVE_BOARD",
+    //             board: newBoard,
+    //         });
+    //         socketService.emit("board-change")
+    //     }
+    //     catch (err) {
+    //         console.log('cant save board', err)
+    //         // throw Error(err)
+    //     }
         try {
-            const newBoard = await boardService.save(board)
             dispatch({
                 type: "SAVE_BOARD",
-                board: newBoard,
+                board: board,
             });
+            await boardService.save(board)
             socketService.emit("board-change")
         }
         catch (err) {
             console.log('cant save board', err)
-            // throw Error(err)
+            throw err
         }
     }
 }
@@ -230,12 +243,12 @@ export const saveTaskDetails = (board, currGroup, currTask) => {
     return async (dispatch) => {
         try {
             const updatedBoard = boardService.updateTask(board, currGroup, currTask)
-            const newBoard = await boardService.save(updatedBoard)
-            console.log('newBoard:', newBoard)
             dispatch({
                 type: "SAVE_BOARD",
-                board: newBoard,
+                board: updatedBoard,
             })
+            await boardService.save(updatedBoard)
+            // console.log('newBoard:', newBoard)
 
             // dispatch({
             //     type: "SET_TASK_DETAILS",
