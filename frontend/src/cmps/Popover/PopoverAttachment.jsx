@@ -23,12 +23,17 @@ export class _PopoverAttachment extends Component {
         const { board, currTaskDetails, saveTaskDetails, togglePopover, setCurrTaskDetails } = this.props
         const { currGroup } = this.state
         const { attachments } = currTaskDetails
-        const res = await cloudinaryService.uploadFile(ev)
-        const attach = { name: res.original_filename, id: res.asset_id, createdAt: Date.now(), url: res.secure_url }
-        currTaskDetails.attachments = (attachments) ? [...attachments, attach] : [attach]
-        togglePopover()
-        setCurrTaskDetails(currTaskDetails)
-        await saveTaskDetails(board, currGroup, currTaskDetails)
+        try {
+            const res = await cloudinaryService.uploadFile(ev)
+            const attach = { name: res.original_filename, id: res.asset_id, createdAt: Date.now(), url: res.secure_url }
+            currTaskDetails.attachments = (attachments) ? [...attachments, attach] : [attach]
+            togglePopover()
+            setCurrTaskDetails(currTaskDetails)
+            await saveTaskDetails(board, currGroup, currTaskDetails)
+        }
+        catch (err) {
+            console.log('Error', err)
+        }
     }
 
     clearState = () => {

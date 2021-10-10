@@ -37,7 +37,6 @@ export class ColorPalette extends React.Component {
 
     async componentDidUpdate(prevProps) {
         if (prevProps.search !== this.props.search) {
-            console.log('%c  this.props.search.length:', 'color: #00000;background: #aaefe5;', this.props.search.length);
             const photos = await boardService.queryPhotos(this.props.search);
             this.setState(prevState => ({ ...prevState, photos }))
         }

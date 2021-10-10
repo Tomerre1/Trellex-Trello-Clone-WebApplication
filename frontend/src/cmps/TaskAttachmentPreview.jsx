@@ -77,6 +77,7 @@ export class _TaskAttachmentPreview extends Component {
     updateAttachment = async (url, urlName) => {
         const { board, saveTaskDetails, currTaskDetails, attachment, setCurrTaskDetails } = this.props
         const { currGroup } = this.state
+        if (!urlName) urlName = 'Attachment'
         attachment.url = url
         attachment.name = urlName
         setCurrTaskDetails(currTaskDetails)
@@ -88,6 +89,7 @@ export class _TaskAttachmentPreview extends Component {
         const { attachment, popover } = this.props
         const { isPopover, isEditPopover, bgUrl } = this.state
         const { isWeb } = attachment
+
         return (
             <div className="attachment-preview flex">
                 {(isWeb) ?
