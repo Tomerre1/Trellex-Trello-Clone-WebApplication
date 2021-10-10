@@ -110,8 +110,8 @@ function _BoardHeader(props) {
       </div>
       <div className="header-btn-container flex ">
         <Link to={`/board/${board._id}/dashboard`} className="clean-link">
-          <button className="header-btn" style={{ paddingRight: 10 }}>
-            <BarChartIcon className="icon" />{" "}
+          <button className="header-btn dash">
+            <BarChartIcon className="icon" />
             <span className="btn-txt">Dashboard</span>
           </button>
         </Link>
@@ -148,7 +148,6 @@ function _BoardHeader(props) {
         )}
         <button
           className="header-btn last-in-row menu"
-          style={{ paddingRight: 10 }}
           onClick={(event) => {
             props.setPosition({
               pos: { pageX: event.pageX, pageY: event.pageY },
@@ -158,7 +157,7 @@ function _BoardHeader(props) {
             props.togglePopover(false);
           }}
         >
-          <MoreHorizOutlinedIcon className="icon menu" />{" "}
+          <MoreHorizOutlinedIcon className="icon menu" />
           <span className="btn-txt">Show menu</span>
         </button>
       </div>

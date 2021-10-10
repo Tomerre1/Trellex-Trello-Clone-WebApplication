@@ -104,9 +104,12 @@
         //   padding-inline-end: 10px;
         // }
       }
-      &.menu {
-        padding-right:5px;
+      @include for-normal-layout {
+        &.menu,&.dash { 
+          padding-right:10px;
+        }
       }
+
       .icon {
         padding: 3px;
         padding-right: 3px;
