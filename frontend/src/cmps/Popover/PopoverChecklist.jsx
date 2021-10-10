@@ -36,6 +36,7 @@ export class _PopoverChecklist extends Component {
             title: this.state.txt,
             todos: []
         }
+        if (!newList.title) newList.title = 'Checklist'
         currTaskDetails.checklists.push(newList)
         togglePopover()
         setCurrTaskDetails(currTaskDetails)
