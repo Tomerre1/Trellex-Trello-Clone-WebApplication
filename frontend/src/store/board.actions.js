@@ -243,6 +243,7 @@ export const saveTaskDetails = (board, currGroup, currTask) => {
     return async (dispatch) => {
         try {
             const updatedBoard = boardService.updateTask(board, currGroup, currTask)
+            // move after await if causes issues
             dispatch({
                 type: "SAVE_BOARD",
                 board: updatedBoard,
