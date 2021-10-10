@@ -27,20 +27,20 @@ export class Homepage extends Component {
             </button>
           </div>
           <div>
-            <img src={heroImg} className="hero-img" alt=""/>
+            <img src={heroImg} className="hero-img" alt="" />
           </div>
         </div>
         <section className="about main-layout">
-            <h1>Made with</h1>
+          <h1>Made with</h1>
           <div className="tech flex align-center">
-              <img src={reactImg} alt="logo" className="tech-logo"/>
-              <img src={nodeImg} alt="logo" className="tech-logo"/>
-              <img src={expressImg} alt="logo" className="tech-logo"/>
-              <img src={socketImg} alt="logo" className="tech-logo"/>
-              <img src={mongoImg} alt="logo" className="tech-logo"/>
-              <img src={rbdndImg} alt="logo" className="tech-logo"/>
+            <img src={reactImg} alt="logo" className="tech-logo" />
+            <img src={nodeImg} alt="logo" className="tech-logo" />
+            <img src={expressImg} alt="logo" className="tech-logo" />
+            <img src={socketImg} alt="logo" className="tech-logo" />
+            <img src={mongoImg} alt="logo" className="tech-logo" />
+            <img src={rbdndImg} alt="logo" className="tech-logo" />
           </div>
-          <h1>Created by</h1>
+          {/* <h1>Created by</h1>
           <div className=" profiles-wrapper flex">
             <HomeProfile
               imgUrl="https://media-exp1.licdn.com/dms/image/C5603AQG9slGN5Fgxug/profile-displayphoto-shrink_800_800/0/1516840011642?e=1639008000&v=beta&t=xThiLyo5L33mzpMZwW4bejYp6AOxWmN5mkVMSYDzg1w"
@@ -60,7 +60,7 @@ export class Homepage extends Component {
               liUrl="https://www.linkedin.com/in/matan-levi-561115199/"
               name="Matan Levi"
             />
-          </div>
+          </div> */}
         </section>
       </section>
     );
