@@ -5,9 +5,9 @@ import { MemberList } from "./MemberList";
 import { MembersAddToBoard } from "../cmps/MembersAddToBoard";
 import MoreHorizOutlinedIcon from "@mui/icons-material/MoreHorizOutlined";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
-import BarChartIcon from '@mui/icons-material/BarChart';
-import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
-import { Close } from '@mui/icons-material';
+import BarChartIcon from "@mui/icons-material/BarChart";
+import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
+import { Close } from "@mui/icons-material";
 
 import {
   togglePopover,
@@ -101,7 +101,8 @@ function _BoardHeader(props) {
         <button
           className="header-btn"
           onClick={() => setMembersPopup(!isMembersPopup)}
-        ><PersonAddAlt1Icon className="icon"/>
+        >
+          <PersonAddAlt1Icon className="icon" />
         </button>
         {isMembersPopup && (
           <MembersAddToBoard setMembersPopup={setMembersPopup} />
@@ -109,33 +110,45 @@ function _BoardHeader(props) {
       </div>
       <div className="header-btn-container flex ">
         <Link to={`/board/${board._id}/dashboard`} className="clean-link">
-          <button className="header-btn"><BarChartIcon className="icon" /> <span className="btn-txt">Dashboard</span></button>
-        </Link>
-        {(props.filterBy.search || props.filterBy.labels.length > 0 || props.filterBy.members.length > 0) && <div className="flex results">
-          <button
-            className="header-btn btn-results"
-            onClick={(event) => {
-              props.setPosition({
-                pos: { pageX: event.pageX, pageY: event.pageY },
-                type: "BOARD_FILTER_CARDS",
-              });
-              props.setPopoverMenu(true);
-              props.togglePopover(false);
-            }}
-          >
-            Change Filter
+          <button className="header-btn" style={{ paddingRight: 10 }}>
+            <BarChartIcon className="icon" />{" "}
+            <span className="btn-txt">Dashboard</span>
           </button>
-          <span className="flex" style={{ alignItems: 'center', backgroundColor: "#61bd4f" }}>
-            <Close className="icon clean-btn"
-              onClick={(event) => { event.stopPropagation(); setFilterBy({ labels: [], members: [], search: '' }) }}
-            />
-          </span>
-
-        </div>
-        }
+        </Link>
+        {(props.filterBy.search ||
+          props.filterBy.labels.length > 0 ||
+          props.filterBy.members.length > 0) && (
+          <div className="flex results">
+            <button
+              className="header-btn btn-results"
+              onClick={(event) => {
+                props.setPosition({
+                  pos: { pageX: event.pageX, pageY: event.pageY },
+                  type: "BOARD_FILTER_CARDS",
+                });
+                props.setPopoverMenu(true);
+                props.togglePopover(false);
+              }}
+            >
+              Change Filter
+            </button>
+            <span
+              className="flex"
+              style={{ alignItems: "center", backgroundColor: "#61bd4f" }}
+            >
+              <Close
+                className="icon clean-btn"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  setFilterBy({ labels: [], members: [], search: "" });
+                }}
+              />
+            </span>
+          </div>
+        )}
         <button
           className="header-btn last-in-row menu"
-          style={{paddingRight:10}}
+          style={{ paddingRight: 10 }}
           onClick={(event) => {
             props.setPosition({
               pos: { pageX: event.pageX, pageY: event.pageY },
@@ -145,7 +158,8 @@ function _BoardHeader(props) {
             props.togglePopover(false);
           }}
         >
-          <MoreHorizOutlinedIcon className="icon menu" /> <span className="btn-txt">Show menu</span>
+          <MoreHorizOutlinedIcon className="icon menu" />{" "}
+          <span className="btn-txt">Show menu</span>
         </button>
       </div>
     </header>
@@ -156,7 +170,7 @@ const mapDispatchToProps = {
   togglePopover,
   setPosition,
   setPopoverMenu,
-  setFilterBy
+  setFilterBy,
 };
 function mapStateToProps(state) {
   return {
