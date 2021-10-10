@@ -135,6 +135,7 @@ function _BoardHeader(props) {
         }
         <button
           className="header-btn last-in-row menu"
+          style={{paddingRight:10}}
           onClick={(event) => {
             props.setPosition({
               pos: { pageX: event.pageX, pageY: event.pageY },
