@@ -24,6 +24,7 @@ export class _PopoverAttachment extends Component {
         const { currGroup } = this.state
         const { attachments } = currTaskDetails
         const res = await cloudinaryService.uploadFile(ev)
+        if (!res) return
         const attach = { name: res.original_filename, id: res.asset_id, createdAt: Date.now(), url: res.secure_url }
         currTaskDetails.attachments = (attachments) ? [...attachments, attach] : [attach]
         togglePopover()

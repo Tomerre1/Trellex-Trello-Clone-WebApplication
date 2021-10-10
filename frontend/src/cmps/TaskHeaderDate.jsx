@@ -81,7 +81,6 @@ export class _TaskHeaderDate extends Component {
 
     render() {
         const { currTaskDetails, setPosition, togglePopover } = this.props
-        console.log('currTaskDetails', currTaskDetails)
         const { formatedDate, isTaskDone } = this.state
         const dueStatus = this.getDueStatus();
         if (!currTaskDetails.dueDate || currTaskDetails.dueDate.length === 0) return <></>

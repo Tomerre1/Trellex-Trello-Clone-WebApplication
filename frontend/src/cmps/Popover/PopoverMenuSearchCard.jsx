@@ -20,7 +20,6 @@ class _PopoverMenuSearchCard extends React.Component {
     }
 
     componentDidMount() {
-        console.log('this.props.filterBy.search :>> ', this.props.filterBy.search);
         this.setState({
             filterBy: {
                 search: this.props.filterBy?.search || '',
