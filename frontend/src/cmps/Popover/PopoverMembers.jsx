@@ -34,13 +34,14 @@ export class _PopoverMembers extends Component {
             currTaskDetails.members.filter(currMember => currMember._id !== member._id) :
             [...currTaskDetails.members, member]
         currTaskDetails.members = updatedMembers
-        setCurrTaskDetails(currTaskDetails)
         this.setState(prevState => ({ ...prevState, selectedMembers: updatedMembers, selectedMembersIds }))
         if (member._id === loggedinUser._id) {
-            addActivity(board, currTaskDetails, (selectedMembersIds.includes(member._id)) ? 'remove-self' : 'add-self')
+            // addActivity(board, currTaskDetails, (selectedMembersIds.includes(member._id)) ? 'remove-self' : 'add-self')
+            // setCurrTaskDetails(currTaskDetails)
         } else {
-            addActivity(board, currTaskDetails, (selectedMembersIds.includes(member._id)) ? 'remove-member' : 'add-member', member.fullname)
+            // addActivity(board, currTaskDetails, (selectedMembersIds.includes(member._id)) ? 'remove-member' : 'add-member', member.fullname)
         }
+        setCurrTaskDetails(currTaskDetails)
         await this.props.saveTaskDetails(board, currGroup, currTaskDetails)
     }
 
