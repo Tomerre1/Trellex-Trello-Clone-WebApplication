@@ -15,7 +15,8 @@ export class _CheckDeletePopover extends Component {
     }
 
     componentWillUnmount() {
-        this.props.togglePopover()
+        this.props.setIsPopover(false)
+        this.props.setIsEditPopover(false)
     }
 
     render() {
@@ -36,7 +37,7 @@ export class _CheckDeletePopover extends Component {
     }
 }
 function mapStateToProps(state) {
-    return { }
+    return {}
 }
 
 export const CheckDeletePopover = connect(mapStateToProps, null)(_CheckDeletePopover)

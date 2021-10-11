@@ -13,6 +13,11 @@ export class EditAttachmentPopover extends Component {
         this.setState(prevState => ({ ...prevState, url: attachment.url, urlName: attachment.name }))
     }
 
+    componentWillUnmount() {
+        this.props.setIsPopover(false)
+        this.props.setIsEditPopover(false)
+    }
+
     handleChange = (ev) => {
         const { value, name } = ev.target
         this.setState(prevState => ({ ...prevState, [name]: value }))

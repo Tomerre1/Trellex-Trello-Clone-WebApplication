@@ -74,6 +74,13 @@ export class _TaskAttachmentPreview extends Component {
         await saveTaskDetails(board, currGroup, currTaskDetails)
     }
 
+    setIsEditPopover = (isEditPopover) => {
+        this.setState(prevState => ({ ...prevState, isEditPopover }))
+    }
+    setIsPopover = (isPopover) => {
+        this.setState(prevState => ({ ...prevState, isPopover }))
+    }
+
     updateAttachment = async (url, urlName) => {
         const { board, saveTaskDetails, currTaskDetails, attachment, setCurrTaskDetails } = this.props
         const { currGroup } = this.state
@@ -91,9 +98,9 @@ export class _TaskAttachmentPreview extends Component {
         const { isWeb } = attachment
 
 
-        console.log('popover.isOpen',popover.isOpen)
-        console.log('isPopover',isPopover)
-        console.log('isEditPopover',isEditPopover)
+        console.log('popover.isOpen', popover.isOpen)
+        console.log('isPopover', isPopover)
+        console.log('isEditPopover', isEditPopover)
         console.log('############################')
 
         return (
@@ -145,12 +152,14 @@ export class _TaskAttachmentPreview extends Component {
                         remove={this.removeAttach}
                         type={'attachment'}
                         typeTitle={attachment.name}
-                        togglePopover={this.togglePopover}
+                        setIsPopover={this.setIsPopover}
+                        setIsEditPopover={this.setIsEditPopover}
                     />
                 }
                 {popover.isOpen && isEditPopover &&
                     <EditAttachmentPopover
-                        togglePopover={this.toggleEditPopover}
+                        setIsPopover={this.setIsPopover}
+                        setIsEditPopover={this.setIsEditPopover}
                         updateAttachment={this.updateAttachment}
                         attachment={attachment}
                     />
