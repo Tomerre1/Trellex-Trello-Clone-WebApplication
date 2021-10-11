@@ -6,10 +6,8 @@ const logger = require('../../services/logger.service')
 async function login(username, password) {
     logger.debug(`auth.service - login with username: ${username}`)
     const user = await userService.getByUsername(username)
-    console.log(`username`, username)
     if (!user) return Promise.reject('Invalid username or password')
     const match = await bcrypt.compare(password, user.password)
-    console.log(`match`, match)
     if (!match) return Promise.reject('Invalid username or password')
     delete user.password
     return user
@@ -20,7 +18,6 @@ async function signup(username, password, fullname, imgUrl) {
     logger.debug(`auth.service - signup with username: ${username}, fullname: ${fullname}`)
     if (!username || !password || !fullname) return Promise.reject('fullname, username and password are required!')
     const user = await userService.getByUsername(username)
-    console.log(`username`, username)
     if (user) return Promise.reject('User already exist')
     const hash = await bcrypt.hash(password, saltRounds)
     return userService.add({ username, password: hash, fullname, imgUrl})

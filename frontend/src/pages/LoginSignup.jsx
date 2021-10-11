@@ -14,7 +14,6 @@ function _LoginSignup(props) {
     "1066940480428-m4n85h2lafgf2m7v5j7prda0tmigel93.apps.googleusercontent.com";
 
   const onSuccess = async (res) => {
-    console.log("success");
     const fullname = res.profileObj.name;
     const username = `${res.profileObj.givenName} `;
     const password = res.profileObj.googleId;
@@ -26,7 +25,6 @@ function _LoginSignup(props) {
   };
 
   const onFail = (response) => {
-    console.log("failed");
     console.dir(response);
   };
 

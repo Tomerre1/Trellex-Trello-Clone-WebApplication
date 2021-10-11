@@ -46,7 +46,6 @@ function _TaskPreview(props) {
     if (!ev) return;
     let { top, right, height } =
       ev.target.parentElement.parentElement.getBoundingClientRect();
-    console.log(top, right, height, window.innerHeight);
     if (top > window.innerHeight - 318) {
       setMenuPos({
         position: "absolute",
