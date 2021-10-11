@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import { PopoverMemberPreview } from './PopoverMemberPreview'
 import { Popover } from './Popover'
 import { connect } from 'react-redux'
-// import { saveTaskDetails, addActivity } from '../../store/board.actions'
-import { saveTaskDetails } from '../../store/board.actions'
+import { saveTaskDetails, addActivity } from '../../store/board.actions'
 import { setCurrTaskDetails } from '../../store/app.actions'
 export class _PopoverMembers extends Component {
     state = {
@@ -27,8 +26,7 @@ export class _PopoverMembers extends Component {
     }
 
     toggleMemberCheck = async (member) => {
-        // const { board, currTaskDetails, addActivity, loggedinUser, setCurrTaskDetails } = this.props
-        const { board, currTaskDetails, loggedinUser, setCurrTaskDetails } = this.props
+        const { board, currTaskDetails, addActivity, loggedinUser, setCurrTaskDetails } = this.props
         const { currGroup } = this.state
         currTaskDetails.members = currTaskDetails?.members || []
         const selectedMembersIds = currTaskDetails.members.map(member => member._id) || []
@@ -37,13 +35,12 @@ export class _PopoverMembers extends Component {
             [...currTaskDetails.members, member]
         currTaskDetails.members = updatedMembers
         this.setState(prevState => ({ ...prevState, selectedMembers: updatedMembers, selectedMembersIds }))
-        if (member._id === loggedinUser._id) {
-            // addActivity(board, currTaskDetails, (selectedMembersIds.includes(member._id)) ? 'remove-self' : 'add-self')
-            // setCurrTaskDetails(currTaskDetails)
-        } else {
-            // addActivity(board, currTaskDetails, (selectedMembersIds.includes(member._id)) ? 'remove-member' : 'add-member', member.fullname)
-        }
         setCurrTaskDetails(currTaskDetails)
+        if (member._id === loggedinUser._id) {
+            await addActivity(board, currTaskDetails, (selectedMembersIds.includes(member._id)) ? 'remove-self' : 'add-self')
+        } else {
+            await addActivity(board, currTaskDetails, (selectedMembersIds.includes(member._id)) ? 'remove-member' : 'add-member', member.fullname)
+        }
         await this.props.saveTaskDetails(board, currGroup, currTaskDetails)
     }
 
@@ -85,7 +82,7 @@ function mapStateToProps(state) {
 }
 const mapDispatchToProps = {
     saveTaskDetails,
-    // addActivity,
+    addActivity,
     setCurrTaskDetails
 };
 

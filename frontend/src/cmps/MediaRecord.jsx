@@ -67,7 +67,7 @@ export class _MediaRecord extends React.Component {
         return (
             <>
                 {
-                    <div className="media" style={{ width: "100%", maxWidth: 400, height: 400, padding: '0 20px' }}>
+                    <div className="media" style={{ width: "100%", maxWidth: 400, padding: '0 20px' }}>
                         <div className="media-container">
                             {this.props.type === 'video' && <VideoRecorder
                                 className="video-recorder"

@@ -42,7 +42,7 @@ export class _PopoverChecklist extends Component {
         setCurrTaskDetails(currTaskDetails)
         await saveTaskDetails(board, currGroup, currTaskDetails)
         this.clearState()
-        addActivity(board, currTaskDetails, 'add-checklist')
+        await addActivity(board, currTaskDetails, 'add-checklist')
     }
 
     render() {

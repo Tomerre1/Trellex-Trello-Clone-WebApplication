@@ -71,8 +71,8 @@ export class _TaskDetails extends Component {
       members.push(loggedinUser);
     }
     currTaskDetails.members = members;
-    addActivity(board, currTaskDetails, 'add-self')
     setCurrTaskDetails(currTaskDetails)
+    await addActivity(board, currTaskDetails, 'add-self')
     this.updateTaskDetails(currTaskDetails);
   };
 
@@ -82,17 +82,17 @@ export class _TaskDetails extends Component {
     const currGroupIdx = board.groups.indexOf(currGroup)
     currGroup.tasks = currGroup.tasks.filter((task) => task.id !== currTaskDetails.id);
     board.groups[currGroupIdx] = currGroup
-    addActivity(board, currTaskDetails, 'remove-task')
+    await addActivity(board, currTaskDetails, 'remove-task')
     await saveBoard(board);
     this.props.history.goBack();
   }
 
-  toggleIsArchive = () => {
+  toggleIsArchive = async () => {
     const { board, currTaskDetails, addActivity, setCurrTaskDetails } = this.props;
     currTaskDetails.isArchive = currTaskDetails?.isArchive || false
     currTaskDetails.isArchive = !currTaskDetails.isArchive;
-    (currTaskDetails.isArchive) ? addActivity(board, currTaskDetails, 'add-to-archive') : addActivity(board, currTaskDetails, 'remove-from-archive')
-    setCurrTaskDetails(currTaskDetails)
+    setCurrTaskDetails(currTaskDetails);
+    (currTaskDetails.isArchive) ? await addActivity(board, currTaskDetails, 'add-to-archive') : await addActivity(board, currTaskDetails, 'remove-from-archive')
     this.updateTaskDetails(currTaskDetails);
   }
 
@@ -100,12 +100,10 @@ export class _TaskDetails extends Component {
     const { currGroup } = this.state;
     const { board, currTaskDetails, loggedinUser } = this.props;
     if (!currTaskDetails || !board || !currGroup) return <></>;
-
     const { style } = currTaskDetails;
     currTaskDetails.style = (style) ? style : { bgColor: null, bgUrl: null }
     const { bgColor, bgUrl } = currTaskDetails.style
     const { isArchive } = currTaskDetails
-
     const taskOverlay = {
       position: "fixed",
       inset: 0,
