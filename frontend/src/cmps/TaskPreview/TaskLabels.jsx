@@ -11,7 +11,7 @@ function _TaskLabels(props) {
       {labelIds &&
         labelIds.map((labelId, idx) => {
           const label = boardLabels.find((label) => label.id === labelId);
-          if (label)
+          if (label){
             return (
               <div
                 className={`label flex justify-center ${areLabelsExpanded ? "expanded" : ""
@@ -26,8 +26,8 @@ function _TaskLabels(props) {
               >
                 <span>{label.title}</span>
               </div>
-            );
-          return <> </>
+            );} 
+            else return null
         })}
     </div>
   );
