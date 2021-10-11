@@ -72,19 +72,19 @@ export class _TaskDetails extends Component {
     }
     currTaskDetails.members = members;
     setCurrTaskDetails(currTaskDetails)
-    await addActivity(board, currTaskDetails, 'add-self')
     this.updateTaskDetails(currTaskDetails);
+    await addActivity(board, currTaskDetails, 'add-self')
   };
 
   deleteTask = async () => {
-    const { currGroup } = this.state;
     const { board, currTaskDetails, saveBoard, addActivity } = this.props;
+    const currGroup = board.groups.find(group => group.tasks.some(task => task.id === currTaskDetails.id))
     const currGroupIdx = board.groups.indexOf(currGroup)
     currGroup.tasks = currGroup.tasks.filter((task) => task.id !== currTaskDetails.id);
     board.groups[currGroupIdx] = currGroup
-    await addActivity(board, currTaskDetails, 'remove-task')
     await saveBoard(board);
     this.props.history.goBack();
+    await addActivity(board, currTaskDetails, 'remove-task')
   }
 
   toggleIsArchive = async () => {

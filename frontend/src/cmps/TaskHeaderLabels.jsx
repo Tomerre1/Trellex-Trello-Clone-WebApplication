@@ -4,6 +4,7 @@ import AddIcon from '@mui/icons-material/Add';
 import { setPosition, togglePopover } from '../store/app.actions';
 
 export function _TaskHeaderLabels({ currTaskDetails, board, setPosition, togglePopover }) {
+    if (!currTaskDetails || !board) return <></>;
     const labels = board.labels.filter((label) => currTaskDetails.labelIds.includes(label.id))
     if (labels.length === 0) return <></>
     return (
