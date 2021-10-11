@@ -44,7 +44,7 @@ function _TaskPreview(props) {
 
   const calcPos = (ev) => {
     if (!ev) return;
-    let { top, right, height } =
+    let { top, right } =
       ev.target.parentElement.parentElement.getBoundingClientRect();
     if (top > window.innerHeight - 318) {
       setMenuPos({
