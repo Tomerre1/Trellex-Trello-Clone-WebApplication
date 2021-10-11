@@ -90,7 +90,7 @@ export class _PopoverAttachment extends Component {
                             />
                         </>
                     }
-                    <button class="primary-btn" onClick={this.onAttachmentClick}>Attach</button>
+                    <button className="primary-btn" onClick={this.onAttachmentClick}>Attach</button>
                 </div>
             </Popover >
         )

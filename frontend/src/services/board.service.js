@@ -6,13 +6,11 @@ import { userService } from './user.service'
 import axios from 'axios'
 
 const APP_ID = 'IwjSlLYB-kEXeOlDvuifDixGryX1CK64CwapeKeJC8w'
-const STORAGE_KEY = 'board'
 
 export const boardService = {
     query,
     getById,
     save,
-    // remove,
     updateTask,
     addTask,
     removeTask,
@@ -24,50 +22,25 @@ export const boardService = {
 }
 
 async function query() {
-    // const res = await axios.get('http://localhost:3030/api/toy', { params: filterBy })
-    // return res.data
     const boards = await httpService.get('board')
     return boards
 }
-// async function query() {
-//     let boards = await storageService.query(STORAGE_KEY)
-//     if (boards.length) return boards
-//     console.log('no local storage found')
-//     localStorage.setItem('board', JSON.stringify(demoBoards))
-//     return demoBoards
-// }
 
 async function queryPhotos(query = 'random') {
     const photos = await axios.get(`https://api.unsplash.com/search/photos/?query=${query}&client_id=${APP_ID}`)
     return photos.data.results
 }
 
-// function getById(boardId) {
-//     return storageService.get(STORAGE_KEY, boardId)
-// }
 async function getById(boardId) {
-    // const res = await axios.get(`http://localhost:3030/api/toy/${toyId}`)
-    // return res.data
     const board = await httpService.get(`board/${boardId}`)
     return board
 }
-
-
-
-// async function remove(boardId) {
-//     try {
-//         return storageService.remove(STORAGE_KEY, boardId)
-//     } catch (err) {
-//         console.log('couldnt remove board', err)
-//     }
-// }
 
 async function save(board) {
     if (board._id) {
         const updatedBoard = await httpService.put('board', board)
         socketService.emit("board-change")
         return updatedBoard
-        // return storageService.put(STORAGE_KEY, board)
     } else {
         const newBoard = {
             "title": board.title,
@@ -86,7 +59,6 @@ async function save(board) {
         const savedBoard = await httpService.post('board', newBoard)
         socketService.emit("board-change")
         return savedBoard
-        // return storageService.post(STORAGE_KEY, newBoard)
     }
 }
 

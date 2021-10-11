@@ -8,7 +8,7 @@ export function _TaskCardCover({ setPosition, currTaskDetails, togglePopover }) 
     const { bgColor, bgUrl } = currTaskDetails.style
     return (
         <div className="card-cover flex" style={{ backgroundColor: bgColor ? bgColor : '' }}>
-            {bgUrl && <img src={bgUrl} style={{ backgroundColor: bgColor ? bgColor : '' }} />}
+            {bgUrl && <img src={bgUrl} style={{ backgroundColor: bgColor ? bgColor : '' }} alt='background' />}
             <button className="cover-btn flex" onClick={(event) => { setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'COVER' }); togglePopover() }}><VideoLabel /> Cover</button>
         </div >
     )

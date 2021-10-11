@@ -40,19 +40,6 @@ export const loadBoard = (boardId, filterBy = null) => {
 
 export const saveBoard = (board) => {
     return async (dispatch) => {
-        // --- change back to this if something goes wrong
-    //     try {
-    //         const newBoard = await boardService.save(board)
-    //         dispatch({
-    //             type: "SAVE_BOARD",
-    //             board: newBoard,
-    //         });
-    //         socketService.emit("board-change")
-    //     }
-    //     catch (err) {
-    //         console.log('cant save board', err)
-    //         // throw Error(err)
-    //     }
         try {
             dispatch({
                 type: "SAVE_BOARD",
@@ -96,7 +83,6 @@ export const handleDrag = (
 ) => {
     return async (dispatch) => {
         const tempBoard = JSON.parse(JSON.stringify(board))
-        //drag group
         if (type === 'group') {
             const group = tempBoard.groups.splice(droppableIndexStart, 1)
             tempBoard.groups.splice(droppableIndexEnd, 0, ...group)
@@ -106,17 +92,13 @@ export const handleDrag = (
                 const task = group.tasks.splice(droppableIndexStart, 1)
                 group.tasks.splice(droppableIndexEnd, 0, ...task)
             }
-            // different group target
             if (droppableIdStart !== droppableIdEnd) {
-                // source group
                 const groupStart = tempBoard.groups.find(group => group.id === droppableIdStart)
                 const task = groupStart.tasks.splice(droppableIndexStart, 1)
-                // target group
                 const groupEnd = tempBoard.groups.find(group => group.id === droppableIdEnd)
                 groupEnd.tasks.splice(droppableIndexEnd, 0, ...task)
             }
         }
-        // same group drag
         boardService.save(tempBoard)
         dispatch({
             type: "SAVE_BOARD",
@@ -131,7 +113,7 @@ export const handleDrag = (
 export const removeBoard = (boardId) => {
     return async (dispatch) => {
         try {
-            const board = await boardService.remove(boardId)
+            await boardService.remove(boardId)
             dispatch({
                 type: "REMOVE_BOARD",
                 boardId: boardId,
@@ -225,6 +207,7 @@ export const toggleExpandLabels = () => {
 export const addActivity = (board, currTaskDetails, activityType, txt = null) => {
     return async (dispatch) => {
         try {
+            debugger;
             board.activities.push(boardService.createActivity(activityType, currTaskDetails, txt))
             const newBoard = await boardService.save(board)
             console.log('newBoard:', newBoard)

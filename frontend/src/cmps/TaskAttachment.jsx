@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 import { TaskAttachmentPreview } from './TaskAttachmentPreview'
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import { connect } from "react-redux";
 
 
 export function _TaskAttachment({ currTaskDetails }) {
-    if (!currTaskDetails.attachments || !currTaskDetails.attachments.length ) return <React.Fragment></React.Fragment>
+    if (!currTaskDetails.attachments || !currTaskDetails.attachments.length) return <React.Fragment></React.Fragment>
     return (
         <div className="task-attach">
             <div className="window-modal-title flex align-center">

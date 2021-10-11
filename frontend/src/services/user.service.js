@@ -1,7 +1,6 @@
 import { httpService } from './http.service'
 
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
-const DB_KEY = 'user'
 
 export const userService = {
     login,

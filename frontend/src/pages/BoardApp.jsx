@@ -7,7 +7,6 @@ import { loadUsers } from "../store/user.actions";
 import { GroupList } from "../cmps/GroupList";
 import { DragDropContext } from "react-beautiful-dnd";
 import { socketService } from '../services/socket.service'
-import { MediaRecord } from '../cmps/MediaRecord'
 
 
 class _BoardApp extends Component {

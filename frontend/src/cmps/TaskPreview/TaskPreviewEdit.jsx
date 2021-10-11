@@ -34,7 +34,6 @@ export function _TaskPreviewEdit({
     attachments,
     checklists,
     todos,
-    doneTodos,
   } = task;
 
   const [editTitle, setEditTitle] = useState(title);

@@ -122,7 +122,7 @@ export class _PopoverMoveCopy extends Component {
                                 inputProps={{ MenuProps: { disableScrollLock: true } }}
                                 onChange={this.handleBoardChange}
                             >
-                                {boards.map(board => <MenuItem value={board._id}>{board.title}</MenuItem>)}
+                                {boards.map(board => <MenuItem key={board._id} value={board._id}>{board.title}</MenuItem>)}
                             </Select>
                         </FormControl>
 
@@ -138,7 +138,7 @@ export class _PopoverMoveCopy extends Component {
                                     disableUnderline={true}
                                     onChange={this.handleGroupChange}
                                 >
-                                    {selectedBoard.groups.map(group => <MenuItem value={group.id}>{group.title}</MenuItem>)}
+                                    {selectedBoard.groups.map(group => <MenuItem key={group.id} value={group.id}>{group.title}</MenuItem>)}
                                 </Select>
                             </FormControl>
                             <FormControl variant="filled" className="choose-position clean-mui-arrow " >
@@ -153,7 +153,7 @@ export class _PopoverMoveCopy extends Component {
                                     onChange={this.handleChange}
                                 >
                                     {(selectedGroup.tasks.length > 0) ?
-                                        Array.from(Array(selectedGroup.tasks.length + 1), (e, i) => <MenuItem value={i}>{i}</MenuItem>) :
+                                        Array.from(Array(selectedGroup.tasks.length + 1), (e, i) => <MenuItem key={i} value={i}>{i}</MenuItem>) :
                                         <MenuItem value={0}>{0}</MenuItem>
                                     }
                                 </Select>

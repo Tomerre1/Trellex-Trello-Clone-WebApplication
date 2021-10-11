@@ -7,8 +7,6 @@ import { PopoverMemberPreview } from './PopoverMemberPreview'
 import { setPosition } from '../../store/app.actions'
 import { loadBoard, setFilterBy } from '../../store/board.actions'
 
-
-
 class _PopoverMenuSearchCard extends React.Component {
     state = {
         filterBy: {

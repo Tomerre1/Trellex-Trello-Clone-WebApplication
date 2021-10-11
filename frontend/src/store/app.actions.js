@@ -1,5 +1,3 @@
-import { boardService } from '../services/board.service';
-import { socketService } from '../services/socket.service'
 
 export const setCurrTaskDetails = (currTaskDetails) => {
     return async (dispatch) => {
@@ -19,7 +17,7 @@ export const toggleDragDisable = () => {
     }
 }
 
-export const setPosition = ({ pos, type}) => {
+export const setPosition = ({ pos, type }) => {
     return (dispatch) => {
         dispatch({
             type: "SET_POSITION",

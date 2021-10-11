@@ -9,10 +9,8 @@ import { TaskChecklist } from "../cmps/TaskChecklist";
 import { TaskActivities } from "../cmps/TaskActivities";
 import { TaskActionsMenu } from "../cmps/TaskActionsMenu";
 import { TaskHeaderDetails } from "../cmps/TaskHeaderDetails";
-import { LoaderSpinner } from "../cmps/LoaderSpinner";
 import { saveBoard, saveTaskDetails, addActivity, loadBoard } from "../store/board.actions";
 import { setCurrTaskDetails, setPopover, setPosition, setPopoverMenu } from '../store/app.actions'
-import { MediaRecord } from '../cmps/MediaRecord'
 
 export class _TaskDetails extends Component {
   state = {
@@ -90,10 +88,11 @@ export class _TaskDetails extends Component {
   }
 
   toggleIsArchive = () => {
+    debugger;
     const { board, currTaskDetails, addActivity, setCurrTaskDetails } = this.props;
     currTaskDetails.isArchive = currTaskDetails?.isArchive || false
     currTaskDetails.isArchive = !currTaskDetails.isArchive;
-    addActivity((currTaskDetails.isArchive) ? (board, currTaskDetails, 'add-to-archive') : (board, currTaskDetails, 'remove-from-archive'))
+    (currTaskDetails.isArchive) ? addActivity(board, currTaskDetails, 'add-to-archive') : addActivity(board, currTaskDetails, 'remove-from-archive')
     setCurrTaskDetails(currTaskDetails)
     this.updateTaskDetails(currTaskDetails);
   }
@@ -133,7 +132,7 @@ export class _TaskDetails extends Component {
 
           {isArchive &&
             <div className="task-details-archived flex">
-              <i class="fas fa-archive icon-sm"></i>
+              <i className="fas fa-archive icon-sm"></i>
               <h3>This card is archived.</h3>
             </div>
           }

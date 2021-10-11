@@ -50,7 +50,7 @@ export class EditAttachmentPopover extends Component {
                             placeholder="Enter link name"
                             onChange={this.handleChange}
                         />
-                        <button class="primary-btn" onClick={this.onAttachmentUpdate}>Update</button>
+                        <button className="primary-btn" onClick={this.onAttachmentUpdate}>Update</button>
                     </div>
                 </Popover >
             </div >
