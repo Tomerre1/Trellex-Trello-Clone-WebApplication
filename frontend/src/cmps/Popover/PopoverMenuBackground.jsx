@@ -44,12 +44,12 @@ class _PopoverMenuBackground extends React.Component {
         return <div className="board-menu">
             <Popover title={title}>
                 <span
-                    class="back"
+                    className="back"
                     onClick={(event) => { setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'BOARD_SHOW_MENU' }) }}>
                     <ArrowBackIosIcon />
                 </span>
-                <div class="pop-over-background">
-                    <div class="background-styles-container">
+                <div className="pop-over-background">
+                    <div className="background-styles-container">
                         <h4>Colors</h4>
                         <ColorPalette selectedColor={board.style.bgClr} isGradient={true} handleChange={this.handleChange} />
                         <h4>Images</h4>

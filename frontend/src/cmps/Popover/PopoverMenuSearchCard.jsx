@@ -73,7 +73,7 @@ class _PopoverMenuSearchCard extends React.Component {
         return <div className="board-menu">
             <Popover title={title}>
                 <span
-                    class="back"
+                    className="back"
                     onClick={(event) => { setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: 'BOARD_SHOW_MENU' }) }}>
                     <ArrowBackIosIcon />
                 </span>
@@ -85,7 +85,7 @@ class _PopoverMenuSearchCard extends React.Component {
                     {board.labels.map(label => <PopoverLabelPreview key={label.id} label={label} labelsId={filterBy.labels} isFilter={true} toggleLabelCheck={this.toggleLabelCheck} />)}
                     <hr />
                     <p>Filter by members</p>
-                    {board.members.map(member => <PopoverMemberPreview key={member.id} member={member} selectedMembersIds={filterBy.members} toggleMemberCheck={this.toggleMemberCheck} />)}
+                    {board.members.map(member => <PopoverMemberPreview key={member._id} member={member} selectedMembersIds={filterBy.members} toggleMemberCheck={this.toggleMemberCheck} />)}
                 </div>
             </Popover>
         </div>
