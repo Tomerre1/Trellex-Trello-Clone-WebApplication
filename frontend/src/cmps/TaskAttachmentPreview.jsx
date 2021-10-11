@@ -42,7 +42,7 @@ export class _TaskAttachmentPreview extends Component {
         currTaskDetails.attachments = attachs
         setCurrTaskDetails(currTaskDetails)
         await saveTaskDetails(board, currGroup, currTaskDetails)
-        togglePopover()
+        // togglePopover()
         this.setIsPopover(false)
         addActivity(board, currTaskDetails, 'remove-attachment', attachment.name)
     }

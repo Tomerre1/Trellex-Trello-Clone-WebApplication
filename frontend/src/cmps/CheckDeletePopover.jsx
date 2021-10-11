@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Popover } from './Popover/Popover'
 import { connect } from 'react-redux'
+import { togglePopover } from '../store/app.actions'
+
 
 export class _CheckDeletePopover extends Component {
     state = {
@@ -15,10 +17,9 @@ export class _CheckDeletePopover extends Component {
     }
 
     componentWillUnmount() {
-
-        if (this.props.type && this.props.type !== 'checklist') {
+        this.props.setIsPopover(false)
+        if (this.props.type !== 'checklist') {
             this.props.setIsEditPopover(false)
-            this.props.setIsPopover(false)
         }
     }
 
@@ -32,7 +33,7 @@ export class _CheckDeletePopover extends Component {
                 <Popover title={title} >
                     <div className="no-back">
                         <p>Deleting a {type} is permanent and there<br></br>is no way to get it back.</p>
-                        <button className="delete-checklist-btn danger-btn" onClick={() => { remove() }}>Delete {type}</button>
+                        <button className="delete-checklist-btn danger-btn" onClick={() => { remove(); this.props.togglePopover() }}>Delete {type}</button>
                     </div>
                 </Popover >
             </div >
@@ -43,4 +44,8 @@ function mapStateToProps(state) {
     return {}
 }
 
-export const CheckDeletePopover = connect(mapStateToProps, null)(_CheckDeletePopover)
+const mapDispatchToProps = {
+    togglePopover,
+  };
+
+export const CheckDeletePopover = connect(mapStateToProps, mapDispatchToProps)(_CheckDeletePopover)
