@@ -73,7 +73,7 @@ export class _TaskDetails extends Component {
     currTaskDetails.members = members;
     setCurrTaskDetails(currTaskDetails)
     this.updateTaskDetails(currTaskDetails);
-    await addActivity(board, currTaskDetails, 'add-self')
+    addActivity(board, currTaskDetails, 'add-self')
   };
 
   deleteTask = async () => {

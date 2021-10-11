@@ -78,7 +78,7 @@ export class _TaskChecklistPreview extends Component {
         setCurrTaskDetails(currTaskDetails)
         await saveTaskDetails(board, currGroup, currTaskDetails)
         this.togglePopover()
-        await addActivity(board, currTaskDetails, 'remove-checklist')
+         addActivity(board, currTaskDetails, 'remove-checklist')
     }
 
     render() {

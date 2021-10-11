@@ -29,8 +29,8 @@ export class _PopoverDate extends Component {
         togglePopover()
         setCurrTaskDetails(currTaskDetails)
         await saveTaskDetails(board, currGroup, currTaskDetails)
-        if (date) await addActivity(board, currTaskDetails, 'set-date', this.dueDateFormat(currTaskDetails.dueDate))
-        else await addActivity(board, currTaskDetails, 'remove-date')
+        if (date) addActivity(board, currTaskDetails, 'set-date', this.dueDateFormat(currTaskDetails.dueDate))
+        else addActivity(board, currTaskDetails, 'remove-date')
     }
 
     dueDateFormat = (dueDate) => {

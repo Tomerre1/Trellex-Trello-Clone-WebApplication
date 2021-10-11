@@ -40,8 +40,8 @@ export class _TaskHeaderDate extends Component {
         currTaskDetails.isDone = !currTaskDetails.isDone;
         setCurrTaskDetails(currTaskDetails)
         await saveTaskDetails(board, currGroup, currTaskDetails)
-        if (isTaskDone) await addActivity(board, currTaskDetails, 'due-date-complete')
-        else await addActivity(board, currTaskDetails, 'due-date-incomplete')
+        if (isTaskDone) addActivity(board, currTaskDetails, 'due-date-complete')
+        else  addActivity(board, currTaskDetails, 'due-date-incomplete')
     }
 
     dueDateFormat = (dueDate) => {

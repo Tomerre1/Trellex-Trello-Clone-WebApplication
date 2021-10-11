@@ -32,7 +32,7 @@ class _TaskActions extends Component {
   sendToArchive = async () => {
     const newTask = { ...this.props.task };
     newTask.isArchive = true;
-    await this.props.addActivity(
+     this.props.addActivity(
       this.props.board,
       this.props.task,
       "add-to-archive",

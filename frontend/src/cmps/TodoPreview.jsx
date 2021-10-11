@@ -44,8 +44,8 @@ export class _TodoPreview extends Component {
         todo.isDone = !todo.isDone
         this.setState(prevState => ({ ...prevState, todo }))
         this.props.onSaveTodo(todo)
-        if (todo.isDone) await addActivity(board, currTaskDetails, 'complete-todo', todo.title)
-        else await addActivity(board, currTaskDetails, 'incomplete-todo', todo.title)
+        if (todo.isDone) addActivity(board, currTaskDetails, 'complete-todo', todo.title)
+        else addActivity(board, currTaskDetails, 'incomplete-todo', todo.title)
     }
 
     onRemoveTodo = () => {
