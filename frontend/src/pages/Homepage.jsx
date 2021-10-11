@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import heroImg from "../assets/img/hero.png";
-import { HomeProfile } from "../cmps/Home/HomeProfile";
-import reactImg from "../assets/img/reactRedux.jpg"
-import nodeImg from "../assets/img/nodejs.png";
-import mongoImg from "../assets/img/mongo.png";
-import socketImg from "../assets/img/socket.jpg";
-import expressImg from "../assets/img/express.png";
-import rbdndImg from "../assets/img/rbdnd.png";
+// import { HomeProfile } from "../cmps/Home/HomeProfile";
+// import reactImg from "../assets/img/reactRedux.jpg"
+// import nodeImg from "../assets/img/nodejs.png";
+// import mongoImg from "../assets/img/mongo.png";
+// import socketImg from "../assets/img/socket.jpg";
+// import expressImg from "../assets/img/express.png";
+// import rbdndImg from "../assets/img/rbdnd.png";
 
 export class Homepage extends Component {
   render() {
