@@ -74,6 +74,9 @@
           margin-inline-end: 3px;
           padding: 2px;
         }
+        &.login {
+          padding-right:8px !important;
+        }
       }
       &:hover {
         background-color: hsla(0, 0%, 100%, 0.2);

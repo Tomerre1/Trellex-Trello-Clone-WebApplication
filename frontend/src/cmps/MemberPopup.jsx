@@ -1,4 +1,5 @@
 import React from "react";
+import { withRouter } from "react-router";
 import { connect } from "react-redux";
 import { onLogout } from "../store/user.actions";
 import { saveBoard } from "../store/board.actions";
@@ -12,19 +13,20 @@ const _MemberPopup = ({
   user,
   board,
   saveBoard,
+  history,
 }) => {
   const removeUserFromBoard = async () => {
     // if (member._id === user?._id) {
-      const newBoard = JSON.parse(JSON.stringify(board));
-      const userIdx = newBoard.members.findIndex(mmbr => mmbr._id === member._id)
-      newBoard.members.splice(userIdx, 1);
-      try{
-        await saveBoard(newBoard);
-        togglePopOpen(false);
-
-      }
-      catch(err){
-        console.log('error when deleting user from board',err)
+    const newBoard = JSON.parse(JSON.stringify(board));
+    const userIdx = newBoard.members.findIndex(
+      (mmbr) => mmbr._id === member._id
+    );
+    newBoard.members.splice(userIdx, 1);
+    try {
+      await saveBoard(newBoard);
+      togglePopOpen(false);
+    } catch (err) {
+      console.log("error when deleting user from board", err);
       // }
     }
   };
@@ -66,12 +68,20 @@ const _MemberPopup = ({
         </div>
         <div className="member-footer">
           {isInHeader && (
-            <p className="logout" onClick={onLogout}>
+            <p
+              className="logout"
+              onClick={() => {
+                onLogout();
+                history.push("/workspace/");
+              }}
+            >
               Logout
             </p>
           )}
           {isInBoardList && (
-            <p className="logout" onClick={removeUserFromBoard}>Remove from board</p>
+            <p className="logout" onClick={removeUserFromBoard}>
+              Remove from board
+            </p>
           )}
         </div>
       </div>
@@ -89,7 +99,6 @@ const mapStateToProps = ({ userModule, boardModule }) => {
     board: boardModule.board,
   };
 };
-export const MemberPopup = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(_MemberPopup);
+export const MemberPopup = withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(_MemberPopup)
+);
