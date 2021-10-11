@@ -91,8 +91,8 @@ export class _TaskDetails extends Component {
     const { board, currTaskDetails, addActivity, setCurrTaskDetails } = this.props;
     currTaskDetails.isArchive = currTaskDetails?.isArchive || false
     currTaskDetails.isArchive = !currTaskDetails.isArchive;
-    setCurrTaskDetails(currTaskDetails)
-      (currTaskDetails.isArchive) ? await addActivity(board, currTaskDetails, 'add-to-archive') : await addActivity(board, currTaskDetails, 'remove-from-archive')
+    setCurrTaskDetails(currTaskDetails);
+    (currTaskDetails.isArchive) ? await addActivity(board, currTaskDetails, 'add-to-archive') : await addActivity(board, currTaskDetails, 'remove-from-archive')
     this.updateTaskDetails(currTaskDetails);
   }
 
