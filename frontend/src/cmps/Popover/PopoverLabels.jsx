@@ -2,7 +2,6 @@ import { connect } from "react-redux";
 import React, { Component } from 'react'
 import { Popover } from './Popover'
 import { utilService } from '../../services/util.service'
-import { LoaderSpinner } from '../LoaderSpinner'
 import { PopoverLabelsListPreview } from './PopoverLabelsListPreview'
 import { PopoverLabelCreateEdit } from './PopoverLabelCreateEdit'
 import { saveBoard, saveTaskDetails } from '../../store/board.actions'

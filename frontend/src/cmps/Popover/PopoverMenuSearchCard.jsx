@@ -1,7 +1,6 @@
 import React from "react"
 import { connect } from 'react-redux'
 import { Popover } from "./Popover"
-import { ColorPalette } from '../ColorPalette'
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { PopoverLabelPreview } from './PopoverLabelPreview'
 import { PopoverMemberPreview } from './PopoverMemberPreview'
@@ -72,7 +71,7 @@ class _PopoverMenuSearchCard extends React.Component {
     render() {
         const { board, title, setPosition } = this.props
         if (!board) return <></>
-        const { search, filterBy } = this.state
+        const { filterBy } = this.state
         return <div className="board-menu">
             <Popover title={title}>
                 <span

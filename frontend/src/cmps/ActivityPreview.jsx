@@ -45,7 +45,6 @@ export class ActivityPreview extends Component {
                 return `changed task title to ${activity.txt} `
             default:
                 return ''
-                break;
         }
     }
 
@@ -53,10 +52,10 @@ export class ActivityPreview extends Component {
     render() {
         const { activity, isShowActivities, selectNotification } = this.props
         const { byMember } = activity
-        if (!isShowActivities && activity.type !== 'comment') return <></>
+        if ((!isShowActivities && activity.type !== 'comment') || (!byMember)) return <></>
         return (
-            <div className={`activity-preview-container flex ${activity.isNotRead ? 'unread' : ''} ${activity.isNotify ? 'notify' : ''}`} 
-                onClick={activity.isNotify ? ()=>{selectNotification(activity)} : undefined }>
+            <div className={`activity-preview-container flex ${activity.isNotRead ? 'unread' : ''} ${activity.isNotify ? 'notify' : ''}`}
+                onClick={activity.isNotify ? () => { selectNotification(activity) } : undefined}>
                 <article className="member-wrapper">
                     {byMember?.imgUrl ? (
                         <img

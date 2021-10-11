@@ -7,8 +7,7 @@ import { DoughnutChart } from "./DoughnutChart";
 import { ActivityChart } from "./ActivityChart";
 import { LoaderSpinner } from "../LoaderSpinner";
 import PeopleIcon from "@mui/icons-material/People";
-import DashboardIcon from "@mui/icons-material/Dashboard";
-import ListAltIcon from "@mui/icons-material/ListAlt";
+
 
 export function _Dashboard(props) {
   const onBack = () => {
@@ -131,9 +130,8 @@ export function _Dashboard(props) {
           <div className="info-box flex">
             <div className="flex column big-num-box">
               <p className="info-num">{taskDetails.checklists}</p>
-              <p className="below-num">{`Checklist${
-                taskDetails.checklists !== 1 ? "s" : ""
-              }`}</p>
+              <p className="below-num">{`Checklist${taskDetails.checklists !== 1 ? "s" : ""
+                }`}</p>
             </div>
             <div className="flex column details">
               <p className="green">{taskDetails.doneChecklists} Completed</p>

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Doughnut } from 'react-chartjs-2';
 import { Bar } from 'react-chartjs-2';
 
 export function BarChart({ board }) {
@@ -51,24 +50,24 @@ export function BarChart({ board }) {
     const options = {
         scales: {
             x: {
-              ticks: {
-                color: "white",
-                font: {
-                  family: "Segoe UI",
-                  size: 15,
+                ticks: {
+                    color: "white",
+                    font: {
+                        family: "Segoe UI",
+                        size: 15,
+                    },
                 },
-              },
             },
             y: {
-              ticks: {
-                color: "white",
-                font: {
-                  family: "Segoe UI",
-                  size: 15,
+                ticks: {
+                    color: "white",
+                    font: {
+                        family: "Segoe UI",
+                        size: 15,
+                    },
                 },
-              },
             },
-          },
+        },
         elements: {
             bar: {
                 borderWidth: 2,
@@ -94,7 +93,7 @@ export function BarChart({ board }) {
             },
             legend: {
 
-                display:false
+                display: false
 
             }
         },
@@ -104,5 +103,5 @@ export function BarChart({ board }) {
     return (
         <Bar data={data} options={options} width={250} height={450} />
     )
-       
+
 }

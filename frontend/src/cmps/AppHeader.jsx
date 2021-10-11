@@ -22,14 +22,14 @@ function _AppHeader(props) {
     props.history.push(`/board/${board._id}`);
   };
 
-  const getNotifyCount = () => {
-    if (!props.userNotifications) return 0
-    const notifyCount = props.userNotifications.reduce((acc, notify) => {
-      if (notify.isNotRead) acc++
-      return acc;
-    }, 0)
-    return notifyCount
-  };
+  // const getNotifyCount = () => {
+  //   if (!props.userNotifications) return 0
+  //   const notifyCount = props.userNotifications.reduce((acc, notify) => {
+  //     if (notify.isNotRead) acc++
+  //     return acc;
+  //   }, 0)
+  //   return notifyCount
+  // };
   const isOnBoard = props.location.pathname.includes("board");
   return (
     <>

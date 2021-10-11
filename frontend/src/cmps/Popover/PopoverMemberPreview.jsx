@@ -5,7 +5,7 @@ export function PopoverMemberPreview({ member, selectedMembersIds, toggleMemberC
     return (
         <li className="member-pop-over-preview flex" onClick={() => { toggleMemberCheck(member) }}>
             {member.imgUrl &&
-                <img className="profile-picture" style={{ marginInlineEnd: '8px' }} src={member.imgUrl} alt='member photo' />
+                <img className="profile-picture" style={{ marginInlineEnd: '8px' }} src={member.imgUrl} alt='member' />
             }
             {!member.imgUrl &&
                 <div className="profile-picture" style={{ background: "#dfe1e6", marginInlineEnd: '8px' }}>

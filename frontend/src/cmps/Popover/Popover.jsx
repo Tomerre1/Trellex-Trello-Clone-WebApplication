@@ -48,7 +48,7 @@ export class _Popover extends React.Component {
 
     getContentStyles = () => {
         const { top, left } = this.state;
-        const { title, popover } = this.props
+        const { popover } = this.props
         return {
             position: "fixed",
             opacity: 1,
@@ -57,7 +57,6 @@ export class _Popover extends React.Component {
             transition: "opacity 0.3s, visibility 0.3s",
             backgroundColor: `${(popover.isMenu) ? '#f4f5f7' : '#fff'}`,
             border: "1px solid lightgray",
-            padding: "15px",
             zIndex: 100,
             padding: "0 12px 12px",
             borderRadius: "3px",

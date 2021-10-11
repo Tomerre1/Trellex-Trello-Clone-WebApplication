@@ -16,7 +16,7 @@ class _PopoverMenu extends Component {
         if (!board) return <div></div>
         const CommAndAct = board.activities
         CommAndAct.sort((a, b) => (a.createdAt < b.createdAt) ? 1 : ((b.createdAt < a.createdAt) ? -1 : 0))
-        const { bgClr, bgImg } = board.style
+        const { bgImg } = board.style
         return <div className="board-menu">
             <Popover title={title}>
                 <div className="menu-details ">
@@ -65,4 +65,3 @@ const mapDispatchToProps = {
 
 export const PopoverMenu = connect(mapStateToProps, mapDispatchToProps)(_PopoverMenu)
 
-{/* <ActivitiesList CommAndAct={CommAndAct} isShowActivities={isShowActivities} currTask={currTask}/> */ }

@@ -1,5 +1,5 @@
 import CheckIcon from '@material-ui/icons/Check';
-import React, { useState } from 'react';
+import React from 'react';
 import { boardService } from '../services/board.service';
 
 export class ColorPalette extends React.Component {
@@ -44,7 +44,7 @@ export class ColorPalette extends React.Component {
 
 
     render() {
-        const { handleChange, selectedColor, isGradient, isImages, handleSearch, search } = this.props
+        const { handleChange, selectedColor, isGradient, isImages } = this.props
         const { photos } = this.state
         return <div className="color-palette">
             {!isImages &&

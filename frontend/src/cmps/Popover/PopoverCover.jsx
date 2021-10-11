@@ -143,7 +143,7 @@ export class _PopoverCover extends React.Component {
     }
 
     render() {
-        const { isHeaderSelected, isFullSelected, selectedColor, selectedPhoto } = this.state
+        const { isHeaderSelected, isFullSelected } = this.state
         const { title, currTaskDetails } = this.props
         const { bgColor, bgUrl } = currTaskDetails.style
         return (

@@ -28,7 +28,7 @@ class _PopoverMenuBackground extends React.Component {
     }
 
     handleSearch = (event) => {
-        const { value, name } = event.target
+        const { value } = event.target
         this.setState(prevState => ({
             ...prevState,
             search: value

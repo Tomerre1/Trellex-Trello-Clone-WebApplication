@@ -1,7 +1,7 @@
 import React from "react";
-import { Bar,Line } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 
-export const ActivityChart = (props ) => {
+export const ActivityChart = (props) => {
   const data = {
     labels: [...props.taskDetails.sortedNames],
     datasets: [
@@ -66,7 +66,7 @@ export const ActivityChart = (props ) => {
 
   return (
     <div className="chart-activity">
-      <Line data={data} options={options1}   height={280}/>
+      <Line data={data} options={options1} height={280} />
     </div>
   );
 };

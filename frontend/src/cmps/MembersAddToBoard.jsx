@@ -42,7 +42,7 @@ export class _MembersAddToBoard extends Component {
   };
 
   render() {
-    const { title, board, currTaskDetails, users, setMembersPopup } =
+    const { title, users, setMembersPopup } =
       this.props;
     const { search } = this.state;
 
