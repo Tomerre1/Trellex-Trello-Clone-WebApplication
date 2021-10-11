@@ -100,7 +100,7 @@ export class _TaskAttachmentPreview extends Component {
                 }
                 <div className="attachment-content">
                     <div className="attachment-details">
-                        <span className="attachment-title">{(attachment.name.length > 15) ? attachment.name.substr(1, 15) + '...' : attachment.name}</span>
+                        <span className="attachment-title">{(attachment.name.length > 15) ? attachment.name.substr(0, 15) + '...' : attachment.name}</span>
                         <div className="attachment-actions">
                             <span className="attachment-date">Added {utilService.timeSince(attachment.createdAt)}</span>
                             <button className="activity-toggle-btn" onClick={(event) => {
