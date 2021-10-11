@@ -6,8 +6,6 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { setPosition } from '../../store/app.actions'
 import { saveBoard } from '../../store/board.actions'
 
-
-
 class _PopoverMenuBackground extends React.Component {
     state = {
         search: ''

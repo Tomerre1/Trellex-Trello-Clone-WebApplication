@@ -4,9 +4,6 @@ import { Popover } from "./Popover"
 import { ActivitiesList } from '../ActivitiesList'
 import { withRouter } from "react-router";
 
-
-
-
 class _PopoverNotification extends React.Component {
     state = {
         userNotifications: null,
@@ -41,7 +38,6 @@ class _PopoverNotification extends React.Component {
             notify.isNotify = true;
         });
         userNotifications.sort((a, b) => (a.createdAt < b.createdAt) ? 1 : ((b.createdAt < a.createdAt) ? -1 : 0))
-
         this.setState(prevState => ({ ...prevState, userNotifications, boardId: board._id }))
     }
 

@@ -1,11 +1,6 @@
 import { Component } from "react";
 import { connect } from "react-redux";
 import { updateTask, addActivity } from "../../store/board.actions";
-import {
-  setCurrTaskDetails,
-  setPosition,
-  togglePopover,
-} from "../../store/app.actions";
 import { Link } from "react-router-dom";
 import ArchiveIcon from "@mui/icons-material/Archive";
 import PictureInPictureIcon from "@mui/icons-material/PictureInPicture";
@@ -15,6 +10,11 @@ import CoverIcon from "@material-ui/icons/VideoLabel";
 import CopyIcon from "@material-ui/icons/FileCopyOutlined";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import ScheduleIcon from "@mui/icons-material/Schedule";
+import {
+  setCurrTaskDetails,
+  setPosition,
+  togglePopover,
+} from "../../store/app.actions";
 
 class _TaskActions extends Component {
   state = { selectedAction: "" };

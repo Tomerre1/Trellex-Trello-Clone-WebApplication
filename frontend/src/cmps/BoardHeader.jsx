@@ -8,14 +8,13 @@ import StarBorderIcon from "@mui/icons-material/StarBorder";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
 import { Close } from "@mui/icons-material";
-
+import { Link } from "react-router-dom";
 import {
   togglePopover,
   setPosition,
   setPopoverMenu,
 } from "../store/app.actions";
 
-import { Link } from "react-router-dom";
 
 function _BoardHeader(props) {
   const { board, setFilterBy } = props;

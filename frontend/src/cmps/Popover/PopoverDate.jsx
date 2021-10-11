@@ -6,7 +6,6 @@ import DateFnsUtils from '@date-io/date-fns';
 import { saveBoard, saveTaskDetails, addActivity } from '../../store/board.actions'
 import { togglePopover, setCurrTaskDetails } from '../../store/app.actions'
 
-
 export class _PopoverDate extends Component {
     state = {
         date: null

@@ -1,9 +1,9 @@
 import React from "react";
 import { BoardPreview } from "./BoardPreview";
 import { BoardPreviewAdd } from "./BoardPreviewAdd";
+
 export function BoardList(props) {
   const { boards, onAdd, onRemove } = props;
-
   return (
     <div className="board-list">
       {boards &&
@@ -15,7 +15,6 @@ export function BoardList(props) {
             saveBoard={props.saveBoard}
           />
         ))}
-
       {!props.starred && <BoardPreviewAdd onAdd={onAdd} />}
     </div>
   );

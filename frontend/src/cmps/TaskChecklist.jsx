@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { TaskChecklistPreview } from './TaskChecklistPreview'
 
-
 export class _TaskChecklist extends Component {
-
     state = {
     }
 
@@ -30,6 +28,5 @@ function mapStateToProps(state) {
         board: state.boardModule.board,
     };
 }
-
 
 export const TaskChecklist = connect(mapStateToProps)(_TaskChecklist);

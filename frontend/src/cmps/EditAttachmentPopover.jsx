@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Popover } from './Popover/Popover'
 
-
 export class EditAttachmentPopover extends Component {
     state = {
         url: '',

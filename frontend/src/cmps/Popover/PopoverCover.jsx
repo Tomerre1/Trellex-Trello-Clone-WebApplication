@@ -209,7 +209,6 @@ export class _PopoverCover extends React.Component {
     }
 }
 
-
 function mapStateToProps(state) {
     return {
         currTaskDetails: state.appModule.currTaskDetails,

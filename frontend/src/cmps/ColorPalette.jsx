@@ -3,7 +3,6 @@ import React from 'react';
 import { boardService } from '../services/board.service';
 
 export class ColorPalette extends React.Component {
-
     state = {
         photos: null,
 
@@ -41,7 +40,6 @@ export class ColorPalette extends React.Component {
             this.setState(prevState => ({ ...prevState, photos }))
         }
     }
-
 
     render() {
         const { handleChange, selectedColor, isGradient, isImages } = this.props

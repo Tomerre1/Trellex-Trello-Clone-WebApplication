@@ -9,7 +9,6 @@ import { toggleDragDisable } from "../store/app.actions";
 import { TaskDatePreview } from "./TaskPreview/TaskDatePreview";
 import { MemberList } from "../cmps/MemberList";
 import { Draggable } from "react-beautiful-dnd";
-
 import CheckBoxOutlinedIcon from "@mui/icons-material/CheckBoxOutlined";
 import SubjectOutlinedIcon from "@mui/icons-material/SubjectOutlined";
 import ChatBubbleOutlineRoundedIcon from "@mui/icons-material/ChatBubbleOutlineRounded";

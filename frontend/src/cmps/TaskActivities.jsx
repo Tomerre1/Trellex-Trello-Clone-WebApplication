@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
-
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import { AddComment } from './AddComment'
 import { ActivitiesList } from './ActivitiesList'
-
 import { utilService } from '../services/util.service'
 
 export class TaskActivities extends Component {
-
-
     state = {
         isShowActivities: false
     }
@@ -48,7 +44,6 @@ export class TaskActivities extends Component {
         currTask.comments.push(comment)
         this.props.updateTaskDetails(currTask)
     }
-
 
     render() {
         const { isShowActivities } = this.state

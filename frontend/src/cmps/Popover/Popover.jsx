@@ -2,6 +2,7 @@ import React from "react";
 import CloseIcon from '@mui/icons-material/Close';
 import { connect } from "react-redux";
 import { togglePopover, setPosition, setPopover } from '../../store/app.actions'
+
 export class _Popover extends React.Component {
     state = {
         visible: false,
@@ -20,7 +21,6 @@ export class _Popover extends React.Component {
         }
     }
 
-
     toggleVisibility = () =>
         this.setState((prevState) => ({ visible: !prevState.visible }));
 
@@ -30,7 +30,6 @@ export class _Popover extends React.Component {
         let { left, top } = this.setPopoverPos(elRect)
         this.setState({ top, left })
     }
-
 
     setPopoverPos(elRect) {
         const { pos } = this.props.popover
@@ -42,9 +41,6 @@ export class _Popover extends React.Component {
         if (posX < 0) posX = 10;
         return { left: posX, top: posY }
     }
-
-
-
 
     getContentStyles = () => {
         const { top, left } = this.state;

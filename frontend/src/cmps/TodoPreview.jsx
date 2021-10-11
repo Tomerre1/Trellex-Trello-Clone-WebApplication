@@ -7,7 +7,6 @@ import { connect } from "react-redux";
 import { addActivity } from '../store/board.actions'
 
 export class _TodoPreview extends Component {
-
     state = {
         todo: null,
         todoTitle: '',

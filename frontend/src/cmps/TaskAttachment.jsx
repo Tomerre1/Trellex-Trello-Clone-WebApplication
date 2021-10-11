@@ -3,7 +3,6 @@ import { TaskAttachmentPreview } from './TaskAttachmentPreview'
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import { connect } from "react-redux";
 
-
 export function _TaskAttachment({ currTaskDetails }) {
     if (!currTaskDetails.attachments || !currTaskDetails.attachments.length) return <React.Fragment></React.Fragment>
     return (
@@ -30,11 +29,8 @@ function mapStateToProps(state) {
         board: state.boardModule.board,
     };
 }
-const mapDispatchToProps = {
-
-};
 
 export const TaskAttachment = connect(
     mapStateToProps,
-    mapDispatchToProps
+    null
 )(_TaskAttachment);

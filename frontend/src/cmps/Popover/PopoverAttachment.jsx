@@ -6,7 +6,6 @@ import { cloudinaryService } from '../../services/cloudinary-service'
 import { saveBoard, saveTaskDetails, addActivity } from '../../store/board.actions'
 import { togglePopover, setCurrTaskDetails } from '../../store/app.actions'
 
-
 export class _PopoverAttachment extends Component {
     state = {
         webUrlSrc: '',
