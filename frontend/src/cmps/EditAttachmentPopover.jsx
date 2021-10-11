@@ -28,7 +28,7 @@ export class EditAttachmentPopover extends Component {
         const { url, urlName } = this.state
 
         let attachName = attachment.name
-        if (attachName.length > 15) attachName = attachName.substr(1, 15) + '...'
+        if (attachName.length > 15) attachName = attachName.substr(0, 15) + '...'
 
         const title = `Update ${attachName}`
         return (
@@ -50,7 +50,7 @@ export class EditAttachmentPopover extends Component {
                             placeholder="Enter link name"
                             onChange={this.handleChange}
                         />
-                        <button className="primary-btn" onClick={this.onAttachmentUpdate}>Update</button>
+                        <button class="primary-btn" onClick={this.onAttachmentUpdate}>Update</button>
                     </div>
                 </Popover >
             </div >
