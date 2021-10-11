@@ -1,9 +1,6 @@
 import React, { Component } from "react";
-// import SubjectIcon from '@material-ui/icons/Subject';
 import { Close } from '@mui/icons-material';
 import SubjectIcon from '@mui/icons-material/Subject';
-
-
 
 export class TaskDescription extends Component {
     state = {

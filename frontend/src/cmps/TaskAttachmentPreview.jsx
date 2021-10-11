@@ -9,9 +9,6 @@ import { Link } from 'react-router-dom';
 import { saveBoard, saveTaskDetails, addActivity } from '../store/board.actions'
 import { setPosition, setPopover, setCurrTaskDetails, togglePopover } from '../store/app.actions';
 
-
-
-
 export class _TaskAttachmentPreview extends Component {
     state = {
         isPopover: false,

@@ -9,7 +9,6 @@ import { saveBoard, saveTaskDetails, addActivity } from '../store/board.actions'
 import { togglePopover } from '../store/app.actions'
 import { setPosition, setPopover, setCurrTaskDetails } from '../store/app.actions';
 
-
 export class _TaskChecklistPreview extends Component {
 
     state = {

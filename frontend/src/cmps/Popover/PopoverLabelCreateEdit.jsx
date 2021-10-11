@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { ColorPalette } from "../ColorPalette";
+
 export class PopoverLabelCreateEdit extends Component {
     state = {
         title: '',
@@ -22,7 +23,6 @@ export class PopoverLabelCreateEdit extends Component {
             id:  ''
         })
     }
-
 
     handleChange = ({ target }) => {
         const { name, value } = target

@@ -4,7 +4,6 @@ export function BoardAddPalette({ setBgClr, setBgImg, bgClr, bgImg }) {
 
     const [selected,setSelected] = useState("linear-gradient(to bottom, #000000, #434343")
     
-    
     const clrs = [
         "linear-gradient(to bottom, #000000, #434343)",
         "linear-gradient(to right, #2980b9, #2c3e50)",
@@ -74,7 +73,6 @@ export function BoardAddPalette({ setBgClr, setBgImg, bgClr, bgImg }) {
                   onClick={(ev) =>{ 
                       setBgImg(ev.target.value)
                       setSelected(ev.target.value)
-                
                 }}
                 />
           

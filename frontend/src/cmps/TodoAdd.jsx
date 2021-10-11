@@ -48,13 +48,11 @@ export class TodoAdd extends Component {
                     <div className="todo-edit flex column">
                         <textarea onClick={this.onEditMode}
                             ref={(input) => { this.selectedInput = input; }}
-                            // onBlur={this.onToggleEditMode}
                             autoFocus
                             value={todo.title}
                             placeholder="Add an item"
                             onChange={this.handleChange}>
                         </textarea>
-
                         <div className={`todo-btns flex align-center ${isEditMode ? 'show' : 'hidden'}`}>
                             <button className='task-btns todo-save-btn' onClick={() => this.onTodoAdd()}>Add</button>
                             <button className='task-btns todo-close-btn' onClick={() => this.onToggleEditMode()}><Close /></button>
@@ -62,7 +60,6 @@ export class TodoAdd extends Component {
                     </div>
 
                 }
-
             </div>
         )
     }

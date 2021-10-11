@@ -9,7 +9,6 @@ export function TaskHeader({ taskTitle, setTaksDetailsTitle, taskList }) {
         setTaksDetailsTitle(title);
     }
 
-
     return (
         <header className="task-header">
             <div className="header-content">

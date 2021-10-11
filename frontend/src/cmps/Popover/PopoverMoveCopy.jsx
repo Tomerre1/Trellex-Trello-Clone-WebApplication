@@ -8,6 +8,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import { setCurrTaskDetails, togglePopover } from '../../store/app.actions'
 import { saveBoard } from '../../store/board.actions'
+
 export class _PopoverMoveCopy extends Component {
     state = {
         selectedGroup: null,
@@ -78,7 +79,6 @@ export class _PopoverMoveCopy extends Component {
         const fromTask = boards[fromBoardIdx].groups[fromGroupIdx].tasks.find(task => task.id === currTaskDetails.id)
         const fromTaskIdx = boards[fromBoardIdx].groups[fromGroupIdx].tasks.indexOf(fromTask)
         const task = (isCopy) ? { ...currTaskDetails, id: utilService.makeId(), title: taskTitle } : boards[fromBoardIdx].groups[fromGroupIdx].tasks.splice(fromTaskIdx, 1)
-
         const toBoardIdx = boards.indexOf(selectedBoard)
         const toGroup = boards[toBoardIdx].groups.find(group => group.id === selectedGroup.id)
         const toGroupIdx = boards[toBoardIdx].groups.indexOf(toGroup)
@@ -87,8 +87,6 @@ export class _PopoverMoveCopy extends Component {
         togglePopover()
         await saveBoard(boards[fromBoardIdx])
         await saveBoard(boards[toBoardIdx])
-
-
     }
 
     onSubmit = () => {
@@ -161,7 +159,6 @@ export class _PopoverMoveCopy extends Component {
                         </div>
                     </div>
                     <button className="primary-btn" onClick={this.onSubmit}>{!isCopy ? 'Move' : 'Create card'}</button>
-
                 </div>
             </Popover >
 
@@ -177,11 +174,11 @@ function mapStateToProps(state) {
         currTaskDetails: state.appModule.currTaskDetails,
     };
 }
+
 const mapDispatchToProps = {
     setCurrTaskDetails,
     saveBoard,
     togglePopover
-
 };
 
 export const PopoverMoveCopy = connect(

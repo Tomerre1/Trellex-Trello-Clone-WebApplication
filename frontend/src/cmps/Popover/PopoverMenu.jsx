@@ -7,8 +7,6 @@ import RestoreFromTrashIcon from '@mui/icons-material/RestoreFromTrash';
 import { setPosition } from '../../store/app.actions'
 import SearchIcon from '@mui/icons-material/Search';
 
-
-
 class _PopoverMenu extends Component {
     render() {
         const { board } = this.props
@@ -61,7 +59,6 @@ function mapStateToProps(state) {
 const mapDispatchToProps = {
     setPosition,
 }
-
 
 export const PopoverMenu = connect(mapStateToProps, mapDispatchToProps)(_PopoverMenu)
 

@@ -3,7 +3,6 @@ import VideoLabel from '@mui/icons-material/VideoLabel';
 import { connect } from 'react-redux';
 import { setPosition, togglePopover } from '../store/app.actions';
 
-
 export function _TaskCardCover({ setPosition, currTaskDetails, togglePopover }) {
     const { bgColor, bgUrl } = currTaskDetails.style
     return (

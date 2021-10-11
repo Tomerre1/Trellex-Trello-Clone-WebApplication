@@ -38,8 +38,6 @@ class _PopoverMenuSearchCard extends React.Component {
         })
     }
 
-
-
     toggleLabelCheck = (labelId) => {
         const { board, loadBoard, setFilterBy } = this.props
         const { filterBy } = this.state

@@ -6,6 +6,7 @@ import { PopoverLabelsListPreview } from './PopoverLabelsListPreview'
 import { PopoverLabelCreateEdit } from './PopoverLabelCreateEdit'
 import { saveBoard, saveTaskDetails } from '../../store/board.actions'
 import { setCurrTaskDetails } from '../../store/app.actions'
+
 export class _PopoverLabels extends Component {
     state = {
         search: '',
@@ -34,7 +35,6 @@ export class _PopoverLabels extends Component {
             this.setState(prevState => ({ ...prevState, isEditCreate: false, label: { color: '', title: '' } }))
         }
     }
-
 
     handleChange = (e) => {
         this.setState(prevState => ({
@@ -87,11 +87,9 @@ export class _PopoverLabels extends Component {
         await saveBoard(board)
     }
 
-
     toggleIsEditCreate = () => {
         this.setState(prevState => ({ ...prevState, isEditCreate: !this.state.isEditCreate }))
     }
-
 
     render() {
         const { currTaskDetails, title } = this.props

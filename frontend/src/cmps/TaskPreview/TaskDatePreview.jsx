@@ -1,13 +1,11 @@
 import React, { useState ,useEffect} from "react";
 import { connect } from "react-redux";
 import { saveBoard } from "../../store/board.actions";
-
 import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
 import CheckBoxOutlineBlankOutlinedIcon from "@mui/icons-material/CheckBoxOutlineBlankOutlined";
 import CheckBoxOutlinedIcon from "@mui/icons-material/CheckBoxOutlined";
 
 const _TaskDatePreview = (props) => {
-
   const [isMouseOver, setMouseOver] = useState(false);
   const [isDone, setIsDone] = useState(props.isDone);
 

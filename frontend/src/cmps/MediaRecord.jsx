@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { connect } from 'react-redux'
 import VideoRecorder from "react-video-recorder";
@@ -10,8 +9,6 @@ import StopIcon from "@material-ui/icons/Stop";
 import Fab from "@material-ui/core/Fab";
 import styled from "styled-components";
 import MicIcon from "@material-ui/icons/Mic";
-
-
 
 export class _MediaRecord extends React.Component {
     state = {

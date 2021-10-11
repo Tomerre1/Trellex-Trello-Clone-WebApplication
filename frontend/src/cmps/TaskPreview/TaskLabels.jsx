@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-
 import { toggleExpandLabels } from "../../store/board.actions";
 
 function _TaskLabels(props) {
@@ -32,6 +31,7 @@ function _TaskLabels(props) {
     </div>
   );
 }
+
 function mapStateToProps(state) {
   return {
     areLabelsExpanded: state.boardModule.areLabelsExpanded,
@@ -41,6 +41,7 @@ function mapStateToProps(state) {
 const mapDispatchToProps = {
   toggleExpandLabels,
 };
+
 export const TaskLabels = connect(
   mapStateToProps,
   mapDispatchToProps

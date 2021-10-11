@@ -1,6 +1,5 @@
 import { Component } from "react";
 
-
 export class ProgressBar extends Component {
 
     state = {
@@ -27,7 +26,6 @@ export class ProgressBar extends Component {
 
     render() {
         const { style, completed } = this.state
-
         return (
             <div className="checklist-progress" >
                 <span className="checklist-progress-percentage js-checklist-progress-percent">{parseInt(completed)}%</span>

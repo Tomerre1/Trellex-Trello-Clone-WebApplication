@@ -48,7 +48,6 @@ export class ActivityPreview extends Component {
         }
     }
 
-
     render() {
         const { activity, isShowActivities, selectNotification } = this.props
         const { byMember } = activity

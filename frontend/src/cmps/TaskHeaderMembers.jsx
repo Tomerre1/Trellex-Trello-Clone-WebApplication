@@ -2,7 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { MemberList } from './MemberList'
 
-
 export function _TaskHeaderMembers({ currTaskDetails }) {
     if (!currTaskDetails.members||currTaskDetails.members.length === 0) return <></>
     return (
@@ -14,7 +13,6 @@ export function _TaskHeaderMembers({ currTaskDetails }) {
         </div>
     )
 }
-
 
 function mapStateToProps(state) {
     return {
