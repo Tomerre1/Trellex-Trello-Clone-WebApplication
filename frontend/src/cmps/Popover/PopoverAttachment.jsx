@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Popover } from './Popover'
 import { utilService } from '../../services/util.service'
 import { cloudinaryService } from '../../services/cloudinary-service'
-import { saveBoard, saveTaskDetails, addActivity } from '../../store/board.actions'
+import { saveBoard, saveTaskDetails } from '../../store/board.actions'
 import { togglePopover, setCurrTaskDetails } from '../../store/app.actions'
 
 export class _PopoverAttachment extends Component {
@@ -106,7 +106,6 @@ const mapDispatchToProps = {
     saveTaskDetails,
     saveBoard,
     togglePopover,
-    addActivity,
     setCurrTaskDetails
 };
 
