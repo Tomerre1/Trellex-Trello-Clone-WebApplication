@@ -31,7 +31,6 @@ export function onLogin(credentials) {
     return async (dispatch) => {
         try {
             const user = await userService.login(credentials)
-            console.log(user)
             dispatch({
                 type: 'SET_USER',
                 user

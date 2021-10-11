@@ -72,7 +72,6 @@ export function _Dashboard(props) {
     );
     const sortedNames = sortedActivity.map(activity => activity[0])
     const sortedAmount = sortedActivity.map(activity => activity[1])
-    console.log(sortedActivity);
     return {
       tasks,
       archivedTasks,

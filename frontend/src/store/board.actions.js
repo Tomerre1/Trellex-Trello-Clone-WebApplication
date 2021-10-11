@@ -5,7 +5,6 @@ export const loadBoards = () => {
     return async (dispatch) => {
         try {
             const boards = await boardService.query()
-            // console.log('loading boards',boards)
             dispatch({
                 type: "SET_BOARDS",
                 boards,
@@ -22,7 +21,6 @@ export const loadBoard = (boardId, filterBy = null) => {
     return async (dispatch) => {
         try {
             const board = await boardService.getById(boardId, filterBy)
-            // console.log('loading board',board)
             if (board)
                 dispatch({
                     type: "SET_BOARD",
@@ -189,7 +187,6 @@ export const addGroup = (boardId, title) => {
 }
 
 export const removeGroup = (boardId, groupId) => {
-    console.log(groupId, boardId)
     return async (dispatch) => {
         try {
             const board = await boardService.removeGroup(boardId, groupId)
@@ -227,7 +224,6 @@ export const addActivity = (board, currTaskDetails, activityType, txt = null) =>
         try {
             board.activities.push(boardService.createActivity(activityType, currTaskDetails, txt))
             const newBoard = await boardService.save(board)
-            console.log('newBoard:', newBoard)
             dispatch({
                 type: "SAVE_BOARD",
                 board: newBoard,
@@ -249,7 +245,6 @@ export const saveTaskDetails = (board, currGroup, currTask) => {
                 board: updatedBoard,
             })
             await boardService.save(updatedBoard)
-            // console.log('newBoard:', newBoard)
 
             // dispatch({
             //     type: "SET_TASK_DETAILS",
@@ -267,7 +262,6 @@ export const updateTask = (boardId, groupId, task) => {
         try {
             const updatedBoard = await boardService.updateTaskByIds(boardId, groupId, task)
             const newBoard = await boardService.save(updatedBoard)
-            console.log('newBoard:', newBoard)
             dispatch({
                 type: "SAVE_BOARD",
                 board: newBoard,

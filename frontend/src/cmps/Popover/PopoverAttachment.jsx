@@ -32,7 +32,7 @@ export class _PopoverAttachment extends Component {
             await saveTaskDetails(board, currGroup, currTaskDetails)
         }
         catch (err) {
-            console.log('Error', err)
+            console.log('error while connect server', err)
         }
     }
 
