@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { PopoverMemberPreview } from './PopoverMemberPreview'
 import { Popover } from './Popover'
 import { connect } from 'react-redux'
-import { saveTaskDetails, addActivity } from '../../store/board.actions'
+// import { saveTaskDetails, addActivity } from '../../store/board.actions'
+import { saveTaskDetails } from '../../store/board.actions'
 import { setCurrTaskDetails } from '../../store/app.actions'
 export class _PopoverMembers extends Component {
     state = {
@@ -26,7 +27,8 @@ export class _PopoverMembers extends Component {
     }
 
     toggleMemberCheck = async (member) => {
-        const { board, currTaskDetails, addActivity, loggedinUser, setCurrTaskDetails } = this.props
+        // const { board, currTaskDetails, addActivity, loggedinUser, setCurrTaskDetails } = this.props
+        const { board, currTaskDetails, loggedinUser, setCurrTaskDetails } = this.props
         const { currGroup } = this.state
         currTaskDetails.members = currTaskDetails?.members || []
         const selectedMembersIds = currTaskDetails.members.map(member => member._id) || []
@@ -83,7 +85,7 @@ function mapStateToProps(state) {
 }
 const mapDispatchToProps = {
     saveTaskDetails,
-    addActivity,
+    // addActivity,
     setCurrTaskDetails
 };
 
