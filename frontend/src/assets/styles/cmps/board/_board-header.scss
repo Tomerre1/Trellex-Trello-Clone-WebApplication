@@ -4,13 +4,12 @@
   background-color: transparent;
   color: white;
   z-index: 1;
-  gap: 6px;  
-  overflow-x: hidden;
-  max-width:100%;
+  gap: 6px;
+  // overflow-x: hidden;
+  max-width: 100%;
 
   @include for-normal-layout {
-      overflow-x: unset;
-
+    overflow-x: unset;
   }
   form {
     margin: 0;
@@ -55,8 +54,8 @@
   }
   input.title {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans,
-      Ubuntu, Droid Sans, Helvetica Neue, sans-serif !important;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue,
+      sans-serif !important;
 
     font-size: rem(18px);
     background-color: rgba(43, 43, 43, 0.507);
@@ -66,7 +65,7 @@
     top: -11px;
     // text-align: center !important;
     // min-width: 97vw ;
-    min-width:97vw !important;
+    min-width: 97vw !important;
     @include for-normal-layout {
       // max-width: unset;
       overflow-x: hidden;
@@ -105,8 +104,9 @@
         // }
       }
       @include for-normal-layout {
-        &.menu,&.dash { 
-          padding-right:10px;
+        &.menu,
+        &.dash {
+          padding-right: 10px;
         }
       }
 
@@ -124,12 +124,12 @@
         }
       }
     }
-    .results {      
-      position:fixed;
+    .results {
+      position: fixed;
       background-color: #5aac44;
       border-radius: 3px;
-      top:55px;
-      right:9px;
+      top: 55px;
+      right: 9px;
       &:hover {
         background-color: #ffffff3d;
       }
@@ -146,11 +146,10 @@
         border-bottom-right-radius: 3px;
       }
       @include for-normal-layout {
-        position:relative;
-        top:unset;
-        margin-left:15px;
+        position: relative;
+        top: unset;
+        margin-left: 15px;
       }
     }
   }
-
 }
