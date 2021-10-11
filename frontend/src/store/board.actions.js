@@ -204,7 +204,6 @@ export const toggleExpandLabels = () => {
 export const addActivity = (board, currTaskDetails, activityType, txt = null) => {
     return async (dispatch) => {
         try {
-            debugger;
             board.activities.push(boardService.createActivity(activityType, currTaskDetails, txt))
             const newBoard = await boardService.save(board)
             dispatch({

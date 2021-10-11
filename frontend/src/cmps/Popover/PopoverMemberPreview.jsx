@@ -3,7 +3,7 @@ import CheckIcon from '@material-ui/icons/Check';
 
 export function PopoverMemberPreview({ member, selectedMembersIds, toggleMemberCheck }) {
     return (
-        <li className="member-pop-over-preview flex" onClick={() => { toggleMemberCheck(member) }}>
+        <li key={member._id} className="member-pop-over-preview flex" onClick={() => { toggleMemberCheck(member) }}>
             {member.imgUrl &&
                 <img className="profile-picture" style={{ marginInlineEnd: '8px' }} src={member.imgUrl} alt='member' />
             }

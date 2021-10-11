@@ -88,7 +88,6 @@ export class _TaskDetails extends Component {
   }
 
   toggleIsArchive = () => {
-    debugger;
     const { board, currTaskDetails, addActivity, setCurrTaskDetails } = this.props;
     currTaskDetails.isArchive = currTaskDetails?.isArchive || false
     currTaskDetails.isArchive = !currTaskDetails.isArchive;
