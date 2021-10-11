@@ -7,7 +7,9 @@ import { EditAttachmentPopover } from './EditAttachmentPopover'
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import { Link } from 'react-router-dom';
 import { saveBoard, saveTaskDetails, addActivity } from '../store/board.actions'
-import { setPosition, setPopover, setCurrTaskDetails } from '../store/app.actions';
+import { setPosition, setPopover, setCurrTaskDetails, togglePopover } from '../store/app.actions';
+
+
 
 
 export class _TaskAttachmentPreview extends Component {
@@ -36,21 +38,15 @@ export class _TaskAttachmentPreview extends Component {
         this.setState(prevState => ({ ...prevState, bgUrl: !prevState.bgUrl }))
     }
 
-    togglePopover = () => {
-        this.setState(prevState => ({ ...prevState, isEditPopover: false, isPopover: !prevState.isPopover }))
-    }
-    toggleEditPopover = () => {
-        this.setState(prevState => ({ ...prevState, isPopover: false, isEditPopover: !prevState.isEditPopover }))
-    }
-
     removeAttach = async () => {
-        const { board, currTaskDetails, saveTaskDetails, addActivity, attachment, setCurrTaskDetails } = this.props
+        const { board, currTaskDetails, saveTaskDetails, addActivity, attachment, setCurrTaskDetails, togglePopover } = this.props
         const { currGroup } = this.state
         const attachs = currTaskDetails.attachments.filter(currAttach => currAttach.id !== attachment.id)
         currTaskDetails.attachments = attachs
         setCurrTaskDetails(currTaskDetails)
         await saveTaskDetails(board, currGroup, currTaskDetails)
-        this.togglePopover()
+        togglePopover()
+        this.setIsPopover(false)
         addActivity(board, currTaskDetails, 'remove-attachment', attachment.name)
     }
 
@@ -82,26 +78,21 @@ export class _TaskAttachmentPreview extends Component {
     }
 
     updateAttachment = async (url, urlName) => {
-        const { board, saveTaskDetails, currTaskDetails, attachment, setCurrTaskDetails } = this.props
+        const { board, saveTaskDetails, currTaskDetails, attachment, setCurrTaskDetails, togglePopover } = this.props
         const { currGroup } = this.state
         if (!urlName) urlName = 'Attachment'
         attachment.url = url
         attachment.name = urlName
         setCurrTaskDetails(currTaskDetails)
         await saveTaskDetails(board, currGroup, currTaskDetails)
-        this.toggleEditPopover()
+        togglePopover()
+        this.setIsEditPopover(false)
     }
 
     render() {
         const { attachment, popover } = this.props
         const { isPopover, isEditPopover, bgUrl } = this.state
         const { isWeb } = attachment
-
-
-        console.log('popover.isOpen', popover.isOpen)
-        console.log('isPopover', isPopover)
-        console.log('isEditPopover', isEditPopover)
-        console.log('############################')
 
         return (
             <div className="attachment-preview flex">
@@ -119,14 +110,14 @@ export class _TaskAttachmentPreview extends Component {
                             <button className="activity-toggle-btn" onClick={(event) => {
                                 this.props.setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: '' });
                                 this.props.setPopover(true)
-                                this.togglePopover()
+                                this.setIsPopover(true)
                             }}>
                                 Delete
                             </button>
                             <button className="activity-toggle-btn" onClick={(event) => {
                                 this.props.setPosition({ pos: { pageX: event.pageX, pageY: event.pageY }, type: '' });
                                 this.props.setPopover(true)
-                                this.toggleEditPopover()
+                                this.setIsEditPopover(true)
                             }}>
                                 Edit
                             </button>
@@ -182,7 +173,8 @@ const mapDispatchToProps = {
     setPosition,
     setPopover,
     addActivity,
-    setCurrTaskDetails
+    setCurrTaskDetails,
+    togglePopover
 };
 
 export const TaskAttachmentPreview = connect(
