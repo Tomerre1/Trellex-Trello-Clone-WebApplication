@@ -15,8 +15,11 @@ export class _CheckDeletePopover extends Component {
     }
 
     componentWillUnmount() {
-        this.props.setIsPopover(false)
-        this.props.setIsEditPopover(false)
+
+        if (this.props.type && this.props.type !== 'checklist') {
+            this.props.setIsEditPopover(false)
+            this.props.setIsPopover(false)
+        }
     }
 
     render() {
