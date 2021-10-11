@@ -7,7 +7,7 @@ export class ActivityPreview extends Component {
     get activityToShow() {
         let { activity, currTask } = this.props
         if (!currTask) currTask = activity.task
-        if (activity.txt && activity.txt.length > 20) activity.txt = activity.txt.substr(1, 12) + '...'
+        if (activity.txt && activity.txt.length > 20) activity.txt = activity.txt.substr(0, 12) + '...'
         switch (activity.type) {
             case 'due-date-complete':
                 return 'marked the due date complete'
