@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/static/css/main.ab2458a0.chunk.css",
-    "main.js": "/static/js/main.d87c1ca3.chunk.js",
-    "main.js.map": "/static/js/main.d87c1ca3.chunk.js.map",
+    "main.css": "/static/css/main.e954d49c.chunk.css",
+    "main.js": "/static/js/main.f0145ed1.chunk.js",
+    "main.js.map": "/static/js/main.f0145ed1.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.326854d0.js",
     "runtime-main.js.map": "/static/js/runtime-main.326854d0.js.map",
     "static/css/2.ab75b8d7.chunk.css": "/static/css/2.ab75b8d7.chunk.css",
@@ -12,7 +12,7 @@
     "service-worker.js": "/service-worker.js",
     "service-worker.js.map": "/service-worker.js.map",
     "static/css/2.ab75b8d7.chunk.css.map": "/static/css/2.ab75b8d7.chunk.css.map",
-    "static/css/main.ab2458a0.chunk.css.map": "/static/css/main.ab2458a0.chunk.css.map",
+    "static/css/main.e954d49c.chunk.css.map": "/static/css/main.e954d49c.chunk.css.map",
     "static/js/2.e74a1c77.chunk.js.LICENSE.txt": "/static/js/2.e74a1c77.chunk.js.LICENSE.txt",
     "static/media/main.scss": "/static/media/SecularOne-Regular.3786d92f.ttf",
     "static/media/hero.e8878a54.png": "/static/media/hero.e8878a54.png"
@@ -21,7 +21,7 @@
     "static/js/runtime-main.326854d0.js",
     "static/css/2.ab75b8d7.chunk.css",
     "static/js/2.e74a1c77.chunk.js",
-    "static/css/main.ab2458a0.chunk.css",
-    "static/js/main.d87c1ca3.chunk.js"
+    "static/css/main.e954d49c.chunk.css",
+    "static/js/main.f0145ed1.chunk.js"
   ]
 }
