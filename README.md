@@ -36,7 +36,8 @@ The API calls to the backend are done with the REST API method , and we used mid
 1. Head to my Bambello Repository and clone the project or download the files.
 git clone https://github.com/Tomerre1/Trellex
 
-  2.Enter the backend folder and make sure you have node_modules installed. After that we will initiate the server with 'npm start'
+2.Enter the backend folder and make sure you have node_modules installed. After that we will initiate the server with 'npm start'
+    
     cd backend 
     npm i 
     npm start
