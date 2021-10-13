@@ -34,18 +34,20 @@ The API calls to the backend are done with the REST API method , and we used mid
 
 
 1. Head to my Bambello Repository and clone the project or download the files.
-git clone https://github.com/raphaelassor/bambello.git
-Enter the backend folder and make sure you have node_modules installed. After that we will initiate the server with 'npm start'
-cd backend 
-npm i 
-npm start
-You shuold get a console ouput that the server is up and running at port 3030
+git clone https://github.com/Tomerre1/Trellex
 
-Enter the frontend folder and repeat the same process.
-cd frontend
-npm i 
-npm start
-You shuold get a console ouput that the server is up and running at localhost:3000.
+  2.Enter the backend folder and make sure you have node_modules installed. After that we will initiate the server with 'npm start'
+    cd backend 
+    npm i 
+    npm start
+    
+    You shuold get a console ouput that the server is up and running at port 3030
+
+    Enter the frontend folder and repeat the same process.
+    cd frontend
+    npm i 
+    npm start
+    You shuold get a console ouput that the server is up and running at localhost:3000.
 
 the app will be up and running at localhost:3000 in your browser. enjoy !
 
