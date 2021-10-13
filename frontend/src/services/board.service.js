@@ -38,8 +38,8 @@ async function getById(boardId) {
 
 async function save(board) {
     if (board._id) {
+        socketService.emit("board-change", board)
         const updatedBoard = await httpService.put('board', board)
-        socketService.emit("board-change")
         return updatedBoard
     } else {
         const newBoard = {
@@ -57,7 +57,7 @@ async function save(board) {
             },
         }
         const savedBoard = await httpService.post('board', newBoard)
-        socketService.emit("board-change")
+        // socketService.emit("board-change")
         return savedBoard
     }
 }
@@ -85,6 +85,7 @@ function updateTask(board, group, task) {
     const taskNeedToUpdate = board.groups[groupIndex].tasks.find(currTask => currTask.id === task.id)
     const taskIndex = board.groups[groupIndex].tasks.indexOf(taskNeedToUpdate)
     board.groups[groupIndex].tasks[taskIndex] = task
+    socketService.emit("board-change", board)
     return { ...board }
 }
 
@@ -116,6 +117,7 @@ async function addTask(taskTitle, boardId, groupId, audioUrl, videoUrl) {
     else if (videoUrl) newTask.media.videoUrl = videoUrl
 
     const board = await getById(boardId)
+
     const idx = board.groups.findIndex((group) => group.id === groupId)
     board.groups[idx].tasks.push(newTask)
     save(board)

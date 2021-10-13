@@ -27,9 +27,9 @@ function connectSockets(http, session) {
             console.log('Emitting new board');
             socket.broadcast.emit('new-board-added')
         })
-        socket.on('board-change', () => {
+        socket.on('board-change', (board) => {
             console.log('Emitting board change');
-            socket.broadcast.to(socket.myBoardId).emit('updated-board')
+            socket.broadcast.to(socket.myBoardId).emit('updated-board',board)
         })
     })
 }
