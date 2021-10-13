@@ -1,5 +1,5 @@
 Kanban-style task management board app inspired by trello.com
-Production link - Bambello Project
+Production link - https://trellex-coding-academy.herokuapp.com/
 
 Manage projects and tasks using a kanban board. A board contains lists and tasks. Usually each project is a board, and the lists and cards are the tasks and subjects to do in the project. Users can modify the board and change list and card locations using Drag and Drop.
 
