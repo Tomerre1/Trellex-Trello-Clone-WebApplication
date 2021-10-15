@@ -89,7 +89,7 @@ function _AppHeader(props) {
         ) : (
           <div className="header-btn-container flex login">
             <Link className="clean-link" to="/login">
-              <button className="header-btn boards">Login</button>
+              <button className="header-btn boards login">Login</button>
             </Link>
           </div>
         )}

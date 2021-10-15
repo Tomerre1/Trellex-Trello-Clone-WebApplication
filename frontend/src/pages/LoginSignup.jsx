@@ -69,6 +69,7 @@ function _LoginSignup(props) {
             value={password}
             onChange={(ev) => setPassword(ev.target.value)}
             placeholder="Enter Password"
+            autoComplete="off"
           />
           <button className="login-submit">
             {isLogin ? "Log me in" : "Sign me up"}

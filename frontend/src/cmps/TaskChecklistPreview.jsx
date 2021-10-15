@@ -112,7 +112,8 @@ export class _TaskChecklistPreview extends Component {
                         remove={this.removeChecklist}
                         type={'checklist'}
                         typeTitle={checklist.title}
-                        togglePopover={this.togglePopover}
+                        setIsPopover={this.togglePopover}
+                        
                     />
                 }
                 <TodoAdd addTodo={this.addTodo} />

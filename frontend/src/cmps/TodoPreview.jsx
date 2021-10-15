@@ -38,7 +38,7 @@ export class _TodoPreview extends Component {
         this.onToggleEditMode()
     }
 
-    onToggleTodoIsDone = () => {
+    onToggleTodoIsDone = async () => {
         const { todo } = this.state
         const { addActivity, board, currTaskDetails } = this.props
         todo.isDone = !todo.isDone

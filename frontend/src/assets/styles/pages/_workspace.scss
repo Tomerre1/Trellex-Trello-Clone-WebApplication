@@ -1,7 +1,7 @@
 .workspace-page {
     margin-top:100px;
     align-items: center;
-    @include for-workspace-layout {
+    @include for-normal-layout {
         align-items: unset;
     }
     h1{
@@ -15,3 +15,12 @@
         gap:20px;
     }
 }
+@media screen and (min-width: 500px) and (max-width:1099px){
+    // .board-list{
+    //     padding: 0 50px;
+        
+    // }
+    .workspace-page {
+        padding:0 50px ;
+    }
+  }
