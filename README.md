@@ -3,6 +3,13 @@ Production link - https://trellex-coding-academy.herokuapp.com/
 
 Manage projects and tasks using a kanban board. A board contains lists and tasks. Usually each project is a board, and the lists and cards are the tasks and subjects to do in the project. Users can modify the board and change list and card locations using Drag and Drop.
 
+![Screen Shot 2021-11-13 at 14 07 41](https://user-images.githubusercontent.com/58183173/141643223-7c375ce4-a337-4feb-aed5-d8f7c003ae70.png)
+![Screen Shot 2021-11-13 at 14 03 19](https://user-images.githubusercontent.com/58183173/141643226-e1787019-acdc-41a1-8fb4-d7f75bd53d37.png)
+![Screen Shot 2021-11-13 at 14 04 54](https://user-images.githubusercontent.com/58183173/141643227-a5c2af50-1aa4-44bd-b048-b0ad11892387.png)
+![Screen Shot 2021-11-13 at 14 05 35](https://user-images.githubusercontent.com/58183173/141643228-20960024-3f6c-440d-87a0-b9cc015c9fe7.png)
+![Screen Shot 2021-11-13 at 14 06 03](https://user-images.githubusercontent.com/58183173/141643229-dce7dac0-bff0-4532-9ca7-62e84821788d.png)
+
+
 ## Application Features
 
 
